@@ -24,7 +24,7 @@ class BottomNavigaton extends StatelessWidget {
         left: 0,
         bottom: 0,
         width: size.width,
-        height: 100,
+        height: 110,
         child: Stack(children: [
           Container(
               margin: const EdgeInsets.only(top: 30),
@@ -37,7 +37,7 @@ class BottomNavigaton extends StatelessWidget {
                   painter: BottomNavigationCustomPaint())),
           Container(
               margin: const EdgeInsets.only(top: 90),
-              height: 10,
+              height: 20,
               color: Colors.white),
           Container(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -165,7 +165,7 @@ class BottomNavigationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 44,
-        width: itemIndex == 2 ? size.width * 0.2 : size.width * 0.2 - 16,
+        width: itemIndex == 2 ? size.width * 0.2 + 4 : size.width * 0.2 - 16,
         child: GestureDetector(
             onTap: () => onIndexChange(itemIndex),
             child: Column(
