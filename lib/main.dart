@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/theme/theme.dart';
 import 'package:anthealth_mobile/views/test/test.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: anthealthTheme(),
       home: Test(),
     );
   }
