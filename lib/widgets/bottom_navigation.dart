@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/icon/bottom_navigation/family_pri1.png",
                   unSelectIconPath:
                       "assets/icon/bottom_navigation/family_bla3.png",
-                  title: "Gia đình",
+                  title: S.of(context).family,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -65,7 +66,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/icon/bottom_navigation/community_pri1.png",
                   unSelectIconPath:
                       "assets/icon/bottom_navigation/community_bla3.png",
-                  title: "Cộng đồng",
+                  title: S.of(context).community,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -74,7 +75,7 @@ class BottomNavigaton extends StatelessWidget {
                   itemIndex: 2,
                   selectIconPath: "",
                   unSelectIconPath: "",
-                  title: "Trang chủ",
+                  title: S.of(context).home,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -85,7 +86,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/icon/bottom_navigation/health_pri1.png",
                   unSelectIconPath:
                       "assets/icon/bottom_navigation/health_bla3.png",
-                  title: "Sức khoẻ",
+                  title: S.of(context).health,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -96,7 +97,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/icon/bottom_navigation/medic_pri1.png",
                   unSelectIconPath:
                       "assets/icon/bottom_navigation/medic_bla3.png",
-                  title: "Y tế",
+                  title: S.of(context).medic,
                 ),
               ],
             ),

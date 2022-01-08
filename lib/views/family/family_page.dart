@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 
 class FamilyPage extends StatelessWidget {
@@ -5,7 +6,7 @@ class FamilyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Family Page"));
+    return Center(child: Text(S.of(context).family));
     ;
   }
 }
