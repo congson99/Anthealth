@@ -4,5 +4,23 @@
   "community": "Cộng đồng",
   "home": "Trang chủ",
   "health": "Sức khoẻ",
-  "medic": "Y tế"
+  "medic": "Y tế",
+  "settings": "Cài đặt",
+  "doctor_page": "Trang bác sĩ",
+
+  "HealthPage": "",
+  "health_record": "Hồ sơ sức khoẻ",
+  "height": "Chiều cao",
+  "weight": "Cân nặng",
+  "heart_rate": "Nhịp tim",
+  "temperature": "Nhiệt độ",
+  "blood_pressure": "Huyết áp",
+  "spo2": "SPO2",
+  "calo": "Calo",
+  "water": "Uống nước",
+  "steps": "Bước chân",
+  "health_indicator": "Chỉ số sức khoẻ",
+  "activity": "Chỉ số hoạt động",
+  "period": "Chu kỳ kinh nguyệt"
+
 }

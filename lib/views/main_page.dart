@@ -22,7 +22,7 @@ class _MainPageState extends State<MainPage> {
     HealthPage(),
     MedicPage()
   ];
-  int _currentPage = 1;
+  int _currentPage = 2;
 
   void onBottomNavigationItemTap(index) => setState(() => _currentPage = index);
 

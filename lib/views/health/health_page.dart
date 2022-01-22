@@ -1,11 +1,246 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/theme/colors.dart';
+import 'package:anthealth_mobile/theme/common_text.dart';
+import 'package:anthealth_mobile/widgets/header.dart';
+import 'package:anthealth_mobile/widgets/section_component.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HealthPage extends StatelessWidget {
   const HealthPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(S.of(context).health));
+    return Container(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+            child: Stack(children: [
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 90),
+            child: buildContent(context),
+          ),
+          Header(
+              title: S.of(context).health_record,
+              content: "Hồ Công Sơn",
+              isNotification: false,
+              isMessage: false)
+        ])));
+  }
+
+  Column buildContent(BuildContext context) {
+    return Column(children: [
+      Divider(height: 0.5, color: AnthealthColors.black3),
+      SizedBox(height: 16),
+      buildHealthIndicator(context),
+      SizedBox(height: 32),
+      Divider(height: 0.5, color: AnthealthColors.black3),
+      SizedBox(height: 16),
+      buildActivity(context),
+      SizedBox(height: 32),
+      Divider(height: 0.5, color: AnthealthColors.black3),
+      SizedBox(height: 16),
+      buildPeriod(context),
+      SizedBox(height: 32)
+    ]);
+  }
+
+  Container buildHealthIndicator(BuildContext context) {
+    return Container(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+          CommonText.section(S.of(context).health_indicator, context),
+          SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              IndicatorComponent(
+                  colorID: 0,
+                  iconPath: "assets/indicators/height.png",
+                  value: "1.70",
+                  unit: "m",
+                  title: S.of(context).height),
+              SizedBox(width: 16),
+              IndicatorComponent(
+                  colorID: 1,
+                  iconPath: "assets/indicators/weight.png",
+                  value: "60.0",
+                  unit: "kg",
+                  title: S.of(context).weight),
+              SizedBox(width: 16),
+              IndicatorComponent(
+                  colorID: 2,
+                  iconPath: "assets/indicators/heart_rate.png",
+                  value: "79",
+                  unit: "BPM",
+                  title: S.of(context).heart_rate),
+            ],
+          ),
+          SizedBox(height: 16),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IndicatorComponent(
+                    colorID: 1,
+                    iconPath: "assets/indicators/temperature.png",
+                    value: "37.2",
+                    unit: "°C",
+                    title: S.of(context).temperature),
+                SizedBox(width: 16),
+                IndicatorComponent(
+                    colorID: 2,
+                    iconPath: "assets/indicators/blood_pressure.png",
+                    value: "121/85",
+                    unit: "mmHg",
+                    title: S.of(context).blood_pressure),
+                SizedBox(width: 16),
+                IndicatorComponent(
+                    colorID: 1,
+                    iconPath: "assets/indicators/spo2.png",
+                    value: "97",
+                    unit: "%",
+                    title: S.of(context).spo2)
+              ])
+        ]));
+  }
+
+  Container buildActivity(BuildContext context) {
+    return Container(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+          CommonText.section(S.of(context).activity, context),
+          SizedBox(height: 16),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IndicatorComponent(
+                    colorID: 2,
+                    iconPath: "assets/indicators/calo.png",
+                    value: "1.200",
+                    title: S.of(context).calo),
+                SizedBox(width: 16),
+                IndicatorComponent(
+                    colorID: 0,
+                    iconPath: "assets/indicators/water.png",
+                    value: "1.200",
+                    unit: "ml",
+                    title: S.of(context).water),
+                SizedBox(width: 16),
+                IndicatorComponent(
+                    colorID: 1,
+                    iconPath: "assets/indicators/steps.png",
+                    value: "4.600",
+                    title: S.of(context).steps)
+              ])
+        ]));
+  }
+
+  Container buildPeriod(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          CommonText.section(S.of(context).period, context),
+          SizedBox(height: 16),
+          SectionComponent(
+              title: "Hành kinh trong 1 ngày nữa",
+              subTitle: "Cơ hội thụ thai thấp",
+              colorID: 2,
+              isWarning: true)
+        ],
+      ),
+    );
+  }
+}
+
+class IndicatorComponent extends StatelessWidget {
+  const IndicatorComponent(
+      {Key? key,
+      required this.colorID,
+      required this.iconPath,
+      this.value,
+      this.unit,
+      required this.title,
+      this.isWarning})
+      : super(key: key);
+
+  final int colorID;
+  final String iconPath;
+  final String? value;
+  final String? unit;
+  final String title;
+  final bool? isWarning;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: Stack(children: [
+      Container(
+          decoration: BoxDecoration(
+              color: colorID == 0
+                  ? AnthealthColors.primary5
+                  : colorID == 1
+                      ? AnthealthColors.secondary5
+                      : AnthealthColors.warning5,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: isWarning == true
+                  ? [
+                      BoxShadow(
+                          color: AnthealthColors.warning1, spreadRadius: 5)
+                    ]
+                  : []),
+          margin: isWarning == true
+              ? EdgeInsets.only(top: 15)
+              : EdgeInsets.only(top: 0),
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(22),
+                    child: Image.asset(iconPath,
+                        height: 44.0, width: 44.0, fit: BoxFit.cover)),
+                SizedBox(height: 12),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      RichText(
+                          text: TextSpan(
+                              text: value,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline4!
+                                  .copyWith(color: AnthealthColors.black1),
+                              children: [
+                            TextSpan(text: unit, style: TextStyle(fontSize: 8)),
+                          ]))
+                    ]),
+                SizedBox(height: 4),
+                Text(title,
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                        color: colorID == 0
+                            ? AnthealthColors.primary0
+                            : colorID == 1
+                                ? AnthealthColors.secondary0
+                                : AnthealthColors.warning0))
+              ])),
+      isWarning == true
+          ? Container(
+              alignment: Alignment.center,
+              child: Image.asset(
+                  "assets/app_icon/common/warning_border_war2.png",
+                  height: 22.0,
+                  fit: BoxFit.cover))
+          : Container()
+    ]));
   }
 }

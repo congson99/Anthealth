@@ -51,10 +51,10 @@ class S {
   }
 
   /// ``
-  String get MainPage {
+  String get Main {
     return Intl.message(
       '',
-      name: 'MainPage',
+      name: 'Main',
       desc: '',
       args: [],
     );
@@ -105,6 +105,166 @@ class S {
     return Intl.message(
       'Medic',
       name: 'medic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doctor page`
+  String get doctor_page {
+    return Intl.message(
+      'Doctor page',
+      name: 'doctor_page',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get HealthPage {
+    return Intl.message(
+      '',
+      name: 'HealthPage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health records`
+  String get health_record {
+    return Intl.message(
+      'Health records',
+      name: 'health_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hight`
+  String get height {
+    return Intl.message(
+      'Hight',
+      name: 'height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weight`
+  String get weight {
+    return Intl.message(
+      'Weight',
+      name: 'weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Heart rate`
+  String get heart_rate {
+    return Intl.message(
+      'Heart rate',
+      name: 'heart_rate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Temperature`
+  String get temperature {
+    return Intl.message(
+      'Temperature',
+      name: 'temperature',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blood Pressure`
+  String get blood_pressure {
+    return Intl.message(
+      'Blood Pressure',
+      name: 'blood_pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SPO2`
+  String get spo2 {
+    return Intl.message(
+      'SPO2',
+      name: 'spo2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calo`
+  String get calo {
+    return Intl.message(
+      'Calo',
+      name: 'calo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Water`
+  String get water {
+    return Intl.message(
+      'Water',
+      name: 'water',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steps`
+  String get steps {
+    return Intl.message(
+      'Steps',
+      name: 'steps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health indicator`
+  String get health_indicator {
+    return Intl.message(
+      'Health indicator',
+      name: 'health_indicator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activity`
+  String get activity {
+    return Intl.message(
+      'Activity',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Period`
+  String get period {
+    return Intl.message(
+      'Period',
+      name: 'period',
       desc: '',
       args: [],
     );

@@ -57,7 +57,7 @@ ThemeData anthealthTheme() {
       overline: TextStyle(
           fontSize: 12,
           letterSpacing: 5,
-          color: AnthealthColors.black2,
+          color: AnthealthColors.black0,
           fontFamily: 'RobotoMedium'),
     );
   }

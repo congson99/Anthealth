@@ -22,11 +22,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "MainPage": MessageLookupByLibrary.simpleMessage(""),
+        "HealthPage": MessageLookupByLibrary.simpleMessage(""),
+        "Main": MessageLookupByLibrary.simpleMessage(""),
+        "activity": MessageLookupByLibrary.simpleMessage("Activity"),
+        "blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Blood Pressure"),
+        "calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "community": MessageLookupByLibrary.simpleMessage("Community"),
+        "doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
         "family": MessageLookupByLibrary.simpleMessage("Family"),
         "health": MessageLookupByLibrary.simpleMessage("Health"),
+        "health_indicator":
+            MessageLookupByLibrary.simpleMessage("Health indicator"),
+        "health_record": MessageLookupByLibrary.simpleMessage("Health records"),
+        "heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
+        "height": MessageLookupByLibrary.simpleMessage("Hight"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
-        "medic": MessageLookupByLibrary.simpleMessage("Medic")
+        "medic": MessageLookupByLibrary.simpleMessage("Medic"),
+        "period": MessageLookupByLibrary.simpleMessage("Period"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "steps": MessageLookupByLibrary.simpleMessage("Steps"),
+        "temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
+        "water": MessageLookupByLibrary.simpleMessage("Water"),
+        "weight": MessageLookupByLibrary.simpleMessage("Weight")
       };
 }

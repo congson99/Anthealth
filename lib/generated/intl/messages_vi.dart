@@ -22,11 +22,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "MainPage": MessageLookupByLibrary.simpleMessage(""),
+        "HealthPage": MessageLookupByLibrary.simpleMessage(""),
+        "activity": MessageLookupByLibrary.simpleMessage("Chỉ số hoạt động"),
+        "blood_pressure": MessageLookupByLibrary.simpleMessage("Huyết áp"),
+        "calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
+        "doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
         "family": MessageLookupByLibrary.simpleMessage("Gia đình"),
         "health": MessageLookupByLibrary.simpleMessage("Sức khoẻ"),
+        "health_indicator":
+            MessageLookupByLibrary.simpleMessage("Chỉ số sức khoẻ"),
+        "health_record": MessageLookupByLibrary.simpleMessage("Hồ sơ sức khoẻ"),
+        "heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
+        "height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
-        "medic": MessageLookupByLibrary.simpleMessage("Y tế")
+        "medic": MessageLookupByLibrary.simpleMessage("Y tế"),
+        "period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
+        "temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
+        "water": MessageLookupByLibrary.simpleMessage("Uống nước"),
+        "weight": MessageLookupByLibrary.simpleMessage("Cân nặng")
       };
 }

@@ -1,8 +1,26 @@
 {
-  "MainPage": "",
+  "Main": "",
   "family": "Family",
   "community": "Community",
   "home": "Home",
   "health": "Health",
-  "medic": "Medic"
+  "medic": "Medic",
+  "settings": "Settings",
+  "doctor_page": "Doctor page",
+
+  "HealthPage": "",
+  "health_record": "Health records",
+  "height": "Hight",
+  "weight": "Weight",
+  "heart_rate": "Heart rate",
+  "temperature": "Temperature",
+  "blood_pressure": "Blood Pressure",
+  "spo2": "SPO2",
+  "calo": "Calo",
+  "water": "Water",
+  "steps": "Steps",
+  "health_indicator": "Health indicator",
+  "activity": "Activity",
+  "period": "Period"
+
 }
