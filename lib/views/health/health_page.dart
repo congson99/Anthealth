@@ -98,7 +98,7 @@ class HealthPage extends StatelessWidget {
                     title: S.of(context).blood_pressure),
                 SizedBox(width: 16),
                 IndicatorComponent(
-                    colorID: 1,
+                    colorID: 0,
                     iconPath: "assets/indicators/spo2.png",
                     value: "97",
                     unit: "%",
