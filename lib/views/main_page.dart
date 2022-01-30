@@ -28,13 +28,12 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Stack(children: [
           _page[_currentPage],
           BottomNavigaton(
-            size: size,
+            size: MediaQuery.of(context).size,
             index: _currentPage,
             imagePath: "assets/avatar.png",
             onIndexChange: (int index) => onBottomNavigationItemTap(index),

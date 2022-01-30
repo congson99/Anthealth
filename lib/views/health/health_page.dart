@@ -1,6 +1,8 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/theme/colors.dart';
 import 'package:anthealth_mobile/theme/common_text.dart';
+import 'package:anthealth_mobile/views/health/indicator/height_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/indicator_page.dart';
 import 'package:anthealth_mobile/widgets/header.dart';
 import 'package:anthealth_mobile/widgets/section_component.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,6 +59,8 @@ class HealthPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IndicatorComponent(
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => HeightPage())),
                   colorID: 0,
                   iconPath: "assets/indicators/height.png",
                   value: "1.70",
@@ -64,6 +68,11 @@ class HealthPage extends StatelessWidget {
                   title: S.of(context).height),
               SizedBox(width: 16),
               IndicatorComponent(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => IndicatorPage(
+                          indicatorIndex: 1,
+                          title: S.of(context).weight,
+                          unit: "kg"))),
                   colorID: 1,
                   iconPath: "assets/indicators/weight.png",
                   value: "60.0",
@@ -71,6 +80,11 @@ class HealthPage extends StatelessWidget {
                   title: S.of(context).weight),
               SizedBox(width: 16),
               IndicatorComponent(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => IndicatorPage(
+                          indicatorIndex: 2,
+                          title: S.of(context).heart_rate,
+                          unit: "BPM"))),
                   colorID: 2,
                   iconPath: "assets/indicators/heart_rate.png",
                   value: "79",
@@ -84,6 +98,11 @@ class HealthPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 IndicatorComponent(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => IndicatorPage(
+                            indicatorIndex: 3,
+                            title: S.of(context).temperature,
+                            unit: "°C"))),
                     colorID: 1,
                     iconPath: "assets/indicators/temperature.png",
                     value: "37.2",
@@ -91,6 +110,11 @@ class HealthPage extends StatelessWidget {
                     title: S.of(context).temperature),
                 SizedBox(width: 16),
                 IndicatorComponent(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => IndicatorPage(
+                            indicatorIndex: 4,
+                            title: S.of(context).blood_pressure,
+                            unit: "mmHg"))),
                     colorID: 2,
                     iconPath: "assets/indicators/blood_pressure.png",
                     value: "121/85",
@@ -98,6 +122,11 @@ class HealthPage extends StatelessWidget {
                     title: S.of(context).blood_pressure),
                 SizedBox(width: 16),
                 IndicatorComponent(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => IndicatorPage(
+                            indicatorIndex: 5,
+                            title: S.of(context).spo2,
+                            unit: "%"))),
                     colorID: 0,
                     iconPath: "assets/indicators/spo2.png",
                     value: "97",
@@ -161,15 +190,16 @@ class HealthPage extends StatelessWidget {
 }
 
 class IndicatorComponent extends StatelessWidget {
-  const IndicatorComponent(
-      {Key? key,
-      required this.colorID,
-      required this.iconPath,
-      this.value,
-      this.unit,
-      required this.title,
-      this.isWarning})
-      : super(key: key);
+  const IndicatorComponent({
+    Key? key,
+    required this.colorID,
+    required this.iconPath,
+    this.value,
+    this.unit,
+    required this.title,
+    this.isWarning,
+    this.onTap,
+  }) : super(key: key);
 
   final int colorID;
   final String iconPath;
@@ -177,62 +207,67 @@ class IndicatorComponent extends StatelessWidget {
   final String? unit;
   final String title;
   final bool? isWarning;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
         child: Stack(children: [
-      Container(
-          decoration: BoxDecoration(
-              color: colorID == 0
-                  ? AnthealthColors.primary5
-                  : colorID == 1
-                      ? AnthealthColors.secondary5
-                      : AnthealthColors.warning5,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: isWarning == true
-                  ? [
-                      BoxShadow(
-                          color: AnthealthColors.warning1, spreadRadius: 5)
-                    ]
-                  : []),
-          margin: isWarning == true
-              ? EdgeInsets.only(top: 15)
-              : EdgeInsets.only(top: 0),
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(22),
-                    child: Image.asset(iconPath,
-                        height: 44.0, width: 44.0, fit: BoxFit.cover)),
-                SizedBox(height: 12),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      RichText(
-                          text: TextSpan(
-                              text: value,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline4!
-                                  .copyWith(color: AnthealthColors.black1),
-                              children: [
-                            TextSpan(text: unit, style: TextStyle(fontSize: 8)),
-                          ]))
-                    ]),
-                SizedBox(height: 4),
-                Text(title,
-                    style: Theme.of(context).textTheme.caption!.copyWith(
-                        color: colorID == 0
-                            ? AnthealthColors.primary0
-                            : colorID == 1
-                                ? AnthealthColors.secondary0
-                                : AnthealthColors.warning0))
-              ])),
+      GestureDetector(
+        onTap: onTap,
+        child: Container(
+            decoration: BoxDecoration(
+                color: colorID == 0
+                    ? AnthealthColors.primary5
+                    : colorID == 1
+                        ? AnthealthColors.secondary5
+                        : AnthealthColors.warning5,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: isWarning == true
+                    ? [
+                        BoxShadow(
+                            color: AnthealthColors.warning1, spreadRadius: 5)
+                      ]
+                    : []),
+            margin: isWarning == true
+                ? EdgeInsets.only(top: 15)
+                : EdgeInsets.only(top: 0),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(22),
+                      child: Image.asset(iconPath,
+                          height: 44.0, width: 44.0, fit: BoxFit.cover)),
+                  SizedBox(height: 12),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        RichText(
+                            text: TextSpan(
+                                text: value,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline4!
+                                    .copyWith(color: AnthealthColors.black1),
+                                children: [
+                              TextSpan(
+                                  text: unit, style: TextStyle(fontSize: 8)),
+                            ]))
+                      ]),
+                  SizedBox(height: 4),
+                  Text(title,
+                      style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: colorID == 0
+                              ? AnthealthColors.primary0
+                              : colorID == 1
+                                  ? AnthealthColors.secondary0
+                                  : AnthealthColors.warning0))
+                ])),
+      ),
       isWarning == true
           ? Container(
               alignment: Alignment.center,
