@@ -137,7 +137,7 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
         children: [
           SizedBox(
               width: MediaQuery.of(context).size.width / 4,
-              child: Text(S.of(context).record_hour + ': ',
+              child: Text(S.of(context).Record_hour + ': ',
                   style: Theme.of(context)
                       .textTheme
                       .subtitle1!
@@ -163,7 +163,7 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
         children: [
           SizedBox(
               width: MediaQuery.of(context).size.width / 4,
-              child: Text(S.of(context).record_date + ': ',
+              child: Text(S.of(context).Record_date + ': ',
                   style: Theme.of(context)
                       .textTheme
                       .subtitle1!

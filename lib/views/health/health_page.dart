@@ -22,7 +22,7 @@ class HealthPage extends StatelessWidget {
             child: buildContent(context),
           ),
           Header(
-              title: S.of(context).health_record,
+              title: S.of(context).Health_record,
               content: "Hồ Công Sơn",
               isNotification: false,
               isMessage: false)
@@ -52,7 +52,7 @@ class HealthPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-          CommonText.section(S.of(context).health_indicator, context),
+          CommonText.section(S.of(context).Health_indicator, context),
           SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,31 +65,31 @@ class HealthPage extends StatelessWidget {
                   iconPath: "assets/indicators/height.png",
                   value: "1.70",
                   unit: "m",
-                  title: S.of(context).height),
+                  title: S.of(context).Height),
               SizedBox(width: 16),
               IndicatorComponent(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => IndicatorPage(
                           indicatorIndex: 1,
-                          title: S.of(context).weight,
+                          title: S.of(context).Weight,
                           unit: "kg"))),
                   colorID: 1,
                   iconPath: "assets/indicators/weight.png",
                   value: "60.0",
                   unit: "kg",
-                  title: S.of(context).weight),
+                  title: S.of(context).Weight),
               SizedBox(width: 16),
               IndicatorComponent(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => IndicatorPage(
                           indicatorIndex: 2,
-                          title: S.of(context).heart_rate,
+                          title: S.of(context).Heart_rate,
                           unit: "BPM"))),
                   colorID: 2,
                   iconPath: "assets/indicators/heart_rate.png",
                   value: "79",
                   unit: "BPM",
-                  title: S.of(context).heart_rate),
+                  title: S.of(context).Heart_rate),
             ],
           ),
           SizedBox(height: 16),
@@ -101,37 +101,37 @@ class HealthPage extends StatelessWidget {
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => IndicatorPage(
                             indicatorIndex: 3,
-                            title: S.of(context).temperature,
+                            title: S.of(context).Temperature,
                             unit: "°C"))),
                     colorID: 1,
                     iconPath: "assets/indicators/temperature.png",
                     value: "37.2",
                     unit: "°C",
-                    title: S.of(context).temperature),
+                    title: S.of(context).Temperature),
                 SizedBox(width: 16),
                 IndicatorComponent(
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => IndicatorPage(
                             indicatorIndex: 4,
-                            title: S.of(context).blood_pressure,
+                            title: S.of(context).Blood_pressure,
                             unit: "mmHg"))),
                     colorID: 2,
                     iconPath: "assets/indicators/blood_pressure.png",
                     value: "121/85",
                     unit: "mmHg",
-                    title: S.of(context).blood_pressure),
+                    title: S.of(context).Blood_pressure),
                 SizedBox(width: 16),
                 IndicatorComponent(
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) => IndicatorPage(
                             indicatorIndex: 5,
-                            title: S.of(context).spo2,
+                            title: S.of(context).Spo2,
                             unit: "%"))),
                     colorID: 0,
                     iconPath: "assets/indicators/spo2.png",
                     value: "97",
                     unit: "%",
-                    title: S.of(context).spo2)
+                    title: S.of(context).Spo2)
               ])
         ]));
   }
@@ -142,7 +142,7 @@ class HealthPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-          CommonText.section(S.of(context).activity, context),
+          CommonText.section(S.of(context).Activity, context),
           SizedBox(height: 16),
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,20 +152,20 @@ class HealthPage extends StatelessWidget {
                     colorID: 2,
                     iconPath: "assets/indicators/calo.png",
                     value: "1.200",
-                    title: S.of(context).calo),
+                    title: S.of(context).Calo),
                 SizedBox(width: 16),
                 IndicatorComponent(
                     colorID: 0,
                     iconPath: "assets/indicators/water.png",
                     value: "1.200",
                     unit: "ml",
-                    title: S.of(context).water),
+                    title: S.of(context).Water),
                 SizedBox(width: 16),
                 IndicatorComponent(
                     colorID: 1,
                     iconPath: "assets/indicators/steps.png",
                     value: "4.600",
-                    title: S.of(context).steps)
+                    title: S.of(context).Steps)
               ])
         ]));
   }
@@ -176,7 +176,7 @@ class HealthPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          CommonText.section(S.of(context).period, context),
+          CommonText.section(S.of(context).Period, context),
           SizedBox(height: 16),
           SectionComponent(
               title: "Hành kinh trong 1 ngày nữa",

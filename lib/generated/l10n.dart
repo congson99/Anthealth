@@ -50,451 +50,851 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `------------------------------------------`
-  String get Main {
+  /// `-----------------------------Main-----------------------------`
+  String get _Main {
     return Intl.message(
-      '------------------------------------------',
-      name: 'Main',
+      '-----------------------------Main-----------------------------',
+      name: '_Main',
       desc: '',
       args: [],
     );
   }
 
   /// `Family`
-  String get family {
+  String get Family {
     return Intl.message(
       'Family',
-      name: 'family',
+      name: 'Family',
       desc: '',
       args: [],
     );
   }
 
   /// `Community`
-  String get community {
+  String get Community {
     return Intl.message(
       'Community',
-      name: 'community',
+      name: 'Community',
       desc: '',
       args: [],
     );
   }
 
   /// `Home`
-  String get home {
+  String get Home {
     return Intl.message(
       'Home',
-      name: 'home',
+      name: 'Home',
       desc: '',
       args: [],
     );
   }
 
   /// `Health`
-  String get health {
+  String get Health {
     return Intl.message(
       'Health',
-      name: 'health',
+      name: 'Health',
       desc: '',
       args: [],
     );
   }
 
   /// `Medic`
-  String get medic {
+  String get Medic {
     return Intl.message(
       'Medic',
-      name: 'medic',
+      name: 'Medic',
       desc: '',
       args: [],
     );
   }
 
   /// `Settings`
-  String get settings {
+  String get Settings {
     return Intl.message(
       'Settings',
-      name: 'settings',
+      name: 'Settings',
       desc: '',
       args: [],
     );
   }
 
   /// `Doctor page`
-  String get doctor_page {
+  String get Doctor_page {
     return Intl.message(
       'Doctor page',
-      name: 'doctor_page',
+      name: 'Doctor_page',
       desc: '',
       args: [],
     );
   }
 
-  /// `------------------------------------------`
-  String get HealthPage {
+  /// `-----------------------------Common-----------------------------`
+  String get _Common {
     return Intl.message(
-      '------------------------------------------',
-      name: 'HealthPage',
+      '-----------------------------Common-----------------------------',
+      name: '_Common',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail`
+  String get Detail {
+    return Intl.message(
+      'Detail',
+      name: 'Detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unit`
+  String get Unit {
+    return Intl.message(
+      'Unit',
+      name: 'Unit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year`
+  String get Year {
+    return Intl.message(
+      'Year',
+      name: 'Year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All time`
+  String get All_time {
+    return Intl.message(
+      'All time',
+      name: 'All_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add by`
+  String get Add_by {
+    return Intl.message(
+      'Add by',
+      name: 'Add_by',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learn more`
+  String get Learn_more {
+    return Intl.message(
+      'Learn more',
+      name: 'Learn_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `successfully`
+  String get successfully {
+    return Intl.message(
+      'successfully',
+      name: 'successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Authentication-----------------------------`
+  String get _Authentication {
+    return Intl.message(
+      '-----------------------------Authentication-----------------------------',
+      name: '_Authentication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your name`
+  String get Your_name {
+    return Intl.message(
+      'Your name',
+      name: 'Your_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get Email {
+    return Intl.message(
+      'Email',
+      name: 'Email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get Password {
+    return Intl.message(
+      'Password',
+      name: 'Password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get Confirm_password {
+    return Intl.message(
+      'Confirm password',
+      name: 'Confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get Forgot_password {
+    return Intl.message(
+      'Forgot password?',
+      name: 'Forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are new User?`
+  String get You_are_new_user {
+    return Intl.message(
+      'You are new User?',
+      name: 'You_are_new_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get Register {
+    return Intl.message(
+      'Register',
+      name: 'Register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register now`
+  String get Register_now {
+    return Intl.message(
+      'Register now',
+      name: 'Register_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill in information`
+  String get Fill_in_information {
+    return Intl.message(
+      'Fill in information',
+      name: 'Fill_in_information',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authenticate`
+  String get Authenticate {
+    return Intl.message(
+      'Authenticate',
+      name: 'Authenticate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authentication code`
+  String get Authentication_code {
+    return Intl.message(
+      'Authentication code',
+      name: 'Authentication_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set a new password`
+  String get Set_new_password {
+    return Intl.message(
+      'Set a new password',
+      name: 'Set_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Health-----------------------------`
+  String get _Health {
+    return Intl.message(
+      '-----------------------------Health-----------------------------',
+      name: '_Health',
       desc: '',
       args: [],
     );
   }
 
   /// `Health records`
-  String get health_record {
+  String get Health_record {
     return Intl.message(
       'Health records',
-      name: 'health_record',
+      name: 'Health_record',
       desc: '',
       args: [],
     );
   }
 
   /// `Hight`
-  String get height {
+  String get Height {
     return Intl.message(
       'Hight',
-      name: 'height',
+      name: 'Height',
       desc: '',
       args: [],
     );
   }
 
   /// `Weight`
-  String get weight {
+  String get Weight {
     return Intl.message(
       'Weight',
-      name: 'weight',
+      name: 'Weight',
       desc: '',
       args: [],
     );
   }
 
   /// `Heart rate`
-  String get heart_rate {
+  String get Heart_rate {
     return Intl.message(
       'Heart rate',
-      name: 'heart_rate',
+      name: 'Heart_rate',
       desc: '',
       args: [],
     );
   }
 
   /// `Temperature`
-  String get temperature {
+  String get Temperature {
     return Intl.message(
       'Temperature',
-      name: 'temperature',
+      name: 'Temperature',
       desc: '',
       args: [],
     );
   }
 
   /// `Blood Pressure`
-  String get blood_pressure {
+  String get Blood_pressure {
     return Intl.message(
       'Blood Pressure',
-      name: 'blood_pressure',
+      name: 'Blood_pressure',
       desc: '',
       args: [],
     );
   }
 
   /// `SPO2`
-  String get spo2 {
+  String get Spo2 {
     return Intl.message(
       'SPO2',
-      name: 'spo2',
+      name: 'Spo2',
       desc: '',
       args: [],
     );
   }
 
   /// `Calo`
-  String get calo {
+  String get Calo {
     return Intl.message(
       'Calo',
-      name: 'calo',
+      name: 'Calo',
       desc: '',
       args: [],
     );
   }
 
   /// `Water`
-  String get water {
+  String get Water {
     return Intl.message(
       'Water',
-      name: 'water',
+      name: 'Water',
       desc: '',
       args: [],
     );
   }
 
   /// `Steps`
-  String get steps {
+  String get Steps {
     return Intl.message(
       'Steps',
-      name: 'steps',
+      name: 'Steps',
       desc: '',
       args: [],
     );
   }
 
   /// `Health indicator`
-  String get health_indicator {
+  String get Health_indicator {
     return Intl.message(
       'Health indicator',
-      name: 'health_indicator',
+      name: 'Health_indicator',
       desc: '',
       args: [],
     );
   }
 
   /// `Activity`
-  String get activity {
+  String get Activity {
     return Intl.message(
       'Activity',
-      name: 'activity',
+      name: 'Activity',
       desc: '',
       args: [],
     );
   }
 
   /// `Period`
-  String get period {
+  String get Period {
     return Intl.message(
       'Period',
-      name: 'period',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Latest record`
-  String get latest_record {
-    return Intl.message(
-      'Latest record',
-      name: 'latest_record',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Record time`
-  String get record_time {
-    return Intl.message(
-      'Record time',
-      name: 'record_time',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Record time`
-  String get record_hour {
-    return Intl.message(
-      'Record time',
-      name: 'record_hour',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Record date`
-  String get record_date {
-    return Intl.message(
-      'Record date',
-      name: 'record_date',
+      name: 'Period',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit height data`
-  String get edit_height {
+  String get Edit_height {
     return Intl.message(
       'Edit height data',
-      name: 'edit_height',
+      name: 'Edit_height',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit weight data`
-  String get edit_weight {
+  String get Edit_weight {
     return Intl.message(
       'Edit weight data',
-      name: 'edit_weight',
+      name: 'Edit_weight',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit heart rate data`
-  String get edit_heart_rate {
+  String get Edit_heart_rate {
     return Intl.message(
       'Edit heart rate data',
-      name: 'edit_heart_rate',
+      name: 'Edit_heart_rate',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit temperature data`
-  String get edit_temperature {
+  String get Edit_temperature {
     return Intl.message(
       'Edit temperature data',
-      name: 'edit_temperature',
+      name: 'Edit_temperature',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit blood Pressure data`
-  String get edit_blood_pressure {
+  String get Edit_blood_pressure {
     return Intl.message(
       'Edit blood Pressure data',
-      name: 'edit_blood_pressure',
+      name: 'Edit_blood_pressure',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit SPO2 data`
-  String get edit_spo2 {
+  String get Edit_spo2 {
     return Intl.message(
       'Edit SPO2 data',
-      name: 'edit_spo2',
+      name: 'Edit_spo2',
       desc: '',
       args: [],
     );
   }
 
   /// `Add height data`
-  String get add_height {
+  String get Add_height {
     return Intl.message(
       'Add height data',
-      name: 'add_height',
+      name: 'Add_height',
       desc: '',
       args: [],
     );
   }
 
   /// `Add weight data`
-  String get add_weight {
+  String get Add_weight {
     return Intl.message(
       'Add weight data',
-      name: 'add_weight',
+      name: 'Add_weight',
       desc: '',
       args: [],
     );
   }
 
   /// `Add heart rate data`
-  String get add_heart_rate {
+  String get Add_heart_rate {
     return Intl.message(
       'Add heart rate data',
-      name: 'add_heart_rate',
+      name: 'Add_heart_rate',
       desc: '',
       args: [],
     );
   }
 
   /// `Add temperature data`
-  String get add_temperature {
+  String get Add_temperature {
     return Intl.message(
       'Add temperature data',
-      name: 'add_temperature',
+      name: 'Add_temperature',
       desc: '',
       args: [],
     );
   }
 
   /// `Add blood Pressure data`
-  String get add_blood_pressure {
+  String get Add_blood_pressure {
     return Intl.message(
       'Add blood Pressure data',
-      name: 'add_blood_pressure',
+      name: 'Add_blood_pressure',
       desc: '',
       args: [],
     );
   }
 
   /// `Add SPO2 data`
-  String get add_spo2 {
+  String get Add_spo2 {
     return Intl.message(
       'Add SPO2 data',
-      name: 'add_spo2',
+      name: 'Add_spo2',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete height data`
-  String get delete_height {
+  String get Delete_height {
     return Intl.message(
       'Delete height data',
-      name: 'delete_height',
+      name: 'Delete_height',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete weight data`
-  String get delete_weight {
+  String get Delete_weight {
     return Intl.message(
       'Delete weight data',
-      name: 'delete_weight',
+      name: 'Delete_weight',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete heart rate data`
-  String get delete_heart_rate {
+  String get Delete_heart_rate {
     return Intl.message(
       'Delete heart rate data',
-      name: 'delete_heart_rate',
+      name: 'Delete_heart_rate',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete temperature data`
-  String get delete_temperature {
+  String get Delete_temperature {
     return Intl.message(
       'Delete temperature data',
-      name: 'delete_temperature',
+      name: 'Delete_temperature',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete blood Pressure data`
-  String get delete_blood_pressure {
+  String get Delete_blood_pressure {
     return Intl.message(
       'Delete blood Pressure data',
-      name: 'delete_blood_pressure',
+      name: 'Delete_blood_pressure',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete SPO2 data`
-  String get delete_spo2 {
+  String get Delete_spo2 {
     return Intl.message(
       'Delete SPO2 data',
-      name: 'delete_spo2',
+      name: 'Delete_spo2',
       desc: '',
       args: [],
     );
   }
 
-  /// `------------------------------------------`
-  String get DateTime {
+  /// `-----------------------------Button-----------------------------`
+  String get _Button {
     return Intl.message(
-      '------------------------------------------',
-      name: 'DateTime',
+      '-----------------------------Button-----------------------------',
+      name: '_Button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LOGIN`
+  String get button_login {
+    return Intl.message(
+      'LOGIN',
+      name: 'button_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get button_ok {
+    return Intl.message(
+      'OK',
+      name: 'button_ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CANCEL`
+  String get button_cancel {
+    return Intl.message(
+      'CANCEL',
+      name: 'button_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DELETE`
+  String get button_delete {
+    return Intl.message(
+      'DELETE',
+      name: 'button_delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CLOSE`
+  String get button_close {
+    return Intl.message(
+      'CLOSE',
+      name: 'button_close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EDIT`
+  String get button_edit {
+    return Intl.message(
+      'EDIT',
+      name: 'button_edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this data?`
+  String get Warning_delete_data {
+    return Intl.message(
+      'Are you sure you want to delete this data?',
+      name: 'Warning_delete_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Error-----------------------------`
+  String get _Error {
+    return Intl.message(
+      '-----------------------------Error-----------------------------',
+      name: '_Error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong email!`
+  String get Wrong_email {
+    return Intl.message(
+      'Wrong email!',
+      name: 'Wrong_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong password!`
+  String get Wrong_password {
+    return Intl.message(
+      'Wrong password!',
+      name: 'Wrong_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong authentication code!`
+  String get Wrong_authentication_code {
+    return Intl.message(
+      'Wrong authentication code!',
+      name: 'Wrong_authentication_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your name`
+  String get Enter_name {
+    return Intl.message(
+      'Please enter your name',
+      name: 'Enter_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get Enter_email {
+    return Intl.message(
+      'Please enter your email',
+      name: 'Enter_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get Enter_password {
+    return Intl.message(
+      'Please enter your password',
+      name: 'Enter_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get Enter_confirm_password {
+    return Intl.message(
+      'Please enter your password',
+      name: 'Enter_confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This email is not registered!`
+  String get Not_registered_email {
+    return Intl.message(
+      'This email is not registered!',
+      name: 'Not_registered_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email was registered!`
+  String get Registered_email {
+    return Intl.message(
+      'The email was registered!',
+      name: 'Registered_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The passwords didn’t match!`
+  String get Not_match_password {
+    return Intl.message(
+      'The passwords didn’t match!',
+      name: 'Not_match_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Time-----------------------------`
+  String get _Time {
+    return Intl.message(
+      '-----------------------------Time-----------------------------',
+      name: '_Time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest record`
+  String get Latest_record {
+    return Intl.message(
+      'Latest record',
+      name: 'Latest_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record time`
+  String get Record_time {
+    return Intl.message(
+      'Record time',
+      name: 'Record_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record time`
+  String get Record_hour {
+    return Intl.message(
+      'Record time',
+      name: 'Record_hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record date`
+  String get Record_date {
+    return Intl.message(
+      'Record date',
+      name: 'Record_date',
       desc: '',
       args: [],
     );
@@ -615,156 +1015,6 @@ class S {
     return Intl.message(
       'DEC',
       name: 'dec',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `---------------------------------------------`
-  String get Common {
-    return Intl.message(
-      '---------------------------------------------',
-      name: 'Common',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Detail`
-  String get detail {
-    return Intl.message(
-      'Detail',
-      name: 'detail',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Unit`
-  String get unit {
-    return Intl.message(
-      'Unit',
-      name: 'unit',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Year`
-  String get year {
-    return Intl.message(
-      'Year',
-      name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All time`
-  String get all_time {
-    return Intl.message(
-      'All time',
-      name: 'all_time',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add by`
-  String get add_by {
-    return Intl.message(
-      'Add by',
-      name: 'add_by',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Learn more`
-  String get learn_more {
-    return Intl.message(
-      'Learn more',
-      name: 'learn_more',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `successfully`
-  String get successfully {
-    return Intl.message(
-      'successfully',
-      name: 'successfully',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `---------------------------------------------`
-  String get Button {
-    return Intl.message(
-      '---------------------------------------------',
-      name: 'Button',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `OK`
-  String get button_ok {
-    return Intl.message(
-      'OK',
-      name: 'button_ok',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `CANCEL`
-  String get button_cancel {
-    return Intl.message(
-      'CANCEL',
-      name: 'button_cancel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `DELETE`
-  String get button_delete {
-    return Intl.message(
-      'DELETE',
-      name: 'button_delete',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `CLOSE`
-  String get button_close {
-    return Intl.message(
-      'CLOSE',
-      name: 'button_close',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `EDIT`
-  String get button_edit {
-    return Intl.message(
-      'EDIT',
-      name: 'button_edit',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Are you sure you want to delete this data?`
-  String get warning_delete_data {
-    return Intl.message(
-      'Are you sure you want to delete this data?',
-      name: 'warning_delete_data',
       desc: '',
       args: [],
     );

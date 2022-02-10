@@ -29,7 +29,7 @@ class IndicatorLatestRecord extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(S.of(context).latest_record,
+              Text(S.of(context).Latest_record,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
                       .textTheme
@@ -50,7 +50,7 @@ class IndicatorLatestRecord extends StatelessWidget {
                             .copyWith(color: AnthealthColors.primary1))
                   ])),
               SizedBox(height: 8),
-              Text(S.of(context).record_time + ": " + time,
+              Text(S.of(context).Record_time + ": " + time,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
                       .textTheme
@@ -86,7 +86,7 @@ class IndicatorLatestRecord extends StatelessWidget {
                                       children: [
                                 if (informationURL != null)
                                   TextSpan(
-                                      text: ' ' + S.of(context).learn_more,
+                                      text: ' ' + S.of(context).Learn_more,
                                       style: TextStyle(
                                           color: AnthealthColors.primary1,
                                           fontFamily: 'RobotoMedium'),

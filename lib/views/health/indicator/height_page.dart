@@ -64,7 +64,7 @@ class _HeightPageState extends State<HeightPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: buildContent(context)))),
       CustomAppBar(
-          title: S.of(context).height,
+          title: S.of(context).Height,
           back: () => Navigator.pop(context),
           add: () {
             showModalBottomSheet(
@@ -76,8 +76,8 @@ class _HeightPageState extends State<HeightPage> {
                         BorderRadius.vertical(top: Radius.circular(16))),
                 context: context,
                 builder: (_) => IndicatorEditBottomSheet(
-                    title: S.of(context).add_height,
-                    indicator: S.of(context).height,
+                    title: S.of(context).Add_height,
+                    indicator: S.of(context).Height,
                     dataPicker: _dataPicker,
                     indexPicker: 250 - detailData[0][0].value.toInt(),
                     dateTime: DateTime.now(),
@@ -91,7 +91,7 @@ class _HeightPageState extends State<HeightPage> {
                               detailData[0][0].recordID)));
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(S.of(context).add_height +
+                          content: Text(S.of(context).Add_height +
                               ' ' +
                               S.of(context).successfully +
                               '!')));
@@ -132,7 +132,7 @@ class _HeightPageState extends State<HeightPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SwitchBar(
-                content: [S.of(context).year, S.of(context).all_time],
+                content: [S.of(context).Year, S.of(context).All_time],
                 index: _filterIndex,
                 onIndexChange: (index) => setState(() => _filterIndex = index),
                 colorID: 0,
@@ -175,7 +175,7 @@ class _HeightPageState extends State<HeightPage> {
     showDialog(
         context: context,
         builder: (_) => IndicatorDetailPopup(
-            title: S.of(context).height,
+            title: S.of(context).Height,
             value: detailData[0][index].value.toString(),
             unit: widget.unit,
             time: DateFormat('hh:mm dd.MM.yyyy')
@@ -186,13 +186,13 @@ class _HeightPageState extends State<HeightPage> {
               showDialog(
                   context: context,
                   builder: (_) => WarningPopup(
-                      title: S.of(context).warning_delete_data,
+                      title: S.of(context).Warning_delete_data,
                       cancel: () => Navigator.pop(context),
                       delete: () {
                         setState(() => detailData[0].removeAt(index));
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(S.of(context).delete_height +
+                            content: Text(S.of(context).Delete_height +
                                 ' ' +
                                 S.of(context).successfully +
                                 '!')));
@@ -209,8 +209,8 @@ class _HeightPageState extends State<HeightPage> {
                           BorderRadius.vertical(top: Radius.circular(16))),
                   context: context,
                   builder: (_) => IndicatorEditBottomSheet(
-                      title: S.of(context).edit_height,
-                      indicator: S.of(context).height,
+                      title: S.of(context).Edit_height,
+                      indicator: S.of(context).Height,
                       dataPicker: _dataPicker,
                       indexPicker: 250 - detailData[0][index].value,
                       dateTime: detailData[0][index].dateTime,
@@ -224,7 +224,7 @@ class _HeightPageState extends State<HeightPage> {
                             detailData[0][index].recordID));
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(S.of(context).edit_height +
+                            content: Text(S.of(context).Edit_height +
                                 ' ' +
                                 S.of(context).successfully +
                                 '!')));

@@ -32,12 +32,12 @@ class IndicatorDetailRecords extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(S.of(context).detail,
+                    Text(S.of(context).Detail,
                         style: Theme.of(context)
                             .textTheme
                             .subtitle1!
                             .copyWith(color: AnthealthColors.primary1)),
-                    Text(S.of(context).unit + ": " + unit,
+                    Text(S.of(context).Unit + ": " + unit,
                         style: Theme.of(context)
                             .textTheme
                             .caption!

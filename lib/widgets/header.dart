@@ -147,7 +147,7 @@ class _HeaderState extends State<Header> {
                                               height: 22.0,
                                               fit: BoxFit.fitHeight),
                                           SizedBox(width: 12),
-                                          Text(S.of(context).settings,
+                                          Text(S.of(context).Settings,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .subtitle1!
@@ -169,7 +169,7 @@ class _HeaderState extends State<Header> {
                                               height: 22.0,
                                               fit: BoxFit.fitHeight),
                                           SizedBox(width: 12),
-                                          Text(S.of(context).doctor_page,
+                                          Text(S.of(context).Doctor_page,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .subtitle1!

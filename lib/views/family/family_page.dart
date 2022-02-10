@@ -6,7 +6,7 @@ class FamilyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(S.of(context).family));
+    return Center(child: Text(S.of(context).Family));
     ;
   }
 }

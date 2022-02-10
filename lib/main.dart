@@ -1,5 +1,5 @@
 import 'package:anthealth_mobile/theme/theme.dart';
-import 'package:anthealth_mobile/views/main_page.dart';
+import 'package:anthealth_mobile/views/authentication/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: MainPage(),
+      home: LoginPage(),
     );
   }
 }

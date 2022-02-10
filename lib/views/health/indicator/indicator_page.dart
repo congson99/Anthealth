@@ -63,7 +63,7 @@ class _IndicatorPageState extends State<IndicatorPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(S.of(context).latest_record,
+                  Text(S.of(context).Latest_record,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
                           .textTheme
@@ -88,7 +88,7 @@ class _IndicatorPageState extends State<IndicatorPage> {
                                 .copyWith(color: AnthealthColors.primary1))
                       ])),
                   SizedBox(height: 8),
-                  Text(S.of(context).record_time + ": 21.10.2021",
+                  Text(S.of(context).Record_time + ": 21.10.2021",
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
                           .textTheme

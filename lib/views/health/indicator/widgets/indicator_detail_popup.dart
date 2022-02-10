@@ -46,10 +46,10 @@ class IndicatorDetailPopup extends StatelessWidget {
                   text: unit,
                   style:
                       TextStyle(color: AnthealthColors.primary1)),
-              TextSpan(text: '\n' + S.of(context).record_time + ': ' + time, style: TextStyle(height: 1.4)),
+              TextSpan(text: '\n' + S.of(context).Record_time + ': ' + time, style: TextStyle(height: 1.4)),
               if (recordID != null && recordID != '')
                 TextSpan(
-                    text: '\n' + S.of(context).add_by + ': ' + recordID!,
+                    text: '\n' + S.of(context).Add_by + ': ' + recordID!,
                     style: TextStyle(height: 1.4))
             ])),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

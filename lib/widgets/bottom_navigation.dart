@@ -55,7 +55,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/app_icon/bottom_navigation/family_pri1.png",
                   unSelectIconPath:
                       "assets/app_icon/bottom_navigation/family_bla3.png",
-                  title: S.of(context).family,
+                  title: S.of(context).Family,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -66,7 +66,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/app_icon/bottom_navigation/community_pri1.png",
                   unSelectIconPath:
                       "assets/app_icon/bottom_navigation/community_bla3.png",
-                  title: S.of(context).community,
+                  title: S.of(context).Community,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -75,7 +75,7 @@ class BottomNavigaton extends StatelessWidget {
                   itemIndex: 2,
                   selectIconPath: "",
                   unSelectIconPath: "",
-                  title: S.of(context).home,
+                  title: S.of(context).Home,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -86,7 +86,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/app_icon/bottom_navigation/health_pri1.png",
                   unSelectIconPath:
                       "assets/app_icon/bottom_navigation/health_bla3.png",
-                  title: S.of(context).health,
+                  title: S.of(context).Health,
                 ),
                 BottomNavigationItem(
                   size: size,
@@ -97,7 +97,7 @@ class BottomNavigaton extends StatelessWidget {
                       "assets/app_icon/bottom_navigation/medic_pri1.png",
                   unSelectIconPath:
                       "assets/app_icon/bottom_navigation/medic_bla3.png",
-                  title: S.of(context).medic,
+                  title: S.of(context).Medic,
                 ),
               ],
             ),

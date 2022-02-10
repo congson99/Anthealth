@@ -22,96 +22,138 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "Button": MessageLookupByLibrary.simpleMessage(
-            "---------------------------------------------"),
-        "Common": MessageLookupByLibrary.simpleMessage(
-            "---------------------------------------------"),
-        "DateTime": MessageLookupByLibrary.simpleMessage(
-            "------------------------------------------"),
-        "HealthPage": MessageLookupByLibrary.simpleMessage(
-            "------------------------------------------"),
-        "Main": MessageLookupByLibrary.simpleMessage(
-            "------------------------------------------"),
-        "activity": MessageLookupByLibrary.simpleMessage("Activity"),
-        "add_blood_pressure":
+        "Activity": MessageLookupByLibrary.simpleMessage("Activity"),
+        "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Add blood Pressure data"),
-        "add_by": MessageLookupByLibrary.simpleMessage("Add by"),
-        "add_heart_rate":
+        "Add_by": MessageLookupByLibrary.simpleMessage("Add by"),
+        "Add_heart_rate":
             MessageLookupByLibrary.simpleMessage("Add heart rate data"),
-        "add_height": MessageLookupByLibrary.simpleMessage("Add height data"),
-        "add_spo2": MessageLookupByLibrary.simpleMessage("Add SPO2 data"),
-        "add_temperature":
+        "Add_height": MessageLookupByLibrary.simpleMessage("Add height data"),
+        "Add_spo2": MessageLookupByLibrary.simpleMessage("Add SPO2 data"),
+        "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
-        "add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
-        "all_time": MessageLookupByLibrary.simpleMessage("All time"),
+        "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
+        "All_time": MessageLookupByLibrary.simpleMessage("All time"),
+        "Authenticate": MessageLookupByLibrary.simpleMessage("Authenticate"),
+        "Authentication_code":
+            MessageLookupByLibrary.simpleMessage("Authentication code"),
+        "Blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Blood Pressure"),
+        "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Community": MessageLookupByLibrary.simpleMessage("Community"),
+        "Confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "Delete_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Delete blood Pressure data"),
+        "Delete_heart_rate":
+            MessageLookupByLibrary.simpleMessage("Delete heart rate data"),
+        "Delete_height":
+            MessageLookupByLibrary.simpleMessage("Delete height data"),
+        "Delete_spo2": MessageLookupByLibrary.simpleMessage("Delete SPO2 data"),
+        "Delete_temperature":
+            MessageLookupByLibrary.simpleMessage("Delete temperature data"),
+        "Delete_weight":
+            MessageLookupByLibrary.simpleMessage("Delete weight data"),
+        "Detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
+        "Edit_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
+        "Edit_heart_rate":
+            MessageLookupByLibrary.simpleMessage("Edit heart rate data"),
+        "Edit_height": MessageLookupByLibrary.simpleMessage("Edit height data"),
+        "Edit_spo2": MessageLookupByLibrary.simpleMessage("Edit SPO2 data"),
+        "Edit_temperature":
+            MessageLookupByLibrary.simpleMessage("Edit temperature data"),
+        "Edit_weight": MessageLookupByLibrary.simpleMessage("Edit weight data"),
+        "Email": MessageLookupByLibrary.simpleMessage("Email"),
+        "Enter_confirm_password":
+            MessageLookupByLibrary.simpleMessage("Please enter your password"),
+        "Enter_email":
+            MessageLookupByLibrary.simpleMessage("Please enter your email"),
+        "Enter_name":
+            MessageLookupByLibrary.simpleMessage("Please enter your name"),
+        "Enter_password":
+            MessageLookupByLibrary.simpleMessage("Please enter your password"),
+        "Family": MessageLookupByLibrary.simpleMessage("Family"),
+        "Fill_in_information":
+            MessageLookupByLibrary.simpleMessage("Fill in information"),
+        "Forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "Health": MessageLookupByLibrary.simpleMessage("Health"),
+        "Health_indicator":
+            MessageLookupByLibrary.simpleMessage("Health indicator"),
+        "Health_record": MessageLookupByLibrary.simpleMessage("Health records"),
+        "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
+        "Height": MessageLookupByLibrary.simpleMessage("Hight"),
+        "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
+        "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
+        "Medic": MessageLookupByLibrary.simpleMessage("Medic"),
+        "Not_match_password":
+            MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
+        "Not_registered_email": MessageLookupByLibrary.simpleMessage(
+            "This email is not registered!"),
+        "Password": MessageLookupByLibrary.simpleMessage("Password"),
+        "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Record_date": MessageLookupByLibrary.simpleMessage("Record date"),
+        "Record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
+        "Record_time": MessageLookupByLibrary.simpleMessage("Record time"),
+        "Register": MessageLookupByLibrary.simpleMessage("Register"),
+        "Register_now": MessageLookupByLibrary.simpleMessage("Register now"),
+        "Registered_email":
+            MessageLookupByLibrary.simpleMessage("The email was registered!"),
+        "Set_new_password":
+            MessageLookupByLibrary.simpleMessage("Set a new password"),
+        "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
+        "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
+        "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
+        "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this data?"),
+        "Water": MessageLookupByLibrary.simpleMessage("Water"),
+        "Weight": MessageLookupByLibrary.simpleMessage("Weight"),
+        "Wrong_authentication_code":
+            MessageLookupByLibrary.simpleMessage("Wrong authentication code!"),
+        "Wrong_email": MessageLookupByLibrary.simpleMessage("Wrong email!"),
+        "Wrong_password":
+            MessageLookupByLibrary.simpleMessage("Wrong password!"),
+        "Year": MessageLookupByLibrary.simpleMessage("Year"),
+        "You_are_new_user":
+            MessageLookupByLibrary.simpleMessage("You are new User?"),
+        "Your_name": MessageLookupByLibrary.simpleMessage("Your name"),
+        "_Authentication": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Authentication-----------------------------"),
+        "_Button": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Button-----------------------------"),
+        "_Common": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Common-----------------------------"),
+        "_Error": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Error-----------------------------"),
+        "_Health": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Health-----------------------------"),
+        "_Main": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Main-----------------------------"),
+        "_Time": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Time-----------------------------"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
         "aug": MessageLookupByLibrary.simpleMessage("AUG"),
-        "blood_pressure":
-            MessageLookupByLibrary.simpleMessage("Blood Pressure"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "button_close": MessageLookupByLibrary.simpleMessage("CLOSE"),
         "button_delete": MessageLookupByLibrary.simpleMessage("DELETE"),
         "button_edit": MessageLookupByLibrary.simpleMessage("EDIT"),
+        "button_login": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
-        "calo": MessageLookupByLibrary.simpleMessage("Calo"),
-        "community": MessageLookupByLibrary.simpleMessage("Community"),
         "dec": MessageLookupByLibrary.simpleMessage("DEC"),
-        "delete_blood_pressure":
-            MessageLookupByLibrary.simpleMessage("Delete blood Pressure data"),
-        "delete_heart_rate":
-            MessageLookupByLibrary.simpleMessage("Delete heart rate data"),
-        "delete_height":
-            MessageLookupByLibrary.simpleMessage("Delete height data"),
-        "delete_spo2": MessageLookupByLibrary.simpleMessage("Delete SPO2 data"),
-        "delete_temperature":
-            MessageLookupByLibrary.simpleMessage("Delete temperature data"),
-        "delete_weight":
-            MessageLookupByLibrary.simpleMessage("Delete weight data"),
-        "detail": MessageLookupByLibrary.simpleMessage("Detail"),
-        "doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
-        "edit_blood_pressure":
-            MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
-        "edit_heart_rate":
-            MessageLookupByLibrary.simpleMessage("Edit heart rate data"),
-        "edit_height": MessageLookupByLibrary.simpleMessage("Edit height data"),
-        "edit_spo2": MessageLookupByLibrary.simpleMessage("Edit SPO2 data"),
-        "edit_temperature":
-            MessageLookupByLibrary.simpleMessage("Edit temperature data"),
-        "edit_weight": MessageLookupByLibrary.simpleMessage("Edit weight data"),
-        "family": MessageLookupByLibrary.simpleMessage("Family"),
         "feb": MessageLookupByLibrary.simpleMessage("FEB"),
-        "health": MessageLookupByLibrary.simpleMessage("Health"),
-        "health_indicator":
-            MessageLookupByLibrary.simpleMessage("Health indicator"),
-        "health_record": MessageLookupByLibrary.simpleMessage("Health records"),
-        "heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
-        "height": MessageLookupByLibrary.simpleMessage("Hight"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "jan": MessageLookupByLibrary.simpleMessage("JAN"),
         "jul": MessageLookupByLibrary.simpleMessage("JUL"),
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
-        "latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
-        "learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
-        "medic": MessageLookupByLibrary.simpleMessage("Medic"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
-        "period": MessageLookupByLibrary.simpleMessage("Period"),
-        "record_date": MessageLookupByLibrary.simpleMessage("Record date"),
-        "record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
-        "record_time": MessageLookupByLibrary.simpleMessage("Record time"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
-        "steps": MessageLookupByLibrary.simpleMessage("Steps"),
-        "successfully": MessageLookupByLibrary.simpleMessage("successfully"),
-        "temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
-        "unit": MessageLookupByLibrary.simpleMessage("Unit"),
-        "warning_delete_data": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to delete this data?"),
-        "water": MessageLookupByLibrary.simpleMessage("Water"),
-        "weight": MessageLookupByLibrary.simpleMessage("Weight"),
-        "year": MessageLookupByLibrary.simpleMessage("Year")
+        "successfully": MessageLookupByLibrary.simpleMessage("successfully")
       };
 }
