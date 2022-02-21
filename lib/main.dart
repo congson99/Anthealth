@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/services/client.dart';
 import 'package:anthealth_mobile/theme/theme.dart';
 import 'package:anthealth_mobile/views/authentication/login_page.dart';
 import 'package:flutter/material.dart';
