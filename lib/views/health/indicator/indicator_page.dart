@@ -1,8 +1,8 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/theme/colors.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_line_chart.dart';
-import 'package:anthealth_mobile/widgets/custom_appbar.dart';
-import 'package:anthealth_mobile/widgets/switch_bar.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
+import 'package:anthealth_mobile/views/common_widgets/switch_bar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

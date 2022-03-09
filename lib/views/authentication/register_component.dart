@@ -1,18 +1,19 @@
+import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/theme/colors.dart';
-import 'package:anthealth_mobile/views/authentication/login_page.dart';
-import 'package:anthealth_mobile/widgets/common_text_field.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
+import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class RegisterComponent extends StatefulWidget {
+  const RegisterComponent({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _RegisterComponentState createState() => _RegisterComponentState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterComponentState extends State<RegisterComponent> {
   String _name = '';
   String _username = '';
   String _password = '';
@@ -37,14 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
   var _codeFocus = FocusNode();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-      body: Stack(children: [buildBackground(context), buildContent()]));
-
-  // Component Widgets
-  Widget buildBackground(BuildContext context) => Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: Image.asset("assets/background.png", fit: BoxFit.cover));
+  Widget build(BuildContext context) => buildContent();
 
   Widget buildContent() => Center(
       child: Container(
@@ -60,7 +54,8 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: () =>
+                    BlocProvider.of<AuthenticationCubit>(context).login('', ''),
                 child: Image.asset("assets/app_icon/direction/page_back.png",
                     height: 20, width: 20, fit: BoxFit.cover)),
             SizedBox(width: 16),
@@ -172,11 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ' ' +
                 S.of(context).successfully +
                 '!')));
-        Navigator.pop(context);
-        Navigator.pop(context);
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) =>
-                LoginPage(intentUsername: 'congson', intentPassword: '123')));
+        BlocProvider.of<AuthenticationCubit>(context).login('', '');
       }
     }
   }

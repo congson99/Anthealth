@@ -1,7 +1,7 @@
 import 'package:anthealth_mobile/services/client.dart';
 import 'package:anthealth_mobile/services/service.dart';
 // import 'package:anthealth_mobile/theme/theme.dart';
-// import 'package:anthealth_mobile/views/authentication/login_page.dart';
+// import 'package:anthealth_mobile/views/authentication/login_component.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 //
@@ -9,7 +9,7 @@ import 'package:anthealth_mobile/services/service.dart';
 
 void main() {
   // runApp(MyApp());
-  CommonService.instance.do_login();
+  CommonService.instance;
 }
 
 // class MyApp extends StatelessWidget {

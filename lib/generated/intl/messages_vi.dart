@@ -90,6 +90,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
         "Home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "Invalid_email":
+            MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
+        "Invalid_password": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải chứa ít nhất 8 ký tự"),
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),
@@ -157,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
         "oct": MessageLookupByLibrary.simpleMessage("T10"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
+        "something_wrong":
+            MessageLookupByLibrary.simpleMessage("Xin lỗi, đã xảy ra sự cố!"),
         "successfully": MessageLookupByLibrary.simpleMessage("thành công")
       };
 }

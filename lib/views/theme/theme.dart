@@ -1,4 +1,4 @@
-import 'package:anthealth_mobile/theme/colors.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData anthealthTheme() {

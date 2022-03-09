@@ -1,10 +1,11 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/theme/colors.dart';
-import 'package:anthealth_mobile/theme/common_text.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
+import 'package:anthealth_mobile/views/theme/common_text.dart';
+import 'package:anthealth_mobile/views/common_widgets/header.dart';
+import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/indicator/height_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/indicator_page.dart';
-import 'package:anthealth_mobile/widgets/header.dart';
-import 'package:anthealth_mobile/widgets/section_component.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

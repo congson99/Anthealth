@@ -3,18 +3,18 @@ import 'package:anthealth_mobile/views/family/family_page.dart';
 import 'package:anthealth_mobile/views/health/health_page.dart';
 import 'package:anthealth_mobile/views/home/home_page.dart';
 import 'package:anthealth_mobile/views/medic/medic_page.dart';
-import 'package:anthealth_mobile/widgets/bottom_navigation.dart';
+import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class DashboardPage extends StatefulWidget {
+  const DashboardPage({Key? key}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _DashboardPageState extends State<DashboardPage> {
   final List _page = [
     FamilyPage(),
     CommunityPage(),

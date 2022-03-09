@@ -86,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
+        "Invalid_password": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 8 characters"),
         "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "Medic": MessageLookupByLibrary.simpleMessage("Medic"),
@@ -154,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
+        "something_wrong":
+            MessageLookupByLibrary.simpleMessage("Sorry, something wrong!"),
         "successfully": MessageLookupByLibrary.simpleMessage("successfully")
       };
 }

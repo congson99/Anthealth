@@ -820,6 +820,26 @@ class S {
     );
   }
 
+  /// `Invalid email!`
+  String get Invalid_email {
+    return Intl.message(
+      'Invalid email!',
+      name: 'Invalid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 8 characters`
+  String get Invalid_password {
+    return Intl.message(
+      'Password must contain at least 8 characters',
+      name: 'Invalid_password',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `This email is not registered!`
   String get Not_registered_email {
     return Intl.message(
@@ -845,6 +865,16 @@ class S {
     return Intl.message(
       'The passwords didn’t match!',
       name: 'Not_match_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, something wrong!`
+  String get something_wrong {
+    return Intl.message(
+      'Sorry, something wrong!',
+      name: 'something_wrong',
       desc: '',
       args: [],
     );
