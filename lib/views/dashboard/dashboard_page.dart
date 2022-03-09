@@ -1,11 +1,15 @@
+import 'package:anthealth_mobile/blocs/app_cubit.dart';
+import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/community/community_page.dart';
 import 'package:anthealth_mobile/views/family/family_page.dart';
 import 'package:anthealth_mobile/views/health/health_page.dart';
 import 'package:anthealth_mobile/views/home/home_page.dart';
 import 'package:anthealth_mobile/views/medic/medic_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
