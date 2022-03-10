@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppCubit extends Cubit<CubitState> {
   AppCubit() : super(InitialState()) {
-    checkCurrentToken();
+    fakeLoading().whenComplete(() => checkCurrentToken());
   }
 
   authenticate(String token) async {
@@ -27,10 +27,14 @@ class AppCubit extends Cubit<CubitState> {
     emit(UnauthenticatedState());
   }
 
+  Future<void> fakeLoading() {
+    return Future.delayed(const Duration(seconds: 2), () => print('Loading complete!'));
+  }
+
   Future<void> checkCurrentToken() async {
     final prefs = await SharedPreferences.getInstance();
     final String? token = prefs.getString('token');
-    if (token != null) if (checkToken(token))
+    if (token != null && checkToken(token))
       authenticated(token);
     else
       unAuthenticate();
