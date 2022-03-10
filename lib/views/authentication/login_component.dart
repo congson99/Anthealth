@@ -166,7 +166,7 @@ class _LoginComponentState extends State<LoginComponent> {
         FocusScope.of(context).requestFocus(_usernameFocus);
       }
       else BlocProvider.of<AppCubit>(context)
-          .authenticate(token);
+          .authenticate(token, username);
     }
   }
 

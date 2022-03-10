@@ -7,10 +7,11 @@ class AppCubit extends Cubit<CubitState> {
     fakeLoading().whenComplete(() => checkCurrentToken());
   }
 
-  authenticate(String token) async {
+  authenticate(String token, String username) async {
     if (checkToken(token)) {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', token);
+      await prefs.setString('username', username);
       authenticated(token);
     } else
       unAuthenticate();

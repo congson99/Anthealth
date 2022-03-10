@@ -1,10 +1,11 @@
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
 import 'package:anthealth_mobile/blocs/app_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationCubit extends Cubit<CubitState> {
   AuthenticationCubit() : super(InitialState()) {
-    login('', '');
+    checkCurrentUsername();
   }
 
   void login(String username, String password) {
@@ -21,6 +22,13 @@ class AuthenticationCubit extends Cubit<CubitState> {
 
   void updateLoginState(String username, String password) {
     emit(LoginState(username, password));
+  }
+
+  Future<void> checkCurrentUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? username = prefs.getString('username');
+    if (username == null) username = '';
+    login(username, '');
   }
 
   String getToken(String username, String password) {
