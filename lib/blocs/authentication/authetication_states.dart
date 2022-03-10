@@ -12,9 +12,16 @@ class LoginState extends CubitState {
 }
 
 class RegisterState extends CubitState {
+  RegisterState(this.name, this.username, this.password, this.confirmPassword);
+
+  final String name;
+  final String username;
+  final String password;
+  final String confirmPassword;
+
   @override
   // TODO: implement props
-  List<Object> get props => [];
+  List<Object> get props => [name, username, password, confirmPassword];
 }
 
 class ForgotPasswordState extends CubitState {

@@ -32,7 +32,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         child: BlocBuilder<AuthenticationCubit, CubitState>(
           builder: (context, state) {
             if (state is LoginState)
-              return LoginComponent(
+              return new LoginComponent(
                   intentUsername: state.username,
                   intentPassword: state.password);
             if (state is RegisterState) return RegisterComponent();

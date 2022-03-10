@@ -8,22 +8,35 @@ class AuthenticationCubit extends Cubit<CubitState> {
     checkCurrentUsername();
   }
 
+  // Initial State
   void login(String username, String password) {
     emit(LoginState(username, password));
   }
 
   void register() {
-    emit(RegisterState());
+    emit(RegisterState('', '', '', ''));
   }
 
   void forgotPassword() {
     emit(ForgotPasswordState());
   }
 
+  // Update state
   void updateLoginState(String username, String password) {
     emit(LoginState(username, password));
   }
 
+  void updateRegisterState(
+      String name, String username, String password, String confirmPassword) {
+    emit(RegisterState(name, username, password, confirmPassword));
+  }
+
+  Future<void> intentLogin(String username, String password) async {
+    await SharedPreferences.getInstance();
+    login(username, password);
+  }
+
+  // Local Storage
   Future<void> checkCurrentUsername() async {
     final prefs = await SharedPreferences.getInstance();
     String? username = prefs.getString('username');
@@ -31,9 +44,26 @@ class AuthenticationCubit extends Cubit<CubitState> {
     login(username, '');
   }
 
+  // Service Function
   String getToken(String username, String password) {
     //Todo: authentication and get token
-    if (username == 'congson99vn@gmail.com' && password == '12345678') return "token";
+    if (username == 'congson99vn@gmail.com' && password == '12345678')
+      return "token";
     return "null";
+  }
+
+  bool checkRegisteredAccount(String username) {
+    //Todo: check registered account
+    if (username == 'congson99vn@gmail.com') return false;
+    return true;
+  }
+
+  bool registerAccount(String name, String username, String password) {
+    //Todo: register account
+    if (username == 'congson99vn@gmail.com') {
+      checkCurrentUsername();
+      return true;
+    }
+    return false;
   }
 }

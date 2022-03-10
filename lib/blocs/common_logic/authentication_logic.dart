@@ -18,4 +18,10 @@ class AuthenticationLogic {
     if (password.length < 8) return S.of(context).Invalid_password;
     return 'ok';
   }
+
+  static String checkValidConfirmPassword(BuildContext context, String password) {
+    if (password == '') return S.of(context).Enter_confirm_password;
+    if (password.length < 8) return S.of(context).Invalid_password;
+    return 'ok';
+  }
 }

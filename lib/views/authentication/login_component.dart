@@ -28,10 +28,8 @@ class LoginComponent extends StatefulWidget {
 class _LoginComponentState extends State<LoginComponent> {
   String _errorUsername = 'null';
   String _errorPassword = 'null';
-
   var _usernameController = TextEditingController();
   var _passwordController = TextEditingController();
-
   var _usernameFocus = FocusNode();
   var _passwordFocus = FocusNode();
 
@@ -154,8 +152,7 @@ class _LoginComponentState extends State<LoginComponent> {
 
   void _loginAuthentication(
       BuildContext context, String username, String password) {
-    if (_checkUsername(context, username)) if (_checkPassword(
-        context, username, password)) {
+    if (_checkUsername(username)) if (_checkPassword(username, password)) {
       var token = BlocProvider.of<AuthenticationCubit>(context)
           .getToken(username, password);
       if (token == 'null') {
@@ -164,13 +161,12 @@ class _LoginComponentState extends State<LoginComponent> {
           _clearPassword(username);
         });
         FocusScope.of(context).requestFocus(_usernameFocus);
-      }
-      else BlocProvider.of<AppCubit>(context)
-          .authenticate(token, username);
+      } else
+        BlocProvider.of<AppCubit>(context).authenticate(token, username);
     }
   }
 
-  bool _checkUsername(BuildContext context, String username) {
+  bool _checkUsername(String username) {
     var _result = AuthenticationLogic.checkValidEmail(context, username);
     if (_result != 'ok') {
       setState(() {
@@ -183,7 +179,7 @@ class _LoginComponentState extends State<LoginComponent> {
     return true;
   }
 
-  bool _checkPassword(BuildContext context, String username, String password) {
+  bool _checkPassword(String username, String password) {
     var _result = AuthenticationLogic.checkValidPassword(context, password);
     if (_result != 'ok') {
       setState(() {
@@ -202,7 +198,8 @@ class _LoginComponentState extends State<LoginComponent> {
   }
 
   void _clearPassword(String username) {
-    BlocProvider.of<AuthenticationCubit>(context).login(username, '');
+    BlocProvider.of<AuthenticationCubit>(context)
+        .updateLoginState(username, '');
     _passwordController.clear();
   }
 }

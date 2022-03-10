@@ -4,7 +4,6 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/authentication/authentication_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
 import 'package:anthealth_mobile/views/loading/app_loading_page.dart';
-import 'package:anthealth_mobile/views/loading/loading_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

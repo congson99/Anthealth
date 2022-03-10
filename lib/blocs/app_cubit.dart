@@ -7,6 +7,37 @@ class AppCubit extends Cubit<CubitState> {
     fakeLoading().whenComplete(() => checkCurrentToken());
   }
 
+  // Fake loading
+  Future<void> fakeLoading() {
+    return Future.delayed(
+        const Duration(seconds: 2), () => print('Loading complete!'));
+  }
+
+  // Initial State
+  unAuthenticate() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('token') != null) {
+      await prefs.remove('token');
+      print('Remove token successful!');
+    }
+    emit(UnauthenticatedState());
+  }
+
+  authenticated(String token) {
+    emit(AuthenticatedState(token));
+  }
+
+  // Local Storage
+  Future<void> checkCurrentToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? token = prefs.getString('token');
+    if (token != null && checkToken(token))
+      authenticated(token);
+    else
+      unAuthenticate();
+  }
+
+  // Authenticate Function
   authenticate(String token, String username) async {
     if (checkToken(token)) {
       final prefs = await SharedPreferences.getInstance();
@@ -17,30 +48,7 @@ class AppCubit extends Cubit<CubitState> {
       unAuthenticate();
   }
 
-  authenticated(String token) {
-    emit(AuthenticatedState(token));
-  }
-
-  unAuthenticate() async {
-    final prefs = await SharedPreferences.getInstance();
-    final success = await prefs.remove('token');
-    print('Remove token ' + (success ? 'successful!' : 'false!'));
-    emit(UnauthenticatedState());
-  }
-
-  Future<void> fakeLoading() {
-    return Future.delayed(const Duration(seconds: 2), () => print('Loading complete!'));
-  }
-
-  Future<void> checkCurrentToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? token = prefs.getString('token');
-    if (token != null && checkToken(token))
-      authenticated(token);
-    else
-      unAuthenticate();
-  }
-
+  // Service Function
   bool checkToken(String token) {
     //Todo: check token
     if (token == 'token')
