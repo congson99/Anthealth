@@ -49,15 +49,15 @@ class _RegisterComponentState extends State<RegisterComponent> {
 
   Widget buildContent(String name, String username, String password,
           String confirmPassword) =>
-      Center(
-          child: Container(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-            buildHeading(),
-            buildStepper(name, username, password, confirmPassword)
-          ])));
+      SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 32),
+                buildHeading(),
+                buildStepper(name, username, password, confirmPassword)
+              ]));
 
   Widget buildHeading() => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),

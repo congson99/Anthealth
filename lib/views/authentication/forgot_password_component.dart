@@ -39,12 +39,11 @@ class _ForgotPasswordComponentState extends State<ForgotPasswordComponent> {
   @override
   Widget build(BuildContext context) => buildContent();
 
-  Widget buildContent() => Center(
-      child: Container(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [buildHeading(), buildStepper()])));
+  Widget buildContent() => SingleChildScrollView(
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [SizedBox(height: 32), buildHeading(), buildStepper()]));
 
   Widget buildHeading() => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),

@@ -55,7 +55,6 @@ class _LoginComponentState extends State<LoginComponent> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
             Expanded(child: buildLogo()),
-            SizedBox(height: 64),
             buildLoginArea(context, username, password),
             Expanded(child: buildRegisterArea())
           ]));
@@ -70,7 +69,7 @@ class _LoginComponentState extends State<LoginComponent> {
           BuildContext context, String username, String password) =>
       Container(
           width: min(MediaQuery.of(context).size.width, 450),
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -19,7 +19,10 @@ class AuthenticationPage extends StatefulWidget {
 class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-      body: Stack(children: [buildBackground(context), buildContent()]));
+          body: Stack(children: [
+        buildBackground(context),
+        SafeArea(child: buildContent())
+      ]));
 
   Widget buildBackground(BuildContext context) => Container(
       height: MediaQuery.of(context).size.height,
