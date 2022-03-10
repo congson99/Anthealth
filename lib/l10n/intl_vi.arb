@@ -72,6 +72,7 @@
   "Wrong_email": "Email sai!",
   "Wrong_password": "Sai mật khẩu!",
   "Wrong_authentication_code": "Mã xác thực không đúng!",
+  "Wrong_email_or_password": "Sai email hoặc mật khẩu!",
   "Enter_name": "Vui lòng nhập tên của bạn",
   "Enter_email": "Vui lòng nhập email của bạn",
   "Enter_password": "Vui lòng nhập mật khẩu",

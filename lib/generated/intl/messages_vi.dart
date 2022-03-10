@@ -124,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Wrong_authentication_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực không đúng!"),
         "Wrong_email": MessageLookupByLibrary.simpleMessage("Email sai!"),
+        "Wrong_email_or_password":
+            MessageLookupByLibrary.simpleMessage("Sai email hoặc mật khẩu!"),
         "Wrong_password": MessageLookupByLibrary.simpleMessage("Sai mật khẩu!"),
         "Year": MessageLookupByLibrary.simpleMessage("Năm"),
         "You_are_new_user":

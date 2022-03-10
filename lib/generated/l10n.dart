@@ -780,6 +780,16 @@ class S {
     );
   }
 
+  /// `Wrong email or password!`
+  String get Wrong_email_or_password {
+    return Intl.message(
+      'Wrong email or password!',
+      name: 'Wrong_email_or_password',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter your name`
   String get Enter_name {
     return Intl.message(

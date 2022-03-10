@@ -119,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Wrong_authentication_code":
             MessageLookupByLibrary.simpleMessage("Wrong authentication code!"),
         "Wrong_email": MessageLookupByLibrary.simpleMessage("Wrong email!"),
+        "Wrong_email_or_password":
+            MessageLookupByLibrary.simpleMessage("Wrong email or password!"),
         "Wrong_password":
             MessageLookupByLibrary.simpleMessage("Wrong password!"),
         "Year": MessageLookupByLibrary.simpleMessage("Year"),

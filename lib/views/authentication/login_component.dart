@@ -160,7 +160,7 @@ class _LoginComponentState extends State<LoginComponent> {
           .getToken(username, password);
       if (token == 'null') {
         setState(() {
-          _errorUsername = S.of(context).Not_registered_email;
+          _errorUsername = S.of(context).Wrong_email_or_password;
           _clearPassword(username);
         });
         FocusScope.of(context).requestFocus(_usernameFocus);

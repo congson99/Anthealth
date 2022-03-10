@@ -72,6 +72,7 @@
   "Wrong_email": "Wrong email!",
   "Wrong_password": "Wrong password!",
   "Wrong_authentication_code": "Wrong authentication code!",
+  "Wrong_email_or_password": "Wrong email or password!",
   "Enter_name": "Please enter your name",
   "Enter_email": "Please enter your email",
   "Enter_password": "Please enter your password",
