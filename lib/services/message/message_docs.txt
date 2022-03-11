@@ -8,6 +8,15 @@ getToken {
     }
     msgID {
         "result": bool,
-        token: String
+        "token": String
+    }
+}
+validToken {
+    msgID {
+        "token": String
+    }
+    msgID {
+        "result": bool,
+        "valid": bool
     }
 }
