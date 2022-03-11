@@ -5,7 +5,7 @@ class HttpService{
   /// điều chỉnh host về đúng địa chỉ host của server hiện tại
   final String _masterHost = "127.0.0.1";
   final int _masterPort = 8090;
-  final String _serverHost="192.168.100.151";
+  final String _serverHost="192.168.1.8";
   final int _serverPort = 8888;
   final _headers = {'Content-Type': 'application/json'};
   final _encoding = Encoding.getByName('utf-8');

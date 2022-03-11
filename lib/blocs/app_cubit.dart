@@ -1,4 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/services/message/message_id_path.dart';
+import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,13 +41,20 @@ class AppCubit extends Cubit<CubitState> {
 
   // Authenticate Function
   authenticate(String token, String username) async {
-    if (checkToken(token)) {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', token);
-      await prefs.setString('username', username);
-      authenticated(token);
-    } else
-      unAuthenticate();
+    var msg = {
+      "account": "ttvucse@gmail.com",
+      "password": '"123456"',
+      "name": "Trần Tiến Vũ"
+    };
+    CommonService.instance.send(2110, msg.toString());
+    CommonService.instance.client!.getData().then((value) => print(value));
+    // if (checkToken(token)) {
+    //   final prefs = await SharedPreferences.getInstance();
+    //   await prefs.setString('token', token);
+    //   await prefs.setString('username', username);
+    //   authenticated(token);
+    // } else
+    //   unAuthenticate();
   }
 
   // Service Function

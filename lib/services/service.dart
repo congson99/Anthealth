@@ -9,6 +9,7 @@ class CommonService{
   void send(int msgID,String msgData){
     if(client == null){
       _tryConnectServer();
+      send(msgID, msgData);
     }
     if(client != null || !_bConnected)
       client?.send(msgID, msgData);
