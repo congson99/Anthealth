@@ -11,10 +11,13 @@ abstract class BaseMessage{
   BaseMessage.newRMessage(Uint8List buf){
     var bLen = ByteData.view(buf.buffer).getInt32(0)>>2;
     if(bLen > MAX_RECV_SIZE) return;
-    // var timeSv =  ByteData.view(buf.buffer).getInt32(4);
-    // if((DateTime.now().millisecond - timeSv) < 0) return;
+
+    var timeSv =  ByteData.view(buf.buffer).getInt32(4);
     msgID = ByteData.view(buf.buffer).getInt32(8);
-    msgData = utf8.decode(buf.buffer.asInt8List(12));
+    // msgData = utf8.decode(buf.buffer.asInt8List(12));
+    msgData = String.fromCharCodes(buf.buffer.asUint8List(12));
+    var tmp = msgData;
+    msgData = utf8.decode(tmp!.codeUnits);
   }
 
   BaseMessage.newSMessage(this.msgID,this.msgData);
