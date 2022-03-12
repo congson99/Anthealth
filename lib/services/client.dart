@@ -19,8 +19,8 @@ class Client {
       socket = sock;
       socket?.listen(dataHandler,
           onError: _errorHandler, onDone: _doneHandler, cancelOnError: false);
-    }).catchError((AsyncError e) {
-      print("can not connect to server");
+    }).catchError((e) {
+      print("can not connect to server: " + e);
       exit(0);
     });
   }
@@ -53,8 +53,10 @@ class Client {
 
   // Handle data
   Future<String> getData() async {
-    await waitData();
-    return _data!;
+    await waitData()
+        .timeout(const Duration(seconds: 5))
+        .whenComplete(() => {if (socket == null) print("null data!")});
+    return _data.toString();
   }
 
   Future<void> waitData() async {

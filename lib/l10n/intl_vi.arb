@@ -82,6 +82,7 @@
   "Not_registered_email": "Email này chưa được đăng ký!",
   "Registered_email": "Email này đã được đăng ký!",
   "Not_match_password": "Mật khẩu không trùng khớp!",
+  "Cannot_connect": "không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại",
   "something_wrong": "Xin lỗi, đã xảy ra sự cố!",
   "_Time": "-----------------------------Time-----------------------------",
   "Latest_record": "Lần đo gần nhất",

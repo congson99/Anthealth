@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,16 +7,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppCubit extends Cubit<CubitState> {
   AppCubit() : super(InitialState()) {
-    fakeLoading().whenComplete(() => checkCurrentToken());
+    CommonService.instance.send(0000, '').whenComplete(() {
+      CommonService.instance.client!
+          .getData()
+          .then((value) => checkCurrentToken())
+          .onError((error, stackTrace) => connectError());
+    });
   }
 
-  // Fake loading
+  // Fake common_pages
   Future<void> fakeLoading() {
     return Future.delayed(
         const Duration(seconds: 2), () => print('Loading complete!'));
   }
 
   // Initial State
+  connectError() {
+    emit(ConnectErrorState());
+  }
+
   unAuthenticate() async {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getString('token') != null) {
@@ -46,8 +56,9 @@ class AppCubit extends Cubit<CubitState> {
       "password": '"123456"',
       "name": "Trần Tiến Vũ"
     };
-    CommonService.instance.send(2110, msg.toString());
-    CommonService.instance.client!.getData().then((value) => print(value));
+    CommonService.instance.send(2110, msg.toString()).whenComplete(() =>
+        CommonService.instance.client!.getData().then((value) => print(value)));
+
     // if (checkToken(token)) {
     //   final prefs = await SharedPreferences.getInstance();
     //   await prefs.setString('token', token);

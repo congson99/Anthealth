@@ -4,7 +4,7 @@ import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart'
 import 'package:anthealth_mobile/views/authentication/forgot_password_component.dart';
 import 'package:anthealth_mobile/views/authentication/login_component.dart';
 import 'package:anthealth_mobile/views/authentication/register_component.dart';
-import 'package:anthealth_mobile/views/loading/loading_page.dart';
+import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

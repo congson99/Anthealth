@@ -82,6 +82,7 @@
   "Not_registered_email": "This email is not registered!",
   "Registered_email": "The email was registered!",
   "Not_match_password": "The passwords didn’t match!",
+  "Cannot_connect": "Cannot connect to server! Please check your network connection and try again",
   "something_wrong": "Sorry, something wrong!",
   "_Time": "-----------------------------Time-----------------------------",
   "Latest_record": "Latest record",

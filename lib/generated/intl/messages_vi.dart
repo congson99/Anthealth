@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
         "Blood_pressure": MessageLookupByLibrary.simpleMessage("Huyết áp"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Cannot_connect": MessageLookupByLibrary.simpleMessage(
+            "không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
         "Community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),

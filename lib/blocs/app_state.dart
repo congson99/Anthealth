@@ -8,6 +8,12 @@ class InitialState extends CubitState {
   List<Object> get props => [];
 }
 
+class ConnectErrorState extends CubitState {
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
+
 class AuthenticatedState extends CubitState {
   AuthenticatedState(this.token);
 

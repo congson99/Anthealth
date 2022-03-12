@@ -880,6 +880,16 @@ class S {
     );
   }
 
+  /// `Cannot connect to server! Please check your network connection and try again`
+  String get Cannot_connect {
+    return Intl.message(
+      'Cannot connect to server! Please check your network connection and try again',
+      name: 'Cannot_connect',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sorry, something wrong!`
   String get something_wrong {
     return Intl.message(

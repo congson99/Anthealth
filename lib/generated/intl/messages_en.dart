@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Blood_pressure":
             MessageLookupByLibrary.simpleMessage("Blood Pressure"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Cannot_connect": MessageLookupByLibrary.simpleMessage(
+            "Cannot connect to server! Please check your network connection and try again"),
         "Community": MessageLookupByLibrary.simpleMessage("Community"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
