@@ -1,14 +1,14 @@
 import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 
 class LoginState extends CubitState {
-  LoginState(this.username, this.password);
+  LoginState(this.loginData);
 
-  final String username;
-  final String password;
+  final LoginData loginData;
 
   @override
   // TODO: implement props
-  List<Object> get props => [username, password];
+  List<Object> get props => [loginData];
 }
 
 class RegisterState extends CubitState {

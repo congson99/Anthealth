@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/authentication/login_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
@@ -53,7 +54,7 @@ class _ForgotPasswordComponentState extends State<ForgotPasswordComponent> {
           children: [
             GestureDetector(
                 onTap: () =>
-                    BlocProvider.of<AuthenticationCubit>(context).login('', ''),
+                    BlocProvider.of<AuthenticationCubit>(context)..checkCurrentUsername(),
                 child: Image.asset("assets/app_icon/direction/page_back.png",
                     height: 20, width: 20, fit: BoxFit.cover)),
             SizedBox(width: 16),
@@ -173,7 +174,7 @@ class _ForgotPasswordComponentState extends State<ForgotPasswordComponent> {
                 ' ' +
                 S.of(context).successfully +
                 '!')));
-        BlocProvider.of<AuthenticationCubit>(context).login('', '');
+        BlocProvider.of<AuthenticationCubit>(context).login(LoginData('', ''));
       }
     }
   }

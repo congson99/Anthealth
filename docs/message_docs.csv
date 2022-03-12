@@ -1,0 +1,27 @@
+Message Docs;;;;;;
+;;;;;;
+Msg;Pos;;Get;;Status;
+;ID;Data;ID;Data;;
+checkConnect;100;;100;"""status"": bool";Done;
+getToken;2120;"""account"": String,
+""password"": String";2120;"""token"": String";Done;
+checkToken;2121;"""token"": String";2121;"""valid"": bool";Done;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;

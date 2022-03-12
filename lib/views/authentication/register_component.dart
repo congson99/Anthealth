@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart'
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
 import 'package:anthealth_mobile/blocs/common_logic/authentication_logic.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_error_widget.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
@@ -200,7 +201,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
           BlocProvider.of<AuthenticationCubit>(context)
               .registerAccount(name, username, password)) {
         BlocProvider.of<AuthenticationCubit>(context)
-            .intentLogin(username, password);
+            .intentLogin(LoginData(username, password));
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(S.of(context).Register +
                 ' ' +

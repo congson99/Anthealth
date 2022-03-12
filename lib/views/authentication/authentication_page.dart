@@ -5,7 +5,6 @@ import 'package:anthealth_mobile/views/authentication/forgot_password_component.
 import 'package:anthealth_mobile/views/authentication/login_component.dart';
 import 'package:anthealth_mobile/views/authentication/register_component.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,17 +32,14 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
     return BlocProvider<AuthenticationCubit>(
         create: (context) => AuthenticationCubit(),
         child: BlocBuilder<AuthenticationCubit, CubitState>(
-          builder: (context, state) {
-            if (state is LoginState)
-              return new LoginComponent(
-                  intentUsername: state.username,
-                  intentPassword: state.password);
-            if (state is RegisterState) return RegisterComponent();
-            if (state is ForgotPasswordState)
-              return ForgotPasswordComponent();
-            else
-              return LoadingPage();
-          },
-        ));
+            builder: (context, state) {
+          if (state is LoginState)
+            return new LoginComponent(intentData: state.loginData);
+          if (state is RegisterState) return RegisterComponent();
+          if (state is ForgotPasswordState)
+            return ForgotPasswordComponent();
+          else
+            return LoadingPage();
+        }));
   }
 }

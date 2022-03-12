@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart'
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
 import 'package:anthealth_mobile/blocs/common_logic/authentication_logic.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_error_widget.dart';
@@ -15,11 +16,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginComponent extends StatefulWidget {
-  const LoginComponent({Key? key, this.intentUsername, this.intentPassword})
-      : super(key: key);
+  const LoginComponent({Key? key, this.intentData}) : super(key: key);
 
-  final String? intentUsername;
-  final String? intentPassword;
+  final LoginData? intentData;
 
   @override
   _LoginComponentState createState() => _LoginComponentState();
@@ -43,19 +42,18 @@ class _LoginComponentState extends State<LoginComponent> {
   Widget build(BuildContext context) =>
       BlocBuilder<AuthenticationCubit, CubitState>(builder: (context, state) {
         if (state is LoginState)
-          return buildContent(context, state.username, state.password);
+          return buildContent(context, state.loginData);
         else
           return CustomErrorWidget(error: S.of(context).something_wrong);
       });
 
-  Widget buildContent(BuildContext context, String username, String password) =>
-      Center(
+  Widget buildContent(BuildContext context, LoginData data) => Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
             Expanded(child: buildLogo()),
-            buildLoginArea(context, username, password),
+            buildLoginArea(data),
             Expanded(child: buildRegisterArea())
           ]));
 
@@ -65,61 +63,58 @@ class _LoginComponentState extends State<LoginComponent> {
       child:
           Image.asset("assets/app_text_logo_slogan.png", fit: BoxFit.fitWidth));
 
-  Widget buildLoginArea(
-          BuildContext context, String username, String password) =>
-      Container(
-          width: min(MediaQuery.of(context).size.width, 450),
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CommonTextField.round(
-                    onChanged: (value) => setState(() {
-                          BlocProvider.of<AuthenticationCubit>(context)
-                              .updateLoginState(value, password);
-                          _disappearError();
-                        }),
-                    context: context,
-                    focusNode: _usernameFocus,
-                    textEditingController: _usernameController,
-                    errorText:
-                        (_errorUsername == 'null') ? null : _errorUsername,
-                    labelText: S.of(context).Email),
-                SizedBox(height: 16),
-                CommonTextField.round(
-                    onChanged: (value) => setState(() {
-                          BlocProvider.of<AuthenticationCubit>(context)
-                              .updateLoginState(username, value);
-                          _disappearError();
-                        }),
-                    context: context,
-                    focusNode: _passwordFocus,
-                    errorText:
-                        (_errorPassword == 'null') ? null : _errorPassword,
-                    textEditingController: _passwordController,
-                    labelText: S.of(context).Password,
-                    isVisibility: true),
-                SizedBox(height: 16),
-                Container(
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: InkWell(
-                        onTap: () =>
-                            BlocProvider.of<AuthenticationCubit>(context)
-                                .forgotPassword(),
-                        child: Text(S.of(context).Forgot_password,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(color: AnthealthColors.primary1)))),
-                SizedBox(height: 16),
-                CommonButton.round(
-                    context,
-                    () => _loginAuthentication(context, username, password),
-                    S.of(context).button_login,
-                    AnthealthColors.primary1)
-              ]));
+  Widget buildLoginArea(LoginData data) => Container(
+      width: min(MediaQuery.of(context).size.width, 450),
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CommonTextField.round(
+                onChanged: (value) => setState(() {
+                      BlocProvider.of<AuthenticationCubit>(context)
+                          .updateLoginState(
+                              LoginData(value, data.getPassword()));
+                      _disappearError();
+                    }),
+                context: context,
+                focusNode: _usernameFocus,
+                textEditingController: _usernameController,
+                errorText: (_errorUsername == 'null') ? null : _errorUsername,
+                labelText: S.of(context).Email),
+            SizedBox(height: 16),
+            CommonTextField.round(
+                onChanged: (value) => setState(() {
+                      BlocProvider.of<AuthenticationCubit>(context)
+                          .updateLoginState(
+                              LoginData(data.getUsername(), value));
+                      _disappearError();
+                    }),
+                context: context,
+                focusNode: _passwordFocus,
+                errorText: (_errorPassword == 'null') ? null : _errorPassword,
+                textEditingController: _passwordController,
+                labelText: S.of(context).Password,
+                isVisibility: true),
+            SizedBox(height: 16),
+            Container(
+                alignment: Alignment.centerRight,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: InkWell(
+                    onTap: () => BlocProvider.of<AuthenticationCubit>(context)
+                        .forgotPassword(),
+                    child: Text(S.of(context).Forgot_password,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(color: AnthealthColors.primary1)))),
+            SizedBox(height: 16),
+            CommonButton.round(
+                context,
+                () => _loginAuthentication(context, data),
+                S.of(context).button_login,
+                AnthealthColors.primary1)
+          ]));
 
   Widget buildRegisterArea() => Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -143,25 +138,29 @@ class _LoginComponentState extends State<LoginComponent> {
 
   // Hepper Functions
   void _checkAutoFill() {
-    if (widget.intentUsername != null && widget.intentPassword != null) {
-      _usernameController.text = widget.intentUsername!;
-      _passwordController.text = widget.intentPassword!;
+    if (widget.intentData != null) {
+      _usernameController.text = widget.intentData!.getUsername();
+      _passwordController.text = widget.intentData!.getPassword();
     }
   }
 
-  void _loginAuthentication(
-      BuildContext context, String username, String password) {
-    if (_checkUsername(username)) if (_checkPassword(username, password)) {
-      var token = BlocProvider.of<AuthenticationCubit>(context)
-          .getToken(username, password);
-      if (token == 'null') {
-        setState(() {
-          _errorUsername = S.of(context).Wrong_email_or_password;
-          _clearPassword(username);
-        });
-        FocusScope.of(context).requestFocus(_usernameFocus);
-      } else
-        BlocProvider.of<AppCubit>(context).authenticate(token, username);
+  void _loginAuthentication(BuildContext context, LoginData data) {
+    if (_checkUsername(data.getUsername())) if (_checkPassword(
+        data.getUsername(), data.getPassword())) {
+      BlocProvider.of<AuthenticationCubit>(context)
+          .getToken(data)
+          .then((token) {
+        if (token == 'null') {
+          setState(() {
+            _errorUsername = S.of(context).Wrong_email_or_password;
+            _clearPassword(data.getUsername());
+          });
+          FocusScope.of(context).requestFocus(_usernameFocus);
+        } else {
+          BlocProvider.of<AppCubit>(context).saveUsername(data.getUsername());
+          BlocProvider.of<AppCubit>(context).authenticate(token);
+        }
+      });
     }
   }
 
@@ -198,7 +197,7 @@ class _LoginComponentState extends State<LoginComponent> {
 
   void _clearPassword(String username) {
     BlocProvider.of<AuthenticationCubit>(context)
-        .updateLoginState(username, '');
+        .updateLoginState(LoginData(username, ''));
     _passwordController.clear();
   }
 }

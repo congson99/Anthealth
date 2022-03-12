@@ -1,5 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_state.dart';
-import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,18 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppCubit extends Cubit<CubitState> {
   AppCubit() : super(InitialState()) {
-    CommonService.instance.send(0000, '').whenComplete(() {
-      CommonService.instance.client!
-          .getData()
-          .then((value) => checkCurrentToken())
-          .onError((error, stackTrace) => connectError());
-    });
-  }
-
-  // Fake common_pages
-  Future<void> fakeLoading() {
-    return Future.delayed(
-        const Duration(seconds: 2), () => print('Loading complete!'));
+    checkConnect();
   }
 
   // Initial State
@@ -27,11 +16,7 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   unAuthenticate() async {
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('token') != null) {
-      await prefs.remove('token');
-      print('Remove token successful!');
-    }
+    removeToken();
     emit(UnauthenticatedState());
   }
 
@@ -43,37 +28,59 @@ class AppCubit extends Cubit<CubitState> {
   Future<void> checkCurrentToken() async {
     final prefs = await SharedPreferences.getInstance();
     final String? token = prefs.getString('token');
-    if (token != null && checkToken(token))
-      authenticated(token);
+    if (token != null)
+      authenticate(token);
     else
       unAuthenticate();
   }
 
-  // Authenticate Function
-  authenticate(String token, String username) async {
-    var msg = {
-      "account": "ttvucse@gmail.com",
-      "password": '"123456"',
-      "name": "Trần Tiến Vũ"
-    };
-    CommonService.instance.send(2110, msg.toString()).whenComplete(() =>
-        CommonService.instance.client!.getData().then((value) => print(value)));
+  Future<void> saveToken(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', token);
+  }
 
-    // if (checkToken(token)) {
-    //   final prefs = await SharedPreferences.getInstance();
-    //   await prefs.setString('token', token);
-    //   await prefs.setString('username', username);
-    //   authenticated(token);
-    // } else
-    //   unAuthenticate();
+  Future<void> saveUsername(String username) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('username', username);
+  }
+
+  Future<void> removeToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('token') != null) {
+      await prefs.remove('token');
+      print('Remove token successful!');
+    }
+  }
+
+  // Authenticate Function
+  authenticate(String token) async {
+    checkToken(token).then((value) {
+      if (value) authenticated(token);
+      else unAuthenticate();
+    });
   }
 
   // Service Function
-  bool checkToken(String token) {
-    //Todo: check token
-    if (token == 'token')
-      return true;
-    else
-      return false;
+  Future<void> checkConnect() async {
+    await CommonService.instance.send(MessageIDPath.checkConnect(), "");
+    CommonService.instance.client!.getData().then((value) {
+      if (value == "null")
+        connectError();
+      else
+        checkCurrentToken();
+    });
+  }
+
+  Future<bool> checkToken(String token) async {
+    var valid = false;
+    var data = {"token": token};
+    await CommonService.instance
+        .send(MessageIDPath.checkToken(), data.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.checkToken(), value)) {
+        valid = ServerLogic.getData(value)["valid"];
+      }
+    });
+    return valid;
   }
 }

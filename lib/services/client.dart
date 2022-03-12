@@ -1,8 +1,6 @@
-import 'dart:io';
 import 'dart:async';
-import 'dart:math';
+import 'dart:io';
 import 'dart:typed_data';
-import 'dart:convert';
 
 import 'package:anthealth_mobile/services/message/message_define.dart';
 
@@ -33,12 +31,9 @@ class Client {
 
   // Socket listener
   void dataHandler(data) {
-    // print("in dataHandler data(${data.runtimeType})");
     Uint8List bdata = data as Uint8List;
-    // print("lenght = ${bdata.lengthInBytes}");
     RMessage rMessage = RMessage(bdata);
     _data = rMessage.toString();
-    // print("Receive: ${rMessage.toString()}");
   }
 
   void _errorHandler(error, StackTrace trace) {
@@ -53,14 +48,12 @@ class Client {
 
   // Handle data
   Future<String> getData() async {
-    await waitData()
-        .timeout(const Duration(seconds: 5))
-        .whenComplete(() => {if (socket == null) print("null data!")});
-    return _data.toString();
-  }
-
-  Future<void> waitData() async {
-    if (_data == null) await waitData();
+    var tempData = "null";
+    await Future.delayed(const Duration(milliseconds: 100), () => {});
+    if(_data == null) await Future.delayed(const Duration(seconds: 2), () => {});
+    tempData = _data.toString();
+    removeData();
+    return tempData;
   }
 
   void removeData() {

@@ -23,7 +23,7 @@ abstract class BaseMessage{
   }
   @override
   String toString(){
-    return "{msgID=${msgID ?? 0},msgData=${msgData ?? ""}}";
+    return '{"msgID":${msgID ?? 0},"msgData":${msgData ?? ""}}';
   }
   Uint8List int32bytes(var value) =>
       Uint8List(4)..buffer.asByteData().setInt32(0, value, Endian.big);

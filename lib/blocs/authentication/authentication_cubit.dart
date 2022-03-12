@@ -1,5 +1,9 @@
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
 import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
+import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
+import 'package:anthealth_mobile/services/message/message_id_path.dart';
+import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,8 +13,8 @@ class AuthenticationCubit extends Cubit<CubitState> {
   }
 
   // Initial State
-  void login(String username, String password) {
-    emit(LoginState(username, password));
+  void login(LoginData loginData) {
+    emit(LoginState(loginData));
   }
 
   void register() {
@@ -22,8 +26,8 @@ class AuthenticationCubit extends Cubit<CubitState> {
   }
 
   // Update state
-  void updateLoginState(String username, String password) {
-    emit(LoginState(username, password));
+  void updateLoginState(LoginData loginData) {
+    emit(LoginState(loginData));
   }
 
   void updateRegisterState(
@@ -31,9 +35,9 @@ class AuthenticationCubit extends Cubit<CubitState> {
     emit(RegisterState(name, username, password, confirmPassword));
   }
 
-  Future<void> intentLogin(String username, String password) async {
+  Future<void> intentLogin(LoginData loginData) async {
     await SharedPreferences.getInstance();
-    login(username, password);
+    login(loginData);
   }
 
   // Local Storage
@@ -41,15 +45,21 @@ class AuthenticationCubit extends Cubit<CubitState> {
     final prefs = await SharedPreferences.getInstance();
     String? username = prefs.getString('username');
     if (username == null) username = '';
-    login(username, '');
+    login(LoginData(username, ''));
   }
 
   // Service Function
-  String getToken(String username, String password) {
-    //Todo: authentication and get token
-    if (username == 'congson99vn@gmail.com' && password == '12345678')
-      return "token";
-    return "null";
+  Future<String> getToken(LoginData data) async {
+    var token = "null";
+    await CommonService.instance.send(MessageIDPath.getToken(),
+        LoginData.getStringObject(data));
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getToken(), value)) {
+        if (ServerLogic.getData(value)["token"] != "")
+          token = ServerLogic.getData(value)["token"];
+      }
+    });
+    return token;
   }
 
   bool checkRegisteredAccount(String username) {
