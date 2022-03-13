@@ -1,16 +1,10 @@
-Message Docs;;;;;;;;;
-;;;;;;;;;
-Msg;Pos;;Get;;Status;Note;;;
-;ID;Data;ID;Data;;;;;
-checkConnect;100;;100;"""status"": bool";Done;;;;
-getToken;2120;"""account"": String, ""password"": String";2120;"""token"": String";Done;;;;
-checkToken;2121;"""token"": String";2121;"""valid"": bool";Done;;;;
-register;2122;"""name"": String, ""account"": String, ""password"": String";2122;"""result"": int";;"result: 0 -> success; 1 -> registered email; 2 -> false";;;
-getUserBaseData;;;;"""name"": String, ""avatar"": String";;avatar: firebase url;;;
-getDataHealth;;;;;;;;;
-;;;;;;;;;
-;;;;;;;;;
-;;;;;;;;;
-;;;;;;;;;
-;;;;;;;;;
-;;;;;;;;;
+Message Docs,,,,,,
+,,,,,,
+Msg,Pos,,Get,,Status,Note
+,ID,Data,ID,Data,,
+checkConnect,100,,100,"""status"": bool",Done,
+getToken,2120,"""account"": String, ""password"": String",2120,"""token"": String",Done,
+checkToken,2121,"""token"": String",2121,"""valid"": bool",Done,
+register,2122,"""name"": String, ""account"": String, ""password"": String",2122,"""result"": int",,result: 0 -> success; 1 -> registered email; 2 -> false
+getUserBaseData,2100,,2100,"""name"": String, ""avatar"": String",,avatar: firebase url
+getDataHealth,2211,,2211,"“name”:String,”indicatorInfo”:[{“type”:int,value:”String”},…]",,
