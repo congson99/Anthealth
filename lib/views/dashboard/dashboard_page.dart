@@ -45,7 +45,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Widget buildContent(CubitState state) {
     if (state is HomeState) return HomePage();
-    if (state is HealthState) return HealthPage();
+    if (state is HealthState) return HealthPage(name: state.name);
     if (state is MedicState) return MedicPage();
     if (state is FamilyState) return FamilyPage();
     if (state is CommunityState) return CommunityPage();
@@ -68,7 +68,8 @@ class _DashboardPageState extends State<DashboardPage> {
     if (index == 0) BlocProvider.of<DashboardCubit>(context).family();
     if (index == 1) BlocProvider.of<DashboardCubit>(context).community();
     if (index == 2) BlocProvider.of<DashboardCubit>(context).home();
-    if (index == 3) BlocProvider.of<DashboardCubit>(context).health();
+    if (index == 3)
+      BlocProvider.of<DashboardCubit>(context).health(widget.name);
     if (index == 4) BlocProvider.of<DashboardCubit>(context).medic();
   }
 

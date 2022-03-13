@@ -12,8 +12,8 @@ class DashboardCubit extends Cubit<CubitState> {
     emit(HomeState());
   }
 
-  health() {
-    emit(HealthState());
+  health(String name) {
+    emit(HealthState(name));
   }
 
   medic() {

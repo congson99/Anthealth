@@ -14,7 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HealthPage extends StatelessWidget {
-  const HealthPage({Key? key}) : super(key: key);
+  const HealthPage({Key? key, required this.name}) : super(key: key);
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +30,11 @@ class HealthPage extends StatelessWidget {
           ),
           Header(
               title: S.of(context).Health_record,
-              content: "Hồ Công Sơn",
+              content: name,
               isNotification: false,
               isMessage: false,
-              onSettingsTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => SettingsPage(appContext: context))))
+              onSettingsTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => SettingsPage(appContext: context))))
         ])));
   }
 
