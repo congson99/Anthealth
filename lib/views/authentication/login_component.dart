@@ -73,7 +73,7 @@ class _LoginComponentState extends State<LoginComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .updateLoginState(
+                          .login(
                               LoginData(value, data.getPassword()));
                       _disappearError();
                     }),
@@ -86,7 +86,7 @@ class _LoginComponentState extends State<LoginComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .updateLoginState(
+                          .login(
                               LoginData(data.getUsername(), value));
                       _disappearError();
                     }),
@@ -127,7 +127,7 @@ class _LoginComponentState extends State<LoginComponent> {
                 alignment: Alignment.center,
                 child: InkWell(
                     onTap: () => BlocProvider.of<AuthenticationCubit>(context)
-                        .register(),
+                        .register(RegisterData('', '', '', '')),
                     child: Text(S.of(context).Register_now,
                         style: Theme.of(context)
                             .textTheme
@@ -197,7 +197,7 @@ class _LoginComponentState extends State<LoginComponent> {
 
   void _clearPassword(String username) {
     BlocProvider.of<AuthenticationCubit>(context)
-        .updateLoginState(LoginData(username, ''));
+        .login(LoginData(username, ''));
     _passwordController.clear();
   }
 }

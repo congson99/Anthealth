@@ -17,25 +17,17 @@ class AuthenticationCubit extends Cubit<CubitState> {
     emit(LoginState(loginData));
   }
 
-  void register() {
-    emit(RegisterState(RegisterData('', '', '', '')));
+  void register(RegisterData registerData) {
+    emit(RegisterState(registerData));
   }
 
   void forgotPassword() {
     emit(ForgotPasswordState());
   }
 
-  // Update state
-  void updateLoginState(LoginData loginData) {
-    emit(LoginState(loginData));
-  }
-
-  void updateRegisterState(RegisterData registerData) {
-    emit(RegisterState(registerData));
-  }
-
+  // Intent
   Future<void> intentLogin(LoginData loginData) async {
-    await SharedPreferences.getInstance();
+    await Future.delayed(const Duration(milliseconds: 100), () => {});
     login(loginData);
   }
 

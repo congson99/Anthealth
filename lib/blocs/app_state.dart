@@ -15,13 +15,15 @@ class ConnectErrorState extends CubitState {
 }
 
 class AuthenticatedState extends CubitState {
-  AuthenticatedState(this.token);
+  AuthenticatedState(this.token, this.name, this.avatarPath);
 
   final String token;
+  final String name;
+  final String avatarPath;
 
   @override
   // TODO: implement props
-  List<Object> get props => [token];
+  List<Object> get props => [token, name, avatarPath];
 }
 
 class UnauthenticatedState extends CubitState {

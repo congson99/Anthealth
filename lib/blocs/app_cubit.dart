@@ -20,8 +20,15 @@ class AppCubit extends Cubit<CubitState> {
     emit(UnauthenticatedState());
   }
 
-  authenticated(String token) {
-    emit(AuthenticatedState(token));
+  authenticated(String token) async {
+    await CommonService.instance.send(MessageIDPath.getUserBaseData(), {}.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getUserBaseData(), value)) {
+        emit(AuthenticatedState(token, ServerLogic.getData(value)["name"],
+            ServerLogic.getData(value)["avatar"]));
+      }
+    });
   }
 
   // Local Storage

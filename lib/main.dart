@@ -33,7 +33,9 @@ class MyApp extends StatelessWidget {
             child: BlocBuilder<AppCubit, CubitState>(
               builder: (context, state) {
                 if (state is UnauthenticatedState) return AuthenticationPage();
-                if (state is AuthenticatedState) return DashboardPage();
+                if (state is AuthenticatedState)
+                  return DashboardPage(
+                      name: state.name, avatarPath: state.avatarPath);
                 if (state is ConnectErrorState)
                   return ErrorPage(error: S.of(context).Cannot_connect);
                 else

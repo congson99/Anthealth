@@ -97,7 +97,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .updateRegisterState(RegisterData(
+                          .register(RegisterData(
                               value,
                               data.getUsername(),
                               data.getPassword(),
@@ -112,7 +112,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .updateRegisterState(RegisterData(
+                          .register(RegisterData(
                               data.getName(),
                               value,
                               data.getPassword(),
@@ -127,7 +127,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .updateRegisterState(RegisterData(
+                          .register(RegisterData(
                               data.getName(),
                               data.getUsername(),
                               value,
@@ -144,7 +144,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .updateRegisterState(RegisterData(data.getName(),
+                          .register(RegisterData(data.getName(),
                               data.getUsername(), value, value));
                       _disappearError();
                     }),
@@ -298,7 +298,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
 
   void _clearPassword(RegisterData data, [bool? clearPassword]) {
     var password = (clearPassword == true) ? data.getPassword() : '';
-    BlocProvider.of<AuthenticationCubit>(context).updateRegisterState(
+    BlocProvider.of<AuthenticationCubit>(context).register(
         RegisterData(data.getName(), data.getUsername(), password, ''));
     if (clearPassword != true) _passwordController.clear();
     _confirmPasswordController.clear();

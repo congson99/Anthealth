@@ -1,4 +1,8 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
+import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_state.dart';
+import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/community/community_page.dart';
 import 'package:anthealth_mobile/views/family/family_page.dart';
@@ -12,38 +16,68 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardPage extends StatefulWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+  const DashboardPage({Key? key, required this.name, required this.avatarPath})
+      : super(key: key);
+
+  final String name;
+  final String avatarPath;
 
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  final List _page = [
-    FamilyPage(),
-    CommunityPage(),
-    HomePage(),
-    HealthPage(),
-    MedicPage()
-  ];
-  int _currentPage = 2;
-
-  void onBottomNavigationItemTap(index) => setState(() => _currentPage = index);
-
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(children: [
-          _page[_currentPage],
-          BottomNavigaton(
-            size: MediaQuery.of(context).size,
-            index: _currentPage,
-            imagePath: "assets/avatar.png",
-            onIndexChange: (int index) => onBottomNavigationItemTap(index),
-          )
-        ]),
-      ),
+  Widget build(BuildContext context) => BlocProvider<DashboardCubit>(
+      create: (context) => DashboardCubit(),
+      child: BlocBuilder<DashboardCubit, CubitState>(
+        builder: (context, state) {
+          return Scaffold(
+            body: SafeArea(
+              child: Stack(children: [
+                buildContent(state),
+                buildBottomNavigation(context, state)
+              ]),
+            ),
+          );
+        },
+      ));
+
+  Widget buildContent(CubitState state) {
+    if (state is HomeState) return HomePage();
+    if (state is HealthState) return HealthPage();
+    if (state is MedicState) return MedicPage();
+    if (state is FamilyState) return FamilyPage();
+    if (state is CommunityState) return CommunityPage();
+    return LoadingPage();
+  }
+
+  Widget buildBottomNavigation(BuildContext context, CubitState state) {
+    return BottomNavigation(
+      size: MediaQuery.of(context).size,
+      index: currentIndexState(state),
+      imagePath: widget.avatarPath,
+      onIndexChange: (int index) =>
+          onBottomNavigationItemTap(context, index, state),
     );
+  }
+
+  void onBottomNavigationItemTap(
+      BuildContext context, int index, CubitState state) {
+    if (currentIndexState(state) == index) return;
+    if (index == 0) BlocProvider.of<DashboardCubit>(context).family();
+    if (index == 1) BlocProvider.of<DashboardCubit>(context).community();
+    if (index == 2) BlocProvider.of<DashboardCubit>(context).home();
+    if (index == 3) BlocProvider.of<DashboardCubit>(context).health();
+    if (index == 4) BlocProvider.of<DashboardCubit>(context).medic();
+  }
+
+  int currentIndexState(CubitState state) {
+    if (state is FamilyState) return 0;
+    if (state is CommunityState) return 1;
+    if (state is HomeState) return 2;
+    if (state is HealthState) return 3;
+    if (state is MedicState) return 4;
+    return 2;
   }
 }
