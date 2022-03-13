@@ -55,8 +55,10 @@ class AppCubit extends Cubit<CubitState> {
   // Authenticate Function
   authenticate(String token) async {
     checkToken(token).then((value) {
-      if (value) authenticated(token);
-      else unAuthenticate();
+      if (value)
+        authenticated(token);
+      else
+        unAuthenticate();
     });
   }
 

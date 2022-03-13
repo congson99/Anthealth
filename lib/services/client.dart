@@ -49,8 +49,9 @@ class Client {
   // Handle data
   Future<String> getData() async {
     var tempData = "null";
-    await Future.delayed(const Duration(milliseconds: 100), () => {});
+    await Future.delayed(const Duration(milliseconds: 1000), () => {});
     if(_data == null) await Future.delayed(const Duration(seconds: 2), () => {});
+    print(_data);
     tempData = _data.toString();
     removeData();
     return tempData;

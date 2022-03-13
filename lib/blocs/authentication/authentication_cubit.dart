@@ -18,7 +18,7 @@ class AuthenticationCubit extends Cubit<CubitState> {
   }
 
   void register() {
-    emit(RegisterState('', '', '', ''));
+    emit(RegisterState(RegisterData('', '', '', '')));
   }
 
   void forgotPassword() {
@@ -30,9 +30,8 @@ class AuthenticationCubit extends Cubit<CubitState> {
     emit(LoginState(loginData));
   }
 
-  void updateRegisterState(
-      String name, String username, String password, String confirmPassword) {
-    emit(RegisterState(name, username, password, confirmPassword));
+  void updateRegisterState(RegisterData registerData) {
+    emit(RegisterState(registerData));
   }
 
   Future<void> intentLogin(LoginData loginData) async {
@@ -51,8 +50,8 @@ class AuthenticationCubit extends Cubit<CubitState> {
   // Service Function
   Future<String> getToken(LoginData data) async {
     var token = "null";
-    await CommonService.instance.send(MessageIDPath.getToken(),
-        LoginData.getStringObject(data));
+    await CommonService.instance
+        .send(MessageIDPath.getToken(), LoginData.getStringObject(data));
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getToken(), value)) {
         if (ServerLogic.getData(value)["token"] != "")
@@ -62,18 +61,14 @@ class AuthenticationCubit extends Cubit<CubitState> {
     return token;
   }
 
-  bool checkRegisteredAccount(String username) {
-    //Todo: check registered account
-    if (username == 'congson99vn@gmail.com') return false;
-    return true;
-  }
-
-  bool registerAccount(String name, String username, String password) {
-    //Todo: register account
-    if (username == 'congson99vn@gmail.com') {
-      checkCurrentUsername();
-      return true;
-    }
-    return false;
+  Future<int> registerAccount(RegisterData data) async {
+    var result = 2;
+    await CommonService.instance
+        .send(MessageIDPath.register(), RegisterData.getStringObject(data));
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.register(), value))
+        result = ServerLogic.getData(value)["result"];
+    });
+    return result.toInt();
   }
 }

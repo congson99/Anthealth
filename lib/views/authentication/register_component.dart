@@ -7,7 +7,6 @@ import 'package:anthealth_mobile/models/authentication/authentication_models.dar
 import 'package:anthealth_mobile/views/common_widgets/custom_error_widget.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +18,7 @@ class RegisterComponent extends StatefulWidget {
 }
 
 class _RegisterComponentState extends State<RegisterComponent> {
-  String _code = '';
+  // String _code = '';
   String _errorName = '';
   String _errorUsername = '';
   String _errorPassword = '';
@@ -42,23 +41,20 @@ class _RegisterComponentState extends State<RegisterComponent> {
   Widget build(BuildContext context) =>
       BlocBuilder<AuthenticationCubit, CubitState>(builder: (context, state) {
         if (state is RegisterState)
-          return buildContent(state.name, state.username, state.password,
-              state.confirmPassword);
+          return buildContent(state.registerData);
         else
           return CustomErrorWidget(error: S.of(context).something_wrong);
       });
 
-  Widget buildContent(String name, String username, String password,
-          String confirmPassword) =>
-      SingleChildScrollView(
+  Widget buildContent(RegisterData data) => SingleChildScrollView(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 32),
-                buildHeading(),
-                buildStepper(name, username, password, confirmPassword)
-              ]));
+            SizedBox(height: 32),
+            buildHeading(),
+            buildStepper(data)
+          ]));
 
   Widget buildHeading() => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -77,14 +73,11 @@ class _RegisterComponentState extends State<RegisterComponent> {
                     fontFamily: 'RobotoMedium', color: AnthealthColors.black1))
           ]));
 
-  Widget buildStepper(String name, String username, String password,
-          String confirmPassword) =>
-      Stepper(
+  Widget buildStepper(RegisterData data) => Stepper(
           steps: [
             Step(
                 title: Text(S.of(context).Fill_in_information),
-                content:
-                    buildFillStep(name, username, password, confirmPassword),
+                content: buildFillStep(data),
                 isActive: _currentStep >= 0),
             Step(
                 title: Text(S.of(context).Authenticate),
@@ -92,74 +85,10 @@ class _RegisterComponentState extends State<RegisterComponent> {
                 isActive: _currentStep >= 1)
           ],
           currentStep: _currentStep,
-          onStepContinue: () =>
-              _onStepContinue(name, username, password, confirmPassword),
-          onStepCancel: () => _onStepCancel(name, username));
+          onStepContinue: () => _onStepContinue(data),
+          onStepCancel: () => _onStepCancel());
 
-  Widget buildFillStep(String name, String username, String password,
-          String confirmPassword) =>
-      Container(
-          padding: const EdgeInsets.only(top: 4, right: 16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CommonTextField.round(
-                    onChanged: (value) => setState(() {
-                          BlocProvider.of<AuthenticationCubit>(context)
-                              .updateRegisterState(
-                                  value, username, password, confirmPassword);
-                          _disappearError();
-                        }),
-                    context: context,
-                    focusNode: _nameFocus,
-                    errorText: (_errorName == '') ? null : _errorName,
-                    labelText: S.of(context).Your_name),
-                SizedBox(height: 16),
-                CommonTextField.round(
-                    onChanged: (value) => setState(() {
-                          BlocProvider.of<AuthenticationCubit>(context)
-                              .updateRegisterState(
-                                  name, value, password, confirmPassword);
-                          _disappearError();
-                        }),
-                    context: context,
-                    focusNode: _usernameFocus,
-                    errorText: (_errorUsername == '') ? null : _errorUsername,
-                    labelText: S.of(context).Email),
-                SizedBox(height: 16),
-                CommonTextField.round(
-                    onChanged: (value) => setState(() {
-                          BlocProvider.of<AuthenticationCubit>(context)
-                              .updateRegisterState(
-                                  name, username, value, confirmPassword);
-                          _disappearError();
-                        }),
-                    context: context,
-                    focusNode: _passwordFocus,
-                    textEditingController: _passwordController,
-                    errorText: (_errorPassword == '') ? null : _errorPassword,
-                    labelText: S.of(context).Password,
-                    isVisibility: true),
-                SizedBox(height: 16),
-                CommonTextField.round(
-                    onChanged: (value) => setState(() {
-                          BlocProvider.of<AuthenticationCubit>(context)
-                              .updateRegisterState(
-                                  name, username, password, value);
-                          _disappearError();
-                        }),
-                    context: context,
-                    focusNode: _confirmPasswordFocus,
-                    textEditingController: _confirmPasswordController,
-                    errorText: (_errorConfirmPassword == '')
-                        ? null
-                        : _errorConfirmPassword,
-                    labelText: S.of(context).Confirm_password,
-                    isVisibility: true)
-              ]));
-
-  Widget buildAuthenticateStep() => Container(
+  Widget buildFillStep(RegisterData data) => Container(
       padding: const EdgeInsets.only(top: 4, right: 16),
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -167,67 +96,134 @@ class _RegisterComponentState extends State<RegisterComponent> {
           children: [
             CommonTextField.round(
                 onChanged: (value) => setState(() {
-                      _code = value;
+                      BlocProvider.of<AuthenticationCubit>(context)
+                          .updateRegisterState(RegisterData(
+                              value,
+                              data.getUsername(),
+                              data.getPassword(),
+                              data.confirmPassword()));
                       _disappearError();
                     }),
-                focusNode: _codeFocus,
-                errorText: (_errorCode == '') ? null : _errorCode,
                 context: context,
-                textEditingController: _authenticationCodeController,
-                labelText: S.of(context).Authentication_code),
+                focusNode: _nameFocus,
+                errorText: (_errorName == '') ? null : _errorName,
+                labelText: S.of(context).Your_name),
+            SizedBox(height: 16),
+            CommonTextField.round(
+                onChanged: (value) => setState(() {
+                      BlocProvider.of<AuthenticationCubit>(context)
+                          .updateRegisterState(RegisterData(
+                              data.getName(),
+                              value,
+                              data.getPassword(),
+                              data.confirmPassword()));
+                      _disappearError();
+                    }),
+                context: context,
+                focusNode: _usernameFocus,
+                errorText: (_errorUsername == '') ? null : _errorUsername,
+                labelText: S.of(context).Email),
+            SizedBox(height: 16),
+            CommonTextField.round(
+                onChanged: (value) => setState(() {
+                      BlocProvider.of<AuthenticationCubit>(context)
+                          .updateRegisterState(RegisterData(
+                              data.getName(),
+                              data.getUsername(),
+                              value,
+                              data.confirmPassword()));
+                      _disappearError();
+                    }),
+                context: context,
+                focusNode: _passwordFocus,
+                textEditingController: _passwordController,
+                errorText: (_errorPassword == '') ? null : _errorPassword,
+                labelText: S.of(context).Password,
+                isVisibility: true),
+            SizedBox(height: 16),
+            CommonTextField.round(
+                onChanged: (value) => setState(() {
+                      BlocProvider.of<AuthenticationCubit>(context)
+                          .updateRegisterState(RegisterData(data.getName(),
+                              data.getUsername(), value, value));
+                      _disappearError();
+                    }),
+                context: context,
+                focusNode: _confirmPasswordFocus,
+                textEditingController: _confirmPasswordController,
+                errorText: (_errorConfirmPassword == '')
+                    ? null
+                    : _errorConfirmPassword,
+                labelText: S.of(context).Confirm_password,
+                isVisibility: true)
           ]));
 
+  Widget buildAuthenticateStep() => Container(
+      // padding: const EdgeInsets.only(top: 4, right: 16),
+      // child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     crossAxisAlignment: CrossAxisAlignment.stretch,
+      //     children: [
+      //       CommonTextField.round(
+      //           onChanged: (value) => setState(() {
+      //                 _code = value;
+      //                 _disappearError();
+      //               }),
+      //           focusNode: _codeFocus,
+      //           errorText: (_errorCode == '') ? null : _errorCode,
+      //           context: context,
+      //           textEditingController: _authenticationCodeController,
+      //           labelText: S.of(context).Authentication_code),
+      //     ])
+      );
+
   // Hepper functions
-  void _onStepContinue(
-      String name, String username, String password, String confirmPassword) {
+  void _onStepContinue(RegisterData data) {
     if (_currentStep == 0) {
-      if (_checkName(name, username) &&
-          _checkUsername(name, username) &&
-          _checkPassword(name, username, password, confirmPassword)) {
-        if (BlocProvider.of<AuthenticationCubit>(context)
-            .checkRegisteredAccount(username))
-          setState(() {
-            _errorUsername = S.of(context).Registered_email;
-            _clearPassword(name, username);
-          });
-        else
-          setState(() {
-            _currentStep += 1;
-            FocusScope.of(context).requestFocus(_codeFocus);
-          });
-      }
-    } else {
-      if (_checkAuthenticationCode() &&
-          BlocProvider.of<AuthenticationCubit>(context)
-              .registerAccount(name, username, password)) {
+      if (_checkName(data) && _checkUsername(data) && _checkPassword(data)) {
         BlocProvider.of<AuthenticationCubit>(context)
-            .intentLogin(LoginData(username, password));
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(S.of(context).Register +
-                ' ' +
-                S.of(context).successfully +
-                '!')));
+            .registerAccount(data)
+            .then((value) {
+          if (value == 1)
+            setState(() {
+              _errorUsername = S.of(context).Registered_email;
+              _clearPassword(data);
+            });
+          if (value == 0) {
+            BlocProvider.of<AuthenticationCubit>(context)
+                .intentLogin(LoginData(data.getUsername(), data.getPassword()));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(S.of(context).Register +
+                    ' ' +
+                    S.of(context).successfully +
+                    '!')));
+          }
+          if (value == 2) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Register false!")));
+          }
+        });
       }
     }
   }
 
-  void _onStepCancel(String name, String username) {
+  void _onStepCancel() {
     setState(() {
       if (_currentStep == 0)
         BlocProvider.of<AuthenticationCubit>(context).checkCurrentUsername();
-      else {
-        _clearPassword(name, username);
-        _currentStep -= 1;
-        _authenticationCodeController.clear();
-      }
+      // else {
+      //   _clearPassword(name, username);
+      //   _currentStep -= 1;
+      //   _authenticationCodeController.clear();
+      // }
     });
   }
 
-  bool _checkName(String name, String username) {
-    if (name == '') {
+  bool _checkName(RegisterData data) {
+    if (data.getName() == '') {
       setState(() {
         _errorName = S.of(context).Enter_name;
-        _clearPassword(name, username);
+        _clearPassword(data);
       });
       FocusScope.of(context).requestFocus(_nameFocus);
       return false;
@@ -235,12 +231,13 @@ class _RegisterComponentState extends State<RegisterComponent> {
     return true;
   }
 
-  bool _checkUsername(String name, String username) {
-    var _result = AuthenticationLogic.checkValidEmail(context, username);
+  bool _checkUsername(RegisterData data) {
+    var _result =
+        AuthenticationLogic.checkValidEmail(context, data.getUsername());
     if (_result != 'ok') {
       setState(() {
         _errorUsername = _result;
-        _clearPassword(name, username);
+        _clearPassword(data);
       });
       FocusScope.of(context).requestFocus(_usernameFocus);
       return false;
@@ -248,33 +245,32 @@ class _RegisterComponentState extends State<RegisterComponent> {
     return true;
   }
 
-  bool _checkPassword(
-      String name, String username, String password, String confirmPassword) {
+  bool _checkPassword(RegisterData data) {
     var _passwordResult =
-        AuthenticationLogic.checkValidPassword(context, password);
+        AuthenticationLogic.checkValidPassword(context, data.getPassword());
     if (_passwordResult != 'ok') {
       setState(() {
         _errorPassword = _passwordResult;
-        _clearPassword(name, username);
+        _clearPassword(data);
       });
       FocusScope.of(context).requestFocus(_passwordFocus);
       return false;
     }
-    var _confirmPasswordResult =
-        AuthenticationLogic.checkValidConfirmPassword(context, confirmPassword);
+    var _confirmPasswordResult = AuthenticationLogic.checkValidConfirmPassword(
+        context, data.confirmPassword());
     if (_confirmPasswordResult != 'ok') {
       setState(() {
         _errorConfirmPassword = _confirmPasswordResult;
-        _clearPassword(name, username, password);
+        _clearPassword(data, true);
       });
       FocusScope.of(context).requestFocus(_passwordFocus);
       return false;
     }
-    if (password != confirmPassword) {
+    if (data.getPassword() != data.confirmPassword()) {
       setState(() {
         _errorPassword = S.of(context).Not_match_password;
         _errorConfirmPassword = S.of(context).Not_match_password;
-        _clearPassword(name, username);
+        _clearPassword(data);
       });
       FocusScope.of(context).requestFocus(_passwordFocus);
       return false;
@@ -282,15 +278,15 @@ class _RegisterComponentState extends State<RegisterComponent> {
     return true;
   }
 
-  bool _checkAuthenticationCode() {
-    if (_code == '000000') return true;
-    setState(() {
-      _errorCode = S.of(context).Wrong_authentication_code;
-      _clearAuthenticationCode();
-    });
-    FocusScope.of(context).requestFocus(_codeFocus);
-    return false;
-  }
+  // bool _checkAuthenticationCode() {
+  //   if (_code == '000000') return true;
+  //   setState(() {
+  //     _errorCode = S.of(context).Wrong_authentication_code;
+  //     _clearAuthenticationCode();
+  //   });
+  //   FocusScope.of(context).requestFocus(_codeFocus);
+  //   return false;
+  // }
 
   void _disappearError() {
     _errorName = '';
@@ -300,16 +296,16 @@ class _RegisterComponentState extends State<RegisterComponent> {
     _errorCode = '';
   }
 
-  void _clearPassword(String name, String username, [String? password]) {
-    var pass = (password != null) ? password : '';
-    BlocProvider.of<AuthenticationCubit>(context)
-        .updateRegisterState(name, username, pass, '');
-    if (password == null) _passwordController.clear();
+  void _clearPassword(RegisterData data, [bool? clearPassword]) {
+    var password = (clearPassword == true) ? data.getPassword() : '';
+    BlocProvider.of<AuthenticationCubit>(context).updateRegisterState(
+        RegisterData(data.getName(), data.getUsername(), password, ''));
+    if (clearPassword != true) _passwordController.clear();
     _confirmPasswordController.clear();
   }
 
-  void _clearAuthenticationCode() {
-    _authenticationCodeController.clear();
-    _code = '';
-  }
+// void _clearAuthenticationCode() {
+//   _authenticationCodeController.clear();
+//   _code = '';
+// }
 }
