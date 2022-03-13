@@ -49,51 +49,21 @@ class Client {
   // Handle data
   Future<String> getData() async {
     var tempData = "null";
-    await Future.delayed(const Duration(milliseconds: 1000), () => {});
-    if(_data == null) await Future.delayed(const Duration(seconds: 2), () => {});
-    print(_data);
+    await waitData(0);
+    if (_data == null) print("NULL DATA!");
     tempData = _data.toString();
     removeData();
     return tempData;
   }
 
+  Future<void> waitData(int count) async {
+    // wait 0.1s
+    // Max: 0.1x50 = 5s
+    await Future.delayed(const Duration(milliseconds: 100), () => {});
+    if (_data == null && count < 50) await waitData(count + 1);
+  }
+
   void removeData() {
     _data = null;
-  }
-
-  ///đăng kí ng dùng mới
-  SMessage Test211() {
-    var j = {
-      "account": "ttvucse@gmail.com",
-      "password": '"123456"',
-      "name": "Trần Tiến Vũ"
-    };
-    SMessage m = SMessage(2110, j.toString());
-    return m;
-  }
-
-  ///đăng nhập
-  SMessage Test212() {
-    var j = {"account": "ttvucse@gmail.com", "password": '"123456"'};
-    SMessage m = SMessage(2120, j.toString());
-    return m;
-  }
-
-  ///thêm chỉ số
-  SMessage Test221() {
-    var j = {"type": 1, "value": '"170"', "creator": 10001};
-    SMessage m = SMessage(2210, j.toString());
-    return m;
-  }
-
-  ///lấy thông tin chỉ số
-  SMessage Test222() {
-    var j = {
-      "type": 1,
-      "start_time": DateTime.now().millisecondsSinceEpoch - 5 * 24 * 3600,
-      "end_time": DateTime.now().millisecondsSinceEpoch
-    };
-    SMessage m = SMessage(2220, j.toString());
-    return m;
   }
 }
