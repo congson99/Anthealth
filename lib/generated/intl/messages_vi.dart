@@ -121,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Email này chưa được đăng ký!"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "Record": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Ngày đo"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Giờ đo"),
         "Record_time": MessageLookupByLibrary.simpleMessage("Thời gian đo"),

@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
 import 'package:anthealth_mobile/views/medic/medic_page.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        home: buildRoot());
+        home: buildRoot() );
   }
 
   BlocProvider<AppCubit> buildRoot() {

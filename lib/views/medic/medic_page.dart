@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -71,7 +72,9 @@ class MedicPage extends StatelessWidget {
           SectionComponent(
               title: S.of(context).Medical_history,
               subTitle: "Lần gần nhất: 18.10.2021 - BV Chợ Rẫy",
-              colorID: 0),
+              colorID: 0,
+              onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => MedicalRecordPage()))),
           SizedBox(height: 16),
           SectionComponent(
               title: S.of(context).Medical_appointment,

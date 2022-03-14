@@ -116,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "This email is not registered!"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Record": MessageLookupByLibrary.simpleMessage("Records"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Record date"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
         "Record_time": MessageLookupByLibrary.simpleMessage("Record time"),

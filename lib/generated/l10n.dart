@@ -680,6 +680,16 @@ class S {
     );
   }
 
+  /// `Records`
+  String get Record {
+    return Intl.message(
+      'Records',
+      name: 'Record',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medic records`
   String get Medic_record {
     return Intl.message(
