@@ -1,7 +1,7 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
-import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
-import 'package:anthealth_mobile/blocs/dashbord/dashboard_state.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/community/community_page.dart';

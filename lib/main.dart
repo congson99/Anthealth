@@ -1,5 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
-import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/authentication/authentication_page.dart';
 import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';

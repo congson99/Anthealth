@@ -1,5 +1,5 @@
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
-import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
 import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';

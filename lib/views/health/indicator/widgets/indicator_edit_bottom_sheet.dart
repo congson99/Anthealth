@@ -1,5 +1,4 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/models/indicator.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:flutter/cupertino.dart';

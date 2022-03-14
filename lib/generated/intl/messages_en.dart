@@ -177,6 +177,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
+        "no_record": MessageLookupByLibrary.simpleMessage(
+            "You have no records during this period"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),

@@ -61,6 +61,7 @@
   "Delete_temperature": "Xoá dữ liệu nhiệt độ",
   "Delete_blood_pressure": "Xoá dữ liệu huyết áp",
   "Delete_spo2": "Xoá dữ liệu SPO2",
+  "no_record": "Bạn không thực hiện lần đo nào trong khoảng thời gian này",
   "_Medic": "-----------------------------Medic-----------------------------",
   "Record": "Hồ sơ",
   "Medic_record": "Hồ sơ y tế",

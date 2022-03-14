@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -11,15 +12,13 @@ class IndicatorLatestRecord extends StatelessWidget {
     required this.unit,
     required this.value,
     required this.time,
-    this.information,
-    this.informationURL,
+    this.information
   }) : super(key: key);
 
   final String unit;
   final String value;
   final String time;
-  final String? information;
-  final String? informationURL;
+  final MoreInfo? information;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +55,8 @@ class IndicatorLatestRecord extends StatelessWidget {
                       .textTheme
                       .caption!
                       .copyWith(color: AnthealthColors.black2)),
-              if (information != null) SizedBox(height: 32),
-              if (information != null)
+              if (information!.getContent() != '') SizedBox(height: 32),
+              if (information!.getContent() != '')
                 Container(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
@@ -75,7 +74,7 @@ class IndicatorLatestRecord extends StatelessWidget {
                           Expanded(
                               child: RichText(
                                   text: TextSpan(
-                                      text: information!,
+                                      text: information!.getContent(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .caption!
@@ -84,7 +83,7 @@ class IndicatorLatestRecord extends StatelessWidget {
                                               fontFamily: 'RobotoRegular',
                                               letterSpacing: 0.2),
                                       children: [
-                                if (informationURL != null)
+                                if (information!.getUrl() != "")
                                   TextSpan(
                                       text: ' ' + S.of(context).Learn_more,
                                       style: TextStyle(
@@ -92,7 +91,7 @@ class IndicatorLatestRecord extends StatelessWidget {
                                           fontFamily: 'RobotoMedium'),
                                       recognizer: new TapGestureRecognizer()
                                         ..onTap = () {
-                                          launch(informationURL!);
+                                          launch(information!.getUrl());
                                         })
                               ])))
                         ]))

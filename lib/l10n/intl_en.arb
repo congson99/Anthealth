@@ -61,6 +61,7 @@
   "Delete_temperature": "Delete temperature data",
   "Delete_blood_pressure": "Delete blood Pressure data",
   "Delete_spo2": "Delete SPO2 data",
+  "no_record": "You have no records during this period",
   "_Medic": "-----------------------------Medic-----------------------------",
   "Record": "Records",
   "Medic_record": "Medic records",

@@ -1,7 +1,7 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
-import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
-import 'package:anthealth_mobile/blocs/dashbord/dashboard_state.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';

@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
-import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart';
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
 import 'package:anthealth_mobile/blocs/common_logic/authentication_logic.dart';

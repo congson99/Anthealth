@@ -670,6 +670,16 @@ class S {
     );
   }
 
+  /// `You have no records during this period`
+  String get no_record {
+    return Intl.message(
+      'You have no records during this period',
+      name: 'no_record',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medic-----------------------------`
   String get _Medic {
     return Intl.message(

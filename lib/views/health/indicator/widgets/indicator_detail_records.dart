@@ -1,22 +1,22 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-class IndicatorDetailRecord {
-  IndicatorDetailRecord(this.dateTime, this.value);
-
-  final String dateTime;
-  final String value;
-}
+import 'package:intl/intl.dart';
 
 class IndicatorDetailRecords extends StatelessWidget {
   const IndicatorDetailRecords(
-      {Key? key, required this.unit, required this.data, required this.onTap})
+      {Key? key,
+      required this.unit,
+      required this.dateTimeFormat,
+      required this.data,
+      required this.onTap})
       : super(key: key);
 
   final String unit;
-  final List<IndicatorDetailRecord> data;
+  final String dateTimeFormat;
+  final List<IndicatorData> data;
   final Function(int) onTap;
 
   @override
@@ -49,7 +49,10 @@ class IndicatorDetailRecords extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Divider(thickness: 0.5, height: 0.5, color: AnthealthColors.primary1),
+                        Divider(
+                            thickness: 0.5,
+                            height: 0.5,
+                            color: AnthealthColors.primary1),
                         GestureDetector(
                           onTap: () => onTap(data.indexOf(mData)),
                           child: Container(
@@ -60,14 +63,16 @@ class IndicatorDetailRecords extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(mData.dateTime,
+                                    Text(
+                                        DateFormat(dateTimeFormat)
+                                            .format(mData.getDateTime()),
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText1!
                                             .copyWith(
                                                 color:
                                                     AnthealthColors.primary1)),
-                                    Text(mData.value,
+                                    Text(mData.getValue().toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText1!

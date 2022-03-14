@@ -1,4 +1,4 @@
-import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 
 class HomeState extends CubitState {
