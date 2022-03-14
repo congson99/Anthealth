@@ -14,7 +14,6 @@ import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_edit_b
 import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_latest_record.dart';
 import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_line_chart.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -40,7 +39,9 @@ class _HeightPageState extends State<HeightPage> {
                   body: SafeArea(
                       child: Stack(children: [
                 Container(
-                    margin: const EdgeInsets.only(top: 65),
+                    margin: (state.data.getLatestRecord().getValue() != 0)
+                        ? EdgeInsets.only(top: 65)
+                        : EdgeInsets.only(top: 16),
                     child: SingleChildScrollView(
                         child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -52,7 +53,9 @@ class _HeightPageState extends State<HeightPage> {
                   body: SafeArea(
                       child: Stack(children: [
                 Container(
-                    margin: const EdgeInsets.only(top: 65),
+                    margin: (state.data.getLatestRecord().getValue() != 0)
+                        ? EdgeInsets.only(top: 65)
+                        : EdgeInsets.only(top: 16),
                     child: SingleChildScrollView(
                         child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -110,7 +113,9 @@ class _HeightPageState extends State<HeightPage> {
         children: [
           IndicatorLatestRecord(
               unit: widget.unit,
-              value: pageData.getLatestRecord().getValue().toString(),
+              value: (pageData.getLatestRecord().getValue() == 0)
+                  ? ''
+                  : pageData.getLatestRecord().getValue().toString(),
               time: DateFormat('dd.MM.yyyy')
                   .format(pageData.getLatestRecord().getDateTime()),
               information: pageData.getMoreInfo()),

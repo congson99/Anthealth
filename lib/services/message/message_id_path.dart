@@ -5,4 +5,5 @@ class MessageIDPath {
   static int register() => 2122;
   static int getUserBaseData() => 2100;
   static int getHealthData() => 2211;
+  static int getIndicatorData() => 2212;
 }
