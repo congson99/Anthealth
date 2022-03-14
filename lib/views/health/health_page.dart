@@ -85,7 +85,9 @@ class HealthPage extends StatelessWidget {
                       .push(MaterialPageRoute(builder: (_) => HeightPage())),
                   colorID: 0,
                   iconPath: "assets/indicators/height.png",
-                  value: indicatorLatestData[0].toString(),
+                  value: (indicatorLatestData[0] != 0)
+                      ? indicatorLatestData[0].toString()
+                      : '_',
                   unit: "m",
                   title: S.of(context).Height),
               SizedBox(width: 16),
@@ -97,7 +99,9 @@ class HealthPage extends StatelessWidget {
                           unit: "kg"))),
                   colorID: 1,
                   iconPath: "assets/indicators/weight.png",
-                  value: "60.0",
+                  value: (indicatorLatestData[1] != 0)
+                      ? indicatorLatestData[1].toString()
+                      : '_',
                   unit: "kg",
                   title: S.of(context).Weight),
               SizedBox(width: 16),
@@ -109,7 +113,9 @@ class HealthPage extends StatelessWidget {
                           unit: "BPM"))),
                   colorID: 2,
                   iconPath: "assets/indicators/heart_rate.png",
-                  value: "79",
+                  value: (indicatorLatestData[2] != 0)
+                      ? indicatorLatestData[2].toStringAsFixed(0)
+                      : '_',
                   unit: "BPM",
                   title: S.of(context).Heart_rate),
             ],
@@ -127,7 +133,9 @@ class HealthPage extends StatelessWidget {
                             unit: "°C"))),
                     colorID: 1,
                     iconPath: "assets/indicators/temperature.png",
-                    value: "37.2",
+                    value: (indicatorLatestData[3] != 0)
+                        ? indicatorLatestData[3].toString()
+                        : '_',
                     unit: "°C",
                     title: S.of(context).Temperature),
                 SizedBox(width: 16),
@@ -139,7 +147,13 @@ class HealthPage extends StatelessWidget {
                             unit: "mmHg"))),
                     colorID: 2,
                     iconPath: "assets/indicators/blood_pressure.png",
-                    value: "121/85",
+                    value: ((indicatorLatestData[4] != 0)
+                            ? indicatorLatestData[4].toStringAsFixed(0)
+                            : '_') +
+                        '/' +
+                        ((indicatorLatestData[6] != 0)
+                            ? indicatorLatestData[6].toStringAsFixed(0)
+                            : '_'),
                     unit: "mmHg",
                     title: S.of(context).Blood_pressure),
                 SizedBox(width: 16),
@@ -151,7 +165,9 @@ class HealthPage extends StatelessWidget {
                             unit: "%"))),
                     colorID: 0,
                     iconPath: "assets/indicators/spo2.png",
-                    value: "97",
+                    value: (indicatorLatestData[5] != 0)
+                        ? indicatorLatestData[5].toStringAsFixed(0)
+                        : '_',
                     unit: "%",
                     title: S.of(context).Spo2)
               ])

@@ -9,9 +9,10 @@ class HealthPageData {
   List<double> getIndicatorsLatestData() => _indicatorsLatestData;
 
   static List<double> formatIndicatorsList(List<dynamic> data) {
-    List<double> result = [0, 0, 0, 0, 0, 0];
+    List<double> result = [0, 0, 0, 0, 0, 0, 0];
     for (dynamic i in data)
       result[i["type"]] = (i["value"] == 0) ? 0 : i["value"];
+    // Todo: get second blood pressure value
     return result;
   }
 }
