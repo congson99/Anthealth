@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thêm heart dữ liệu nhịp tim"),
         "Add_height":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu chiều cao"),
+        "Add_medicine_box":
+            MessageLookupByLibrary.simpleMessage("Thêm hộp thuốc mới"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Thêm dữ liệu SPO2"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu nhiệt độ"),
@@ -58,6 +60,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Delete_weight":
             MessageLookupByLibrary.simpleMessage("Xoá weight dữ liệu cân nặng"),
         "Detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "Directory": MessageLookupByLibrary.simpleMessage("Danh bạ"),
+        "Doctor_directory":
+            MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu huyết áp"),
@@ -99,6 +104,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),
+        "Medic_record": MessageLookupByLibrary.simpleMessage("Hồ sơ y tế"),
+        "Medical_appointment":
+            MessageLookupByLibrary.simpleMessage("Lịch hẹn tái khám"),
+        "Medical_directory":
+            MessageLookupByLibrary.simpleMessage("Danh bạ y tế"),
+        "Medical_history":
+            MessageLookupByLibrary.simpleMessage("Lịch sử khám bệnh"),
+        "Medical_record":
+            MessageLookupByLibrary.simpleMessage("Hồ sơ khám bệnh"),
+        "Medicine_box_management":
+            MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -145,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Health-----------------------------"),
         "_Main": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Main-----------------------------"),
+        "_Medic": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Medic-----------------------------"),
         "_Time": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Time-----------------------------"),
         "apr": MessageLookupByLibrary.simpleMessage("T4"),

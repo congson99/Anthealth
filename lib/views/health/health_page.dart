@@ -1,5 +1,10 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
+import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
+import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -20,29 +25,36 @@ class HealthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-            child: Stack(children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 90),
-            child: buildContent(context),
-          ),
-          Header(
-              title: S.of(context).Health_record,
-              content: name,
-              isNotification: false,
-              isMessage: false,
-              onSettingsTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => SettingsPage(appContext: context))))
-        ])));
+    return BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
+      if (state is HealthState)
+        return Container(
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+                child: Stack(children: [
+              Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 90),
+                child: buildContent(context, state.healthPageData),
+              ),
+              Header(
+                  title: S.of(context).Health_record,
+                  content: name,
+                  isNotification: false,
+                  isMessage: false,
+                  onSettingsTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (_) => SettingsPage(appContext: context))))
+            ])));
+      else
+        return ErrorPage();
+    });
   }
 
-  Column buildContent(BuildContext context) {
+  Column buildContent(BuildContext context, HealthPageData data) {
     return Column(children: [
       Divider(height: 0.5, color: AnthealthColors.black3),
       SizedBox(height: 16),
-      buildHealthIndicator(context),
+      buildHealthIndicator(context, data.getIndicatorsLatestData()),
       SizedBox(height: 32),
       Divider(height: 0.5, color: AnthealthColors.black3),
       SizedBox(height: 16),
@@ -55,7 +67,8 @@ class HealthPage extends StatelessWidget {
     ]);
   }
 
-  Container buildHealthIndicator(BuildContext context) {
+  Container buildHealthIndicator(
+      BuildContext context, List<double> indicatorLatestData) {
     return Container(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +85,7 @@ class HealthPage extends StatelessWidget {
                       .push(MaterialPageRoute(builder: (_) => HeightPage())),
                   colorID: 0,
                   iconPath: "assets/indicators/height.png",
-                  value: "1.70",
+                  value: indicatorLatestData[0].toString(),
                   unit: "m",
                   title: S.of(context).Height),
               SizedBox(width: 16),
@@ -181,10 +194,10 @@ class HealthPage extends StatelessWidget {
 
   Container buildPeriod(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
           CommonText.section(S.of(context).Period, context),
           SizedBox(height: 16),
           SectionComponent(
@@ -192,9 +205,7 @@ class HealthPage extends StatelessWidget {
               subTitle: "Cơ hội thụ thai thấp",
               colorID: 2,
               isWarning: true)
-        ],
-      ),
-    );
+        ]));
   }
 }
 

@@ -13,4 +13,6 @@ class ServerLogic {
   }
 
   static dynamic getData(String data) => jsonDecode(data)["msgData"];
+
+  static List<dynamic> formatList(String data) => jsonDecode(data);
 }

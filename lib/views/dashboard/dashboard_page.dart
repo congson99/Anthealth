@@ -45,8 +45,8 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Widget buildContent(CubitState state) {
     if (state is HomeState) return HomePage();
-    if (state is HealthState) return HealthPage(name: state.name);
-    if (state is MedicState) return MedicPage();
+    if (state is HealthState) return HealthPage(name: widget.name);
+    if (state is MedicState) return MedicPage(name: widget.name);
     if (state is FamilyState) return FamilyPage();
     if (state is CommunityState) return CommunityPage();
     return LoadingPage();
@@ -79,6 +79,11 @@ class _DashboardPageState extends State<DashboardPage> {
     if (state is HomeState) return 2;
     if (state is HealthState) return 3;
     if (state is MedicState) return 4;
+    if (state is FamilyLoadingState) return 0;
+    if (state is CommunityLoadingState) return 1;
+    if (state is HomeLoadingState) return 2;
+    if (state is HealthLoadingState) return 3;
+    if (state is MedicLoadingState) return 4;
     return 2;
   }
 }

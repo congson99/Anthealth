@@ -4,4 +4,5 @@ class MessageIDPath {
   static int checkToken() => 2121;
   static int register() => 2122;
   static int getUserBaseData() => 2100;
+  static int getHealthData() => 2211;
 }

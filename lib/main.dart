@@ -5,10 +5,13 @@ import 'package:anthealth_mobile/views/authentication/authentication_page.dart';
 import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
+import 'package:anthealth_mobile/views/medic/medic_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'views/common_widgets/bottom_navigation.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,19 +31,43 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        home: BlocProvider<AppCubit>(
-            create: (context) => AppCubit(),
-            child: BlocBuilder<AppCubit, CubitState>(
-              builder: (context, state) {
-                if (state is UnauthenticatedState) return AuthenticationPage();
-                if (state is AuthenticatedState)
-                  return DashboardPage(
-                      name: state.name, avatarPath: state.avatarPath);
-                if (state is ConnectErrorState)
-                  return ErrorPage(error: S.of(context).Cannot_connect);
-                else
-                  return AppLoadingPage();
-              },
-            )));
+        home: buildRoot());
+  }
+
+  BlocProvider<AppCubit> buildRoot() {
+    return BlocProvider<AppCubit>(
+        create: (context) => AppCubit(),
+        child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
+          if (state is UnauthenticatedState) return AuthenticationPage();
+          if (state is AuthenticatedState)
+            return DashboardPage(
+                name: state.name, avatarPath: state.avatarPath);
+          if (state is ConnectErrorState)
+            return ErrorPage(error: S.of(context).Cannot_connect);
+          else
+            return AppLoadingPage();
+        }));
+  }
+}
+
+class TempPage extends StatelessWidget {
+  const TempPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(children: [MedicPage(name: "Ho Cong Son"), buildBottomNavigation(context)]),
+      ),
+    );
+  }
+
+  Widget buildBottomNavigation(BuildContext context) {
+    return BottomNavigation(
+      size: MediaQuery.of(context).size,
+      index: 4,
+      imagePath: "",
+      onIndexChange: (int index) => {},
+    );
   }
 }

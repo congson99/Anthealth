@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:anthealth_mobile/blocs/app_state.dart';
+import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_state.dart';
+import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
+import 'package:anthealth_mobile/services/message/message_id_path.dart';
+import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardCubit extends Cubit<CubitState> {
@@ -12,8 +18,18 @@ class DashboardCubit extends Cubit<CubitState> {
     emit(HomeState());
   }
 
-  health(String name) {
-    emit(HealthState(name));
+  health(String name) async {
+    emit(HealthLoadingState());
+    await CommonService.instance
+        .send(MessageIDPath.getHealthData(), {}.toString());
+    CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getHealthData(), value)) {
+        List<double> indicatorLatestData = HealthPageData.formatIndicatorsList(ServerLogic.formatList(
+            ServerLogic.getData(value)["indicatorInfo"]));
+        emit(HealthState(HealthPageData(name, indicatorLatestData)));
+      }
+    });
   }
 
   medic() {

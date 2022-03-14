@@ -10,6 +10,7 @@ class SectionComponent extends StatelessWidget {
     this.subSubTitle,
     this.directionContent,
     this.isDirection,
+    this.iconPath,
     required this.colorID,
     this.isWarning,
   }) : super(key: key);
@@ -19,6 +20,7 @@ class SectionComponent extends StatelessWidget {
   final String? subSubTitle;
   final String? directionContent;
   final bool? isDirection;
+  final String? iconPath;
   final int colorID;
   final bool? isWarning;
 
@@ -48,39 +50,50 @@ class SectionComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title,
-                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            color: colorID == 0
-                                ? AnthealthColors.primary0
-                                : colorID == 1
-                                    ? AnthealthColors.secondary0
-                                    : AnthealthColors.warning0)),
-                    SizedBox(height: 4),
-                    subTitle == null
-                        ? Container()
-                        : Text(subTitle ?? "",
-                            style:
-                                Theme.of(context).textTheme.caption!.copyWith(
-                                    color: colorID == 0
-                                        ? AnthealthColors.primary1
-                                        : colorID == 1
-                                            ? AnthealthColors.secondary1
-                                            : AnthealthColors.warning1)),
-                    subSubTitle == null
-                        ? Container()
-                        : Text(subSubTitle ?? "",
-                            style:
-                                Theme.of(context).textTheme.caption!.copyWith(
-                                    color: colorID == 0
-                                        ? AnthealthColors.primary1
-                                        : colorID == 1
-                                            ? AnthealthColors.secondary1
-                                            : AnthealthColors.warning1))
-                  ]),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (iconPath != null) Image.asset(
+                      iconPath!,
+                      height: 20.0,
+                      fit: BoxFit.cover),
+                  if (iconPath != null) SizedBox(width: 8),
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(title,
+                            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                                color: colorID == 0
+                                    ? AnthealthColors.primary0
+                                    : colorID == 1
+                                        ? AnthealthColors.secondary0
+                                        : AnthealthColors.warning0)),
+                        SizedBox(height: 4),
+                        subTitle == null
+                            ? Container()
+                            : Text(subTitle ?? "",
+                                style:
+                                    Theme.of(context).textTheme.caption!.copyWith(
+                                        color: colorID == 0
+                                            ? AnthealthColors.primary1
+                                            : colorID == 1
+                                                ? AnthealthColors.secondary1
+                                                : AnthealthColors.warning1)),
+                        subSubTitle == null
+                            ? Container()
+                            : Text(subSubTitle ?? "",
+                                style:
+                                    Theme.of(context).textTheme.caption!.copyWith(
+                                        color: colorID == 0
+                                            ? AnthealthColors.primary1
+                                            : colorID == 1
+                                                ? AnthealthColors.secondary1
+                                                : AnthealthColors.warning1))
+                      ]),
+                ],
+              ),
               if (isDirection == null || isDirection == true)
                 Image.asset(
                     colorID == 0

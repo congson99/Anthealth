@@ -210,6 +210,16 @@ class S {
     );
   }
 
+  /// `Directory`
+  String get Directory {
+    return Intl.message(
+      'Directory',
+      name: 'Directory',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -655,6 +665,96 @@ class S {
     return Intl.message(
       'Delete SPO2 data',
       name: 'Delete_spo2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Medic-----------------------------`
+  String get _Medic {
+    return Intl.message(
+      '-----------------------------Medic-----------------------------',
+      name: '_Medic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medic records`
+  String get Medic_record {
+    return Intl.message(
+      'Medic records',
+      name: 'Medic_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medical records`
+  String get Medical_record {
+    return Intl.message(
+      'Medical records',
+      name: 'Medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medical history`
+  String get Medical_history {
+    return Intl.message(
+      'Medical history',
+      name: 'Medical_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medical appointments`
+  String get Medical_appointment {
+    return Intl.message(
+      'Medical appointments',
+      name: 'Medical_appointment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine Box Management`
+  String get Medicine_box_management {
+    return Intl.message(
+      'Medicine Box Management',
+      name: 'Medicine_box_management',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a new medicine box`
+  String get Add_medicine_box {
+    return Intl.message(
+      'Add a new medicine box',
+      name: 'Add_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medical directory`
+  String get Medical_directory {
+    return Intl.message(
+      'Medical directory',
+      name: 'Medical_directory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doctor directory`
+  String get Doctor_directory {
+    return Intl.message(
+      'Doctor directory',
+      name: 'Doctor_directory',
       desc: '',
       args: [],
     );

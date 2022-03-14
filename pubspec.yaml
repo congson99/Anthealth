@@ -64,6 +64,7 @@ flutter:
     - assets/app_icon/bottom_navigation/
     - assets/app_icon/common/
     - assets/app_icon/direction/
+    - assets/app_icon/small_icons/
     - assets/indicators/
 
   # An image asset can refer to one or more resolution-specific "variants", see

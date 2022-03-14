@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_heart_rate":
             MessageLookupByLibrary.simpleMessage("Add heart rate data"),
         "Add_height": MessageLookupByLibrary.simpleMessage("Add height data"),
+        "Add_medicine_box":
+            MessageLookupByLibrary.simpleMessage("Add a new medicine box"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Add SPO2 data"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
@@ -57,6 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Delete_weight":
             MessageLookupByLibrary.simpleMessage("Delete weight data"),
         "Detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "Directory": MessageLookupByLibrary.simpleMessage("Directory"),
+        "Doctor_directory":
+            MessageLookupByLibrary.simpleMessage("Doctor directory"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
@@ -94,6 +99,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "Medic": MessageLookupByLibrary.simpleMessage("Medic"),
+        "Medic_record": MessageLookupByLibrary.simpleMessage("Medic records"),
+        "Medical_appointment":
+            MessageLookupByLibrary.simpleMessage("Medical appointments"),
+        "Medical_directory":
+            MessageLookupByLibrary.simpleMessage("Medical directory"),
+        "Medical_history":
+            MessageLookupByLibrary.simpleMessage("Medical history"),
+        "Medical_record":
+            MessageLookupByLibrary.simpleMessage("Medical records"),
+        "Medicine_box_management":
+            MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -141,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Health-----------------------------"),
         "_Main": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Main-----------------------------"),
+        "_Medic": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Medic-----------------------------"),
         "_Time": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Time-----------------------------"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
