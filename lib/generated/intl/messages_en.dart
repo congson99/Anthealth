@@ -114,8 +114,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
             "This email is not registered!"),
+        "Number_of_record":
+            MessageLookupByLibrary.simpleMessage("Number of record"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Previous_medical_record":
+            MessageLookupByLibrary.simpleMessage("Previous"),
         "Record": MessageLookupByLibrary.simpleMessage("Records"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Record date"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
@@ -130,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
+        "Time": MessageLookupByLibrary.simpleMessage("Time"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this data?"),
@@ -177,8 +182,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
-        "no_record": MessageLookupByLibrary.simpleMessage(
+        "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "You have no records during this period"),
+        "no_medical_record":
+            MessageLookupByLibrary.simpleMessage("You have no medical records"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),

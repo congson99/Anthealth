@@ -1,12 +1,7 @@
-import 'dart:async';
-
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CommonTextField {
-  CommonTextField._();
-
   static Widget round(
           {required BuildContext context,
           required ValueChanged<String> onChanged,

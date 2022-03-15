@@ -7,7 +7,6 @@ class IndicatorState extends CubitState {
   final IndicatorPageData data;
 
   @override
-  // TODO: implement props
   List<Object> get props => [data];
 }
 
@@ -18,7 +17,6 @@ class IndicatorLoadingState extends CubitState {
   final IndicatorFilter filter;
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         IndicatorPageData(data.getType(), data.getLatestRecord(),
             data.getMoreInfo(), filter, [])

@@ -164,7 +164,7 @@ class _HeightPageState extends State<HeightPage> {
                     }),
               SizedBox(height: 24),
               if (!loading && data.getData().length == 0)
-                Text(S.of(context).no_record,
+                Text(S.of(context).no_indicator_record,
                     style: Theme.of(context).textTheme.bodyText2),
               if (loading) Center(child: CircularProgressIndicator()),
               if (data.getData().length > 1)

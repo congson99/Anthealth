@@ -671,10 +671,10 @@ class S {
   }
 
   /// `You have no records during this period`
-  String get no_record {
+  String get no_indicator_record {
     return Intl.message(
       'You have no records during this period',
-      name: 'no_record',
+      name: 'no_indicator_record',
       desc: '',
       args: [],
     );
@@ -775,6 +775,36 @@ class S {
     return Intl.message(
       'Doctor directory',
       name: 'Doctor_directory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no medical records`
+  String get no_medical_record {
+    return Intl.message(
+      'You have no medical records',
+      name: 'no_medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of record`
+  String get Number_of_record {
+    return Intl.message(
+      'Number of record',
+      name: 'Number_of_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Previous`
+  String get Previous_medical_record {
+    return Intl.message(
+      'Previous',
+      name: 'Previous_medical_record',
       desc: '',
       args: [],
     );
@@ -1025,6 +1055,16 @@ class S {
     return Intl.message(
       '-----------------------------Time-----------------------------',
       name: '_Time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get Time {
+    return Intl.message(
+      'Time',
+      name: 'Time',
       desc: '',
       args: [],
     );

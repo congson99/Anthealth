@@ -1,5 +1,4 @@
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SwitchBar extends StatelessWidget {
@@ -18,24 +17,30 @@ class SwitchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color color1 = colorID == 0
+        ? AnthealthColors.primary1
+        : colorID == 1
+            ? AnthealthColors.secondary1
+            : AnthealthColors.warning1;
+    Color color3 = colorID == 0
+        ? AnthealthColors.primary3
+        : colorID == 1
+            ? AnthealthColors.secondary3
+            : AnthealthColors.warning3;
+    Color color4 = colorID == 0
+        ? AnthealthColors.primary4
+        : colorID == 1
+            ? AnthealthColors.secondary4
+            : AnthealthColors.warning4;
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
+                BoxShadow(color: color3),
                 BoxShadow(
-                    color: colorID == 0
-                        ? AnthealthColors.primary3
-                        : colorID == 1
-                            ? AnthealthColors.secondary3
-                            : AnthealthColors.warning3),
-                BoxShadow(
-                    color: colorID == 0
-                        ? AnthealthColors.primary4
-                        : colorID == 1
-                            ? AnthealthColors.secondary4
-                            : AnthealthColors.warning4,
+                    color: color4,
                     spreadRadius: -1,
                     blurRadius: 1,
                     offset: Offset(-1, 1))
@@ -46,7 +51,7 @@ class SwitchBar extends StatelessWidget {
               children: content.map((value) {
                 return GestureDetector(
                     onTap: () => onIndexChange(content.indexOf(value)),
-                    child: value == content[index]
+                    child: (value == content[index])
                         ? Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 8),
@@ -63,8 +68,7 @@ class SwitchBar extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .caption!
-                                    .copyWith(color: AnthealthColors.black1)),
-                          )
+                                    .copyWith(color: AnthealthColors.black1)))
                         : Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 8),
@@ -72,12 +76,7 @@ class SwitchBar extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .caption!
-                                    .copyWith(
-                                        color: colorID == 0
-                                            ? AnthealthColors.primary1
-                                            : colorID == 1
-                                                ? AnthealthColors.secondary1
-                                                : AnthealthColors.warning1))));
+                                    .copyWith(color: color1))));
               }).toList()))
     ]);
   }

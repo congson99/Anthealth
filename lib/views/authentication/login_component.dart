@@ -11,7 +11,6 @@ import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_error_widget.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,10 +40,8 @@ class _LoginComponentState extends State<LoginComponent> {
   @override
   Widget build(BuildContext context) =>
       BlocBuilder<AuthenticationCubit, CubitState>(builder: (context, state) {
-        if (state is LoginState)
-          return buildContent(context, state.loginData);
-        else
-          return CustomErrorWidget(error: S.of(context).something_wrong);
+        if (state is LoginState) return buildContent(context, state.loginData);
+        return CustomErrorWidget(error: S.of(context).something_wrong);
       });
 
   Widget buildContent(BuildContext context, LoginData data) => Center(
@@ -73,8 +70,7 @@ class _LoginComponentState extends State<LoginComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .login(
-                              LoginData(value, data.getPassword()));
+                          .login(LoginData(value, data.getPassword()));
                       _disappearError();
                     }),
                 context: context,
@@ -86,8 +82,7 @@ class _LoginComponentState extends State<LoginComponent> {
             CommonTextField.round(
                 onChanged: (value) => setState(() {
                       BlocProvider.of<AuthenticationCubit>(context)
-                          .login(
-                              LoginData(data.getUsername(), value));
+                          .login(LoginData(data.getUsername(), value));
                       _disappearError();
                     }),
                 context: context,
@@ -145,8 +140,8 @@ class _LoginComponentState extends State<LoginComponent> {
   }
 
   void _loginAuthentication(BuildContext context, LoginData data) {
-    if (_checkUsername(data.getUsername())) if (_checkPassword(
-        data.getUsername(), data.getPassword())) {
+    if (_checkUsername(data.getUsername()) &&
+        _checkPassword(data.getUsername(), data.getPassword())) {
       BlocProvider.of<AuthenticationCubit>(context)
           .getToken(data)
           .then((token) {
@@ -166,28 +161,24 @@ class _LoginComponentState extends State<LoginComponent> {
 
   bool _checkUsername(String username) {
     var _result = AuthenticationLogic.checkValidEmail(context, username);
-    if (_result != 'ok') {
-      setState(() {
-        _errorUsername = _result;
-        _clearPassword(username);
-      });
-      FocusScope.of(context).requestFocus(_usernameFocus);
-      return false;
-    }
-    return true;
+    if (_result == 'ok') return true;
+    setState(() {
+      _errorUsername = _result;
+      _clearPassword(username);
+    });
+    FocusScope.of(context).requestFocus(_usernameFocus);
+    return false;
   }
 
   bool _checkPassword(String username, String password) {
     var _result = AuthenticationLogic.checkValidPassword(context, password);
-    if (_result != 'ok') {
-      setState(() {
-        _errorPassword = _result;
-        _clearPassword(username);
-      });
-      FocusScope.of(context).requestFocus(_passwordFocus);
-      return false;
-    }
-    return true;
+    if (_result == 'ok') return true;
+    setState(() {
+      _errorPassword = _result;
+      _clearPassword(username);
+    });
+    FocusScope.of(context).requestFocus(_passwordFocus);
+    return false;
   }
 
   void _disappearError() {

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
@@ -18,22 +16,26 @@ class DashboardCubit extends Cubit<CubitState> {
     emit(HomeState());
   }
 
-  health(String name) async {
+  health() async {
     emit(HealthLoadingState());
     await CommonService.instance
         .send(MessageIDPath.getHealthData(), {}.toString());
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getHealthData(), value)) {
-        List<double> indicatorLatestData = HealthPageData.formatIndicatorsList(ServerLogic.formatList(
-            ServerLogic.getData(value)["indicatorInfo"]));
-        emit(HealthState(HealthPageData(name, indicatorLatestData)));
+        List<double> indicatorLatestData = HealthPageData.formatIndicatorsList(
+            ServerLogic.formatList(
+                ServerLogic.getData(value)["indicatorInfo"]));
+        emit(HealthState(HealthPageData(indicatorLatestData)));
       }
     });
   }
 
   medic() {
-    emit(MedicState());
+    emit(MedicState(MedicPageData(
+        "18.10.2021 - BV Chợ Rẫy",
+        "21.02.2022 - BV ĐHYD",
+        ["Hộp thuốc ở nhà", "Hộp thuốc nhà nội", "Hộp thuốc dự phòng"])));
   }
 
   family() {

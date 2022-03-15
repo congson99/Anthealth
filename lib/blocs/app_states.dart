@@ -4,13 +4,11 @@ abstract class CubitState extends Equatable {}
 
 class InitialState extends CubitState {
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
 class ConnectErrorState extends CubitState {
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -22,12 +20,10 @@ class AuthenticatedState extends CubitState {
   final String avatarPath;
 
   @override
-  // TODO: implement props
   List<Object> get props => [token, name, avatarPath];
 }
 
 class UnauthenticatedState extends CubitState {
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }

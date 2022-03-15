@@ -10,9 +10,7 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: CustomErrorWidget(error: error!),
-        ),
-      ));
+          child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: CustomErrorWidget(error: error!))));
 }

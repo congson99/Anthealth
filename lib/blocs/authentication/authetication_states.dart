@@ -7,7 +7,6 @@ class LoginState extends CubitState {
   final LoginData loginData;
 
   @override
-  // TODO: implement props
   List<Object> get props => [loginData];
 }
 
@@ -17,12 +16,10 @@ class RegisterState extends CubitState {
   final RegisterData registerData;
 
   @override
-  // TODO: implement props
   List<Object> get props => [registerData];
 }
 
 class ForgotPasswordState extends CubitState {
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }

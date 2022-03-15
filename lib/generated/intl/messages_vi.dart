@@ -119,8 +119,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
             "Email này chưa được đăng ký!"),
+        "Number_of_record":
+            MessageLookupByLibrary.simpleMessage("Số lượng hồ sơ"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "Previous_medical_record":
+            MessageLookupByLibrary.simpleMessage("Lần khám trước"),
         "Record": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Ngày đo"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Giờ đo"),
@@ -135,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
+        "Time": MessageLookupByLibrary.simpleMessage("Thời gian"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xoá dữ liệu này không?"),
@@ -181,8 +186,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("T6"),
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
-        "no_record": MessageLookupByLibrary.simpleMessage(
+        "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
+        "no_medical_record": MessageLookupByLibrary.simpleMessage(
+            "Bạn chưa có hồ sơ khám bệnh nào"),
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
         "oct": MessageLookupByLibrary.simpleMessage("T10"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),

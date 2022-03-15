@@ -1,77 +1,188 @@
+import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
+import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
+import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
-import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_detail_records.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/widgets/medical_record_list.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
-class MedicalRecordPage extends StatefulWidget {
+class MedicalRecordPage extends StatelessWidget {
   const MedicalRecordPage({Key? key}) : super(key: key);
 
   @override
-  _MedicalRecordPageState createState() => _MedicalRecordPageState();
-}
+  Widget build(BuildContext context) => BlocProvider<MedicalRecordCubit>(
+      create: (context) => MedicalRecordCubit(),
+      child: BlocBuilder<MedicalRecordCubit, CubitState>(
+          builder: (context, state) {
+        if (state is MedicalRecordState)
+          return Scaffold(
+              body: SafeArea(
+                  child: Stack(children: [
+            Container(
+                margin: const EdgeInsets.only(top: 65),
+                child: SingleChildScrollView(
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 16),
+                        child: buildContent(context, state.data, state)))),
+            CustomAppBar(
+                title: S.of(context).Medical_record,
+                back: () => Navigator.pop(context),
+                add: () {},
+                settings: () {})
+          ])));
+        else
+          return LoadingPage();
+      }));
 
-class _MedicalRecordPageState extends State<MedicalRecordPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-            child: Stack(children: [
+  Widget buildContent(BuildContext context, MedicalRecordPageData pageData,
+          MedicalRecordState state) =>
+      Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CommonText.section(S.of(context).Record, context),
+            SizedBox(height: 16),
+            buildDetailContainer(context, pageData.getListYearLabel(), state),
+            if (pageData.getListAppointment().length != 0)
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: 32),
+                  CommonText.section(
+                      S.of(context).Medical_appointment, context),
+                  SizedBox(height: 16),
+                  buildAppointmentList(context, pageData.getListAppointment()),
+                ],
+              ),
+            SizedBox(height: 32)
+          ]);
+
+  Widget buildAppointmentList(
+          BuildContext context, List<MedicalAppointment> listAppointment) =>
+      Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: listAppointment
+              .map((data) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: SectionComponent(
+                        title: DateFormat("dd.MM.yyyy")
+                                .format(data.getDateTime()) +
+                            ' - ' +
+                            data.getLocation(),
+                        subTitle: S.of(context).Previous_medical_record +
+                            ": " +
+                            DateFormat("dd.MM.yyyy").format(data.getLastTime()),
+                        subSubTitle: data.getName(),
+                        onTap: () {
+                          //Todo
+                        },
+                        colorID: 1),
+                  ))
+              .toList());
+
+  Widget buildDetailContainer(
+          BuildContext context,
+          List<MedicalRecordYearLabel> listYearLabel,
+          MedicalRecordState state) =>
       Container(
-          margin: const EdgeInsets.only(top: 65),
-          child: SingleChildScrollView(
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  child: buildContent(context)))),
-      CustomAppBar(
-          title: S.of(context).Medical_record,
-          back: () => Navigator.pop(context),
-          add: () {},
-          settings: () {})
-    ])));
-  }
+          decoration: BoxDecoration(
+              color: AnthealthColors.primary5,
+              borderRadius: BorderRadius.circular(16)),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: (listYearLabel.length != 0)
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                      Container(
+                          height: 35,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(S.of(context).Time,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1!
+                                        .copyWith(
+                                            color: AnthealthColors.primary1)),
+                                Text(S.of(context).Number_of_record,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .copyWith(
+                                            color: AnthealthColors.primary1))
+                              ])),
+                      Divider(
+                          thickness: 1,
+                          height: 1,
+                          color: AnthealthColors.primary1),
+                      ...listYearLabel
+                          .map((data) => buildYearLabel(
+                              data, context, listYearLabel, state))
+                          .toList()
+                    ])
+              : Text(S.of(context).no_medical_record,
+                  style: Theme.of(context).textTheme.bodyText2));
 
-  Widget buildContent(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          CommonText.section(S.of(context).Record, context),
-          SizedBox(height: 16),
-          buildDetailContainer(context),
-          SizedBox(height: 32),
-          CommonText.section(S.of(context).Medical_appointment, context),
-          SizedBox(height: 16),
-          SectionComponent(
-              title: "21.02.2022 - BV ĐHYD",
-              subTitle: "Lần khám trước: 09.03.2021",
-              subSubTitle: "Nội dung: Khám mắt",
-              colorID: 1),
-          SizedBox(height: 32)
-        ]);
-  }
+  Widget buildYearLabel(
+          MedicalRecordYearLabel data,
+          BuildContext context,
+          List<MedicalRecordYearLabel> listYearLabel,
+          MedicalRecordState state) =>
+      Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            MedicalRecordLabelComponent(
+                left: data.getDateTime().year.toString(),
+                right: data.getQuantity().toString(),
+                isOpen: data.getOpeningState(),
+                onTap: () => BlocProvider.of<MedicalRecordCubit>(context)
+                    .updateOpeningState(
+                        listYearLabel.indexOf(data), state.data)),
+            if (data.getOpeningState())
+              Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: data
+                          .getData()
+                          .map((mData) => buildLabel(mData))
+                          .toList())),
+            if (listYearLabel.indexOf(data) < listYearLabel.length - 1)
+              Divider(
+                  thickness: 0.5, height: 0.5, color: AnthealthColors.primary1)
+          ]);
 
-  Widget buildDetailContainer(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            color: AnthealthColors.primary5,
-            borderRadius: BorderRadius.circular(16)),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IndicatorDetailRecords(
-                  unit: S.of(context).Record,
-                  dateTimeFormat: '',
-                  data: [],
-                  onTap: (index) => onDetailTap(index))
-            ]));
-  }
+  Widget buildLabel(MedicalRecordLabel mData) => Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Divider(
+                thickness: 0.5, height: 0.5, color: AnthealthColors.primary1),
+            MedicalRecordLabelComponent(
+                left: DateFormat('dd.MM').format(mData.getDateTime()) +
+                    ' ' +
+                    mData.getLocation(),
+                right: mData.getName(),
+                isOpen: false,
+                isDirection: false,
+                onTap: () {
+                  //Todo
+                })
+          ]);
 
   void onDetailTap(int index) {
     // if (_filterIndex == 1)
@@ -82,105 +193,4 @@ class _MedicalRecordPageState extends State<MedicalRecordPage> {
     // else
     //   showPopup(index);
   }
-
-// void showPopup(int index) {
-//   showDialog(
-//       context: context,
-//       builder: (_) => IndicatorDetailPopup(
-//           title: S.of(context).Height,
-//           value: detailData[0][index].value.toString(),
-//           unit: widget.unit,
-//           time: DateFormat('hh:mm dd.MM.yyyy')
-//               .format(detailData[0][index].dateTime),
-//           recordID: detailData[0][index].recordID,
-//           delete: () {
-//             Navigator.pop(context);
-//             showDialog(
-//                 context: context,
-//                 builder: (_) => WarningPopup(
-//                     title: S.of(context).Warning_delete_data,
-//                     cancel: () => Navigator.pop(context),
-//                     delete: () {
-//                       setState(() => detailData[0].removeAt(index));
-//                       Navigator.pop(context);
-//                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//                           content: Text(S.of(context).Delete_height +
-//                               ' ' +
-//                               S.of(context).successfully +
-//                               '!')));
-//                     }));
-//           },
-//           edit: () {
-//             Navigator.pop(context);
-//             showModalBottomSheet(
-//                 enableDrag: false,
-//                 isDismissible: true,
-//                 isScrollControlled: true,
-//                 shape: RoundedRectangleBorder(
-//                     borderRadius:
-//                         BorderRadius.vertical(top: Radius.circular(16))),
-//                 context: context,
-//                 builder: (_) => IndicatorEditBottomSheet(
-//                     title: S.of(context).Edit_height,
-//                     indicator: S.of(context).Height,
-//                     dataPicker: _dataPicker,
-//                     indexPicker: 250 - detailData[0][index].value,
-//                     dateTime: detailData[0][index].dateTime,
-//                     isDate: true,
-//                     unit: widget.unit,
-//                     cancel: () => Navigator.pop(context),
-//                     ok: (indexPicker, time) {
-//                       setState(() => detailData[0][index] = Indicator(
-//                           250 - indexPicker,
-//                           time,
-//                           detailData[0][index].recordID));
-//                       Navigator.pop(context);
-//                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//                           content: Text(S.of(context).Edit_height +
-//                               ' ' +
-//                               S.of(context).successfully +
-//                               '!')));
-//                     }));
-//           },
-//           close: () => Navigator.pop(context)));
-// }
-
-// List<String> convertToYearSwitchData(List<Indicator> heights) {
-//   List<String> result = [];
-//   for (Indicator x in heights) result.add(x.dateTime.year.toString());
-//   return result;
-// }
-//
-// List<FlSpot> convertToMonthChartData(List<Indicator> heights) {
-//   List<int> temp = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
-//   for (Indicator x in heights) temp[x.dateTime.month] = x.value;
-//   List<FlSpot> result = [];
-//   for (int i = 1; i <= 12; i++)
-//     if (temp[i] != -1) result.add(FlSpot(i.toDouble(), temp[i].toDouble()));
-//   return result;
-// }
-
-// List<FlSpot> convertToYearChartData(List<Indicator> heights) {
-//   List<FlSpot> result = [];
-//   for (Indicator x in heights)
-//     result.insert(0, FlSpot(x.dateTime.year.toDouble(), x.value.toDouble()));
-//   return result;
-// }
-//
-// List<IndicatorDetailRecord> convertToMonthDetailData(
-//     List<Indicator> heights) {
-//   List<IndicatorDetailRecord> result = [];
-//   for (Indicator x in heights)
-//     result.add(IndicatorDetailRecord(DateFormat('dd.MM').format(x.dateTime),
-//         (x.value ~/ 100).toString() + '.' + (x.value % 100).toString()));
-//   return result;
-// }
-
-// List<IndicatorDetailRecord> convertToYearDetailData(List<Indicator> heights) {
-//   List<IndicatorDetailRecord> result = [];
-//   for (Indicator x in heights)
-//     result.add(IndicatorDetailRecord(x.dateTime.year.toString(),
-//         (x.value ~/ 100).toString() + '.' + (x.value % 100).toString()));
-//   return result;
-// }
 }

@@ -21,7 +21,8 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   authenticated(String token) async {
-    await CommonService.instance.send(MessageIDPath.getUserBaseData(), {}.toString());
+    await CommonService.instance
+        .send(MessageIDPath.getUserBaseData(), {}.toString());
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getUserBaseData(), value)) {
@@ -87,6 +88,7 @@ class AppCubit extends Cubit<CubitState> {
     await CommonService.instance
         .send(MessageIDPath.checkToken(), data.toString());
     await CommonService.instance.client!.getData().then((value) {
+      if (value == 'null') valid = false;
       if (ServerLogic.checkMatchMessageID(MessageIDPath.checkToken(), value)) {
         valid = ServerLogic.getData(value)["valid"];
       }

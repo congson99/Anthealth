@@ -1,10 +1,7 @@
 class HealthPageData {
-  HealthPageData(this._name, this._indicatorsLatestData);
+  HealthPageData(this._indicatorsLatestData);
 
-  String _name;
   List<double> _indicatorsLatestData;
-
-  String getName() => _name;
 
   List<double> getIndicatorsLatestData() => _indicatorsLatestData;
 
@@ -15,4 +12,19 @@ class HealthPageData {
     // Todo: get second blood pressure value
     return result;
   }
+}
+
+class MedicPageData {
+  MedicPageData(
+      this._latestRecord, this._latestAppointment, this._listMedicineBox);
+
+  String _latestRecord;
+  String _latestAppointment;
+  List<String> _listMedicineBox;
+
+  String getLatestRecord() => _latestRecord;
+
+  String getLatestAppointment() => _latestAppointment;
+
+  List<String> getListMedicineBox() => _listMedicineBox;
 }
