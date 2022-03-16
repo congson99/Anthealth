@@ -20,19 +20,40 @@ class IndicatorPageData {
 
   List<IndicatorData> getData() => _data;
 
-  static List<FlSpot> convertToMonthChartData(List<IndicatorData> data) {
-    List<int> temp = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static List<IndicatorData> formatList(int type, List<dynamic> data) {
+    List<IndicatorData> temp = [];
+    // Detail
+    if (type == 0)
+      for (dynamic i in data)
+        temp.insert(
+            0,
+            IndicatorData(
+                0.0 + i["value"],
+                DateTime.fromMillisecondsSinceEpoch(i["time"] * 1000),
+                i["creator"].toString()));
+    // Year
+    if (type == 1)
+      for (dynamic i in data)
+        temp.insert(
+            0, IndicatorData(0.0 + i["value"], DateTime(i["year"]), ""));
+
+    return temp;
+  }
+
+  static List<FlSpot> convertToMonthChartLatestData(List<IndicatorData> data) {
+    List<double> temp = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
     for (IndicatorData x in data) temp[x.getDateTime().month] = x.getValue();
     List<FlSpot> result = [];
     for (int i = 1; i <= 12; i++)
-      if (temp[i] != -1) result.add(FlSpot(i.toDouble(), temp[i].toDouble()));
+      if (temp[i] != -1) result.add(FlSpot(i.toDouble(), temp[i].toDouble()*100));
     return result;
   }
 
   static List<FlSpot> convertToYearChartData(List<IndicatorData> data) {
     List<FlSpot> result = [];
     for (IndicatorData x in data)
-      result.insert(0, FlSpot(x.getDateTime().year.toDouble(), x.getValue().toDouble()));
+      result.insert(
+          0, FlSpot(x.getDateTime().year.toDouble(), x.getValue()*100));
     return result;
   }
 }
@@ -40,11 +61,11 @@ class IndicatorPageData {
 class IndicatorData {
   IndicatorData(this._value, this._dateTime, this._recordID);
 
-  final int _value;
+  final double _value;
   final DateTime _dateTime;
   final String _recordID;
 
-  int getValue() => _value;
+  double getValue() => _value;
 
   DateTime getDateTime() => _dateTime;
 
@@ -76,8 +97,11 @@ class MoreInfo {
 class IndicatorDataPicker {
   static List<String> height() {
     List<String> list = [];
-    for (int i = 1; i < 250; i++) {
-      list.add((i ~/ 100).toString() + '.' + (i % 100).toString());
+    for (int i = 0; i < 250; i++) {
+      list.add((i ~/ 100).toString() +
+          '.' +
+          ((i % 100 < 10) ? '0' : '') +
+          (i % 100).toString());
     }
     return list;
   }

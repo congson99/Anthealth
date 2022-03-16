@@ -5,11 +5,10 @@ import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class IndicatorCubit extends Cubit<CubitState> {
-  IndicatorCubit(int filterValue) : super(InitialState()) {
-    loadData(IndicatorFilter(0, filterValue));
+  IndicatorCubit(int type, int filterValue) : super(InitialState()) {
+    loadData(type, IndicatorFilter(0, filterValue));
   }
 
   // Initial State
@@ -24,18 +23,46 @@ class IndicatorCubit extends Cubit<CubitState> {
   // Update data
   void updateData(IndicatorPageData data, IndicatorFilter filter) {
     loadingData(data, filter);
-    loadData(filter);
+    loadData(data.getType(), filter);
   }
 
   // Service Function
-  Future<void> loadData(IndicatorFilter filter) async {
-    await CommonService.instance.send(MessageIDPath.checkConnect(), "");
+  Future<void> loadData(int type, IndicatorFilter filter) async {
+    var temp = {
+      "type": type,
+      "filterID": filter.getFilterIndex(),
+      "filterData": {"year": filter.getFilterValue()}
+    };
+    await CommonService.instance
+        .send(MessageIDPath.getIndicatorData(), temp.toString());
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
-          MessageIDPath.checkConnect(), value)) {
-        loadedData(IndicatorPageData(0, IndicatorData(0, DateTime.now(), ''),
-            MoreInfo('', ''), filter, []));
+          MessageIDPath.getIndicatorData(), value)) {
+        List<IndicatorData> list = IndicatorPageData.formatList(
+            filter.getFilterIndex(), ServerLogic.getData(value)["data"]);
+        var data = ServerLogic.getData(value)["latest"];
+        print(data);
+        loadedData(IndicatorPageData(type, IndicatorData(0, DateTime.now(), ''),
+            MoreInfo('', ''), filter, list));
       }
     });
+  }
+
+  Future<bool> addIndicator(int type, IndicatorData data) async {
+    var result = false;
+    var temp = {
+      "type": type,
+      "data": {
+        "value": data.getValue().toString(),
+        "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000
+      }
+    };
+    await CommonService.instance
+        .send(MessageIDPath.addIndicator(), temp.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.addIndicator(), value))
+        result = ServerLogic.getData(value)["status"];
+    });
+    return result;
   }
 }

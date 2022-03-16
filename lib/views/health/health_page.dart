@@ -146,12 +146,11 @@ class HealthPage extends StatelessWidget {
                       colorID: 2,
                       iconPath: "assets/indicators/blood_pressure.png",
                       value: ((indicatorLatestData[4] != 0)
-                              ? indicatorLatestData[4].toStringAsFixed(0)
-                              : '_') +
-                          '/' +
-                          ((indicatorLatestData[6] != 0)
-                              ? indicatorLatestData[6].toStringAsFixed(0)
-                              : '_'),
+                          ? indicatorLatestData[4].toStringAsFixed(0) +
+                              '/' +
+                              ((indicatorLatestData[4] * 1000) % 1000)
+                                  .toStringAsFixed(0)
+                          : '_'),
                       unit: "mmHg",
                       title: S.of(context).Blood_pressure),
                   SizedBox(width: 16),

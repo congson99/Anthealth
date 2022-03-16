@@ -6,4 +6,5 @@ class MessageIDPath {
   static int getUserBaseData() => 2100;
   static int getHealthData() => 2211;
   static int getIndicatorData() => 2212;
+  static int addIndicator() => 2214;
 }

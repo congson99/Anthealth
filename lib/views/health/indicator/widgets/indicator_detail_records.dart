@@ -1,7 +1,6 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -11,13 +10,15 @@ class IndicatorDetailRecords extends StatelessWidget {
       required this.unit,
       required this.dateTimeFormat,
       required this.data,
-      required this.onTap})
+      required this.onTap,
+      this.isDirection})
       : super(key: key);
 
   final String unit;
   final String dateTimeFormat;
   final List<IndicatorData> data;
   final Function(int) onTap;
+  final bool? isDirection;
 
   @override
   Widget build(BuildContext context) {
@@ -54,33 +55,42 @@ class IndicatorDetailRecords extends StatelessWidget {
                             height: 0.5,
                             color: AnthealthColors.primary1),
                         GestureDetector(
-                          onTap: () => onTap(data.indexOf(mData)),
-                          child: Container(
-                              height: 35,
-                              color: Colors.transparent,
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                        DateFormat(dateTimeFormat)
-                                            .format(mData.getDateTime()),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1!
-                                            .copyWith(
-                                                color:
-                                                    AnthealthColors.primary1)),
-                                    Text(mData.getValue().toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1!
-                                            .copyWith(
-                                                color:
-                                                    AnthealthColors.primary1))
-                                  ])),
-                        )
+                            onTap: () => onTap(data.indexOf(mData)),
+                            child: Container(
+                                height: 35,
+                                color: Colors.transparent,
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                          DateFormat(dateTimeFormat)
+                                              .format(mData.getDateTime()),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1!
+                                              .copyWith(
+                                                  color: AnthealthColors
+                                                      .primary1)),
+                                      Expanded(child: Container()),
+                                      Text(mData.getValue().toStringAsFixed(2),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1!
+                                              .copyWith(
+                                                  color: AnthealthColors
+                                                      .primary1)),
+                                      if (isDirection == true)
+                                        SizedBox(width: 8),
+                                      if (isDirection == true)
+                                        Image.asset(
+                                            "assets/app_icon/direction/right_pri1.png",
+                                            height: 12.0,
+                                            width: 12.0,
+                                            fit: BoxFit.cover)
+                                    ])))
                       ]))
               .toList()
         ]));
