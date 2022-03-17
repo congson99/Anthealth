@@ -148,7 +148,9 @@ class _HeightPageState extends State<HeightPage> {
               }),
         ],
       );
-  Widget buildDetailContent(IndicatorPageData data, BuildContext context) => Column(
+
+  Widget buildDetailContent(IndicatorPageData data, BuildContext context) =>
+      Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -176,14 +178,12 @@ class _HeightPageState extends State<HeightPage> {
                   isDirection: (data.getFilter().getFilterIndex() == 1))
           ]);
 
-
   // Hepper function
   Future<dynamic> buildAddIndicatorBottomSheet(
       BuildContext context, CubitState state) {
-    int formatLatest = (state is IndicatorState)
-        ? (state.data.getLatestRecord().getValue() * 100).toInt()
-        : 0;
-    if (formatLatest == 0) formatLatest = 100;
+    int formatLatest = 150;
+    if (state is IndicatorState)
+      formatLatest = (state.data.getLatestRecord().getValue() * 100).toInt();
     return showModalBottomSheet(
         enableDrag: false,
         isDismissible: true,
@@ -195,7 +195,7 @@ class _HeightPageState extends State<HeightPage> {
             title: S.of(context).Add_height,
             indicator: S.of(context).Height,
             dataPicker: IndicatorDataPicker.height(),
-            indexPicker: 250 - formatLatest,
+            indexPicker: formatLatest,
             dateTime: DateTime.now(),
             isDate: true,
             unit: widget.unit,
@@ -227,19 +227,19 @@ class _HeightPageState extends State<HeightPage> {
       BlocProvider.of<IndicatorCubit>(context).updateData(
           data, IndicatorFilter(0, data.getData()[index].getDateTime().year));
     } else
-      showPopup(index, data.getData());
+      showPopup(context, index, data);
   }
 
-  void showPopup(int index, List<IndicatorData> data) {
+  void showPopup(BuildContext context, int index, IndicatorPageData data) {
     showDialog(
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Height,
-            value: data[index].getValue().toString(),
+            value: data.getData()[index].getValue().toString(),
             unit: widget.unit,
             time: DateFormat('hh:mm dd.MM.yyyy')
-                .format(data[index].getDateTime()),
-            recordID: data[index].getRecordID(),
+                .format(data.getData()[index].getDateTime()),
+            recordID: data.getData()[index].getRecordID(),
             delete: () {
               Navigator.pop(context);
               showDialog(
@@ -248,13 +248,20 @@ class _HeightPageState extends State<HeightPage> {
                       title: S.of(context).Warning_delete_data,
                       cancel: () => Navigator.pop(context),
                       delete: () {
-                        // Todo
+                        BlocProvider.of<IndicatorCubit>(context)
+                            .deleteIndicator(data.getType(),
+                                data.getData()[index], data.getOwnerID())
+                            .then((value) {
+                          if (value)
+                            BlocProvider.of<IndicatorCubit>(context)
+                                .updateData(data, data.getFilter());
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(S.of(context).Delete_height +
+                                  ' ' +
+                                  S.of(context).successfully +
+                                  '!')));
+                        });
                         Navigator.pop(context);
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(S.of(context).Delete_height +
-                                ' ' +
-                                S.of(context).successfully +
-                                '!')));
                       }));
             },
             edit: () {
@@ -271,19 +278,29 @@ class _HeightPageState extends State<HeightPage> {
                       title: S.of(context).Edit_height,
                       indicator: S.of(context).Height,
                       dataPicker: IndicatorDataPicker.height(),
-                      indexPicker: 250,
-                      dateTime: data[index].getDateTime(),
+                      indexPicker:
+                          (data.getData()[index].getValue() * 100).toInt(),
+                      dateTime: data.getData()[index].getDateTime(),
                       isDate: true,
                       unit: widget.unit,
                       cancel: () => Navigator.pop(context),
                       ok: (indexPicker, time) {
-                        //TOdo
+                        BlocProvider.of<IndicatorCubit>(context)
+                            .editIndicator(
+                                data.getType(),
+                                data.getData()[index],
+                                IndicatorData(indexPicker / 100, time, ''),
+                                data.getOwnerID())
+                            .then((value) {
+                          BlocProvider.of<IndicatorCubit>(context)
+                              .updateData(data, data.getFilter());
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(S.of(context).Edit_height +
+                                  ' ' +
+                                  S.of(context).successfully +
+                                  '!')));
+                        });
                         Navigator.pop(context);
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(S.of(context).Edit_height +
-                                ' ' +
-                                S.of(context).successfully +
-                                '!')));
                       }));
             },
             close: () => Navigator.pop(context)));

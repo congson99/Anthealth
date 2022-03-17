@@ -18,7 +18,12 @@ class IndicatorLoadingState extends CubitState {
 
   @override
   List<Object> get props => [
-        IndicatorPageData(data.getType(), data.getLatestRecord(),
-            data.getMoreInfo(), filter, [])
+        IndicatorPageData(
+            data.getOwnerID(),
+            data.getOwnerName(),
+            data.getType(),
+            data.getLatestRecord(),
+            data.getMoreInfo(),
+            filter, [])
       ];
 }

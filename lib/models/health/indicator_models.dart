@@ -1,14 +1,22 @@
+import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'dart:convert';
 
 class IndicatorPageData {
-  IndicatorPageData(
-      this._type, this._latestRecord, this._moreInfo, this._filter, this._data);
+  IndicatorPageData(this._ownerID, this._ownerName, this._type,
+      this._latestRecord, this._moreInfo, this._filter, this._data);
 
+  final int _ownerID;
+  final String _ownerName;
   final int _type;
   final IndicatorData _latestRecord;
   final MoreInfo _moreInfo;
   final IndicatorFilter _filter;
   final List<IndicatorData> _data;
+
+  int getOwnerID() => _ownerID;
+
+  String getOwnerName() => _ownerName;
 
   int getType() => _type;
 
@@ -19,6 +27,28 @@ class IndicatorPageData {
   IndicatorFilter getFilter() => _filter;
 
   List<IndicatorData> getData() => _data;
+
+  static IndicatorPageData getPageData(
+      int type, IndicatorFilter filter, dynamic value) {
+    var latestData = ServerLogic.getData(value)["latest"];
+    IndicatorData latest = IndicatorData(
+        jsonDecode(latestData)["value"],
+        DateTime.fromMillisecondsSinceEpoch(
+            jsonDecode(latestData)["time"] * 1000),
+        '');
+    MoreInfo moreInfo = MoreInfo(ServerLogic.getData(value)["info"],
+        ServerLogic.getData(value)["infoUrl"]);
+    List<IndicatorData> list = IndicatorPageData.formatList(
+        filter.getFilterIndex(), ServerLogic.getData(value)["data"]);
+    return IndicatorPageData(
+        ServerLogic.getData(value)["owner"],
+        ServerLogic.getData(value)["name"],
+        type,
+        latest,
+        moreInfo,
+        filter,
+        list);
+  }
 
   static List<IndicatorData> formatList(int type, List<dynamic> data) {
     List<IndicatorData> temp = [];
@@ -42,10 +72,14 @@ class IndicatorPageData {
 
   static List<FlSpot> convertToMonthChartLatestData(List<IndicatorData> data) {
     List<double> temp = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
-    for (IndicatorData x in data) temp[x.getDateTime().month] = x.getValue();
+    for (IndicatorData x in data) {
+      if (temp[x.getDateTime().month] == -1)
+        temp[x.getDateTime().month] = x.getValue();
+    }
     List<FlSpot> result = [];
     for (int i = 1; i <= 12; i++)
-      if (temp[i] != -1) result.add(FlSpot(i.toDouble(), temp[i].toDouble()*100));
+      if (temp[i] != -1)
+        result.add(FlSpot(i.toDouble(), temp[i].toDouble() * 100));
     return result;
   }
 
@@ -53,7 +87,7 @@ class IndicatorPageData {
     List<FlSpot> result = [];
     for (IndicatorData x in data)
       result.insert(
-          0, FlSpot(x.getDateTime().year.toDouble(), x.getValue()*100));
+          0, FlSpot(x.getDateTime().year.toDouble(), x.getValue() * 100));
     return result;
   }
 }

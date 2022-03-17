@@ -18,7 +18,7 @@ class Client {
       socket?.listen(dataHandler,
           onError: _errorHandler, onDone: _doneHandler, cancelOnError: false);
     }).catchError((e) {
-      print("can not connect to server: " + e);
+      print("can not connect to server: " + e.toString());
       exit(0);
     });
   }

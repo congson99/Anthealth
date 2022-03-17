@@ -38,12 +38,7 @@ class IndicatorCubit extends Cubit<CubitState> {
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getIndicatorData(), value)) {
-        List<IndicatorData> list = IndicatorPageData.formatList(
-            filter.getFilterIndex(), ServerLogic.getData(value)["data"]);
-        var data = ServerLogic.getData(value)["latest"];
-        print(data);
-        loadedData(IndicatorPageData(type, IndicatorData(0, DateTime.now(), ''),
-            MoreInfo('', ''), filter, list));
+        loadedData(IndicatorPageData.getPageData(type, filter, value));
       }
     });
   }
@@ -62,6 +57,37 @@ class IndicatorCubit extends Cubit<CubitState> {
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.addIndicator(), value))
         result = ServerLogic.getData(value)["status"];
+    });
+    return result;
+  }
+
+  Future<bool> deleteIndicator(int type, IndicatorData data, int owner) async {
+    var result = false;
+    var temp = {
+      "type": type,
+      "data": {
+        "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000,
+        "owner": owner,
+      }
+    };
+    await CommonService.instance
+        .send(MessageIDPath.deleteIndicator(), temp.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.deleteIndicator(), value))
+        result = ServerLogic.getData(value)["status"];
+    });
+    return result;
+  }
+
+  Future<bool> editIndicator(
+      int type, IndicatorData oldData, IndicatorData newData, int owner) async {
+    var result = false;
+    await deleteIndicator(type, oldData, owner).then((value) async {
+      if (value)
+        await addIndicator(type, newData).then((value2) {
+          if (value2) result = true;
+        });
     });
     return result;
   }

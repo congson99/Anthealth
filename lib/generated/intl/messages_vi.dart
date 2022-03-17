@@ -103,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mật khẩu phải chứa ít nhất 8 ký tự"),
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
+        "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),
         "Medic_record": MessageLookupByLibrary.simpleMessage("Hồ sơ y tế"),
         "Medical_appointment":
