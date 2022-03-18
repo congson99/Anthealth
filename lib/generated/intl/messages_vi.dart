@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_weight": MessageLookupByLibrary.simpleMessage(
             "Thêm weight dữ liệu cân nặng"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
+        "April": MessageLookupByLibrary.simpleMessage("Tháng 4"),
+        "August": MessageLookupByLibrary.simpleMessage("Tháng 8"),
         "Authenticate": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
@@ -48,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
+        "Day": MessageLookupByLibrary.simpleMessage("Ngày"),
+        "December": MessageLookupByLibrary.simpleMessage("Tháng 12"),
         "Delete_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Xoá dữ liệu huyết áp"),
         "Delete_heart_rate":
@@ -86,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Enter_password":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mật khẩu"),
         "Family": MessageLookupByLibrary.simpleMessage("Gia đình"),
+        "February": MessageLookupByLibrary.simpleMessage("Tháng 2"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
         "Forgot_password":
@@ -97,13 +102,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
         "Home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "Hour": MessageLookupByLibrary.simpleMessage("Giờ"),
         "Invalid_email":
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải chứa ít nhất 8 ký tự"),
+        "January": MessageLookupByLibrary.simpleMessage("Tháng 1"),
+        "July": MessageLookupByLibrary.simpleMessage("Tháng 7"),
+        "June": MessageLookupByLibrary.simpleMessage("Tháng 6"),
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
+        "March": MessageLookupByLibrary.simpleMessage("Tháng 3"),
+        "May": MessageLookupByLibrary.simpleMessage("Tháng 5"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),
         "Medic_record": MessageLookupByLibrary.simpleMessage("Hồ sơ y tế"),
         "Medical_appointment":
@@ -116,12 +127,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hồ sơ khám bệnh"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
+        "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
             "Email này chưa được đăng ký!"),
+        "November": MessageLookupByLibrary.simpleMessage("Tháng 11"),
         "Number_of_record":
             MessageLookupByLibrary.simpleMessage("Số lượng hồ sơ"),
+        "October": MessageLookupByLibrary.simpleMessage("Tháng 10"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
         "Previous_medical_record":
@@ -134,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Đăng ký ngay"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
+        "September": MessageLookupByLibrary.simpleMessage("Tháng 9"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Đặt mật khẩu mới"),
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),

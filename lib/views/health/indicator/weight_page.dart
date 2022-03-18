@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/common_logic/dateTime_logic.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/health/indicator_cubit.dart';
 import 'package:anthealth_mobile/blocs/health/indicator_states.dart';
@@ -19,16 +20,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-class HeightPage extends StatelessWidget {
-  const HeightPage({Key? key, required this.dashboardContext})
+class WeightPage extends StatelessWidget {
+  const WeightPage({Key? key, required this.dashboardContext})
       : super(key: key);
 
   final BuildContext dashboardContext;
-  final String unit = 'm';
+  final String unit = 'kg';
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      create: (context) => IndicatorCubit(0),
+      create: (context) => IndicatorCubit(1),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState)
           return Scaffold(
@@ -64,7 +65,7 @@ class HeightPage extends StatelessWidget {
 
   // AppBar
   Widget buildAppBar(BuildContext context, CubitState state) => CustomAppBar(
-      title: S.of(context).Height,
+      title: S.of(context).Weight,
       back: () {
         BlocProvider.of<DashboardCubit>(dashboardContext).health();
         Navigator.pop(context);
@@ -85,7 +86,7 @@ class HeightPage extends StatelessWidget {
                 unit: unit,
                 value: (pageData.getLatestRecord().getValue() == 0)
                     ? ''
-                    : pageData.getLatestRecord().getValue().toStringAsFixed(2),
+                    : pageData.getLatestRecord().getValue().toStringAsFixed(1),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime()),
                 information: pageData.getMoreInfo()),
@@ -106,7 +107,11 @@ class HeightPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SwitchBar(
-                  content: [S.of(context).Year, S.of(context).All_time],
+                  content: [
+                    S.of(context).Month,
+                    S.of(context).Year,
+                    S.of(context).All_time
+                  ],
                   index: data.getFilter().getFilterIndex(),
                   onIndexChange: (index) =>
                       BlocProvider.of<IndicatorCubit>(context).updateData(
@@ -114,13 +119,49 @@ class HeightPage extends StatelessWidget {
                   colorID: 0,
                 ),
                 if (data.getFilter().getFilterIndex() == 0)
-                  buildNextPreviousBar(data, context),
+                  buildMonthNextPreviousBar(data, context),
+                if (data.getFilter().getFilterIndex() == 1)
+                  buildYearNextPreviousBar(data, context),
                 SizedBox(height: 24),
                 if (loading) Center(child: CircularProgressIndicator()),
                 if (!loading) buildDetailContent(data, context)
               ]));
 
-  Widget buildNextPreviousBar(IndicatorPageData data, BuildContext context) =>
+  Widget buildMonthNextPreviousBar(
+          IndicatorPageData data, BuildContext context) =>
+      Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 24),
+            NextPreviousBar(
+                content: DateTimeLogic.formatMonthYear(
+                    context, data.getFilter().getTime()),
+                increse: () {
+                  if ((data.getFilter().getTime().year < DateTime.now().year) ||
+                      (data.getFilter().getTime().year == DateTime.now().year &&
+                          data.getFilter().getTime().month <
+                              DateTime.now().month))
+                    BlocProvider.of<IndicatorCubit>(context).updateData(
+                        data,
+                        IndicatorFilter(
+                            0,
+                            IndicatorFilter.addMonth(
+                                data.getFilter().getTime(), 1)));
+                },
+                decrese: () {
+                  if (data.getFilter().getTime().year > 2000)
+                    BlocProvider.of<IndicatorCubit>(context).updateData(
+                        data,
+                        IndicatorFilter(
+                            0,
+                            IndicatorFilter.addMonth(
+                                data.getFilter().getTime(), -1)));
+                })
+          ]);
+
+  Widget buildYearNextPreviousBar(
+          IndicatorPageData data, BuildContext context) =>
       Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,7 +174,7 @@ class HeightPage extends StatelessWidget {
                     BlocProvider.of<IndicatorCubit>(context).updateData(
                         data,
                         IndicatorFilter(
-                            0,
+                            1,
                             IndicatorFilter.addYear(
                                 data.getFilter().getTime(), 1)));
                 },
@@ -142,7 +183,7 @@ class HeightPage extends StatelessWidget {
                     BlocProvider.of<IndicatorCubit>(context).updateData(
                         data,
                         IndicatorFilter(
-                            0,
+                            1,
                             IndicatorFilter.addYear(
                                 data.getFilter().getTime(), -1)));
                 })
@@ -159,35 +200,40 @@ class HeightPage extends StatelessWidget {
             if (data.getData().length > 1)
               IndicatorLineChart(
                   filterIndex: data.getFilter().getFilterIndex(),
-                  indicatorIndex: 0,
-                  data: data.getFilter().getFilterIndex() == 0
-                      ? IndicatorPageData.convertToMonthChartLatestData(
+                  indicatorIndex: 1,
+                  data: (data.getFilter().getFilterIndex() == 0)
+                      ? IndicatorPageData.convertToDayChartAvgData(
                           data.getData())
-                      : IndicatorPageData.convertToYearChartHeightData(
-                          data.getData())),
+                      : (data.getFilter().getFilterIndex() == 1)
+                          ? IndicatorPageData.convertToMonthChartAvgData(
+                              data.getData())
+                          : IndicatorPageData.convertToYearChartData(
+                              data.getData())),
             if (data.getData().length > 1) SizedBox(height: 24),
             if (data.getData().length != 0)
               IndicatorDetailRecords(
                   unit: unit,
                   dateTimeFormat: (data.getFilter().getFilterIndex() == 0)
                       ? 'dd.MM'
-                      : 'yyyy',
+                      : (data.getFilter().getFilterIndex() == 1)
+                          ? 'MM'
+                          : 'yyyy',
                   data: data.getData(),
-                  fixed: 2,
+                  fixed: 1,
                   onTap: (index) => onDetailTap(context, index, data),
-                  isDirection: (data.getFilter().getFilterIndex() == 1))
+                  isDirection: (data.getFilter().getFilterIndex() != 0))
           ]);
 
   // Hepper function
   Future<dynamic> buildAddIndicatorBottomSheet(
       BuildContext context, CubitState state) {
-    int formatLatest = 1;
-    int subFormatLatest = 60;
+    int formatLatest = 50;
+    int subFormatLatest = 0;
     if (state is IndicatorState &&
         state.data.getLatestRecord().getValue() != 0) {
       formatLatest = (state.data.getLatestRecord().getValue() ~/ 1).toInt();
       subFormatLatest =
-          ((state.data.getLatestRecord().getValue() * 100) % 100).toInt();
+          ((state.data.getLatestRecord().getValue() * 10) % 10).toInt();
     }
     return showModalBottomSheet(
         enableDrag: false,
@@ -197,10 +243,10 @@ class HeightPage extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
         context: context,
         builder: (_) => IndicatorEditBottomSheet(
-            title: S.of(context).Add_height,
-            indicator: S.of(context).Height,
-            dataPicker: IndicatorDataPicker.height(),
-            subDataPicker: IndicatorDataPicker.sub99(),
+            title: S.of(context).Add_weight,
+            indicator: S.of(context).Weight,
+            dataPicker: IndicatorDataPicker.weight(),
+            subDataPicker: IndicatorDataPicker.sub9(),
             indexPicker: formatLatest,
             subIndexPicker: subFormatLatest,
             dateTime: DateTime.now(),
@@ -208,17 +254,17 @@ class HeightPage extends StatelessWidget {
             unit: unit,
             cancel: () => Navigator.pop(context),
             ok: (indexPicker, subIndexPicker, time) => addRecord(
-                context, indexPicker + subIndexPicker / 100, time, state)));
+                context, indexPicker + subIndexPicker / 10, time, state)));
   }
 
   void addRecord(BuildContext context, double indexPicker, DateTime time,
       CubitState state) {
     BlocProvider.of<IndicatorCubit>(context)
-        .addIndicator(0, IndicatorData(indexPicker, time, ""))
+        .addIndicator(1, IndicatorData(indexPicker, time, ""))
         .then((value) {
       if (value)
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(S.of(context).Add_height +
+            content: Text(S.of(context).Add_weight +
                 ' ' +
                 S.of(context).successfully +
                 '!')));
@@ -234,15 +280,20 @@ class HeightPage extends StatelessWidget {
       showPopup(context, index, data);
       return;
     }
-    BlocProvider.of<IndicatorCubit>(context).updateData(
-        data, IndicatorFilter(0, data.getData()[index].getDateTime()));
+    if (data.getFilter().getFilterIndex() == 1) {
+      BlocProvider.of<IndicatorCubit>(context).updateData(
+          data, IndicatorFilter(0, data.getData()[index].getDateTime()));
+    } else {
+      BlocProvider.of<IndicatorCubit>(context).updateData(
+          data, IndicatorFilter(1, data.getData()[index].getDateTime()));
+    }
   }
 
   void showPopup(BuildContext context, int index, IndicatorPageData data) {
     showDialog(
         context: context,
         builder: (_) => IndicatorDetailPopup(
-            title: S.of(context).Height,
+            title: S.of(context).Weight,
             value: data.getData()[index].getValue().toString(),
             unit: unit,
             time: DateFormat('hh:mm dd.MM.yyyy')
@@ -264,7 +315,7 @@ class HeightPage extends StatelessWidget {
                             BlocProvider.of<IndicatorCubit>(context)
                                 .updateData(data, data.getFilter());
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(S.of(context).Delete_height +
+                              content: Text(S.of(context).Delete_weight +
                                   ' ' +
                                   S.of(context).successfully +
                                   '!')));
@@ -283,14 +334,14 @@ class HeightPage extends StatelessWidget {
                           BorderRadius.vertical(top: Radius.circular(16))),
                   context: context,
                   builder: (_) => IndicatorEditBottomSheet(
-                      title: S.of(context).Edit_height,
-                      indicator: S.of(context).Height,
-                      dataPicker: IndicatorDataPicker.height(),
-                      subDataPicker: IndicatorDataPicker.sub99(),
+                      title: S.of(context).Edit_weight,
+                      indicator: S.of(context).Weight,
+                      dataPicker: IndicatorDataPicker.weight(),
+                      subDataPicker: IndicatorDataPicker.sub9(),
                       indexPicker:
                           (data.getLatestRecord().getValue() ~/ 1).toInt(),
                       subIndexPicker:
-                          ((data.getLatestRecord().getValue() * 100) % 100)
+                          ((data.getLatestRecord().getValue() * 10) % 10)
                               .toInt(),
                       dateTime: data.getData()[index].getDateTime(),
                       isDate: true,
@@ -301,16 +352,14 @@ class HeightPage extends StatelessWidget {
                             .editIndicator(
                                 data.getType(),
                                 data.getData()[index],
-                                IndicatorData(
-                                    indexPicker + subIndexPicker / 100,
-                                    time,
-                                    ''),
+                                IndicatorData(indexPicker + subIndexPicker / 10,
+                                    time, ''),
                                 data.getOwnerID())
                             .then((value) {
                           BlocProvider.of<IndicatorCubit>(context)
                               .updateData(data, data.getFilter());
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(S.of(context).Edit_height +
+                              content: Text(S.of(context).Edit_weight +
                                   ' ' +
                                   S.of(context).successfully +
                                   '!')));

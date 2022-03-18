@@ -10,11 +10,14 @@ class IndicatorEditBottomSheet extends StatefulWidget {
     required this.title,
     required this.indicator,
     required this.dataPicker,
+    required this.subDataPicker,
     required this.indexPicker,
+    required this.subIndexPicker,
     required this.dateTime,
     this.isTime,
     this.isDate,
     required this.unit,
+    this.middleSymbol,
     required this.cancel,
     required this.ok,
   }) : super(key: key);
@@ -22,13 +25,16 @@ class IndicatorEditBottomSheet extends StatefulWidget {
   final String title;
   final String indicator;
   final List<String> dataPicker;
+  final List<String> subDataPicker;
   final int indexPicker;
+  final int subIndexPicker;
   final DateTime dateTime;
   final bool? isTime;
   final bool? isDate;
   final String unit;
+  final String? middleSymbol;
   final VoidCallback cancel;
-  final Function(int, DateTime) ok;
+  final Function(int, int, DateTime) ok;
 
   @override
   _IndicatorEditBottomSheetState createState() =>
@@ -38,13 +44,21 @@ class IndicatorEditBottomSheet extends StatefulWidget {
 class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
   List<String> _dataPicker = [];
   int _indexPickerData = 0;
+  List<String> _subDataPicker = [];
+  int _subIndexPickerData = 0;
+  DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
+  String symbol = '.';
 
   @override
   void initState() {
     _dataPicker = widget.dataPicker;
     _indexPickerData = widget.indexPicker;
+    _subDataPicker = widget.subDataPicker;
+    _subIndexPickerData = widget.subIndexPicker;
+    _date = widget.dateTime;
     _time = widget.dateTime;
+    if (widget.middleSymbol != null) symbol = widget.middleSymbol!;
     super.initState();
   }
 
@@ -89,7 +103,26 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CommonButton.cancel(context, widget.cancel),
-          CommonButton.ok(context, () => widget.ok(_indexPickerData, _time))
+          CommonButton.ok(
+              context,
+              () => widget.ok(
+                  _indexPickerData,
+                  _subIndexPickerData,
+                  DateTime(
+                      (widget.isDate == true)
+                          ? _date.year
+                          : DateTime.now().year,
+                      (widget.isDate == true)
+                          ? _date.month
+                          : DateTime.now().month,
+                      (widget.isDate == true) ? _date.day : DateTime.now().day,
+                      (widget.isTime == true)
+                          ? _time.hour
+                          : DateTime.now().hour,
+                      (widget.isTime == true)
+                          ? _time.minute
+                          : DateTime.now().minute,
+                      DateTime.now().second)))
         ]);
   }
 
@@ -119,8 +152,31 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
                       children: _dataPicker
                           .map((mData) => Center(child: Text(mData)))
                           .toList()))),
+          if (_subDataPicker.length > 0)
+            SizedBox(
+                width: 4,
+                child: Text(symbol,
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(color: AnthealthColors.black0))),
+          if (_subDataPicker.length > 0)
+            Expanded(
+                child: SizedBox(
+                    height: 75,
+                    child: CupertinoPicker(
+                        scrollController: FixedExtentScrollController(
+                            initialItem: _subIndexPickerData),
+                        looping: true,
+                        itemExtent: 30,
+                        onSelectedItemChanged: (int value) => setState(() {
+                              _subIndexPickerData = value;
+                            }),
+                        children: _subDataPicker
+                            .map((mData) => Center(child: Text(mData)))
+                            .toList()))),
           SizedBox(
-              width: MediaQuery.of(context).size.width / 8,
+              width: (widget.middleSymbol != null) ? 60 : MediaQuery.of(context).size.width / 8,
               child: Text(' ' + widget.unit,
                   style: Theme.of(context)
                       .textTheme
@@ -145,13 +201,13 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
               child: SizedBox(
                   height: 75,
                   child: CupertinoDatePicker(
-                    initialDateTime: _time,
-                    minimumDate: DateTime(1900),
-                    maximumDate: DateTime.now(),
-                    onDateTimeChanged: (DateTime value) =>
-                        setState(() => _time = value),
-                    mode: CupertinoDatePickerMode.time,
-                  )))
+                      initialDateTime: _time,
+                      minimumDate: DateTime(1900),
+                      maximumDate: DateTime(DateTime.now().year,
+                          DateTime.now().month, DateTime.now().day + 1),
+                      onDateTimeChanged: (DateTime value) =>
+                          setState(() => _time = value),
+                      mode: CupertinoDatePickerMode.time)))
         ]);
   }
 
@@ -171,11 +227,11 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
               child: SizedBox(
                   height: 75,
                   child: CupertinoDatePicker(
-                      initialDateTime: _time,
+                      initialDateTime: _date,
                       minimumDate: DateTime(1900),
                       maximumDate: DateTime.now(),
                       onDateTimeChanged: (DateTime value) =>
-                          setState(() => _time = value),
+                          setState(() => _date = value),
                       mode: CupertinoDatePickerMode.date)))
         ]);
   }

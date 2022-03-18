@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/blocs/common_logic/dateTime_logic.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -11,7 +12,8 @@ class IndicatorDetailRecords extends StatelessWidget {
       required this.dateTimeFormat,
       required this.data,
       required this.onTap,
-      this.isDirection})
+      this.isDirection,
+      required this.fixed})
       : super(key: key);
 
   final String unit;
@@ -19,6 +21,7 @@ class IndicatorDetailRecords extends StatelessWidget {
   final List<IndicatorData> data;
   final Function(int) onTap;
   final bool? isDirection;
+  final int fixed;
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +69,16 @@ class IndicatorDetailRecords extends StatelessWidget {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                          DateFormat(dateTimeFormat)
-                                              .format(mData.getDateTime()),
+                                          (dateTimeFormat == 'hh-hh')
+                                              ? (DateTimeLogic.formatHourToHour(
+                                                  mData.getDateTime()))
+                                              : ((dateTimeFormat == 'MM')
+                                                  ? DateTimeLogic.formatMonth(
+                                                      context,
+                                                      mData.getDateTime())
+                                                  : DateFormat(dateTimeFormat)
+                                                      .format(
+                                                          mData.getDateTime())),
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText1!
@@ -75,7 +86,17 @@ class IndicatorDetailRecords extends StatelessWidget {
                                                   color: AnthealthColors
                                                       .primary1)),
                                       Expanded(child: Container()),
-                                      Text(mData.getValue().toStringAsFixed(2),
+                                      Text(
+                                          (fixed != 10)
+                                              ? mData
+                                                  .getValue()
+                                                  .toStringAsFixed(fixed)
+                                              : ((mData.getValue() ~/ 1)
+                                                      .toString() +
+                                                  '/' +
+                                                  ((mData.getValue() * 1000) %
+                                                          1000)
+                                                      .toStringAsFixed(0)),
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText1!

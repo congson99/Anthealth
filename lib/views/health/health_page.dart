@@ -7,8 +7,12 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/header.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/height_page.dart';
-import 'package:anthealth_mobile/views/health/indicator/indicator_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/spo2_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/temperature_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/weight_page.dart';
 import 'package:anthealth_mobile/views/health/indicator_component_widget.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -53,7 +57,10 @@ class HealthPage extends StatelessWidget {
           SizedBox(height: 16),
           CommonText.section(S.of(context).Health_indicator, context),
           SizedBox(height: 16),
-          buildHealthIndicator(context, data.getIndicatorsLatestData()),
+          buildHealthIndicator(
+              context,
+              HealthPageData.handleIndicatorToShow(
+                  data.getIndicatorsLatestData())),
           SizedBox(height: 32),
           CustomDivider.common(),
           SizedBox(height: 16),
@@ -70,7 +77,7 @@ class HealthPage extends StatelessWidget {
   }
 
   Widget buildHealthIndicator(
-          BuildContext context, List<double> indicatorLatestData) =>
+          BuildContext context, List<String> indicatorLatestData) =>
       Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,41 +87,32 @@ class HealthPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   IndicatorComponent(
-                      onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => HeightPage())),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) =>
+                              HeightPage(dashboardContext: context))),
                       colorID: 0,
                       iconPath: "assets/indicators/height.png",
-                      value: (indicatorLatestData[0] != 0)
-                          ? indicatorLatestData[0].toString()
-                          : '_',
+                      value: indicatorLatestData[0],
                       unit: "m",
                       title: S.of(context).Height),
                   SizedBox(width: 16),
                   IndicatorComponent(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => IndicatorPage(
-                              indicatorIndex: 1,
-                              title: S.of(context).Weight,
-                              unit: "kg"))),
+                          builder: (_) =>
+                              WeightPage(dashboardContext: context))),
                       colorID: 1,
                       iconPath: "assets/indicators/weight.png",
-                      value: (indicatorLatestData[1] != 0)
-                          ? indicatorLatestData[1].toString()
-                          : '_',
+                      value: indicatorLatestData[1],
                       unit: "kg",
                       title: S.of(context).Weight),
                   SizedBox(width: 16),
                   IndicatorComponent(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => IndicatorPage(
-                              indicatorIndex: 2,
-                              title: S.of(context).Heart_rate,
-                              unit: "BPM"))),
+                          builder: (_) =>
+                              HeartRatePage(dashboardContext: context))),
                       colorID: 2,
                       iconPath: "assets/indicators/heart_rate.png",
-                      value: (indicatorLatestData[2] != 0)
-                          ? indicatorLatestData[2].toStringAsFixed(0)
-                          : '_',
+                      value: indicatorLatestData[2],
                       unit: "BPM",
                       title: S.of(context).Heart_rate)
                 ]),
@@ -125,46 +123,30 @@ class HealthPage extends StatelessWidget {
                 children: [
                   IndicatorComponent(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => IndicatorPage(
-                              indicatorIndex: 3,
-                              title: S.of(context).Temperature,
-                              unit: "°C"))),
+                          builder: (_) =>
+                              TemperaturePage(dashboardContext: context))),
                       colorID: 1,
                       iconPath: "assets/indicators/temperature.png",
-                      value: (indicatorLatestData[3] != 0)
-                          ? indicatorLatestData[3].toString()
-                          : '_',
+                      value: indicatorLatestData[3],
                       unit: "°C",
                       title: S.of(context).Temperature),
                   SizedBox(width: 16),
                   IndicatorComponent(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => IndicatorPage(
-                              indicatorIndex: 4,
-                              title: S.of(context).Blood_pressure,
-                              unit: "mmHg"))),
+                          builder: (_) =>
+                              BloodPressurePage(dashboardContext: context))),
                       colorID: 2,
                       iconPath: "assets/indicators/blood_pressure.png",
-                      value: ((indicatorLatestData[4] != 0)
-                          ? indicatorLatestData[4].toStringAsFixed(0) +
-                              '/' +
-                              ((indicatorLatestData[4] * 1000) % 1000)
-                                  .toStringAsFixed(0)
-                          : '_'),
-                      unit: "mmHg",
+                      value: indicatorLatestData[4],
+                      unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
                       title: S.of(context).Blood_pressure),
                   SizedBox(width: 16),
                   IndicatorComponent(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => IndicatorPage(
-                              indicatorIndex: 5,
-                              title: S.of(context).Spo2,
-                              unit: "%"))),
+                          builder: (_) => SPO2Page(dashboardContext: context))),
                       colorID: 0,
                       iconPath: "assets/indicators/spo2.png",
-                      value: (indicatorLatestData[5] != 0)
-                          ? indicatorLatestData[5].toStringAsFixed(0)
-                          : '_',
+                      value: indicatorLatestData[5],
                       unit: "%",
                       title: S.of(context).Spo2)
                 ])

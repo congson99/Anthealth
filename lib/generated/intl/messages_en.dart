@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
         "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
+        "April": MessageLookupByLibrary.simpleMessage("April"),
+        "August": MessageLookupByLibrary.simpleMessage("August"),
         "Authenticate": MessageLookupByLibrary.simpleMessage("Authenticate"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Authentication code"),
@@ -47,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Community": MessageLookupByLibrary.simpleMessage("Community"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "Day": MessageLookupByLibrary.simpleMessage("Day"),
+        "December": MessageLookupByLibrary.simpleMessage("December"),
         "Delete_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Delete blood Pressure data"),
         "Delete_heart_rate":
@@ -82,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Enter_password":
             MessageLookupByLibrary.simpleMessage("Please enter your password"),
         "Family": MessageLookupByLibrary.simpleMessage("Family"),
+        "February": MessageLookupByLibrary.simpleMessage("February"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Fill in information"),
         "Forgot_password":
@@ -93,11 +98,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "Hour": MessageLookupByLibrary.simpleMessage("Hour"),
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters"),
+        "January": MessageLookupByLibrary.simpleMessage("January"),
+        "July": MessageLookupByLibrary.simpleMessage("July"),
+        "June": MessageLookupByLibrary.simpleMessage("June"),
         "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
+        "March": MessageLookupByLibrary.simpleMessage("March"),
+        "May": MessageLookupByLibrary.simpleMessage("May"),
         "Medic": MessageLookupByLibrary.simpleMessage("Medic"),
         "Medic_record": MessageLookupByLibrary.simpleMessage("Medic records"),
         "Medical_appointment":
@@ -110,12 +121,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Medical records"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
+        "Month": MessageLookupByLibrary.simpleMessage("Month"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
             "This email is not registered!"),
+        "November": MessageLookupByLibrary.simpleMessage("November"),
         "Number_of_record":
             MessageLookupByLibrary.simpleMessage("Number of record"),
+        "October": MessageLookupByLibrary.simpleMessage("October"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
         "Previous_medical_record":
@@ -128,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Register now"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("The email was registered!"),
+        "September": MessageLookupByLibrary.simpleMessage("September"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Set a new password"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),

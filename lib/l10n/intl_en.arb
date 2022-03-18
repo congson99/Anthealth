@@ -10,6 +10,9 @@
   "_Common": "-----------------------------Common-----------------------------",
   "Detail": "Detail",
   "Unit": "Unit",
+  "Hour": "Hour",
+  "Day": "Day",
+  "Month": "Month",
   "Year": "Year",
   "All_time": "All time",
   "Add_by": "Add by",
@@ -116,5 +119,17 @@
   "sep": "SEP",
   "oct": "OCT",
   "nov": "NOV",
-  "dec": "DEC"
+  "dec": "DEC",
+  "January": "January",
+  "February": "February",
+  "March": "March",
+  "April": "April",
+  "May": "May",
+  "June": "June",
+  "July": "July",
+  "August": "August",
+  "September": "September",
+  "October": "October",
+  "November": "November",
+  "December": "December"
 }
