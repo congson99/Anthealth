@@ -380,6 +380,16 @@ class S {
     );
   }
 
+  /// `Logout`
+  String get Logout {
+    return Intl.message(
+      'Logout',
+      name: 'Logout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Health-----------------------------`
   String get _Health {
     return Intl.message(

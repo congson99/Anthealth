@@ -16,6 +16,7 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   unAuthenticate() async {
+    await CommonService.instance.send(MessageIDPath.logout(), {}.toString());
     removeToken();
     emit(UnauthenticatedState());
   }
@@ -40,7 +41,7 @@ class AppCubit extends Cubit<CubitState> {
     if (token != null)
       authenticate(token);
     else
-      unAuthenticate();
+      emit(UnauthenticatedState());
   }
 
   Future<void> saveToken(String token) async {
@@ -67,7 +68,7 @@ class AppCubit extends Cubit<CubitState> {
       if (value)
         authenticated(token);
       else
-        unAuthenticate();
+        emit(UnauthenticatedState());
     });
   }
 

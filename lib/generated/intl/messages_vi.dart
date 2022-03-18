@@ -113,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
+        "Logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "March": MessageLookupByLibrary.simpleMessage("Tháng 3"),
         "May": MessageLookupByLibrary.simpleMessage("Tháng 5"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),

@@ -32,6 +32,7 @@
   "Authenticate": "Authenticate",
   "Authentication_code": "Authentication code",
   "Set_new_password": "Set a new password",
+  "Logout": "Logout",
   "_Health": "-----------------------------Health-----------------------------",
   "Health_record": "Health records",
   "Height": "Hight",
