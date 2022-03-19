@@ -720,6 +720,86 @@ class S {
     );
   }
 
+  /// `Your BMI Index is `
+  String get Your_bmi {
+    return Intl.message(
+      'Your BMI Index is ',
+      name: 'Your_bmi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are `
+  String get You_are {
+    return Intl.message(
+      'You are ',
+      name: 'You_are',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `thinness`
+  String get thinness {
+    return Intl.message(
+      'thinness',
+      name: 'thinness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `normal`
+  String get normal {
+    return Intl.message(
+      'normal',
+      name: 'normal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `overweight`
+  String get overweight {
+    return Intl.message(
+      'overweight',
+      name: 'overweight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `obese class I`
+  String get obese_class_I {
+    return Intl.message(
+      'obese class I',
+      name: 'obese_class_I',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `obese class II`
+  String get obese_class_II {
+    return Intl.message(
+      'obese class II',
+      name: 'obese_class_II',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `obese class III`
+  String get obese_class_III {
+    return Intl.message(
+      'obese class III',
+      name: 'obese_class_III',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medic-----------------------------`
   String get _Medic {
     return Intl.message(

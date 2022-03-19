@@ -304,7 +304,7 @@ class HeartRatePage extends StatelessWidget {
         builder: (_) => IndicatorDetailPopup(
             //Todo
             title: S.of(context).Heart_rate,
-            value: data.getData()[index].getValue().toString(),
+            value: data.getData()[index].getValue().toStringAsFixed(0),
             unit: unit,
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(data.getData()[index].getDateTime()),

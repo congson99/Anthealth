@@ -293,7 +293,7 @@ class SPO2Page extends StatelessWidget {
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Spo2,
-            value: data.getData()[index].getValue().toString(),
+            value: data.getData()[index].getValue().toStringAsFixed(0),
             unit: unit,
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(data.getData()[index].getDateTime()),

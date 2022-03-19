@@ -164,8 +164,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Wrong_password":
             MessageLookupByLibrary.simpleMessage("Wrong password!"),
         "Year": MessageLookupByLibrary.simpleMessage("Year"),
+        "You_are": MessageLookupByLibrary.simpleMessage("You are "),
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("You are new User?"),
+        "Your_bmi": MessageLookupByLibrary.simpleMessage("Your BMI Index is "),
         "Your_name": MessageLookupByLibrary.simpleMessage("Your name"),
         "_Authentication": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Authentication-----------------------------"),
@@ -202,11 +204,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "You have no records during this period"),
         "no_medical_record":
             MessageLookupByLibrary.simpleMessage("You have no medical records"),
+        "normal": MessageLookupByLibrary.simpleMessage("normal"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
+        "obese_class_I": MessageLookupByLibrary.simpleMessage("obese class I"),
+        "obese_class_II":
+            MessageLookupByLibrary.simpleMessage("obese class II"),
+        "obese_class_III":
+            MessageLookupByLibrary.simpleMessage("obese class III"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
+        "overweight": MessageLookupByLibrary.simpleMessage("overweight"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Sorry, something wrong!"),
-        "successfully": MessageLookupByLibrary.simpleMessage("successfully")
+        "successfully": MessageLookupByLibrary.simpleMessage("successfully"),
+        "thinness": MessageLookupByLibrary.simpleMessage("thinness")
       };
 }

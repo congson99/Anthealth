@@ -297,7 +297,7 @@ class TemperaturePage extends StatelessWidget {
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Temperature,
-            value: data.getData()[index].getValue().toString(),
+            value: data.getData()[index].getValue().toStringAsFixed(1),
             unit: unit,
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(data.getData()[index].getDateTime()),

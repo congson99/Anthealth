@@ -298,7 +298,7 @@ class BloodPressurePage extends StatelessWidget {
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Blood_pressure,
-            value: data.getData()[index].getValue().toString(),
+            value: formatToShow(data.getData()[index].getValue()),
             unit: unit,
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(data.getData()[index].getDateTime()),

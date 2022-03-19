@@ -60,7 +60,8 @@ class HealthPage extends StatelessWidget {
           buildHealthIndicator(
               context,
               HealthPageData.handleIndicatorToShow(
-                  data.getIndicatorsLatestData())),
+                  data.getIndicatorsLatestData()),
+              data.getIndicatorsLatestData()[0]),
           SizedBox(height: 32),
           CustomDivider.common(),
           SizedBox(height: 16),
@@ -76,8 +77,8 @@ class HealthPage extends StatelessWidget {
         ]);
   }
 
-  Widget buildHealthIndicator(
-          BuildContext context, List<String> indicatorLatestData) =>
+  Widget buildHealthIndicator(BuildContext context,
+          List<String> indicatorLatestData, double latestHeight) =>
       Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -98,8 +99,9 @@ class HealthPage extends StatelessWidget {
                   SizedBox(width: 16),
                   IndicatorComponent(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) =>
-                              WeightPage(dashboardContext: context))),
+                          builder: (_) => WeightPage(
+                              dashboardContext: context,
+                              latestHeight: latestHeight))),
                       colorID: 1,
                       iconPath: "assets/indicators/weight.png",
                       value: indicatorLatestData[1],

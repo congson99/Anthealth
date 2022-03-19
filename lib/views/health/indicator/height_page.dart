@@ -243,7 +243,7 @@ class HeightPage extends StatelessWidget {
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Height,
-            value: data.getData()[index].getValue().toString(),
+            value: data.getData()[index].getValue().toStringAsFixed(2),
             unit: unit,
             time: DateFormat('hh:mm dd.MM.yyyy')
                 .format(data.getData()[index].getDateTime()),

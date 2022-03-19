@@ -21,11 +21,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class WeightPage extends StatelessWidget {
-  const WeightPage({Key? key, required this.dashboardContext})
+  const WeightPage(
+      {Key? key, required this.dashboardContext, required this.latestHeight})
       : super(key: key);
 
   final BuildContext dashboardContext;
   final String unit = 'kg';
+  final double latestHeight;
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
@@ -89,7 +91,10 @@ class WeightPage extends StatelessWidget {
                     : pageData.getLatestRecord().getValue().toStringAsFixed(1),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime()),
-                information: pageData.getMoreInfo()),
+                information: MoreInfo(
+                    BMICaulator(context, latestHeight,
+                        pageData.getLatestRecord().getValue()),
+                    pageData.getMoreInfo().getUrl())),
             buildDetailContainer(context, pageData, loading),
             SizedBox(height: 32)
           ]);
@@ -294,7 +299,7 @@ class WeightPage extends StatelessWidget {
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Weight,
-            value: data.getData()[index].getValue().toString(),
+            value: data.getData()[index].getValue().toStringAsFixed(1),
             unit: unit,
             time: DateFormat('hh:mm dd.MM.yyyy')
                 .format(data.getData()[index].getDateTime()),
@@ -368,5 +373,23 @@ class WeightPage extends StatelessWidget {
                       }));
             },
             close: () => Navigator.pop(context)));
+  }
+
+  String BMICaulator(BuildContext context, double height, double weight) {
+    if (height == 0 || weight == 0) return "";
+    double bmi = weight / (height * height);
+    String result;
+    result = S.of(context).normal;
+    if (bmi < 15.5) result = S.of(context).thinness;
+    if (bmi >= 25) result = S.of(context).overweight;
+    if (bmi >= 30) result = S.of(context).obese_class_I;
+    if (bmi >= 35) result = S.of(context).obese_class_II;
+    if (bmi >= 40) result = S.of(context).obese_class_III;
+    return S.of(context).Your_bmi +
+        bmi.toStringAsFixed(1) +
+        ". " +
+        S.of(context).You_are +
+        result +
+        ".";
   }
 }

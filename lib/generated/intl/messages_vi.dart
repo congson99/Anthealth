@@ -169,8 +169,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sai email hoặc mật khẩu!"),
         "Wrong_password": MessageLookupByLibrary.simpleMessage("Sai mật khẩu!"),
         "Year": MessageLookupByLibrary.simpleMessage("Năm"),
+        "You_are": MessageLookupByLibrary.simpleMessage("Bạn đang "),
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("Bạn là người dùng mới?"),
+        "Your_bmi":
+            MessageLookupByLibrary.simpleMessage("Chỉ số BMI của bạn là "),
         "Your_name": MessageLookupByLibrary.simpleMessage("Tên của bạn"),
         "_Authentication": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Authentication-----------------------------"),
@@ -207,11 +210,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
         "no_medical_record": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có hồ sơ khám bệnh nào"),
+        "normal": MessageLookupByLibrary.simpleMessage("bình thường"),
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
+        "obese_class_I":
+            MessageLookupByLibrary.simpleMessage("béo phì cấp độ I"),
+        "obese_class_II":
+            MessageLookupByLibrary.simpleMessage("béo phì cấp độ II"),
+        "obese_class_III":
+            MessageLookupByLibrary.simpleMessage("béo phì cấp độ III"),
         "oct": MessageLookupByLibrary.simpleMessage("T10"),
+        "overweight": MessageLookupByLibrary.simpleMessage("thừa cân"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Xin lỗi, đã xảy ra sự cố!"),
-        "successfully": MessageLookupByLibrary.simpleMessage("thành công")
+        "successfully": MessageLookupByLibrary.simpleMessage("thành công"),
+        "thinness": MessageLookupByLibrary.simpleMessage("gầy")
       };
 }

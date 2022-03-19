@@ -1,7 +1,6 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class IndicatorDetailPopup extends StatelessWidget {
   const IndicatorDetailPopup({
