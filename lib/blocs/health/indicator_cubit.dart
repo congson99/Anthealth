@@ -7,8 +7,8 @@ import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class IndicatorCubit extends Cubit<CubitState> {
-  IndicatorCubit(int type) : super(InitialState()) {
-    loadData(type, IndicatorFilter(0, DateTime.now()));
+  IndicatorCubit(int type, int filterID) : super(InitialState()) {
+    loadData(type, IndicatorFilter(filterID, DateTime.now()));
   }
 
   // Initial State

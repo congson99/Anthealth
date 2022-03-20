@@ -28,7 +28,7 @@ class SPO2Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      create: (context) => IndicatorCubit(5),
+      create: (context) => IndicatorCubit(5, 1),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState)
           return Scaffold(

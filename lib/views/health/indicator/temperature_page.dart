@@ -29,7 +29,7 @@ class TemperaturePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      create: (context) => IndicatorCubit(3),
+      create: (context) => IndicatorCubit(3, 1),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState)
           return Scaffold(
@@ -233,7 +233,8 @@ class TemperaturePage extends StatelessWidget {
     int subFormatLatest = 5;
     if (state is IndicatorState &&
         state.data.getLatestRecord().getValue() != 0) {
-      formatLatest = (state.data.getLatestRecord().getValue() ~/ 1).toInt();
+      formatLatest =
+          (state.data.getLatestRecord().getValue() ~/ 1).toInt() - 30;
       subFormatLatest =
           ((state.data.getLatestRecord().getValue() * 10) % 10).toInt();
     }
@@ -342,7 +343,7 @@ class TemperaturePage extends StatelessWidget {
                       dataPicker: IndicatorDataPicker.temperature(),
                       subDataPicker: IndicatorDataPicker.sub9(),
                       indexPicker:
-                          (data.getLatestRecord().getValue() ~/ 1).toInt(),
+                          (data.getLatestRecord().getValue() ~/ 1).toInt() - 30,
                       subIndexPicker:
                           ((data.getLatestRecord().getValue() * 10) % 10)
                               .toInt(),

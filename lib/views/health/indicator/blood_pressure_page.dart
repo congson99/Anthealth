@@ -15,7 +15,6 @@ import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_detail
 import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_detail_records.dart';
 import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_edit_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_latest_record.dart';
-import 'package:anthealth_mobile/views/health/indicator/widgets/indicator_line_chart.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +29,7 @@ class BloodPressurePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      create: (context) => IndicatorCubit(4),
+      create: (context) => IndicatorCubit(4, 1),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState)
           return Scaffold(

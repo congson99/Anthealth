@@ -31,7 +31,7 @@ class IndicatorLineChart extends StatelessWidget {
             topTitles: SideTitles(showTitles: false),
             bottomTitles: SideTitles(
                 showTitles: true,
-                interval: (data.last.x - data.first.x + 2) ~/ 5 + 2,
+                interval: (data.last.x - data.first.x + 5) ~/ 5 + 0,
                 reservedSize: 32,
                 margin: 8,
                 getTextStyles: (context, value) => Theme.of(context)
@@ -84,8 +84,8 @@ class IndicatorLineChart extends StatelessWidget {
                 bottom: BorderSide(width: 1, color: AnthealthColors.black1))),
         minX: data.first.x - 1,
         maxX: data.last.x + 1,
-        minY: minLeft(data) - 10,
-        maxY: (indicatorIndex == 5) ? 100 : maxLeft(data) + 10,
+        minY: minY(),
+        maxY: maxY(),
         lineBarsData: [
           LineChartBarData(
               spots: data,
@@ -104,18 +104,55 @@ class IndicatorLineChart extends StatelessWidget {
                     AnthealthColors.secondary1.withOpacity(0.3),
                     AnthealthColors.secondary2.withOpacity(0.3),
                     Colors.white.withOpacity(0.3)
-                  ]))
+                  ])),
+          LineChartBarData(
+              spots: warningData(data, indicatorIndex),
+              isCurved: false,
+              colors: [AnthealthColors.warning1.withOpacity(0.5)],
+              barWidth: 2,
+              isStrokeCapRound: true,
+              dotData: FlDotData(
+                show: false,
+              ))
         ]);
   }
 
+  List<FlSpot> warningData(List<FlSpot> data, int indicatorIndex) {
+    if (indicatorIndex == 3) return warningForm(data, 38);
+    if (indicatorIndex == 5) return warningForm(data, 94);
+    return [];
+  }
+
+  List<FlSpot> warningForm(List<FlSpot> data, double value) {
+    return [
+      FlSpot(data.first.x - 1.0, value),
+      FlSpot(data.last.x + 1.0, value)
+    ];
+  }
+
   double intervalLeft(List<FlSpot> data) {
-    double max = data.last.y;
-    double min = data.first.y;
-    for (FlSpot i in data) {
-      if (i.y > max) max = i.y;
-      if (i.y < min) min = i.y;
+    if (indicatorIndex == 0 || indicatorIndex == 2) {
+      if (maxLeft(data) - minLeft(data) > 20)
+        return 10;
+      else
+        return 5;
     }
-    return ((max - min + 20) ~/ 20) * 5;
+    if (indicatorIndex == 3) return 1;
+    if (maxLeft(data) - minLeft(data) > 40) return 5;
+    return 2;
+  }
+
+  double maxY() {
+    if (indicatorIndex == 0 || indicatorIndex == 2) return maxLeft(data) + 10;
+    if (indicatorIndex == 1 || indicatorIndex == 3) return maxLeft(data) + 2;
+    return 100;
+  }
+
+  double minY() {
+    if (indicatorIndex == 0 || indicatorIndex == 2)
+      return ((minLeft(data) - 5) ~/ 10) * 10;
+    if (indicatorIndex == 3) return 0.0 + (minLeft(data) - 2) ~/ 1;
+    return ((minLeft(data) - 2) ~/ 2) * 2;
   }
 
   double maxLeft(List<FlSpot> data) {

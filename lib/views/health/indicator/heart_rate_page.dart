@@ -29,8 +29,7 @@ class HeartRatePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      //Todo
-      create: (context) => IndicatorCubit(2),
+      create: (context) => IndicatorCubit(2, 1),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState)
           return Scaffold(

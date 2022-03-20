@@ -61,7 +61,7 @@ class BloodPressureLineChart extends StatelessWidget {
                 bottom: BorderSide(width: 1, color: AnthealthColors.black1))),
         minX: data.first.x - 1,
         maxX: data.last.x + 1,
-        minY: minLeft(data, secondData(data)) - 20,
+        minY: ((minLeft(data, secondData(data)) - 20) ~/ 20) * 20,
         maxY: maxLeft(data, secondData(data)) + 20,
         lineBarsData: [
           LineChartBarData(
@@ -72,16 +72,16 @@ class BloodPressureLineChart extends StatelessWidget {
               isStrokeCapRound: true,
               dotData: FlDotData(
                 show: true,
-
-              ),belowBarData: BarAreaData(
-              show: true,
-              gradientFrom: Offset(0, 0),
-              gradientTo: Offset(0, 1),
-              colors: [
-                AnthealthColors.secondary1.withOpacity(0.3),
-                AnthealthColors.secondary2.withOpacity(0.3),
-                Colors.white.withOpacity(0.3)
-              ])),
+              ),
+              belowBarData: BarAreaData(
+                  show: true,
+                  gradientFrom: Offset(0, 0),
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    AnthealthColors.secondary1.withOpacity(0.3),
+                    AnthealthColors.secondary2.withOpacity(0.3),
+                    Colors.white.withOpacity(0.3)
+                  ])),
           LineChartBarData(
               spots: secondData(data),
               isCurved: false,
@@ -90,16 +90,42 @@ class BloodPressureLineChart extends StatelessWidget {
               isStrokeCapRound: true,
               dotData: FlDotData(
                 show: true,
-              ),belowBarData: BarAreaData(
-              show: true,
-              gradientFrom: Offset(0, 0),
-              gradientTo: Offset(0, 1),
-              colors: [
-                AnthealthColors.primary1.withOpacity(0.3),
-                AnthealthColors.primary2.withOpacity(0.3),
-                Colors.white.withOpacity(0.3)
-              ]))
+              ),
+              belowBarData: BarAreaData(
+                  show: true,
+                  gradientFrom: Offset(0, 0),
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    AnthealthColors.primary1.withOpacity(0.3),
+                    AnthealthColors.primary2.withOpacity(0.3),
+                    Colors.white.withOpacity(0.3)
+                  ])),
+          LineChartBarData(
+              spots: lineWarning(data, 140),
+              isCurved: false,
+              colors: [AnthealthColors.secondary1.withOpacity(0.5)],
+              barWidth: 2,
+              isStrokeCapRound: true,
+              dotData: FlDotData(
+                show: false,
+              )),
+          LineChartBarData(
+              spots: lineWarning(data, 90),
+              isCurved: false,
+              colors: [AnthealthColors.primary1.withOpacity(0.5)],
+              barWidth: 2,
+              isStrokeCapRound: true,
+              dotData: FlDotData(
+                show: false,
+              ))
         ]);
+  }
+
+  List<FlSpot> lineWarning(List<FlSpot> data, double value) {
+    return [
+      FlSpot(data.first.x - 1.0, value),
+      FlSpot(data.last.x + 1.0, value)
+    ];
   }
 
   List<FlSpot> secondData(List<FlSpot> data) {
@@ -109,17 +135,8 @@ class BloodPressureLineChart extends StatelessWidget {
   }
 
   double intervalLeft(List<FlSpot> data, List<FlSpot> sData) {
-    double max = data.last.y;
-    double min = data.first.y;
-    for (FlSpot i in data) {
-      if (i.y > max) max = i.y;
-      if (i.y < min) min = i.y;
-    }
-    for (FlSpot i in sData) {
-      if (i.y > max) max = i.y;
-      if (i.y < min) min = i.y;
-    }
-    return ((max - min + 20) ~/ 20) * 5;
+    if ((maxLeft(data, sData) - minLeft(data, sData)) > 50) return 20;
+    return 10;
   }
 
   double maxLeft(List<FlSpot> data, List<FlSpot> sData) {
