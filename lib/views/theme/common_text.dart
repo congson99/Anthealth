@@ -9,4 +9,12 @@ class CommonText {
             .headline4!
             .copyWith(color: AnthealthColors.black1));
   }
+
+  static Widget subSection(String content, BuildContext context) {
+    return Text(content,
+        style: Theme.of(context)
+            .textTheme
+            .headline6!
+            .copyWith(color: AnthealthColors.black1));
+  }
 }

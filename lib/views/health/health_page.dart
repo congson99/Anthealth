@@ -13,7 +13,7 @@ import 'package:anthealth_mobile/views/health/indicator/height_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/spo2_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/temperature_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/weight_page.dart';
-import 'package:anthealth_mobile/views/health/indicator_component_widget.dart';
+import 'package:anthealth_mobile/views/health/widgets/indicator_component_widget.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -63,17 +63,17 @@ class HealthPage extends StatelessWidget {
                   data.getIndicatorsLatestData()),
               data.getIndicatorsLatestData()[0]),
           SizedBox(height: 32),
-          CustomDivider.common(),
-          SizedBox(height: 16),
-          CommonText.section(S.of(context).Activity, context),
-          SizedBox(height: 16),
-          buildActivity(context),
-          SizedBox(height: 32),
-          CustomDivider.common(),
-          SizedBox(height: 16),
-          CommonText.section(S.of(context).Period, context),
-          SizedBox(height: 16),
-          buildPeriod(context),
+          // CustomDivider.common(),
+          // SizedBox(height: 16),
+          // CommonText.section(S.of(context).Activity, context),
+          // SizedBox(height: 16),
+          // buildActivity(context),
+          // SizedBox(height: 32),
+          // CustomDivider.common(),
+          // SizedBox(height: 16),
+          // CommonText.section(S.of(context).Period, context),
+          // SizedBox(height: 16),
+          // buildPeriod(context),
         ]);
   }
 

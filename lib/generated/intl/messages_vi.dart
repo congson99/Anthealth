@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Delete_weight":
             MessageLookupByLibrary.simpleMessage("Xoá weight dữ liệu cân nặng"),
         "Detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "Diagnose": MessageLookupByLibrary.simpleMessage("Chẩn đoán"),
         "Directory": MessageLookupByLibrary.simpleMessage("Danh bạ"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
@@ -95,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "General_information":
+            MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "Health": MessageLookupByLibrary.simpleMessage("Sức khoẻ"),
         "Health_indicator":
             MessageLookupByLibrary.simpleMessage("Chỉ số sức khoẻ"),
@@ -110,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "January": MessageLookupByLibrary.simpleMessage("Tháng 1"),
         "July": MessageLookupByLibrary.simpleMessage("Tháng 7"),
         "June": MessageLookupByLibrary.simpleMessage("Tháng 6"),
+        "Latest": MessageLookupByLibrary.simpleMessage("Lần gần nhất"),
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
@@ -120,12 +124,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medic_record": MessageLookupByLibrary.simpleMessage("Hồ sơ y tế"),
         "Medical_appointment":
             MessageLookupByLibrary.simpleMessage("Lịch hẹn tái khám"),
+        "Medical_date": MessageLookupByLibrary.simpleMessage("Ngày khám"),
         "Medical_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ y tế"),
         "Medical_history":
             MessageLookupByLibrary.simpleMessage("Lịch sử khám bệnh"),
+        "Medical_location": MessageLookupByLibrary.simpleMessage("Nơi khám"),
         "Medical_record":
             MessageLookupByLibrary.simpleMessage("Hồ sơ khám bệnh"),
+        "Medical_record_detail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết hồ sơ"),
+        "Medical_test": MessageLookupByLibrary.simpleMessage("Xét nghiệm"),
+        "Medicine": MessageLookupByLibrary.simpleMessage("Thuốc"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
         "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
@@ -139,11 +149,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("Tháng 10"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "Prescription": MessageLookupByLibrary.simpleMessage("Đơn thuốc"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Lần khám trước"),
+        "Quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "Record": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Ngày đo"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Giờ đo"),
+        "Record_name": MessageLookupByLibrary.simpleMessage("Tên hồ sơ"),
         "Record_time": MessageLookupByLibrary.simpleMessage("Thời gian đo"),
         "Register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "Register_now": MessageLookupByLibrary.simpleMessage("Đăng ký ngay"),
@@ -210,6 +223,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
         "no_medical_record": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có hồ sơ khám bệnh nào"),
+        "no_section_data": MessageLookupByLibrary.simpleMessage(
+            "bạn chưa thêm dữ liệu nào cho mục này"),
         "normal": MessageLookupByLibrary.simpleMessage("bình thường"),
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
         "obese_class_I":

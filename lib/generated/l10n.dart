@@ -250,6 +250,26 @@ class S {
     );
   }
 
+  /// `General information`
+  String get General_information {
+    return Intl.message(
+      'General information',
+      name: 'General_information',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get Quantity {
+    return Intl.message(
+      'Quantity',
+      name: 'Quantity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -840,6 +860,16 @@ class S {
     );
   }
 
+  /// `Medical record detail`
+  String get Medical_record_detail {
+    return Intl.message(
+      'Medical record detail',
+      name: 'Medical_record_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medical history`
   String get Medical_history {
     return Intl.message(
@@ -855,6 +885,16 @@ class S {
     return Intl.message(
       'Medical appointments',
       name: 'Medical_appointment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine`
+  String get Medicine {
+    return Intl.message(
+      'Medicine',
+      name: 'Medicine',
       desc: '',
       args: [],
     );
@@ -925,6 +965,76 @@ class S {
     return Intl.message(
       'Previous',
       name: 'Previous_medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have not added any data for this section`
+  String get no_section_data {
+    return Intl.message(
+      'You have not added any data for this section',
+      name: 'no_section_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record name`
+  String get Record_name {
+    return Intl.message(
+      'Record name',
+      name: 'Record_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get Medical_location {
+    return Intl.message(
+      'Location',
+      name: 'Medical_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get Medical_date {
+    return Intl.message(
+      'Date',
+      name: 'Medical_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Test`
+  String get Medical_test {
+    return Intl.message(
+      'Test',
+      name: 'Medical_test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Diagnose`
+  String get Diagnose {
+    return Intl.message(
+      'Diagnose',
+      name: 'Diagnose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prescription`
+  String get Prescription {
+    return Intl.message(
+      'Prescription',
+      name: 'Prescription',
       desc: '',
       args: [],
     );
@@ -1185,6 +1295,16 @@ class S {
     return Intl.message(
       'Time',
       name: 'Time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest`
+  String get Latest {
+    return Intl.message(
+      'Latest',
+      name: 'Latest',
       desc: '',
       args: [],
     );

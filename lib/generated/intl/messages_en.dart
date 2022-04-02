@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Delete_weight":
             MessageLookupByLibrary.simpleMessage("Delete weight data"),
         "Detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "Diagnose": MessageLookupByLibrary.simpleMessage("Diagnose"),
         "Directory": MessageLookupByLibrary.simpleMessage("Directory"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
@@ -91,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fill in information"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "General_information":
+            MessageLookupByLibrary.simpleMessage("General information"),
         "Health": MessageLookupByLibrary.simpleMessage("Health"),
         "Health_indicator":
             MessageLookupByLibrary.simpleMessage("Health indicator"),
@@ -105,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "January": MessageLookupByLibrary.simpleMessage("January"),
         "July": MessageLookupByLibrary.simpleMessage("July"),
         "June": MessageLookupByLibrary.simpleMessage("June"),
+        "Latest": MessageLookupByLibrary.simpleMessage("Latest"),
         "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -114,12 +118,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medic_record": MessageLookupByLibrary.simpleMessage("Medic records"),
         "Medical_appointment":
             MessageLookupByLibrary.simpleMessage("Medical appointments"),
+        "Medical_date": MessageLookupByLibrary.simpleMessage("Date"),
         "Medical_directory":
             MessageLookupByLibrary.simpleMessage("Medical directory"),
         "Medical_history":
             MessageLookupByLibrary.simpleMessage("Medical history"),
+        "Medical_location": MessageLookupByLibrary.simpleMessage("Location"),
         "Medical_record":
             MessageLookupByLibrary.simpleMessage("Medical records"),
+        "Medical_record_detail":
+            MessageLookupByLibrary.simpleMessage("Medical record detail"),
+        "Medical_test": MessageLookupByLibrary.simpleMessage("Test"),
+        "Medicine": MessageLookupByLibrary.simpleMessage("Medicine"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
         "Month": MessageLookupByLibrary.simpleMessage("Month"),
@@ -133,11 +143,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("October"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Prescription": MessageLookupByLibrary.simpleMessage("Prescription"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Previous"),
+        "Quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "Record": MessageLookupByLibrary.simpleMessage("Records"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Record date"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
+        "Record_name": MessageLookupByLibrary.simpleMessage("Record name"),
         "Record_time": MessageLookupByLibrary.simpleMessage("Record time"),
         "Register": MessageLookupByLibrary.simpleMessage("Register"),
         "Register_now": MessageLookupByLibrary.simpleMessage("Register now"),
@@ -204,6 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "You have no records during this period"),
         "no_medical_record":
             MessageLookupByLibrary.simpleMessage("You have no medical records"),
+        "no_section_data": MessageLookupByLibrary.simpleMessage(
+            "You have not added any data for this section"),
         "normal": MessageLookupByLibrary.simpleMessage("normal"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "obese_class_I": MessageLookupByLibrary.simpleMessage("obese class I"),

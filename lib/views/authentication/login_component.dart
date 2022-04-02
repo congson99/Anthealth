@@ -96,8 +96,11 @@ class _LoginComponentState extends State<LoginComponent> {
                 alignment: Alignment.centerRight,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: InkWell(
-                    onTap: () => BlocProvider.of<AuthenticationCubit>(context)
-                        .forgotPassword(),
+                    onTap: () =>
+                    {
+                          // BlocProvider.of<AuthenticationCubit>(context)
+                          //     .forgotPassword()
+                        },
                     child: Text(S.of(context).Forgot_password,
                         style: Theme.of(context)
                             .textTheme

@@ -42,21 +42,20 @@ class MedicPage extends StatelessWidget {
         return ErrorPage();
       });
 
-  Column buildContent(BuildContext context, MedicPageData pageData) {
-    return Column(children: [
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      buildMedicalRecord(context, pageData),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      buildMedicineBoxManagement(context, pageData),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      buildDirectory(context)
-    ]);
-  }
+  Widget buildContent(BuildContext context, MedicPageData pageData) =>
+      Column(children: [
+        CustomDivider.common(),
+        SizedBox(height: 16),
+        buildMedicalRecord(context, pageData),
+        SizedBox(height: 32),
+        CustomDivider.common(),
+        SizedBox(height: 16),
+        buildMedicineBoxManagement(context, pageData),
+        SizedBox(height: 32),
+        CustomDivider.common(),
+        SizedBox(height: 16),
+        buildDirectory(context)
+      ]);
 
   Widget buildMedicalRecord(BuildContext context, MedicPageData pageData) =>
       Column(
@@ -67,7 +66,8 @@ class MedicPage extends StatelessWidget {
             SizedBox(height: 16),
             SectionComponent(
                 title: S.of(context).Medical_history,
-                subTitle: "Lần gần nhất" + ' :' + pageData.getLatestRecord(),
+                subTitle:
+                    S.of(context).Latest + ' :' + pageData.getLatestRecord(),
                 colorID: 0,
                 onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) => MedicalRecordPage()))),

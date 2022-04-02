@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardCubit extends Cubit<CubitState> {
   DashboardCubit() : super(InitialState()) {
-    home();
+    health();
   }
 
   // Initial State

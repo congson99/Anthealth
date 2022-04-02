@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/medical_record_detail_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/widgets/medical_record_list.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -66,6 +67,52 @@ class MedicalRecordPage extends StatelessWidget {
             SizedBox(height: 32)
           ]);
 
+  // Content
+  Widget buildDetailContainer(
+      BuildContext context,
+      List<MedicalRecordYearLabel> listYearLabel,
+      MedicalRecordState state) =>
+      Container(
+          decoration: BoxDecoration(
+              color: AnthealthColors.primary5,
+              borderRadius: BorderRadius.circular(16)),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: (listYearLabel.length != 0)
+              ? Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    height: 35,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).Time,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1!
+                                  .copyWith(
+                                  color: AnthealthColors.primary1)),
+                          Text(S.of(context).Number_of_record,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption!
+                                  .copyWith(
+                                  color: AnthealthColors.primary1))
+                        ])),
+                Divider(
+                    thickness: 1,
+                    height: 1,
+                    color: AnthealthColors.primary1),
+                ...listYearLabel
+                    .map((data) => buildYearLabel(
+                    data, context, listYearLabel, state))
+                    .toList()
+              ])
+              : Text(S.of(context).no_medical_record,
+              style: Theme.of(context).textTheme.bodyText2));
+
   Widget buildAppointmentList(
           BuildContext context, List<MedicalAppointment> listAppointment) =>
       Column(
@@ -89,51 +136,6 @@ class MedicalRecordPage extends StatelessWidget {
                         colorID: 1),
                   ))
               .toList());
-
-  Widget buildDetailContainer(
-          BuildContext context,
-          List<MedicalRecordYearLabel> listYearLabel,
-          MedicalRecordState state) =>
-      Container(
-          decoration: BoxDecoration(
-              color: AnthealthColors.primary5,
-              borderRadius: BorderRadius.circular(16)),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: (listYearLabel.length != 0)
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                      Container(
-                          height: 35,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(S.of(context).Time,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .copyWith(
-                                            color: AnthealthColors.primary1)),
-                                Text(S.of(context).Number_of_record,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .copyWith(
-                                            color: AnthealthColors.primary1))
-                              ])),
-                      Divider(
-                          thickness: 1,
-                          height: 1,
-                          color: AnthealthColors.primary1),
-                      ...listYearLabel
-                          .map((data) => buildYearLabel(
-                              data, context, listYearLabel, state))
-                          .toList()
-                    ])
-              : Text(S.of(context).no_medical_record,
-                  style: Theme.of(context).textTheme.bodyText2));
 
   Widget buildYearLabel(
           MedicalRecordYearLabel data,
@@ -159,14 +161,14 @@ class MedicalRecordPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: data
                           .getData()
-                          .map((mData) => buildLabel(mData))
+                          .map((mData) => buildLabel(context, mData))
                           .toList())),
             if (listYearLabel.indexOf(data) < listYearLabel.length - 1)
               Divider(
                   thickness: 0.5, height: 0.5, color: AnthealthColors.primary1)
           ]);
 
-  Widget buildLabel(MedicalRecordLabel mData) => Column(
+  Widget buildLabel(BuildContext context, MedicalRecordLabel mData) => Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -179,9 +181,10 @@ class MedicalRecordPage extends StatelessWidget {
                 right: mData.getName(),
                 isOpen: false,
                 isDirection: false,
-                onTap: () {
-                  //Todo
-                })
+                onTap: () =>
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => MedicalRecordDetailPage()))
+                )
           ]);
 
   void onDetailTap(int index) {
