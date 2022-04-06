@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Version: DEV 1.0.0 (02.03.2022)", style: Theme.of(context).textTheme.subtitle1),
+        Text("Version: DEV 1.0.0", style: Theme.of(context).textTheme.subtitle1),
         SizedBox(height: 16),
         Text("Completed features:", style: Theme.of(context).textTheme.bodyText2),
         SizedBox(height: 8),
