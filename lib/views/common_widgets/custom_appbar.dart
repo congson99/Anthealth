@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
           alignment: Alignment.bottomCenter,
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.only(top: 16, bottom: 16, right: 16, left: 12),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,12 +45,21 @@ class CustomAppBar extends StatelessWidget {
                     children: [
                       GestureDetector(
                           onTap: back,
-                          child: Image.asset(
-                              "assets/app_icon/direction/page_back.png",
-                              height: 16.0,
-                              width: 16.0,
-                              fit: BoxFit.cover)),
-                      SizedBox(width: 16),
+                          child: Container(
+                            height: 24,
+                            width: 24,
+                            decoration: BoxDecoration(
+                                color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(16)
+                            ),
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                                "assets/app_icon/direction/page_back.png",
+                                height: 16.0,
+                                width: 16.0,
+                                fit: BoxFit.cover),
+                          )),
+                      SizedBox(width: 8),
                       Container(
                         width: MediaQuery.of(context).size.width -
                             80 -

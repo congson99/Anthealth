@@ -1,8 +1,6 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation(
@@ -155,11 +153,13 @@ class BottomNavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 44,
-        width: itemIndex == 2 ? size.width * 0.2 + 4 : size.width * 0.2 - 16,
-        child: GestureDetector(
-            onTap: () => onIndexChange(itemIndex),
+    return GestureDetector(
+        onTap: () => onIndexChange(itemIndex),
+        child: Container(
+            height: 44,
+            width:
+                itemIndex == 2 ? size.width * 0.2 + 4 : size.width * 0.2 - 16,
+            color: Colors.transparent,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,

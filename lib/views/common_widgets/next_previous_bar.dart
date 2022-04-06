@@ -18,20 +18,36 @@ class NextPreviousBar extends StatelessWidget {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       GestureDetector(
           onTap: decrese,
-          child: Image.asset("assets/app_icon/direction/left_bla2.png",
-              height: 12.0, width: 12.0, fit: BoxFit.cover)),
-      SizedBox(width: 8),
+          child: Container(
+            height: 22.0,
+            width: 22.0,
+            decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(11)),
+            alignment: Alignment.center,
+            child: Image.asset("assets/app_icon/direction/left_bla2.png",
+                height: 12.0, width: 12.0, fit: BoxFit.cover)
+          )),
+      SizedBox(width: 4),
       Text(content,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context)
               .textTheme
               .bodyText2!
               .copyWith(color: AnthealthColors.black0)),
-      SizedBox(width: 8),
+      SizedBox(width: 4),
       GestureDetector(
           onTap: increse,
-          child: Image.asset("assets/app_icon/direction/right_bla2.png",
-              height: 12.0, width: 12.0, fit: BoxFit.cover))
+          child: Container(
+            height: 22.0,
+            width: 22.0,
+            decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(11)),
+            alignment: Alignment.center,
+            child: Image.asset("assets/app_icon/direction/right_bla2.png",
+                height: 12.0, width: 12.0, fit: BoxFit.cover)
+          ))
     ]);
   }
 }

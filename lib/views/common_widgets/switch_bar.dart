@@ -72,6 +72,7 @@ class SwitchBar extends StatelessWidget {
                         : Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 8),
+                            color: Colors.transparent,
                             child: Text(value,
                                 style: Theme.of(context)
                                     .textTheme
