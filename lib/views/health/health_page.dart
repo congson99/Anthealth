@@ -34,7 +34,7 @@ class HealthPage extends StatelessWidget {
                   child: Stack(children: [
                 Container(
                     margin: const EdgeInsets.only(
-                        left: 16, right: 16, top: 90, bottom: 130),
+                        left: 16, right: 16, top: 82, bottom: 130),
                     child: buildContent(context, state.healthPageData)),
                 Header(
                     title: S.of(context).Health_record,
@@ -63,17 +63,17 @@ class HealthPage extends StatelessWidget {
                   data.getIndicatorsLatestData()),
               data.getIndicatorsLatestData()[0]),
           SizedBox(height: 32),
-          // CustomDivider.common(),
-          // SizedBox(height: 16),
-          // CommonText.section(S.of(context).Activity, context),
-          // SizedBox(height: 16),
-          // buildActivity(context),
-          // SizedBox(height: 32),
-          // CustomDivider.common(),
-          // SizedBox(height: 16),
-          // CommonText.section(S.of(context).Period, context),
-          // SizedBox(height: 16),
-          // buildPeriod(context),
+          CustomDivider.common(),
+          SizedBox(height: 16),
+          CommonText.section(S.of(context).Activity, context),
+          SizedBox(height: 16),
+          buildActivity(context),
+          SizedBox(height: 32),
+          CustomDivider.common(),
+          SizedBox(height: 16),
+          CommonText.section(S.of(context).Period, context),
+          SizedBox(height: 16),
+          buildPeriod(context),
         ]);
   }
 

@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 ThemeData anthealthTheme() {
   TextTheme _anthealthTextTheme(TextTheme base) {
@@ -62,8 +63,7 @@ ThemeData anthealthTheme() {
     );
   }
 
-  final ThemeData base = ThemeData(fontFamily: 'RobotoMedium');
-  return base.copyWith(
-      scaffoldBackgroundColor: Colors.white,
-      textTheme: _anthealthTextTheme(base.textTheme));
+  final ThemeData base = ThemeData(
+      fontFamily: 'RobotoMedium', scaffoldBackgroundColor: Colors.white);
+  return base.copyWith(textTheme: _anthealthTextTheme(base.textTheme));
 }

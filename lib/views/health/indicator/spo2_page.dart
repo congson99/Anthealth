@@ -36,7 +36,7 @@ class SPO2Page extends StatelessWidget {
                   child: Stack(children: [
             Container(
                 margin: (state.data.getLatestRecord().getValue() != 0)
-                    ? EdgeInsets.only(top: 65)
+                    ? EdgeInsets.only(top: 57)
                     : EdgeInsets.only(top: 16),
                 child: SingleChildScrollView(
                     child: Container(
@@ -50,7 +50,7 @@ class SPO2Page extends StatelessWidget {
                   child: Stack(children: [
             Container(
                 margin: (state.data.getLatestRecord().getValue() != 0)
-                    ? EdgeInsets.only(top: 65)
+                    ? EdgeInsets.only(top: 57)
                     : EdgeInsets.only(top: 16),
                 child: SingleChildScrollView(
                     child: Container(

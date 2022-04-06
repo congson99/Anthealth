@@ -25,16 +25,16 @@ class CustomAppBar extends StatelessWidget {
       Container(
           height: 4,
           width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.only(top: 60),
+          margin: const EdgeInsets.only(top: 52),
           decoration: BoxDecoration(color: Colors.white, boxShadow: [
             BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8)
           ])),
       Container(
-          height: 64,
+          height: 56,
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
           alignment: Alignment.bottomCenter,
-          padding: const EdgeInsets.only(top: 16, bottom: 16, right: 16, left: 12),
+          padding: const EdgeInsets.only(top: 8, bottom: 16, right: 16, left: 12),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,

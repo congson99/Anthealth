@@ -30,7 +30,7 @@ class _HeaderState extends State<Header> {
       Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.only(bottom: 16),
-          height: 90,
+          height: 82,
           child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

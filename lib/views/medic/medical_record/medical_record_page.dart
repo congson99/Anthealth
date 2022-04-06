@@ -27,7 +27,7 @@ class MedicalRecordPage extends StatelessWidget {
               body: SafeArea(
                   child: Stack(children: [
             Container(
-                margin: const EdgeInsets.only(top: 65),
+                margin: const EdgeInsets.only(top: 57),
                 child: SingleChildScrollView(
                     child: Container(
                         padding: const EdgeInsets.symmetric(

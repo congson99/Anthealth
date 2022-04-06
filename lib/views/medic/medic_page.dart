@@ -28,7 +28,7 @@ class MedicPage extends StatelessWidget {
                   child: Stack(children: [
                 Container(
                     margin: const EdgeInsets.only(
-                        left: 16, right: 16, top: 90, bottom: 130),
+                        left: 16, right: 16, top: 82, bottom: 130),
                     child: buildContent(context, state.medicPageData)),
                 Header(
                     title: S.of(context).Medic_record,

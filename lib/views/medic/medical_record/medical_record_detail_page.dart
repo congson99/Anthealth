@@ -32,7 +32,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
             ),
             Container(
                 color: AnthealthColors.black4,
-                padding: const EdgeInsets.only(top: 65, left: 8, right: 8),
+                padding: const EdgeInsets.only(top: 57, left: 8, right: 8),
                 child: SingleChildScrollView(
                     child: buildContent(context, state.data, state))),
             CustomAppBar(

@@ -32,7 +32,7 @@ class DashboardPage extends StatelessWidget {
   Widget buildContent(CubitState state) {
     if (state is HomeState) return HomePage();
     if (state is HealthState) return HealthPage(name: name);
-    if (state is MedicState) return HomePage();
+    if (state is MedicState) return MedicPage(name: name);
     if (state is FamilyState) return HomePage();
     if (state is CommunityState) return HomePage();
     return LoadingPage();
