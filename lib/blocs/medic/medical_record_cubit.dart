@@ -50,7 +50,6 @@ class MedicalRecordCubit extends Cubit<CubitState> {
     for (int i = 0; i < 4; i++)
       for (File x in list[i]) {
         List<int> imageBytes = await File(x.path).readAsBytes();
-        print(imageBytes.toString());
         String base64Image = base64Encode(imageBytes);
         tempList[i].add(base64Image);
       }
@@ -79,7 +78,6 @@ class MedicalRecordCubit extends Cubit<CubitState> {
       };
       temp.addAll(tempAppointment);
     }
-    print(temp.toString());
     await CommonService.instance
         .send(MessageIDPath.addNewMedicalRecord(), temp.toString());
     await CommonService.instance.client!.getData().then((value) {

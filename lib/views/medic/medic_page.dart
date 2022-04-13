@@ -69,8 +69,9 @@ class MedicPage extends StatelessWidget {
                 subTitle:
                     S.of(context).Latest + ': ' + pageData.getLatestRecord(),
                 colorID: 0,
-                onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => MedicalRecordPage()))),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        MedicalRecordPage(dashboardContext: context)))),
             if (pageData.getLatestAppointment() != '') SizedBox(height: 16),
             if (pageData.getLatestAppointment() != '')
               SectionComponent(

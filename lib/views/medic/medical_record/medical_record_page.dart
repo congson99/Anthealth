@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
@@ -16,7 +17,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class MedicalRecordPage extends StatelessWidget {
-  const MedicalRecordPage({Key? key}) : super(key: key);
+  const MedicalRecordPage({Key? key, required this.dashboardContext})
+      : super(key: key);
+
+  final BuildContext dashboardContext;
 
   @override
   Widget build(BuildContext context) => BlocProvider<MedicalRecordCubit>(
@@ -36,7 +40,10 @@ class MedicalRecordPage extends StatelessWidget {
                         child: buildContent(context, state.data, state)))),
             CustomAppBar(
                 title: S.of(context).Medical_record,
-                back: () => Navigator.pop(context),
+                back: () {
+                  BlocProvider.of<DashboardCubit>(dashboardContext).medic();
+                  Navigator.pop(context);
+                },
                 add: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) =>
                         MedicalRecordAddPage(superContext: context))),

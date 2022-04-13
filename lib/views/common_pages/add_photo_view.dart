@@ -94,7 +94,6 @@ class _AddPhotoViewState extends State<AddPhotoView> {
       setState(() {
         this.image = File(mImage.path);
       });
-      print(mImage.name);
     } on PlatformException catch (e) {
       print("Failed to pick Image: $e");
     }

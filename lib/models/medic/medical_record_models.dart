@@ -205,7 +205,8 @@ class MedicalRecordDetailData {
           data.getDiagnosePhoto(),
           data.getPrescriptionPhoto(),
           data.getPrescription(),
-          data.getAppointment());
+          MedicalAppointment(data.getAppointment()!.getDateTime(), changeValue,
+              data.getLabel().getDateTime(), data.getAppointment()!.getName()));
     if (changeName == "time")
       return MedicalRecordDetailData(
           MedicalRecordLabel(data.getLabel().getID(), changeValue as DateTime,

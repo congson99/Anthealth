@@ -253,10 +253,10 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                     labelText: S.of(context).Medical_location,
                     data: state.locationList,
                     value: (state.data.getAppointment()!.getLocation() == "")
-                        ? null
-                        // ((state.data.getLabel().getLocation() == "")
-                        //         ? null
-                        //         : state.data.getLabel().getLocation())
+                        ?
+                        ((state.data.getLabel().getLocation() == "")
+                                ? null
+                                : state.data.getLabel().getLocation())
                         : state.data.getAppointment()!.getLocation(),
                     onChanged: (value) =>
                         BlocProvider.of<MedicalRecordDetailCubit>(context)
