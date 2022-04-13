@@ -45,4 +45,26 @@ class CommonButton {
                     .button!
                     .copyWith(color: Colors.white, fontSize: 18))));
   }
+
+  static Widget photo(BuildContext context, VoidCallback onTap, String content,
+      String imagePath, Color backgroundColor) {
+    return GestureDetector(
+        onTap: onTap,
+        child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.all(Radius.circular(16))),
+            child: Row(
+              children: [
+                Image.asset(imagePath, height: 16, fit: BoxFit.fitHeight),
+                SizedBox(width: 8),
+                Text(content,
+                    style: Theme.of(context)
+                        .textTheme
+                        .button!
+                        .copyWith(color: Colors.white, fontSize: 14, letterSpacing: 1)),
+              ],
+            )));
+  }
 }

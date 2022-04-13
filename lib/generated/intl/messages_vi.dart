@@ -30,8 +30,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thêm heart dữ liệu nhịp tim"),
         "Add_height":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu chiều cao"),
+        "Add_medical_record":
+            MessageLookupByLibrary.simpleMessage("Thêm hồ sơ"),
         "Add_medicine_box":
             MessageLookupByLibrary.simpleMessage("Thêm hộp thuốc mới"),
+        "Add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
+        "Add_record": MessageLookupByLibrary.simpleMessage("Thêm hồ sơ"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Thêm dữ liệu SPO2"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu nhiệt độ"),
@@ -50,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
+        "Content": MessageLookupByLibrary.simpleMessage("Nội dung"),
         "Day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "December": MessageLookupByLibrary.simpleMessage("Tháng 12"),
         "Delete_blood_pressure":
@@ -58,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xoá heart dữ liệu nhịp tim"),
         "Delete_height":
             MessageLookupByLibrary.simpleMessage("Xoá dữ liệu chiều cao"),
+        "Delete_photo": MessageLookupByLibrary.simpleMessage("Xoá ảnh"),
+        "Delete_record": MessageLookupByLibrary.simpleMessage("Xoá hồ sơ"),
         "Delete_spo2": MessageLookupByLibrary.simpleMessage("Xoá dữ liệu SPO2"),
         "Delete_temperature":
             MessageLookupByLibrary.simpleMessage("Xoá dữ liệu nhiệt độ"),
@@ -104,6 +111,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Hồ sơ sức khoẻ"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
+        "Hint_re_examination":
+            MessageLookupByLibrary.simpleMessage("Kiểm tra vết thương"),
+        "Hint_record_name":
+            MessageLookupByLibrary.simpleMessage("Khám bệnh cảm"),
         "Home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "Hour": MessageLookupByLibrary.simpleMessage("Giờ"),
         "Invalid_email":
@@ -149,10 +160,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("Tháng 10"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "Photo_view": MessageLookupByLibrary.simpleMessage("Xem ảnh"),
+        "Pick_camera": MessageLookupByLibrary.simpleMessage("Máy ảnh"),
+        "Pick_gallery": MessageLookupByLibrary.simpleMessage("Thư viện ảnh"),
         "Prescription": MessageLookupByLibrary.simpleMessage("Đơn thuốc"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Lần khám trước"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
+        "Re_examination":
+            MessageLookupByLibrary.simpleMessage("Lịch hẹn tái khám"),
         "Record": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Ngày đo"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Giờ đo"),
@@ -162,6 +178,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Đăng ký ngay"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
+        "Required_content":
+            MessageLookupByLibrary.simpleMessage("Nội dung bắt buộc"),
         "September": MessageLookupByLibrary.simpleMessage("Tháng 9"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Đặt mật khẩu mới"),
@@ -171,8 +189,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
         "Time": MessageLookupByLibrary.simpleMessage("Thời gian"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
+        "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn huỷ hồ sơ này không?"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xoá dữ liệu này không?"),
+        "Warning_delete_photo": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn xoá ảnh này không?"),
+        "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn xoá hồ sơ này không?"),
         "Water": MessageLookupByLibrary.simpleMessage("Uống nước"),
         "Weight": MessageLookupByLibrary.simpleMessage("Cân nặng"),
         "Wrong_authentication_code":
@@ -211,7 +235,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_delete": MessageLookupByLibrary.simpleMessage("XOÁ"),
         "button_edit": MessageLookupByLibrary.simpleMessage("SỬA"),
         "button_login": MessageLookupByLibrary.simpleMessage("ĐĂNG NHẬP"),
+        "button_no": MessageLookupByLibrary.simpleMessage("KHÔNG"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "button_yes": MessageLookupByLibrary.simpleMessage("CÓ"),
         "dec": MessageLookupByLibrary.simpleMessage("T12"),
         "feb": MessageLookupByLibrary.simpleMessage("T2"),
         "jan": MessageLookupByLibrary.simpleMessage("T1"),
@@ -235,6 +261,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("béo phì cấp độ III"),
         "oct": MessageLookupByLibrary.simpleMessage("T10"),
         "overweight": MessageLookupByLibrary.simpleMessage("thừa cân"),
+        "required_fill": MessageLookupByLibrary.simpleMessage(
+            "Bạn chưa điền đủ các nội dung bắt buộc"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Xin lỗi, đã xảy ra sự cố!"),

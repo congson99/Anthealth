@@ -270,6 +270,46 @@ class S {
     );
   }
 
+  /// `Photo view`
+  String get Photo_view {
+    return Intl.message(
+      'Photo view',
+      name: 'Photo_view',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Content`
+  String get Content {
+    return Intl.message(
+      'Content',
+      name: 'Content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required content`
+  String get Required_content {
+    return Intl.message(
+      'Required content',
+      name: 'Required_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have not filled in the required content`
+  String get required_fill {
+    return Intl.message(
+      'You have not filled in the required content',
+      name: 'required_fill',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -870,6 +910,16 @@ class S {
     );
   }
 
+  /// `Add medical record`
+  String get Add_medical_record {
+    return Intl.message(
+      'Add medical record',
+      name: 'Add_medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medical history`
   String get Medical_history {
     return Intl.message(
@@ -990,6 +1040,26 @@ class S {
     );
   }
 
+  /// `Sick`
+  String get Hint_record_name {
+    return Intl.message(
+      'Sick',
+      name: 'Hint_record_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Re-check the disease`
+  String get Hint_re_examination {
+    return Intl.message(
+      'Re-check the disease',
+      name: 'Hint_re_examination',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Location`
   String get Medical_location {
     return Intl.message(
@@ -1035,6 +1105,16 @@ class S {
     return Intl.message(
       'Prescription',
       name: 'Prescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Re-examination`
+  String get Re_examination {
+    return Intl.message(
+      'Re-examination',
+      name: 'Re_examination',
       desc: '',
       args: [],
     );
@@ -1110,11 +1190,121 @@ class S {
     );
   }
 
+  /// `YES`
+  String get button_yes {
+    return Intl.message(
+      'YES',
+      name: 'button_yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO`
+  String get button_no {
+    return Intl.message(
+      'NO',
+      name: 'button_no',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to delete this data?`
   String get Warning_delete_data {
     return Intl.message(
       'Are you sure you want to delete this data?',
       name: 'Warning_delete_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this photo?`
+  String get Warning_delete_photo {
+    return Intl.message(
+      'Are you sure you want to delete this photo?',
+      name: 'Warning_delete_photo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to cancel this record?`
+  String get Warning_cancel_record {
+    return Intl.message(
+      'Are you sure you want to cancel this record?',
+      name: 'Warning_cancel_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this record?`
+  String get Warning_delete_record {
+    return Intl.message(
+      'Are you sure you want to delete this record?',
+      name: 'Warning_delete_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add photo`
+  String get Add_photo {
+    return Intl.message(
+      'Add photo',
+      name: 'Add_photo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete photo`
+  String get Delete_photo {
+    return Intl.message(
+      'Delete photo',
+      name: 'Delete_photo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick Gallery`
+  String get Pick_gallery {
+    return Intl.message(
+      'Pick Gallery',
+      name: 'Pick_gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick Camera`
+  String get Pick_camera {
+    return Intl.message(
+      'Pick Camera',
+      name: 'Pick_camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add record`
+  String get Add_record {
+    return Intl.message(
+      'Add record',
+      name: 'Add_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete record`
+  String get Delete_record {
+    return Intl.message(
+      'Delete record',
+      name: 'Delete_record',
       desc: '',
       args: [],
     );

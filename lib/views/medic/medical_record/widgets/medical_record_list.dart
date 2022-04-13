@@ -27,17 +27,22 @@ class MedicalRecordLabelComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(left,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(color: AnthealthColors.primary1)),
+                  SizedBox(
+                    width: 200,
+                    child: Text(left,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            overflow: TextOverflow.ellipsis,
+                            color: AnthealthColors.primary1)),
+                  ),
                   Expanded(child: Container()),
-                  Text(right,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(color: AnthealthColors.primary1)),
+                  Container(
+                    width: 100,
+                    alignment: Alignment.centerRight,
+                    child: Text(right,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            overflow: TextOverflow.ellipsis,
+                            color: AnthealthColors.primary1)),
+                  ),
                   if (isDirection != false) SizedBox(width: 8),
                   if (isDirection != false)
                     isOpen

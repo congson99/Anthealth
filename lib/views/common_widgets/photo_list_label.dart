@@ -35,16 +35,15 @@ class PhotoListLabel extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                           GestureDetector(
-                            onTap: onTap,
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: Image.network(url,
-                                    height:
-                                        (width - 16 * maxSize + 16) / maxSize,
-                                    width:
-                                        (width - 16 * maxSize + 16) / maxSize,
-                                    fit: BoxFit.cover)),
-                          ),
+                              onTap: onTap,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: Image.network(url,
+                                      height:
+                                          (width - 16 * maxSize + 16) / maxSize,
+                                      width:
+                                          (width - 16 * maxSize + 16) / maxSize,
+                                      fit: BoxFit.cover))),
                           SizedBox(width: 16)
                         ])))
                 .toList() +
@@ -59,8 +58,7 @@ class PhotoListLabel extends StatelessWidget {
                             child: Image.network(photoPath[maxSize - 1],
                                 height: (width - 16 * maxSize + 16) / maxSize,
                                 width: (width - 16 * maxSize + 16) / maxSize,
-                                fit: BoxFit.cover)),
-                      )
+                                fit: BoxFit.cover)))
                     : Container(),
                 (isOverFlow)
                     ? GestureDetector(
@@ -78,8 +76,7 @@ class PhotoListLabel extends StatelessWidget {
                                     .textTheme
                                     .bodyText1!
                                     .copyWith(
-                                        color: Colors.white, fontSize: 42))),
-                      )
+                                        color: Colors.white, fontSize: 42))))
                     : Container()
               ]))
             ]);

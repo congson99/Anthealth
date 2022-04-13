@@ -3,12 +3,12 @@ import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class WarningPopup extends StatelessWidget {
-  const WarningPopup({
-    Key? key,
-    required this.title,
-    required this.delete,
-    required this.cancel,
-  }) : super(key: key);
+  const WarningPopup(
+      {Key? key,
+      required this.title,
+      required this.delete,
+      required this.cancel})
+      : super(key: key);
 
   final String title;
   final VoidCallback delete;
@@ -26,7 +26,7 @@ class WarningPopup extends StatelessWidget {
         backgroundColor: Colors.white,
         actions: [
           TextButton(
-              child: Text(S.of(context).button_delete,
+              child: Text(S.of(context).button_yes,
                   style: Theme.of(context)
                       .textTheme
                       .button!
@@ -34,7 +34,7 @@ class WarningPopup extends StatelessWidget {
               onPressed: delete),
           Container(width: 1, height: 16, color: AnthealthColors.black3),
           TextButton(
-              child: Text(S.of(context).button_cancel,
+              child: Text(S.of(context).button_no,
                   style: Theme.of(context)
                       .textTheme
                       .button!

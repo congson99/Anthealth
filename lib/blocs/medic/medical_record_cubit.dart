@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
@@ -26,35 +29,79 @@ class MedicalRecordCubit extends Cubit<CubitState> {
   }
 
   // Service Function
-  Future<void> loadData() async {
-    await CommonService.instance.send(MessageIDPath.checkConnect(), "");
+  void loadData() async {
+    emit(InitialState());
+    await CommonService.instance
+        .send(MessageIDPath.getMedicalRecordPageData(), "");
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
-          MessageIDPath.checkConnect(), value)) {
-        loadedData(MedicalRecordPageData([
-          MedicalRecordYearLabel(
-              DateTime.now(),
-              2,
-              [
-                MedicalRecordLabel(DateTime.now(), '_location', '_name'),
-                MedicalRecordLabel(DateTime.now(), '_loca2tion', '_nam2e')
-              ],
-              false),
-          MedicalRecordYearLabel(
-              DateTime.now(),
-              3,
-              [
-                MedicalRecordLabel(DateTime.now(), '_location', '_name'),
-                MedicalRecordLabel(DateTime.now(), '_loca2tion', '_nam2e'),
-                MedicalRecordLabel(DateTime.now(), '_loca2tion', '_nam2e')
-              ],
-              false)
-        ], [
-          MedicalAppointment(
-              DateTime.now(), "_location", DateTime.now(), "_name"),MedicalAppointment(
-              DateTime.now(), "_location", DateTime.now(), "_name")
-        ]));
+          MessageIDPath.getMedicalRecordPageData(), value)) {
+        loadedData(MedicalRecordPageData.formatData(
+            ServerLogic.getData(value)["listRecord"],
+            ServerLogic.getData(value)["listAppointment"]));
       }
     });
+  }
+
+  Future<bool> addData(
+      MedicalRecordDetailData data, List<List<File>> list) async {
+    bool result = false;
+    List<List<String>> tempList = [[], [], [], []];
+    for (int i = 0; i < 4; i++)
+      for (File x in list[i]) {
+        List<int> imageBytes = await File(x.path).readAsBytes();
+        print(imageBytes.toString());
+        String base64Image = base64Encode(imageBytes);
+        tempList[i].add(base64Image);
+      }
+    var temp = {
+      "name": data.getLabel().getName(),
+      "place": data.getLabel().getLocation(),
+      "time": data.getLabel().getDateTime().millisecondsSinceEpoch ~/ 1000,
+      "medicine": [],
+      "detailsImage": [],
+      "testImage": [],
+      "diagnoseImage": [],
+      "medicineImage": []
+      // "detailsImage": tempList[0],
+      // "testImage": tempList[1],
+      // "diagnoseImage": tempList[2],
+      // "medicineImage": tempList[3]
+    };
+    if (data.getAppointment()!.getName() != "") {
+      var tempAppointment = {
+        "appointment": {
+          "content": data.getAppointment()!.getName(),
+          "time": data.getAppointment()!.getDateTime().millisecondsSinceEpoch ~/
+              1000,
+          "place": data.getAppointment()!.getLocation()
+        }
+      };
+      temp.addAll(tempAppointment);
+    }
+    print(temp.toString());
+    await CommonService.instance
+        .send(MessageIDPath.addNewMedicalRecord(), temp.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.addNewMedicalRecord(), value)) {
+        if (ServerLogic.getData(value)["status"]) result = true;
+      }
+    });
+    return result;
+  }
+
+  Future<bool> deleteData(String id) async {
+    bool result = false;
+    var temp = {"rid": id};
+    await CommonService.instance
+        .send(MessageIDPath.deleteMedicalRecord(), temp.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.deleteMedicalRecord(), value)) {
+        if (ServerLogic.getData(value)["status"]) result = true;
+      }
+    });
+    return result;
   }
 }

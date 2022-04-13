@@ -67,7 +67,7 @@ class MedicPage extends StatelessWidget {
             SectionComponent(
                 title: S.of(context).Medical_history,
                 subTitle:
-                    S.of(context).Latest + ' :' + pageData.getLatestRecord(),
+                    S.of(context).Latest + ': ' + pageData.getLatestRecord(),
                 colorID: 0,
                 onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) => MedicalRecordPage()))),

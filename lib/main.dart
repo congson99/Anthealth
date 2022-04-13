@@ -31,17 +31,16 @@ class MyApp extends StatelessWidget {
       home: buildRootApp());
 
   Widget buildRootApp() => AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark,
-        child: BlocProvider<AppCubit>(
-            create: (context) => AppCubit(),
-            child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
-              if (state is UnauthenticatedState) return AuthenticationPage();
-              if (state is AuthenticatedState)
-                return DashboardPage(
-                    name: state.name, avatarPath: state.avatarPath);
-              if (state is ConnectErrorState)
-                return ErrorPage(error: S.of(context).Cannot_connect);
-              return AppLoadingPage();
-            })),
-      );
+      value: SystemUiOverlayStyle.dark,
+      child: BlocProvider<AppCubit>(
+          create: (context) => AppCubit(),
+          child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
+            if (state is UnauthenticatedState) return AuthenticationPage();
+            if (state is AuthenticatedState)
+              return DashboardPage(
+                  name: state.name, avatarPath: state.avatarPath);
+            if (state is ConnectErrorState)
+              return ErrorPage(error: S.of(context).Cannot_connect);
+            return AppLoadingPage();
+          })));
 }

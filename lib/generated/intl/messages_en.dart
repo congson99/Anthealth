@@ -29,8 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_heart_rate":
             MessageLookupByLibrary.simpleMessage("Add heart rate data"),
         "Add_height": MessageLookupByLibrary.simpleMessage("Add height data"),
+        "Add_medical_record":
+            MessageLookupByLibrary.simpleMessage("Add medical record"),
         "Add_medicine_box":
             MessageLookupByLibrary.simpleMessage("Add a new medicine box"),
+        "Add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
+        "Add_record": MessageLookupByLibrary.simpleMessage("Add record"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Add SPO2 data"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
@@ -49,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Community": MessageLookupByLibrary.simpleMessage("Community"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "Content": MessageLookupByLibrary.simpleMessage("Content"),
         "Day": MessageLookupByLibrary.simpleMessage("Day"),
         "December": MessageLookupByLibrary.simpleMessage("December"),
         "Delete_blood_pressure":
@@ -57,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete heart rate data"),
         "Delete_height":
             MessageLookupByLibrary.simpleMessage("Delete height data"),
+        "Delete_photo": MessageLookupByLibrary.simpleMessage("Delete photo"),
+        "Delete_record": MessageLookupByLibrary.simpleMessage("Delete record"),
         "Delete_spo2": MessageLookupByLibrary.simpleMessage("Delete SPO2 data"),
         "Delete_temperature":
             MessageLookupByLibrary.simpleMessage("Delete temperature data"),
@@ -100,6 +107,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Health records"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
+        "Hint_re_examination":
+            MessageLookupByLibrary.simpleMessage("Re-check the disease"),
+        "Hint_record_name": MessageLookupByLibrary.simpleMessage("Sick"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
         "Hour": MessageLookupByLibrary.simpleMessage("Hour"),
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
@@ -143,10 +153,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("October"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Photo_view": MessageLookupByLibrary.simpleMessage("Photo view"),
+        "Pick_camera": MessageLookupByLibrary.simpleMessage("Pick Camera"),
+        "Pick_gallery": MessageLookupByLibrary.simpleMessage("Pick Gallery"),
         "Prescription": MessageLookupByLibrary.simpleMessage("Prescription"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Previous"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
+        "Re_examination":
+            MessageLookupByLibrary.simpleMessage("Re-examination"),
         "Record": MessageLookupByLibrary.simpleMessage("Records"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Record date"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
@@ -156,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Register now"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("The email was registered!"),
+        "Required_content":
+            MessageLookupByLibrary.simpleMessage("Required content"),
         "September": MessageLookupByLibrary.simpleMessage("September"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Set a new password"),
@@ -165,8 +182,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
         "Time": MessageLookupByLibrary.simpleMessage("Time"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
+        "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to cancel this record?"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this data?"),
+        "Warning_delete_photo": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this photo?"),
+        "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this record?"),
         "Water": MessageLookupByLibrary.simpleMessage("Water"),
         "Weight": MessageLookupByLibrary.simpleMessage("Weight"),
         "Wrong_authentication_code":
@@ -205,7 +228,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_delete": MessageLookupByLibrary.simpleMessage("DELETE"),
         "button_edit": MessageLookupByLibrary.simpleMessage("EDIT"),
         "button_login": MessageLookupByLibrary.simpleMessage("LOGIN"),
+        "button_no": MessageLookupByLibrary.simpleMessage("NO"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "button_yes": MessageLookupByLibrary.simpleMessage("YES"),
         "dec": MessageLookupByLibrary.simpleMessage("DEC"),
         "feb": MessageLookupByLibrary.simpleMessage("FEB"),
         "jan": MessageLookupByLibrary.simpleMessage("JAN"),
@@ -228,6 +253,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("obese class III"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
         "overweight": MessageLookupByLibrary.simpleMessage("overweight"),
+        "required_fill": MessageLookupByLibrary.simpleMessage(
+            "You have not filled in the required content"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Sorry, something wrong!"),

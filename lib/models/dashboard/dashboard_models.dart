@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class HealthPageData {
   HealthPageData(this._indicatorsLatestData);
 
@@ -44,4 +46,29 @@ class MedicPageData {
   String getLatestAppointment() => _latestAppointment;
 
   List<String> getListMedicineBox() => _listMedicineBox;
+
+  static MedicPageData formatData(dynamic latestMedicalRecord,
+      dynamic upcomingAppointment, dynamic medicineBoxes) {
+    String latest = "";
+    String upcoming = "";
+    List<String> list = [];
+
+    if (latestMedicalRecord != "") {
+      DateTime tempTime = DateTime.fromMillisecondsSinceEpoch(
+          latestMedicalRecord["time"] * 1000);
+      latest = DateFormat("dd.MM.yyyy").format(tempTime) +
+          " - " +
+          latestMedicalRecord["place"].toString();
+    }
+
+    if (upcomingAppointment != "") {
+      DateTime tempTime = DateTime.fromMillisecondsSinceEpoch(
+          upcomingAppointment["time"] * 1000);
+      upcoming = DateFormat("dd.MM.yyyy").format(tempTime) +
+          " - " +
+          upcomingAppointment["place"].toString();
+    }
+
+    return MedicPageData(latest, upcoming, list);
+  }
 }

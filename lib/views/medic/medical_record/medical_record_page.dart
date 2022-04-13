@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/medical_record_add_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_detail_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/widgets/medical_record_list.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -36,7 +37,9 @@ class MedicalRecordPage extends StatelessWidget {
             CustomAppBar(
                 title: S.of(context).Medical_record,
                 back: () => Navigator.pop(context),
-                add: () {},
+                add: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        MedicalRecordAddPage(superContext: context))),
                 settings: () {})
           ])));
         else
@@ -69,9 +72,9 @@ class MedicalRecordPage extends StatelessWidget {
 
   // Content
   Widget buildDetailContainer(
-      BuildContext context,
-      List<MedicalRecordYearLabel> listYearLabel,
-      MedicalRecordState state) =>
+          BuildContext context,
+          List<MedicalRecordYearLabel> listYearLabel,
+          MedicalRecordState state) =>
       Container(
           decoration: BoxDecoration(
               color: AnthealthColors.primary5,
@@ -79,39 +82,39 @@ class MedicalRecordPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: (listYearLabel.length != 0)
               ? Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                    height: 35,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).Time,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                  color: AnthealthColors.primary1)),
-                          Text(S.of(context).Number_of_record,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .caption!
-                                  .copyWith(
-                                  color: AnthealthColors.primary1))
-                        ])),
-                Divider(
-                    thickness: 1,
-                    height: 1,
-                    color: AnthealthColors.primary1),
-                ...listYearLabel
-                    .map((data) => buildYearLabel(
-                    data, context, listYearLabel, state))
-                    .toList()
-              ])
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                      Container(
+                          height: 35,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(S.of(context).Time,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1!
+                                        .copyWith(
+                                            color: AnthealthColors.primary1)),
+                                Text(S.of(context).Number_of_record,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .copyWith(
+                                            color: AnthealthColors.primary1))
+                              ])),
+                      Divider(
+                          thickness: 1,
+                          height: 1,
+                          color: AnthealthColors.primary1),
+                      ...listYearLabel
+                          .map((data) => buildYearLabel(
+                              data, context, listYearLabel, state))
+                          .toList()
+                    ])
               : Text(S.of(context).no_medical_record,
-              style: Theme.of(context).textTheme.bodyText2));
+                  style: Theme.of(context).textTheme.bodyText2));
 
   Widget buildAppointmentList(
           BuildContext context, List<MedicalAppointment> listAppointment) =>
@@ -181,19 +184,9 @@ class MedicalRecordPage extends StatelessWidget {
                 right: mData.getName(),
                 isOpen: false,
                 isDirection: false,
-                onTap: () =>
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => MedicalRecordDetailPage()))
-                )
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => MedicalRecordDetailPage(
+                        superContext: context,
+                        medicalRecordID: mData.getID()))))
           ]);
-
-  void onDetailTap(int index) {
-    // if (_filterIndex == 1)
-    //   setState(() {
-    //     _filterIndex = 0;
-    //     _dataIndex = index;
-    //   });
-    // else
-    //   showPopup(index);
-  }
 }

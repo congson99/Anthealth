@@ -18,4 +18,14 @@ class MessageIDPath {
   static int deleteIndicator() => 2215;
 
   static int logout() => 2123;
+
+  static int getMedicData() => 2310;
+
+  static int getMedicalRecordPageData() => 2311;
+
+  static int addNewMedicalRecord() => 2312;
+
+  static int deleteMedicalRecord() => 2314;
+
+  static int getMedicalRecordDetail() => 2315;
 }

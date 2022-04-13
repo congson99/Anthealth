@@ -31,11 +31,19 @@ class DashboardCubit extends Cubit<CubitState> {
     });
   }
 
-  medic() {
-    emit(MedicState(MedicPageData(
-        "18.10.2021 - BV Chợ Rẫy",
-        "21.02.2022 - BV ĐHYD",
-        ["Hộp thuốc ở nhà", "Hộp thuốc nhà nội", "Hộp thuốc dự phòng"])));
+  medic() async {
+    emit(MedicLoadingState());
+    await CommonService.instance
+        .send(MessageIDPath.getMedicData(), {}.toString());
+    CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getMedicData(), value)) {
+        emit(MedicState(MedicPageData.formatData(
+            ServerLogic.getData(value)["latestMedicalRecord"],
+            ServerLogic.getData(value)["upcomingAppointment"],
+            ServerLogic.getData(value)["medicineBoxes"])));
+      }
+    });
   }
 
   family() {

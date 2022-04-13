@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget {
     this.add,
     this.share,
     this.edit,
+    this.delete,
     this.settings,
   }) : super(key: key);
 
@@ -17,6 +18,7 @@ class CustomAppBar extends StatelessWidget {
   final VoidCallback? add;
   final VoidCallback? share;
   final VoidCallback? edit;
+  final VoidCallback? delete;
   final VoidCallback? settings;
 
   @override
@@ -66,6 +68,7 @@ class CustomAppBar extends StatelessWidget {
                             ((add != null) ? 22 : 0) -
                             ((share != null) ? 44 : 0) -
                             ((edit != null) ? 44 : 0) -
+                            ((delete != null) ? 44 : 0) -
                             ((settings != null) ? 44 : 0),
                         child: Text(title,
                             overflow: TextOverflow.ellipsis,
@@ -102,6 +105,15 @@ class CustomAppBar extends StatelessWidget {
                             onTap: edit,
                             child: Image.asset(
                                 "assets/app_icon/common/edit_war1.png",
+                                height: 22.0,
+                                width: 22.0,
+                                fit: BoxFit.cover)),
+                      if (delete != null) SizedBox(width: 22),
+                      if (delete != null)
+                        GestureDetector(
+                            onTap: delete,
+                            child: Image.asset(
+                                "assets/app_icon/common/delete_war1.png",
                                 height: 22.0,
                                 width: 22.0,
                                 fit: BoxFit.cover)),
