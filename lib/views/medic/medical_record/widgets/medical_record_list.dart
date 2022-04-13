@@ -28,20 +28,24 @@ class MedicalRecordLabelComponent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 200,
+                    width: (MediaQuery.of(context).size.width-100)*0.7,
                     child: Text(left,
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            overflow: TextOverflow.ellipsis,
-                            color: AnthealthColors.primary1)),
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: AnthealthColors.primary1)),
                   ),
                   Expanded(child: Container()),
                   Container(
-                    width: 100,
+                    width: (MediaQuery.of(context).size.width-100)*0.3,
                     alignment: Alignment.centerRight,
                     child: Text(right,
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            overflow: TextOverflow.ellipsis,
-                            color: AnthealthColors.primary1)),
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: AnthealthColors.primary1)),
                   ),
                   if (isDirection != false) SizedBox(width: 8),
                   if (isDirection != false)

@@ -64,31 +64,40 @@ class SectionComponent extends StatelessWidget {
                           Image.asset(iconPath!,
                               height: 20.0, fit: BoxFit.cover),
                         if (iconPath != null) SizedBox(width: 8),
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(title,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle1!
-                                      .copyWith(color: color0)),
-                              SizedBox(height: 4),
-                              subTitle == null
-                                  ? Container()
-                                  : Text(subTitle ?? "",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(color: color1)),
-                              subSubTitle == null
-                                  ? Container()
-                                  : Text(subSubTitle ?? "",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(color: color1))
-                            ])
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width -
+                              82 -
+                              ((iconPath != null) ? 20 : 0) -
+                              ((isDirection != false) ? 10 : 0),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(title,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1!
+                                        .copyWith(color: color0)),
+                                SizedBox(height: 4),
+                                subTitle == null
+                                    ? Container()
+                                    : Text(subTitle ?? "",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .caption!
+                                            .copyWith(color: color1)),
+                                subSubTitle == null
+                                    ? Container()
+                                    : Text(subSubTitle ?? "",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .caption!
+                                            .copyWith(color: color1))
+                              ]),
+                        )
                       ]),
                   if (isDirection != false)
                     Image.asset(

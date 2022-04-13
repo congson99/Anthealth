@@ -193,23 +193,25 @@ class MedicalRecordDetailPage extends StatelessWidget {
   Widget buildTitleTextLine(
           BuildContext context, String label, String content) =>
       Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(label + ":",
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1!
                     .copyWith(color: AnthealthColors.black1)),
-            Expanded(
-                child: CustomDivider.dash(
-                    height: 1,
-                    weight: MediaQuery.of(context).size.width * 0.8)),
-            Text(content,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(color: AnthealthColors.black1))
+            SizedBox(width: 4),
+            Container(
+              width: MediaQuery.of(context).size.width - 48 - label.length*11,
+              child: Text(content,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: AnthealthColors.black1)),
+            )
           ]);
 
   Widget buildDigitalPrescription(
@@ -230,7 +232,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
             SizedBox(height: 8),
             Divider(height: 1, thickness: 1, color: AnthealthColors.black1),
             buildPrescriptionComponent(
-                context, DigitalMedicine("", "name", 1, 0, 0, [],[], 0)),
+                context, DigitalMedicine("", "name", 1, 0, 0, [], [], 0)),
           ]);
 
   Widget buildPrescriptionComponent(
