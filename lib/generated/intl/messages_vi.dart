@@ -304,6 +304,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "obese_class_III":
             MessageLookupByLibrary.simpleMessage("béo phì cấp độ III"),
         "oct": MessageLookupByLibrary.simpleMessage("T10"),
+        "other_repeat":
+            MessageLookupByLibrary.simpleMessage("Khác (Điền vào ghi chú)"),
         "overweight": MessageLookupByLibrary.simpleMessage("thừa cân"),
         "pack": MessageLookupByLibrary.simpleMessage("gói"),
         "phial": MessageLookupByLibrary.simpleMessage("ống"),

@@ -443,7 +443,6 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                         ]),
                     SizedBox(height: 8),
                     Text(MedicineLogic.handleMedicineString(context, medicine),
-                        overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
                             .caption!

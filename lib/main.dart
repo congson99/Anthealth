@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: anthealthTheme(),
-      locale: Locale('vi'),
+      //locale: Locale('vi'),
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

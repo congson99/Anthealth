@@ -1400,6 +1400,16 @@ class S {
     );
   }
 
+  /// `Other (Fill in the note)`
+  String get other_repeat {
+    return Intl.message(
+      'Other (Fill in the note)',
+      name: 'other_repeat',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Button-----------------------------`
   String get _Button {
     return Intl.message(

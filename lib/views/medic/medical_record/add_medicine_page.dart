@@ -400,6 +400,9 @@ class AddMedicinePage extends StatelessWidget {
                       if (type == 2)
                         BlocProvider.of<AddMedicineCubit>(context)
                             .updateData(state, 6, 11000000);
+                      if (type == 3)
+                        BlocProvider.of<AddMedicineCubit>(context)
+                            .updateData(state, 6, -2);
                     }))
           ]),
           if (state.data.getRepeat() == -1 || state.data.getRepeat() > 1)
@@ -459,13 +462,17 @@ class AddMedicinePage extends StatelessWidget {
               width: 70,
               child: CommonTextField.box(
                   isNumber: true,
-                  initialValue: MedicineLogic.handleQuantity(dosage.quantity),
+                  initialValue: (dosage.quantity == 0)
+                      ? null
+                      : MedicineLogic.handleQuantity(dosage.quantity),
                   context: context,
                   onChanged: (String value) {
+                    double result = (value == "") ? 0 : double.parse(value);
                     BlocProvider.of<AddMedicineCubit>(context).updateData(
-                        state,
-                        5,
-                        [state.customDosage.indexOf(dosage).toString(), value]);
+                        state, 5, [
+                      state.customDosage.indexOf(dosage).toString(),
+                      result
+                    ]);
                   })),
           Text("  " + MedicineLogic.getUnit(context, state.data.getUnit()),
               style: Theme.of(context).textTheme.bodyText1)

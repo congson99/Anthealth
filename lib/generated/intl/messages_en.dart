@@ -299,6 +299,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "obese_class_III":
             MessageLookupByLibrary.simpleMessage("obese class III"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
+        "other_repeat":
+            MessageLookupByLibrary.simpleMessage("Other (Fill in the note)"),
         "overweight": MessageLookupByLibrary.simpleMessage("overweight"),
         "pack": MessageLookupByLibrary.simpleMessage("pack"),
         "phial": MessageLookupByLibrary.simpleMessage("phial"),

@@ -134,6 +134,7 @@
   "Every_few_days": "Every few days",
   "Customized_by_week": "Customized by week",
   "Add_customized_dose": "Add a customized dose",
+  "other_repeat": "Other (Fill in the note)",
   "_Button": "-----------------------------Button-----------------------------",
   "button_login": "LOGIN",
   "button_ok": "OK",

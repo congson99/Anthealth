@@ -34,8 +34,7 @@ class AddMedicineCubit extends Cubit<CubitState> {
     }
     if (updateIndex == 3) customDosage[value].isShow = false;
     if (updateIndex == 4) customDosage[int.parse(value[0])].time = value[1];
-    if (updateIndex == 5)
-      customDosage[int.parse(value[0])].quantity = double.parse(value[1]);
+    if (updateIndex == 5) customDosage[int.parse(value[0])].quantity = value[1];
     if (updateIndex == 6)
       digitalMedicine = DigitalMedicine.updateRepeat(state.data, value);
     if (updateIndex == 7)
@@ -102,6 +101,9 @@ class AddMedicineCubit extends Cubit<CubitState> {
       if (x.isShow == true && x.time != "" && x.quantity > 0)
         customDosage.add(DigitalCustomMedicineDosage(x.time, x.quantity));
     }
+    int repeat = state.data.getRepeat();
+    if (repeat == -1) repeat = 1;
+    if (repeat == -2) repeat = -1;
     DigitalMedicine result = DigitalMedicine(
         "",
         state.data.getName(),
@@ -110,7 +112,7 @@ class AddMedicineCubit extends Cubit<CubitState> {
         state.data.getUsage(),
         state.data.getDosage(),
         customDosage,
-        (state.data.getRepeat() == -1) ? 1 : state.data.getRepeat(),
+        repeat,
         state.data.getImagePath(),
         state.data.getURL(),
         state.data.getNote());

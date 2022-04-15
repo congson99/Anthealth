@@ -10,7 +10,7 @@ class MedicineLogic {
       BuildContext context, DigitalMedicine medicine) {
     String result = "";
     result += MedicineLogic.getUsage(context, medicine.getUsage());
-    if (medicine.getRepeat() != 0)
+    if (medicine.getRepeat() > 0)
       result += " | " + MedicineLogic.getRepeat(context, medicine.getRepeat());
     result += " | " +
         MedicineLogic.getDosage(context, medicine.getDosage(),
@@ -124,13 +124,15 @@ class MedicineLogic {
     return [
       S.of(context).daily,
       S.of(context).Every_few_days,
-      S.of(context).Customized_by_week
+      S.of(context).Customized_by_week,
+      S.of(context).other_repeat
     ];
   }
 
   static String getRepeatType(BuildContext context, int index) {
     if (index == 1 || index == 11111111) return S.of(context).daily;
     if (index >= 10000000) return S.of(context).Customized_by_week;
+    if (index == -2) return S.of(context).other_repeat;
     return S.of(context).Every_few_days;
   }
 
