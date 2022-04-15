@@ -104,7 +104,7 @@ class CustomAppBar extends StatelessWidget {
                         GestureDetector(
                             onTap: edit,
                             child: Image.asset(
-                                "assets/app_icon/common/edit_war1.png",
+                                "assets/app_icon/common/edit_sec1.png",
                                 height: 22.0,
                                 width: 22.0,
                                 fit: BoxFit.cover)),

@@ -53,52 +53,48 @@ class SectionComponent extends StatelessWidget {
                     : []),
             padding: const EdgeInsets.all(16),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (iconPath != null)
-                          Image.asset(iconPath!,
-                              height: 20.0, fit: BoxFit.cover),
-                        if (iconPath != null) SizedBox(width: 8),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width -
-                              82 -
-                              ((iconPath != null) ? 20 : 0) -
-                              ((isDirection != false) ? 10 : 0),
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(title,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .copyWith(color: color0)),
-                                SizedBox(height: 4),
-                                subTitle == null
-                                    ? Container()
-                                    : Text(subTitle ?? "",
-                                        overflow: TextOverflow.ellipsis,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .copyWith(color: color1)),
-                                subSubTitle == null
-                                    ? Container()
-                                    : Text(subSubTitle ?? "",
-                                        overflow: TextOverflow.ellipsis,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .copyWith(color: color1))
-                              ]),
-                        )
-                      ]),
+                  if (iconPath != null)
+                    Image.asset(iconPath!, height: 20.0, fit: BoxFit.cover),
+                  if (iconPath != null) SizedBox(width: 8),
+                  Expanded(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                        Text(title,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .copyWith(color: color0)),
+                        SizedBox(height: 4),
+                        subTitle == null
+                            ? Container()
+                            : Text(subTitle ?? "",
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(color: color1)),
+                        subSubTitle == null
+                            ? Container()
+                            : Text(subSubTitle ?? "",
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(color: color1))
+                      ])),
+                  if (directionContent != null)
+                    Text(directionContent!,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: color0)),
                   if (isDirection != false)
                     Image.asset(
                         colorID == 0

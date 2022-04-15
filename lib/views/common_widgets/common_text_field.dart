@@ -53,11 +53,15 @@ class CommonTextField {
           String? hintText,
           String? labelText,
           FocusNode? focusNode,
+          bool? readOnly,
+          String? initialValue,
           TextEditingController? textEditingController}) =>
       TextFormField(
         onTap: onTap,
+        readOnly: (readOnly == null) ? false : readOnly,
         onChanged: onChanged,
         focusNode: focusNode,
+        initialValue: initialValue,
         controller: textEditingController,
         decoration: InputDecoration(
           labelText: labelText,
@@ -88,9 +92,64 @@ class CommonTextField {
         style: Theme.of(context).textTheme.subtitle1,
       );
 
+  static Widget box(
+          {required BuildContext context,
+          required ValueChanged<String> onChanged,
+          VoidCallback? onTap,
+          String? hintText,
+          FocusNode? focusNode,
+          bool? readOnly,
+          String? initialValue,
+          bool? isNumber,
+          TextEditingController? textEditingController}) =>
+      TextFormField(
+        onTap: onTap,
+        readOnly: (readOnly == null) ? false : readOnly,
+        onChanged: onChanged,
+        focusNode: focusNode,
+        initialValue: initialValue,
+        controller: textEditingController,
+        textAlign: ((isNumber == true) ? TextAlign.right : TextAlign.start),
+        keyboardType: (isNumber == true)
+            ? TextInputType.numberWithOptions(decimal: true)
+            : TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(
+          labelStyle: CommonText.fillLabelTextStyle(),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintText: hintText,
+          hintStyle: Theme.of(context)
+              .textTheme
+              .bodyText1!
+              .copyWith(color: AnthealthColors.black2),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: (isNumber == true)
+              ? EdgeInsets.symmetric(horizontal: 16)
+              : EdgeInsets.all(16),
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AnthealthColors.black3, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          focusedBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AnthealthColors.primary2, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          errorBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AnthealthColors.warning1, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          focusedErrorBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AnthealthColors.warning1, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+        ),
+        autofocus: true,
+        style: Theme.of(context).textTheme.subtitle1,
+      );
+
   static Widget select(
           {required List<String> data,
-          required String labelText,
+          String? labelText,
           String? value,
           FocusNode? focusNode,
           required ValueChanged<String?> onChanged}) =>
@@ -98,9 +157,10 @@ class CommonTextField {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(labelText,
-                style: CommonText.fillLabelTextStyle().copyWith(
-                    fontSize: 11, color: Colors.black.withOpacity(0.6))),
+            if (labelText != null)
+              Text(labelText,
+                  style: CommonText.fillLabelTextStyle().copyWith(
+                      fontSize: 11, color: Colors.black.withOpacity(0.6))),
             DropdownButton<String>(
                 menuMaxHeight: 500,
                 isExpanded: true,
@@ -114,8 +174,39 @@ class CommonTextField {
                       child: mValue == value
                           ? Text(mValue)
                           : Text(mValue,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(color: AnthealthColors.black2)));
                 }).toList(),
                 onChanged: (value) => onChanged(value))
           ]);
+
+  static Widget selectBox(
+          {required List<String> data,
+          String? value,
+          FocusNode? focusNode,
+          required ValueChanged<String?> onChanged}) =>
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: AnthealthColors.black3, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+              menuMaxHeight: 500,
+              isExpanded: true,
+              focusNode: focusNode,
+              value: value,
+              items: data.map<DropdownMenuItem<String>>((String mValue) {
+                return DropdownMenuItem<String>(
+                    value: mValue,
+                    child: mValue == value
+                        ? Text(mValue)
+                        : Text(mValue,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: AnthealthColors.black2)));
+              }).toList(),
+              onChanged: (value) => onChanged(value)),
+        ),
+      );
 }

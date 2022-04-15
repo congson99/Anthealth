@@ -310,6 +310,46 @@ class S {
     );
   }
 
+  /// `Note`
+  String get Note {
+    return Intl.message(
+      'Note',
+      name: 'Note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat`
+  String get Repeat {
+    return Intl.message(
+      'Repeat',
+      name: 'Repeat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get Update {
+    return Intl.message(
+      'Update',
+      name: 'Update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get Delete {
+    return Intl.message(
+      'Delete',
+      name: 'Delete',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -920,6 +960,16 @@ class S {
     );
   }
 
+  /// `Update medical record`
+  String get Update_medical_record {
+    return Intl.message(
+      'Update medical record',
+      name: 'Update_medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medical history`
   String get Medical_history {
     return Intl.message(
@@ -965,6 +1015,36 @@ class S {
     return Intl.message(
       'Add a new medicine box',
       name: 'Add_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a medicine`
+  String get Add_medicine {
+    return Intl.message(
+      'Add a medicine',
+      name: 'Add_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update medicine`
+  String get Update_medicine {
+    return Intl.message(
+      'Update medicine',
+      name: 'Update_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete medicine`
+  String get Delete_medicine {
+    return Intl.message(
+      'Delete medicine',
+      name: 'Delete_medicine',
       desc: '',
       args: [],
     );
@@ -1120,6 +1200,206 @@ class S {
     );
   }
 
+  /// `Usage`
+  String get Usage {
+    return Intl.message(
+      'Usage',
+      name: 'Usage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose medicine`
+  String get Choose_medicine {
+    return Intl.message(
+      'Choose medicine',
+      name: 'Choose_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dosage`
+  String get Dosage {
+    return Intl.message(
+      'Dosage',
+      name: 'Dosage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Medicine-----------------------------`
+  String get _Medicine {
+    return Intl.message(
+      '-----------------------------Medicine-----------------------------',
+      name: '_Medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pill`
+  String get pill {
+    return Intl.message(
+      'pill',
+      name: 'pill',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `phial`
+  String get phial {
+    return Intl.message(
+      'phial',
+      name: 'phial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pack`
+  String get pack {
+    return Intl.message(
+      'pack',
+      name: 'pack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drink`
+  String get drink {
+    return Intl.message(
+      'Drink',
+      name: 'drink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chew`
+  String get chew {
+    return Intl.message(
+      'Chew',
+      name: 'chew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inject`
+  String get inject {
+    return Intl.message(
+      'Inject',
+      name: 'inject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drops`
+  String get drops {
+    return Intl.message(
+      'Drops',
+      name: 'drops',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily`
+  String get daily {
+    return Intl.message(
+      'Daily',
+      name: 'daily',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weekly`
+  String get weekly {
+    return Intl.message(
+      'Weekly',
+      name: 'weekly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Once every `
+  String get custom_repeat_left {
+    return Intl.message(
+      'Once every ',
+      name: 'custom_repeat_left',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` days`
+  String get custom_day_repeat_right {
+    return Intl.message(
+      ' days',
+      name: 'custom_day_repeat_right',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` weeks`
+  String get custom_week_repeat_right {
+    return Intl.message(
+      ' weeks',
+      name: 'custom_week_repeat_right',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every few days`
+  String get Every_few_days {
+    return Intl.message(
+      'Every few days',
+      name: 'Every_few_days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customized by week`
+  String get Customized_by_week {
+    return Intl.message(
+      'Customized by week',
+      name: 'Customized_by_week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a customized dose`
+  String get Add_customized_dose {
+    return Intl.message(
+      'Add a customized dose',
+      name: 'Add_customized_dose',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Button-----------------------------`
   String get _Button {
     return Intl.message(
@@ -1245,6 +1525,16 @@ class S {
     return Intl.message(
       'Are you sure you want to delete this record?',
       name: 'Warning_delete_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this medicine?`
+  String get Warning_delete_medicine {
+    return Intl.message(
+      'Are you sure you want to delete this medicine?',
+      name: 'Warning_delete_medicine',
       desc: '',
       args: [],
     );
@@ -1775,6 +2065,146 @@ class S {
     return Intl.message(
       'December',
       name: 'December',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `mon`
+  String get mon {
+    return Intl.message(
+      'mon',
+      name: 'mon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tue`
+  String get tue {
+    return Intl.message(
+      'tue',
+      name: 'tue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `wed`
+  String get wed {
+    return Intl.message(
+      'wed',
+      name: 'wed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `thu`
+  String get thu {
+    return Intl.message(
+      'thu',
+      name: 'thu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `fri`
+  String get fri {
+    return Intl.message(
+      'fri',
+      name: 'fri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `sat`
+  String get sat {
+    return Intl.message(
+      'sat',
+      name: 'sat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `sun`
+  String get sun {
+    return Intl.message(
+      'sun',
+      name: 'sun',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `morning`
+  String get morning {
+    return Intl.message(
+      'morning',
+      name: 'morning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `noon`
+  String get noon {
+    return Intl.message(
+      'noon',
+      name: 'noon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `afternoon`
+  String get afternoon {
+    return Intl.message(
+      'afternoon',
+      name: 'afternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `night`
+  String get night {
+    return Intl.message(
+      'night',
+      name: 'night',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `day`
+  String get day {
+    return Intl.message(
+      'day',
+      name: 'day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat after`
+  String get Repeat_after {
+    return Intl.message(
+      'Repeat after',
+      name: 'Repeat_after',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose one or more days`
+  String get Choose_one_or_more_days {
+    return Intl.message(
+      'Choose one or more days',
+      name: 'Choose_one_or_more_days',
       desc: '',
       args: [],
     );

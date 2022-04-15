@@ -9,24 +9,32 @@ import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicalRecordDetailCubit extends Cubit<CubitState> {
-  MedicalRecordDetailCubit(String id) : super(InitialState()) {
-    if (id == "add")
+  MedicalRecordDetailCubit(String id,
+      [MedicalRecordDetailData? medicalRecordDetailData])
+      : super(InitialState()) {
+    if (id == "add") {
+      List<DigitalMedicine> medicine = [];
+      if (medicalRecordDetailData != null)
+        medicine = medicalRecordDetailData.getPrescription();
       loadedData(
-          MedicalRecordDetailData(
-              MedicalRecordLabel("", DateTime.now(), "", ""),
-              [],
-              [],
-              [],
-              [],
-              [],
-              MedicalAppointment(DateTime.now(), "", DateTime.now(), "")),
-          [[], [], [], []]);
-    else
+          medicalRecordDetailData ??
+              MedicalRecordDetailData(
+                  MedicalRecordLabel("", DateTime.now(), "", ""),
+                  [],
+                  [],
+                  [],
+                  [],
+                  [],
+                  MedicalAppointment(DateTime.now(), "", DateTime.now(), "")),
+          [[], [], [], []],
+          medicine);
+    } else
       loadData(id);
   }
 
   // Initial State
-  void loadedData(MedicalRecordDetailData data, List<List<File>> list) {
+  void loadedData(MedicalRecordDetailData data, List<List<File>> list,
+      List<DigitalMedicine> medicine) {
     emit(MedicalRecordDetailState(
         data,
         [
@@ -55,20 +63,40 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
           "Bệnh viện Quận Tân Phú",
           "Bệnh viện Quận Thủ Đức"
         ],
-        list));
+        list,
+        medicine));
   }
 
   // Update data
-  void updateData(MedicalRecordDetailData data, String changeName,
-      dynamic changeValue, List<List<File>> list) async {
+  void updateData(
+      MedicalRecordDetailData data,
+      String changeName,
+      dynamic changeValue,
+      List<List<File>> list,
+      List<DigitalMedicine> medicine) async {
     emit(MedicalRecordDetailState(
         MedicalRecordDetailData(
             MedicalRecordLabel("", DateTime.now(), "", ""), [], [], [], [], []),
         [],
+        [],
         []));
     loadedData(
         MedicalRecordDetailData.updateData(data, changeName, changeValue),
-        list);
+        list,
+        medicine);
+  }
+
+  void updateMedicine(MedicalRecordDetailState state, int type, int index,
+      [DigitalMedicine? value]) async {
+    emit(InitialState());
+    List<DigitalMedicine> tempList = state.medicine;
+    if (type == 0) tempList.add(value!);
+    if (type == 1) tempList.removeAt(index);
+    if (type == 2) {
+      tempList.removeAt(index);
+      tempList.insert(index, value!);
+    }
+    loadedData(state.data, state.list, tempList);
   }
 
   // Service Function
@@ -80,7 +108,9 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicalRecordDetail(), value)) {
         loadedData(
-            MedicalRecordDetailData.formatData(ServerLogic.getData(value)), []);
+            MedicalRecordDetailData.formatData(ServerLogic.getData(value)),
+            [],
+            []);
       }
     });
   }

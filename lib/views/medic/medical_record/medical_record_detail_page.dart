@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/common_logic/medicine_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_state.dart';
@@ -10,6 +11,7 @@ import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/photo_list_label.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/medical_record_add_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,10 @@ class MedicalRecordDetailPage extends StatelessWidget {
             CustomAppBar(
                 title: S.of(context).Medical_record_detail,
                 back: () => Navigator.pop(context),
+                edit: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => MedicalRecordAddPage(
+                        superContext: superContext,
+                        medicalRecordDetailData: state.data))),
                 delete: () => showDialog(
                     context: context,
                     builder: (_) => WarningPopup(
@@ -84,6 +90,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      SizedBox(height: 4),
                       buildDescription(context, state.data.getLabel()),
                       CustomDivider.cutLine(MediaQuery.of(context).size.width),
                       buildPhotoComponent(
@@ -101,8 +108,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
                           context,
                           state.data.getPrescriptionPhoto(),
                           state.data.getPrescription()),
-                      if (state.data.getAppointment()!.getName() != "")
-                        buildAppointment(state, context)
+                      buildAppointment(state, context)
                     ])),
             Container(height: 16, color: Colors.transparent)
           ]);
@@ -120,18 +126,20 @@ class MedicalRecordDetailPage extends StatelessWidget {
                 CommonText.section(S.of(context).Medical_appointment, context),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SectionComponent(
-                title: S.of(context).Content +
-                    ": " +
-                    state.data.getAppointment()!.getName(),
-                subTitle: DateFormat("dd.MM.yyyy")
-                        .format(state.data.getAppointment()!.getDateTime()) +
-                    " - " +
-                    state.data.getAppointment()!.getLocation(),
-                isDirection: false,
-                colorID: 1),
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: (state.data.getAppointment()!.getName() != "")
+                  ? SectionComponent(
+                      title: S.of(context).Content +
+                          ": " +
+                          state.data.getAppointment()!.getName(),
+                      subTitle: DateFormat("dd.MM.yyyy").format(
+                              state.data.getAppointment()!.getDateTime()) +
+                          " - " +
+                          state.data.getAppointment()!.getLocation(),
+                      isDirection: false,
+                      colorID: 1)
+                  : Text(S.of(context).no_section_data,
+                      style: Theme.of(context).textTheme.bodyText2)),
           SizedBox(height: 32)
         ]);
   }
@@ -179,8 +187,9 @@ class MedicalRecordDetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CommonText.subSection(S.of(context).Prescription, context),
-                SizedBox(height: 16),
-                buildDigitalPrescription(context, prescription),
+                if (prescription.length > 0) SizedBox(height: 16),
+                if (prescription.length > 0)
+                  buildDigitalPrescription(context, prescription),
                 SizedBox(height: 16),
                 PhotoListLabel(
                     photoPath: photoData,
@@ -204,7 +213,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
                     .copyWith(color: AnthealthColors.black1)),
             SizedBox(width: 4),
             Container(
-              width: MediaQuery.of(context).size.width - 48 - label.length*11,
+              width: MediaQuery.of(context).size.width - 48 - label.length * 11,
               child: Text(content,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
@@ -220,20 +229,22 @@ class MedicalRecordDetailPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(S.of(context).Medicine,
-                      style: Theme.of(context).textTheme.subtitle1),
-                  Text(S.of(context).Quantity,
-                      style: Theme.of(context).textTheme.subtitle1)
-                ]),
-            SizedBox(height: 8),
-            Divider(height: 1, thickness: 1, color: AnthealthColors.black1),
-            buildPrescriptionComponent(
-                context, DigitalMedicine("", "name", 1, 0, 0, [], [], 0)),
-          ]);
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).Medicine,
+                          style: Theme.of(context).textTheme.subtitle1),
+                      Text(S.of(context).Quantity,
+                          style: Theme.of(context).textTheme.subtitle1)
+                    ]),
+                SizedBox(height: 8),
+                Divider(height: 1, thickness: 1, color: AnthealthColors.black1)
+              ] +
+              prescription
+                  .map((medicine) =>
+                      buildPrescriptionComponent(context, medicine))
+                  .toList());
 
   Widget buildPrescriptionComponent(
           BuildContext context, DigitalMedicine medicine) =>
@@ -249,36 +260,21 @@ class MedicalRecordDetailPage extends StatelessWidget {
                   Text(medicine.getName(),
                       style: Theme.of(context).textTheme.bodyText1),
                   Expanded(child: Container()),
-                  Text(medicine.getQuantity().toString(),
+                  Text(MedicineLogic.handleQuantity(medicine.getQuantity()),
                       style: Theme.of(context).textTheme.bodyText1),
                   SizedBox(width: 4),
-                  Text(medicine.getUnit().toString(),
+                  Text(MedicineLogic.getUnit(context, medicine.getUnit()),
                       style: Theme.of(context).textTheme.bodyText1)
                 ]),
             SizedBox(height: 8),
             CustomDivider.dash(),
-            SizedBox(height: 8),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(medicine.getUsage().toString(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12)),
-                  Text(' | ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12)),
-                  Text(medicine.getRepeat().toString(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12))
-                ]),
-            SizedBox(height: 8),
-            Divider(height: 1, thickness: 1, color: AnthealthColors.black1)
+            SizedBox(height: 10),
+            Text(MedicineLogic.handleMedicineString(context, medicine),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(fontSize: 12)),
+            SizedBox(height: 10),
+            Divider(height: 0.5, thickness: 0.5, color: AnthealthColors.black1)
           ]);
 }

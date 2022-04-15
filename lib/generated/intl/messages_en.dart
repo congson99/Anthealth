@@ -26,11 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Add blood Pressure data"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Add by"),
+        "Add_customized_dose":
+            MessageLookupByLibrary.simpleMessage("Add a customized dose"),
         "Add_heart_rate":
             MessageLookupByLibrary.simpleMessage("Add heart rate data"),
         "Add_height": MessageLookupByLibrary.simpleMessage("Add height data"),
         "Add_medical_record":
             MessageLookupByLibrary.simpleMessage("Add medical record"),
+        "Add_medicine": MessageLookupByLibrary.simpleMessage("Add a medicine"),
         "Add_medicine_box":
             MessageLookupByLibrary.simpleMessage("Add a new medicine box"),
         "Add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
@@ -50,18 +53,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "Cannot connect to server! Please check your network connection and try again"),
+        "Choose_medicine":
+            MessageLookupByLibrary.simpleMessage("Choose medicine"),
+        "Choose_one_or_more_days":
+            MessageLookupByLibrary.simpleMessage("Choose one or more days"),
         "Community": MessageLookupByLibrary.simpleMessage("Community"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "Content": MessageLookupByLibrary.simpleMessage("Content"),
+        "Customized_by_week":
+            MessageLookupByLibrary.simpleMessage("Customized by week"),
         "Day": MessageLookupByLibrary.simpleMessage("Day"),
         "December": MessageLookupByLibrary.simpleMessage("December"),
+        "Delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "Delete_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Delete blood Pressure data"),
         "Delete_heart_rate":
             MessageLookupByLibrary.simpleMessage("Delete heart rate data"),
         "Delete_height":
             MessageLookupByLibrary.simpleMessage("Delete height data"),
+        "Delete_medicine":
+            MessageLookupByLibrary.simpleMessage("Delete medicine"),
         "Delete_photo": MessageLookupByLibrary.simpleMessage("Delete photo"),
         "Delete_record": MessageLookupByLibrary.simpleMessage("Delete record"),
         "Delete_spo2": MessageLookupByLibrary.simpleMessage("Delete SPO2 data"),
@@ -75,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
+        "Dosage": MessageLookupByLibrary.simpleMessage("Dosage"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
         "Edit_heart_rate":
@@ -93,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter your name"),
         "Enter_password":
             MessageLookupByLibrary.simpleMessage("Please enter your password"),
+        "Every_few_days":
+            MessageLookupByLibrary.simpleMessage("Every few days"),
         "Family": MessageLookupByLibrary.simpleMessage("Family"),
         "February": MessageLookupByLibrary.simpleMessage("February"),
         "Fill_in_information":
@@ -147,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
             "This email is not registered!"),
+        "Note": MessageLookupByLibrary.simpleMessage("Note"),
         "November": MessageLookupByLibrary.simpleMessage("November"),
         "Number_of_record":
             MessageLookupByLibrary.simpleMessage("Number of record"),
@@ -171,6 +187,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Register now"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("The email was registered!"),
+        "Repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
+        "Repeat_after": MessageLookupByLibrary.simpleMessage("Repeat after"),
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Required content"),
         "September": MessageLookupByLibrary.simpleMessage("September"),
@@ -182,10 +200,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
         "Time": MessageLookupByLibrary.simpleMessage("Time"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
+        "Update": MessageLookupByLibrary.simpleMessage("Update"),
+        "Update_medical_record":
+            MessageLookupByLibrary.simpleMessage("Update medical record"),
+        "Update_medicine":
+            MessageLookupByLibrary.simpleMessage("Update medicine"),
+        "Usage": MessageLookupByLibrary.simpleMessage("Usage"),
         "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to cancel this record?"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this data?"),
+        "Warning_delete_medicine": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this medicine?"),
         "Warning_delete_photo": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this photo?"),
         "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
@@ -219,8 +245,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Main-----------------------------"),
         "_Medic": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Medic-----------------------------"),
+        "_Medicine": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Medicine-----------------------------"),
         "_Time": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Time-----------------------------"),
+        "afternoon": MessageLookupByLibrary.simpleMessage("afternoon"),
+        "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
         "aug": MessageLookupByLibrary.simpleMessage("AUG"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("CANCEL"),
@@ -231,19 +261,36 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_no": MessageLookupByLibrary.simpleMessage("NO"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "button_yes": MessageLookupByLibrary.simpleMessage("YES"),
+        "chew": MessageLookupByLibrary.simpleMessage("Chew"),
+        "custom_day_repeat_right":
+            MessageLookupByLibrary.simpleMessage(" days"),
+        "custom_repeat_left":
+            MessageLookupByLibrary.simpleMessage("Once every "),
+        "custom_week_repeat_right":
+            MessageLookupByLibrary.simpleMessage(" weeks"),
+        "daily": MessageLookupByLibrary.simpleMessage("Daily"),
+        "day": MessageLookupByLibrary.simpleMessage("day"),
         "dec": MessageLookupByLibrary.simpleMessage("DEC"),
+        "drink": MessageLookupByLibrary.simpleMessage("Drink"),
+        "drops": MessageLookupByLibrary.simpleMessage("Drops"),
         "feb": MessageLookupByLibrary.simpleMessage("FEB"),
+        "fri": MessageLookupByLibrary.simpleMessage("fri"),
+        "inject": MessageLookupByLibrary.simpleMessage("Inject"),
         "jan": MessageLookupByLibrary.simpleMessage("JAN"),
         "jul": MessageLookupByLibrary.simpleMessage("JUL"),
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
+        "mon": MessageLookupByLibrary.simpleMessage("mon"),
+        "morning": MessageLookupByLibrary.simpleMessage("morning"),
+        "night": MessageLookupByLibrary.simpleMessage("night"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "You have no records during this period"),
         "no_medical_record":
             MessageLookupByLibrary.simpleMessage("You have no medical records"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
             "You have not added any data for this section"),
+        "noon": MessageLookupByLibrary.simpleMessage("noon"),
         "normal": MessageLookupByLibrary.simpleMessage("normal"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "obese_class_I": MessageLookupByLibrary.simpleMessage("obese class I"),
@@ -253,12 +300,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("obese class III"),
         "oct": MessageLookupByLibrary.simpleMessage("OCT"),
         "overweight": MessageLookupByLibrary.simpleMessage("overweight"),
+        "pack": MessageLookupByLibrary.simpleMessage("pack"),
+        "phial": MessageLookupByLibrary.simpleMessage("phial"),
+        "pill": MessageLookupByLibrary.simpleMessage("pill"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "You have not filled in the required content"),
+        "sat": MessageLookupByLibrary.simpleMessage("sat"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Sorry, something wrong!"),
         "successfully": MessageLookupByLibrary.simpleMessage("successfully"),
-        "thinness": MessageLookupByLibrary.simpleMessage("thinness")
+        "sun": MessageLookupByLibrary.simpleMessage("sun"),
+        "thinness": MessageLookupByLibrary.simpleMessage("thinness"),
+        "thu": MessageLookupByLibrary.simpleMessage("thu"),
+        "tue": MessageLookupByLibrary.simpleMessage("tue"),
+        "wed": MessageLookupByLibrary.simpleMessage("wed"),
+        "weekly": MessageLookupByLibrary.simpleMessage("Weekly")
       };
 }

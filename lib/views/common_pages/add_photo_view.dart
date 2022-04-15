@@ -81,7 +81,8 @@ class _AddPhotoViewState extends State<AddPhotoView> {
                   List<List<File>> temp = widget.state.list;
                   if (image != null) temp[widget.index].add(image!);
                   BlocProvider.of<MedicalRecordDetailCubit>(widget.superContext)
-                      .updateData(widget.state.data, "", "", temp);
+                      .updateData(widget.state.data, "", "", temp,
+                          widget.state.medicine);
                   Navigator.pop(context);
                 }, S.of(context).Add_photo, AnthealthColors.secondary1)
             ]));

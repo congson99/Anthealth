@@ -1,11 +1,12 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/common_logic/medicine_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
-import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/add_photo_view.dart';
+import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/photo_view.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
@@ -13,6 +14,7 @@ import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/datetime_picker_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/add_medicine_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +22,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class MedicalRecordAddPage extends StatefulWidget {
-  const MedicalRecordAddPage({Key? key, required this.superContext})
+  const MedicalRecordAddPage(
+      {Key? key, required this.superContext, this.medicalRecordDetailData})
       : super(key: key);
 
   final BuildContext superContext;
+  final MedicalRecordDetailData? medicalRecordDetailData;
 
   @override
   State<MedicalRecordAddPage> createState() => _MedicalRecordAddPageState();
@@ -37,15 +41,24 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
 
   @override
   void initState() {
-    _timeController.text = DateFormat("dd.MM.yyyy").format(DateTime.now());
-    _appointmentTimeController.text =
-        DateFormat("dd.MM.yyyy").format(DateTime.now());
+    _timeController.text = DateFormat("dd.MM.yyyy").format(
+        (widget.medicalRecordDetailData == null)
+            ? DateTime.now()
+            : widget.medicalRecordDetailData!.getLabel().getDateTime());
+    _appointmentTimeController.text = (widget.medicalRecordDetailData == null)
+        ? DateFormat("dd.MM.yyyy").format(DateTime.now())
+        : ((widget.medicalRecordDetailData!.getAppointment()!.getName() == "")
+            ? ""
+            : DateFormat("dd.MM.yyyy").format(widget.medicalRecordDetailData!
+                .getAppointment()!
+                .getDateTime()));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) => BlocProvider<MedicalRecordDetailCubit>(
-      create: (context) => MedicalRecordDetailCubit("add"),
+      create: (context) =>
+          MedicalRecordDetailCubit("add", widget.medicalRecordDetailData),
       child: BlocBuilder<MedicalRecordDetailCubit, CubitState>(
           builder: (context, state) {
         if (state is MedicalRecordDetailState)
@@ -60,16 +73,23 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 child:
                     SingleChildScrollView(child: buildContent(context, state))),
             CustomAppBar(
-                title: S.of(context).Add_medical_record,
-                back: () => showDialog(
-                    context: context,
-                    builder: (_) => WarningPopup(
-                        title: S.of(context).Warning_cancel_record,
-                        cancel: () => Navigator.pop(context),
-                        delete: () {
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                        })))
+                title: (widget.medicalRecordDetailData == null)
+                    ? S.of(context).Add_medical_record
+                    : S.of(context).Update_medical_record,
+                back: () {
+                  if (widget.medicalRecordDetailData == null)
+                    showDialog(
+                        context: context,
+                        builder: (_) => WarningPopup(
+                            title: S.of(context).Warning_cancel_record,
+                            cancel: () => Navigator.pop(context),
+                            delete: () {
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            }));
+                  else
+                    Navigator.pop(context);
+                })
           ])));
         else
           return LoadingPage();
@@ -98,10 +118,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                       buildPhotoComponent(context, 2, state,
                           title: S.of(context).Diagnose),
                       CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                      buildPrescription(
-                          context,
-                          state.data.getPrescriptionPhoto(),
-                          state.data.getPrescription()),
+                      buildPrescription(context, state),
                       buildPhotoComponent(context, 3, state,
                           isShowNullData:
                               (state.data.getPrescription().length == 0)
@@ -112,28 +129,19 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                       SizedBox(height: 8)
                     ])),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              child: CommonButton.round(context, () {
-                if (checkRequiredFill(state.data.getLabel())) {
-                  BlocProvider.of<MedicalRecordCubit>(widget.superContext)
-                      .addData(state.data, state.list)
-                      .then((value) {
-                    if (value) {
-                      BlocProvider.of<MedicalRecordCubit>(widget.superContext)
-                          .loadData();
-                      Navigator.of(context).pop();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(S.of(context).Add_record +
-                              ' ' +
-                              S.of(context).successfully +
-                              '!')));
-                    }
-                  });
-                } else
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(S.of(context).required_fill + '!')));
-              }, S.of(context).Add_record, AnthealthColors.secondary1),
-            )
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                child: (widget.medicalRecordDetailData == null)
+                    ? CommonButton.round(
+                        context,
+                        () => addMedicalRecord(state),
+                        S.of(context).Add_medical_record,
+                        AnthealthColors.secondary1)
+                    : CommonButton.round(
+                        context,
+                        () => updateMedicalRecord(state),
+                        S.of(context).Update_medical_record,
+                        AnthealthColors.secondary1))
           ]);
 
   // Content
@@ -148,10 +156,12 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 SizedBox(height: 16),
                 CommonTextField.fill(
                     context: context,
+                    initialValue: state.data.getLabel().getName(),
                     focusNode: _nameFocus,
                     onChanged: (String value) =>
                         BlocProvider.of<MedicalRecordDetailCubit>(context)
-                            .updateData(state.data, "name", value, state.list),
+                            .updateData(state.data, "name", value, state.list,
+                                state.medicine),
                     labelText: S.of(context).Record_name + " (*)",
                     hintText: S.of(context).Hint_record_name),
                 SizedBox(height: 28),
@@ -164,8 +174,8 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                         : state.data.getLabel().getLocation(),
                     onChanged: (value) {
                       BlocProvider.of<MedicalRecordDetailCubit>(context)
-                          .updateData(
-                              state.data, "location", value, state.list);
+                          .updateData(state.data, "location", value, state.list,
+                              state.medicine);
                     }),
                 SizedBox(height: 20),
                 CommonTextField.fill(
@@ -186,8 +196,8 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                               setState(() => _timeController.text =
                                   DateFormat("dd.MM.yyyy").format(time));
                               BlocProvider.of<MedicalRecordDetailCubit>(context)
-                                  .updateData(
-                                      state.data, "time", time, state.list);
+                                  .updateData(state.data, "time", time,
+                                      state.list, state.medicine);
                               Navigator.pop(context);
                             })),
                     context: context,
@@ -216,17 +226,17 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 buildPhotoAddList(context, state, index)
               ]));
 
-  Widget buildPrescription(BuildContext context, List<String> photoData,
-          List<DigitalMedicine> prescription) =>
+  Widget buildPrescription(
+          BuildContext context, MedicalRecordDetailState state) =>
       Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CommonText.subSection(S.of(context).Prescription, context),
                 SizedBox(height: 16),
-                buildDigitalPrescription(context, prescription)
+                buildDigitalPrescription(context, state)
               ]));
 
   Widget buildAppointment(
@@ -242,10 +252,11 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 SizedBox(height: 24),
                 CommonTextField.fill(
                     context: context,
+                    initialValue: state.data.getAppointment()!.getName(),
                     onChanged: (String value) =>
                         BlocProvider.of<MedicalRecordDetailCubit>(context)
                             .updateData(state.data, "appointment_content",
-                                value, state.list),
+                                value, state.list, state.medicine),
                     labelText: S.of(context).Content,
                     hintText: S.of(context).Hint_re_examination),
                 SizedBox(height: 28),
@@ -253,15 +264,14 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                     labelText: S.of(context).Medical_location,
                     data: state.locationList,
                     value: (state.data.getAppointment()!.getLocation() == "")
-                        ?
-                        ((state.data.getLabel().getLocation() == "")
-                                ? null
-                                : state.data.getLabel().getLocation())
+                        ? ((state.data.getLabel().getLocation() == "")
+                            ? null
+                            : state.data.getLabel().getLocation())
                         : state.data.getAppointment()!.getLocation(),
                     onChanged: (value) =>
                         BlocProvider.of<MedicalRecordDetailCubit>(context)
                             .updateData(state.data, "appointment_location",
-                                value, state.list)),
+                                value, state.list, state.medicine)),
                 SizedBox(height: 20),
                 CommonTextField.fill(
                     textEditingController: _appointmentTimeController,
@@ -283,7 +293,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                                   DateFormat("dd.MM.yyyy").format(time));
                               BlocProvider.of<MedicalRecordDetailCubit>(context)
                                   .updateData(state.data, "appointment_time",
-                                      time, state.list);
+                                      time, state.list, state.medicine);
                               Navigator.pop(context);
                             })),
                     context: context,
@@ -359,74 +369,128 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
   }
 
   Widget buildDigitalPrescription(
-          BuildContext context, List<DigitalMedicine> prescription) =>
+          BuildContext context, MedicalRecordDetailState state) =>
       Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(S.of(context).Medicine,
-                      style: Theme.of(context).textTheme.subtitle1),
-                  Text(S.of(context).Quantity,
-                      style: Theme.of(context).textTheme.subtitle1)
-                ]),
-            SizedBox(height: 8),
-            Divider(height: 1, thickness: 1, color: AnthealthColors.black1),
-            buildPrescriptionComponent(
-                context, DigitalMedicine("", "name", 1, 0, 0, [], [], 0)),
-          ]);
+          children: state.medicine
+                  .map((medicine) => Container(
+                      child: buildPrescriptionComponent(context, state,
+                          medicine, state.medicine.indexOf(medicine))))
+                  .toList() +
+              [
+                Container(
+                  child: GestureDetector(
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => AddMedicinePage(
+                              superContext: context, superState: state))),
+                      child: Container(
+                          color: Colors.transparent,
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: CommonText.tapTextImage(
+                              context,
+                              "assets/app_icon/small_icons/add_medicine_sec1.png",
+                              S.of(context).Add_medicine,
+                              AnthealthColors.secondary1))),
+                )
+              ]);
 
   Widget buildPrescriptionComponent(
-          BuildContext context, DigitalMedicine medicine) =>
-      Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(height: 8),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(medicine.getName(),
-                      style: Theme.of(context).textTheme.bodyText1),
-                  Expanded(child: Container()),
-                  Text(medicine.getQuantity().toString(),
-                      style: Theme.of(context).textTheme.bodyText1),
-                  SizedBox(width: 4),
-                  Text(medicine.getUnit().toString(),
-                      style: Theme.of(context).textTheme.bodyText1)
-                ]),
-            SizedBox(height: 8),
-            CustomDivider.dash(),
-            SizedBox(height: 8),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(medicine.getUsage().toString(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12)),
-                  Text(' | ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12)),
-                  Text(medicine.getRepeat().toString(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 12))
-                ]),
-            SizedBox(height: 8),
-            Divider(height: 1, thickness: 1, color: AnthealthColors.black1)
-          ]);
+          BuildContext context,
+          MedicalRecordDetailState state,
+          DigitalMedicine medicine,
+          int index) =>
+      GestureDetector(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => AddMedicinePage(
+                  superContext: context,
+                  superState: state,
+                  medicine: medicine,
+                  index: index))),
+          child: Container(
+              decoration: BoxDecoration(
+                  color: AnthealthColors.secondary5,
+                  borderRadius: BorderRadius.circular(16)),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 16),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Text(medicine.getName(),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subtitle1!
+                                      .copyWith(
+                                          color: AnthealthColors.secondary0))),
+                          Text(
+                              MedicineLogic.handleQuantity(
+                                      medicine.getQuantity()) +
+                                  " " +
+                                  MedicineLogic.getUnit(
+                                      context, medicine.getUnit()),
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(color: AnthealthColors.secondary0)),
+                        ]),
+                    SizedBox(height: 8),
+                    Text(MedicineLogic.handleMedicineString(context, medicine),
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption!
+                            .copyWith(color: AnthealthColors.secondary1))
+                  ])));
 
   // Hepper Feature
+  void addMedicalRecord(MedicalRecordDetailState state) {
+    if (checkRequiredFill(state.data.getLabel())) {
+      BlocProvider.of<MedicalRecordCubit>(widget.superContext)
+          .addData(state.data, state.list)
+          .then((value) {
+        if (value) {
+          BlocProvider.of<MedicalRecordCubit>(widget.superContext).loadData();
+          Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(S.of(context).Add_record +
+                  ' ' +
+                  S.of(context).successfully +
+                  '!')));
+        }
+      });
+    } else
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).required_fill + '!')));
+  }
+
+  void updateMedicalRecord(MedicalRecordDetailState state) {
+    if (checkRequiredFill(state.data.getLabel())) {
+      BlocProvider.of<MedicalRecordCubit>(widget.superContext)
+          .addData(state.data, state.list)
+          .then((value) {
+        if (value) {
+          BlocProvider.of<MedicalRecordCubit>(widget.superContext).loadData();
+          Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(S.of(context).Add_record +
+                  ' ' +
+                  S.of(context).successfully +
+                  '!')));
+        }
+      });
+    } else
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).required_fill + '!')));
+  }
+
   bool checkRequiredFill(MedicalRecordLabel label) {
     if (label.getName() == "") {
       FocusScope.of(context).requestFocus(_nameFocus);

@@ -26,12 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu huyết áp"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Thêm bởi"),
+        "Add_customized_dose": MessageLookupByLibrary.simpleMessage(
+            "Thêm một liều dùng tùy chỉnh"),
         "Add_heart_rate":
             MessageLookupByLibrary.simpleMessage("Thêm heart dữ liệu nhịp tim"),
         "Add_height":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu chiều cao"),
         "Add_medical_record":
             MessageLookupByLibrary.simpleMessage("Thêm hồ sơ"),
+        "Add_medicine": MessageLookupByLibrary.simpleMessage("Thêm thuốc"),
         "Add_medicine_box":
             MessageLookupByLibrary.simpleMessage("Thêm hộp thuốc mới"),
         "Add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
@@ -51,18 +54,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
+        "Choose_medicine": MessageLookupByLibrary.simpleMessage("Chọn thuốc"),
+        "Choose_one_or_more_days":
+            MessageLookupByLibrary.simpleMessage("Chọn một hoặc nhiều ngày"),
         "Community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
         "Content": MessageLookupByLibrary.simpleMessage("Nội dung"),
+        "Customized_by_week":
+            MessageLookupByLibrary.simpleMessage("Tuỳ chỉnh theo tuần"),
         "Day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "December": MessageLookupByLibrary.simpleMessage("Tháng 12"),
+        "Delete": MessageLookupByLibrary.simpleMessage("Xoá"),
         "Delete_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Xoá dữ liệu huyết áp"),
         "Delete_heart_rate":
             MessageLookupByLibrary.simpleMessage("Xoá heart dữ liệu nhịp tim"),
         "Delete_height":
             MessageLookupByLibrary.simpleMessage("Xoá dữ liệu chiều cao"),
+        "Delete_medicine": MessageLookupByLibrary.simpleMessage("Xoá thuốc"),
         "Delete_photo": MessageLookupByLibrary.simpleMessage("Xoá ảnh"),
         "Delete_record": MessageLookupByLibrary.simpleMessage("Xoá hồ sơ"),
         "Delete_spo2": MessageLookupByLibrary.simpleMessage("Xoá dữ liệu SPO2"),
@@ -76,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
+        "Dosage": MessageLookupByLibrary.simpleMessage("Liều dùng"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu huyết áp"),
         "Edit_heart_rate":
@@ -97,6 +108,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập tên của bạn"),
         "Enter_password":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mật khẩu"),
+        "Every_few_days":
+            MessageLookupByLibrary.simpleMessage("Vài ngày một lần"),
         "Family": MessageLookupByLibrary.simpleMessage("Gia đình"),
         "February": MessageLookupByLibrary.simpleMessage("Tháng 2"),
         "Fill_in_information":
@@ -154,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
             "Email này chưa được đăng ký!"),
+        "Note": MessageLookupByLibrary.simpleMessage("Ghi chú"),
         "November": MessageLookupByLibrary.simpleMessage("Tháng 11"),
         "Number_of_record":
             MessageLookupByLibrary.simpleMessage("Số lượng hồ sơ"),
@@ -178,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Đăng ký ngay"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
+        "Repeat": MessageLookupByLibrary.simpleMessage("Lặp lại"),
+        "Repeat_after": MessageLookupByLibrary.simpleMessage("Lặp lại sau"),
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Nội dung bắt buộc"),
         "September": MessageLookupByLibrary.simpleMessage("Tháng 9"),
@@ -189,10 +205,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
         "Time": MessageLookupByLibrary.simpleMessage("Thời gian"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
+        "Update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
+        "Update_medical_record":
+            MessageLookupByLibrary.simpleMessage("Cập nhật hồ sơ"),
+        "Update_medicine":
+            MessageLookupByLibrary.simpleMessage("Cập nhật thuốc"),
+        "Usage": MessageLookupByLibrary.simpleMessage("Cách dùng"),
         "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn huỷ hồ sơ này không?"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xoá dữ liệu này không?"),
+        "Warning_delete_medicine": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn xoá thuốc này không?"),
         "Warning_delete_photo": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xoá ảnh này không?"),
         "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
@@ -226,8 +250,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Main-----------------------------"),
         "_Medic": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Medic-----------------------------"),
+        "_Medicine": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Medicine-----------------------------"),
         "_Time": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Time-----------------------------"),
+        "afternoon": MessageLookupByLibrary.simpleMessage("chiều"),
+        "apply": MessageLookupByLibrary.simpleMessage("Bôi"),
         "apr": MessageLookupByLibrary.simpleMessage("T4"),
         "aug": MessageLookupByLibrary.simpleMessage("T8"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("HUỶ"),
@@ -238,19 +266,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_no": MessageLookupByLibrary.simpleMessage("KHÔNG"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "button_yes": MessageLookupByLibrary.simpleMessage("CÓ"),
+        "chew": MessageLookupByLibrary.simpleMessage("Ngậm"),
+        "custom_day_repeat_right":
+            MessageLookupByLibrary.simpleMessage(" ngày 1 lần"),
+        "custom_repeat_left": MessageLookupByLibrary.simpleMessage(""),
+        "custom_week_repeat_right":
+            MessageLookupByLibrary.simpleMessage(" tuần 1 lần"),
+        "daily": MessageLookupByLibrary.simpleMessage("Hằng ngày"),
+        "day": MessageLookupByLibrary.simpleMessage("ngày"),
         "dec": MessageLookupByLibrary.simpleMessage("T12"),
+        "drink": MessageLookupByLibrary.simpleMessage("Uống"),
+        "drops": MessageLookupByLibrary.simpleMessage("Nhỏ"),
         "feb": MessageLookupByLibrary.simpleMessage("T2"),
+        "fri": MessageLookupByLibrary.simpleMessage("T6"),
+        "inject": MessageLookupByLibrary.simpleMessage("Tiêm"),
         "jan": MessageLookupByLibrary.simpleMessage("T1"),
         "jul": MessageLookupByLibrary.simpleMessage("T7"),
         "jun": MessageLookupByLibrary.simpleMessage("T6"),
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
+        "mon": MessageLookupByLibrary.simpleMessage("T2"),
+        "morning": MessageLookupByLibrary.simpleMessage("sáng"),
+        "night": MessageLookupByLibrary.simpleMessage("tối"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
         "no_medical_record": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có hồ sơ khám bệnh nào"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
             "bạn chưa thêm dữ liệu nào cho mục này"),
+        "noon": MessageLookupByLibrary.simpleMessage("trưa"),
         "normal": MessageLookupByLibrary.simpleMessage("bình thường"),
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
         "obese_class_I":
@@ -261,12 +305,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("béo phì cấp độ III"),
         "oct": MessageLookupByLibrary.simpleMessage("T10"),
         "overweight": MessageLookupByLibrary.simpleMessage("thừa cân"),
+        "pack": MessageLookupByLibrary.simpleMessage("gói"),
+        "phial": MessageLookupByLibrary.simpleMessage("ống"),
+        "pill": MessageLookupByLibrary.simpleMessage("viên"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa điền đủ các nội dung bắt buộc"),
+        "sat": MessageLookupByLibrary.simpleMessage("T7"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Xin lỗi, đã xảy ra sự cố!"),
         "successfully": MessageLookupByLibrary.simpleMessage("thành công"),
-        "thinness": MessageLookupByLibrary.simpleMessage("gầy")
+        "sun": MessageLookupByLibrary.simpleMessage("CN"),
+        "thinness": MessageLookupByLibrary.simpleMessage("gầy"),
+        "thu": MessageLookupByLibrary.simpleMessage("T5"),
+        "tue": MessageLookupByLibrary.simpleMessage("T3"),
+        "wed": MessageLookupByLibrary.simpleMessage("T4"),
+        "weekly": MessageLookupByLibrary.simpleMessage("Hằng tuần")
       };
 }

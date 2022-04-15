@@ -258,57 +258,118 @@ class MedicalRecordDetailData {
 }
 
 class DigitalMedicine {
-  DigitalMedicine(this._id, this._name, this._quantity, this._unit, this._usage,
-      this._dosage, this._customDosage, this._repeat,
+  DigitalMedicine(
+      this._id,
+      this._name,
+      this._quantity,
+      this._unit,
+      this._usage,
+      this._dosage,
+      this._customDosage,
+      this._repeat,
+      this._imagePath,
+      this._url,
       [this._note]);
 
   final String _id;
   final String _name;
-  final int _quantity;
+  final double _quantity;
   final int _unit;
   final int _usage;
-  final List<DigitalMedicineDosage> _dosage;
+  final List<double> _dosage;
   final List<DigitalCustomMedicineDosage> _customDosage;
   final int _repeat;
   final String? _note;
+  final String _imagePath;
+  final String _url;
 
   String getId() => _id;
 
   String getName() => _name;
 
-  int getQuantity() => _quantity;
+  double getQuantity() => _quantity;
 
   int getUnit() => _unit;
 
   int getUsage() => _usage;
 
-  List<DigitalMedicineDosage> getDosage() => _dosage;
+  List<double> getDosage() => _dosage;
 
   List<DigitalCustomMedicineDosage> getCustomDosage() => _customDosage;
 
   int getRepeat() => _repeat;
 
   String? getNote() => _note;
-}
 
-class DigitalMedicineDosage {
-  DigitalMedicineDosage(this._time, this._quantity);
+  String getImagePath() => _imagePath;
 
-  final int _time;
-  final int _quantity;
+  String getURL() => _url;
 
-  int getTime() => _time;
+  static DigitalMedicine updateQuantity(DigitalMedicine data, double quantity) {
+    return DigitalMedicine(
+        data.getId(),
+        data.getName(),
+        quantity,
+        data.getUnit(),
+        data.getUsage(),
+        data.getDosage(),
+        data.getCustomDosage(),
+        data.getRepeat(),
+        data.getImagePath(),
+        data.getURL());
+  }
 
-  int getQuantity() => _quantity;
+  static DigitalMedicine updateDosage(DigitalMedicine data, List<double> dosage) {
+    return DigitalMedicine(
+        data.getId(),
+        data.getName(),
+        data.getQuantity(),
+        data.getUnit(),
+        data.getUsage(),
+        dosage,
+        data.getCustomDosage(),
+        data.getRepeat(),
+        data.getImagePath(),
+        data.getURL());
+  }
+
+  static DigitalMedicine updateRepeat(DigitalMedicine data, int value) {
+    return DigitalMedicine(
+        data.getId(),
+        data.getName(),
+        data.getQuantity(),
+        data.getUnit(),
+        data.getUsage(),
+        data.getDosage(),
+        data.getCustomDosage(),
+        value,
+        data.getImagePath(),
+        data.getURL());
+  }
+
+  static DigitalMedicine updateNote(DigitalMedicine data, String value) {
+    return DigitalMedicine(
+        data.getId(),
+        data.getName(),
+        data.getQuantity(),
+        data.getUnit(),
+        data.getUsage(),
+        data.getDosage(),
+        data.getCustomDosage(),
+        data.getRepeat(),
+        data.getImagePath(),
+        data.getURL(),
+        value);
+  }
 }
 
 class DigitalCustomMedicineDosage {
   DigitalCustomMedicineDosage(this._time, this._quantity);
 
   final String _time;
-  final int _quantity;
+  final double _quantity;
 
   String getTime() => _time;
 
-  int getQuantity() => _quantity;
+  double getQuantity() => _quantity;
 }

@@ -64,7 +64,8 @@ class PhotoView extends StatelessWidget {
                               temp[index].removeAt(photoIndex);
                               BlocProvider.of<MedicalRecordDetailCubit>(
                                       superContext)
-                                  .updateData(state.data, "", "", temp);
+                                  .updateData(
+                                      state.data, "", "", temp, state.medicine);
                               Navigator.pop(context);
                               Navigator.pop(context);
                             })),

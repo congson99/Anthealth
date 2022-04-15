@@ -28,7 +28,7 @@ class MedicalRecordLabelComponent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width-100)*0.7,
+                    width: (MediaQuery.of(context).size.width-100)*0.65,
                     child: Text(left,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
@@ -38,7 +38,7 @@ class MedicalRecordLabelComponent extends StatelessWidget {
                   ),
                   Expanded(child: Container()),
                   Container(
-                    width: (MediaQuery.of(context).size.width-100)*0.3,
+                    width: (MediaQuery.of(context).size.width-100)*0.35,
                     alignment: Alignment.centerRight,
                     child: Text(right,
                         overflow: TextOverflow.ellipsis,
