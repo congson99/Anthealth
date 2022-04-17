@@ -380,6 +380,26 @@ class S {
     );
   }
 
+  /// `Member`
+  String get Member {
+    return Intl.message(
+      'Member',
+      name: 'Member',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add member`
+  String get Add_member {
+    return Intl.message(
+      'Add member',
+      name: 'Add_member',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -1450,6 +1470,36 @@ class S {
     );
   }
 
+  /// `Medicine box name`
+  String get Medicine_box_name {
+    return Intl.message(
+      'Medicine box name',
+      name: 'Medicine_box_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get Hint_medicine_box {
+    return Intl.message(
+      'Home',
+      name: 'Hint_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get Done_medicine_box {
+    return Intl.message(
+      'Done',
+      name: 'Done_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Button-----------------------------`
   String get _Button {
     return Intl.message(
@@ -1535,6 +1585,16 @@ class S {
     return Intl.message(
       'NO',
       name: 'button_no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DONE`
+  String get button_done {
+    return Intl.message(
+      'DONE',
+      name: 'button_done',
       desc: '',
       args: [],
     );

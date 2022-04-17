@@ -26,7 +26,7 @@ class CommonText {
           children: [
             Image.asset(imagePath,
                 width: 20, height: 20, fit: BoxFit.fitHeight),
-            SizedBox(width: 2),
+            SizedBox(width: 3),
             Text(content,
                 style: Theme.of(context).textTheme.subtitle1!.copyWith(
                     fontSize: 14,

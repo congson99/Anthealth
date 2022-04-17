@@ -65,13 +65,13 @@ class MedicalDirectoryPage extends StatelessWidget {
                   child: Text(mask.getName().substring(0, 1).toUpperCase(),
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1!
+                          .headline6!
                           .copyWith(color: AnthealthColors.black2))),
             if (mask.getMark()) CustomDivider.common(),
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Text(mask.getName(),
-                    style: Theme.of(context).textTheme.subtitle1)),
+                    style: Theme.of(context).textTheme.headline6)),
             CustomDivider.common()
           ]));
 }

@@ -255,6 +255,53 @@ class MedicalRecordDetailData {
   }
 }
 
+class MedicineData {
+  MedicineData(this._id, this._name, this._quantity, this._unit, this._usage,
+      this._imagePath, this._url, this._note);
+
+  final String _id;
+  final String _name;
+  final double _quantity;
+  final int _unit;
+  final int _usage;
+  final String _note;
+  final String _imagePath;
+  final String _url;
+
+  String getId() => _id;
+
+  String getName() => _name;
+
+  double getQuantity() => _quantity;
+
+  int getUnit() => _unit;
+
+  int getUsage() => _usage;
+
+  String getNote() => _note;
+
+  String getImagePath() => _imagePath;
+
+  String getURL() => _url;
+
+  static MedicineData updateQuantity(MedicineData data, double quantity) {
+    return MedicineData(data.getId(), data.getName(), quantity, data.getUnit(),
+        data.getUsage(), data.getImagePath(), data.getURL(), data.getNote());
+  }
+
+  static MedicineData updateNote(MedicineData data, String value) {
+    return MedicineData(
+        data.getId(),
+        data.getName(),
+        data.getQuantity(),
+        data.getUnit(),
+        data.getUsage(),
+        data.getImagePath(),
+        data.getURL(),
+        value);
+  }
+}
+
 class DigitalMedicine {
   DigitalMedicine(
       this._id,

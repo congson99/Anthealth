@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_medicine": MessageLookupByLibrary.simpleMessage("Thêm thuốc"),
         "Add_medicine_box":
             MessageLookupByLibrary.simpleMessage("Thêm hộp thuốc mới"),
+        "Add_member": MessageLookupByLibrary.simpleMessage("Thêm thành viên"),
         "Add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
         "Add_record": MessageLookupByLibrary.simpleMessage("Thêm hồ sơ"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Thêm dữ liệu SPO2"),
@@ -87,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
+        "Done_medicine_box":
+            MessageLookupByLibrary.simpleMessage("Thêm hộp thuốc"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Liều dùng"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu huyết áp"),
@@ -125,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Hồ sơ sức khoẻ"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
+        "Hint_medicine_box":
+            MessageLookupByLibrary.simpleMessage("Hộp thuốc ở nhà"),
         "Hint_re_examination":
             MessageLookupByLibrary.simpleMessage("Kiểm tra vết thương"),
         "Hint_record_name":
@@ -165,6 +170,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medicine": MessageLookupByLibrary.simpleMessage("Thuốc"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
+        "Medicine_box_name":
+            MessageLookupByLibrary.simpleMessage("Tên hộp thuốc"),
+        "Member": MessageLookupByLibrary.simpleMessage("Thành viên"),
         "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "Name": MessageLookupByLibrary.simpleMessage("Tên"),
         "Not_match_password":
@@ -266,6 +274,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_cancel": MessageLookupByLibrary.simpleMessage("HUỶ"),
         "button_close": MessageLookupByLibrary.simpleMessage("ĐÓNG"),
         "button_delete": MessageLookupByLibrary.simpleMessage("XOÁ"),
+        "button_done": MessageLookupByLibrary.simpleMessage("XONG"),
         "button_edit": MessageLookupByLibrary.simpleMessage("SỬA"),
         "button_login": MessageLookupByLibrary.simpleMessage("ĐĂNG NHẬP"),
         "button_no": MessageLookupByLibrary.simpleMessage("KHÔNG"),

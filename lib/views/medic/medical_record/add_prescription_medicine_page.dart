@@ -16,8 +16,8 @@ import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddMedicinePage extends StatelessWidget {
-  const AddMedicinePage(
+class AddPrescriptionMedicinePage extends StatelessWidget {
+  const AddPrescriptionMedicinePage(
       {Key? key,
       required this.superContext,
       required this.superState,
@@ -210,7 +210,7 @@ class AddMedicinePage extends StatelessWidget {
                       child: CommonText.tapTextImage(
                           context,
                           "assets/app_icon/small_icons/add_pri1.png",
-                          " " + S.of(context).Add_customized_dose,
+                          S.of(context).Add_customized_dose,
                           AnthealthColors.primary1)))
             ]);
   }

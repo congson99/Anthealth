@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_medicine": MessageLookupByLibrary.simpleMessage("Add a medicine"),
         "Add_medicine_box":
             MessageLookupByLibrary.simpleMessage("Add a new medicine box"),
+        "Add_member": MessageLookupByLibrary.simpleMessage("Add member"),
         "Add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
         "Add_record": MessageLookupByLibrary.simpleMessage("Add record"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Add SPO2 data"),
@@ -88,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
+        "Done_medicine_box": MessageLookupByLibrary.simpleMessage("Done"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Dosage"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
@@ -123,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Health records"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
+        "Hint_medicine_box": MessageLookupByLibrary.simpleMessage("Home"),
         "Hint_re_examination":
             MessageLookupByLibrary.simpleMessage("Re-check the disease"),
         "Hint_record_name": MessageLookupByLibrary.simpleMessage("Sick"),
@@ -160,6 +163,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medicine": MessageLookupByLibrary.simpleMessage("Medicine"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
+        "Medicine_box_name":
+            MessageLookupByLibrary.simpleMessage("Medicine box name"),
+        "Member": MessageLookupByLibrary.simpleMessage("Member"),
         "Month": MessageLookupByLibrary.simpleMessage("Month"),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "Not_match_password":
@@ -261,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_cancel": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "button_close": MessageLookupByLibrary.simpleMessage("CLOSE"),
         "button_delete": MessageLookupByLibrary.simpleMessage("DELETE"),
+        "button_done": MessageLookupByLibrary.simpleMessage("DONE"),
         "button_edit": MessageLookupByLibrary.simpleMessage("EDIT"),
         "button_login": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "button_no": MessageLookupByLibrary.simpleMessage("NO"),

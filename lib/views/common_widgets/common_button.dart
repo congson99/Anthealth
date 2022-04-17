@@ -60,11 +60,22 @@ class CommonButton {
                 Image.asset(imagePath, height: 16, fit: BoxFit.fitHeight),
                 SizedBox(width: 8),
                 Text(content,
-                    style: Theme.of(context)
-                        .textTheme
-                        .button!
-                        .copyWith(color: Colors.white, fontSize: 14, letterSpacing: 1)),
+                    style: Theme.of(context).textTheme.button!.copyWith(
+                        color: Colors.white, fontSize: 14, letterSpacing: 1)),
               ],
             )));
+  }
+
+  static Widget checkBox(
+      {required bool value,
+      required ValueChanged<bool?> onChanged,
+      double? scale = 1}) {
+    return Transform.scale(
+        scale: scale,
+        child: Checkbox(
+          checkColor: Colors.white,
+          value: value,
+          onChanged: (value) => onChanged(value),
+        ));
   }
 }

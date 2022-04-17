@@ -14,7 +14,7 @@ import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/datetime_picker_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
-import 'package:anthealth_mobile/views/medic/medical_record/add_medicine_page.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/add_prescription_medicine_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -308,7 +308,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 Container(
                   child: GestureDetector(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => AddMedicinePage(
+                          builder: (_) => AddPrescriptionMedicinePage(
                               superContext: context, superState: state))),
                       child: Container(
                           color: Colors.transparent,
@@ -325,7 +325,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
       MedicalRecordDetailState state, DigitalMedicine medicine, int index) {
     return GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => AddMedicinePage(
+            builder: (_) => AddPrescriptionMedicinePage(
                 superContext: context,
                 superState: state,
                 medicine: medicine,

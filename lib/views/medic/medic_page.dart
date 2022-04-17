@@ -9,6 +9,7 @@ import 'package:anthealth_mobile/views/common_widgets/header.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medic_directory/medical_directory_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
+import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_add_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -98,6 +99,8 @@ class MedicPage extends StatelessWidget {
         SectionComponent(
             title: S.of(context).Add_medicine_box,
             colorID: 1,
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => MedicineBoxAddPage())),
             isDirection: false,
             iconPath: "assets/app_icon/small_icons/add_medicine_box_sec2.png")
       ]);
