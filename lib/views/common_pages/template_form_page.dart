@@ -39,7 +39,7 @@ class TemplateFormPage extends StatelessWidget {
           title: title,
           back: back,
           add: add,
-          share: settings,
+          share: share,
           edit: edit,
           delete: delete,
           settings: settings)

@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu nhiệt độ"),
         "Add_weight": MessageLookupByLibrary.simpleMessage(
             "Thêm weight dữ liệu cân nặng"),
+        "Address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
         "April": MessageLookupByLibrary.simpleMessage("Tháng 4"),
         "August": MessageLookupByLibrary.simpleMessage("Tháng 8"),
@@ -129,6 +130,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hint_record_name":
             MessageLookupByLibrary.simpleMessage("Khám bệnh cảm"),
         "Home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "Hospital_info":
+            MessageLookupByLibrary.simpleMessage("Thông tin cơ sở y tế"),
         "Hour": MessageLookupByLibrary.simpleMessage("Giờ"),
         "Invalid_email":
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
@@ -163,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
         "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
+        "Name": MessageLookupByLibrary.simpleMessage("Tên"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("Tháng 10"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "Phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "Photo_view": MessageLookupByLibrary.simpleMessage("Xem ảnh"),
         "Pick_camera": MessageLookupByLibrary.simpleMessage("Máy ảnh"),
         "Pick_gallery": MessageLookupByLibrary.simpleMessage("Thư viện ảnh"),

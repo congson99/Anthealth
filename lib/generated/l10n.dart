@@ -350,6 +350,36 @@ class S {
     );
   }
 
+  /// `Name`
+  String get Name {
+    return Intl.message(
+      'Name',
+      name: 'Name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get Address {
+    return Intl.message(
+      'Address',
+      name: 'Address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get Phone_number {
+    return Intl.message(
+      'Phone number',
+      name: 'Phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -1225,6 +1255,16 @@ class S {
     return Intl.message(
       'Dosage',
       name: 'Dosage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hospital Information`
+  String get Hospital_info {
+    return Intl.message(
+      'Hospital Information',
+      name: 'Hospital_info',
       desc: '',
       args: [],
     );

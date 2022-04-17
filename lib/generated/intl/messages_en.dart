@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
         "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
+        "Address": MessageLookupByLibrary.simpleMessage("Address"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
         "April": MessageLookupByLibrary.simpleMessage("April"),
         "August": MessageLookupByLibrary.simpleMessage("August"),
@@ -126,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Re-check the disease"),
         "Hint_record_name": MessageLookupByLibrary.simpleMessage("Sick"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "Hospital_info":
+            MessageLookupByLibrary.simpleMessage("Hospital Information"),
         "Hour": MessageLookupByLibrary.simpleMessage("Hour"),
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
@@ -158,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
         "Month": MessageLookupByLibrary.simpleMessage("Month"),
+        "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -169,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("October"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
         "Photo_view": MessageLookupByLibrary.simpleMessage("Photo view"),
         "Pick_camera": MessageLookupByLibrary.simpleMessage("Pick Camera"),
         "Pick_gallery": MessageLookupByLibrary.simpleMessage("Pick Gallery"),
