@@ -1,6 +1,5 @@
-import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +48,6 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
           padding: const EdgeInsets.all(16),
           child: Column(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SizedBox(height: 16),
@@ -61,72 +59,62 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
                 buildButton(),
               ])));
 
-  Widget buildButton() => Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CommonButton.cancel(context, widget.cancel),
-            CommonButton.ok(
-                context,
-                () => widget.ok(DateTime(
-                    (widget.isDate != false) ? _date.year : DateTime.now().year,
-                    (widget.isDate != false)
-                        ? _date.month
-                        : DateTime.now().month,
-                    (widget.isDate != false) ? _date.day : DateTime.now().day,
-                    (widget.isTime != false) ? _time.hour : DateTime.now().hour,
-                    (widget.isTime != false)
-                        ? _time.minute
-                        : DateTime.now().minute,
-                    DateTime.now().second)))
-          ]);
+  Widget buildButton() =>
+      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        CommonButton.cancel(context, widget.cancel),
+        CommonButton.ok(
+            context,
+            () => widget.ok(DateTime(
+                (widget.isDate != false) ? _date.year : DateTime.now().year,
+                (widget.isDate != false) ? _date.month : DateTime.now().month,
+                (widget.isDate != false) ? _date.day : DateTime.now().day,
+                (widget.isTime != false) ? _time.hour : DateTime.now().hour,
+                (widget.isTime != false) ? _time.minute : DateTime.now().minute,
+                DateTime.now().second)))
+      ]);
 
-  Widget buildSelectTime(BuildContext context) => Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (widget.timeTitle != null)
-              SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: Text(widget.timeTitle! + ': ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(color: AnthealthColors.black0))),
-            Expanded(
-                child: SizedBox(
-                    height: 150,
-                    child: CupertinoDatePicker(
-                        initialDateTime: _time,
-                        minimumDate: DateTime(1900),
-                        maximumDate: DateTime(DateTime.now().year,
-                            DateTime.now().month, DateTime.now().day + 1),
-                        onDateTimeChanged: (DateTime value) =>
-                            setState(() => _time = value),
-                        mode: CupertinoDatePickerMode.time)))
-          ]);
+  Widget buildSelectTime(BuildContext context) => Row(children: [
+        if (widget.timeTitle != null)
+          SizedBox(
+              width: MediaQuery.of(context).size.width / 4,
+              child: Text(widget.timeTitle! + ': ',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: AnthealthColors.black0))),
+        Expanded(
+            child: SizedBox(
+                height: 150,
+                child: CupertinoDatePicker(
+                    initialDateTime: _time,
+                    minimumDate: DateTime(1900),
+                    maximumDate: DateTime(DateTime.now().year,
+                        DateTime.now().month, DateTime.now().day + 1),
+                    onDateTimeChanged: (DateTime value) =>
+                        setState(() => _time = value),
+                    mode: CupertinoDatePickerMode.time)))
+      ]);
 
-  Widget buildSelectDate(BuildContext context) => Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (widget.dateTitle != null)
-              SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: Text(widget.dateTitle! + ': ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(color: AnthealthColors.black0))),
-            Expanded(
-                child: SizedBox(
-                    height: 150,
-                    child: CupertinoDatePicker(
-                        initialDateTime: _date,
-                        minimumDate: DateTime(1900),
-                        maximumDate: (widget.isFuture == true) ? DateTime(3000) :DateTime.now(),
-                        onDateTimeChanged: (DateTime value) =>
-                            setState(() => _date = value),
-                        mode: CupertinoDatePickerMode.date)))
-          ]);
+  Widget buildSelectDate(BuildContext context) => Row(children: [
+        if (widget.dateTitle != null)
+          SizedBox(
+              width: MediaQuery.of(context).size.width / 4,
+              child: Text(widget.dateTitle! + ': ',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: AnthealthColors.black0))),
+        Expanded(
+            child: SizedBox(
+                height: 150,
+                child: CupertinoDatePicker(
+                    initialDateTime: _date,
+                    minimumDate: DateTime(1900),
+                    maximumDate: (widget.isFuture == true)
+                        ? DateTime(3000)
+                        : DateTime.now(),
+                    onDateTimeChanged: (DateTime value) =>
+                        setState(() => _date = value),
+                    mode: CupertinoDatePickerMode.date)))
+      ]);
 }

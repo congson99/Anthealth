@@ -174,6 +174,7 @@ class BottomNavigationItem extends StatelessWidget {
                           fit: BoxFit.fitHeight,
                         ),
                   Text(title,
+                      overflow: TextOverflow.ellipsis,
                       style: itemIndex == currentIndex
                           ? Theme.of(context).textTheme.bodyText1!.copyWith(
                               fontSize: 10,

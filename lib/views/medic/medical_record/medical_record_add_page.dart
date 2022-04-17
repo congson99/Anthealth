@@ -1,5 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
-import 'package:anthealth_mobile/blocs/common_logic/medicine_logic.dart';
+import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_state.dart';
@@ -76,233 +76,160 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 title: (widget.medicalRecordDetailData == null)
                     ? S.of(context).Add_medical_record
                     : S.of(context).Update_medical_record,
-                back: () {
-                  if (widget.medicalRecordDetailData == null)
-                    showDialog(
-                        context: context,
-                        builder: (_) => WarningPopup(
-                            title: S.of(context).Warning_cancel_record,
-                            cancel: () => Navigator.pop(context),
-                            delete: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            }));
-                  else
-                    Navigator.pop(context);
-                })
+                back: () => back())
           ])));
         else
           return LoadingPage();
       }));
 
-  Widget buildContent(BuildContext context, MedicalRecordDetailState state) =>
-      Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(height: 8, color: Colors.transparent),
-            Container(
-                color: Colors.white,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      buildDescription(context, state),
-                      CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                      buildPhotoComponent(context, 0, state,
-                          title: S.of(context).General_information),
-                      CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                      buildPhotoComponent(context, 1, state,
-                          title: S.of(context).Medical_test),
-                      CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                      buildPhotoComponent(context, 2, state,
-                          title: S.of(context).Diagnose),
-                      CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                      buildPrescription(context, state),
-                      buildPhotoComponent(context, 3, state,
-                          isShowNullData:
-                              (state.data.getPrescription().length == 0)
-                                  ? true
-                                  : false),
-                      CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                      buildAppointment(context, state),
-                      SizedBox(height: 8)
-                    ])),
-            Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                child: (widget.medicalRecordDetailData == null)
-                    ? CommonButton.round(
-                        context,
-                        () => addMedicalRecord(state),
-                        S.of(context).Add_medical_record,
-                        AnthealthColors.secondary1)
-                    : CommonButton.round(
-                        context,
-                        () => updateMedicalRecord(state),
-                        S.of(context).Update_medical_record,
-                        AnthealthColors.secondary1))
-          ]);
-
   // Content
+  Widget buildContent(BuildContext context, MedicalRecordDetailState state) =>
+      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Container(height: 8, color: Colors.transparent),
+        buildEditingComponent(context, state),
+        buildButton(context, state)
+      ]);
+
+  // Content Component
+  Container buildEditingComponent(
+      BuildContext context, MedicalRecordDetailState state) {
+    return Container(
+        color: Colors.white,
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          buildDescription(context, state),
+          CustomDivider.cutLine(MediaQuery.of(context).size.width),
+          buildPhotoComponent(context, 0, state,
+              title: S.of(context).General_information),
+          CustomDivider.cutLine(MediaQuery.of(context).size.width),
+          buildPhotoComponent(context, 1, state,
+              title: S.of(context).Medical_test),
+          CustomDivider.cutLine(MediaQuery.of(context).size.width),
+          buildPhotoComponent(context, 2, state, title: S.of(context).Diagnose),
+          CustomDivider.cutLine(MediaQuery.of(context).size.width),
+          buildPrescription(context, state),
+          buildPhotoComponent(context, 3, state,
+              isShowNullData:
+                  (state.data.getPrescription().length == 0) ? true : false),
+          CustomDivider.cutLine(MediaQuery.of(context).size.width),
+          buildAppointment(context, state),
+          SizedBox(height: 8)
+        ]));
+  }
+
+  Padding buildButton(BuildContext context, MedicalRecordDetailState state) {
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+        child: (widget.medicalRecordDetailData == null)
+            ? CommonButton.round(context, () => addMedicalRecord(state),
+                S.of(context).Add_medical_record, AnthealthColors.secondary1)
+            : CommonButton.round(
+                context,
+                () => updateMedicalRecord(state),
+                S.of(context).Update_medical_record,
+                AnthealthColors.secondary1));
+  }
+
+  // Editing Component
   Widget buildDescription(
           BuildContext context, MedicalRecordDetailState state) =>
       Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 16),
-                CommonTextField.fill(
-                    context: context,
-                    initialValue: state.data.getLabel().getName(),
-                    focusNode: _nameFocus,
-                    onChanged: (String value) =>
-                        BlocProvider.of<MedicalRecordDetailCubit>(context)
-                            .updateData(state.data, "name", value, state.list,
-                                state.medicine),
-                    labelText: S.of(context).Record_name + " (*)",
-                    hintText: S.of(context).Hint_record_name),
-                SizedBox(height: 28),
-                CommonTextField.select(
-                    labelText: S.of(context).Medical_location + " (*)",
-                    focusNode: _locationFocus,
-                    data: state.locationList,
-                    value: (state.data.getLabel().getLocation() == "")
-                        ? null
-                        : state.data.getLabel().getLocation(),
-                    onChanged: (value) {
-                      BlocProvider.of<MedicalRecordDetailCubit>(context)
-                          .updateData(state.data, "location", value, state.list,
-                              state.medicine);
-                    }),
-                SizedBox(height: 20),
-                CommonTextField.fill(
-                    textEditingController: _timeController,
-                    onTap: () => showModalBottomSheet(
-                        context: context,
-                        enableDrag: false,
-                        isDismissible: true,
-                        isScrollControlled: true,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(16))),
-                        builder: (_) => DateTimePickerBottomSheet(
-                            dateTime: state.data.getLabel().getDateTime(),
-                            isTime: false,
-                            cancel: () => Navigator.pop(context),
-                            ok: (time) {
-                              setState(() => _timeController.text =
-                                  DateFormat("dd.MM.yyyy").format(time));
-                              BlocProvider.of<MedicalRecordDetailCubit>(context)
-                                  .updateData(state.data, "time", time,
-                                      state.list, state.medicine);
-                              Navigator.pop(context);
-                            })),
-                    context: context,
-                    onChanged: (String value) => {},
-                    labelText: S.of(context).Medical_date + " (*)"),
-                SizedBox(height: 24),
-                Text("(*) " + S.of(context).Required_content,
-                    style: Theme.of(context)
-                        .textTheme
-                        .caption!
-                        .copyWith(color: AnthealthColors.warning0)),
-                SizedBox(height: 4)
-              ]));
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            SizedBox(height: 16),
+            CommonTextField.fill(
+                context: context,
+                initialValue: state.data.getLabel().getName(),
+                focusNode: _nameFocus,
+                onChanged: (String value) => editName(state, value),
+                labelText: S.of(context).Record_name + " (*)",
+                hintText: S.of(context).Hint_record_name),
+            SizedBox(height: 28),
+            CommonTextField.select(
+                labelText: S.of(context).Medical_location + " (*)",
+                focusNode: _locationFocus,
+                data: state.locationList,
+                value: (state.data.getLabel().getLocation() == "")
+                    ? null
+                    : state.data.getLabel().getLocation(),
+                onChanged: (value) => editLocation(state, value!)),
+            SizedBox(height: 20),
+            CommonTextField.fill(
+                textEditingController: _timeController,
+                onTap: () => onTimeTap(state),
+                context: context,
+                onChanged: (String value) => {},
+                labelText: S.of(context).Medical_date + " (*)"),
+            SizedBox(height: 24),
+            Text("(*) " + S.of(context).Required_content,
+                style: Theme.of(context)
+                    .textTheme
+                    .caption!
+                    .copyWith(color: AnthealthColors.warning0)),
+            SizedBox(height: 4)
+          ]));
 
   Widget buildPhotoComponent(
           BuildContext context, int index, MedicalRecordDetailState state,
           {String? title, bool? isShowNullData}) =>
       Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                if (title != null) CommonText.subSection(title, context),
-                if (title != null) SizedBox(height: 16),
-                buildPhotoAddList(context, state, index)
-              ]));
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            if (title != null) CommonText.subSection(title, context),
+            if (title != null) SizedBox(height: 16),
+            buildPhotoAddList(context, state, index)
+          ]));
 
   Widget buildPrescription(
           BuildContext context, MedicalRecordDetailState state) =>
       Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CommonText.subSection(S.of(context).Prescription, context),
-                SizedBox(height: 16),
-                buildDigitalPrescription(context, state)
-              ]));
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            CommonText.subSection(S.of(context).Prescription, context),
+            SizedBox(height: 16),
+            buildDigitalPrescription(context, state)
+          ]));
 
   Widget buildAppointment(
           BuildContext context, MedicalRecordDetailState state) =>
       Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 16),
-                CommonText.subSection(S.of(context).Re_examination, context),
-                SizedBox(height: 24),
-                CommonTextField.fill(
-                    context: context,
-                    initialValue: state.data.getAppointment()!.getName(),
-                    onChanged: (String value) =>
-                        BlocProvider.of<MedicalRecordDetailCubit>(context)
-                            .updateData(state.data, "appointment_content",
-                                value, state.list, state.medicine),
-                    labelText: S.of(context).Content,
-                    hintText: S.of(context).Hint_re_examination),
-                SizedBox(height: 28),
-                CommonTextField.select(
-                    labelText: S.of(context).Medical_location,
-                    data: state.locationList,
-                    value: (state.data.getAppointment()!.getLocation() == "")
-                        ? ((state.data.getLabel().getLocation() == "")
-                            ? null
-                            : state.data.getLabel().getLocation())
-                        : state.data.getAppointment()!.getLocation(),
-                    onChanged: (value) =>
-                        BlocProvider.of<MedicalRecordDetailCubit>(context)
-                            .updateData(state.data, "appointment_location",
-                                value, state.list, state.medicine)),
-                SizedBox(height: 20),
-                CommonTextField.fill(
-                    textEditingController: _appointmentTimeController,
-                    onTap: () => showModalBottomSheet(
-                        context: context,
-                        enableDrag: false,
-                        isDismissible: true,
-                        isScrollControlled: true,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(16))),
-                        builder: (_) => DateTimePickerBottomSheet(
-                            isFuture: true,
-                            dateTime: state.data.getLabel().getDateTime(),
-                            isTime: false,
-                            cancel: () => Navigator.pop(context),
-                            ok: (time) {
-                              setState(() => _appointmentTimeController.text =
-                                  DateFormat("dd.MM.yyyy").format(time));
-                              BlocProvider.of<MedicalRecordDetailCubit>(context)
-                                  .updateData(state.data, "appointment_time",
-                                      time, state.list, state.medicine);
-                              Navigator.pop(context);
-                            })),
-                    context: context,
-                    onChanged: (String value) => {},
-                    labelText: S.of(context).Medical_date),
-                SizedBox(height: 8)
-              ]));
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            SizedBox(height: 16),
+            CommonText.subSection(S.of(context).Re_examination, context),
+            SizedBox(height: 24),
+            CommonTextField.fill(
+                context: context,
+                initialValue: state.data.getAppointment()!.getName(),
+                onChanged: (String value) =>
+                    editAppointmentContent(state, value),
+                labelText: S.of(context).Content,
+                hintText: S.of(context).Hint_re_examination),
+            SizedBox(height: 28),
+            CommonTextField.select(
+                labelText: S.of(context).Medical_location,
+                data: state.locationList,
+                value: (state.data.getAppointment()!.getLocation() == "")
+                    ? ((state.data.getLabel().getLocation() == "")
+                        ? null
+                        : state.data.getLabel().getLocation())
+                    : state.data.getAppointment()!.getLocation(),
+                onChanged: (value) => editAppointmentLocation(state, value!)),
+            SizedBox(height: 20),
+            CommonTextField.fill(
+                textEditingController: _appointmentTimeController,
+                onTap: () => onAppointmentTimeTap(state),
+                context: context,
+                onChanged: (String value) => {},
+                labelText: S.of(context).Medical_date),
+            SizedBox(height: 8)
+          ]));
 
-  // Component
+  // Child Component
   Widget buildTitleTextLine(
           BuildContext context, String label, String content) =>
       Row(
@@ -371,7 +298,6 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
   Widget buildDigitalPrescription(
           BuildContext context, MedicalRecordDetailState state) =>
       Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: state.medicine
                   .map((medicine) => Container(
@@ -395,61 +321,135 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                 )
               ]);
 
-  Widget buildPrescriptionComponent(
-          BuildContext context,
-          MedicalRecordDetailState state,
-          DigitalMedicine medicine,
-          int index) =>
-      GestureDetector(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => AddMedicinePage(
-                  superContext: context,
-                  superState: state,
-                  medicine: medicine,
-                  index: index))),
-          child: Container(
-              decoration: BoxDecoration(
-                  color: AnthealthColors.secondary5,
-                  borderRadius: BorderRadius.circular(16)),
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.only(bottom: 16),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Text(medicine.getName(),
-                                  overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle1!
-                                      .copyWith(
-                                          color: AnthealthColors.secondary0))),
-                          Text(
-                              MedicineLogic.handleQuantity(
-                                      medicine.getQuantity()) +
-                                  " " +
-                                  MedicineLogic.getUnit(
-                                      context, medicine.getUnit()),
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(color: AnthealthColors.secondary0)),
-                        ]),
-                    SizedBox(height: 8),
-                    Text(MedicineLogic.handleMedicineString(context, medicine),
+  Widget buildPrescriptionComponent(BuildContext context,
+      MedicalRecordDetailState state, DigitalMedicine medicine, int index) {
+    return GestureDetector(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => AddMedicinePage(
+                superContext: context,
+                superState: state,
+                medicine: medicine,
+                index: index))),
+        child: Container(
+            decoration: BoxDecoration(
+                color: AnthealthColors.secondary5,
+                borderRadius: BorderRadius.circular(16)),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 16),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(children: [
+                    Expanded(
+                        child: Text(medicine.getName(),
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .copyWith(color: AnthealthColors.secondary0))),
+                    Text(
+                        MedicineLogic.handleQuantity(medicine.getQuantity()) +
+                            " " +
+                            MedicineLogic.getUnit(context, medicine.getUnit()),
+                        overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
-                            .caption!
-                            .copyWith(color: AnthealthColors.secondary1))
-                  ])));
+                            .bodyText1!
+                            .copyWith(color: AnthealthColors.secondary0)),
+                  ]),
+                  SizedBox(height: 8),
+                  Text(MedicineLogic.handleMedicineString(context, medicine),
+                      style: Theme.of(context)
+                          .textTheme
+                          .caption!
+                          .copyWith(color: AnthealthColors.secondary1))
+                ])));
+  }
 
-  // Hepper Feature
+  // Editing Function
+  void editName(MedicalRecordDetailState state, String value) {
+    BlocProvider.of<MedicalRecordDetailCubit>(context)
+        .updateData(state.data, "name", value, state.list, state.medicine);
+  }
+
+  void editLocation(MedicalRecordDetailState state, String value) {
+    BlocProvider.of<MedicalRecordDetailCubit>(context)
+        .updateData(state.data, "location", value, state.list, state.medicine);
+  }
+
+  void editAppointmentContent(MedicalRecordDetailState state, String value) {
+    BlocProvider.of<MedicalRecordDetailCubit>(context).updateData(
+        state.data, "appointment_content", value, state.list, state.medicine);
+  }
+
+  void editAppointmentLocation(MedicalRecordDetailState state, String value) {
+    BlocProvider.of<MedicalRecordDetailCubit>(context).updateData(
+        state.data, "appointment_location", value, state.list, state.medicine);
+  }
+
+  void onTimeTap(MedicalRecordDetailState state) {
+    showModalBottomSheet(
+        context: context,
+        enableDrag: false,
+        isDismissible: true,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        builder: (_) => DateTimePickerBottomSheet(
+            dateTime: state.data.getLabel().getDateTime(),
+            isTime: false,
+            cancel: () => Navigator.pop(context),
+            ok: (time) {
+              setState(() =>
+                  _timeController.text = DateFormat("dd.MM.yyyy").format(time));
+              BlocProvider.of<MedicalRecordDetailCubit>(context).updateData(
+                  state.data, "time", time, state.list, state.medicine);
+              Navigator.pop(context);
+            }));
+  }
+
+  void onAppointmentTimeTap(MedicalRecordDetailState state) {
+    showModalBottomSheet(
+        context: context,
+        enableDrag: false,
+        isDismissible: true,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        builder: (_) => DateTimePickerBottomSheet(
+            isFuture: true,
+            dateTime: state.data.getLabel().getDateTime(),
+            isTime: false,
+            cancel: () => Navigator.pop(context),
+            ok: (time) {
+              setState(() => _appointmentTimeController.text =
+                  DateFormat("dd.MM.yyyy").format(time));
+              BlocProvider.of<MedicalRecordDetailCubit>(context).updateData(
+                  state.data,
+                  "appointment_time",
+                  time,
+                  state.list,
+                  state.medicine);
+              Navigator.pop(context);
+            }));
+  }
+
+  // Actions
+  void back() {
+    if (widget.medicalRecordDetailData == null)
+      showDialog(
+          context: context,
+          builder: (_) => WarningPopup(
+              title: S.of(context).Warning_cancel_record,
+              cancel: () => Navigator.pop(context),
+              delete: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              }));
+    else
+      Navigator.pop(context);
+  }
+
   void addMedicalRecord(MedicalRecordDetailState state) {
     if (checkRequiredFill(state.data.getLabel())) {
       BlocProvider.of<MedicalRecordCubit>(widget.superContext)

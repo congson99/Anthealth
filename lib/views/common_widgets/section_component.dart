@@ -52,59 +52,60 @@ class SectionComponent extends StatelessWidget {
                     ? [BoxShadow(color: color1, spreadRadius: 2)]
                     : []),
             padding: const EdgeInsets.all(16),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  if (iconPath != null)
-                    Image.asset(iconPath!, height: 20.0, fit: BoxFit.cover),
-                  if (iconPath != null) SizedBox(width: 8),
-                  Expanded(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                        Text(title,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: color0)),
-                        SizedBox(height: 4),
-                        subTitle == null
-                            ? Container()
-                            : Text(subTitle ?? "",
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption!
-                                    .copyWith(color: color1)),
-                        subSubTitle == null
-                            ? Container()
-                            : Text(subSubTitle ?? "",
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption!
-                                    .copyWith(color: color1))
-                      ])),
-                  if (directionContent != null)
-                    Text(directionContent!,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(color: color0)),
-                  if (isDirection != false)
-                    Image.asset(
-                        colorID == 0
-                            ? "assets/app_icon/direction/right_pri1.png"
-                            : colorID == 1
-                                ? "assets/app_icon/direction/right_sec1.png"
-                                : "assets/app_icon/direction/right_war1.png",
-                        height: 16.0,
-                        width: 16.0,
-                        fit: BoxFit.cover)
-                ])));
+            child: buildContent(context, color0, color1)));
   }
+
+  Widget buildContent(BuildContext context, Color color0, Color color1) {
+    return Row(children: [
+      if (iconPath != null)
+        Image.asset(iconPath!, height: 20.0, fit: BoxFit.cover),
+      if (iconPath != null) SizedBox(width: 8),
+      buildTitles(context, color0, color1),
+      if (directionContent != null)
+        Text(directionContent!,
+            overflow: TextOverflow.ellipsis,
+            style:
+                Theme.of(context).textTheme.bodyText1!.copyWith(color: color0)),
+      if (isDirection != false)
+        Image.asset(
+            colorID == 0
+                ? "assets/app_icon/direction/right_pri1.png"
+                : colorID == 1
+                    ? "assets/app_icon/direction/right_sec1.png"
+                    : "assets/app_icon/direction/right_war1.png",
+            height: 16.0,
+            width: 16.0,
+            fit: BoxFit.cover)
+    ]);
+  }
+
+  Widget buildTitles(BuildContext context, Color color0, Color color1) =>
+      Expanded(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+            Text(title,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1!
+                    .copyWith(color: color0)),
+            if (subTitle != null) SizedBox(height: 4),
+            if (subTitle != null)
+              Text(subTitle ?? "",
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption!
+                      .copyWith(color: color1)),
+            if (subSubTitle != null) SizedBox(height: 4),
+            if (subSubTitle != null)
+              Text(subSubTitle ?? "",
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption!
+                      .copyWith(color: color1))
+          ]));
 }

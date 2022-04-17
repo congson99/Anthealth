@@ -1,5 +1,3 @@
-import 'package:anthealth_mobile/blocs/common_logic/server_logic.dart';
-
 class MedicalRecordPageData {
   MedicalRecordPageData(this._listYearLabel, this._listAppointment);
 
@@ -319,7 +317,8 @@ class DigitalMedicine {
         data.getURL());
   }
 
-  static DigitalMedicine updateDosage(DigitalMedicine data, List<double> dosage) {
+  static DigitalMedicine updateDosage(
+      DigitalMedicine data, List<double> dosage) {
     return DigitalMedicine(
         data.getId(),
         data.getName(),

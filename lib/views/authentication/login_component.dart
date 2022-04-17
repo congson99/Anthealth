@@ -4,8 +4,8 @@ import 'package:anthealth_mobile/blocs/app_cubit.dart';
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart';
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
-import 'package:anthealth_mobile/blocs/common_logic/authentication_logic.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/authentication_logic.dart';
 import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
@@ -45,14 +45,11 @@ class _LoginComponentState extends State<LoginComponent> {
       });
 
   Widget buildContent(BuildContext context, LoginData data) => Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-            Expanded(child: buildLogo()),
-            buildLoginArea(data),
-            Expanded(child: buildRegisterArea())
-          ]));
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Expanded(child: buildLogo()),
+        buildLoginArea(data),
+        Expanded(child: buildRegisterArea())
+      ]));
 
   Widget buildLogo() => Container(
       width: min(MediaQuery.of(context).size.width * 3 / 5, 350),
@@ -63,76 +60,67 @@ class _LoginComponentState extends State<LoginComponent> {
   Widget buildLoginArea(LoginData data) => Container(
       width: min(MediaQuery.of(context).size.width, 450),
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CommonTextField.round(
-                onChanged: (value) => setState(() {
-                      BlocProvider.of<AuthenticationCubit>(context)
-                          .login(LoginData(value, data.getPassword()));
-                      _disappearError();
-                    }),
-                context: context,
-                focusNode: _usernameFocus,
-                textEditingController: _usernameController,
-                errorText: (_errorUsername == 'null') ? null : _errorUsername,
-                labelText: S.of(context).Email),
-            SizedBox(height: 16),
-            CommonTextField.round(
-                onChanged: (value) => setState(() {
-                      BlocProvider.of<AuthenticationCubit>(context)
-                          .login(LoginData(data.getUsername(), value));
-                      _disappearError();
-                    }),
-                context: context,
-                focusNode: _passwordFocus,
-                errorText: (_errorPassword == 'null') ? null : _errorPassword,
-                textEditingController: _passwordController,
-                labelText: S.of(context).Password,
-                isVisibility: true),
-            SizedBox(height: 16),
-            Container(
-                alignment: Alignment.centerRight,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: InkWell(
-                    onTap: () =>
-                    {
-                          // BlocProvider.of<AuthenticationCubit>(context)
-                          //     .forgotPassword()
-                        },
-                    child: Text(S.of(context).Forgot_password,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(color: AnthealthColors.primary1)))),
-            SizedBox(height: 16),
-            CommonButton.round(
-                context,
-                () => _loginAuthentication(context, data),
-                S.of(context).button_login,
-                AnthealthColors.primary1)
-          ]));
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        CommonTextField.round(
+            onChanged: (value) => setState(() {
+                  BlocProvider.of<AuthenticationCubit>(context)
+                      .login(LoginData(value, data.getPassword()));
+                  _disappearError();
+                }),
+            context: context,
+            focusNode: _usernameFocus,
+            textEditingController: _usernameController,
+            errorText: (_errorUsername == 'null') ? null : _errorUsername,
+            labelText: S.of(context).Email),
+        SizedBox(height: 16),
+        CommonTextField.round(
+            onChanged: (value) => setState(() {
+                  BlocProvider.of<AuthenticationCubit>(context)
+                      .login(LoginData(data.getUsername(), value));
+                  _disappearError();
+                }),
+            context: context,
+            focusNode: _passwordFocus,
+            errorText: (_errorPassword == 'null') ? null : _errorPassword,
+            textEditingController: _passwordController,
+            labelText: S.of(context).Password,
+            isVisibility: true),
+        SizedBox(height: 16),
+        Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: InkWell(
+                onTap: () => {
+                      // BlocProvider.of<AuthenticationCubit>(context)
+                      //     .forgotPassword()
+                    },
+                child: Text(S.of(context).Forgot_password,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: AnthealthColors.primary1)))),
+        SizedBox(height: 16),
+        CommonButton.round(context, () => _loginAuthentication(context, data),
+            S.of(context).button_login, AnthealthColors.primary1)
+      ]));
 
-  Widget buildRegisterArea() => Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(S.of(context).You_are_new_user,
-                style: Theme.of(context).textTheme.bodyText2),
-            SizedBox(height: 4),
-            Container(
-                alignment: Alignment.center,
-                child: InkWell(
-                    onTap: () => BlocProvider.of<AuthenticationCubit>(context)
-                        .register(RegisterData('', '', '', '')),
-                    child: Text(S.of(context).Register_now,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(color: AnthealthColors.primary1)))),
-            SizedBox(height: 48)
-          ]);
+  Widget buildRegisterArea() =>
+      Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+        Text(S.of(context).You_are_new_user,
+            style: Theme.of(context).textTheme.bodyText2),
+        SizedBox(height: 4),
+        Container(
+            alignment: Alignment.center,
+            child: InkWell(
+                onTap: () => BlocProvider.of<AuthenticationCubit>(context)
+                    .register(RegisterData('', '', '', '')),
+                child: Text(S.of(context).Register_now,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: AnthealthColors.primary1)))),
+        SizedBox(height: 48)
+      ]);
 
   // Hepper Functions
   void _checkAutoFill() {

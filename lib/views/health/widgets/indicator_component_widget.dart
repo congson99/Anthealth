@@ -49,38 +49,34 @@ class IndicatorComponent extends StatelessWidget {
                       : null),
               margin: (isWarning == true) ? EdgeInsets.only(top: 15) : null,
               padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(22),
-                        child: Image.asset(iconPath,
-                            height: 44.0, width: 44.0, fit: BoxFit.cover)),
-                    SizedBox(height: 12),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          RichText(
-                              text: TextSpan(
-                                  text: value,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4!
-                                      .copyWith(color: AnthealthColors.black1),
-                                  children: [
-                                TextSpan(
-                                    text: unit, style: TextStyle(fontSize: 8))
-                              ]))
-                        ]),
-                    SizedBox(height: 4),
-                    Text(title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .caption!
-                            .copyWith(color: color0))
-                  ]))),
+              child: Column(children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(22),
+                    child: Image.asset(iconPath,
+                        height: 44.0, width: 44.0, fit: BoxFit.cover)),
+                SizedBox(height: 12),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      RichText(
+                          text: TextSpan(
+                              text: value,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline4!
+                                  .copyWith(color: AnthealthColors.black1),
+                              children: [
+                            TextSpan(text: unit, style: TextStyle(fontSize: 8))
+                          ]))
+                    ]),
+                SizedBox(height: 4),
+                Text(title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .caption!
+                        .copyWith(color: color0))
+              ]))),
       isWarning == true
           ? Container(
               alignment: Alignment.center,

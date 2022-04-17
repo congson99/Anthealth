@@ -1,8 +1,8 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/authentication/authentication_cubit.dart';
 import 'package:anthealth_mobile/blocs/authentication/authetication_states.dart';
-import 'package:anthealth_mobile/blocs/common_logic/authentication_logic.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/authentication_logic.dart';
 import 'package:anthealth_mobile/models/authentication/authentication_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_error_widget.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -59,20 +59,17 @@ class _RegisterComponentState extends State<RegisterComponent> {
 
   Widget buildHeading() => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            GestureDetector(
-                onTap: () => BlocProvider.of<AuthenticationCubit>(context)
-                    .checkCurrentUsername(),
-                child: Image.asset("assets/app_icon/direction/page_back.png",
-                    height: 20, width: 20, fit: BoxFit.cover)),
-            SizedBox(width: 16),
-            Text(S.of(context).Register,
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                    fontFamily: 'RobotoMedium', color: AnthealthColors.black1))
-          ]));
+      child: Row(children: [
+        GestureDetector(
+            onTap: () => BlocProvider.of<AuthenticationCubit>(context)
+                .checkCurrentUsername(),
+            child: Image.asset("assets/app_icon/direction/page_back.png",
+                height: 20, width: 20, fit: BoxFit.cover)),
+        SizedBox(width: 16),
+        Text(S.of(context).Register,
+            style: Theme.of(context).textTheme.headline1!.copyWith(
+                fontFamily: 'RobotoMedium', color: AnthealthColors.black1))
+      ]));
 
   Widget buildStepper(RegisterData data) => Stepper(
           steps: [
@@ -91,64 +88,60 @@ class _RegisterComponentState extends State<RegisterComponent> {
 
   Widget buildFillStep(RegisterData data) => Container(
       padding: const EdgeInsets.only(top: 4, right: 16),
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CommonTextField.round(
-                onChanged: (value) => setState(() {
-                      BlocProvider.of<AuthenticationCubit>(context).register(
-                          RegisterData(value, data.getUsername(),
-                              data.getPassword(), data.confirmPassword()));
-                      _disappearError();
-                    }),
-                context: context,
-                focusNode: _nameFocus,
-                errorText: (_errorName == '') ? null : _errorName,
-                labelText: S.of(context).Your_name),
-            SizedBox(height: 16),
-            CommonTextField.round(
-                onChanged: (value) => setState(() {
-                      BlocProvider.of<AuthenticationCubit>(context).register(
-                          RegisterData(data.getName(), value,
-                              data.getPassword(), data.confirmPassword()));
-                      _disappearError();
-                    }),
-                context: context,
-                focusNode: _usernameFocus,
-                errorText: (_errorUsername == '') ? null : _errorUsername,
-                labelText: S.of(context).Email),
-            SizedBox(height: 16),
-            CommonTextField.round(
-                onChanged: (value) => setState(() {
-                      BlocProvider.of<AuthenticationCubit>(context).register(
-                          RegisterData(data.getName(), data.getUsername(),
-                              value, data.confirmPassword()));
-                      _disappearError();
-                    }),
-                context: context,
-                focusNode: _passwordFocus,
-                textEditingController: _passwordController,
-                errorText: (_errorPassword == '') ? null : _errorPassword,
-                labelText: S.of(context).Password,
-                isVisibility: true),
-            SizedBox(height: 16),
-            CommonTextField.round(
-                onChanged: (value) => setState(() {
-                      BlocProvider.of<AuthenticationCubit>(context).register(
-                          RegisterData(data.getName(), data.getUsername(),
-                              value, value));
-                      _disappearError();
-                    }),
-                context: context,
-                focusNode: _confirmPasswordFocus,
-                textEditingController: _confirmPasswordController,
-                errorText: (_errorConfirmPassword == '')
-                    ? null
-                    : _errorConfirmPassword,
-                labelText: S.of(context).Confirm_password,
-                isVisibility: true)
-          ]));
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        CommonTextField.round(
+            onChanged: (value) => setState(() {
+                  BlocProvider.of<AuthenticationCubit>(context).register(
+                      RegisterData(value, data.getUsername(),
+                          data.getPassword(), data.confirmPassword()));
+                  _disappearError();
+                }),
+            context: context,
+            focusNode: _nameFocus,
+            errorText: (_errorName == '') ? null : _errorName,
+            labelText: S.of(context).Your_name),
+        SizedBox(height: 16),
+        CommonTextField.round(
+            onChanged: (value) => setState(() {
+                  BlocProvider.of<AuthenticationCubit>(context).register(
+                      RegisterData(data.getName(), value, data.getPassword(),
+                          data.confirmPassword()));
+                  _disappearError();
+                }),
+            context: context,
+            focusNode: _usernameFocus,
+            errorText: (_errorUsername == '') ? null : _errorUsername,
+            labelText: S.of(context).Email),
+        SizedBox(height: 16),
+        CommonTextField.round(
+            onChanged: (value) => setState(() {
+                  BlocProvider.of<AuthenticationCubit>(context).register(
+                      RegisterData(data.getName(), data.getUsername(), value,
+                          data.confirmPassword()));
+                  _disappearError();
+                }),
+            context: context,
+            focusNode: _passwordFocus,
+            textEditingController: _passwordController,
+            errorText: (_errorPassword == '') ? null : _errorPassword,
+            labelText: S.of(context).Password,
+            isVisibility: true),
+        SizedBox(height: 16),
+        CommonTextField.round(
+            onChanged: (value) => setState(() {
+                  BlocProvider.of<AuthenticationCubit>(context).register(
+                      RegisterData(
+                          data.getName(), data.getUsername(), value, value));
+                  _disappearError();
+                }),
+            context: context,
+            focusNode: _confirmPasswordFocus,
+            textEditingController: _confirmPasswordController,
+            errorText:
+                (_errorConfirmPassword == '') ? null : _errorConfirmPassword,
+            labelText: S.of(context).Confirm_password,
+            isVisibility: true)
+      ]));
 
   Widget buildAuthenticateStep() => Container(
       // padding: const EdgeInsets.only(top: 4, right: 16),

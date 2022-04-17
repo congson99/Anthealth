@@ -22,13 +22,11 @@ class AddMedicineCubit extends Cubit<CubitState> {
     List<TempCustomDosage> customDosage = state.customDosage;
     int count = state.countCustomDosage;
     if (updateIndex == 0) {
-      print(value.runtimeType);
       digitalMedicine = DigitalMedicine.updateQuantity(state.data, value);
     }
     if (updateIndex == 1)
       digitalMedicine = DigitalMedicine.updateDosage(state.data, value);
     if (updateIndex == 2) {
-      print(customDosage.length);
       customDosage[count].isShow = true;
       count++;
     }
