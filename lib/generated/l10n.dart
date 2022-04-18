@@ -1290,6 +1290,16 @@ class S {
     );
   }
 
+  /// `Working time`
+  String get Working_time {
+    return Intl.message(
+      'Working time',
+      name: 'Working_time',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medicine-----------------------------`
   String get _Medicine {
     return Intl.message(

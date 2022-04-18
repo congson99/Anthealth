@@ -4,8 +4,8 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/common_widgets/header.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medic_directory/medical_directory_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
@@ -24,23 +24,11 @@ class MedicPage extends StatelessWidget {
   Widget build(BuildContext context) =>
       BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
         if (state is MedicState)
-          return Container(
-              height: MediaQuery.of(context).size.height,
-              child: SingleChildScrollView(
-                  child: Stack(children: [
-                Container(
-                    margin: const EdgeInsets.only(
-                        left: 16, right: 16, top: 82, bottom: 130),
-                    child: buildContent(context, state.medicPageData)),
-                Header(
-                    title: S.of(context).Medic_record,
-                    content: name,
-                    isNotification: false,
-                    isMessage: false,
-                    onSettingsTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => SettingsPage(appContext: context))))
-              ])));
+          return TemplateDashboardPage(
+              title: S.of(context).Medic_record,
+              name: name,
+              setting: () => setting(context),
+              content: buildContent(context, state.medicPageData));
         return ErrorPage();
       });
 
@@ -115,4 +103,10 @@ class MedicPage extends StatelessWidget {
             onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => MedicalDirectoryPage())))
       ]);
+
+  // Actions
+  void setting(BuildContext context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => SettingsPage(appContext: context)));
+  }
 }

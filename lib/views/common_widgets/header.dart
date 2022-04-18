@@ -1,8 +1,7 @@
-import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class Header extends StatefulWidget {
+class Header extends StatelessWidget {
   const Header({
     Key? key,
     required this.title,
@@ -19,29 +18,20 @@ class Header extends StatefulWidget {
   final VoidCallback onSettingsTap;
 
   @override
-  _HeaderState createState() => _HeaderState();
-}
-
-class _HeaderState extends State<Header> {
-  bool isShowMenu = false;
-
-  @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding: const EdgeInsets.only(bottom: 16),
           height: 82,
-          child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(widget.title,
+                Text(title,
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
                         .copyWith(color: AnthealthColors.black1)),
                 SizedBox(height: 4),
-                Text(widget.content,
+                Text(content,
                     style: Theme.of(context)
                         .textTheme
                         .headline2!
@@ -49,8 +39,7 @@ class _HeaderState extends State<Header> {
               ]),
               buildActions()
             ])
-          ])),
-      isShowMenu ? buildMenu(context) : Container()
+          ]))
     ]);
   }
 
@@ -61,116 +50,23 @@ class _HeaderState extends State<Header> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Image.asset(
-            widget.isNotification
-                ? "assets/app_icon/common/notification_noti_pri1.png"
-                : "assets/app_icon/common/notification_pri1.png",
-            height: 20.0,
-            fit: BoxFit.fitHeight,
-          ),
+              isNotification
+                  ? "assets/app_icon/common/notification_noti_pri1.png"
+                  : "assets/app_icon/common/notification_pri1.png",
+              height: 20.0,
+              fit: BoxFit.fitHeight),
           SizedBox(width: 16),
           Image.asset(
-            widget.isMessage
-                ? "assets/app_icon/common/message_noti_pri1.png"
-                : "assets/app_icon/common/message_pri1.png",
-            height: 20.0,
-            fit: BoxFit.fitHeight,
-          ),
+              isMessage
+                  ? "assets/app_icon/common/message_noti_pri1.png"
+                  : "assets/app_icon/common/message_pri1.png",
+              height: 20.0,
+              fit: BoxFit.fitHeight),
           SizedBox(width: 16),
           GestureDetector(
-              onTap: () => setState(
-                    () => isShowMenu = true,
-                  ),
-              child: Image.asset(
-                "assets/app_icon/common/menu_bla2.png",
-                height: 20.0,
-                fit: BoxFit.fitHeight,
-              ))
+              onTap: onSettingsTap,
+              child: Image.asset("assets/app_icon/common/settings_bla2.png",
+                  height: 20.0, fit: BoxFit.fitHeight))
         ]);
-  }
-
-  // Menu
-  Container buildMenu(BuildContext context) {
-    return Container(
-        child: Stack(children: [
-      GestureDetector(
-        onTap: () => setState(
-          () => isShowMenu = false,
-        ),
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.black.withOpacity(0.5),
-        ),
-      ),
-      Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 36),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            GestureDetector(
-              onTap: () => setState(
-                () => isShowMenu = false,
-              ),
-              child: Image.asset(
-                "assets/app_icon/common/menu_bla5.png",
-                height: 20.0,
-                fit: BoxFit.fitHeight,
-              ),
-            ),
-            SizedBox(height: 4),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            buildMenuSetting(context),
-                            buildMenuDoctor(context)
-                          ]))
-                ])
-          ])),
-      Container(
-          margin: const EdgeInsets.only(top: 113, left: 205, right: 16),
-          child: Divider(height: 0.5, color: AnthealthColors.black2))
-    ]));
-  }
-
-  Widget buildMenuSetting(BuildContext context) {
-    return GestureDetector(
-        onTap: widget.onSettingsTap,
-        child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(8)),
-            child: Row(children: [
-              Image.asset("assets/app_icon/common/settings_bla2.png",
-                  height: 22.0, fit: BoxFit.fitHeight),
-              SizedBox(width: 12),
-              Text(S.of(context).Settings,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(color: AnthealthColors.black2))
-            ])));
-  }
-
-  Widget buildMenuDoctor(BuildContext context) {
-    return GestureDetector(
-        onTap: () {},
-        child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            child: Row(children: [
-              Image.asset("assets/app_icon/common/doctor_bla2.png",
-                  height: 22.0, fit: BoxFit.fitHeight),
-              SizedBox(width: 12),
-              Text(S.of(context).Doctor_page,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(color: AnthealthColors.black2))
-            ])));
   }
 }

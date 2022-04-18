@@ -229,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete this record?"),
         "Water": MessageLookupByLibrary.simpleMessage("Water"),
         "Weight": MessageLookupByLibrary.simpleMessage("Weight"),
+        "Working_time": MessageLookupByLibrary.simpleMessage("Working time"),
         "Wrong_authentication_code":
             MessageLookupByLibrary.simpleMessage("Wrong authentication code!"),
         "Wrong_email": MessageLookupByLibrary.simpleMessage("Wrong email!"),

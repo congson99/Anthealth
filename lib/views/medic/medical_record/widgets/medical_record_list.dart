@@ -21,7 +21,7 @@ class MedicalRecordLabelComponent extends StatelessWidget {
   Widget build(BuildContext context) => GestureDetector(
         onTap: onTap,
         child: Container(
-            height: 35,
+            height: 36,
             color: Colors.transparent,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

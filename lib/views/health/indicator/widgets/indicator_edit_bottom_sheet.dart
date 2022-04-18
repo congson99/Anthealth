@@ -77,19 +77,17 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
       Divider(height: 0.5, thickness: 0.5, color: AnthealthColors.black3),
       Padding(
           padding:
-              const EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 16),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                buildSelectValue(context),
-                SizedBox(height: 16),
-                if (widget.isTime != null) buildSelectTime(context),
-                SizedBox(height: 16),
-                if (widget.isDate != null) buildSelectDate(context),
-                SizedBox(height: 32),
-                buildButton(),
-              ]))
+              const EdgeInsets.only(top: 24, left: 16, right: 16, bottom: 16),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            buildSelectValue(context),
+            SizedBox(height: 24),
+            if (widget.isTime != null) buildSelectTime(context),
+            SizedBox(height: 24),
+            if (widget.isDate != null) buildSelectDate(context),
+            SizedBox(height: 32),
+            buildButton(),
+          ]))
     ])));
   }
 
@@ -116,8 +114,8 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
   Widget buildSelectValue(BuildContext context) {
     return Row(children: [
       SizedBox(
-          width: MediaQuery.of(context).size.width / 4,
-          child: Text(widget.indicator + ': ',
+          width: MediaQuery.of(context).size.width * 0.3,
+          child: Text(widget.indicator + ':',
               style: Theme.of(context)
                   .textTheme
                   .subtitle1!

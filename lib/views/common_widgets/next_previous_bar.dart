@@ -33,7 +33,7 @@ class NextPreviousBar extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context)
               .textTheme
-              .bodyText2!
+              .bodyText1!
               .copyWith(color: AnthealthColors.black0)),
       SizedBox(width: 4),
       GestureDetector(

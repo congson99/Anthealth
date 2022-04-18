@@ -230,28 +230,6 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
           ]));
 
   // Child Component
-  Widget buildTitleTextLine(
-          BuildContext context, String label, String content) =>
-      Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(label + ":",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: AnthealthColors.black1)),
-            Expanded(
-                child: CustomDivider.dash(
-                    height: 1,
-                    weight: MediaQuery.of(context).size.width * 0.8)),
-            Text(content,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(color: AnthealthColors.black1))
-          ]);
-
   Widget buildPhotoAddList(
       BuildContext context, MedicalRecordDetailState state, int index) {
     final double width = MediaQuery.of(context).size.width - 48;

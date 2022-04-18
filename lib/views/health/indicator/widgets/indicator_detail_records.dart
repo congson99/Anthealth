@@ -38,7 +38,7 @@ class IndicatorDetailRecords extends StatelessWidget {
             Text(S.of(context).Unit + ": " + unit,
                 style: Theme.of(context)
                     .textTheme
-                    .caption!
+                    .bodyText1!
                     .copyWith(color: AnthealthColors.primary1))
           ])),
       Divider(thickness: 0.5, height: 0.5, color: AnthealthColors.primary0),
@@ -52,7 +52,7 @@ class IndicatorDetailRecords extends StatelessWidget {
       GestureDetector(
           onTap: () => onTap(data.indexOf(mData)),
           child: Container(
-              height: 35,
+              height: 36,
               color: Colors.transparent,
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

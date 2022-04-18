@@ -15,7 +15,9 @@ class AuthenticationPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
           body: Stack(children: [
         buildBackground(context),
-        SafeArea(child: buildContent())
+        SafeArea(
+            child: buildContent(MediaQuery.of(context).padding.top +
+                MediaQuery.of(context).padding.bottom))
       ]));
 
   Widget buildBackground(BuildContext context) => Container(
@@ -23,12 +25,15 @@ class AuthenticationPage extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Image.asset("assets/background.png", fit: BoxFit.cover));
 
-  Widget buildContent() => BlocProvider<AuthenticationCubit>(
+  Widget buildContent(double pading) => BlocProvider<AuthenticationCubit>(
       create: (context) => AuthenticationCubit(),
       child: BlocBuilder<AuthenticationCubit, CubitState>(
           builder: (context, state) {
         if (state is LoginState)
-          return new LoginComponent(intentData: state.loginData);
+          return new LoginComponent(
+            intentData: state.loginData,
+            pading: pading,
+          );
         if (state is RegisterState) return RegisterComponent();
         if (state is ForgotPasswordState) return ForgotPasswordComponent();
         return LoadingPage();

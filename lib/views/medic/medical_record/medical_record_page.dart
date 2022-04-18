@@ -6,7 +6,6 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
-import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_add_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_detail_page.dart';

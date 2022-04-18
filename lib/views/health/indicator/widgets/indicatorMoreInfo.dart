@@ -17,13 +17,13 @@ class IndicatorMoreInfo extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 32),
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('* ',
-              style: Theme.of(context).textTheme.caption!.copyWith(
+              style: Theme.of(context).textTheme.overline!.copyWith(
                   color: AnthealthColors.black1, fontFamily: 'RobotoRegular')),
           Expanded(
               child: RichText(
                   text: TextSpan(
                       text: information.getContent(),
-                      style: Theme.of(context).textTheme.caption!.copyWith(
+                      style: Theme.of(context).textTheme.overline!.copyWith(
                           color: AnthealthColors.black1,
                           fontFamily: 'RobotoRegular',
                           letterSpacing: 0.2),

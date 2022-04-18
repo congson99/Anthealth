@@ -22,7 +22,7 @@ class MedicalDirectoryCubit extends Cubit<CubitState> {
   // Service Function
   void loadData() async {
     loadedData(MedicalDirectoryState("Tp. Hồ Chí Minh", [
-      MedicalDirectoryData("Benh vien ai da", "_location", "023023023",
+      MedicalDirectoryData("Benh vien ai ds ad asd as d sa dasd  ds das d s das d a a", "_location", "023023023",
           "_workTime", "_note", GPS(10.757899397875105, 106.65948982430974)),
       MedicalDirectoryData("Benh vien asdk", "_location", "023023023",
           "_workTime", "_note", GPS(10.757899397875105, 106.65948982430974)),

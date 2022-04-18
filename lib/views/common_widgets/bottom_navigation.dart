@@ -18,116 +18,119 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-        left: 0,
-        bottom: 0,
-        width: size.width,
-        height: 110,
-        child: Stack(children: [
-          Container(
-              margin: const EdgeInsets.only(top: 30),
-              height: 60,
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8)
-              ]),
-              child: CustomPaint(
-                  size: Size(size.width, 60),
-                  painter: BottomNavigationCustomPaint())),
-          Container(
-              margin: const EdgeInsets.only(top: 90),
-              height: 20,
-              color: Colors.white),
-          Container(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-              margin: const EdgeInsets.only(top: 30),
-              height: 70,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    BottomNavigationItem(
-                        size: size,
-                        onIndexChange: onIndexChange,
-                        currentIndex: index,
-                        itemIndex: 0,
-                        selectIconPath:
-                            "assets/app_icon/bottom_navigation/family_pri1.png",
-                        unSelectIconPath:
-                            "assets/app_icon/bottom_navigation/family_bla3.png",
-                        title: S.of(context).Family),
-                    BottomNavigationItem(
-                        size: size,
-                        onIndexChange: onIndexChange,
-                        currentIndex: index,
-                        itemIndex: 1,
-                        selectIconPath:
-                            "assets/app_icon/bottom_navigation/community_pri1.png",
-                        unSelectIconPath:
-                            "assets/app_icon/bottom_navigation/community_bla3.png",
-                        title: S.of(context).Community),
-                    BottomNavigationItem(
-                        size: size,
-                        onIndexChange: onIndexChange,
-                        currentIndex: index,
-                        itemIndex: 2,
-                        selectIconPath: "",
-                        unSelectIconPath: "",
-                        title: S.of(context).Home),
-                    BottomNavigationItem(
-                        size: size,
-                        onIndexChange: onIndexChange,
-                        currentIndex: index,
-                        itemIndex: 3,
-                        selectIconPath:
-                            "assets/app_icon/bottom_navigation/health_pri1.png",
-                        unSelectIconPath:
-                            "assets/app_icon/bottom_navigation/health_bla3.png",
-                        title: S.of(context).Health),
-                    BottomNavigationItem(
-                        size: size,
-                        onIndexChange: onIndexChange,
-                        currentIndex: index,
-                        itemIndex: 4,
-                        selectIconPath:
-                            "assets/app_icon/bottom_navigation/medic_pri1.png",
-                        unSelectIconPath:
-                            "assets/app_icon/bottom_navigation/medic_bla3.png",
-                        title: S.of(context).Medic)
-                  ])),
-          Container(
-              alignment: Alignment.topCenter,
-              child: GestureDetector(
-                  onTap: () => onIndexChange(2),
-                  child: Container(
-                      height: 76.0,
-                      width: 76.0,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: index == 2
-                              ? AnthealthColors.primary1
-                              : Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 8)
-                          ]),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+            height: 110,
+            child: Stack(children: [
+              Container(
+                  margin: const EdgeInsets.only(top: 30),
+                  height: 60,
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.1), blurRadius: 8)
+                  ]),
+                  child: CustomPaint(
+                      size: Size(size.width, 60),
+                      painter: BottomNavigationCustomPaint())),
+              Container(
+                  margin: const EdgeInsets.only(top: 90),
+                  height: 20,
+                  color: Colors.white),
+              Container(
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+                  margin: const EdgeInsets.only(top: 30),
+                  height: 70,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BottomNavigationItem(
+                            size: size,
+                            onIndexChange: onIndexChange,
+                            currentIndex: index,
+                            itemIndex: 0,
+                            selectIconPath:
+                                "assets/app_icon/bottom_navigation/family_pri1.png",
+                            unSelectIconPath:
+                                "assets/app_icon/bottom_navigation/family_bla3.png",
+                            title: S.of(context).Family),
+                        BottomNavigationItem(
+                            size: size,
+                            onIndexChange: onIndexChange,
+                            currentIndex: index,
+                            itemIndex: 1,
+                            selectIconPath:
+                                "assets/app_icon/bottom_navigation/community_pri1.png",
+                            unSelectIconPath:
+                                "assets/app_icon/bottom_navigation/community_bla3.png",
+                            title: S.of(context).Community),
+                        BottomNavigationItem(
+                            size: size,
+                            onIndexChange: onIndexChange,
+                            currentIndex: index,
+                            itemIndex: 2,
+                            selectIconPath: "",
+                            unSelectIconPath: "",
+                            title: S.of(context).Home),
+                        BottomNavigationItem(
+                            size: size,
+                            onIndexChange: onIndexChange,
+                            currentIndex: index,
+                            itemIndex: 3,
+                            selectIconPath:
+                                "assets/app_icon/bottom_navigation/health_pri1.png",
+                            unSelectIconPath:
+                                "assets/app_icon/bottom_navigation/health_bla3.png",
+                            title: S.of(context).Health),
+                        BottomNavigationItem(
+                            size: size,
+                            onIndexChange: onIndexChange,
+                            currentIndex: index,
+                            itemIndex: 4,
+                            selectIconPath:
+                                "assets/app_icon/bottom_navigation/medic_pri1.png",
+                            unSelectIconPath:
+                                "assets/app_icon/bottom_navigation/medic_bla3.png",
+                            title: S.of(context).Medic)
+                      ])),
+              Container(
+                  alignment: Alignment.topCenter,
+                  child: GestureDetector(
+                      onTap: () => onIndexChange(2),
                       child: Container(
-                          height: 68.0,
-                          width: 68.0,
+                          height: 76.0,
+                          width: 76.0,
+                          alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              color: Colors.white, shape: BoxShape.circle),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(34),
-                              child: (imagePath == "")
-                                  ? Image.asset("assets/app_logo.png",
-                                      height: 68.0,
-                                      width: 68.0,
-                                      fit: BoxFit.cover)
-                                  : Image.network(imagePath,
-                                      height: 68.0,
-                                      width: 68.0,
-                                      fit: BoxFit.cover))))))
-        ]));
+                              color: index == 2
+                                  ? AnthealthColors.primary1
+                                  : Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    blurRadius: 8)
+                              ]),
+                          child: Container(
+                              height: 68.0,
+                              width: 68.0,
+                              decoration: BoxDecoration(
+                                  color: Colors.white, shape: BoxShape.circle),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(34),
+                                  child: (imagePath == "")
+                                      ? Image.asset("assets/app_logo.png",
+                                          height: 68.0,
+                                          width: 68.0,
+                                          fit: BoxFit.cover)
+                                      : Image.network(imagePath,
+                                          height: 68.0,
+                                          width: 68.0,
+                                          fit: BoxFit.cover))))))
+            ])),
+      ],
+    );
   }
 }
 

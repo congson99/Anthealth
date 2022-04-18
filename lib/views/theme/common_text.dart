@@ -20,18 +20,13 @@ class CommonText {
 
   static Widget tapTextImage(BuildContext context, String imagePath,
           String content, Color color) =>
-      Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(imagePath,
-                width: 20, height: 20, fit: BoxFit.fitHeight),
-            SizedBox(width: 3),
-            Text(content,
-                style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    fontSize: 14,
-                    decoration: TextDecoration.underline,
-                    fontStyle: FontStyle.italic,
-                    color: color))
-          ]);
+      Row(children: [
+        Image.asset(imagePath, width: 20, height: 20, fit: BoxFit.fitHeight),
+        SizedBox(width: 3),
+        Text(content,
+            style: Theme.of(context).textTheme.caption!.copyWith(
+                decoration: TextDecoration.underline,
+                fontStyle: FontStyle.italic,
+                color: color))
+      ]);
 }

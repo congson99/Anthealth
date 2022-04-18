@@ -64,8 +64,10 @@ class SectionComponent extends StatelessWidget {
       if (directionContent != null)
         Text(directionContent!,
             overflow: TextOverflow.ellipsis,
-            style:
-                Theme.of(context).textTheme.bodyText1!.copyWith(color: color0)),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(fontSize: 18, color: color0)),
       if (isDirection != false)
         Image.asset(
             colorID == 0

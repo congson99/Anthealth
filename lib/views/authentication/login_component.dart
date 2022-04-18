@@ -15,9 +15,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginComponent extends StatefulWidget {
-  const LoginComponent({Key? key, this.intentData}) : super(key: key);
+  const LoginComponent({Key? key, this.intentData, required this.pading})
+      : super(key: key);
 
   final LoginData? intentData;
+  final double pading;
 
   @override
   _LoginComponentState createState() => _LoginComponentState();
@@ -38,26 +40,34 @@ class _LoginComponentState extends State<LoginComponent> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<AuthenticationCubit, CubitState>(builder: (context, state) {
-        if (state is LoginState) return buildContent(context, state.loginData);
-        return CustomErrorWidget(error: S.of(context).something_wrong);
-      });
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthenticationCubit, CubitState>(
+        builder: (context, state) {
+      if (state is LoginState) return buildContent(context, state.loginData);
+      return CustomErrorWidget(error: S.of(context).something_wrong);
+    });
+  }
 
-  Widget buildContent(BuildContext context, LoginData data) => Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Expanded(child: buildLogo()),
-        buildLoginArea(data),
-        Expanded(child: buildRegisterArea())
-      ]));
+  Widget buildContent(BuildContext context, LoginData data) {
+    double height = MediaQuery.of(context).size.height - widget.pading;
+    return SingleChildScrollView(
+        child: Column(children: [
+      buildLogo(height),
+      buildLoginArea(height, data),
+      buildRegisterArea(height)
+    ]));
+  }
 
-  Widget buildLogo() => Container(
+  Widget buildLogo(double height) => Container(
+      height: height * 0.3,
       width: min(MediaQuery.of(context).size.width * 3 / 5, 350),
       alignment: Alignment.bottomCenter,
+      padding: const EdgeInsets.only(bottom: 16),
       child:
           Image.asset("assets/app_text_logo_slogan.png", fit: BoxFit.fitWidth));
 
-  Widget buildLoginArea(LoginData data) => Container(
+  Widget buildLoginArea(double height, LoginData data) => Container(
+      height: height * 0.6,
       width: min(MediaQuery.of(context).size.width, 450),
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -104,23 +114,25 @@ class _LoginComponentState extends State<LoginComponent> {
             S.of(context).button_login, AnthealthColors.primary1)
       ]));
 
-  Widget buildRegisterArea() =>
-      Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-        Text(S.of(context).You_are_new_user,
-            style: Theme.of(context).textTheme.bodyText2),
-        SizedBox(height: 4),
-        Container(
-            alignment: Alignment.center,
-            child: InkWell(
-                onTap: () => BlocProvider.of<AuthenticationCubit>(context)
-                    .register(RegisterData('', '', '', '')),
-                child: Text(S.of(context).Register_now,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2!
-                        .copyWith(color: AnthealthColors.primary1)))),
-        SizedBox(height: 48)
-      ]);
+  Widget buildRegisterArea(double height) {
+    return Container(
+        height: height * 0.1,
+        child: Column(children: [
+          Text(S.of(context).You_are_new_user,
+              style: Theme.of(context).textTheme.bodyText2),
+          SizedBox(height: 4),
+          Container(
+              alignment: Alignment.center,
+              child: InkWell(
+                  onTap: () => BlocProvider.of<AuthenticationCubit>(context)
+                      .register(RegisterData('', '', '', '')),
+                  child: Text(S.of(context).Register_now,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(color: AnthealthColors.primary1))))
+        ]));
+  }
 
   // Hepper Functions
   void _checkAutoFill() {

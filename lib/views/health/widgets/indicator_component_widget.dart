@@ -11,6 +11,7 @@ class IndicatorComponent extends StatelessWidget {
     required this.title,
     this.isWarning,
     this.onTap,
+    required this.width,
   }) : super(key: key);
 
   final int colorID;
@@ -20,6 +21,7 @@ class IndicatorComponent extends StatelessWidget {
   final String title;
   final bool? isWarning;
   final VoidCallback? onTap;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,16 @@ class IndicatorComponent extends StatelessWidget {
         : colorID == 1
             ? AnthealthColors.secondary5
             : AnthealthColors.warning5;
+    double valueWidth = (value == null) ? 13 : value!.length * 13;
+    double unitWidth = (unit == null) ? 0 : unit!.length * 9;
+    if (valueWidth > width - 8) valueWidth = width - 8;
+    if (valueWidth + unitWidth > width - 8) unitWidth = 0;
     return Expanded(
         child: Stack(children: [
       GestureDetector(
           onTap: onTap,
           child: Container(
+              width: width,
               decoration: BoxDecoration(
                   color: color5,
                   borderRadius: BorderRadius.circular(8),
@@ -48,7 +55,7 @@ class IndicatorComponent extends StatelessWidget {
                         ]
                       : null),
               margin: (isWarning == true) ? EdgeInsets.only(top: 15) : null,
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 4),
               child: Column(children: [
                 ClipRRect(
                     borderRadius: BorderRadius.circular(22),
@@ -59,19 +66,29 @@ class IndicatorComponent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      RichText(
-                          text: TextSpan(
-                              text: value,
+                      Container(
+                          alignment: Alignment.center,
+                          width: valueWidth,
+                          child: Text((value == null) ? "_" : value!,
+                              overflow: TextOverflow.ellipsis,
                               style: Theme.of(context)
                                   .textTheme
                                   .headline4!
-                                  .copyWith(color: AnthealthColors.black1),
-                              children: [
-                            TextSpan(text: unit, style: TextStyle(fontSize: 8))
-                          ]))
+                                  .copyWith(color: AnthealthColors.black1))),
+                      Container(
+                          padding: EdgeInsets.only(bottom: 1),
+                          alignment: Alignment.centerLeft,
+                          width: unitWidth,
+                          child: Text((unit == null) ? "" : unit!,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1!
+                                  .copyWith(fontSize: 10)))
                     ]),
                 SizedBox(height: 4),
                 Text(title,
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context)
                         .textTheme
                         .caption!

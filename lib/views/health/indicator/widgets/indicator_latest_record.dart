@@ -15,7 +15,7 @@ class IndicatorLatestRecord extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(vertical: 32),
+        padding: const EdgeInsets.only(top: 16, bottom: 32),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,7 +24,7 @@ class IndicatorLatestRecord extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle1!
+                      .caption!
                       .copyWith(color: AnthealthColors.black1)),
               SizedBox(height: 8),
               RichText(

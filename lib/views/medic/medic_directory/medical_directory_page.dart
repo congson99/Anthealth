@@ -33,9 +33,9 @@ class MedicalDirectoryPage extends StatelessWidget {
   Widget buildContent(BuildContext context, MedicalDirectoryState state) =>
       Column(children: [
         Row(children: [
-          Image.asset("assets/app_icon/common/location_pri1.png",
-              height: 16, fit: BoxFit.fitHeight),
-          Text("  " + state.location,
+          Image.asset("assets/app_icon/common/location_pri0.png",
+              height: 20, fit: BoxFit.fitHeight),
+          Text(" " + state.location,
               style: Theme.of(context)
                   .textTheme
                   .subtitle1!
@@ -65,13 +65,16 @@ class MedicalDirectoryPage extends StatelessWidget {
                   child: Text(mask.getName().substring(0, 1).toUpperCase(),
                       style: Theme.of(context)
                           .textTheme
-                          .headline6!
+                          .bodyText1!
                           .copyWith(color: AnthealthColors.black2))),
             if (mask.getMark()) CustomDivider.common(),
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Text(mask.getName(),
-                    style: Theme.of(context).textTheme.headline6)),
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(letterSpacing: 0.35))),
             CustomDivider.common()
           ]));
 }

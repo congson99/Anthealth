@@ -4,7 +4,6 @@ import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/google_map_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -30,6 +29,9 @@ class MedicalContactPage extends StatelessWidget {
       SizedBox(height: 16),
       buildInfoComponent(
           context, S.of(context).Phone_number, contact.getPhoneNumber()),
+      CustomDivider.common(),
+      SizedBox(height: 16),
+      buildInfoComponent(context, S.of(context).Working_time, contact.getWorkTime()),
       CustomDivider.common(),
       SizedBox(height: 16),
       buildInfoComponent(context, S.of(context).Address, contact.getLocation()),

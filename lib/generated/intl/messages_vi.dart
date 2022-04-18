@@ -236,6 +236,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn xoá hồ sơ này không?"),
         "Water": MessageLookupByLibrary.simpleMessage("Uống nước"),
         "Weight": MessageLookupByLibrary.simpleMessage("Cân nặng"),
+        "Working_time":
+            MessageLookupByLibrary.simpleMessage("Thời gian làm việc"),
         "Wrong_authentication_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực không đúng!"),
         "Wrong_email": MessageLookupByLibrary.simpleMessage("Email sai!"),
@@ -307,7 +309,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_medical_record": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có hồ sơ khám bệnh nào"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
-            "bạn chưa thêm dữ liệu nào cho mục này"),
+            "Bạn chưa thêm dữ liệu nào cho mục này"),
         "noon": MessageLookupByLibrary.simpleMessage("trưa"),
         "normal": MessageLookupByLibrary.simpleMessage("bình thường"),
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
