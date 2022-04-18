@@ -89,7 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
         "Done_medicine_box":
-            MessageLookupByLibrary.simpleMessage("Thêm hộp thuốc"),
+            MessageLookupByLibrary.simpleMessage("THÊM HỘP THUỐC"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Liều dùng"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu huyết áp"),
@@ -172,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
         "Medicine_box_name":
             MessageLookupByLibrary.simpleMessage("Tên hộp thuốc"),
+        "Medicine_list":
+            MessageLookupByLibrary.simpleMessage("Danh sách thuốc"),
         "Member": MessageLookupByLibrary.simpleMessage("Thành viên"),
         "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "Name": MessageLookupByLibrary.simpleMessage("Tên"),
@@ -223,6 +225,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cập nhật hồ sơ"),
         "Update_medicine":
             MessageLookupByLibrary.simpleMessage("Cập nhật thuốc"),
+        "Update_medicine_box":
+            MessageLookupByLibrary.simpleMessage("Cập nhật hộp thuốc"),
         "Usage": MessageLookupByLibrary.simpleMessage("Cách dùng"),
         "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn huỷ hồ sơ này không?"),
@@ -273,14 +277,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "apply": MessageLookupByLibrary.simpleMessage("Bôi"),
         "apr": MessageLookupByLibrary.simpleMessage("T4"),
         "aug": MessageLookupByLibrary.simpleMessage("T8"),
+        "button_add_medical_record":
+            MessageLookupByLibrary.simpleMessage("THÊM HỒ SƠ"),
+        "button_add_medicine":
+            MessageLookupByLibrary.simpleMessage("THÊM THUỐC"),
+        "button_add_medicine_box":
+            MessageLookupByLibrary.simpleMessage("THÊM HỘP THUỐC"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("HUỶ"),
         "button_close": MessageLookupByLibrary.simpleMessage("ĐÓNG"),
         "button_delete": MessageLookupByLibrary.simpleMessage("XOÁ"),
+        "button_delete_medicine":
+            MessageLookupByLibrary.simpleMessage("XOÁ THUỐC"),
         "button_done": MessageLookupByLibrary.simpleMessage("XONG"),
         "button_edit": MessageLookupByLibrary.simpleMessage("SỬA"),
         "button_login": MessageLookupByLibrary.simpleMessage("ĐĂNG NHẬP"),
         "button_no": MessageLookupByLibrary.simpleMessage("KHÔNG"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "button_update": MessageLookupByLibrary.simpleMessage("CẬP NHẬT"),
+        "button_update_medical_record":
+            MessageLookupByLibrary.simpleMessage("CẬP NHẬT HỒ SƠ"),
+        "button_update_medicine_box":
+            MessageLookupByLibrary.simpleMessage("CẬP NHẬT HỘP THUỐC"),
         "button_yes": MessageLookupByLibrary.simpleMessage("CÓ"),
         "chew": MessageLookupByLibrary.simpleMessage("Ngậm"),
         "custom_day_repeat_right":
@@ -308,6 +325,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
         "no_medical_record": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có hồ sơ khám bệnh nào"),
+        "no_medicine_in_box": MessageLookupByLibrary.simpleMessage(
+            "Hộp thuốc đang rỗng. Hãy thêm thuốc!"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa thêm dữ liệu nào cho mục này"),
         "noon": MessageLookupByLibrary.simpleMessage("trưa"),
@@ -326,6 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pack": MessageLookupByLibrary.simpleMessage("gói"),
         "phial": MessageLookupByLibrary.simpleMessage("ống"),
         "pill": MessageLookupByLibrary.simpleMessage("viên"),
+        "quantity_check":
+            MessageLookupByLibrary.simpleMessage("Số lượng phải lớn hơn 0"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa điền đủ các nội dung bắt buộc"),
         "sat": MessageLookupByLibrary.simpleMessage("T7"),

@@ -89,7 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
-        "Done_medicine_box": MessageLookupByLibrary.simpleMessage("Done"),
+        "Done_medicine_box": MessageLookupByLibrary.simpleMessage("DONE"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Dosage"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
@@ -165,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
         "Medicine_box_name":
             MessageLookupByLibrary.simpleMessage("Medicine box name"),
+        "Medicine_list": MessageLookupByLibrary.simpleMessage("Medicine list"),
         "Member": MessageLookupByLibrary.simpleMessage("Member"),
         "Month": MessageLookupByLibrary.simpleMessage("Month"),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -216,6 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update medical record"),
         "Update_medicine":
             MessageLookupByLibrary.simpleMessage("Update medicine"),
+        "Update_medicine_box":
+            MessageLookupByLibrary.simpleMessage("Update medicine box"),
         "Usage": MessageLookupByLibrary.simpleMessage("Usage"),
         "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to cancel this record?"),
@@ -265,14 +268,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
         "aug": MessageLookupByLibrary.simpleMessage("AUG"),
+        "button_add_medical_record":
+            MessageLookupByLibrary.simpleMessage("ADD MEDICAL RECORD"),
+        "button_add_medicine":
+            MessageLookupByLibrary.simpleMessage("ADD MEDICINE"),
+        "button_add_medicine_box":
+            MessageLookupByLibrary.simpleMessage("ADD MEDICINE BOX"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "button_close": MessageLookupByLibrary.simpleMessage("CLOSE"),
         "button_delete": MessageLookupByLibrary.simpleMessage("DELETE"),
+        "button_delete_medicine":
+            MessageLookupByLibrary.simpleMessage("DELETE MEDICINE"),
         "button_done": MessageLookupByLibrary.simpleMessage("DONE"),
         "button_edit": MessageLookupByLibrary.simpleMessage("EDIT"),
         "button_login": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "button_no": MessageLookupByLibrary.simpleMessage("NO"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "button_update": MessageLookupByLibrary.simpleMessage("UPDATE"),
+        "button_update_medical_record":
+            MessageLookupByLibrary.simpleMessage("UPDATE MEDICAL RECORD"),
+        "button_update_medicine_box":
+            MessageLookupByLibrary.simpleMessage("UPDATE MEDICINE BOX"),
         "button_yes": MessageLookupByLibrary.simpleMessage("YES"),
         "chew": MessageLookupByLibrary.simpleMessage("Chew"),
         "custom_day_repeat_right":
@@ -301,6 +317,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "You have no records during this period"),
         "no_medical_record":
             MessageLookupByLibrary.simpleMessage("You have no medical records"),
+        "no_medicine_in_box": MessageLookupByLibrary.simpleMessage(
+            "This medicine box is empty. Let\'s add medicine!"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
             "You have not added any data for this section"),
         "noon": MessageLookupByLibrary.simpleMessage("noon"),
@@ -318,6 +336,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pack": MessageLookupByLibrary.simpleMessage("pack"),
         "phial": MessageLookupByLibrary.simpleMessage("phial"),
         "pill": MessageLookupByLibrary.simpleMessage("pill"),
+        "quantity_check": MessageLookupByLibrary.simpleMessage(
+            "Quantity must be greater than 0"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "You have not filled in the required content"),
         "sat": MessageLookupByLibrary.simpleMessage("sat"),

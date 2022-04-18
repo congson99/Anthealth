@@ -1500,11 +1500,41 @@ class S {
     );
   }
 
-  /// `Done`
-  String get Done_medicine_box {
+  /// `Medicine list`
+  String get Medicine_list {
     return Intl.message(
-      'Done',
-      name: 'Done_medicine_box',
+      'Medicine list',
+      name: 'Medicine_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This medicine box is empty. Let's add medicine!`
+  String get no_medicine_in_box {
+    return Intl.message(
+      'This medicine box is empty. Let\'s add medicine!',
+      name: 'no_medicine_in_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity must be greater than 0`
+  String get quantity_check {
+    return Intl.message(
+      'Quantity must be greater than 0',
+      name: 'quantity_check',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update medicine box`
+  String get Update_medicine_box {
+    return Intl.message(
+      'Update medicine box',
+      name: 'Update_medicine_box',
       desc: '',
       args: [],
     );
@@ -1605,6 +1635,86 @@ class S {
     return Intl.message(
       'DONE',
       name: 'button_done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE`
+  String get button_update {
+    return Intl.message(
+      'UPDATE',
+      name: 'button_update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADD MEDICINE`
+  String get button_add_medicine {
+    return Intl.message(
+      'ADD MEDICINE',
+      name: 'button_add_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DELETE MEDICINE`
+  String get button_delete_medicine {
+    return Intl.message(
+      'DELETE MEDICINE',
+      name: 'button_delete_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADD MEDICAL RECORD`
+  String get button_add_medical_record {
+    return Intl.message(
+      'ADD MEDICAL RECORD',
+      name: 'button_add_medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE MEDICAL RECORD`
+  String get button_update_medical_record {
+    return Intl.message(
+      'UPDATE MEDICAL RECORD',
+      name: 'button_update_medical_record',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADD MEDICINE BOX`
+  String get button_add_medicine_box {
+    return Intl.message(
+      'ADD MEDICINE BOX',
+      name: 'button_add_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE MEDICINE BOX`
+  String get button_update_medicine_box {
+    return Intl.message(
+      'UPDATE MEDICINE BOX',
+      name: 'button_update_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DONE`
+  String get Done_medicine_box {
+    return Intl.message(
+      'DONE',
+      name: 'Done_medicine_box',
       desc: '',
       args: [],
     );

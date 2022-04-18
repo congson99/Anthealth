@@ -51,6 +51,8 @@ class MedicPageData {
           upcomingAppointment["place"].toString();
     }
 
+    list.add("value");
+
     return MedicPageData(latest, upcoming, list);
   }
 }

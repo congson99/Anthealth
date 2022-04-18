@@ -79,6 +79,7 @@ class _ChoseMemberPopupState extends State<ChoseMemberPopup> {
                         value: status[index],
                         onChanged: (value) => setState(() {
                               status[index] = value!;
+                              status[0] = true;
                             }),
                         scale: 1.2)
                   ]))),

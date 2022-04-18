@@ -19,6 +19,16 @@ class MedicineLogic {
     return result;
   }
 
+  static String handleMedicineWithoutDosageString(
+      BuildContext context, MedicineData medicine) {
+    String result = "";
+    result += S.of(context).Usage +
+        ": " +
+        MedicineLogic.getUsage(context, medicine.getUsage());
+    if (medicine.getNote() != "") result += " | " + medicine.getNote();
+    return result;
+  }
+
   static String getUnit(BuildContext context, int index) {
     switch (index) {
       case 0:

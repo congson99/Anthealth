@@ -197,7 +197,8 @@ class CommonTextField {
               return DropdownMenuItem<String>(
                   value: mValue,
                   child: mValue == value
-                      ? Text(mValue)
+                      ? Text(mValue,
+                      overflow: TextOverflow.ellipsis)
                       : Text(mValue,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(color: AnthealthColors.black2)));

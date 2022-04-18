@@ -76,7 +76,7 @@ class IndicatorComponent extends StatelessWidget {
                                   .headline4!
                                   .copyWith(color: AnthealthColors.black1))),
                       Container(
-                          padding: EdgeInsets.only(bottom: 1),
+                          padding: EdgeInsets.only(bottom: 2),
                           alignment: Alignment.centerLeft,
                           width: unitWidth,
                           child: Text((unit == null) ? "" : unit!,

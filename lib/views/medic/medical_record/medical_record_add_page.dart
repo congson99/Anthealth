@@ -122,11 +122,11 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         child: (widget.medicalRecordDetailData == null)
             ? CommonButton.round(context, () => addMedicalRecord(state),
-                S.of(context).Add_medical_record, AnthealthColors.secondary1)
+                S.of(context).button_add_medical_record, AnthealthColors.secondary1)
             : CommonButton.round(
                 context,
                 () => updateMedicalRecord(state),
-                S.of(context).Update_medical_record,
+                S.of(context).button_update_medical_record,
                 AnthealthColors.secondary1));
   }
 
