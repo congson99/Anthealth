@@ -89,6 +89,9 @@
   "obese_class_I": "béo phì cấp độ I",
   "obese_class_II": "béo phì cấp độ II",
   "obese_class_III": "béo phì cấp độ III",
+  "steps": "bước",
+  "Add_steps": "Thêm bước chân",
+  "Steps_count": "Số bước",
   "_Medic": "-----------------------------Medic-----------------------------",
   "Record": "Hồ sơ",
   "Medic_record": "Hồ sơ y tế",
@@ -237,5 +240,7 @@
   "night": "tối",
   "day": "ngày",
   "Repeat_after": "Lặp lại sau",
-  "Choose_one_or_more_days": "Chọn một hoặc nhiều ngày"
+  "Choose_one_or_more_days": "Chọn một hoặc nhiều ngày",
+  "Yesterday": "Hôm qua",
+  "Today": "Hôm nay"
 }

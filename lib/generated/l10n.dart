@@ -950,6 +950,36 @@ class S {
     );
   }
 
+  /// `steps`
+  String get steps {
+    return Intl.message(
+      'steps',
+      name: 'steps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add steps`
+  String get Add_steps {
+    return Intl.message(
+      'Add steps',
+      name: 'Add_steps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steps`
+  String get Steps_count {
+    return Intl.message(
+      'Steps',
+      name: 'Steps_count',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medic-----------------------------`
   String get _Medic {
     return Intl.message(
@@ -2435,6 +2465,26 @@ class S {
     return Intl.message(
       'Choose one or more days',
       name: 'Choose_one_or_more_days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yesterday`
+  String get Yesterday {
+    return Intl.message(
+      'Yesterday',
+      name: 'Yesterday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today`
+  String get Today {
+    return Intl.message(
+      'Today',
+      name: 'Today',
       desc: '',
       args: [],
     );

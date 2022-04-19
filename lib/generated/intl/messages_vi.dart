@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
         "Add_record": MessageLookupByLibrary.simpleMessage("Thêm hồ sơ"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Thêm dữ liệu SPO2"),
+        "Add_steps": MessageLookupByLibrary.simpleMessage("Thêm bước chân"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu nhiệt độ"),
         "Add_weight": MessageLookupByLibrary.simpleMessage(
@@ -217,8 +218,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
+        "Steps_count": MessageLookupByLibrary.simpleMessage("Số bước"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
         "Time": MessageLookupByLibrary.simpleMessage("Thời gian"),
+        "Today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
         "Update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "Update_medical_record":
@@ -249,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sai email hoặc mật khẩu!"),
         "Wrong_password": MessageLookupByLibrary.simpleMessage("Sai mật khẩu!"),
         "Year": MessageLookupByLibrary.simpleMessage("Năm"),
+        "Yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
         "You_are": MessageLookupByLibrary.simpleMessage("Bạn đang "),
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("Bạn là người dùng mới?"),
@@ -353,6 +357,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Xin lỗi, đã xảy ra sự cố!"),
+        "steps": MessageLookupByLibrary.simpleMessage("bước"),
         "successfully": MessageLookupByLibrary.simpleMessage("thành công"),
         "sun": MessageLookupByLibrary.simpleMessage("CN"),
         "thinness": MessageLookupByLibrary.simpleMessage("gầy"),

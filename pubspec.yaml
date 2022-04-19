@@ -35,6 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   image_picker: ^0.8.5
   google_maps_flutter: ^2.1.3
+  syncfusion_flutter_gauges: ^20.1.50
 
 dev_dependencies:
   flutter_test:

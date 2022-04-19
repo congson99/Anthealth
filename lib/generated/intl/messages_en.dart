@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
         "Add_record": MessageLookupByLibrary.simpleMessage("Add record"),
         "Add_spo2": MessageLookupByLibrary.simpleMessage("Add SPO2 data"),
+        "Add_steps": MessageLookupByLibrary.simpleMessage("Add steps"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
         "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
@@ -209,8 +210,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
+        "Steps_count": MessageLookupByLibrary.simpleMessage("Steps"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
         "Time": MessageLookupByLibrary.simpleMessage("Time"),
+        "Today": MessageLookupByLibrary.simpleMessage("Today"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "Update": MessageLookupByLibrary.simpleMessage("Update"),
         "Update_medical_record":
@@ -241,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Wrong_password":
             MessageLookupByLibrary.simpleMessage("Wrong password!"),
         "Year": MessageLookupByLibrary.simpleMessage("Year"),
+        "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
         "You_are": MessageLookupByLibrary.simpleMessage("You are "),
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("You are new User?"),
@@ -344,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Sorry, something wrong!"),
+        "steps": MessageLookupByLibrary.simpleMessage("steps"),
         "successfully": MessageLookupByLibrary.simpleMessage("successfully"),
         "sun": MessageLookupByLibrary.simpleMessage("sun"),
         "thinness": MessageLookupByLibrary.simpleMessage("thinness"),

@@ -8,6 +8,7 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/height_page.dart';
@@ -158,6 +159,8 @@ class HealthPage extends StatelessWidget {
               colorID: 1,
               iconPath: "assets/indicators/steps.png",
               value: "4.600",
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => StepsPage())),
               title: S.of(context).Steps,
               width: width)
         ]);
