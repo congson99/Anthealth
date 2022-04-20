@@ -132,8 +132,8 @@ class TemperaturePage extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 24),
         child: NextPreviousBar(
-            content:
-                DateFormat("dd.MM.yyyy").format(data.getFilter().getTime()),
+            content: DateTimeLogic.todayFormat(
+                context, data.getFilter().getTime(), "dd.MM.yyyy"),
             increse: () {
               if (DateTimeLogic.compareDayWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
@@ -166,7 +166,7 @@ class TemperaturePage extends StatelessWidget {
                 : (data.getFilter().getFilterIndex() == 1)
                     ? IndicatorLogic.convertToHourChartData(data.getData())
                     : IndicatorLogic.convertToDayChartData(data.getData())),
-      if (data.getData().length > 1) SizedBox(height: 24),
+      if (data.getData().length > 1) buildNote(context),
       if (data.getData().length != 0)
         IndicatorDetailRecords(
             unit: unit,
@@ -174,12 +174,53 @@ class TemperaturePage extends StatelessWidget {
                 ? 'HH:mm'
                 : (data.getFilter().getFilterIndex() == 1)
                     ? 'hh-hh'
-                    : 'dd.MM.yyyy',
+                    : 'dd.MM',
             data: data.getData(),
             fixed: 1,
             onTap: (index) => onDetailTap(context, index, data),
             isDirection: (data.getFilter().getFilterIndex() != 0))
     ]);
+  }
+
+  Widget buildNote(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.only(top: 8, bottom: 32),
+        decoration: BoxDecoration(
+            color: AnthealthColors.primary4.withOpacity(0.6),
+            borderRadius: BorderRadius.circular(16)),
+        child: Column(children: [
+          Row(children: [
+            Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: AnthealthColors.secondary2,
+                    border: Border.all(width: 0.5),
+                    borderRadius: BorderRadius.circular(5))),
+            Container(height: 2, width: 46, color: AnthealthColors.secondary2),
+            Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: AnthealthColors.secondary2,
+                    border: Border.all(width: 0.5),
+                    borderRadius: BorderRadius.circular(5))),
+            SizedBox(width: 8),
+            Text(S.of(context).Temperature,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2)
+          ]),
+          SizedBox(height: 4),
+          Row(children: [
+            SizedBox(width: 36, child: Text("38.0")),
+            Container(height: 1.5, width: 30, color: AnthealthColors.warning2),
+            SizedBox(width: 8),
+            Text(S.of(context).High_temperature,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2)
+          ])
+        ]));
   }
 
   // Hepper function

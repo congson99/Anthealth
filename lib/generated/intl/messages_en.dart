@@ -86,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete weight data"),
         "Detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "Diagnose": MessageLookupByLibrary.simpleMessage("Diagnose"),
+        "Diastolic_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Diastolic blood pressure"),
         "Directory": MessageLookupByLibrary.simpleMessage("Directory"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
@@ -126,6 +128,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Health records"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
+        "High_diastolic_blood_pressure": MessageLookupByLibrary.simpleMessage(
+            "High diastolic blood pressure"),
+        "High_systolic_blood_pressure": MessageLookupByLibrary.simpleMessage(
+            "High systolic blood pressure"),
+        "High_temperature":
+            MessageLookupByLibrary.simpleMessage("High temperature"),
         "Hint_medicine_box": MessageLookupByLibrary.simpleMessage("Home"),
         "Hint_re_examination":
             MessageLookupByLibrary.simpleMessage("Re-check the disease"),
@@ -144,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "Low_spo2": MessageLookupByLibrary.simpleMessage("Low SPO2"),
         "March": MessageLookupByLibrary.simpleMessage("March"),
         "May": MessageLookupByLibrary.simpleMessage("May"),
         "Medic": MessageLookupByLibrary.simpleMessage("Medic"),
@@ -211,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Steps"),
+        "Systolic_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Systolic blood pressure"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
         "Time": MessageLookupByLibrary.simpleMessage("Time"),
         "Today": MessageLookupByLibrary.simpleMessage("Today"),

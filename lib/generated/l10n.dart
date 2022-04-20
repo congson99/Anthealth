@@ -980,6 +980,66 @@ class S {
     );
   }
 
+  /// `Systolic blood pressure`
+  String get Systolic_blood_pressure {
+    return Intl.message(
+      'Systolic blood pressure',
+      name: 'Systolic_blood_pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Diastolic blood pressure`
+  String get Diastolic_blood_pressure {
+    return Intl.message(
+      'Diastolic blood pressure',
+      name: 'Diastolic_blood_pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High systolic blood pressure`
+  String get High_systolic_blood_pressure {
+    return Intl.message(
+      'High systolic blood pressure',
+      name: 'High_systolic_blood_pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High diastolic blood pressure`
+  String get High_diastolic_blood_pressure {
+    return Intl.message(
+      'High diastolic blood pressure',
+      name: 'High_diastolic_blood_pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High temperature`
+  String get High_temperature {
+    return Intl.message(
+      'High temperature',
+      name: 'High_temperature',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Low SPO2`
+  String get Low_spo2 {
+    return Intl.message(
+      'Low SPO2',
+      name: 'Low_spo2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medic-----------------------------`
   String get _Medic {
     return Intl.message(

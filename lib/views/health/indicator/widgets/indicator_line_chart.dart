@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -88,6 +90,15 @@ class IndicatorLineChart extends StatelessWidget {
         maxY: maxY(),
         lineBarsData: [
           LineChartBarData(
+              spots: warningData(data, indicatorIndex),
+              isCurved: false,
+              colors: [AnthealthColors.warning2],
+              barWidth: 1.5,
+              isStrokeCapRound: true,
+              dotData: FlDotData(
+                show: false,
+              )),
+          LineChartBarData(
               spots: data,
               isCurved: false,
               colors: [AnthealthColors.secondary2],
@@ -104,16 +115,7 @@ class IndicatorLineChart extends StatelessWidget {
                     AnthealthColors.secondary1.withOpacity(0.3),
                     AnthealthColors.secondary2.withOpacity(0.3),
                     Colors.white.withOpacity(0.3)
-                  ])),
-          LineChartBarData(
-              spots: warningData(data, indicatorIndex),
-              isCurved: false,
-              colors: [AnthealthColors.warning1.withOpacity(0.5)],
-              barWidth: 2,
-              isStrokeCapRound: true,
-              dotData: FlDotData(
-                show: false,
-              ))
+                  ]))
         ]);
   }
 
@@ -144,14 +146,16 @@ class IndicatorLineChart extends StatelessWidget {
 
   double maxY() {
     if (indicatorIndex == 0 || indicatorIndex == 2) return maxLeft(data) + 10;
-    if (indicatorIndex == 1 || indicatorIndex == 3) return maxLeft(data) + 2;
+    if (indicatorIndex == 1) return maxLeft(data) + 2;
+    if (indicatorIndex == 3) return max(38, maxLeft(data)) + 2;
     return 100;
   }
 
   double minY() {
     if (indicatorIndex == 0 || indicatorIndex == 2)
       return ((minLeft(data) - 5) ~/ 10) * 10;
-    if (indicatorIndex == 3) return 0.0 + (minLeft(data) - 2) ~/ 1;
+    if (indicatorIndex == 3) return 0.0 + min(38, (minLeft(data) - 2) ~/ 1);
+    if (indicatorIndex == 5) return min(minLeft(data) - 1, 94);
     return ((minLeft(data) - 2) ~/ 2) * 2;
   }
 

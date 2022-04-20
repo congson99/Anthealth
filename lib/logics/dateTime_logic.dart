@@ -115,4 +115,15 @@ class DateTimeLogic {
     if (time.day < DateTime.now().day) return true;
     return false;
   }
+
+  static String todayFormat(
+      BuildContext context, DateTime time, String format) {
+    if (time.year == DateTime.now().year &&
+        time.month == DateTime.now().month &&
+        time.day == DateTime.now().day) return S.of(context).Today;
+    if (time.year == DateTime.now().year &&
+        time.month == DateTime.now().month &&
+        time.day == DateTime.now().day - 1) return S.of(context).Yesterday;
+    return DateFormat(format).format(time);
+  }
 }

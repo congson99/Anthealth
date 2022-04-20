@@ -85,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xoá weight dữ liệu cân nặng"),
         "Detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
         "Diagnose": MessageLookupByLibrary.simpleMessage("Chẩn đoán"),
+        "Diastolic_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Huyết áp tâm trương"),
         "Directory": MessageLookupByLibrary.simpleMessage("Danh bạ"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
@@ -129,6 +131,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Hồ sơ sức khoẻ"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
+        "High_diastolic_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Ngưỡng cao tâm trương"),
+        "High_systolic_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Ngưỡng cao tâm thu"),
+        "High_temperature":
+            MessageLookupByLibrary.simpleMessage("Ngưỡng nhiệt độ cao"),
         "Hint_medicine_box":
             MessageLookupByLibrary.simpleMessage("Hộp thuốc ở nhà"),
         "Hint_re_examination":
@@ -151,6 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
         "Logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+        "Low_spo2": MessageLookupByLibrary.simpleMessage("Ngưỡng SPO2 thấp"),
         "March": MessageLookupByLibrary.simpleMessage("Tháng 3"),
         "May": MessageLookupByLibrary.simpleMessage("Tháng 5"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),
@@ -219,6 +228,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Số bước"),
+        "Systolic_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("Huyết áp tâm thu"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
         "Time": MessageLookupByLibrary.simpleMessage("Thời gian"),
         "Today": MessageLookupByLibrary.simpleMessage("Hôm nay"),

@@ -112,10 +112,8 @@ class HeartRatePage extends StatelessWidget {
               if (DateTimeLogic.compareHourWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addHour(
-                            data.getFilter().getTime(), 1)));
+                    IndicatorFilter(0,
+                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)));
             },
             decrese: () {
               if (data.getFilter().getTime().year > 1900)
@@ -132,8 +130,8 @@ class HeartRatePage extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 24),
         child: NextPreviousBar(
-            content:
-                DateFormat("dd.MM.yyyy").format(data.getFilter().getTime()),
+            content: DateTimeLogic.todayFormat(
+                context, data.getFilter().getTime(), "dd.MM.yyyy"),
             increse: () {
               if (DateTimeLogic.compareDayWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
@@ -145,10 +143,8 @@ class HeartRatePage extends StatelessWidget {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        1,
-                        IndicatorLogic.addDay(
-                            data.getFilter().getTime(), -1)));
+                    IndicatorFilter(1,
+                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)));
             }));
   }
 
@@ -174,7 +170,7 @@ class HeartRatePage extends StatelessWidget {
                 ? 'HH:mm'
                 : (data.getFilter().getFilterIndex() == 1)
                     ? 'hh-hh'
-                    : 'dd.MM.yyyy',
+                    : 'dd.MM',
             data: data.getData(),
             fixed: 0,
             onTap: (index) => onDetailTap(context, index, data),

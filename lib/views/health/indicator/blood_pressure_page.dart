@@ -110,10 +110,8 @@ class BloodPressurePage extends StatelessWidget {
               if (DateTimeLogic.compareHourWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addHour(
-                            data.getFilter().getTime(), 1)));
+                    IndicatorFilter(0,
+                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)));
             },
             decrese: () {
               if (data.getFilter().getTime().year > 1900)
@@ -130,8 +128,8 @@ class BloodPressurePage extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 24),
         child: NextPreviousBar(
-            content:
-                DateFormat("dd.MM.yyyy").format(data.getFilter().getTime()),
+            content: DateTimeLogic.todayFormat(
+                context, data.getFilter().getTime(), "dd.MM.yyyy"),
             increse: () {
               if (DateTimeLogic.compareDayWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
@@ -143,10 +141,8 @@ class BloodPressurePage extends StatelessWidget {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        1,
-                        IndicatorLogic.addDay(
-                            data.getFilter().getTime(), -1)));
+                    IndicatorFilter(1,
+                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)));
             }));
   }
 
@@ -163,7 +159,7 @@ class BloodPressurePage extends StatelessWidget {
                 : (data.getFilter().getFilterIndex() == 1)
                     ? IndicatorLogic.convertToHourChartData(data.getData())
                     : IndicatorLogic.convertToDayChartData(data.getData())),
-      if (data.getData().length > 1) SizedBox(height: 24),
+      if (data.getData().length > 1) buildNote(context),
       if (data.getData().length != 0)
         IndicatorDetailRecords(
             unit: unit,
@@ -171,12 +167,83 @@ class BloodPressurePage extends StatelessWidget {
                 ? 'HH:mm'
                 : (data.getFilter().getFilterIndex() == 1)
                     ? 'hh-hh'
-                    : 'dd.MM.yyyy',
+                    : 'dd.MM',
             data: data.getData(),
             fixed: 10,
             onTap: (index) => onDetailTap(context, index, data),
             isDirection: (data.getFilter().getFilterIndex() != 0))
     ]);
+  }
+
+  Widget buildNote(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.only(top: 8, bottom: 32),        decoration: BoxDecoration(
+            color: AnthealthColors.primary4.withOpacity(0.6),
+            borderRadius: BorderRadius.circular(16)),
+        child: Column(children: [
+          Row(children: [
+            Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: AnthealthColors.secondary2,
+                    border: Border.all(width: 0.5),
+                    borderRadius: BorderRadius.circular(5))),
+            Container(height: 2, width: 36, color: AnthealthColors.secondary2),
+            Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: AnthealthColors.secondary2,
+                    border: Border.all(width: 0.5),
+                    borderRadius: BorderRadius.circular(5))),
+            SizedBox(width: 8),
+            Text(S.of(context).Systolic_blood_pressure,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2)
+          ]),
+          SizedBox(height: 4),
+          Row(children: [
+            Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: AnthealthColors.primary2,
+                    border: Border.all(width: 0.5),
+                    borderRadius: BorderRadius.circular(5))),
+            Container(height: 2, width: 36, color: AnthealthColors.primary2),
+            Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: AnthealthColors.primary2,
+                    border: Border.all(width: 0.5),
+                    borderRadius: BorderRadius.circular(5))),
+            SizedBox(width: 8),
+            Text(S.of(context).Diastolic_blood_pressure,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2)
+          ]),
+          SizedBox(height: 4),
+          Row(children: [
+            SizedBox(width: 28, child: Text("140")),
+            Container(height: 1.5, width: 28, color: AnthealthColors.warning2),
+            SizedBox(width: 8),
+            Text(S.of(context).High_systolic_blood_pressure,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2)
+          ]),
+          SizedBox(height: 4),
+          Row(children: [
+            SizedBox(width: 28, child: Text(" 90")),
+            Container(height: 1.5, width: 28, color: AnthealthColors.warning2),
+            SizedBox(width: 8),
+            Text(S.of(context).High_diastolic_blood_pressure,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2)
+          ])
+        ]));
   }
 
   // Helper function
