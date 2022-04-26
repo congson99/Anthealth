@@ -1,17 +1,9 @@
-import 'package:anthealth_mobile/models/health/steps_models.dart';
+import 'package:anthealth_mobile/models/health/water_models.dart';
 
-class StepsLogic {
-  static int distanceCalculator(int steps) {
-    return (steps * 0.8).toInt();
-  }
-
-  static int caloCalculator(int steps) {
-    return (steps * 0.14).toInt();
-  }
-
+class WaterLogic {
   static List<String> dataPicker() {
     List<String> result = [];
-    for (int i = 0; i < 100; i++) result.add(i.toString());
+    for (int i = 0; i < 10; i++) result.add(i.toString());
     return result;
   }
 
@@ -23,12 +15,12 @@ class StepsLogic {
     return result;
   }
 
-  static List<Steps> mergeStepsInHour(List<dynamic> data) {
-    List<Steps> result = [];
-    for (Steps x in data) {
+  static List<Water> mergeWaterInHour(List<dynamic> data) {
+    List<Water> result = [];
+    for (Water x in data) {
       if (result.length != 0 && x.time.hour == result.last.time.hour) {
-        Steps temp = result.last;
-        temp = Steps(temp.time, temp.value + x.value);
+        Water temp = result.last;
+        temp = Water(temp.time, temp.value + x.value);
         result.removeAt(result.length - 1);
         result.add(temp);
       } else {

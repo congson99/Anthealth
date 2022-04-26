@@ -9,6 +9,7 @@ import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
+import 'package:anthealth_mobile/views/health/activity/water_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/height_page.dart';
@@ -152,7 +153,9 @@ class HealthPage extends StatelessWidget {
               iconPath: "assets/indicators/water.png",
               value: "1.200",
               unit: "ml",
-              title: S.of(context).Water,
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => WaterPage())),
+              title: S.of(context).Drink_water,
               width: width),
           SizedBox(width: 16),
           IndicatorComponent(

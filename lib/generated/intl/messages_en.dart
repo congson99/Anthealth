@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_steps": MessageLookupByLibrary.simpleMessage("Add steps"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Add temperature data"),
+        "Add_water": MessageLookupByLibrary.simpleMessage("Add water"),
         "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
         "Address": MessageLookupByLibrary.simpleMessage("Address"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
@@ -55,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Average per day"),
         "Average_steps_per_day":
             MessageLookupByLibrary.simpleMessage("Average steps per day"),
+        "Average_water_per_day":
+            MessageLookupByLibrary.simpleMessage("Average water per day"),
         "Blood_pressure":
             MessageLookupByLibrary.simpleMessage("Blood Pressure"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
@@ -100,6 +103,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
         "Done_medicine_box": MessageLookupByLibrary.simpleMessage("DONE"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Dosage"),
+        "Drank": MessageLookupByLibrary.simpleMessage("Drank"),
+        "Drink_water": MessageLookupByLibrary.simpleMessage("Water"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
         "Edit_heart_rate":
@@ -226,6 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Set a new password"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "Stats_today": MessageLookupByLibrary.simpleMessage("Stats for today"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Steps"),
         "Steps_taken": MessageLookupByLibrary.simpleMessage("Taken"),
@@ -257,6 +263,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this record?"),
         "Water": MessageLookupByLibrary.simpleMessage("Water"),
+        "Water_count": MessageLookupByLibrary.simpleMessage("Water"),
         "Weight": MessageLookupByLibrary.simpleMessage("Weight"),
         "Working_time": MessageLookupByLibrary.simpleMessage("Working time"),
         "Wrong_authentication_code":
@@ -338,6 +345,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
+        "ml_drank": MessageLookupByLibrary.simpleMessage("ml drank"),
+        "ml_goal": MessageLookupByLibrary.simpleMessage("ml goal"),
+        "ml_remaining": MessageLookupByLibrary.simpleMessage("ml remaining"),
         "mon": MessageLookupByLibrary.simpleMessage("mon"),
         "morning": MessageLookupByLibrary.simpleMessage("morning"),
         "night": MessageLookupByLibrary.simpleMessage("night"),

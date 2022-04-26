@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:anthealth_mobile/blocs/health/steps_cubit.dart';
+import 'package:anthealth_mobile/blocs/health/water_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/dateTime_logic.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/models/health/steps_models.dart';
+import 'package:anthealth_mobile/models/health/water_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/next_previous_bar.dart';
 import 'package:anthealth_mobile/views/common_widgets/switch_bar.dart';
@@ -15,17 +17,17 @@ import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class StepsDetailPage extends StatefulWidget {
-  const StepsDetailPage({Key? key, required this.superContext})
+class WaterDetailPage extends StatefulWidget {
+  const WaterDetailPage({Key? key, required this.superContext})
       : super(key: key);
 
   final BuildContext superContext;
 
   @override
-  State<StepsDetailPage> createState() => _StepsDetailPageState();
+  State<WaterDetailPage> createState() => _WaterDetailPageState();
 }
 
-class _StepsDetailPageState extends State<StepsDetailPage> {
+class _WaterDetailPageState extends State<WaterDetailPage> {
   int switchIndex = 0;
   DateTime dateTimePicker = DateTime.now();
 
@@ -96,7 +98,7 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
   }
 
   Widget buildDayDetails() {
-    StepsDayData data = BlocProvider.of<StepsCubit>(widget.superContext)
+    WaterDayData data = BlocProvider.of<WaterCubit>(widget.superContext)
         .getDayData(dateTimePicker);
     return Container(
         padding: const EdgeInsets.all(16),
@@ -107,30 +109,24 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
           Row(children: [
             Text(S.of(context).Goal + ": ",
                 style: Theme.of(context).textTheme.subtitle2),
-            Text(
-                NumberLogic.formatIntMore3(data.getGoal()) +
-                    " " +
-                    S.of(context).steps,
+            Text(NumberLogic.formatIntMore3(data.getGoal()) + " ml",
                 style: Theme.of(context).textTheme.bodyText1)
           ]),
           SizedBox(height: 12),
           Row(children: [
-            Text(S.of(context).Total_steps + ": ",
+            Text(S.of(context).Drank + ": ",
                 style: Theme.of(context).textTheme.subtitle2),
-            Text(
-                NumberLogic.formatIntMore3(data.getStepsValue()) +
-                    " " +
-                    S.of(context).steps,
+            Text(NumberLogic.formatIntMore3(data.getWaterValue()) + " ml",
                 style: Theme.of(context).textTheme.bodyText1)
           ]),
           SizedBox(height: 12),
           ActivityDateDetail(
-              type: 2, unit: S.of(context).steps, data: data.getSteps())
+              type: 1, unit: "ml", data: data.getWater())
         ]));
   }
 
   Widget buildMonthDetails() {
-    StepsMonthReport data = BlocProvider.of<StepsCubit>(widget.superContext)
+    WaterMonthReport data = BlocProvider.of<WaterCubit>(widget.superContext)
         .getMonthData(dateTimePicker);
     return Container(
         padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
@@ -138,16 +134,6 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
             color: AnthealthColors.black5,
             borderRadius: BorderRadius.circular(16)),
         child: Column(children: [
-          Row(children: [
-            Text(S.of(context).Total_steps + ": ",
-                style: Theme.of(context).textTheme.subtitle2),
-            Text(
-                NumberLogic.formatIntMore3(data.getSteps()) +
-                    " " +
-                    S.of(context).steps,
-                style: Theme.of(context).textTheme.bodyText1)
-          ]),
-          SizedBox(height: 12),
           Row(children: [
             Text(S.of(context).Goal_days + ": ",
                 style: Theme.of(context).textTheme.subtitle2),
@@ -168,7 +154,7 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
                   padding: EdgeInsets.only(top: 8),
                   width: max(MediaQuery.of(context).size.width - 64,
                       data.getData().length * 32),
-                  child: ActivityMonthChart(dataStep: data.getData()))),
+                  child: ActivityMonthChart(dataWater: data.getData()))),
           Row(children: [
             Container(height: 16, width: 16, color: AnthealthColors.black3),
             SizedBox(width: 8),
@@ -177,14 +163,14 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
             SizedBox(width: 16),
             Container(height: 16, width: 16, color: AnthealthColors.primary2),
             SizedBox(width: 8),
-            Text(S.of(context).Steps,
+            Text(S.of(context).Water_count,
                 style: Theme.of(context).textTheme.bodyText1)
           ])
         ]));
   }
 
   Widget buildYearDetails() {
-    StepsYearReport data = BlocProvider.of<StepsCubit>(widget.superContext)
+    WaterYearReport data = BlocProvider.of<WaterCubit>(widget.superContext)
         .getYearData(dateTimePicker);
     return Container(
         padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
@@ -193,22 +179,11 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
             borderRadius: BorderRadius.circular(16)),
         child: Column(children: [
           Row(children: [
-            Text(S.of(context).Total_steps + ": ",
-                style: Theme.of(context).textTheme.subtitle2),
-            Text(
-                NumberLogic.formatIntMore3(data.getSteps()) +
-                    " " +
-                    S.of(context).steps,
-                style: Theme.of(context).textTheme.bodyText1)
-          ]),
-          SizedBox(height: 12),
-          Row(children: [
             Text(S.of(context).Average_per_day + ": ",
                 style: Theme.of(context).textTheme.subtitle2),
             Text(
                 NumberLogic.formatIntMore3(data.getAVGDay()) +
-                    " " +
-                    S.of(context).steps,
+                    " ml",
                 style: Theme.of(context).textTheme.bodyText1)
           ]),
           SizedBox(height: 12),
@@ -232,11 +207,11 @@ class _StepsDetailPageState extends State<StepsDetailPage> {
                   padding: EdgeInsets.only(top: 8),
                   width: max(MediaQuery.of(context).size.width - 64,
                       data.getData().length * 42),
-                  child: ActivityYearChart(dataStep: data.getData()))),
+                  child: ActivityYearChart(dataWater: data.getData()))),
           Row(children: [
             Container(height: 16, width: 16, color: AnthealthColors.primary2),
             SizedBox(width: 8),
-            Text(S.of(context).Average_steps_per_day,
+            Text(S.of(context).Average_water_per_day,
                 style: Theme.of(context).textTheme.bodyText1)
           ])
         ]));

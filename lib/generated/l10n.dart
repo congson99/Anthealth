@@ -661,6 +661,16 @@ class S {
   }
 
   /// `Water`
+  String get Drink_water {
+    return Intl.message(
+      'Water',
+      name: 'Drink_water',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Water`
   String get Water {
     return Intl.message(
       'Water',
@@ -1000,11 +1010,31 @@ class S {
     );
   }
 
+  /// `Add water`
+  String get Add_water {
+    return Intl.message(
+      'Add water',
+      name: 'Add_water',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Steps`
   String get Steps_count {
     return Intl.message(
       'Steps',
       name: 'Steps_count',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Water`
+  String get Water_count {
+    return Intl.message(
+      'Water',
+      name: 'Water_count',
       desc: '',
       args: [],
     );
@@ -1080,6 +1110,16 @@ class S {
     );
   }
 
+  /// `Stats for today`
+  String get Stats_today {
+    return Intl.message(
+      'Stats for today',
+      name: 'Stats_today',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Taken`
   String get Steps_taken {
     return Intl.message(
@@ -1120,11 +1160,61 @@ class S {
     );
   }
 
+  /// `Average water per day`
+  String get Average_water_per_day {
+    return Intl.message(
+      'Average water per day',
+      name: 'Average_water_per_day',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Average per day`
   String get Average_per_day {
     return Intl.message(
       'Average per day',
       name: 'Average_per_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ml drank`
+  String get ml_drank {
+    return Intl.message(
+      'ml drank',
+      name: 'ml_drank',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ml goal`
+  String get ml_goal {
+    return Intl.message(
+      'ml goal',
+      name: 'ml_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ml remaining`
+  String get ml_remaining {
+    return Intl.message(
+      'ml remaining',
+      name: 'ml_remaining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drank`
+  String get Drank {
+    return Intl.message(
+      'Drank',
+      name: 'Drank',
       desc: '',
       args: [],
     );

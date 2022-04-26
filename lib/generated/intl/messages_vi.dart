@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_steps": MessageLookupByLibrary.simpleMessage("Thêm bước chân"),
         "Add_temperature":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu nhiệt độ"),
+        "Add_water": MessageLookupByLibrary.simpleMessage("Thêm nước uống"),
         "Add_weight": MessageLookupByLibrary.simpleMessage(
             "Thêm weight dữ liệu cân nặng"),
         "Address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
@@ -57,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Trung bình mỗi ngày"),
         "Average_steps_per_day":
             MessageLookupByLibrary.simpleMessage("Trung bình số bước mỗi ngày"),
+        "Average_water_per_day": MessageLookupByLibrary.simpleMessage(
+            "Trung bình lượng nước mỗi ngày"),
         "Blood_pressure": MessageLookupByLibrary.simpleMessage("Huyết áp"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
@@ -100,6 +103,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Done_medicine_box":
             MessageLookupByLibrary.simpleMessage("THÊM HỘP THUỐC"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Liều dùng"),
+        "Drank": MessageLookupByLibrary.simpleMessage("Đã uống"),
+        "Drink_water": MessageLookupByLibrary.simpleMessage("Uống nước"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu huyết áp"),
         "Edit_heart_rate":
@@ -234,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đặt mật khẩu mới"),
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "Stats_today": MessageLookupByLibrary.simpleMessage("Thống kê hôm nay"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Số bước"),
         "Steps_taken": MessageLookupByLibrary.simpleMessage("Đã đi"),
@@ -264,7 +270,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn xoá ảnh này không?"),
         "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xoá hồ sơ này không?"),
-        "Water": MessageLookupByLibrary.simpleMessage("Uống nước"),
+        "Water": MessageLookupByLibrary.simpleMessage("Nước"),
+        "Water_count": MessageLookupByLibrary.simpleMessage("Lượng nước"),
         "Weight": MessageLookupByLibrary.simpleMessage("Cân nặng"),
         "Working_time":
             MessageLookupByLibrary.simpleMessage("Thời gian làm việc"),
@@ -346,6 +353,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("T6"),
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
+        "ml_drank": MessageLookupByLibrary.simpleMessage("ml đã uống"),
+        "ml_goal": MessageLookupByLibrary.simpleMessage("ml mục tiêu"),
+        "ml_remaining": MessageLookupByLibrary.simpleMessage("ml còn lại"),
         "mon": MessageLookupByLibrary.simpleMessage("T2"),
         "morning": MessageLookupByLibrary.simpleMessage("sáng"),
         "night": MessageLookupByLibrary.simpleMessage("tối"),

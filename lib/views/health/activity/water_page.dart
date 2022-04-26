@@ -1,0 +1,117 @@
+import 'dart:math';
+
+import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/health/water_cubit.dart';
+import 'package:anthealth_mobile/blocs/health/water_states.dart';
+import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/number_logic.dart';
+import 'package:anthealth_mobile/logics/step_logic.dart';
+import 'package:anthealth_mobile/logics/water_logic.dart';
+import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/health/activity/water_detail_page.dart';
+import 'package:anthealth_mobile/views/health/activity/widgets/activity_add_data_bottom_sheet.dart';
+import 'package:anthealth_mobile/views/health/activity/widgets/activity_circle_bar.dart';
+import 'package:anthealth_mobile/views/health/activity/widgets/activity_today.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class WaterPage extends StatelessWidget {
+  const WaterPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<WaterCubit>(
+        create: (context) => WaterCubit(),
+        child: BlocBuilder<WaterCubit, CubitState>(builder: (context, state) {
+          if (state is WaterState)
+            return TemplateFormPage(
+                title: S.of(context).Drink_water,
+                back: () => back(context),
+                add: () => add(context),
+                settings: () => setting(),
+                content: buildContent(context, state));
+          return ErrorPage();
+        }));
+  }
+
+  // Content
+  Widget buildContent(BuildContext context, WaterState state) {
+    return Column(children: [
+      ActivityCircleBar(
+          percent: state.data.getWaterValue() / state.data.getGoal(),
+          iconPath: "assets/indicators/water.png",
+          colorID: 0,
+          value: NumberLogic.formatIntMore3(state.data.getWaterValue()),
+          subValue: NumberLogic.formatIntMore3(state.data.getGoal()),
+          title: S.of(context).ml_drank,
+          subTitle: S.of(context).ml_goal),
+      SizedBox(height: 32),
+      ActivityToday(title: S.of(context).Stats_today, colorID: 0, value: [
+        NumberLogic.formatIntMore3(state.data.getGoal()),
+        (state.data.getWaterValue() * 100 / state.data.getGoal())
+            .toStringAsFixed(0),
+        NumberLogic.formatIntMore3(state.data.getWaterValue()),
+        NumberLogic.formatIntMore3(
+            max(state.data.getGoal() - state.data.getWaterValue(), 0)),
+      ], unit: [
+        "",
+        "%",
+        "",
+        ""
+      ], content: [
+        S.of(context).ml_goal,
+        S.of(context).Goal,
+        S.of(context).ml_drank,
+        S.of(context).ml_remaining
+      ]),
+      SizedBox(height: 32),
+      SectionComponent(
+          title: S.of(context).Detail,
+          colorID: 0,
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => WaterDetailPage(superContext: context))))
+    ]);
+  }
+
+  // Content Component
+
+  // Child Component
+
+  // Actions
+  void back(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
+  void add(BuildContext context) {
+    showModalBottomSheet(
+        enableDrag: false,
+        isDismissible: true,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        context: context,
+        builder: (_) => ActivityAddDataBottomSheet(
+            title: S.of(context).Add_water,
+            activity: S.of(context).Water_count,
+            dataPicker: WaterLogic.dataPicker(),
+            subDataPicker: WaterLogic.subDataPicker(),
+            indexPicker: 0,
+            subIndexPicker: 50,
+            dateTime: DateTime.now(),
+            unit: 'ml',
+            middleSymbol: '.',
+            cancel: () => Navigator.pop(context),
+            ok: (indexPicker, subIndexPicker, time) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(S.of(context).Add_water +
+                      ' ' +
+                      S.of(context).successfully +
+                      '!')));
+              Navigator.pop(context);
+            }));
+  }
+
+  void setting() {}
+}

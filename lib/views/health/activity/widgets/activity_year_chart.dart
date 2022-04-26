@@ -1,13 +1,16 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/health/steps_models.dart';
+import 'package:anthealth_mobile/models/health/water_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class ActivityYearChart extends StatelessWidget {
-  const ActivityYearChart({Key? key, required this.data}) : super(key: key);
+  const ActivityYearChart({Key? key, this.dataStep, this.dataWater})
+      : super(key: key);
 
-  final List<StepsMonthReportData> data;
+  final List<StepsMonthReportData>? dataStep;
+  final List<WaterMonthReportData>? dataWater;
 
   @override
   Widget build(BuildContext context) {
@@ -59,30 +62,53 @@ class ActivityYearChart extends StatelessWidget {
 
   List<BarChartGroupData> getData() {
     List<BarChartGroupData> result = [];
-    for (StepsMonthReportData x in data)
-      result.add(BarChartGroupData(x: data.indexOf(x) + 1, barRods: [
-        BarChartRodData(
-            y: x.getSteps().toDouble(),
-            rodStackItems: [
-              BarChartRodStackItem(
-                  0, x.getSteps().toDouble(), AnthealthColors.primary2),
-            ],
-            width: 16,
-            backDrawRodData: BackgroundBarChartRodData(
-                show: true,
-                y: x.getGoal().toDouble(),
-                colors: [AnthealthColors.black3]),
-            borderRadius: const BorderRadius.all(Radius.zero))
-      ]));
+    if (dataStep != null)
+      for (StepsMonthReportData x in dataStep!)
+        result.add(BarChartGroupData(x: dataStep!.indexOf(x) + 1, barRods: [
+          BarChartRodData(
+              y: x.getSteps().toDouble(),
+              rodStackItems: [
+                BarChartRodStackItem(
+                    0, x.getSteps().toDouble(), AnthealthColors.primary2),
+              ],
+              width: 16,
+              backDrawRodData: BackgroundBarChartRodData(
+                  show: true,
+                  y: x.getGoal().toDouble(),
+                  colors: [AnthealthColors.black3]),
+              borderRadius: const BorderRadius.all(Radius.zero))
+        ]));
+    if (dataWater != null)
+      for (WaterMonthReportData x in dataWater!)
+        result.add(BarChartGroupData(x: dataWater!.indexOf(x) + 1, barRods: [
+          BarChartRodData(
+              y: x.getDrink().toDouble(),
+              rodStackItems: [
+                BarChartRodStackItem(
+                    0, x.getDrink().toDouble(), AnthealthColors.primary2),
+              ],
+              width: 16,
+              backDrawRodData: BackgroundBarChartRodData(
+                  show: true,
+                  y: x.getGoal().toDouble(),
+                  colors: [AnthealthColors.black3]),
+              borderRadius: const BorderRadius.all(Radius.zero))
+        ]));
     return result;
   }
 
   double maxY() {
     double result = 0;
-    for (StepsMonthReportData x in data) {
-      if (x.getSteps() > result) result = x.getSteps().toDouble();
-      if (x.getGoal() > result) result = x.getGoal().toDouble();
-    }
+    if (dataStep != null)
+      for (StepsMonthReportData x in dataStep!) {
+        if (x.getSteps() > result) result = x.getSteps().toDouble();
+        if (x.getGoal() > result) result = x.getGoal().toDouble();
+      }
+    if (dataWater != null)
+      for (WaterMonthReportData x in dataWater!) {
+        if (x.getDrink() > result) result = x.getDrink().toDouble();
+        if (x.getGoal() > result) result = x.getGoal().toDouble();
+      }
     return result * 1.1;
   }
 
