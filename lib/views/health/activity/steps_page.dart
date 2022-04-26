@@ -1,46 +1,76 @@
+import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/health/steps_cubit.dart';
+import 'package:anthealth_mobile/blocs/health/steps_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/number_logic.dart';
+import 'package:anthealth_mobile/logics/step_logic.dart';
+import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
-import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/health/activity/steps_detail_page.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_add_data_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_circle_bar.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_today.dart';
-import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StepsPage extends StatelessWidget {
   const StepsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TemplateFormPage(
-        title: S.of(context).Steps,
-        back: () => back(context),
-        add: () => add(context),
-        settings: () => setting(),
-        content: buildContent(context));
+    return BlocProvider<StepsCubit>(
+        create: (context) => StepsCubit(),
+        child: BlocBuilder<StepsCubit, CubitState>(builder: (context, state) {
+          if (state is StepsState)
+            return TemplateFormPage(
+                title: S.of(context).Steps,
+                back: () => back(context),
+                add: () => add(context),
+                settings: () => setting(),
+                content: buildContent(context, state));
+          return ErrorPage();
+        }));
   }
 
   // Content
-  Widget buildContent(BuildContext context) {
+  Widget buildContent(BuildContext context, StepsState state) {
     return Column(children: [
       ActivityCircleBar(
-          percent: 67,
+          percent: state.data.getStepsValue() / state.data.getGoal(),
           iconPath: "assets/indicators/steps.png",
           colorID: 1,
-          value: '4.600',
-          subValue: '3.900',
+          value: NumberLogic.formatIntMore3(state.data.getStepsValue()),
+          subValue: NumberLogic.formatIntMore3(
+              StepsLogic.distanceCalculator(state.data.getStepsValue())),
           title: S.of(context).steps,
           subTitle: 'm'),
       SizedBox(height: 32),
-      ActivityToday(
-          title: "Thành tích hôm nay",
-          colorID: 1,
-          value: ["58", "4.600", "3.900", "396"],
-          unit: ["%", "bước", "m", "calo"],
-          content: ["Mục tiêu", "Đã đi", "Quãng đường", "Đã tiêu thụ"]),
+      ActivityToday(title: S.of(context).Today_achievement, colorID: 1, value: [
+        (state.data.getStepsValue() * 100 / state.data.getGoal())
+            .toStringAsFixed(0),
+        NumberLogic.formatIntMore3(state.data.getStepsValue()),
+        NumberLogic.formatIntMore3(
+            StepsLogic.distanceCalculator(state.data.getStepsValue())),
+        NumberLogic.formatIntMore3(
+            StepsLogic.caloCalculator(state.data.getStepsValue()))
+      ], unit: [
+        "%",
+        "",
+        "m",
+        "calo"
+      ], content: [
+        S.of(context).Goal,
+        S.of(context).steps,
+        S.of(context).Distance,
+        S.of(context).Consumed
+      ]),
       SizedBox(height: 32),
-      SectionComponent(title: S.of(context).Detail, colorID: 1)
+      SectionComponent(
+          title: S.of(context).Detail,
+          colorID: 1,
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => StepsDetailPage(superContext: context))))
     ]);
   }
 
@@ -64,10 +94,10 @@ class StepsPage extends StatelessWidget {
         builder: (_) => ActivityAddDataBottomSheet(
             title: S.of(context).Add_steps,
             activity: S.of(context).Steps_count,
-            dataPicker: ["0", "1"],
-            subDataPicker: ["0", "1"],
+            dataPicker: StepsLogic.dataPicker(),
+            subDataPicker: StepsLogic.subDataPicker(),
             indexPicker: 0,
-            subIndexPicker: 0,
+            subIndexPicker: 50,
             dateTime: DateTime.now(),
             unit: S.of(context).steps,
             middleSymbol: '.',

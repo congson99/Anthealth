@@ -66,7 +66,7 @@ class ActivityCircleBar extends StatelessWidget {
           ),
           pointers: <GaugePointer>[
             RangePointer(
-                value: percent,
+                value: percent * 100,
                 width: 0.15,
                 sizeUnit: GaugeSizeUnit.factor,
                 color: color2[colorID],

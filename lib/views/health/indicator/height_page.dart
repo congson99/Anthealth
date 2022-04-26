@@ -99,7 +99,7 @@ class HeightPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: 24),
         child: NextPreviousBar(
             content: data.getFilter().getTime().year.toString(),
-            increse: () {
+            increase: () {
               if (data.getFilter().getTime().year < DateTime.now().year)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
@@ -108,7 +108,7 @@ class HeightPage extends StatelessWidget {
                         IndicatorLogic.addYear(
                             data.getFilter().getTime(), 1)));
             },
-            decrese: () {
+            decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,

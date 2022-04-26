@@ -33,7 +33,7 @@ class IndicatorDetailRecords extends StatelessWidget {
             Text(S.of(context).Detail,
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle1!
+                    .subtitle2!
                     .copyWith(color: AnthealthColors.primary1)),
             Text(S.of(context).Unit + ": " + unit,
                 style: Theme.of(context)

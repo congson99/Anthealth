@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authenticate": MessageLookupByLibrary.simpleMessage("Authenticate"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Authentication code"),
+        "Average_per_day":
+            MessageLookupByLibrary.simpleMessage("Average per day"),
+        "Average_steps_per_day":
+            MessageLookupByLibrary.simpleMessage("Average steps per day"),
         "Blood_pressure":
             MessageLookupByLibrary.simpleMessage("Blood Pressure"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
@@ -63,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Community": MessageLookupByLibrary.simpleMessage("Community"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "Consumed": MessageLookupByLibrary.simpleMessage("Consumed"),
         "Content": MessageLookupByLibrary.simpleMessage("Content"),
         "Customized_by_week":
             MessageLookupByLibrary.simpleMessage("Customized by week"),
@@ -89,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Diastolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Diastolic blood pressure"),
         "Directory": MessageLookupByLibrary.simpleMessage("Directory"),
+        "Distance": MessageLookupByLibrary.simpleMessage("Distance"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
@@ -122,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "General_information":
             MessageLookupByLibrary.simpleMessage("General information"),
+        "Goal": MessageLookupByLibrary.simpleMessage("Goal"),
+        "Goal_days": MessageLookupByLibrary.simpleMessage("Goal days"),
         "Health": MessageLookupByLibrary.simpleMessage("Health"),
         "Health_indicator":
             MessageLookupByLibrary.simpleMessage("Health indicator"),
@@ -220,11 +228,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Steps"),
+        "Steps_taken": MessageLookupByLibrary.simpleMessage("Taken"),
         "Systolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Systolic blood pressure"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Temperature"),
         "Time": MessageLookupByLibrary.simpleMessage("Time"),
         "Today": MessageLookupByLibrary.simpleMessage("Today"),
+        "Today_achievement":
+            MessageLookupByLibrary.simpleMessage("Today\'s achievement"),
+        "Total_steps": MessageLookupByLibrary.simpleMessage("Total steps"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "Update": MessageLookupByLibrary.simpleMessage("Update"),
         "Update_medical_record":
@@ -314,6 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" weeks"),
         "daily": MessageLookupByLibrary.simpleMessage("Daily"),
         "day": MessageLookupByLibrary.simpleMessage("day"),
+        "days": MessageLookupByLibrary.simpleMessage("days"),
         "dec": MessageLookupByLibrary.simpleMessage("DEC"),
         "drink": MessageLookupByLibrary.simpleMessage("Drink"),
         "drops": MessageLookupByLibrary.simpleMessage("Drops"),

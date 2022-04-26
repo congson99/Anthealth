@@ -400,6 +400,36 @@ class S {
     );
   }
 
+  /// `Goal`
+  String get Goal {
+    return Intl.message(
+      'Goal',
+      name: 'Goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Distance`
+  String get Distance {
+    return Intl.message(
+      'Distance',
+      name: 'Distance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Goal days`
+  String get Goal_days {
+    return Intl.message(
+      'Goal days',
+      name: 'Goal_days',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -1035,6 +1065,66 @@ class S {
     return Intl.message(
       'Low SPO2',
       name: 'Low_spo2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today's achievement`
+  String get Today_achievement {
+    return Intl.message(
+      'Today\'s achievement',
+      name: 'Today_achievement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Taken`
+  String get Steps_taken {
+    return Intl.message(
+      'Taken',
+      name: 'Steps_taken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consumed`
+  String get Consumed {
+    return Intl.message(
+      'Consumed',
+      name: 'Consumed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total steps`
+  String get Total_steps {
+    return Intl.message(
+      'Total steps',
+      name: 'Total_steps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Average steps per day`
+  String get Average_steps_per_day {
+    return Intl.message(
+      'Average steps per day',
+      name: 'Average_steps_per_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Average per day`
+  String get Average_per_day {
+    return Intl.message(
+      'Average per day',
+      name: 'Average_per_day',
       desc: '',
       args: [],
     );
@@ -2505,6 +2595,16 @@ class S {
     return Intl.message(
       'day',
       name: 'day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `days`
+  String get days {
+    return Intl.message(
+      'days',
+      name: 'days',
       desc: '',
       args: [],
     );

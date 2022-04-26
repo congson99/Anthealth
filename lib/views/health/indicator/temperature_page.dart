@@ -108,7 +108,7 @@ class TemperaturePage extends StatelessWidget {
             content:
                 DateTimeLogic.formatHourToHour(data.getFilter().getTime()) +
                     DateFormat(" (dd.MM)").format(data.getFilter().getTime()),
-            increse: () {
+            increase: () {
               if (DateTimeLogic.compareHourWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
@@ -117,7 +117,7 @@ class TemperaturePage extends StatelessWidget {
                         IndicatorLogic.addHour(
                             data.getFilter().getTime(), 1)));
             },
-            decrese: () {
+            decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
@@ -134,14 +134,14 @@ class TemperaturePage extends StatelessWidget {
         child: NextPreviousBar(
             content: DateTimeLogic.todayFormat(
                 context, data.getFilter().getTime(), "dd.MM.yyyy"),
-            increse: () {
+            increase: () {
               if (DateTimeLogic.compareDayWithNow(data.getFilter().getTime()))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
                         IndicatorLogic.addDay(data.getFilter().getTime(), 1)));
             },
-            decrese: () {
+            decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,

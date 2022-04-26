@@ -53,16 +53,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authenticate": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
+        "Average_per_day":
+            MessageLookupByLibrary.simpleMessage("Trung bình mỗi ngày"),
+        "Average_steps_per_day":
+            MessageLookupByLibrary.simpleMessage("Trung bình số bước mỗi ngày"),
         "Blood_pressure": MessageLookupByLibrary.simpleMessage("Huyết áp"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
-            "không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
+            "Không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
         "Choose_medicine": MessageLookupByLibrary.simpleMessage("Chọn thuốc"),
         "Choose_one_or_more_days":
             MessageLookupByLibrary.simpleMessage("Chọn một hoặc nhiều ngày"),
         "Community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
+        "Consumed": MessageLookupByLibrary.simpleMessage("Đã tiêu thụ"),
         "Content": MessageLookupByLibrary.simpleMessage("Nội dung"),
         "Customized_by_week":
             MessageLookupByLibrary.simpleMessage("Tuỳ chỉnh theo tuần"),
@@ -88,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Diastolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Huyết áp tâm trương"),
         "Directory": MessageLookupByLibrary.simpleMessage("Danh bạ"),
+        "Distance": MessageLookupByLibrary.simpleMessage("Quãng đường"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
@@ -125,6 +131,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "General_information":
             MessageLookupByLibrary.simpleMessage("Thông tin chung"),
+        "Goal": MessageLookupByLibrary.simpleMessage("Mục tiêu"),
+        "Goal_days": MessageLookupByLibrary.simpleMessage("Ngày đạt mục tiêu"),
         "Health": MessageLookupByLibrary.simpleMessage("Sức khoẻ"),
         "Health_indicator":
             MessageLookupByLibrary.simpleMessage("Chỉ số sức khoẻ"),
@@ -228,11 +236,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Số bước"),
+        "Steps_taken": MessageLookupByLibrary.simpleMessage("Đã đi"),
         "Systolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Huyết áp tâm thu"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
         "Time": MessageLookupByLibrary.simpleMessage("Thời gian"),
         "Today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
+        "Today_achievement":
+            MessageLookupByLibrary.simpleMessage("Thành tích hôm nay"),
+        "Total_steps": MessageLookupByLibrary.simpleMessage("Tổng số bước"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
         "Update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "Update_medical_record":
@@ -322,6 +334,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" tuần 1 lần"),
         "daily": MessageLookupByLibrary.simpleMessage("Hằng ngày"),
         "day": MessageLookupByLibrary.simpleMessage("ngày"),
+        "days": MessageLookupByLibrary.simpleMessage("ngày"),
         "dec": MessageLookupByLibrary.simpleMessage("T12"),
         "drink": MessageLookupByLibrary.simpleMessage("Uống"),
         "drops": MessageLookupByLibrary.simpleMessage("Nhỏ"),

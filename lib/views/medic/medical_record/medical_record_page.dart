@@ -75,7 +75,7 @@ class MedicalRecordPage extends StatelessWidget {
                             Text(S.of(context).Time,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle1!
+                                    .subtitle2!
                                     .copyWith(color: AnthealthColors.primary1)),
                             Text(S.of(context).Number_of_record,
                                 style: Theme.of(context)

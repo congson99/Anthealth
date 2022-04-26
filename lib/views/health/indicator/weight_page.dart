@@ -114,7 +114,7 @@ class WeightPage extends StatelessWidget {
         child: NextPreviousBar(
             content: DateTimeLogic.formatMonthYear(
                 context, data.getFilter().getTime()),
-            increse: () {
+            increase: () {
               if ((data.getFilter().getTime().year < DateTime.now().year) ||
                   (data.getFilter().getTime().year == DateTime.now().year &&
                       data.getFilter().getTime().month < DateTime.now().month))
@@ -125,7 +125,7 @@ class WeightPage extends StatelessWidget {
                         IndicatorLogic.addMonth(
                             data.getFilter().getTime(), 1)));
             },
-            decrese: () {
+            decrease: () {
               if (data.getFilter().getTime().year > 2000)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
@@ -142,14 +142,14 @@ class WeightPage extends StatelessWidget {
       SizedBox(height: 24),
       NextPreviousBar(
           content: data.getFilter().getTime().year.toString(),
-          increse: () {
+          increase: () {
             if (data.getFilter().getTime().year < DateTime.now().year)
               BlocProvider.of<IndicatorCubit>(context).updateData(
                   data,
                   IndicatorFilter(1,
                       IndicatorLogic.addYear(data.getFilter().getTime(), 1)));
           },
-          decrese: () {
+          decrease: () {
             if (data.getFilter().getTime().year > 1900)
               BlocProvider.of<IndicatorCubit>(context).updateData(
                   data,

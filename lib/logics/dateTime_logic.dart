@@ -116,6 +116,13 @@ class DateTimeLogic {
     return false;
   }
 
+  static bool compareMonthWithNow(DateTime time) {
+    if (time.year < DateTime.now().year) return true;
+    if (time.year > DateTime.now().year) return false;
+    if (time.month < DateTime.now().month) return true;
+    return false;
+  }
+
   static String todayFormat(
       BuildContext context, DateTime time, String format) {
     if (time.year == DateTime.now().year &&
@@ -125,5 +132,29 @@ class DateTimeLogic {
         time.month == DateTime.now().month &&
         time.day == DateTime.now().day - 1) return S.of(context).Yesterday;
     return DateFormat(format).format(time);
+  }
+
+  static DateTime increaseDay(DateTime time) {
+    return DateTime(time.year, time.month, time.day + 1);
+  }
+
+  static DateTime increaseMonth(DateTime time) {
+    return DateTime(time.year, time.month + 1);
+  }
+
+  static DateTime increaseYear(DateTime time) {
+    return DateTime(time.year + 1);
+  }
+
+  static DateTime decreaseDay(DateTime time) {
+    return DateTime(time.year, time.month, time.day - 1);
+  }
+
+  static DateTime decreaseMonth(DateTime time) {
+    return DateTime(time.year, time.month - 1);
+  }
+
+  static DateTime decreaseYear(DateTime time) {
+    return DateTime(time.year - 1);
   }
 }

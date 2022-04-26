@@ -21,17 +21,23 @@ class SwitchBar extends StatelessWidget {
         ? AnthealthColors.primary1
         : colorID == 1
             ? AnthealthColors.secondary1
-            : AnthealthColors.warning1;
+            : colorID == 2
+                ? AnthealthColors.warning1
+                : AnthealthColors.black1;
     Color color3 = colorID == 0
         ? AnthealthColors.primary3
         : colorID == 1
             ? AnthealthColors.secondary3
-            : AnthealthColors.warning3;
+            : colorID == 2
+                ? AnthealthColors.warning3
+                : AnthealthColors.black3;
     Color color4 = colorID == 0
         ? AnthealthColors.primary4
         : colorID == 1
             ? AnthealthColors.secondary4
-            : AnthealthColors.warning4;
+            : colorID == 2
+                ? AnthealthColors.warning4
+                : AnthealthColors.black4;
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
           padding: const EdgeInsets.all(4),
