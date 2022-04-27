@@ -6,7 +6,7 @@ import 'package:anthealth_mobile/logics/midical_directory_logic.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/medic/medic_directory/medical_contact_page.dart';
+import 'package:anthealth_mobile/views/medic/medical_directory/medical_contact_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

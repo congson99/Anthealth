@@ -2,7 +2,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/common/gps_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_directory_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
-import 'package:anthealth_mobile/views/medic/medic_directory/medical_contact_page.dart';
+import 'package:anthealth_mobile/views/medic/medical_directory/medical_contact_page.dart';
 import 'package:anthealth_mobile/views/theme/google_map_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
