@@ -32,7 +32,6 @@ class _MedicalContactMapPageState extends State<MedicalContactMapPage> {
     return Container(
         height: MediaQuery.of(context).size.height - 57,
         width: MediaQuery.of(context).size.width,
-        color: Colors.red,
         child: GoogleMap(
             mapType: MapType.normal,
             myLocationButtonEnabled: true,

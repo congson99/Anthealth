@@ -157,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hint_record_name":
             MessageLookupByLibrary.simpleMessage("Khám bệnh cảm"),
         "Home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "Hospital": MessageLookupByLibrary.simpleMessage("Cơ sở y tế"),
         "Hospital_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cơ sở y tế"),
         "Hour": MessageLookupByLibrary.simpleMessage("Giờ"),
@@ -186,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medical_history":
             MessageLookupByLibrary.simpleMessage("Lịch sử khám bệnh"),
         "Medical_location": MessageLookupByLibrary.simpleMessage("Nơi khám"),
+        "Medical_map": MessageLookupByLibrary.simpleMessage("Bản đồ y tế"),
         "Medical_record":
             MessageLookupByLibrary.simpleMessage("Hồ sơ khám bệnh"),
         "Medical_record_detail":

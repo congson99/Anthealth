@@ -152,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Re-check the disease"),
         "Hint_record_name": MessageLookupByLibrary.simpleMessage("Sick"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "Hospital": MessageLookupByLibrary.simpleMessage("Hospital"),
         "Hospital_info":
             MessageLookupByLibrary.simpleMessage("Hospital Information"),
         "Hour": MessageLookupByLibrary.simpleMessage("Hour"),
@@ -179,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medical_history":
             MessageLookupByLibrary.simpleMessage("Medical history"),
         "Medical_location": MessageLookupByLibrary.simpleMessage("Location"),
+        "Medical_map": MessageLookupByLibrary.simpleMessage("Medical map"),
         "Medical_record":
             MessageLookupByLibrary.simpleMessage("Medical records"),
         "Medical_record_detail":

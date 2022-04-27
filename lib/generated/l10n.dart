@@ -1610,6 +1610,26 @@ class S {
     );
   }
 
+  /// `Hospital`
+  String get Hospital {
+    return Intl.message(
+      'Hospital',
+      name: 'Hospital',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medical map`
+  String get Medical_map {
+    return Intl.message(
+      'Medical map',
+      name: 'Medical_map',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Working time`
   String get Working_time {
     return Intl.message(

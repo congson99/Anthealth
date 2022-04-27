@@ -8,6 +8,7 @@ import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medic_directory/medical_directory_page.dart';
+import 'package:anthealth_mobile/views/medic/medical_map/medical_map_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_add_page.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_page.dart';
@@ -96,13 +97,19 @@ class MedicPage extends StatelessWidget {
 
   Widget buildDirectory(BuildContext context) =>
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        CommonText.section(S.of(context).Directory, context),
+        CommonText.section(S.of(context).Hospital, context),
         SizedBox(height: 16),
         SectionComponent(
             title: S.of(context).Medical_directory,
             colorID: 0,
             onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => MedicalDirectoryPage())))
+                MaterialPageRoute(builder: (_) => MedicalDirectoryPage()))),
+        SizedBox(height: 16),
+        SectionComponent(
+            title: S.of(context).Medical_map,
+            colorID: 1,
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => MedicalMapPage())))
       ]);
 
   // Actions
