@@ -166,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "Low_spo2": MessageLookupByLibrary.simpleMessage("Low SPO2"),
+        "Map": MessageLookupByLibrary.simpleMessage("Map"),
         "March": MessageLookupByLibrary.simpleMessage("March"),
         "May": MessageLookupByLibrary.simpleMessage("May"),
         "Medic": MessageLookupByLibrary.simpleMessage("Medic"),
@@ -230,6 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Set a new password"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "Show_on_map": MessageLookupByLibrary.simpleMessage("Show on map"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Stats_today": MessageLookupByLibrary.simpleMessage("Stats for today"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
@@ -324,6 +326,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_update_medicine_box":
             MessageLookupByLibrary.simpleMessage("UPDATE MEDICINE BOX"),
         "button_yes": MessageLookupByLibrary.simpleMessage("YES"),
+        "calo_in": MessageLookupByLibrary.simpleMessage("calo in"),
+        "calo_out": MessageLookupByLibrary.simpleMessage("calo out"),
+        "calo_remaining":
+            MessageLookupByLibrary.simpleMessage("calo remaining"),
         "chew": MessageLookupByLibrary.simpleMessage("Chew"),
         "custom_day_repeat_right":
             MessageLookupByLibrary.simpleMessage(" days"),

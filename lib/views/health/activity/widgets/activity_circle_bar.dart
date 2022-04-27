@@ -93,13 +93,17 @@ class ActivityCircleBar extends StatelessWidget {
           Text(title,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.bodyText1),
-          SizedBox(height: 16, width: size * 0.6, child: CustomDivider.dash()),
-          Text(subValue,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headline2),
-          Text(subTitle,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodyText1)
+          if (size >= 200)
+            SizedBox(
+                height: 16, width: size * 0.6, child: CustomDivider.dash()),
+          if (size >= 200)
+            Text(subValue,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.headline2),
+          if (size >= 200)
+            Text(subTitle,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText1)
         ]));
   }
 }

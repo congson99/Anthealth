@@ -173,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
         "Logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "Low_spo2": MessageLookupByLibrary.simpleMessage("Ngưỡng SPO2 thấp"),
+        "Map": MessageLookupByLibrary.simpleMessage("Bản đồ"),
         "March": MessageLookupByLibrary.simpleMessage("Tháng 3"),
         "May": MessageLookupByLibrary.simpleMessage("Tháng 5"),
         "Medic": MessageLookupByLibrary.simpleMessage("Y tế"),
@@ -238,6 +239,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Đặt mật khẩu mới"),
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "Show_on_map":
+            MessageLookupByLibrary.simpleMessage("Hiển thị trên bản đồ"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Stats_today": MessageLookupByLibrary.simpleMessage("Thống kê hôm nay"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
@@ -333,6 +336,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_update_medicine_box":
             MessageLookupByLibrary.simpleMessage("CẬP NHẬT HỘP THUỐC"),
         "button_yes": MessageLookupByLibrary.simpleMessage("CÓ"),
+        "calo_in": MessageLookupByLibrary.simpleMessage("calo đã nạp"),
+        "calo_out": MessageLookupByLibrary.simpleMessage("calo tiêu thụ"),
+        "calo_remaining": MessageLookupByLibrary.simpleMessage("calo còn lại"),
         "chew": MessageLookupByLibrary.simpleMessage("Ngậm"),
         "custom_day_repeat_right":
             MessageLookupByLibrary.simpleMessage(" ngày 1 lần"),

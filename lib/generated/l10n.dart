@@ -430,6 +430,26 @@ class S {
     );
   }
 
+  /// `Show on map`
+  String get Show_on_map {
+    return Intl.message(
+      'Show on map',
+      name: 'Show_on_map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Map`
+  String get Map {
+    return Intl.message(
+      'Map',
+      name: 'Map',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -1215,6 +1235,36 @@ class S {
     return Intl.message(
       'Drank',
       name: 'Drank',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `calo in`
+  String get calo_in {
+    return Intl.message(
+      'calo in',
+      name: 'calo_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `calo out`
+  String get calo_out {
+    return Intl.message(
+      'calo out',
+      name: 'calo_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `calo remaining`
+  String get calo_remaining {
+    return Intl.message(
+      'calo remaining',
+      name: 'calo_remaining',
       desc: '',
       args: [],
     );

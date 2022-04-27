@@ -8,6 +8,7 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
 import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
@@ -145,6 +146,8 @@ class HealthPage extends StatelessWidget {
               colorID: 2,
               iconPath: "assets/indicators/calo.png",
               value: "1.200",
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => CaloPage())),
               title: S.of(context).Calo,
               width: width),
           SizedBox(width: 16),

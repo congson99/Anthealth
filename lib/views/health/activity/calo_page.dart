@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/health/calo_cubit.dart';
+import 'package:anthealth_mobile/blocs/health/calo_states.dart';
 import 'package:anthealth_mobile/blocs/health/water_cubit.dart';
 import 'package:anthealth_mobile/blocs/health/water_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
@@ -16,17 +18,17 @@ import 'package:anthealth_mobile/views/health/activity/widgets/activity_today.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class WaterPage extends StatelessWidget {
-  const WaterPage({Key? key}) : super(key: key);
+class CaloPage extends StatelessWidget {
+  const CaloPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<WaterCubit>(
-        create: (context) => WaterCubit(),
-        child: BlocBuilder<WaterCubit, CubitState>(builder: (context, state) {
-          if (state is WaterState)
+    return BlocProvider<CaloCubit>(
+        create: (context) => CaloCubit(),
+        child: BlocBuilder<CaloCubit, CubitState>(builder: (context, state) {
+          if (state is CaloState)
             return TemplateFormPage(
-                title: S.of(context).Drink_water,
+                title: S.of(context).Calo,
                 back: () => back(context),
                 add: () => add(context),
                 settings: () => setting(),
@@ -36,39 +38,44 @@ class WaterPage extends StatelessWidget {
   }
 
   // Content
-  Widget buildContent(BuildContext context, WaterState state) {
+  Widget buildContent(BuildContext context, CaloState state) {
     return Column(children: [
       ActivityCircleBar(
-          percent: state.data.getWaterValue() / state.data.getGoal(),
-          iconPath: "assets/indicators/water.png",
-          colorID: 0,
-          value: NumberLogic.formatIntMore3(state.data.getWaterValue()),
-          subValue: NumberLogic.formatIntMore3(state.data.getGoal()),
-          title: S.of(context).ml_drank,
-          subTitle: S.of(context).ml_goal),
+          percent: state.data.getCaloIn() /
+              (state.data.getGoal() + state.data.getCaloOut()),
+          iconPath: "assets/indicators/calo.png",
+          colorID: 2,
+          value: NumberLogic.formatIntMore3(state.data.getCaloIn()),
+          subValue: NumberLogic.formatIntMore3(state.data.getGoal() +
+              state.data.getCaloOut() -
+              state.data.getCaloIn()),
+          title: S.of(context).calo_in,
+          subTitle: S.of(context).calo_remaining),
       SizedBox(height: 32),
-      ActivityToday(title: S.of(context).Stats_today, colorID: 0, value: [
-        NumberLogic.formatIntMore3(state.data.getGoal()),
-        (state.data.getWaterValue() * 100 / state.data.getGoal())
+      ActivityToday(title: S.of(context).Stats_today, colorID: 2, value: [
+        NumberLogic.formatIntMore3(state.data.getCaloIn()),
+        NumberLogic.formatIntMore3(state.data.getCaloOut()),
+        ((state.data.getCaloIn() * 100) /
+                (state.data.getGoal() + state.data.getCaloOut()))
             .toStringAsFixed(0),
-        NumberLogic.formatIntMore3(state.data.getWaterValue()),
-        NumberLogic.formatIntMore3(
-            max(state.data.getGoal() - state.data.getWaterValue(), 0)),
+        NumberLogic.formatIntMore3(state.data.getGoal() +
+            state.data.getCaloOut() -
+            state.data.getCaloIn()),
       ], unit: [
         "",
-        "%",
         "",
+        "%",
         ""
       ], content: [
-        S.of(context).ml_goal,
+        S.of(context).calo_in,
+        S.of(context).calo_out,
         S.of(context).Goal,
-        S.of(context).ml_drank,
-        S.of(context).ml_remaining
+        S.of(context).calo_remaining
       ]),
       SizedBox(height: 32),
       SectionComponent(
           title: S.of(context).Detail,
-          colorID: 0,
+          colorID: 2,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (_) => WaterDetailPage(superContext: context))))
     ]);
