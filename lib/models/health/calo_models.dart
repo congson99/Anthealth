@@ -7,6 +7,10 @@ class CaloDayData {
 
   int getGoal() => _goal;
 
+  List<CaloIn> getListCaloIn() => _caloIn;
+
+  List<CaloOut> getListCaloOut() => _caloOut;
+
   int getCaloIn() {
     int result = 0;
     for (CaloIn x in _caloIn) result += x.getCalo();
@@ -40,4 +44,19 @@ class CaloOut {
   final double serving;
 
   int getCalo() => (servingCalo * serving).toInt();
+}
+
+class CaloDayReportData {
+  CaloDayReportData(this.goal, this.caloIn, this.caloOut);
+
+  final int goal;
+  final int caloIn;
+  final int caloOut;
+}
+
+class CaloMonthReportData {
+  CaloMonthReportData(this.avgCaloIn, this.avgCaloOut);
+
+  final int avgCaloIn;
+  final int avgCaloOut;
 }

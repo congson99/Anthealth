@@ -52,6 +52,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authenticate": MessageLookupByLibrary.simpleMessage("Authenticate"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Authentication code"),
+        "Average_calo_in_per_day":
+            MessageLookupByLibrary.simpleMessage("Average calo in per day"),
+        "Average_calo_out_per_day":
+            MessageLookupByLibrary.simpleMessage("Average calo out per day"),
         "Average_per_day":
             MessageLookupByLibrary.simpleMessage("Average per day"),
         "Average_steps_per_day":
@@ -61,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Blood_pressure":
             MessageLookupByLibrary.simpleMessage("Blood Pressure"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Calo_in": MessageLookupByLibrary.simpleMessage("Calo in"),
+        "Calo_out": MessageLookupByLibrary.simpleMessage("Calo out"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "Cannot connect to server! Please check your network connection and try again"),
         "Choose_medicine":
@@ -125,10 +131,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter your password"),
         "Every_few_days":
             MessageLookupByLibrary.simpleMessage("Every few days"),
+        "Exercise": MessageLookupByLibrary.simpleMessage("Exercise"),
         "Family": MessageLookupByLibrary.simpleMessage("Family"),
         "February": MessageLookupByLibrary.simpleMessage("February"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Fill in information"),
+        "Food": MessageLookupByLibrary.simpleMessage("Food"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "General_information":
@@ -156,6 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hospital_info":
             MessageLookupByLibrary.simpleMessage("Hospital Information"),
         "Hour": MessageLookupByLibrary.simpleMessage("Hour"),
+        "In": MessageLookupByLibrary.simpleMessage("In"),
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters"),
@@ -204,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Number_of_record":
             MessageLookupByLibrary.simpleMessage("Number of record"),
         "October": MessageLookupByLibrary.simpleMessage("October"),
+        "Out": MessageLookupByLibrary.simpleMessage("Out"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
         "Phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
@@ -225,6 +235,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Register now"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("The email was registered!"),
+        "Remaining": MessageLookupByLibrary.simpleMessage("Remaining"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Repeat after"),
         "Required_content":
@@ -246,6 +257,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Today": MessageLookupByLibrary.simpleMessage("Today"),
         "Today_achievement":
             MessageLookupByLibrary.simpleMessage("Today\'s achievement"),
+        "Total_calories":
+            MessageLookupByLibrary.simpleMessage("Total calories"),
         "Total_steps": MessageLookupByLibrary.simpleMessage("Total steps"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "Update": MessageLookupByLibrary.simpleMessage("Update"),
@@ -328,6 +341,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_update_medicine_box":
             MessageLookupByLibrary.simpleMessage("UPDATE MEDICINE BOX"),
         "button_yes": MessageLookupByLibrary.simpleMessage("YES"),
+        "calo": MessageLookupByLibrary.simpleMessage("calo"),
         "calo_in": MessageLookupByLibrary.simpleMessage("calo in"),
         "calo_out": MessageLookupByLibrary.simpleMessage("calo out"),
         "calo_remaining":
@@ -388,6 +402,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "You have not filled in the required content"),
         "sat": MessageLookupByLibrary.simpleMessage("sat"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
+        "serving": MessageLookupByLibrary.simpleMessage("serving"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Sorry, something wrong!"),
         "steps": MessageLookupByLibrary.simpleMessage("steps"),

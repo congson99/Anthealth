@@ -43,25 +43,26 @@ class WaterPage extends StatelessWidget {
           iconPath: "assets/indicators/water.png",
           colorID: 0,
           value: NumberLogic.formatIntMore3(state.data.getWaterValue()),
-          subValue: NumberLogic.formatIntMore3(state.data.getGoal()),
+          subValue: NumberLogic.formatIntMore3(
+              max(state.data.getGoal() - state.data.getWaterValue(), 0)),
           title: S.of(context).ml_drank,
-          subTitle: S.of(context).ml_goal),
+          subTitle: S.of(context).ml_remaining),
       SizedBox(height: 32),
       ActivityToday(title: S.of(context).Stats_today, colorID: 0, value: [
-        NumberLogic.formatIntMore3(state.data.getGoal()),
         (state.data.getWaterValue() * 100 / state.data.getGoal())
             .toStringAsFixed(0),
+        NumberLogic.formatIntMore3(state.data.getGoal()),
         NumberLogic.formatIntMore3(state.data.getWaterValue()),
         NumberLogic.formatIntMore3(
             max(state.data.getGoal() - state.data.getWaterValue(), 0)),
       ], unit: [
-        "",
         "%",
+        "",
         "",
         ""
       ], content: [
-        S.of(context).ml_goal,
         S.of(context).Goal,
+        S.of(context).ml_goal,
         S.of(context).ml_drank,
         S.of(context).ml_remaining
       ]),

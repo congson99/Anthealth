@@ -1190,6 +1190,26 @@ class S {
     );
   }
 
+  /// `Average calo in per day`
+  String get Average_calo_in_per_day {
+    return Intl.message(
+      'Average calo in per day',
+      name: 'Average_calo_in_per_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Average calo out per day`
+  String get Average_calo_out_per_day {
+    return Intl.message(
+      'Average calo out per day',
+      name: 'Average_calo_out_per_day',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Average per day`
   String get Average_per_day {
     return Intl.message(
@@ -1240,6 +1260,16 @@ class S {
     );
   }
 
+  /// `calo`
+  String get calo {
+    return Intl.message(
+      'calo',
+      name: 'calo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `calo in`
   String get calo_in {
     return Intl.message(
@@ -1260,11 +1290,51 @@ class S {
     );
   }
 
+  /// `Calo in`
+  String get Calo_in {
+    return Intl.message(
+      'Calo in',
+      name: 'Calo_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calo out`
+  String get Calo_out {
+    return Intl.message(
+      'Calo out',
+      name: 'Calo_out',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `calo remaining`
   String get calo_remaining {
     return Intl.message(
       'calo remaining',
       name: 'calo_remaining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total calories`
+  String get Total_calories {
+    return Intl.message(
+      'Total calories',
+      name: 'Total_calories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `serving`
+  String get serving {
+    return Intl.message(
+      'serving',
+      name: 'serving',
       desc: '',
       args: [],
     );
@@ -1635,6 +1705,56 @@ class S {
     return Intl.message(
       'Working time',
       name: 'Working_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In`
+  String get In {
+    return Intl.message(
+      'In',
+      name: 'In',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Out`
+  String get Out {
+    return Intl.message(
+      'Out',
+      name: 'Out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remaining`
+  String get Remaining {
+    return Intl.message(
+      'Remaining',
+      name: 'Remaining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food`
+  String get Food {
+    return Intl.message(
+      'Food',
+      name: 'Food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise`
+  String get Exercise {
+    return Intl.message(
+      'Exercise',
+      name: 'Exercise',
       desc: '',
       args: [],
     );

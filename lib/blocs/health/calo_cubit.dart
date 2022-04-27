@@ -31,47 +31,43 @@ class CaloCubit extends Cubit<CubitState> {
     ])));
   }
 
-  WaterDayData getDayData(DateTime dateTime) {
-    return WaterDayData(200, [
-      Water(DateTime(0, 0, 0, 2, 3), 200),
-      Water(DateTime(0, 0, 0, 2, 20), 500),
-      Water(DateTime(0, 0, 0, 6, 20), 500),
-      Water(DateTime(0, 0, 0, 17, 20), 500)
+  CaloDayData getDayData(DateTime dateTime) {
+    return CaloDayData(2000, [
+      CaloIn(DateTime.now(), "Fish", 200, 2),
+      CaloIn(DateTime.now(), "Eggs", 800, 0.5),
+      CaloIn(DateTime.now(), "Rice", 500, 1)
+    ], [
+      CaloOut(DateTime.now(), "Push up", 50, 5)
     ]);
   }
 
-  WaterMonthReport getMonthData(DateTime dateTime) {
-    return WaterMonthReport(21, 30, [
-      WaterDayReportData(900, 1200),
-      WaterDayReportData(2000, 1800),
-      WaterDayReportData(2000, 3000),
-      WaterDayReportData(3000, 0),
-      WaterDayReportData(2000, 1200),
-      WaterDayReportData(2000, 1800),
-      WaterDayReportData(2000, 0),
-      WaterDayReportData(2000, 1800),
-      WaterDayReportData(2000, 3000),
-      WaterDayReportData(3000, 0),
-      WaterDayReportData(2000, 1200),
-      WaterDayReportData(2000, 1800),
-      WaterDayReportData(2000, 0),
-    ]);
+  List<CaloDayReportData> getMonthReport(DateTime dateTime) {
+    return [
+      CaloDayReportData(2000, 1800, 200),
+      CaloDayReportData(2000, 2200, 800),
+      CaloDayReportData(2400, 2500, 0),
+      CaloDayReportData(2400, 1700, 200),
+      CaloDayReportData(2400, 2900, 900),
+      CaloDayReportData(2400, 1200, 0),
+      CaloDayReportData(2400, 2700, 500),
+      CaloDayReportData(2300, 3200, 200),
+      CaloDayReportData(2300, 2900, 300),
+      CaloDayReportData(2300, 3500, 200),
+    ];
   }
 
-  WaterYearReport getYearData(DateTime dateTime) {
-    return WaterYearReport([
-      WaterMonthReportData(32, 28, 2839),
-      WaterMonthReportData(32, 28, 2322),
-      WaterMonthReportData(32, 28, 3422),
-      WaterMonthReportData(32, 28, 9123),
-      WaterMonthReportData(32, 28, 7272),
-      WaterMonthReportData(32, 28, 123),
-      WaterMonthReportData(32, 28, 2128),
-      WaterMonthReportData(32, 28, 281),
-      WaterMonthReportData(32, 28, 2129),
-      WaterMonthReportData(32, 28, 1282),
-      WaterMonthReportData(32, 28, 128),
-      WaterMonthReportData(32, 28, 219),
-    ]);
+  List<CaloMonthReportData> getYearReport(DateTime dateTime) {
+    return [
+      CaloMonthReportData(1800, 200),
+      CaloMonthReportData(2200, 800),
+      CaloMonthReportData(2500, 0),
+      CaloMonthReportData(1700, 200),
+      CaloMonthReportData(2900, 900),
+      CaloMonthReportData(1200, 0),
+      CaloMonthReportData(2700, 500),
+      CaloMonthReportData(3200, 200),
+      CaloMonthReportData(2900, 300),
+      CaloMonthReportData(3500, 200),
+    ];
   }
 }

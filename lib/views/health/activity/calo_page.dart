@@ -1,17 +1,13 @@
-import 'dart:math';
-
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/health/calo_cubit.dart';
 import 'package:anthealth_mobile/blocs/health/calo_states.dart';
-import 'package:anthealth_mobile/blocs/health/water_cubit.dart';
-import 'package:anthealth_mobile/blocs/health/water_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/logics/water_logic.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
-import 'package:anthealth_mobile/views/health/activity/water_detail_page.dart';
+import 'package:anthealth_mobile/views/health/activity/calo_detail_page.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_add_data_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_circle_bar.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_today.dart';
@@ -77,7 +73,7 @@ class CaloPage extends StatelessWidget {
           title: S.of(context).Detail,
           colorID: 2,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => WaterDetailPage(superContext: context))))
+              builder: (_) => CaloDetailPage(superContext: context))))
     ]);
   }
 

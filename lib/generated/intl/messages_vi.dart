@@ -54,6 +54,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authenticate": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
+        "Average_calo_in_per_day": MessageLookupByLibrary.simpleMessage(
+            "Trung bình lượng calo đã nạp mỗi ngày"),
+        "Average_calo_out_per_day": MessageLookupByLibrary.simpleMessage(
+            "Trung bình lượng calo tiêu thụ mỗi ngày"),
         "Average_per_day":
             MessageLookupByLibrary.simpleMessage("Trung bình mỗi ngày"),
         "Average_steps_per_day":
@@ -62,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Trung bình lượng nước mỗi ngày"),
         "Blood_pressure": MessageLookupByLibrary.simpleMessage("Huyết áp"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Calo_in": MessageLookupByLibrary.simpleMessage("Calo đã nạp"),
+        "Calo_out": MessageLookupByLibrary.simpleMessage("Calo tiêu thụ"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "Không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
         "Choose_medicine": MessageLookupByLibrary.simpleMessage("Chọn thuốc"),
@@ -128,10 +134,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mật khẩu"),
         "Every_few_days":
             MessageLookupByLibrary.simpleMessage("Vài ngày một lần"),
+        "Exercise": MessageLookupByLibrary.simpleMessage("Tập luyện"),
         "Family": MessageLookupByLibrary.simpleMessage("Gia đình"),
         "February": MessageLookupByLibrary.simpleMessage("Tháng 2"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
+        "Food": MessageLookupByLibrary.simpleMessage("Thức ăn"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "General_information":
@@ -161,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hospital_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cơ sở y tế"),
         "Hour": MessageLookupByLibrary.simpleMessage("Giờ"),
+        "In": MessageLookupByLibrary.simpleMessage("Nạp"),
         "Invalid_email":
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
@@ -212,6 +221,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Number_of_record":
             MessageLookupByLibrary.simpleMessage("Số lượng hồ sơ"),
         "October": MessageLookupByLibrary.simpleMessage("Tháng 10"),
+        "Out": MessageLookupByLibrary.simpleMessage("Tiêu thụ"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
         "Phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
@@ -233,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Register_now": MessageLookupByLibrary.simpleMessage("Đăng ký ngay"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
+        "Remaining": MessageLookupByLibrary.simpleMessage("Còn lại"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Lặp lại"),
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Lặp lại sau"),
         "Required_content":
@@ -255,6 +266,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "Today_achievement":
             MessageLookupByLibrary.simpleMessage("Thành tích hôm nay"),
+        "Total_calories":
+            MessageLookupByLibrary.simpleMessage("Tổng lượng calo"),
         "Total_steps": MessageLookupByLibrary.simpleMessage("Tổng số bước"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
         "Update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
@@ -338,6 +351,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_update_medicine_box":
             MessageLookupByLibrary.simpleMessage("CẬP NHẬT HỘP THUỐC"),
         "button_yes": MessageLookupByLibrary.simpleMessage("CÓ"),
+        "calo": MessageLookupByLibrary.simpleMessage("calo"),
         "calo_in": MessageLookupByLibrary.simpleMessage("calo đã nạp"),
         "calo_out": MessageLookupByLibrary.simpleMessage("calo tiêu thụ"),
         "calo_remaining": MessageLookupByLibrary.simpleMessage("calo còn lại"),
@@ -397,6 +411,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn chưa điền đủ các nội dung bắt buộc"),
         "sat": MessageLookupByLibrary.simpleMessage("T7"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
+        "serving": MessageLookupByLibrary.simpleMessage("khẩu phần"),
         "something_wrong":
             MessageLookupByLibrary.simpleMessage("Xin lỗi, đã xảy ra sự cố!"),
         "steps": MessageLookupByLibrary.simpleMessage("bước"),
