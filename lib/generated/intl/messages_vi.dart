@@ -23,6 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Activity": MessageLookupByLibrary.simpleMessage("Chỉ số hoạt động"),
+        "Activity_calo": MessageLookupByLibrary.simpleMessage("Chỉ số calo"),
+        "Activity_steps":
+            MessageLookupByLibrary.simpleMessage("Chỉ số bước chân"),
+        "Activity_water":
+            MessageLookupByLibrary.simpleMessage("Hoạt động uống nước"),
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu huyết áp"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Thêm bởi"),
@@ -66,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Trung bình lượng nước mỗi ngày"),
         "Blood_pressure": MessageLookupByLibrary.simpleMessage("Huyết áp"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Calo_detail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết chỉ số calo"),
         "Calo_in": MessageLookupByLibrary.simpleMessage("Calo đã nạp"),
         "Calo_out": MessageLookupByLibrary.simpleMessage("Calo tiêu thụ"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
@@ -136,6 +143,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vài ngày một lần"),
         "Exercise": MessageLookupByLibrary.simpleMessage("Tập luyện"),
         "Family": MessageLookupByLibrary.simpleMessage("Gia đình"),
+        "Family_group_chat":
+            MessageLookupByLibrary.simpleMessage("Nhóm trò chuyện"),
+        "Family_member":
+            MessageLookupByLibrary.simpleMessage("Thành viên gia đình"),
+        "Family_of": MessageLookupByLibrary.simpleMessage("Gia đình của"),
+        "Family_sharing":
+            MessageLookupByLibrary.simpleMessage("Chia sẻ gia đình"),
+        "Family_sharing_space":
+            MessageLookupByLibrary.simpleMessage("Không gian gia đình"),
         "February": MessageLookupByLibrary.simpleMessage("Tháng 2"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
@@ -146,6 +162,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "Goal": MessageLookupByLibrary.simpleMessage("Mục tiêu"),
         "Goal_days": MessageLookupByLibrary.simpleMessage("Ngày đạt mục tiêu"),
+        "Grant_admin_rights":
+            MessageLookupByLibrary.simpleMessage("Cấp quyền quản trị viên"),
         "Health": MessageLookupByLibrary.simpleMessage("Sức khoẻ"),
         "Health_indicator":
             MessageLookupByLibrary.simpleMessage("Chỉ số sức khoẻ"),
@@ -244,6 +262,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
         "Remaining": MessageLookupByLibrary.simpleMessage("Còn lại"),
+        "Remove_family_member": MessageLookupByLibrary.simpleMessage(
+            "Loại thành viên ra khỏi gia đình"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Lặp lại"),
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Lặp lại sau"),
         "Required_content":
@@ -258,6 +278,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Stats_today": MessageLookupByLibrary.simpleMessage("Thống kê hôm nay"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Số bước"),
+        "Steps_detail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết chỉ số bước chân"),
         "Steps_taken": MessageLookupByLibrary.simpleMessage("Đã đi"),
         "Systolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Huyết áp tâm thu"),
@@ -290,6 +312,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn xoá hồ sơ này không?"),
         "Water": MessageLookupByLibrary.simpleMessage("Nước"),
         "Water_count": MessageLookupByLibrary.simpleMessage("Lượng nước"),
+        "Water_detail": MessageLookupByLibrary.simpleMessage(
+            "Chi tiết hoạt động uống nước"),
         "Weight": MessageLookupByLibrary.simpleMessage("Cân nặng"),
         "Working_time":
             MessageLookupByLibrary.simpleMessage("Thời gian làm việc"),
@@ -315,6 +339,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Common-----------------------------"),
         "_Error": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Error-----------------------------"),
+        "_Family": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Family-----------------------------"),
         "_Health": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Health-----------------------------"),
         "_Main": MessageLookupByLibrary.simpleMessage(
@@ -375,6 +401,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("T6"),
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
+        "members": MessageLookupByLibrary.simpleMessage("thành viên"),
         "ml_drank": MessageLookupByLibrary.simpleMessage("ml đã uống"),
         "ml_goal": MessageLookupByLibrary.simpleMessage("ml mục tiêu"),
         "ml_remaining": MessageLookupByLibrary.simpleMessage("ml còn lại"),
@@ -391,6 +418,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn chưa thêm dữ liệu nào cho mục này"),
         "noon": MessageLookupByLibrary.simpleMessage("trưa"),
         "normal": MessageLookupByLibrary.simpleMessage("bình thường"),
+        "not_permission_view_data": MessageLookupByLibrary.simpleMessage(
+            "Bạn chưa được cấp quyền để xem dữ liệu này"),
         "nov": MessageLookupByLibrary.simpleMessage("T11"),
         "obese_class_I":
             MessageLookupByLibrary.simpleMessage("béo phì cấp độ I"),

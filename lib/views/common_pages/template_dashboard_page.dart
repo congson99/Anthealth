@@ -7,13 +7,15 @@ class TemplateDashboardPage extends StatelessWidget {
       required this.title,
       required this.name,
       required this.setting,
-      required this.content})
+      required this.content,
+      this.isHeader})
       : super(key: key);
 
   final String title;
   final String name;
   final VoidCallback setting;
   final Widget content;
+  final bool? isHeader;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,13 @@ class TemplateDashboardPage extends StatelessWidget {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Header(
-                      title: title,
-                      content: name,
-                      isNotification: false,
-                      isMessage: false,
-                      onSettingsTap: setting),
+                  if (isHeader != false)
+                    Header(
+                        title: title,
+                        content: name,
+                        isNotification: false,
+                        isMessage: false,
+                        onSettingsTap: setting),
                   content,
                   SizedBox(height: 124)
                 ])));

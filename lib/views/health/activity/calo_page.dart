@@ -4,7 +4,9 @@ import 'package:anthealth_mobile/blocs/health/calo_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/logics/water_logic.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_detail_page.dart';
@@ -15,20 +17,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CaloPage extends StatelessWidget {
-  const CaloPage({Key? key}) : super(key: key);
+  const CaloPage({Key? key, this.data}) : super(key: key);
+
+  final FamilyMemberData? data;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CaloCubit>(
         create: (context) => CaloCubit(),
         child: BlocBuilder<CaloCubit, CubitState>(builder: (context, state) {
-          if (state is CaloState)
-            return TemplateFormPage(
-                title: S.of(context).Calo,
-                back: () => back(context),
-                add: () => add(context),
-                settings: () => setting(),
-                content: buildContent(context, state));
+          if (state is CaloState) {
+            if (data == null)
+              return TemplateFormPage(
+                  title: S.of(context).Activity_calo,
+                  back: () => back(context),
+                  add: () => add(context),
+                  settings: () => setting(),
+                  content: buildContent(context, state));
+            else
+              return TemplateAvatarFormPage(
+                  firstTitle: S.of(context).Activity_calo,
+                  name: data!.name,
+                  add: (data!.permission[6] == 1) ? (() => add(context)) : null,
+                  avatarPath: data!.avatarPath,
+                  content: buildContent(context, state));
+          }
           return ErrorPage();
         }));
   }
@@ -73,7 +86,8 @@ class CaloPage extends StatelessWidget {
           title: S.of(context).Detail,
           colorID: 2,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => CaloDetailPage(superContext: context))))
+              builder: (_) =>
+                  CaloDetailPage(superContext: context, data: data))))
     ]);
   }
 

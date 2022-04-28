@@ -4,9 +4,11 @@ import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_appbar_with_avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/photo_list_label.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
@@ -20,11 +22,15 @@ import 'package:intl/intl.dart';
 
 class MedicalRecordDetailPage extends StatelessWidget {
   const MedicalRecordDetailPage(
-      {Key? key, required this.superContext, required this.medicalRecordID})
+      {Key? key,
+      required this.superContext,
+      required this.medicalRecordID,
+      this.data})
       : super(key: key);
 
   final BuildContext superContext;
   final String medicalRecordID;
+  final FamilyMemberData? data;
 
   @override
   Widget build(BuildContext context) => BlocProvider<MedicalRecordDetailCubit>(
@@ -39,14 +45,23 @@ class MedicalRecordDetailPage extends StatelessWidget {
                 color: AnthealthColors.black4,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                padding: const EdgeInsets.only(top: 57, left: 8, right: 8),
+                padding: (data == null)
+                    ? EdgeInsets.only(top: 57, left: 8, right: 8)
+                    : EdgeInsets.only(top: 81, left: 8, right: 8),
                 child:
                     SingleChildScrollView(child: buildContent(context, state))),
-            CustomAppBar(
-                title: S.of(context).Medical_record_detail,
-                back: () => Navigator.pop(context),
-                edit: () => edit(context, state.data),
-                delete: () => delete(context))
+            if (data == null)
+              CustomAppBar(
+                  title: S.of(context).Medical_record_detail,
+                  back: () => Navigator.pop(context),
+                  edit: () => edit(context, state.data),
+                  delete: () => delete(context)),
+            if (data != null)
+              CustomAppbarWithAvatar(
+                  context: context,
+                  name: data!.name,
+                  firstTitle: S.of(context).Medical_record_detail,
+                  avatarPath: data!.avatarPath)
           ])));
         else
           return LoadingPage();

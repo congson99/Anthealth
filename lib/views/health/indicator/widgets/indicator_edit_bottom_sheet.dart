@@ -83,7 +83,7 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
             buildSelectValue(context),
             SizedBox(height: 24),
             if (widget.isTime != null) buildSelectTime(context),
-            SizedBox(height: 24),
+            if (widget.isTime != null) SizedBox(height: 24),
             if (widget.isDate != null) buildSelectDate(context),
             SizedBox(height: 32),
             buildButton(),

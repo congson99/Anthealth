@@ -1,12 +1,12 @@
 import 'dart:math';
 
-import 'package:anthealth_mobile/blocs/health/steps_cubit.dart';
 import 'package:anthealth_mobile/blocs/health/water_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/dateTime_logic.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
-import 'package:anthealth_mobile/models/health/steps_models.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/health/water_models.dart';
+import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/next_previous_bar.dart';
 import 'package:anthealth_mobile/views/common_widgets/switch_bar.dart';
@@ -18,10 +18,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WaterDetailPage extends StatefulWidget {
-  const WaterDetailPage({Key? key, required this.superContext})
+  const WaterDetailPage({Key? key, required this.superContext, this.data})
       : super(key: key);
 
   final BuildContext superContext;
+  final FamilyMemberData? data;
 
   @override
   State<WaterDetailPage> createState() => _WaterDetailPageState();
@@ -33,10 +34,17 @@ class _WaterDetailPageState extends State<WaterDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return TemplateFormPage(
-        title: S.of(context).Detail,
-        back: () => back(context),
-        content: buildContent(context));
+    if (widget.data == null)
+      return TemplateFormPage(
+          title: S.of(context).Detail,
+          back: () => back(context),
+          content: buildContent(context));
+    else
+      return TemplateAvatarFormPage(
+          firstTitle: S.of(context).Water_detail,
+          name: widget.data!.name,
+          avatarPath: widget.data!.avatarPath,
+          content: buildContent(context));
   }
 
   // Content
@@ -120,8 +128,7 @@ class _WaterDetailPageState extends State<WaterDetailPage> {
                 style: Theme.of(context).textTheme.bodyText1)
           ]),
           SizedBox(height: 12),
-          ActivityDateDetail(
-              type: 1, unit: "ml", data: data.getWater())
+          ActivityDateDetail(type: 1, unit: "ml", data: data.getWater())
         ]));
   }
 
@@ -181,9 +188,7 @@ class _WaterDetailPageState extends State<WaterDetailPage> {
           Row(children: [
             Text(S.of(context).Average_per_day + ": ",
                 style: Theme.of(context).textTheme.subtitle2),
-            Text(
-                NumberLogic.formatIntMore3(data.getAVGDay()) +
-                    " ml",
+            Text(NumberLogic.formatIntMore3(data.getAVGDay()) + " ml",
                 style: Theme.of(context).textTheme.bodyText1)
           ]),
           SizedBox(height: 12),

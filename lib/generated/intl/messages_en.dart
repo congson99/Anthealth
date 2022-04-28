@@ -23,6 +23,9 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Activity": MessageLookupByLibrary.simpleMessage("Activity"),
+        "Activity_calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Activity_steps": MessageLookupByLibrary.simpleMessage("Steps"),
+        "Activity_water": MessageLookupByLibrary.simpleMessage("Water"),
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Add blood Pressure data"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Add by"),
@@ -65,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Blood_pressure":
             MessageLookupByLibrary.simpleMessage("Blood Pressure"),
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
+        "Calo_detail": MessageLookupByLibrary.simpleMessage("Calo Detail"),
         "Calo_in": MessageLookupByLibrary.simpleMessage("Calo in"),
         "Calo_out": MessageLookupByLibrary.simpleMessage("Calo out"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
@@ -133,6 +137,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Every few days"),
         "Exercise": MessageLookupByLibrary.simpleMessage("Exercise"),
         "Family": MessageLookupByLibrary.simpleMessage("Family"),
+        "Family_group_chat": MessageLookupByLibrary.simpleMessage("Group chat"),
+        "Family_member": MessageLookupByLibrary.simpleMessage("Family member"),
+        "Family_of": MessageLookupByLibrary.simpleMessage("Family of"),
+        "Family_sharing":
+            MessageLookupByLibrary.simpleMessage("Family sharing"),
+        "Family_sharing_space":
+            MessageLookupByLibrary.simpleMessage("Family space"),
         "February": MessageLookupByLibrary.simpleMessage("February"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Fill in information"),
@@ -143,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("General information"),
         "Goal": MessageLookupByLibrary.simpleMessage("Goal"),
         "Goal_days": MessageLookupByLibrary.simpleMessage("Goal days"),
+        "Grant_admin_rights":
+            MessageLookupByLibrary.simpleMessage("Grant admin rights"),
         "Health": MessageLookupByLibrary.simpleMessage("Health"),
         "Health_indicator":
             MessageLookupByLibrary.simpleMessage("Health indicator"),
@@ -236,6 +249,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("The email was registered!"),
         "Remaining": MessageLookupByLibrary.simpleMessage("Remaining"),
+        "Remove_family_member": MessageLookupByLibrary.simpleMessage(
+            "Remove member from the family"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Repeat after"),
         "Required_content":
@@ -249,6 +264,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Stats_today": MessageLookupByLibrary.simpleMessage("Stats for today"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Steps"),
+        "Steps_detail": MessageLookupByLibrary.simpleMessage("Steps Detail"),
         "Steps_taken": MessageLookupByLibrary.simpleMessage("Taken"),
         "Systolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Systolic blood pressure"),
@@ -281,6 +297,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete this record?"),
         "Water": MessageLookupByLibrary.simpleMessage("Water"),
         "Water_count": MessageLookupByLibrary.simpleMessage("Water"),
+        "Water_detail": MessageLookupByLibrary.simpleMessage("Water Detail"),
         "Weight": MessageLookupByLibrary.simpleMessage("Weight"),
         "Working_time": MessageLookupByLibrary.simpleMessage("Working time"),
         "Wrong_authentication_code":
@@ -305,6 +322,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Common-----------------------------"),
         "_Error": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Error-----------------------------"),
+        "_Family": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Family-----------------------------"),
         "_Health": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Health-----------------------------"),
         "_Main": MessageLookupByLibrary.simpleMessage(
@@ -367,6 +386,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
+        "members": MessageLookupByLibrary.simpleMessage("members"),
         "ml_drank": MessageLookupByLibrary.simpleMessage("ml drank"),
         "ml_goal": MessageLookupByLibrary.simpleMessage("ml goal"),
         "ml_remaining": MessageLookupByLibrary.simpleMessage("ml remaining"),
@@ -383,6 +403,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "You have not added any data for this section"),
         "noon": MessageLookupByLibrary.simpleMessage("noon"),
         "normal": MessageLookupByLibrary.simpleMessage("normal"),
+        "not_permission_view_data": MessageLookupByLibrary.simpleMessage(
+            "You have not been granted permission to view this data"),
         "nov": MessageLookupByLibrary.simpleMessage("NOV"),
         "obese_class_I": MessageLookupByLibrary.simpleMessage("obese class I"),
         "obese_class_II":

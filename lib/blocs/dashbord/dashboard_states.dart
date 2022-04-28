@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 
 class HomeState extends CubitState {
   @override
@@ -25,8 +26,12 @@ class MedicState extends CubitState {
 }
 
 class FamilyState extends CubitState {
+  FamilyState(this.members);
+
+  final List<FamilyMemberLabelData> members;
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [members];
 }
 
 class CommunityState extends CubitState {

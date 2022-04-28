@@ -34,6 +34,7 @@ class IndicatorCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getIndicatorData(), value)) {
         loadedData(IndicatorPageData.getPageData(type, filter, value));
+        print(value);
       }
     });
   }

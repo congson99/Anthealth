@@ -5,8 +5,10 @@ import 'package:anthealth_mobile/blocs/health/indicator_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/dateTime_logic.dart';
 import 'package:anthealth_mobile/logics/indicator_logic.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/next_previous_bar.dart';
 import 'package:anthealth_mobile/views/common_widgets/switch_bar.dart';
@@ -24,32 +26,53 @@ import 'package:intl/intl.dart';
 
 class WeightPage extends StatelessWidget {
   const WeightPage(
-      {Key? key, required this.dashboardContext, required this.latestHeight})
+      {Key? key,
+      required this.dashboardContext,
+      required this.latestHeight,
+      this.data})
       : super(key: key);
 
   final BuildContext dashboardContext;
   final String unit = 'kg';
   final double latestHeight;
 
+  final FamilyMemberData? data;
+
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      create: (context) => IndicatorCubit(1, 0),
+      create: (context) => IndicatorCubit(0, 0),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
-        if (state is IndicatorState)
-          return TemplateFormPage(
-              title: S.of(context).Weight,
-              back: () => back(context),
-              add: () => add(context, state),
-              settings: () => setting(),
-              content: buildContent(context, state.data, false));
-        if (state is IndicatorLoadingState)
-          return TemplateFormPage(
-              title: S.of(context).Weight,
-              back: () => back(context),
-              add: () {},
-              settings: () => setting(),
-              content: buildContent(context, state.data, true));
-        else
+        if (state is IndicatorState || state is IndicatorLoadingState) {
+          IndicatorPageData pageData = IndicatorPageData(
+              0,
+              "",
+              0,
+              IndicatorData(0, DateTime.now(), ""),
+              MoreInfo("", ""),
+              IndicatorFilter(0, DateTime.now()), []);
+          if (state is IndicatorState) pageData = state.data;
+          if (state is IndicatorLoadingState) pageData = state.data;
+          if (data == null)
+            return TemplateFormPage(
+                title: S.of(context).Weight,
+                back: () => back(context),
+                add: (state is IndicatorState)
+                    ? (() => add(context, state))
+                    : null,
+                settings: () => setting(),
+                content: buildContent(
+                    context, pageData, state is IndicatorLoadingState));
+          else
+            return TemplateAvatarFormPage(
+                firstTitle: S.of(context).Weight,
+                name: data!.name,
+                add: (state is IndicatorState && data!.permission[1] == 1)
+                    ? (() => add(context, state))
+                    : null,
+                avatarPath: data!.avatarPath,
+                content: buildContent(
+                    context, pageData, state is IndicatorLoadingState));
+        } else
           return LoadingPage();
       }));
 
@@ -204,18 +227,20 @@ class WeightPage extends StatelessWidget {
     }
   }
 
-  void showPopup(BuildContext context, int index, IndicatorPageData data) {
+  void showPopup(BuildContext context, int index, IndicatorPageData pageData) {
     showDialog(
         context: context,
         builder: (_) => IndicatorDetailPopup(
             title: S.of(context).Weight,
-            value: data.getData()[index].getValue().toStringAsFixed(1),
+            value: pageData.getData()[index].getValue().toStringAsFixed(1),
             unit: unit,
             time: DateFormat('hh:mm dd.MM.yyyy')
-                .format(data.getData()[index].getDateTime()),
-            recordID: data.getData()[index].getRecordID(),
-            delete: () => popupDelete(context, index, data),
-            edit: () => popupEdit(context, index, data),
+                .format(pageData.getData()[index].getDateTime()),
+            recordID: pageData.getData()[index].getRecordID(),
+            delete: (data != null)
+                ? null
+                : () => popupDelete(context, index, pageData),
+            edit: (data != null) ? null : () => popupEdit(context, index, pageData),
             close: () => Navigator.pop(context)));
   }
 

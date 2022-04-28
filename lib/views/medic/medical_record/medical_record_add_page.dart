@@ -1,9 +1,9 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
-import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/add_photo_view.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
@@ -121,8 +121,11 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         child: (widget.medicalRecordDetailData == null)
-            ? CommonButton.round(context, () => addMedicalRecord(state),
-                S.of(context).button_add_medical_record, AnthealthColors.secondary1)
+            ? CommonButton.round(
+                context,
+                () => addMedicalRecord(state),
+                S.of(context).button_add_medical_record,
+                AnthealthColors.secondary1)
             : CommonButton.round(
                 context,
                 () => updateMedicalRecord(state),

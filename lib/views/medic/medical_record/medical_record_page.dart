@@ -3,8 +3,10 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_add_page.dart';
@@ -17,24 +19,33 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class MedicalRecordPage extends StatelessWidget {
-  const MedicalRecordPage({Key? key, required this.dashboardContext})
+  const MedicalRecordPage({Key? key, this.dashboardContext, this.data})
       : super(key: key);
 
-  final BuildContext dashboardContext;
+  final BuildContext? dashboardContext;
+  final FamilyMemberData? data;
 
   @override
   Widget build(BuildContext context) => BlocProvider<MedicalRecordCubit>(
       create: (context) => MedicalRecordCubit(),
       child: BlocBuilder<MedicalRecordCubit, CubitState>(
           builder: (context, state) {
-        if (state is MedicalRecordState)
-          return TemplateFormPage(
-              title: S.of(context).Medical_record,
-              back: () => back(context),
-              add: () => add(context),
-              settings: () {},
-              content: buildContent(context, state));
-        else
+        if (state is MedicalRecordState) {
+          if (data == null)
+            return TemplateFormPage(
+                title: S.of(context).Medical_record,
+                back: () => back(context),
+                add: () => add(context),
+                settings: () {},
+                content: buildContent(context, state));
+          else
+            return TemplateAvatarFormPage(
+                name: data!.name,
+                firstTitle: S.of(context).Medical_record,
+                avatarPath: data!.avatarPath,
+                add: (data!.permission[9] != 1) ? null : () => add(context),
+                content: buildContent(context, state));
+        } else
           return LoadingPage();
       }));
 
@@ -153,12 +164,15 @@ class MedicalRecordPage extends StatelessWidget {
             isDirection: false,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => MedicalRecordDetailPage(
-                    superContext: context, medicalRecordID: mData.getID()))))
+                    superContext: context,
+                    medicalRecordID: mData.getID(),
+                    data: data))))
       ]);
 
   // Actions
   void back(BuildContext context) {
-    BlocProvider.of<DashboardCubit>(dashboardContext).medic();
+    if (data == null)
+      BlocProvider.of<DashboardCubit>(dashboardContext!).medic();
     Navigator.pop(context);
   }
 

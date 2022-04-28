@@ -6,7 +6,9 @@ import 'package:anthealth_mobile/blocs/health/water_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/logics/water_logic.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/water_detail_page.dart';
@@ -17,20 +19,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WaterPage extends StatelessWidget {
-  const WaterPage({Key? key}) : super(key: key);
+  const WaterPage({Key? key, this.data}) : super(key: key);
+
+  final FamilyMemberData? data;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WaterCubit>(
         create: (context) => WaterCubit(),
         child: BlocBuilder<WaterCubit, CubitState>(builder: (context, state) {
-          if (state is WaterState)
-            return TemplateFormPage(
-                title: S.of(context).Drink_water,
-                back: () => back(context),
-                add: () => add(context),
-                settings: () => setting(),
-                content: buildContent(context, state));
+          if (state is WaterState) {
+            if (data == null)
+              return TemplateFormPage(
+                  title: S.of(context).Activity_water,
+                  back: () => back(context),
+                  add: () => add(context),
+                  settings: () => setting(),
+                  content: buildContent(context, state));
+            else
+              return TemplateAvatarFormPage(
+                  firstTitle: S.of(context).Activity_water,
+                  name: data!.name,
+                  add: (data!.permission[7] == 1) ? (() => add(context)) : null,
+                  avatarPath: data!.avatarPath,
+                  content: buildContent(context, state));
+          }
           return ErrorPage();
         }));
   }
@@ -71,7 +84,8 @@ class WaterPage extends StatelessWidget {
           title: S.of(context).Detail,
           colorID: 0,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => WaterDetailPage(superContext: context))))
+              builder: (_) =>
+                  WaterDetailPage(superContext: context, data: data))))
     ]);
   }
 

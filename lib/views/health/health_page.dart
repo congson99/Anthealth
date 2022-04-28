@@ -55,13 +55,7 @@ class HealthPage extends StatelessWidget {
       SizedBox(height: 16),
       CommonText.section(S.of(context).Activity, context),
       SizedBox(height: 16),
-      buildActivity(context),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      CommonText.section(S.of(context).Period, context),
-      SizedBox(height: 16),
-      buildPeriod(context),
+      buildActivity(context)
     ]);
   }
 
@@ -170,14 +164,6 @@ class HealthPage extends StatelessWidget {
               title: S.of(context).Steps,
               width: width)
         ]);
-  }
-
-  Widget buildPeriod(BuildContext context) {
-    return SectionComponent(
-        title: "Hành kinh trong 1 ngày nữa",
-        subTitle: "Cơ hội thụ thai thấp",
-        colorID: 2,
-        isWarning: true);
   }
 
   // Actions

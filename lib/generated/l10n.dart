@@ -390,6 +390,16 @@ class S {
     );
   }
 
+  /// `members`
+  String get members {
+    return Intl.message(
+      'members',
+      name: 'members',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add member`
   String get Add_member {
     return Intl.message(
@@ -445,6 +455,16 @@ class S {
     return Intl.message(
       'Map',
       name: 'Map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have not been granted permission to view this data`
+  String get not_permission_view_data {
+    return Intl.message(
+      'You have not been granted permission to view this data',
+      name: 'not_permission_view_data',
       desc: '',
       args: [],
     );
@@ -590,6 +610,116 @@ class S {
     );
   }
 
+  /// `-----------------------------Family-----------------------------`
+  String get _Family {
+    return Intl.message(
+      '-----------------------------Family-----------------------------',
+      name: '_Family',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family of`
+  String get Family_of {
+    return Intl.message(
+      'Family of',
+      name: 'Family_of',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family sharing`
+  String get Family_sharing {
+    return Intl.message(
+      'Family sharing',
+      name: 'Family_sharing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family space`
+  String get Family_sharing_space {
+    return Intl.message(
+      'Family space',
+      name: 'Family_sharing_space',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Group chat`
+  String get Family_group_chat {
+    return Intl.message(
+      'Group chat',
+      name: 'Family_group_chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family member`
+  String get Family_member {
+    return Intl.message(
+      'Family member',
+      name: 'Family_member',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove member from the family`
+  String get Remove_family_member {
+    return Intl.message(
+      'Remove member from the family',
+      name: 'Remove_family_member',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grant admin rights`
+  String get Grant_admin_rights {
+    return Intl.message(
+      'Grant admin rights',
+      name: 'Grant_admin_rights',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calo Detail`
+  String get Calo_detail {
+    return Intl.message(
+      'Calo Detail',
+      name: 'Calo_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Water Detail`
+  String get Water_detail {
+    return Intl.message(
+      'Water Detail',
+      name: 'Water_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steps Detail`
+  String get Steps_detail {
+    return Intl.message(
+      'Steps Detail',
+      name: 'Steps_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Health-----------------------------`
   String get _Health {
     return Intl.message(
@@ -705,6 +835,36 @@ class S {
     return Intl.message(
       'Steps',
       name: 'Steps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calo`
+  String get Activity_calo {
+    return Intl.message(
+      'Calo',
+      name: 'Activity_calo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Water`
+  String get Activity_water {
+    return Intl.message(
+      'Water',
+      name: 'Activity_water',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steps`
+  String get Activity_steps {
+    return Intl.message(
+      'Steps',
+      name: 'Activity_steps',
       desc: '',
       args: [],
     );
