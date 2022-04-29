@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_water": MessageLookupByLibrary.simpleMessage("Add water"),
         "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
         "Address": MessageLookupByLibrary.simpleMessage("Address"),
+        "All_communities":
+            MessageLookupByLibrary.simpleMessage("All communities"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
         "April": MessageLookupByLibrary.simpleMessage("April"),
         "August": MessageLookupByLibrary.simpleMessage("August"),
@@ -78,6 +80,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "Choose_one_or_more_days":
             MessageLookupByLibrary.simpleMessage("Choose one or more days"),
         "Community": MessageLookupByLibrary.simpleMessage("Community"),
+        "Community_description":
+            MessageLookupByLibrary.simpleMessage("Community description"),
+        "Community_detail":
+            MessageLookupByLibrary.simpleMessage("Community Detail"),
+        "Community_name":
+            MessageLookupByLibrary.simpleMessage("Community name"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "Consumed": MessageLookupByLibrary.simpleMessage("Consumed"),
@@ -145,6 +153,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Family_sharing_space":
             MessageLookupByLibrary.simpleMessage("Family space"),
         "February": MessageLookupByLibrary.simpleMessage("February"),
+        "Feedback_community":
+            MessageLookupByLibrary.simpleMessage("Feedback on this community"),
+        "Feedback_community_successful":
+            MessageLookupByLibrary.simpleMessage("Thanks for your feedback!"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Fill in information"),
         "Food": MessageLookupByLibrary.simpleMessage("Food"),
@@ -182,6 +194,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters"),
         "January": MessageLookupByLibrary.simpleMessage("January"),
+        "Join_community":
+            MessageLookupByLibrary.simpleMessage("Join community"),
+        "Joined": MessageLookupByLibrary.simpleMessage("Joined"),
         "July": MessageLookupByLibrary.simpleMessage("July"),
         "June": MessageLookupByLibrary.simpleMessage("June"),
         "Latest": MessageLookupByLibrary.simpleMessage("Latest"),
@@ -227,6 +242,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Number of record"),
         "October": MessageLookupByLibrary.simpleMessage("October"),
         "Out": MessageLookupByLibrary.simpleMessage("Out"),
+        "Out_community": MessageLookupByLibrary.simpleMessage("Out community"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
         "Phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
@@ -239,6 +255,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "Re_examination":
             MessageLookupByLibrary.simpleMessage("Re-examination"),
+        "Recommend_community":
+            MessageLookupByLibrary.simpleMessage("Recommend a new community"),
+        "Recommend_community_successful": MessageLookupByLibrary.simpleMessage(
+            "Thanks for your recommendation! We will review the and respond as soon as possible"),
         "Record": MessageLookupByLibrary.simpleMessage("Records"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Record date"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Record time"),
@@ -299,6 +319,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Water_count": MessageLookupByLibrary.simpleMessage("Water"),
         "Water_detail": MessageLookupByLibrary.simpleMessage("Water Detail"),
         "Weight": MessageLookupByLibrary.simpleMessage("Weight"),
+        "Welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "Working_time": MessageLookupByLibrary.simpleMessage("Working time"),
         "Wrong_authentication_code":
             MessageLookupByLibrary.simpleMessage("Wrong authentication code!"),
@@ -313,6 +334,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("You are new User?"),
         "Your_bmi": MessageLookupByLibrary.simpleMessage("Your BMI Index is "),
+        "Your_communities":
+            MessageLookupByLibrary.simpleMessage("Your communities"),
         "Your_name": MessageLookupByLibrary.simpleMessage("Your name"),
         "_Authentication": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Authentication-----------------------------"),
@@ -320,6 +343,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Button-----------------------------"),
         "_Common": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Common-----------------------------"),
+        "_Community": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Community-----------------------------"),
         "_Error": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Error-----------------------------"),
         "_Family": MessageLookupByLibrary.simpleMessage(
@@ -366,6 +391,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "calo_remaining":
             MessageLookupByLibrary.simpleMessage("calo remaining"),
         "chew": MessageLookupByLibrary.simpleMessage("Chew"),
+        "comment": MessageLookupByLibrary.simpleMessage("comment"),
+        "communities": MessageLookupByLibrary.simpleMessage("communities"),
+        "community": MessageLookupByLibrary.simpleMessage("community"),
         "custom_day_repeat_right":
             MessageLookupByLibrary.simpleMessage(" days"),
         "custom_repeat_left":
@@ -384,6 +412,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "jan": MessageLookupByLibrary.simpleMessage("JAN"),
         "jul": MessageLookupByLibrary.simpleMessage("JUL"),
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
+        "like": MessageLookupByLibrary.simpleMessage("like"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
         "members": MessageLookupByLibrary.simpleMessage("members"),

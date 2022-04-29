@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_weight": MessageLookupByLibrary.simpleMessage(
             "Thêm weight dữ liệu cân nặng"),
         "Address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
+        "All_communities":
+            MessageLookupByLibrary.simpleMessage("Tất cả cộng đồng"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
         "April": MessageLookupByLibrary.simpleMessage("Tháng 4"),
         "August": MessageLookupByLibrary.simpleMessage("Tháng 8"),
@@ -81,6 +83,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "Choose_one_or_more_days":
             MessageLookupByLibrary.simpleMessage("Chọn một hoặc nhiều ngày"),
         "Community": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
+        "Community_description":
+            MessageLookupByLibrary.simpleMessage("Mô tả cộng đồng"),
+        "Community_detail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết cộng đồng"),
+        "Community_name": MessageLookupByLibrary.simpleMessage("Tên cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
         "Consumed": MessageLookupByLibrary.simpleMessage("Đã tiêu thụ"),
@@ -153,6 +160,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Family_sharing_space":
             MessageLookupByLibrary.simpleMessage("Không gian gia đình"),
         "February": MessageLookupByLibrary.simpleMessage("Tháng 2"),
+        "Feedback_community":
+            MessageLookupByLibrary.simpleMessage("Phản hồi về cộng đồng"),
+        "Feedback_community_successful":
+            MessageLookupByLibrary.simpleMessage("Cảm ơn phản hồi của bạn!"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
         "Food": MessageLookupByLibrary.simpleMessage("Thức ăn"),
@@ -193,6 +204,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải chứa ít nhất 8 ký tự"),
         "January": MessageLookupByLibrary.simpleMessage("Tháng 1"),
+        "Join_community":
+            MessageLookupByLibrary.simpleMessage("Tham gia cộng đồng"),
+        "Joined": MessageLookupByLibrary.simpleMessage("Đã tham gia"),
         "July": MessageLookupByLibrary.simpleMessage("Tháng 7"),
         "June": MessageLookupByLibrary.simpleMessage("Tháng 6"),
         "Latest": MessageLookupByLibrary.simpleMessage("Lần gần nhất"),
@@ -240,6 +254,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Số lượng hồ sơ"),
         "October": MessageLookupByLibrary.simpleMessage("Tháng 10"),
         "Out": MessageLookupByLibrary.simpleMessage("Tiêu thụ"),
+        "Out_community":
+            MessageLookupByLibrary.simpleMessage("Rời khỏi cộng đồng"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
         "Phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
@@ -252,6 +268,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "Re_examination":
             MessageLookupByLibrary.simpleMessage("Lịch hẹn tái khám"),
+        "Recommend_community":
+            MessageLookupByLibrary.simpleMessage("Đề xuất cộng đồng mới"),
+        "Recommend_community_successful": MessageLookupByLibrary.simpleMessage(
+            "Cảm ơn đề xuất của bạn! Chúng tôi sẽ xem xét đề xuất và phản hồi kết quả sớm nhất có thể"),
         "Record": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "Record_date": MessageLookupByLibrary.simpleMessage("Ngày đo"),
         "Record_hour": MessageLookupByLibrary.simpleMessage("Giờ đo"),
@@ -315,6 +335,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Water_detail": MessageLookupByLibrary.simpleMessage(
             "Chi tiết hoạt động uống nước"),
         "Weight": MessageLookupByLibrary.simpleMessage("Cân nặng"),
+        "Welcome": MessageLookupByLibrary.simpleMessage("Chào mừng!"),
         "Working_time":
             MessageLookupByLibrary.simpleMessage("Thời gian làm việc"),
         "Wrong_authentication_code":
@@ -330,6 +351,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bạn là người dùng mới?"),
         "Your_bmi":
             MessageLookupByLibrary.simpleMessage("Chỉ số BMI của bạn là "),
+        "Your_communities":
+            MessageLookupByLibrary.simpleMessage("Cộng đồng của bạn"),
         "Your_name": MessageLookupByLibrary.simpleMessage("Tên của bạn"),
         "_Authentication": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Authentication-----------------------------"),
@@ -337,6 +360,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Button-----------------------------"),
         "_Common": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Common-----------------------------"),
+        "_Community": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Community-----------------------------"),
         "_Error": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Error-----------------------------"),
         "_Family": MessageLookupByLibrary.simpleMessage(
@@ -382,6 +407,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "calo_out": MessageLookupByLibrary.simpleMessage("calo tiêu thụ"),
         "calo_remaining": MessageLookupByLibrary.simpleMessage("calo còn lại"),
         "chew": MessageLookupByLibrary.simpleMessage("Ngậm"),
+        "comment": MessageLookupByLibrary.simpleMessage("bình luận"),
+        "communities": MessageLookupByLibrary.simpleMessage("cộng đồng"),
+        "community": MessageLookupByLibrary.simpleMessage("cộng đồng"),
         "custom_day_repeat_right":
             MessageLookupByLibrary.simpleMessage(" ngày 1 lần"),
         "custom_repeat_left": MessageLookupByLibrary.simpleMessage(""),
@@ -399,6 +427,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "jan": MessageLookupByLibrary.simpleMessage("T1"),
         "jul": MessageLookupByLibrary.simpleMessage("T7"),
         "jun": MessageLookupByLibrary.simpleMessage("T6"),
+        "like": MessageLookupByLibrary.simpleMessage("lượt thích"),
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
         "members": MessageLookupByLibrary.simpleMessage("thành viên"),

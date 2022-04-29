@@ -32,7 +32,7 @@ class AuthenticationPage extends StatelessWidget {
         if (state is LoginState)
           return new LoginComponent(
             intentData: state.loginData,
-            pading: pading,
+            padding: pading,
           );
         if (state is RegisterState) return RegisterComponent();
         if (state is ForgotPasswordState) return ForgotPasswordComponent();

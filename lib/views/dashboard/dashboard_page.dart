@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
+import 'package:anthealth_mobile/views/community/community_page.dart';
 import 'package:anthealth_mobile/views/family/family_page.dart';
 import 'package:anthealth_mobile/views/health/health_page.dart';
 import 'package:anthealth_mobile/views/home/home_page.dart';
@@ -23,17 +24,17 @@ class DashboardPage extends StatelessWidget {
         return Scaffold(
             body: SafeArea(
                 child: Stack(children: [
-          buildContent(state),
+          buildContent(state, context),
           buildBottomNavigation(context, state)
         ])));
       }));
 
-  Widget buildContent(CubitState state) {
+  Widget buildContent(CubitState state, BuildContext context) {
     if (state is HomeState) return HomePage();
     if (state is HealthState) return HealthPage(name: name);
     if (state is MedicState) return MedicPage(name: name);
     if (state is FamilyState) return FamilyPage(name: name);
-    if (state is CommunityState) return HomePage();
+    if (state is CommunityState) return CommunityPage(name: name);
     return LoadingPage();
   }
 

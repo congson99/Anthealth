@@ -15,11 +15,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginComponent extends StatefulWidget {
-  const LoginComponent({Key? key, this.intentData, required this.pading})
+  const LoginComponent({Key? key, this.intentData, required this.padding})
       : super(key: key);
 
   final LoginData? intentData;
-  final double pading;
+  final double padding;
 
   @override
   _LoginComponentState createState() => _LoginComponentState();
@@ -49,7 +49,7 @@ class _LoginComponentState extends State<LoginComponent> {
   }
 
   Widget buildContent(BuildContext context, LoginData data) {
-    double height = MediaQuery.of(context).size.height - widget.pading;
+    double height = MediaQuery.of(context).size.height - widget.padding;
     return SingleChildScrollView(
         child: Column(children: [
       buildLogo(height),

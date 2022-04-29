@@ -460,6 +460,16 @@ class S {
     );
   }
 
+  /// `Welcome!`
+  String get Welcome {
+    return Intl.message(
+      'Welcome!',
+      name: 'Welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `You have not been granted permission to view this data`
   String get not_permission_view_data {
     return Intl.message(
@@ -715,6 +725,176 @@ class S {
     return Intl.message(
       'Steps Detail',
       name: 'Steps_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Community-----------------------------`
+  String get _Community {
+    return Intl.message(
+      '-----------------------------Community-----------------------------',
+      name: '_Community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `community`
+  String get community {
+    return Intl.message(
+      'community',
+      name: 'community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `communities`
+  String get communities {
+    return Intl.message(
+      'communities',
+      name: 'communities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your communities`
+  String get Your_communities {
+    return Intl.message(
+      'Your communities',
+      name: 'Your_communities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All communities`
+  String get All_communities {
+    return Intl.message(
+      'All communities',
+      name: 'All_communities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recommend a new community`
+  String get Recommend_community {
+    return Intl.message(
+      'Recommend a new community',
+      name: 'Recommend_community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feedback on this community`
+  String get Feedback_community {
+    return Intl.message(
+      'Feedback on this community',
+      name: 'Feedback_community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Joined`
+  String get Joined {
+    return Intl.message(
+      'Joined',
+      name: 'Joined',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Community Detail`
+  String get Community_detail {
+    return Intl.message(
+      'Community Detail',
+      name: 'Community_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join community`
+  String get Join_community {
+    return Intl.message(
+      'Join community',
+      name: 'Join_community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Out community`
+  String get Out_community {
+    return Intl.message(
+      'Out community',
+      name: 'Out_community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Community name`
+  String get Community_name {
+    return Intl.message(
+      'Community name',
+      name: 'Community_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Community description`
+  String get Community_description {
+    return Intl.message(
+      'Community description',
+      name: 'Community_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thanks for your recommendation! We will review the and respond as soon as possible`
+  String get Recommend_community_successful {
+    return Intl.message(
+      'Thanks for your recommendation! We will review the and respond as soon as possible',
+      name: 'Recommend_community_successful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thanks for your feedback!`
+  String get Feedback_community_successful {
+    return Intl.message(
+      'Thanks for your feedback!',
+      name: 'Feedback_community_successful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `like`
+  String get like {
+    return Intl.message(
+      'like',
+      name: 'like',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `comment`
+  String get comment {
+    return Intl.message(
+      'comment',
+      name: 'comment',
       desc: '',
       args: [],
     );

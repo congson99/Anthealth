@@ -144,8 +144,11 @@ class AddPrescriptionMedicinePage extends StatelessWidget {
       if (medicine != null)
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Expanded(
-              child: CommonButton.round(context, () => deleteMedicine(context),
-                  S.of(context).button_delete_medicine, AnthealthColors.warning2)),
+              child: CommonButton.round(
+                  context,
+                  () => deleteMedicine(context),
+                  S.of(context).button_delete_medicine,
+                  AnthealthColors.warning2)),
           SizedBox(width: 16),
           Expanded(
               child: CommonButton.round(

@@ -1,6 +1,8 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
+import 'package:anthealth_mobile/models/community/community_models.dart';
+import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
@@ -70,6 +72,73 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   community() {
-    emit(CommunityState());
+    emit(CommunityState([
+    CommunityData(
+          '0',
+          "Yoga",
+          "Yoga a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
+          "https://www.victoriavn.com/images/healthlibrary/hatha-yoga.jpg",
+          239,
+          true, []),
+      CommunityData(
+          '0',
+          "Make up",
+          "Gys a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
+          "http://file.hstatic.net/1000379579/article/thuat-ngu-makeup-danh-cho-nguoi-moi-bat-dau_e9dc32edb93647c4aefea1807091100a.jpg",
+          2883,
+          true, [])
+
+    ]));
+  }
+
+  List<Post> loadMorePost() {
+    return [
+      Post(
+          PostAuthor(
+              "",
+              "Huong",
+              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
+              DateTime.now()),
+          [],
+          [],
+          "22",
+          PostAuthor(
+              "",
+              "Hung",
+              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
+              DateTime.now())),
+      Post(
+          PostAuthor(
+              "",
+              "Tra",
+              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
+              DateTime.now()),
+          [],
+          [],
+          "1",
+          PostAuthor(
+              "",
+              "Hung",
+              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
+              DateTime.now())),
+      Post(
+          PostAuthor(
+              "",
+              "Nam",
+              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
+              DateTime.now()),
+          [],
+          [],
+          "2"),
+      Post(
+          PostAuthor(
+              "",
+              "Anh",
+              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
+              DateTime.now()),
+          [],
+          [],
+          "3")
+    ];
   }
 }
