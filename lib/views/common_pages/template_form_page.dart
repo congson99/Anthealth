@@ -36,7 +36,7 @@ class TemplateFormPage extends StatelessWidget {
               child: Container(
                   padding: (padding == null)
                       ? EdgeInsets.only(
-                          left: 16, right: 16, top: 16, bottom: 64)
+                          left: 16, right: 16, top: 16, bottom: 32)
                       : padding,
                   child: content))),
       CustomAppBar(
