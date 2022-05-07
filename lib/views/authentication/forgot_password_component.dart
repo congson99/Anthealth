@@ -52,8 +52,7 @@ class _ForgotPasswordComponentState extends State<ForgotPasswordComponent> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-                onTap: () =>
-                    BlocProvider.of<AuthenticationCubit>(context)..checkCurrentUsername(),
+                onTap: () {},
                 child: Image.asset("assets/app_icon/direction/page_back.png",
                     height: 20, width: 20, fit: BoxFit.cover)),
             SizedBox(width: 16),

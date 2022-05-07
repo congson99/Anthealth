@@ -10,6 +10,7 @@ class CommonTextField {
       String? labelText,
       String? errorText,
       FocusNode? focusNode,
+      bool? autoFocus,
       TextEditingController? textEditingController,
       bool? isVisibility}) {
     return TextField(
@@ -41,8 +42,8 @@ class CommonTextField {
               borderSide:
                   BorderSide(color: AnthealthColors.warning1, width: 1)),
         ),
-        obscureText: (isVisibility == true) ? true : false,
-        autofocus: true,
+        obscureText: isVisibility ?? false,
+        autofocus: autoFocus ?? false,
         style: Theme.of(context).textTheme.subtitle1,
         textInputAction: TextInputAction.done);
   }
@@ -197,8 +198,7 @@ class CommonTextField {
               return DropdownMenuItem<String>(
                   value: mValue,
                   child: mValue == value
-                      ? Text(mValue,
-                      overflow: TextOverflow.ellipsis)
+                      ? Text(mValue, overflow: TextOverflow.ellipsis)
                       : Text(mValue,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(color: AnthealthColors.black2)));

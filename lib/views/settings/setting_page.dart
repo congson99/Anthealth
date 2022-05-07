@@ -18,18 +18,16 @@ class SettingsPage extends StatelessWidget {
         content: buildContent(context, appContext));
   }
 
-  buildContent(BuildContext context, BuildContext appContext) =>
-      SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        SizedBox(height: 16),
-        SectionComponent(
-            title: S.of(context).Logout,
-            isDirection: false,
-            colorID: 2,
-            onTap: () {
-              BlocProvider.of<AppCubit>(appContext).unAuthenticate();
-              Navigator.pop(context);
-            })
-      ]));
+  Widget buildContent(BuildContext context, BuildContext appContext) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      SectionComponent(
+          title: S.of(context).Logout,
+          isDirection: false,
+          colorID: 2,
+          onTap: () {
+            BlocProvider.of<AppCubit>(appContext).logout();
+            Navigator.pop(context);
+          })
+    ]);
+  }
 }

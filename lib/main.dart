@@ -12,38 +12,57 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  setOrientations();
+  runApp(MyApp());
+}
+
+void setOrientations() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: anthealthTheme(),
-      //locale: Locale('vi'),
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      home: buildRootApp());
+  Widget build(BuildContext context) {
+    return BlocProvider<AppCubit>(
+        create: (context) => AppCubit(),
+        child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: anthealthTheme(),
+              localizationsDelegates: [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              locale: getUserLocale(state),
+              home: buildSystemUiOverlay());
+        }));
+  }
 
-  Widget buildRootApp() => AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.dark,
-      child: BlocProvider<AppCubit>(
-          create: (context) => AppCubit(),
-          child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
-            if (state is UnauthenticatedState) return AuthenticationPage();
-            if (state is AuthenticatedState)
-              return DashboardPage(
-                  name: state.name, avatarPath: state.avatarPath);
-            if (state is ConnectErrorState)
-              return ErrorPage(error: S.of(context).Cannot_connect);
-            return AppLoadingPage();
-          })));
+  Widget buildSystemUiOverlay() {
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark, child: buildAppContent());
+  }
+
+  Widget buildAppContent() {
+    return BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
+      if (state is UnauthenticatedState) return AuthenticationPage();
+      if (state is AuthenticatedState)
+        return DashboardPage(name: state.name, avatarPath: state.avatarPath);
+      if (state is ConnectErrorState)
+        return ErrorPage(error: S.of(context).Cannot_connect);
+      return AppLoadingPage();
+    });
+  }
+
+  dynamic getUserLocale(CubitState state) {
+    if (state is AuthenticatedState)
+      return Locale("vi");
+    else
+      return null;
+  }
 }

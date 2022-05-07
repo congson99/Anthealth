@@ -9,10 +9,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationCubit extends Cubit<CubitState> {
   AuthenticationCubit() : super(InitialState()) {
-    checkCurrentUsername();
+    startAuthentication();
   }
 
-  // Initial State
+  void startAuthentication() async {
+    LoginData loginData = LoginData("", "");
+    await getLocalUsername().then((username) {
+      loginData.username = username ?? "";
+    });
+    login(loginData);
+  }
+
+  /// Handle States
   void login(LoginData loginData) {
     emit(LoginState(loginData));
   }
@@ -25,31 +33,22 @@ class AuthenticationCubit extends Cubit<CubitState> {
     emit(ForgotPasswordState());
   }
 
-  // Intent
-  Future<void> intentLogin(LoginData loginData) async {
+  Future<void> intentToLogin(LoginData loginData) async {
     await Future.delayed(const Duration(milliseconds: 100), () => {});
     login(loginData);
   }
 
-  // Local Storage
-  Future<void> checkCurrentUsername() async {
-    final prefs = await SharedPreferences.getInstance();
-    String? username = prefs.getString('username');
-    if (username == null) username = '';
-    login(LoginData(username, ''));
-  }
-
-  // Service Function
-  Future<String> getToken(LoginData data) async {
-    var token = "null";
+  /// Service Function
+  Future<dynamic> getToken(LoginData data) async {
+    var token = "";
     await CommonService.instance
         .send(MessageIDPath.getToken(), LoginData.getStringObject(data));
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getToken(), value)) {
-        if (ServerLogic.getData(value)["token"] != "")
-          token = ServerLogic.getData(value)["token"];
+        token = ServerLogic.getData(value)["token"];
       }
     });
+    if (token == "") return null;
     return token;
   }
 
@@ -62,5 +61,12 @@ class AuthenticationCubit extends Cubit<CubitState> {
         result = ServerLogic.getData(value)["result"];
     });
     return result.toInt();
+  }
+
+  /// Local Storage
+  Future<dynamic> getLocalUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? username = prefs.getString('username');
+    return username;
   }
 }

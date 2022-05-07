@@ -62,7 +62,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
       child: Row(children: [
         GestureDetector(
             onTap: () => BlocProvider.of<AuthenticationCubit>(context)
-                .checkCurrentUsername(),
+                .startAuthentication(),
             child: Image.asset("assets/app_icon/direction/page_back.png",
                 height: 20, width: 20, fit: BoxFit.cover)),
         SizedBox(width: 16),
@@ -175,8 +175,8 @@ class _RegisterComponentState extends State<RegisterComponent> {
               _clearPassword(data);
             });
           if (value == 0) {
-            BlocProvider.of<AuthenticationCubit>(context)
-                .intentLogin(LoginData(data.getUsername(), data.getPassword()));
+            BlocProvider.of<AuthenticationCubit>(context).intentToLogin(
+                LoginData(data.getUsername(), data.getPassword()));
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(S.of(context).Register +
                     ' ' +
@@ -195,7 +195,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
   void _onStepCancel() {
     setState(() {
       if (_currentStep == 0)
-        BlocProvider.of<AuthenticationCubit>(context).checkCurrentUsername();
+        BlocProvider.of<AuthenticationCubit>(context).startAuthentication();
       // else {
       //   _clearPassword(name, username);
       //   _currentStep -= 1;
@@ -215,9 +215,8 @@ class _RegisterComponentState extends State<RegisterComponent> {
   }
 
   bool _checkUsername(RegisterData data) {
-    var _result =
-        AuthenticationLogic.checkValidEmail(context, data.getUsername());
-    if (_result == 'ok') return true;
+    var _result = AuthenticationLogic.emailError(context, data.getUsername());
+    if (_result == null) return true;
     setState(() {
       _errorUsername = _result;
       _clearPassword(data);
@@ -228,10 +227,10 @@ class _RegisterComponentState extends State<RegisterComponent> {
 
   bool _checkPassword(RegisterData data) {
     var _passwordResult =
-        AuthenticationLogic.checkValidPassword(context, data.getPassword());
-    var _confirmPasswordResult = AuthenticationLogic.checkValidConfirmPassword(
+        AuthenticationLogic.passwordError(context, data.getPassword());
+    var _confirmPasswordResult = AuthenticationLogic.confirmPasswordError(
         context, data.confirmPassword());
-    if (_passwordResult != 'ok') {
+    if (_passwordResult != null) {
       setState(() {
         _errorPassword = _passwordResult;
         _clearPassword(data);
@@ -239,7 +238,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
       FocusScope.of(context).requestFocus(_passwordFocus);
       return false;
     }
-    if (_confirmPasswordResult != 'ok') {
+    if (_confirmPasswordResult != null) {
       setState(() {
         _errorConfirmPassword = _confirmPasswordResult;
         _clearPassword(data, true);

@@ -1,15 +1,11 @@
 class LoginData {
-  LoginData(this._username, this._password);
+  LoginData(this.username, this.password);
 
-  String _username;
-  String _password;
-
-  String getUsername() => _username;
-
-  String getPassword() => _password;
+  String username;
+  String password;
 
   static Object getObject(LoginData data) {
-    return {"account": data.getUsername(), "password": data.getPassword()};
+    return {"account": data.username, "password": data.password};
   }
 
   static String getStringObject(LoginData data) => getObject(data).toString();
