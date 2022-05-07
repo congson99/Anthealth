@@ -11,7 +11,7 @@ class IndicatorCubit extends Cubit<CubitState> {
     loadData(type, IndicatorFilter(filterID, DateTime.now()));
   }
 
-  // Initial State
+  /// Handle States
   void loadedData(IndicatorPageData data) {
     emit(IndicatorState(data));
   }
@@ -20,13 +20,12 @@ class IndicatorCubit extends Cubit<CubitState> {
     emit(IndicatorLoadingState(data, filter));
   }
 
-  // Update data
   void updateData(IndicatorPageData data, IndicatorFilter filter) {
     loadingData(data, filter);
     loadData(data.getType(), filter);
   }
 
-  // Service Function
+  /// Service Functions
   Future<void> loadData(int type, IndicatorFilter filter) async {
     await CommonService.instance.send(MessageIDPath.getIndicatorData(),
         IndicatorPageData.formatToSendLoadData(type, filter));
@@ -34,22 +33,20 @@ class IndicatorCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getIndicatorData(), value)) {
         loadedData(IndicatorPageData.getPageData(type, filter, value));
-        print(value);
       }
     });
   }
 
   Future<bool> addIndicator(int type, IndicatorData data) async {
     var result = false;
-    var temp = {
+    String sendData = {
       "type": type,
       "data": {
         "value": data.getValue().toString(),
         "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000
       }
-    };
-    await CommonService.instance
-        .send(MessageIDPath.addIndicator(), temp.toString());
+    }.toString();
+    await CommonService.instance.send(MessageIDPath.addIndicator(), sendData);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.addIndicator(), value))
         result = ServerLogic.getData(value)["status"];
@@ -59,15 +56,15 @@ class IndicatorCubit extends Cubit<CubitState> {
 
   Future<bool> deleteIndicator(int type, IndicatorData data, int owner) async {
     var result = false;
-    var temp = {
+    String sendData = {
       "type": type,
       "data": {
         "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000,
         "owner": owner,
       }
-    };
+    }.toString();
     await CommonService.instance
-        .send(MessageIDPath.deleteIndicator(), temp.toString());
+        .send(MessageIDPath.deleteIndicator(), sendData);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.deleteIndicator(), value))
