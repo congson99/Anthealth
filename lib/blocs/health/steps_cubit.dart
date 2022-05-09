@@ -8,24 +8,20 @@ class StepsCubit extends Cubit<CubitState> {
     loadData();
   }
 
-  // Initial State
+  /// Handle States
   void loadedData(StepsState state) {
-    emit(StepsState(state.data, state.monthReport, state.yearReport));
+    emit(StepsState(state.data));
   }
 
-  // Update data
   void updateData(StepsState state) {
     emit(InitialState());
     loadedData(state);
   }
 
-  // Service Function
+  /// Service Functions
   Future<void> loadData() async {
-    loadedData(StepsState(
-        StepsDayData(
-            2000, [Steps(DateTime.now(), 500), Steps(DateTime.now(), 800)]),
-        StepsMonthReport(0, 0, 0, []),
-        StepsYearReport(0, [])));
+    loadedData(StepsState(StepsDayData(
+        2000, [Steps(DateTime.now(), 500), Steps(DateTime.now(), 800)])));
   }
 
   StepsDayData getDayData(DateTime dateTime) {

@@ -46,7 +46,6 @@ class StepsPage extends StatelessWidget {
         }));
   }
 
-  // Content
   Widget buildContent(BuildContext context, StepsState state) {
     return Column(children: [
       ActivityCircleBar(
@@ -88,11 +87,7 @@ class StepsPage extends StatelessWidget {
     ]);
   }
 
-  // Content Component
-
-  // Child Component
-
-  // Actions
+  /// Actions
   void back(BuildContext context) {
     Navigator.of(context).pop();
   }

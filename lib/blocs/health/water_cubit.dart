@@ -8,24 +8,20 @@ class WaterCubit extends Cubit<CubitState> {
     loadData();
   }
 
-  // Initial State
+  /// Handle States
   void loadedData(WaterState state) {
-    emit(WaterState(state.data, state.monthReport, state.yearReport));
+    emit(WaterState(state.data));
   }
 
-  // Update data
   void updateData(WaterState state) {
     emit(InitialState());
     loadedData(state);
   }
 
-  // Service Function
+  /// Service Functions
   Future<void> loadData() async {
-    loadedData(WaterState(
-        WaterDayData(
-            3000, [Water(DateTime.now(), 500), Water(DateTime.now(), 800)]),
-        WaterMonthReport(0, 0, []),
-        WaterYearReport([])));
+    loadedData(WaterState(WaterDayData(
+        3000, [Water(DateTime.now(), 500), Water(DateTime.now(), 800)])));
   }
 
   WaterDayData getDayData(DateTime dateTime) {

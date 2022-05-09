@@ -1,7 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/health/calo_states.dart';
 import 'package:anthealth_mobile/models/health/calo_models.dart';
-import 'package:anthealth_mobile/models/health/water_models.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CaloCubit extends Cubit<CubitState> {
@@ -9,18 +8,17 @@ class CaloCubit extends Cubit<CubitState> {
     loadData();
   }
 
-  // Initial State
+  /// Handle States
   void loadedData(CaloState state) {
     emit(CaloState(state.data));
   }
 
-  // Update data
   void updateData(CaloState state) {
     emit(InitialState());
     loadedData(state);
   }
 
-  // Service Function
+  /// Service Functions
   Future<void> loadData() async {
     loadedData(CaloState(CaloDayData(2000, [
       CaloIn(DateTime.now(), "", 200, 2),

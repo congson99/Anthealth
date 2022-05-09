@@ -46,7 +46,6 @@ class CaloPage extends StatelessWidget {
         }));
   }
 
-  // Content
   Widget buildContent(BuildContext context, CaloState state) {
     return Column(children: [
       ActivityCircleBar(
@@ -91,11 +90,7 @@ class CaloPage extends StatelessWidget {
     ]);
   }
 
-  // Content Component
-
-  // Child Component
-
-  // Actions
+  /// Actions
   void back(BuildContext context) {
     Navigator.of(context).pop();
   }

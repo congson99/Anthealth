@@ -48,7 +48,6 @@ class WaterPage extends StatelessWidget {
         }));
   }
 
-  // Content
   Widget buildContent(BuildContext context, WaterState state) {
     return Column(children: [
       ActivityCircleBar(
@@ -89,11 +88,7 @@ class WaterPage extends StatelessWidget {
     ]);
   }
 
-  // Content Component
-
-  // Child Component
-
-  // Actions
+  /// Actions
   void back(BuildContext context) {
     Navigator.of(context).pop();
   }
