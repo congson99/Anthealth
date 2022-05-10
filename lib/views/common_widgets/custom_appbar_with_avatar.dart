@@ -114,69 +114,70 @@ class _CustomAppbarWithAvatarState extends State<CustomAppbarWithAvatar> {
                   onTap: () => setState(() {
                         isShowMenu = !isShowMenu;
                       }),
-                  child: Container(
+                  child: AnimatedContainer(
+                      duration: Duration(milliseconds: 600),
                       color: Colors.transparent,
+                      height: isShowMenu ? 60 : 54,
+                      width: isShowMenu ? 52 : 46,
                       padding: const EdgeInsets.only(
-                          left: 4, right: 16, top: 16, bottom: 16),
+                          left: 8, right: 16, top: 16, bottom: 16),
                       child: Image.asset("assets/app_icon/common/menu_bla2.png",
-                          height: isShowMenu ? 28 : 22,
-                          width: isShowMenu ? 28 : 22,
                           fit: BoxFit.cover)))
           ])),
-      if (isShowMenu)
-        Container(
-            height: 500,
-            alignment: Alignment.topRight,
-            child: Container(
-                height: 16 +
-                    ((widget.call != null) ? 52 : 0) +
-                    ((widget.messenger != null) ? 52 : 0) +
-                    ((widget.share != null) ? 52 : 0),
-                width: 60,
-                margin: const EdgeInsets.only(top: 56, right: 16),
-                padding: const EdgeInsets.only(top: 8, bottom: 8),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16)),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.1), blurRadius: 8)
-                    ]),
-                child: Column(children: [
-                  if (widget.call != null)
-                    GestureDetector(
-                        onTap: widget.call,
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Image.asset(
-                                "assets/app_icon/common/call_war1.png",
-                                height: 28,
-                                width: 28,
-                                fit: BoxFit.cover))),
-                  if (widget.messenger != null)
-                    GestureDetector(
-                        onTap: widget.share,
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Image.asset(
-                                "assets/app_icon/common/message_pri1.png",
-                                height: 28,
-                                width: 28,
-                                fit: BoxFit.cover))),
-                  if (widget.share != null)
-                    GestureDetector(
-                        onTap: widget.share,
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Image.asset(
-                                "assets/app_icon/common/share_sec1.png",
-                                height: 28,
-                                width: 28,
-                                fit: BoxFit.cover)))
-                ])))
+      Container(
+          height: 500,
+          alignment: Alignment.topRight,
+          child: AnimatedContainer(
+              duration: Duration(milliseconds: 100),
+              height: 16 +
+                  ((widget.call != null) ? 52 : 0) +
+                  ((widget.messenger != null) ? 52 : 0) +
+                  ((widget.share != null) ? 52 : 0),
+              width: isShowMenu ? 60 : 0,
+              margin: const EdgeInsets.only(top: 56, right: 16),
+              padding: const EdgeInsets.only(top: 8, bottom: 8),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.1), blurRadius: 8)
+                  ]),
+              child: Column(children: [
+                if (widget.call != null)
+                  GestureDetector(
+                      onTap: widget.call,
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: Image.asset(
+                              "assets/app_icon/common/call_war1.png",
+                              height: 28,
+                              width: 28,
+                              fit: BoxFit.cover))),
+                if (widget.messenger != null)
+                  GestureDetector(
+                      onTap: widget.share,
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: Image.asset(
+                              "assets/app_icon/common/message_pri1.png",
+                              height: 28,
+                              width: 28,
+                              fit: BoxFit.cover))),
+                if (widget.share != null)
+                  GestureDetector(
+                      onTap: widget.share,
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: Image.asset(
+                              "assets/app_icon/common/share_sec1.png",
+                              height: 28,
+                              width: 28,
+                              fit: BoxFit.cover)))
+              ])))
     ]);
   }
 }

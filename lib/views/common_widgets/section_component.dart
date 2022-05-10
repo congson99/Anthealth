@@ -31,17 +31,23 @@ class SectionComponent extends StatelessWidget {
         ? AnthealthColors.primary0
         : colorID == 1
             ? AnthealthColors.secondary0
-            : AnthealthColors.warning0;
+            : colorID == 2
+                ? AnthealthColors.warning0
+                : AnthealthColors.black0;
     Color color1 = colorID == 0
         ? AnthealthColors.primary1
         : colorID == 1
             ? AnthealthColors.secondary1
-            : AnthealthColors.warning1;
+            : colorID == 2
+                ? AnthealthColors.warning1
+                : AnthealthColors.black1;
     Color color5 = colorID == 0
         ? AnthealthColors.primary5
         : colorID == 1
             ? AnthealthColors.secondary5
-            : AnthealthColors.warning5;
+            : colorID == 2
+                ? AnthealthColors.warning5
+                : AnthealthColors.black5;
     return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -74,7 +80,9 @@ class SectionComponent extends StatelessWidget {
                 ? "assets/app_icon/direction/right_pri1.png"
                 : colorID == 1
                     ? "assets/app_icon/direction/right_sec1.png"
-                    : "assets/app_icon/direction/right_war1.png",
+                    : colorID == 1
+                        ? "assets/app_icon/direction/right_war1.png"
+                        : "assets/app_icon/direction/right_bla2.png",
             height: 16.0,
             width: 16.0,
             fit: BoxFit.cover)
