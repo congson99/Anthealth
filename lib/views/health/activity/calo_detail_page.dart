@@ -343,14 +343,18 @@ class _CaloDetailPageState extends State<CaloDetailPage> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                         NumberLogic.handleDoubleFix0(food.serving) +
-                            " " +
-                            S.of(context).serving +
+                            " x " +
+                            ((food.servingName == "")
+                                ? S.of(context).serving
+                                : food.servingName) +
                             " | " +
                             food.servingCalo.toString() +
                             " " +
                             S.of(context).calo +
                             "/" +
-                            S.of(context).serving,
+                            ((food.servingName == "")
+                                ? S.of(context).serving
+                                : food.servingName),
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
@@ -417,15 +421,11 @@ class _CaloDetailPageState extends State<CaloDetailPage> {
                     height: 36,
                     alignment: Alignment.centerLeft,
                     child: Text(
-                        NumberLogic.handleDoubleFix0(exercise.serving) +
-                            " " +
-                            S.of(context).serving +
+                        NumberLogic.handleMinTimeToPrint(exercise.min) +
                             " | " +
-                            exercise.servingCalo.toString() +
-                            " " +
-                            S.of(context).calo +
-                            "/" +
-                            S.of(context).serving,
+                            exercise.unitCalo.toString() +
+                            " calo/" +
+                            S.of(context).min,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme

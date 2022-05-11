@@ -3,16 +3,17 @@ import 'package:anthealth_mobile/blocs/health/calo_cubit.dart';
 import 'package:anthealth_mobile/blocs/health/calo_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
-import 'package:anthealth_mobile/logics/water_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_detail_page.dart';
-import 'package:anthealth_mobile/views/health/activity/widgets/activity_add_data_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_circle_bar.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_today.dart';
+import 'package:anthealth_mobile/views/health/activity/widgets/add_caloin_bottom_sheet.dart';
+import 'package:anthealth_mobile/views/health/activity/widgets/add_caloout_bottom_sheet.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -103,24 +104,102 @@ class CaloPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
         context: context,
-        builder: (_) => ActivityAddDataBottomSheet(
-            title: S.of(context).Add_water,
-            activity: S.of(context).Water_count,
-            dataPicker: WaterLogic.dataPicker(),
-            subDataPicker: WaterLogic.subDataPicker(),
-            indexPicker: 0,
-            subIndexPicker: 50,
-            dateTime: DateTime.now(),
-            unit: 'ml',
-            middleSymbol: '.',
-            cancel: () => Navigator.pop(context),
-            ok: (indexPicker, subIndexPicker, time) {
+        builder: (_) => SafeArea(
+            child: Container(
+                height: 120,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: GestureDetector(
+                        onTap: () => addCaloIn(context),
+                        child: Container(
+                          color: Colors.transparent,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(S.of(context).Calo_in,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4!
+                                        .copyWith(
+                                            color: AnthealthColors.secondary1)),
+                                SizedBox(height: 4),
+                                Text("(" + S.of(context).Food + ")",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                            color: AnthealthColors.secondary1))
+                              ]),
+                        ),
+                      )),
+                      Container(
+                          height: 90, width: 1, color: AnthealthColors.black3),
+                      Expanded(
+                          child: GestureDetector(
+                        onTap: () => addCaloOut(context),
+                        child: Container(
+                          color: Colors.transparent,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(S.of(context).Calo_out,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4!
+                                        .copyWith(
+                                            color: AnthealthColors.warning1)),
+                                SizedBox(height: 4),
+                                Text("(" + S.of(context).Exercise + ")",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                            color: AnthealthColors.warning1))
+                              ]),
+                        ),
+                      ))
+                    ]))));
+  }
+
+  void addCaloIn(BuildContext context) {
+    Navigator.of(context).pop();
+    showModalBottomSheet(
+        enableDrag: false,
+        isDismissible: true,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        context: context,
+        builder: (_) => AddCaloInBottomSheet(
+            superContext: context,
+            ok: (value) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(S.of(context).Add_water +
+                  content: Text(S.of(context).Add_calo_in +
                       ' ' +
                       S.of(context).successfully +
                       '!')));
-              Navigator.pop(context);
+            }));
+  }
+
+  void addCaloOut(BuildContext context) {
+    Navigator.of(context).pop();
+    showModalBottomSheet(
+        enableDrag: false,
+        isDismissible: true,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        context: context,
+        builder: (_) => AddCaloOutBottomSheet(
+            superContext: context,
+            ok: (value) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(S.of(context).Add_calo_out +
+                      ' ' +
+                      S.of(context).successfully +
+                      '!')));
             }));
   }
 

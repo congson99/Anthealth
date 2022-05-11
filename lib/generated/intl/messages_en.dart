@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Add blood Pressure data"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Add by"),
+        "Add_calo_in": MessageLookupByLibrary.simpleMessage("Add calo in"),
+        "Add_calo_out": MessageLookupByLibrary.simpleMessage("Add calo out"),
         "Add_customized_dose":
             MessageLookupByLibrary.simpleMessage("Add a customized dose"),
         "Add_heart_rate":
@@ -275,7 +277,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Repeat after"),
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Required content"),
+        "Select": MessageLookupByLibrary.simpleMessage("Select"),
         "September": MessageLookupByLibrary.simpleMessage("September"),
+        "Serving": MessageLookupByLibrary.simpleMessage("Serving"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Set a new password"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -416,6 +420,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
         "members": MessageLookupByLibrary.simpleMessage("members"),
+        "min": MessageLookupByLibrary.simpleMessage("min"),
         "ml_drank": MessageLookupByLibrary.simpleMessage("ml drank"),
         "ml_goal": MessageLookupByLibrary.simpleMessage("ml goal"),
         "ml_remaining": MessageLookupByLibrary.simpleMessage("ml remaining"),

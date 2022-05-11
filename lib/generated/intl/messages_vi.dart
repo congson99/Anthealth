@@ -31,6 +31,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu huyết áp"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Thêm bởi"),
+        "Add_calo_in":
+            MessageLookupByLibrary.simpleMessage("Thêm dữ liệu calo nạp"),
+        "Add_calo_out":
+            MessageLookupByLibrary.simpleMessage("Thêm dữ liệu calo tiêu thụ"),
         "Add_customized_dose": MessageLookupByLibrary.simpleMessage(
             "Thêm một liều dùng tùy chỉnh"),
         "Add_heart_rate":
@@ -75,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Calo_detail":
             MessageLookupByLibrary.simpleMessage("Chi tiết chỉ số calo"),
-        "Calo_in": MessageLookupByLibrary.simpleMessage("Calo đã nạp"),
+        "Calo_in": MessageLookupByLibrary.simpleMessage("Calo nạp"),
         "Calo_out": MessageLookupByLibrary.simpleMessage("Calo tiêu thụ"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "Không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
@@ -288,7 +292,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Lặp lại sau"),
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Nội dung bắt buộc"),
+        "Select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "September": MessageLookupByLibrary.simpleMessage("Tháng 9"),
+        "Serving": MessageLookupByLibrary.simpleMessage("Khẩu phần"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Đặt mật khẩu mới"),
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
@@ -431,6 +437,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
         "members": MessageLookupByLibrary.simpleMessage("thành viên"),
+        "min": MessageLookupByLibrary.simpleMessage("phút"),
         "ml_drank": MessageLookupByLibrary.simpleMessage("ml đã uống"),
         "ml_goal": MessageLookupByLibrary.simpleMessage("ml mục tiêu"),
         "ml_remaining": MessageLookupByLibrary.simpleMessage("ml còn lại"),

@@ -480,6 +480,16 @@ class S {
     );
   }
 
+  /// `Select`
+  String get Select {
+    return Intl.message(
+      'Select',
+      name: 'Select',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -1650,6 +1660,26 @@ class S {
     );
   }
 
+  /// `Add calo in`
+  String get Add_calo_in {
+    return Intl.message(
+      'Add calo in',
+      name: 'Add_calo_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add calo out`
+  String get Add_calo_out {
+    return Intl.message(
+      'Add calo out',
+      name: 'Add_calo_out',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `calo remaining`
   String get calo_remaining {
     return Intl.message(
@@ -1675,6 +1705,16 @@ class S {
     return Intl.message(
       'serving',
       name: 'serving',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serving`
+  String get Serving {
+    return Intl.message(
+      'Serving',
+      name: 'Serving',
       desc: '',
       args: [],
     );
@@ -2805,6 +2845,16 @@ class S {
     return Intl.message(
       'Time',
       name: 'Time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `min`
+  String get min {
+    return Intl.message(
+      'min',
+      name: 'min',
       desc: '',
       args: [],
     );

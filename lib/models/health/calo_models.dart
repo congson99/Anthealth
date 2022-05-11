@@ -25,25 +25,29 @@ class CaloDayData {
 }
 
 class CaloIn {
-  CaloIn(this.time, this.name, this.servingCalo, this.serving);
+  CaloIn(this.id, this.time, this.name, this.servingName, this.servingCalo,
+      this.serving);
 
+  final String id;
   final DateTime time;
   final String name;
+  final String servingName;
   final int servingCalo;
-  final double serving;
+  double serving;
 
   int getCalo() => (servingCalo * serving).toInt();
 }
 
 class CaloOut {
-  CaloOut(this.time, this.name, this.servingCalo, this.serving);
+  CaloOut(this.id, this.time, this.name, this.unitCalo, this.min);
 
+  final String id;
   final DateTime time;
   final String name;
-  final int servingCalo;
-  final double serving;
+  final int unitCalo;
+  int min;
 
-  int getCalo() => (servingCalo * serving).toInt();
+  int getCalo() => (unitCalo * min).toInt();
 }
 
 class CaloDayReportData {

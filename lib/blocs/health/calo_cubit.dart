@@ -21,21 +21,21 @@ class CaloCubit extends Cubit<CubitState> {
   /// Service Functions
   Future<void> loadData() async {
     loadedData(CaloState(CaloDayData(2000, [
-      CaloIn(DateTime.now(), "", 200, 2),
-      CaloIn(DateTime.now(), "", 800, 0.5),
-      CaloIn(DateTime.now(), "", 500, 1)
+      CaloIn("", DateTime.now(), "Cá ngừ", "100g", 200, 2),
+      CaloIn("", DateTime.now(), "Trứng gà", "quả", 800, 0.5),
+      CaloIn("", DateTime.now(), "Cơm", "chén", 500, 1)
     ], [
-      CaloOut(DateTime.now(), "", 50, 5)
+      CaloOut("", DateTime.now(), "Chạy bộ", 50, 5)
     ])));
   }
 
   CaloDayData getDayData(DateTime dateTime) {
     return CaloDayData(2000, [
-      CaloIn(DateTime.now(), "Fish", 200, 2),
-      CaloIn(DateTime.now(), "Eggs", 800, 0.5),
-      CaloIn(DateTime.now(), "Rice", 500, 1)
+      CaloIn("", DateTime.now(), "Cá ngừ", "100g", 200, 2),
+      CaloIn("", DateTime.now(), "Trứng gà", "quả", 800, 0.5),
+      CaloIn("", DateTime.now(), "Cơm", "chén", 500, 1)
     ], [
-      CaloOut(DateTime.now(), "Push up", 50, 5)
+      CaloOut("", DateTime.now(), "Chạy bộ", 50, 5)
     ]);
   }
 
@@ -66,6 +66,26 @@ class CaloCubit extends Cubit<CubitState> {
       CaloMonthReportData(3200, 200),
       CaloMonthReportData(2900, 300),
       CaloMonthReportData(3500, 200),
+    ];
+  }
+
+  List<CaloIn> getCaloIn() {
+    return [
+      CaloIn("a", DateTime.now(), "Ca", "Con", 400, 0),
+      CaloIn("b", DateTime.now(), "Com", "Chen", 200, 0),
+      CaloIn("c", DateTime.now(), "Trung", "Qua", 100, 0),
+      CaloIn("d", DateTime.now(), "Bo", "100g", 500, 0),
+      CaloIn("e", DateTime.now(), "Heo", "100g", 400, 0),
+      CaloIn("f", DateTime.now(), "Rau", "Dia", 20, 0),
+    ];
+  }
+
+  List<CaloOut> getCaloOut() {
+    return [
+      CaloOut("a", DateTime.now(), "Chay", 400, 0),
+      CaloOut("b", DateTime.now(), "Di bo", 200, 0),
+      CaloOut("c", DateTime.now(), "Nhay day", 300, 0),
+      CaloOut("d", DateTime.now(), "Boi", 400, 0),
     ];
   }
 }
