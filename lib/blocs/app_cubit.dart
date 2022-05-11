@@ -45,7 +45,6 @@ class AppCubit extends Cubit<CubitState> {
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getUserBaseData(), value)) {
-        saveToken(token);
         emit(AuthenticatedState(token, ServerLogic.getData(value)["name"],
             ServerLogic.getData(value)["avatar"]));
       }
@@ -58,6 +57,7 @@ class AppCubit extends Cubit<CubitState> {
         removeToken();
         saveUsername(username);
         authenticated(token);
+        saveToken(token);
       } else
         unAuthenticated();
     });

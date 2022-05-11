@@ -1,9 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:anthealth_mobile/blocs/app_states.dart';
-import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
+import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
@@ -14,21 +11,24 @@ class MedicalRecordCubit extends Cubit<CubitState> {
     loadData();
   }
 
-  // Initial State
+  /// Handle States
   void loadedData(MedicalRecordPageData data) {
     emit(MedicalRecordState(data));
   }
 
-  // Update data
   void updateData() {
     loadData();
   }
 
   void updateOpeningState(int index, MedicalRecordPageData data) {
-    loadedData(MedicalRecordPageData.changeOpeningState(index, data));
+    emit(InitialState());
+    MedicalRecordPageData newData = data;
+    newData.listYearLabel[index].openingState =
+        !newData.listYearLabel[index].openingState;
+    loadedData(newData);
   }
 
-  // Service Function
+  /// Service Functions
   void loadData() async {
     emit(InitialState());
     await CommonService.instance
@@ -43,41 +43,29 @@ class MedicalRecordCubit extends Cubit<CubitState> {
     });
   }
 
-  Future<bool> addData(
-      MedicalRecordDetailData data, List<List<File>> list) async {
+  Future<bool> addData(MedicalRecordDetailData data) async {
     bool result = false;
-    List<List<String>> tempList = [[], [], [], []];
-    for (int i = 0; i < 4; i++)
-      for (File x in list[i]) {
-        List<int> imageBytes = await File(x.path).readAsBytes();
-        String base64Image = base64Encode(imageBytes);
-        tempList[i].add(base64Image);
-      }
     var temp = {
-      "name": data.getLabel().getName(),
-      "place": data.getLabel().getLocation(),
-      "time": data.getLabel().getDateTime().millisecondsSinceEpoch ~/ 1000,
+      "name": data.label.name,
+      "place": data.label.location,
+      "time": data.label.dateTime.millisecondsSinceEpoch ~/ 1000,
       "medicine": [],
-      "detailsImage": [],
-      "testImage": [],
-      "diagnoseImage": [],
-      "medicineImage": []
-      // "detailsImage": tempList[0],
-      // "testImage": tempList[1],
-      // "diagnoseImage": tempList[2],
-      // "medicineImage": tempList[3]
+      "detailsImage": data.diagnosePhoto,
+      "testImage": data.testPhoto,
+      "diagnoseImage": data.diagnosePhoto,
+      "medicineImage": data.prescriptionPhoto
     };
-    if (data.getAppointment()!.getName() != "") {
+    if (data.appointment.name != "") {
       var tempAppointment = {
         "appointment": {
-          "content": data.getAppointment()!.getName(),
-          "time": data.getAppointment()!.getDateTime().millisecondsSinceEpoch ~/
-              1000,
-          "place": data.getAppointment()!.getLocation()
+          "content": data.appointment.name,
+          "time": data.appointment.dateTime.millisecondsSinceEpoch ~/ 1000,
+          "place": data.appointment.location
         }
       };
       temp.addAll(tempAppointment);
     }
+    print(temp.toString());
     await CommonService.instance
         .send(MessageIDPath.addNewMedicalRecord(), temp.toString());
     await CommonService.instance.client!.getData().then((value) {
@@ -101,5 +89,62 @@ class MedicalRecordCubit extends Cubit<CubitState> {
       }
     });
     return result;
+  }
+
+  List<String> getLocationList() {
+    return [
+      "Bệnh viện Huyện Bình Chánh",
+      "Bệnh viện Huyện Cần Giờ",
+      "Bệnh viện Huyện Củ Chi",
+      "Bệnh viện Huyện Hóc Môn",
+      "Bệnh viện Huyện Nhà Bè",
+      "Bệnh viện Quận 1",
+      "Bệnh viện Quận 10",
+      "Bệnh viện Quận 11",
+      "Bệnh viện Quận 12",
+      "Bệnh viện Quận 2",
+      "Bệnh viện Quận 3",
+      "Bệnh viện Quận 4",
+      "TRUNG TÂM Y TẾ QUẬN 5 (CS2)",
+      "Bệnh viện Quận 6",
+      "Bệnh viện Quận 7",
+      "Bệnh viện Quận 8",
+      "Bệnh viện Đa Khoa Lê Văn Việt",
+      "Bệnh viện Quận Bình Tân",
+      "Bệnh viện Quận Bình Thạnh",
+      "Bệnh viện Quận Gò Vấp",
+      "Bệnh Viện Quận Phú Nhuận",
+      "Bệnh viện Quận Tân Bình",
+      "Bệnh viện Quận Tân Phú",
+      "Bệnh viện Quận Thủ Đức"
+    ];
+  }
+
+  List<String> getMedicineList() {
+    return [
+      "Panadol Extra with Optizorb",
+      "Cipogip 500 Tablet",
+      "Augmentin 625mg"
+    ];
+  }
+
+  DigitalMedicine getMedicine(int index) {
+    var medicineList = [
+      "Panadol Extra with Optizorb",
+      "Cipogip 500 Tablet",
+      "Augmentin 625mg"
+    ];
+    return DigitalMedicine(
+        "id",
+        medicineList[index],
+        0,
+        0,
+        0,
+        [0, 0, 0, 0],
+        [],
+        0,
+        "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+        "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+        "");
   }
 }

@@ -67,7 +67,6 @@ class MedicalRecordDetailPage extends StatelessWidget {
           return LoadingPage();
       }));
 
-  // Content
   Widget buildContent(BuildContext context, MedicalRecordDetailState state) =>
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Container(height: 8, color: Colors.transparent),
@@ -78,40 +77,39 @@ class MedicalRecordDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(height: 4),
-                  buildDescription(context, state.data.getLabel()),
+                  buildDescription(context, state.data.label),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
                   buildPhotoComponent(
                       context,
                       S.of(context).General_information,
-                      state.data.getDetailPhoto()),
+                      state.data.detailPhoto),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
                   buildPhotoComponent(context, S.of(context).Medical_test,
-                      state.data.getDetailPhoto()),
+                      state.data.detailPhoto),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                  buildPhotoComponent(context, S.of(context).Diagnose,
-                      state.data.getDetailPhoto()),
+                  buildPhotoComponent(
+                      context, S.of(context).Diagnose, state.data.detailPhoto),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                  buildPrescription(context, state.data.getPrescriptionPhoto(),
-                      state.data.getPrescription()),
+                  buildPrescription(context, state.data.prescriptionPhoto,
+                      state.data.prescription),
                   buildAppointment(state, context)
                 ])),
         Container(height: 16, color: Colors.transparent)
       ]);
 
-  // Content Component
+  /// Main Components
   Widget buildDescription(BuildContext context, MedicalRecordLabel label) =>
       Padding(
           padding: const EdgeInsets.all(16),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            buildTitleTextLine(
-                context, S.of(context).Record_name, label.getName()),
+            buildTitleTextLine(context, S.of(context).Record_name, label.name),
             SizedBox(height: 16),
             buildTitleTextLine(
-                context, S.of(context).Medical_location, label.getLocation()),
+                context, S.of(context).Medical_location, label.location),
             SizedBox(height: 16),
             buildTitleTextLine(context, S.of(context).Medical_date,
-                DateFormat("dd.MM.yyyy").format(label.getDateTime()))
+                DateFormat("dd.MM.yyyy").format(label.dateTime))
           ]));
 
   Widget buildPhotoComponent(
@@ -156,24 +154,55 @@ class MedicalRecordDetailPage extends StatelessWidget {
       ),
       Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: (state.data.getAppointment()!.getName() != "")
-              ? SectionComponent(
-                  title: S.of(context).Content +
-                      ": " +
-                      state.data.getAppointment()!.getName(),
-                  subTitle: DateFormat("dd.MM.yyyy")
-                          .format(state.data.getAppointment()!.getDateTime()) +
-                      " - " +
-                      state.data.getAppointment()!.getLocation(),
-                  isDirection: false,
-                  colorID: 1)
+          child: (state.data.appointment.name != "")
+              ? Container(
+                  decoration: BoxDecoration(
+                      color: AnthealthColors.secondary5,
+                      borderRadius: BorderRadius.circular(16)),
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            S.of(context).Content +
+                                ": " +
+                                state.data.appointment.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .copyWith(color: AnthealthColors.secondary0)),
+                        SizedBox(height: 4),
+                        Text(
+                            S.of(context).Medical_date +
+                                ": " +
+                                DateFormat("dd.MM.yyyy")
+                                    .format(state.data.appointment.dateTime),
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption!
+                                .copyWith(color: AnthealthColors.secondary1)),
+                        SizedBox(height: 4),
+                        Text(
+                            S.of(context).Medical_location +
+                                ": " +
+                                state.data.appointment.location,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption!
+                                .copyWith(color: AnthealthColors.secondary1))
+                      ]))
               : Text(S.of(context).no_section_data,
                   style: Theme.of(context).textTheme.bodyText2)),
       SizedBox(height: 32)
     ]);
   }
 
-  // Child Component
+  /// Sub Components
   Widget buildTitleTextLine(
           BuildContext context, String label, String content) =>
       Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
@@ -220,12 +249,12 @@ class MedicalRecordDetailPage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       SizedBox(height: 8),
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(medicine.getName(), style: Theme.of(context).textTheme.bodyText1),
+        Text(medicine.name, style: Theme.of(context).textTheme.bodyText1),
         Expanded(child: Container()),
-        Text(MedicineLogic.handleQuantity(medicine.getQuantity()),
+        Text(MedicineLogic.handleQuantity(medicine.quantity),
             style: Theme.of(context).textTheme.bodyText1),
         SizedBox(width: 4),
-        Text(MedicineLogic.getUnit(context, medicine.getUnit()),
+        Text(MedicineLogic.getUnit(context, medicine.unit),
             style: Theme.of(context).textTheme.bodyText1)
       ]),
       SizedBox(height: 8),
@@ -238,7 +267,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
     ]);
   }
 
-  // Actions
+  /// Actions
   void edit(BuildContext context, MedicalRecordDetailData data) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => MedicalRecordAddPage(

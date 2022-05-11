@@ -106,15 +106,15 @@ class CommonTextField {
       TextEditingController? textEditingController}) {
     return TextFormField(
       onTap: onTap,
-      readOnly: (readOnly == null) ? false : readOnly,
+      readOnly: readOnly ?? false,
       onChanged: onChanged,
       focusNode: focusNode,
       initialValue: initialValue,
       controller: textEditingController,
-      textAlign: ((isNumber == true) ? TextAlign.right : TextAlign.start),
+      textAlign: (isNumber == true) ? TextAlign.right : TextAlign.start,
       keyboardType: (isNumber == true)
           ? TextInputType.numberWithOptions(decimal: true)
-          : TextInputType.multiline,
+          : null,
       maxLines: null,
       decoration: InputDecoration(
         labelStyle: CommonText.fillLabelTextStyle(),

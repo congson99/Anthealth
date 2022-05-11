@@ -9,13 +9,13 @@ class MedicineLogic {
   static String handleMedicineString(
       BuildContext context, DigitalMedicine medicine) {
     String result = "";
-    result += MedicineLogic.getUsage(context, medicine.getUsage());
-    if (medicine.getRepeat() > 0)
-      result += " | " + MedicineLogic.getRepeat(context, medicine.getRepeat());
+    result += MedicineLogic.getUsage(context, medicine.usage);
+    if (medicine.repeat > 0)
+      result += " | " + MedicineLogic.getRepeat(context, medicine.repeat);
     result += " | " +
-        MedicineLogic.getDosage(context, medicine.getDosage(),
-            medicine.getCustomDosage(), medicine.getUnit());
-    if (medicine.getNote() != null) result += " | " + medicine.getNote()!;
+        MedicineLogic.getDosage(
+            context, medicine.dosage, medicine.customDosage, medicine.unit);
+    if (medicine.note != "") result += " | " + medicine.note;
     return result;
   }
 
@@ -119,9 +119,9 @@ class MedicineLogic {
           unit +
           ", ";
     for (DigitalCustomMedicineDosage x in customList)
-      result += (x.getTime() +
+      result += (x.time +
           " " +
-          MedicineLogic.handleQuantity(x.getQuantity()) +
+          MedicineLogic.handleQuantity(x.quantity) +
           " " +
           unit +
           ", ");

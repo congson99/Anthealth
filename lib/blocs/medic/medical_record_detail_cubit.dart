@@ -15,7 +15,7 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
     if (id == "add") {
       List<DigitalMedicine> medicine = [];
       if (medicalRecordDetailData != null)
-        medicine = medicalRecordDetailData.getPrescription();
+        medicine = medicalRecordDetailData.prescription;
       loadedData(
           medicalRecordDetailData ??
               MedicalRecordDetailData(
@@ -32,7 +32,7 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
       loadData(id);
   }
 
-  // Initial State
+  /// Handle States
   void loadedData(MedicalRecordDetailData data, List<List<File>> list,
       List<DigitalMedicine> medicine) {
     emit(MedicalRecordDetailState(
@@ -76,14 +76,20 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
       List<DigitalMedicine> medicine) async {
     emit(MedicalRecordDetailState(
         MedicalRecordDetailData(
-            MedicalRecordLabel("", DateTime.now(), "", ""), [], [], [], [], []),
+            MedicalRecordLabel("", DateTime.now(), "", ""),
+            [],
+            [],
+            [],
+            [],
+            [],
+            MedicalAppointment(DateTime.now(), "", DateTime.now(), "")),
         [],
         [],
         []));
-    loadedData(
-        MedicalRecordDetailData.updateData(data, changeName, changeValue),
-        list,
-        medicine);
+    // loadedData(
+    //     MedicalRecordDetailData.updateData(data, changeName, changeValue),
+    //     list,
+    //     medicine);
   }
 
   void updateMedicine(MedicalRecordDetailState state, int type, int index,

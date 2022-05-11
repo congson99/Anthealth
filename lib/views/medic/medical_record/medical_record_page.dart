@@ -26,36 +26,37 @@ class MedicalRecordPage extends StatelessWidget {
   final FamilyMemberData? data;
 
   @override
-  Widget build(BuildContext context) => BlocProvider<MedicalRecordCubit>(
-      create: (context) => MedicalRecordCubit(),
-      child: BlocBuilder<MedicalRecordCubit, CubitState>(
-          builder: (context, state) {
-        if (state is MedicalRecordState) {
-          if (data == null)
-            return TemplateFormPage(
-                title: S.of(context).Medical_record,
-                back: () => back(context),
-                add: () => add(context),
-                settings: () {},
-                content: buildContent(context, state));
-          else
-            return TemplateAvatarFormPage(
-                name: data!.name,
-                firstTitle: S.of(context).Medical_record,
-                avatarPath: data!.avatarPath,
-                add: (data!.permission[9] != 1) ? null : () => add(context),
-                content: buildContent(context, state));
-        } else
-          return LoadingPage();
-      }));
+  Widget build(BuildContext context) {
+    return BlocProvider<MedicalRecordCubit>(
+        create: (context) => MedicalRecordCubit(),
+        child: BlocBuilder<MedicalRecordCubit, CubitState>(
+            builder: (context, state) {
+          if (state is MedicalRecordState) {
+            if (data == null)
+              return TemplateFormPage(
+                  title: S.of(context).Medical_record,
+                  back: () => back(context),
+                  add: () => add(context),
+                  settings: () {},
+                  content: buildContent(context, state));
+            else
+              return TemplateAvatarFormPage(
+                  name: data!.name,
+                  firstTitle: S.of(context).Medical_record,
+                  avatarPath: data!.avatarPath,
+                  add: (data!.permission[9] != 1) ? null : () => add(context),
+                  content: buildContent(context, state));
+          } else
+            return LoadingPage();
+        }));
+  }
 
-  // Content
   Widget buildContent(BuildContext context, MedicalRecordState state) =>
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         CommonText.section(S.of(context).Record, context),
         SizedBox(height: 16),
         buildDetailContainer(context, state),
-        if (state.data.getListAppointment().length != 0)
+        if (state.data.listAppointment.length != 0)
           Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -63,7 +64,7 @@ class MedicalRecordPage extends StatelessWidget {
                 SizedBox(height: 32),
                 CommonText.section(S.of(context).Medical_appointment, context),
                 SizedBox(height: 16),
-                buildAppointmentList(context, state.data.getListAppointment())
+                buildAppointmentList(context, state.data.listAppointment)
               ]),
         SizedBox(height: 32)
       ]);
@@ -75,7 +76,7 @@ class MedicalRecordPage extends StatelessWidget {
               color: AnthealthColors.primary5,
               borderRadius: BorderRadius.circular(16)),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: (state.data.getListYearLabel().length != 0)
+          child: (state.data.listYearLabel.length != 0)
               ? Column(children: [
                   Container(
                       height: 35,
@@ -96,8 +97,7 @@ class MedicalRecordPage extends StatelessWidget {
                           ])),
                   Divider(
                       thickness: 1, height: 1, color: AnthealthColors.primary1),
-                  ...state.data
-                      .getListYearLabel()
+                  ...state.data.listYearLabel
                       .map((data) => buildYearLabel(data, context, state))
                       .toList()
                 ])
@@ -112,15 +112,13 @@ class MedicalRecordPage extends StatelessWidget {
               .map((data) => Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: SectionComponent(
-                      title:
-                          DateFormat("dd.MM.yyyy").format(data.getDateTime()) +
-                              ' - ' +
-                              data.getLocation(),
+                      title: DateFormat("dd.MM.yyyy").format(data.dateTime) +
+                          ' - ' +
+                          data.location,
                       subTitle: S.of(context).Previous_medical_record +
                           ": " +
-                          DateFormat("dd.MM.yyyy").format(data.getLastTime()),
-                      subSubTitle:
-                          S.of(context).Content + ": " + data.getName(),
+                          DateFormat("dd.MM.yyyy").format(data.lastTime),
+                      subSubTitle: S.of(context).Content + ": " + data.name,
                       onTap: () {
                         //Todo
                       },
@@ -131,24 +129,23 @@ class MedicalRecordPage extends StatelessWidget {
           MedicalRecordState state) =>
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         MedicalRecordLabelComponent(
-            left: data.getDateTime().year.toString(),
-            right: data.getQuantity().toString(),
-            isOpen: data.getOpeningState(),
+            left: data.dateTime.year.toString(),
+            right: data.quantity.toString(),
+            isOpen: data.openingState,
             onTap: () => BlocProvider.of<MedicalRecordCubit>(context)
                 .updateOpeningState(
-                    state.data.getListYearLabel().indexOf(data), state.data)),
-        if (data.getOpeningState())
+                    state.data.listYearLabel.indexOf(data), state.data)),
+        if (data.openingState)
           Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: data
-                      .getData()
+                  children: data.data
                       .map((mData) => buildLabel(context, mData))
                       .toList())),
-        if (state.data.getListYearLabel().indexOf(data) <
-            state.data.getListYearLabel().length - 1)
+        if (state.data.listYearLabel.indexOf(data) <
+            state.data.listYearLabel.length - 1)
           Divider(thickness: 0.5, height: 0.5, color: AnthealthColors.primary1)
       ]);
 
@@ -156,20 +153,20 @@ class MedicalRecordPage extends StatelessWidget {
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Divider(thickness: 0.5, height: 0.5, color: AnthealthColors.primary1),
         MedicalRecordLabelComponent(
-            left: DateFormat('dd.MM').format(mData.getDateTime()) +
+            left: DateFormat('dd.MM').format(mData.dateTime) +
                 ' ' +
-                mData.getLocation(),
-            right: mData.getName(),
+                mData.location,
+            right: mData.name,
             isOpen: false,
             isDirection: false,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => MedicalRecordDetailPage(
                     superContext: context,
-                    medicalRecordID: mData.getID(),
+                    medicalRecordID: mData.id,
                     data: data))))
       ]);
 
-  // Actions
+  /// Actions
   void back(BuildContext context) {
     if (data == null)
       BlocProvider.of<DashboardCubit>(dashboardContext!).medic();

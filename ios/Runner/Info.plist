@@ -6,6 +6,10 @@
 	<string>App needs access to photo lib for profile images</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Application needs to access your current location</string>
+    <key>NSBonjourServices</key>
+    <array>
+        <string>_dartobservatory._tcp</string>
+    </array>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Application needs to access your current location</string>
 	<key>NSCameraUsageDescription</key>
