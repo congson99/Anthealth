@@ -1,8 +1,7 @@
-import 'package:anthealth_mobile/blocs/app_states.dart';
-import 'package:anthealth_mobile/blocs/family/family_member_cubit.dart';
-import 'package:anthealth_mobile/blocs/family/family_member_states.dart';
+import 'dart:ffi';
+
 import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
+import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
@@ -11,51 +10,49 @@ import 'package:anthealth_mobile/views/family/family_member_health.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FamilyMemberPage extends StatelessWidget {
-  const FamilyMemberPage({Key? key, required this.isAdmin, required this.id})
+  const FamilyMemberPage(
+      {Key? key,
+      required this.member,
+      required this.isAdmin,
+      required this.gantAdmin,
+      required this.remove})
       : super(key: key);
 
+  final FamilyMemberData member;
   final bool isAdmin;
-  final String id;
+  final VoidCallback gantAdmin;
+  final VoidCallback remove;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<FamilyMemberCubit>(
-        create: (context) => FamilyMemberCubit(id),
-        child: BlocBuilder<FamilyMemberCubit, CubitState>(
-            builder: (context, state) {
-          if (state is FamilyMemberState)
-            return TemplateAvatarFormPage(
-                name: state.data.name,
-                secondTitle: S.of(context).Family_member,
-                avatarPath: state.data.avatarPath,
-                call: () => call(state.data.phoneNumber),
-                messenger: () => messenger(),
-                share: () => share(),
-                content: buildContent(context, state));
-          else
-            return LoadingPage();
-        }));
+    return TemplateAvatarFormPage(
+        name: member.name,
+        secondTitle: S.of(context).Family_member,
+        avatarPath: member.avatarPath,
+        call: () => call(member.phoneNumber),
+        messenger: () => messenger(),
+        share: () => share(),
+        content: buildContent(context));
   }
 
   // Content
-  Widget buildContent(BuildContext context, FamilyMemberState state) {
+  Widget buildContent(BuildContext context) {
     return Column(children: [
       SizedBox(height: 8),
-      buildInfo(context, state),
+      buildInfo(context),
       SizedBox(height: 24),
       CustomDivider.common(),
       SizedBox(height: 16),
-      buildData(context, state),
+      buildData(context),
       if (isAdmin) buildAdmin(context)
     ]);
   }
 
   // Content Component
-  Column buildInfo(BuildContext context, FamilyMemberState state) {
+  Column buildInfo(BuildContext context) {
     return Column(children: [
       Row(children: [
         Text(S.of(context).Phone_number + ": ",
@@ -64,8 +61,8 @@ class FamilyMemberPage extends StatelessWidget {
                 .bodyText1!
                 .copyWith(color: AnthealthColors.black2)),
         InkWell(
-            onTap: () => launch("tel://" + state.data.phoneNumber),
-            child: Text(state.data.phoneNumber,
+            onTap: () => launch("tel://" + member.phoneNumber),
+            child: Text(member.phoneNumber,
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1!
@@ -79,8 +76,8 @@ class FamilyMemberPage extends StatelessWidget {
                 .bodyText1!
                 .copyWith(color: AnthealthColors.black2)),
         InkWell(
-            onTap: () => launch("mailto://" + state.data.email),
-            child: Text(state.data.email,
+            onTap: () => launch("mailto://" + member.email),
+            child: Text(member.email,
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1!
@@ -89,12 +86,12 @@ class FamilyMemberPage extends StatelessWidget {
     ]);
   }
 
-  Column buildData(BuildContext context, FamilyMemberState state) {
+  Column buildData(BuildContext context) {
     bool isHealthPermission = false;
-    bool isMedicPermission = state.data.permission[9] > -1;
-    bool isDiagnosePermission = state.data.permission[10] > -1;
+    bool isMedicPermission = member.permission[9] > -1;
+    bool isDiagnosePermission = member.permission[10] > -1;
     for (int i = 0; i < 9; i++)
-      if (state.data.permission[i] > -1) isHealthPermission = true;
+      if (member.permission[i] > -1) isHealthPermission = true;
     return Column(children: [
       SectionComponent(
           title: S.of(context).Health_record,
@@ -102,7 +99,7 @@ class FamilyMemberPage extends StatelessWidget {
           onTap: () {
             if (isHealthPermission)
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => FamilyMemberHealth(data: state.data)));
+                  builder: (_) => FamilyMemberHealth(data: member)));
             else
               showPopup(context);
           }),
@@ -113,7 +110,7 @@ class FamilyMemberPage extends StatelessWidget {
           onTap: () {
             if (isMedicPermission)
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => MedicalRecordPage(data: state.data)));
+                  builder: (_) => MedicalRecordPage(data: member)));
             else
               showPopup(context);
           }),
@@ -124,7 +121,7 @@ class FamilyMemberPage extends StatelessWidget {
           onTap: () {
             if (isDiagnosePermission)
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => FamilyMemberHealth(data: state.data)));
+                  builder: (_) => FamilyMemberHealth(data: member)));
             else
               showPopup(context);
           })
@@ -137,12 +134,14 @@ class FamilyMemberPage extends StatelessWidget {
       CustomDivider.common(),
       SizedBox(height: 16),
       SectionComponent(
+          onTap: gantAdmin,
           title: S.of(context).Grant_admin_rights,
           colorID: 0,
           isDirection: false,
           iconPath: "assets/app_icon/common/admin_pri0.png"),
       SizedBox(height: 16),
       SectionComponent(
+          onTap: remove,
           title: S.of(context).Remove_family_member,
           colorID: 2,
           isDirection: false,

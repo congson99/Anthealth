@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `You`
+  String get You {
+    return Intl.message(
+      'You',
+      name: 'You',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Detail`
   String get Detail {
     return Intl.message(
@@ -490,6 +500,26 @@ class S {
     );
   }
 
+  /// `Add`
+  String get Add {
+    return Intl.message(
+      'Add',
+      name: 'Add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find`
+  String get Find {
+    return Intl.message(
+      'Find',
+      name: 'Find',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -705,6 +735,16 @@ class S {
     return Intl.message(
       'Grant admin rights',
       name: 'Grant_admin_rights',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Admin`
+  String get Admin {
+    return Intl.message(
+      'Admin',
+      name: 'Admin',
       desc: '',
       args: [],
     );

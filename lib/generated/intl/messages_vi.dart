@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chỉ số bước chân"),
         "Activity_water":
             MessageLookupByLibrary.simpleMessage("Hoạt động uống nước"),
+        "Add": MessageLookupByLibrary.simpleMessage("Thêm"),
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Thêm dữ liệu huyết áp"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Thêm bởi"),
@@ -57,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_weight": MessageLookupByLibrary.simpleMessage(
             "Thêm weight dữ liệu cân nặng"),
         "Address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
+        "Admin": MessageLookupByLibrary.simpleMessage("Quản trị viên"),
         "All_communities":
             MessageLookupByLibrary.simpleMessage("Tất cả cộng đồng"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
@@ -170,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cảm ơn phản hồi của bạn!"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
+        "Find": MessageLookupByLibrary.simpleMessage("Tìm"),
         "Food": MessageLookupByLibrary.simpleMessage("Thức ăn"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
@@ -352,6 +355,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Wrong_password": MessageLookupByLibrary.simpleMessage("Sai mật khẩu!"),
         "Year": MessageLookupByLibrary.simpleMessage("Năm"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
+        "You": MessageLookupByLibrary.simpleMessage("Bạn"),
         "You_are": MessageLookupByLibrary.simpleMessage("Bạn đang "),
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("Bạn là người dùng mới?"),

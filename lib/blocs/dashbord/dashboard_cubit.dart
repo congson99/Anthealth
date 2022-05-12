@@ -52,28 +52,44 @@ class DashboardCubit extends Cubit<CubitState> {
   family() async {
     emit(MedicLoadingState());
     emit(FamilyState([
-      FamilyMemberLabelData("0", "Ho Cong Son",
-          "https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg"),
-      FamilyMemberLabelData("1", "Le Van A",
-          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"),
-      FamilyMemberLabelData("2", "Nguyen Van B",
-          "https://content.fortune.com/wp-content/uploads/2018/07/gettyimages-961697338.jpg"),
-      FamilyMemberLabelData("3", "Tran Thi C",
-          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg"),
-      FamilyMemberLabelData("0", "Ho Cong Son",
-          "https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg"),
-      FamilyMemberLabelData("1", "Le Van A",
-          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"),
-      FamilyMemberLabelData("2", "Nguyen Van B",
-          "https://content.fortune.com/wp-content/uploads/2018/07/gettyimages-961697338.jpg"),
-      FamilyMemberLabelData("3", "Tran Thi C",
-          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg"),
+      FamilyMemberData(
+          "123",
+          "Nguyen Van Anh",
+          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+          "012013011",
+          "ahaha@hca.com",
+          true,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+      FamilyMemberData(
+          "sd",
+          "Van Anh",
+          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+          "012013011",
+          "ahaha@hca.com",
+          true,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+      FamilyMemberData(
+          "id",
+          "Nguyen Van Anh",
+          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+          "012013011",
+          "ahaha@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+      FamilyMemberData(
+          "id",
+          "Nguyen Van Anh",
+          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+          "012013011",
+          "ahaha@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
     ]));
   }
 
   community() {
     emit(CommunityState([
-    CommunityData(
+      CommunityData(
           '0',
           "Yoga",
           "Yoga a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
@@ -87,7 +103,6 @@ class DashboardCubit extends Cubit<CubitState> {
           "http://file.hstatic.net/1000379579/article/thuat-ngu-makeup-danh-cho-nguoi-moi-bat-dau_e9dc32edb93647c4aefea1807091100a.jpg",
           2883,
           true, [])
-
     ]));
   }
 
@@ -140,5 +155,28 @@ class DashboardCubit extends Cubit<CubitState> {
           [],
           "3")
     ];
+  }
+
+  /// Server Functions
+  FamilyMemberData findUser(String email) {
+    if (email == "")
+      return FamilyMemberData(
+          "", "", "", "", "", false, [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]);
+    return FamilyMemberData(
+        "id",
+        "Nguyen Van Anh",
+        "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+        "012013011",
+        "ahaha@hca.com",
+        false,
+        [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]);
+  }
+
+  Future<bool> removeFamilyMember(String id) async {
+    return true;
+  }
+
+  Future<bool> grantFamilyAdmin(String id) async {
+    return true;
   }
 }

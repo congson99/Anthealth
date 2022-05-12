@@ -45,7 +45,10 @@ class AppCubit extends Cubit<CubitState> {
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getUserBaseData(), value)) {
-        emit(AuthenticatedState(token, ServerLogic.getData(value)["name"],
+        emit(AuthenticatedState(
+            token,
+            "123",
+            ServerLogic.getData(value)["name"],
             ServerLogic.getData(value)["avatar"]));
       }
     });

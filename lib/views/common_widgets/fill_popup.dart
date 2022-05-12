@@ -1,8 +1,7 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
-
-import 'common_text_field.dart';
 
 class FillPopup extends StatefulWidget {
   const FillPopup(

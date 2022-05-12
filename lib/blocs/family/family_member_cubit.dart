@@ -19,6 +19,7 @@ class FamilyMemberCubit extends Cubit<CubitState> {
         "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
         "012013011",
         "ahaha@hca.com",
+        true,
         [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1])));
   }
 }

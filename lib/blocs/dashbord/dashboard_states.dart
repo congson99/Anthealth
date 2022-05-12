@@ -29,7 +29,7 @@ class MedicState extends CubitState {
 class FamilyState extends CubitState {
   FamilyState(this.members);
 
-  final List<FamilyMemberLabelData> members;
+  final List<FamilyMemberData> members;
 
   @override
   List<Object> get props => [members];

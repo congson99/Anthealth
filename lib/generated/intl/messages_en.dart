@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Activity_calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Activity_steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Activity_water": MessageLookupByLibrary.simpleMessage("Water"),
+        "Add": MessageLookupByLibrary.simpleMessage("Add"),
         "Add_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Add blood Pressure data"),
         "Add_by": MessageLookupByLibrary.simpleMessage("Add by"),
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add_water": MessageLookupByLibrary.simpleMessage("Add water"),
         "Add_weight": MessageLookupByLibrary.simpleMessage("Add weight data"),
         "Address": MessageLookupByLibrary.simpleMessage("Address"),
+        "Admin": MessageLookupByLibrary.simpleMessage("Admin"),
         "All_communities":
             MessageLookupByLibrary.simpleMessage("All communities"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
@@ -161,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thanks for your feedback!"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Fill in information"),
+        "Find": MessageLookupByLibrary.simpleMessage("Find"),
         "Food": MessageLookupByLibrary.simpleMessage("Food"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -334,6 +337,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wrong password!"),
         "Year": MessageLookupByLibrary.simpleMessage("Year"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+        "You": MessageLookupByLibrary.simpleMessage("You"),
         "You_are": MessageLookupByLibrary.simpleMessage("You are "),
         "You_are_new_user":
             MessageLookupByLibrary.simpleMessage("You are new User?"),

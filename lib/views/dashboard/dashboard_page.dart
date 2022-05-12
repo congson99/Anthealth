@@ -12,10 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardPage extends StatelessWidget {
-  const DashboardPage({Key? key, required this.name, required this.avatarPath})
+  const DashboardPage(
+      {Key? key,
+      required this.name,
+      required this.avatarPath,
+      required this.id})
       : super(key: key);
   final String name;
   final String avatarPath;
+  final String id;
 
   @override
   Widget build(BuildContext context) => BlocProvider<DashboardCubit>(
@@ -33,7 +38,7 @@ class DashboardPage extends StatelessWidget {
     if (state is HomeState) return HomePage();
     if (state is HealthState) return HealthPage(name: name);
     if (state is MedicState) return MedicPage(name: name);
-    if (state is FamilyState) return FamilyPage(name: name);
+    if (state is FamilyState) return FamilyPage(name: name, id: id);
     if (state is CommunityState) return CommunityPage(name: name);
     return LoadingPage();
   }
