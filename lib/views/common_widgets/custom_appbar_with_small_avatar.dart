@@ -1,27 +1,22 @@
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppbarWithSmallAvatar extends StatefulWidget {
+class CustomAppbarWithSmallAvatar extends StatelessWidget {
   const CustomAppbarWithSmallAvatar(
       {Key? key,
       required this.context,
       required this.name,
       required this.avatarPath,
+      this.avatarTap,
       this.add})
       : super(key: key);
 
   final BuildContext context;
   final String name;
   final String avatarPath;
+  final VoidCallback? avatarTap;
   final VoidCallback? add;
 
-  @override
-  State<CustomAppbarWithSmallAvatar> createState() =>
-      _CustomAppbarWithSmallAvatarState();
-}
-
-class _CustomAppbarWithSmallAvatarState
-    extends State<CustomAppbarWithSmallAvatar> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -54,21 +49,24 @@ class _CustomAppbarWithSmallAvatarState
                         width: 16.0,
                         fit: BoxFit.cover))),
             SizedBox(width: 8),
-            ClipRRect(
-                borderRadius: BorderRadius.circular(32),
-                child: Image.network(widget.avatarPath,
-                    width: 40, height: 40, fit: BoxFit.cover)),
+            GestureDetector(
+              onTap: avatarTap,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(32),
+                  child: Image.network(avatarPath,
+                      width: 40, height: 40, fit: BoxFit.cover)),
+            ),
             SizedBox(width: 8),
             Expanded(
-                child: Text(widget.name,
+                child: Text(name,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
                         .copyWith(color: AnthealthColors.black0))),
-            if (widget.add != null)
+            if (add != null)
               GestureDetector(
-                  onTap: widget.add,
+                  onTap: add,
                   child: Container(
                       color: Colors.transparent,
                       padding: const EdgeInsets.only(

@@ -109,6 +109,7 @@ class DashboardCubit extends Cubit<CubitState> {
   List<Post> loadMorePost() {
     return [
       Post(
+          "",
           PostAuthor(
               "",
               "Huong",
@@ -116,13 +117,16 @@ class DashboardCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
+          true,
           "22",
+          [],"",
           PostAuthor(
               "",
               "Hung",
               "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
               DateTime.now())),
       Post(
+          "",
           PostAuthor(
               "",
               "Tra",
@@ -130,13 +134,16 @@ class DashboardCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
+          false,
           "1",
+          [],"",
           PostAuthor(
               "",
               "Hung",
               "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
               DateTime.now())),
       Post(
+          "",
           PostAuthor(
               "",
               "Nam",
@@ -144,8 +151,11 @@ class DashboardCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
-          "2"),
+          false,
+          "2",
+          [],""),
       Post(
+          "",
           PostAuthor(
               "",
               "Anh",
@@ -153,7 +163,9 @@ class DashboardCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
-          "3")
+          false,
+          "3",
+          [],"")
     ];
   }
 
@@ -177,6 +189,16 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   Future<bool> grantFamilyAdmin(String id) async {
+    return true;
+  }
+
+  Future<bool> outCommunity(String id) async {
+    community();
+    return true;
+  }
+
+  Future<bool> joinCommunity(String id) async {
+    community();
     return true;
   }
 }

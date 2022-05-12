@@ -10,6 +10,7 @@ import 'package:anthealth_mobile/views/common_widgets/fill_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/community/all_community_page.dart';
+import 'package:anthealth_mobile/views/community/community_description_page.dart';
 import 'package:anthealth_mobile/views/community/community_post_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -58,7 +59,8 @@ class CommunityPage extends StatelessWidget {
           title: S.of(context).All_communities,
           colorID: 0,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => AllCommunityPage(state: state)))),
+              builder: (_) =>
+                  AllCommunityPage(dashboardContext: context, state: state)))),
       SizedBox(height: 16),
       SectionComponent(
           title: S.of(context).Recommend_community,
@@ -93,7 +95,23 @@ class CommunityPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => CommunityPostPage(
-              dashboardContext: context, community: community))),
+              dashboardContext: context,
+              community: community,
+              outCommunity: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                BlocProvider.of<DashboardCubit>(context)
+                    .outCommunity(community.id)
+                    .then((result) {
+                  if (result) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(S.of(context).Out_community +
+                            ' ' +
+                            S.of(context).successfully +
+                            '!')));
+                  }
+                });
+              }))),
       child: Container(
           height: 82,
           color: Colors.transparent,

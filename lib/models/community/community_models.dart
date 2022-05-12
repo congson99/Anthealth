@@ -15,6 +15,6 @@ class CommunityData {
   final String description;
   final String avatarPath;
   final int members;
-  final bool join;
+  bool join;
   final List<String> posts;
 }

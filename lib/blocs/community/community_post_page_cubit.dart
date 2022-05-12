@@ -12,9 +12,11 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
     emit(CommunitiesPostPageState(state.allPost));
   }
 
-  List<Post> loadMorePost() {
+  List<Post> loadMorePost(
+      ){
     return [
       Post(
+              "",
           PostAuthor(
               "",
               "Huong",
@@ -22,13 +24,16 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
+          true,
           "22",
+          [],"",
           PostAuthor(
               "",
               "Hung",
               "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
               DateTime.now())),
       Post(
+              "",
           PostAuthor(
               "",
               "Tra",
@@ -36,13 +41,16 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
+          false,
           "1",
+          [],"",
           PostAuthor(
               "",
               "Hung",
               "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
               DateTime.now())),
       Post(
+              "",
           PostAuthor(
               "",
               "Nam",
@@ -50,8 +58,11 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
-          "2"),
+          true,
+          "2",
+          [],""),
       Post(
+              "",
           PostAuthor(
               "",
               "Anh",
@@ -59,7 +70,9 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
               DateTime.now()),
           [],
           [],
-          "3")
+          true,
+          "3",
+          [],"")
     ];
   }
 

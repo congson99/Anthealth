@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -6,14 +7,21 @@ import 'package:anthealth_mobile/views/common_widgets/fill_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CommunityDescriptionPage extends StatelessWidget {
   const CommunityDescriptionPage(
-      {Key? key, required this.superContext, required this.community})
+      {Key? key,
+      required this.superContext,
+      required this.community,
+      this.joinCommunity,
+      this.outCommunity})
       : super(key: key);
 
   final BuildContext superContext;
   final CommunityData community;
+  final VoidCallback? joinCommunity;
+  final VoidCallback? outCommunity;
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +60,16 @@ class CommunityDescriptionPage extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(children: [
                     if (community.join)
-                      CommonButton.small(context, () {},
-                          S.of(context).Out_community, AnthealthColors.primary1,
+                      CommonButton.small(context, outCommunity!,
+                          S.of(context).Out_community, AnthealthColors.warning1,
                           imagePath:
                               "assets/app_icon/small_icons/out_bla5.png"),
                     if (!community.join)
                       CommonButton.small(
                           context,
-                          () {},
+                          joinCommunity!,
                           S.of(context).Join_community,
-                          AnthealthColors.primary1,
+                          AnthealthColors.secondary1,
                           imagePath: "assets/app_icon/small_icons/in_bla5.png"),
                     Expanded(child: Container())
                   ])

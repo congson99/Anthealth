@@ -6,6 +6,7 @@ class TemplateSmallAvatarFormPage extends StatelessWidget {
       {Key? key,
       required this.name,
       required this.avatarPath,
+      this.avatarTap,
       this.add,
       required this.content,
       this.padding})
@@ -13,6 +14,7 @@ class TemplateSmallAvatarFormPage extends StatelessWidget {
 
   final String name;
   final String avatarPath;
+  final VoidCallback? avatarTap;
   final VoidCallback? add;
   final Widget content;
   final EdgeInsets? padding;
@@ -32,7 +34,11 @@ class TemplateSmallAvatarFormPage extends StatelessWidget {
                       : padding,
                   child: content))),
       CustomAppbarWithSmallAvatar(
-          context: context, name: name, add: add, avatarPath: avatarPath)
+          context: context,
+          name: name,
+          avatarTap: avatarTap,
+          add: add,
+          avatarPath: avatarPath)
     ])));
   }
 }

@@ -25,6 +25,7 @@ class AllCommunitiesCubit extends Cubit<CubitState> {
   }
 
   void loadData() {
+    emit(InitialState());
     loadedData(AllCommunitiesState([
       CommunityGroup(
           "",

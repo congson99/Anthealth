@@ -8,6 +8,7 @@ import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_small_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/community/community_description_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,11 +16,15 @@ import 'package:intl/intl.dart';
 
 class CommunityPostPage extends StatefulWidget {
   const CommunityPostPage(
-      {Key? key, required this.dashboardContext, required this.community})
+      {Key? key,
+      required this.dashboardContext,
+      required this.community,
+      required this.outCommunity})
       : super(key: key);
 
   final BuildContext dashboardContext;
   final CommunityData community;
+  final VoidCallback outCommunity;
 
   @override
   State<CommunityPostPage> createState() => _CommunityPostPageState();
@@ -54,6 +59,11 @@ class _CommunityPostPageState extends State<CommunityPostPage> {
           return TemplateSmallAvatarFormPage(
               name: widget.community.name,
               avatarPath: widget.community.avatarPath,
+              avatarTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => CommunityDescriptionPage(
+                      superContext: widget.dashboardContext,
+                      community: widget.community,
+                      outCommunity: widget.outCommunity))),
               add: () {},
               padding: EdgeInsets.symmetric(horizontal: 16),
               content: buildContent(state));
