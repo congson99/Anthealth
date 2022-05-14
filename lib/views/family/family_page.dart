@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/family/family_member_page.dart';
@@ -122,11 +123,7 @@ class FamilyPage extends StatelessWidget {
         child: Container(
             width: size,
             child: Column(children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(size),
-                child: Image.network(member.avatarPath,
-                    width: size * 0.7, height: size * 0.7, fit: BoxFit.cover),
-              ),
+              Avatar(imagePath: member.avatarPath, size: size * 0.7),
               SizedBox(height: 8),
               Text((member.id == user.id) ? S.of(context).You : member.name,
                   maxLines: 2,

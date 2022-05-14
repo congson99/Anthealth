@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:anthealth_mobile/blocs/medic/medicine_box_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -64,10 +65,7 @@ class _ChoseMemberPopupState extends State<ChoseMemberPopup> {
               child: Padding(
                   padding: const EdgeInsets.only(left: 16, right: 4),
                   child: Row(children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(person.avatarPath,
-                            width: 30, height: 30, fit: BoxFit.cover)),
+                    Avatar(imagePath: person.avatarPath, size: 30),
                     SizedBox(width: 8),
                     Expanded(
                       child: Text(person.name,

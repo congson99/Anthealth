@@ -1,8 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/attach/attach_states.dart';
-import 'package:anthealth_mobile/blocs/community/community_post_page_state.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
-import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';

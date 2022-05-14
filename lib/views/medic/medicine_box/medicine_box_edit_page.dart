@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/blocs/medic/medicine_box_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/box_medicine_logic.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
@@ -95,11 +96,7 @@ class _MedicineBoxEditPageState extends State<MedicineBoxEditPage> {
     return Container(
         width: size,
         child: Column(children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(size),
-            child: Image.network(member.avatarPath,
-                width: size * 0.7, height: size * 0.7, fit: BoxFit.cover),
-          ),
+          Avatar(imagePath: member.avatarPath, size: size * 0.7),
           SizedBox(height: 8),
           Text(member.name,
               overflow: TextOverflow.ellipsis,
@@ -122,8 +119,8 @@ class _MedicineBoxEditPageState extends State<MedicineBoxEditPage> {
   void done() {
     List<bool> state = [];
     for (MedicineBoxPerson x in member) state.add(x.isChose);
-    BlocProvider.of<MedicineBoxCubit>(widget.superContext)
-        .updateData(MedicineBoxState(name, widget.state.medicine, member), -1, 0);
+    BlocProvider.of<MedicineBoxCubit>(widget.superContext).updateData(
+        MedicineBoxState(name, widget.state.medicine, member), -1, 0);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(S.of(context).Update_medicine_box +
             ' ' +

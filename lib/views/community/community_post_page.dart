@@ -8,6 +8,7 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_small_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/attach_component.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/community/community_add_post_page.dart';
 import 'package:anthealth_mobile/views/community/community_description_page.dart';
@@ -191,15 +192,7 @@ class _PostViewState extends State<PostView> {
 
   Widget buildLabel(PostAuthor author, BuildContext context) {
     return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      ClipRRect(
-          borderRadius: BorderRadius.circular(32),
-          child: Image.network(
-              (author.avatarPath != "")
-                  ? author.avatarPath
-                  : "https://vpic.nonocdn.com/download/file/sg/nonolive/nnphotos/35467010/20343b89d27a682c17e1187fae10a1f1.png",
-              width: 40,
-              height: 40,
-              fit: BoxFit.cover)),
+      Avatar(imagePath: author.avatarPath, size: 40),
       SizedBox(width: 8),
       Expanded(
           child: Column(

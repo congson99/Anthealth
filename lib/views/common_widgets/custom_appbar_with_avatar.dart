@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -64,12 +65,7 @@ class _CustomAppbarWithAvatarState extends State<CustomAppbarWithAvatar> {
                         width: 16.0,
                         fit: BoxFit.cover))),
             SizedBox(width: 8),
-            ClipRRect(
-                borderRadius: BorderRadius.circular(32),
-                child: (widget.avatarPath != "")
-                    ? Image.network(widget.avatarPath,
-                        width: 64, height: 64, fit: BoxFit.cover)
-                    : Container()),
+            Avatar(imagePath: widget.avatarPath, size: 64),
             SizedBox(width: 8),
             Expanded(
                 child: Column(

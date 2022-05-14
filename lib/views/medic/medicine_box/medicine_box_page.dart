@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_edit_page.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/widgets/add_medicine_popup.dart';
@@ -161,11 +162,7 @@ class MedicineBoxPage extends StatelessWidget {
     return Container(
         width: size,
         child: Column(children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(size),
-            child: Image.network(member.avatarPath,
-                width: size * 0.7, height: size * 0.7, fit: BoxFit.cover),
-          ),
+          Avatar(imagePath: member.avatarPath, size: size * 0.7),
           SizedBox(height: 8),
           Text(member.name,
               overflow: TextOverflow.ellipsis,

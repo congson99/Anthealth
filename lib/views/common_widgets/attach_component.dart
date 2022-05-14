@@ -2,6 +2,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
 import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
@@ -294,7 +295,7 @@ class AttachUserComponent extends StatelessWidget {
 
   Widget buildContent(BuildContext context) {
     return Row(children: [
-      CircleAvatar(backgroundImage: NetworkImage(avatarPath)),
+      Avatar(imagePath: avatarPath),
       SizedBox(width: 12),
       buildTitles(context)
     ]);

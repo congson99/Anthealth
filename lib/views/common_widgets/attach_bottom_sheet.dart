@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:flutter/material.dart';
@@ -287,11 +288,7 @@ class FamilyAttachBottomSheet extends StatelessWidget {
         child: Container(
             width: size,
             child: Column(children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(size),
-                child: Image.network(member.avatarPath,
-                    width: size * 0.7, height: size * 0.7, fit: BoxFit.cover),
-              ),
+              Avatar(imagePath: member.avatarPath, size: size * 0.7),
               SizedBox(height: 8),
               Text(member.name,
                   maxLines: 2,

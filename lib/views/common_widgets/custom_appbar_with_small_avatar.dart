@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -50,14 +51,8 @@ class CustomAppbarWithSmallAvatar extends StatelessWidget {
                         fit: BoxFit.cover))),
             SizedBox(width: 8),
             GestureDetector(
-              onTap: avatarTap,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(32),
-                  child: (avatarPath != "")
-                      ? Image.network(avatarPath,
-                          width: 40, height: 40, fit: BoxFit.cover)
-                      : Container()),
-            ),
+                onTap: avatarTap,
+                child: Avatar(imagePath: avatarPath, size: 40)),
             SizedBox(width: 8),
             Expanded(
                 child: GestureDetector(

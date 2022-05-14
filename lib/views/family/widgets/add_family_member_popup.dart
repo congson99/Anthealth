@@ -1,6 +1,7 @@
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -76,10 +77,7 @@ class _AddFamilyMemberPopupState extends State<AddFamilyMemberPopup> {
           SizedBox(height: 24),
           if (member != null && member!.id != "")
             Row(children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(32),
-                  child: Image.network(member!.avatarPath,
-                      width: 48, height: 48, fit: BoxFit.cover)),
+              Avatar(imagePath: member!.avatarPath, size: 48),
               SizedBox(width: 12),
               SizedBox(
                 width: MediaQuery.of(context).size.width - 200,

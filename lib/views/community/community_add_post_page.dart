@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/attach_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/common_widgets/attach_component.dart';
+import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
@@ -58,13 +59,8 @@ class _CommunityAddPostPageState extends State<CommunityAddPostPage> {
 
   Widget buildLabel(BuildContext context) {
     return Row(children: [
-      ClipRRect(
-          borderRadius: BorderRadius.circular(32),
-          child: (widget.user.avatarPath != "")
-              ? Image.network(widget.user.avatarPath,
-                  width: 40, height: 40, fit: BoxFit.cover)
-              : Container()),
-      if (widget.user.avatarPath != "") SizedBox(width: 8),
+      Avatar(imagePath: widget.user.avatarPath, size: 40),
+      SizedBox(width: 8),
       Expanded(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
