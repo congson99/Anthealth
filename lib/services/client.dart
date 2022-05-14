@@ -43,7 +43,7 @@ class Client {
   }
 
   void _doneHandler() {
-    print("Disconnected to server ${host}:${port}");
+    print("Disconnected to server $host:$port");
   }
 
   // Handle data

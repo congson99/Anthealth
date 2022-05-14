@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/community/community_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
@@ -10,7 +11,6 @@ import 'package:anthealth_mobile/views/common_widgets/fill_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/community/all_community_page.dart';
-import 'package:anthealth_mobile/views/community/community_description_page.dart';
 import 'package:anthealth_mobile/views/community/community_post_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -19,9 +19,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CommunityPage extends StatelessWidget {
-  const CommunityPage({Key? key, required this.name}) : super(key: key);
+  const CommunityPage({Key? key, required this.user}) : super(key: key);
 
-  final String name;
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CommunityPage extends StatelessWidget {
       if (state is CommunityState)
         return TemplateDashboardPage(
             title: S.of(context).Welcome,
-            name: name,
+            name: user.name,
             setting: () => setting(context),
             content: buildContent(context, state));
       else
@@ -59,8 +59,8 @@ class CommunityPage extends StatelessWidget {
           title: S.of(context).All_communities,
           colorID: 0,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) =>
-                  AllCommunityPage(dashboardContext: context, state: state)))),
+              builder: (_) => AllCommunityPage(
+                  user: user, dashboardContext: context, state: state)))),
       SizedBox(height: 16),
       SectionComponent(
           title: S.of(context).Recommend_community,
@@ -95,7 +95,7 @@ class CommunityPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => CommunityPostPage(
-              dashboardContext: context,
+              user: user,
               community: community,
               outCommunity: () {
                 Navigator.of(context).pop();

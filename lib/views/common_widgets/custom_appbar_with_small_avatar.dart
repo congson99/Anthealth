@@ -53,17 +53,22 @@ class CustomAppbarWithSmallAvatar extends StatelessWidget {
               onTap: avatarTap,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(32),
-                  child: Image.network(avatarPath,
-                      width: 40, height: 40, fit: BoxFit.cover)),
+                  child: (avatarPath != "")
+                      ? Image.network(avatarPath,
+                          width: 40, height: 40, fit: BoxFit.cover)
+                      : Container()),
             ),
             SizedBox(width: 8),
             Expanded(
-                child: Text(name,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4!
-                        .copyWith(color: AnthealthColors.black0))),
+                child: GestureDetector(
+              onTap: avatarTap,
+              child: Text(name,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4!
+                      .copyWith(color: AnthealthColors.black0)),
+            )),
             if (add != null)
               GestureDetector(
                   onTap: add,

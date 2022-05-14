@@ -66,8 +66,10 @@ class _CustomAppbarWithAvatarState extends State<CustomAppbarWithAvatar> {
             SizedBox(width: 8),
             ClipRRect(
                 borderRadius: BorderRadius.circular(32),
-                child: Image.network(widget.avatarPath,
-                    width: 64, height: 64, fit: BoxFit.cover)),
+                child: (widget.avatarPath != "")
+                    ? Image.network(widget.avatarPath,
+                        width: 64, height: 64, fit: BoxFit.cover)
+                    : Container()),
             SizedBox(width: 8),
             Expanded(
                 child: Column(

@@ -67,6 +67,7 @@ flutter:
     - assets/app_icon/common/
     - assets/app_icon/direction/
     - assets/app_icon/small_icons/
+    - assets/app_icon/attach/
     - assets/indicators/
     - assets/support_component/
 

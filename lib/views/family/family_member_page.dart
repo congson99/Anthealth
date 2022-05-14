@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
@@ -32,9 +30,6 @@ class FamilyMemberPage extends StatelessWidget {
         name: member.name,
         secondTitle: S.of(context).Family_member,
         avatarPath: member.avatarPath,
-        call: () => call(member.phoneNumber),
-        messenger: () => messenger(),
-        share: () => share(),
         content: buildContent(context));
   }
 
@@ -43,6 +38,8 @@ class FamilyMemberPage extends StatelessWidget {
     return Column(children: [
       SizedBox(height: 8),
       buildInfo(context),
+      SizedBox(height: 16),
+      buildActionArea(),
       SizedBox(height: 24),
       CustomDivider.common(),
       SizedBox(height: 16),
@@ -52,7 +49,7 @@ class FamilyMemberPage extends StatelessWidget {
   }
 
   // Content Component
-  Column buildInfo(BuildContext context) {
+  Widget buildInfo(BuildContext context) {
     return Column(children: [
       Row(children: [
         Text(S.of(context).Phone_number + ": ",
@@ -68,7 +65,7 @@ class FamilyMemberPage extends StatelessWidget {
                     .subtitle1!
                     .copyWith(color: AnthealthColors.primary1)))
       ]),
-      SizedBox(height: 16),
+      SizedBox(height: 12),
       Row(children: [
         Text(S.of(context).Email + ": ",
             style: Theme.of(context)
@@ -86,7 +83,44 @@ class FamilyMemberPage extends StatelessWidget {
     ]);
   }
 
-  Column buildData(BuildContext context) {
+  Widget buildActionArea() {
+    return Row(children: [
+      Expanded(
+          child: GestureDetector(
+              onTap: () => launch("tel://" + member.phoneNumber),
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: AnthealthColors.warning5,
+                      borderRadius: BorderRadius.circular(16)),
+                  padding: const EdgeInsets.all(16),
+                  child: Image.asset("assets/app_icon/common/call_war1.png",
+                      height: 24, fit: BoxFit.fitHeight)))),
+      SizedBox(width: 16),
+      Expanded(
+          child: GestureDetector(
+              onTap: () {},
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: AnthealthColors.primary5,
+                      borderRadius: BorderRadius.circular(16)),
+                  padding: const EdgeInsets.all(16),
+                  child: Image.asset("assets/app_icon/common/message_pri1.png",
+                      height: 24, fit: BoxFit.fitHeight)))),
+      SizedBox(width: 16),
+      Expanded(
+          child: GestureDetector(
+              onTap: () {},
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: AnthealthColors.secondary5,
+                      borderRadius: BorderRadius.circular(16)),
+                  padding: const EdgeInsets.all(16),
+                  child: Image.asset("assets/app_icon/common/share_sec1.png",
+                      height: 24, fit: BoxFit.fitHeight))))
+    ]);
+  }
+
+  Widget buildData(BuildContext context) {
     bool isHealthPermission = false;
     bool isMedicPermission = member.permission[9] > -1;
     bool isDiagnosePermission = member.permission[10] > -1;
@@ -128,7 +162,7 @@ class FamilyMemberPage extends StatelessWidget {
     ]);
   }
 
-  Column buildAdmin(BuildContext context) {
+  Widget buildAdmin(BuildContext context) {
     return Column(children: [
       SizedBox(height: 24),
       CustomDivider.common(),

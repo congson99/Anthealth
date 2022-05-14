@@ -1,6 +1,5 @@
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 ThemeData anthealthTheme() {
   TextTheme _anthealthTextTheme(TextTheme base) {

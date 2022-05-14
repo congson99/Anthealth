@@ -1,6 +1,7 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
 import 'package:anthealth_mobile/views/community/community_page.dart';
@@ -12,15 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardPage extends StatelessWidget {
-  const DashboardPage(
-      {Key? key,
-      required this.name,
-      required this.avatarPath,
-      required this.id})
-      : super(key: key);
-  final String name;
-  final String avatarPath;
-  final String id;
+  const DashboardPage({Key? key, required this.user}) : super(key: key);
+  final User user;
 
   @override
   Widget build(BuildContext context) => BlocProvider<DashboardCubit>(
@@ -36,10 +30,10 @@ class DashboardPage extends StatelessWidget {
 
   Widget buildContent(CubitState state, BuildContext context) {
     if (state is HomeState) return HomePage();
-    if (state is HealthState) return HealthPage(name: name);
-    if (state is MedicState) return MedicPage(name: name);
-    if (state is FamilyState) return FamilyPage(name: name, id: id);
-    if (state is CommunityState) return CommunityPage(name: name);
+    if (state is HealthState) return HealthPage(user: user);
+    if (state is MedicState) return MedicPage(user: user);
+    if (state is FamilyState) return FamilyPage(user: user);
+    if (state is CommunityState) return CommunityPage(user: user);
     return LoadingPage();
   }
 
@@ -47,7 +41,7 @@ class DashboardPage extends StatelessWidget {
     return BottomNavigation(
         size: MediaQuery.of(context).size,
         index: currentIndexState(state),
-        imagePath: avatarPath,
+        imagePath: user.avatarPath,
         onIndexChange: (int index) =>
             onBottomNavigationItemTap(context, index, state));
   }

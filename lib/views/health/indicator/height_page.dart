@@ -24,10 +24,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class HeightPage extends StatelessWidget {
-  const HeightPage({Key? key, required this.dashboardContext, this.data})
+  const HeightPage({Key? key, this.dashboardContext, this.data})
       : super(key: key);
 
-  final BuildContext dashboardContext;
+  final BuildContext? dashboardContext;
   final String unit = 'm';
   final FamilyMemberData? data;
 
@@ -261,7 +261,8 @@ class HeightPage extends StatelessWidget {
 
   // Appbar Actions
   void back(BuildContext context) {
-    BlocProvider.of<DashboardCubit>(dashboardContext).health();
+    if (dashboardContext != null)
+      BlocProvider.of<DashboardCubit>(dashboardContext!).health();
     Navigator.pop(context);
   }
 

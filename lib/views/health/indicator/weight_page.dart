@@ -26,15 +26,12 @@ import 'package:intl/intl.dart';
 
 class WeightPage extends StatelessWidget {
   const WeightPage(
-      {Key? key,
-      required this.dashboardContext,
-      required this.latestHeight,
-      this.data})
+      {Key? key, this.dashboardContext, this.latestHeight, this.data})
       : super(key: key);
 
-  final BuildContext dashboardContext;
+  final BuildContext? dashboardContext;
   final String unit = 'kg';
-  final double latestHeight;
+  final double? latestHeight;
 
   final FamilyMemberData? data;
 
@@ -89,11 +86,13 @@ class WeightPage extends StatelessWidget {
                 value: pageData.getLatestRecord().getValue().toStringAsFixed(1),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
-          if (latestHeight != 0 && pageData.getLatestRecord().getValue() != 0)
+          if (latestHeight != null &&
+              latestHeight != 0 &&
+              pageData.getLatestRecord().getValue() != 0)
             IndicatorMoreInfo(
                 information: MoreInfo.buildWeightMoreInfo(
                     context,
-                    latestHeight,
+                    latestHeight!,
                     pageData.getLatestRecord().getValue(),
                     pageData.getMoreInfo().getUrl())),
           buildDetailContainer(context, pageData, loading)
@@ -240,7 +239,9 @@ class WeightPage extends StatelessWidget {
             delete: (data != null)
                 ? null
                 : () => popupDelete(context, index, pageData),
-            edit: (data != null) ? null : () => popupEdit(context, index, pageData),
+            edit: (data != null)
+                ? null
+                : () => popupEdit(context, index, pageData),
             close: () => Navigator.pop(context)));
   }
 
@@ -313,7 +314,8 @@ class WeightPage extends StatelessWidget {
 
   // Appbar Actions
   void back(BuildContext context) {
-    BlocProvider.of<DashboardCubit>(dashboardContext).health();
+    if (dashboardContext != null)
+      BlocProvider.of<DashboardCubit>(dashboardContext!).health();
     Navigator.pop(context);
   }
 

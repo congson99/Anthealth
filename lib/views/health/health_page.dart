@@ -4,10 +4,10 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/dashboard_logic.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
 import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
@@ -24,9 +24,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HealthPage extends StatelessWidget {
-  const HealthPage({Key? key, required this.name}) : super(key: key);
+  const HealthPage({Key? key, required this.user}) : super(key: key);
 
-  final String name;
+  final User user;
 
   @override
   Widget build(BuildContext context) =>
@@ -34,7 +34,7 @@ class HealthPage extends StatelessWidget {
         if (state is HealthState)
           return TemplateDashboardPage(
               title: S.of(context).Health_record,
-              name: name,
+              name: user.name,
               setting: () => setting(context),
               content: buildContent(context, state.healthPageData));
         return ErrorPage();

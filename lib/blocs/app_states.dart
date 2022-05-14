@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class CubitState extends Equatable {}
@@ -13,15 +14,13 @@ class ConnectErrorState extends CubitState {
 }
 
 class AuthenticatedState extends CubitState {
-  AuthenticatedState(this.token, this.id, this.name, this.avatarPath);
+  AuthenticatedState(this.token, this.user);
 
   final String token;
-  final String id;
-  final String name;
-  final String avatarPath;
+  final User user;
 
   @override
-  List<Object> get props => [token, id, name, avatarPath];
+  List<Object> get props => [token, user];
 }
 
 class UnauthenticatedState extends CubitState {

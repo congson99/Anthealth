@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("All communities"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
         "April": MessageLookupByLibrary.simpleMessage("April"),
+        "Attach": MessageLookupByLibrary.simpleMessage("Attach"),
         "August": MessageLookupByLibrary.simpleMessage("August"),
         "Authenticate": MessageLookupByLibrary.simpleMessage("Authenticate"),
         "Authentication_code":
@@ -237,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Member": MessageLookupByLibrary.simpleMessage("Member"),
         "Month": MessageLookupByLibrary.simpleMessage("Month"),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
+        "New_post": MessageLookupByLibrary.simpleMessage("New post"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -254,9 +256,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "Photo_view": MessageLookupByLibrary.simpleMessage("Photo view"),
         "Pick_camera": MessageLookupByLibrary.simpleMessage("Pick Camera"),
         "Pick_gallery": MessageLookupByLibrary.simpleMessage("Pick Gallery"),
+        "Post": MessageLookupByLibrary.simpleMessage("Post"),
+        "Post_to": MessageLookupByLibrary.simpleMessage("Post to"),
         "Prescription": MessageLookupByLibrary.simpleMessage("Prescription"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Previous"),
+        "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "Re_examination":
             MessageLookupByLibrary.simpleMessage("Re-examination"),
@@ -458,6 +463,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pill": MessageLookupByLibrary.simpleMessage("pill"),
         "quantity_check": MessageLookupByLibrary.simpleMessage(
             "Quantity must be greater than 0"),
+        "read_all_posts":
+            MessageLookupByLibrary.simpleMessage("You have read all the posts"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "You have not filled in the required content"),
         "sat": MessageLookupByLibrary.simpleMessage("sat"),

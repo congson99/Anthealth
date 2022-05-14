@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,9 +48,12 @@ class AppCubit extends Cubit<CubitState> {
           MessageIDPath.getUserBaseData(), value)) {
         emit(AuthenticatedState(
             token,
-            "123",
-            ServerLogic.getData(value)["name"],
-            ServerLogic.getData(value)["avatar"]));
+            User(
+                "123",
+                ServerLogic.getData(value)["name"],
+                ServerLogic.getData(value)["avatar"],
+                "283912391",
+                "email@hca.com")));
       }
     });
   }

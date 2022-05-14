@@ -11,7 +11,6 @@ import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar_with_avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/photo_list_label.dart';
-import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_add_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -23,12 +22,12 @@ import 'package:intl/intl.dart';
 class MedicalRecordDetailPage extends StatelessWidget {
   const MedicalRecordDetailPage(
       {Key? key,
-      required this.superContext,
+       this.superContext,
       required this.medicalRecordID,
       this.data})
       : super(key: key);
 
-  final BuildContext superContext;
+  final BuildContext? superContext;
   final String medicalRecordID;
   final FamilyMemberData? data;
 
@@ -271,7 +270,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
   void edit(BuildContext context, MedicalRecordDetailData data) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => MedicalRecordAddPage(
-            superContext: superContext, medicalRecordDetailData: data)));
+            superContext: superContext!, medicalRecordDetailData: data)));
   }
 
   void delete(BuildContext context) {
@@ -281,11 +280,11 @@ class MedicalRecordDetailPage extends StatelessWidget {
             title: S.of(context).Warning_delete_record,
             cancel: () => Navigator.pop(context),
             delete: () {
-              BlocProvider.of<MedicalRecordCubit>(superContext)
+              BlocProvider.of<MedicalRecordCubit>(superContext!)
                   .deleteData(medicalRecordID)
                   .then((value) {
                 if (value) {
-                  BlocProvider.of<MedicalRecordCubit>(superContext).loadData();
+                  BlocProvider.of<MedicalRecordCubit>(superContext!).loadData();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(S.of(context).Delete_record +
                           ' ' +

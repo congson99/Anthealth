@@ -25,10 +25,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class TemperaturePage extends StatelessWidget {
-  const TemperaturePage({Key? key, required this.dashboardContext, this.data})
+  const TemperaturePage({Key? key, this.dashboardContext, this.data})
       : super(key: key);
 
-  final BuildContext dashboardContext;
+  final BuildContext? dashboardContext;
   final String unit = '°C';
 
   final FamilyMemberData? data;
@@ -264,9 +264,9 @@ class TemperaturePage extends StatelessWidget {
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(pageData.getData()[index].getDateTime()),
             recordID: pageData.getData()[index].getRecordID(),
-            delete:(data != null)
+            delete: (data != null)
                 ? null
-                :  () => popupDelete(context, index, pageData),
+                : () => popupDelete(context, index, pageData),
             edit: (data != null)
                 ? null
                 : () => popupEdit(context, index, pageData),
@@ -343,7 +343,8 @@ class TemperaturePage extends StatelessWidget {
 
   // Appbar Actions
   void back(BuildContext context) {
-    BlocProvider.of<DashboardCubit>(dashboardContext).health();
+    if (dashboardContext != null)
+      BlocProvider.of<DashboardCubit>(dashboardContext!).health();
     Navigator.pop(context);
   }
 

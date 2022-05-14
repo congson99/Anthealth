@@ -2,7 +2,6 @@ import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/community/community_models.dart';
-import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
@@ -104,69 +103,6 @@ class DashboardCubit extends Cubit<CubitState> {
           2883,
           true, [])
     ]));
-  }
-
-  List<Post> loadMorePost() {
-    return [
-      Post(
-          "",
-          PostAuthor(
-              "",
-              "Huong",
-              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
-              DateTime.now()),
-          [],
-          [],
-          true,
-          "22",
-          [],"",
-          PostAuthor(
-              "",
-              "Hung",
-              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
-              DateTime.now())),
-      Post(
-          "",
-          PostAuthor(
-              "",
-              "Tra",
-              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
-              DateTime.now()),
-          [],
-          [],
-          false,
-          "1",
-          [],"",
-          PostAuthor(
-              "",
-              "Hung",
-              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
-              DateTime.now())),
-      Post(
-          "",
-          PostAuthor(
-              "",
-              "Nam",
-              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
-              DateTime.now()),
-          [],
-          [],
-          false,
-          "2",
-          [],""),
-      Post(
-          "",
-          PostAuthor(
-              "",
-              "Anh",
-              "https://kenh14cdn.com/thumb_w/660/2020/10/12/3a7e4050-4f5d-4516-b9d7-1ec600e2d404-16025053985191348178238.jpeg",
-              DateTime.now()),
-          [],
-          [],
-          false,
-          "3",
-          [],"")
-    ];
   }
 
   /// Server Functions

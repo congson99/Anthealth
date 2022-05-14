@@ -1,13 +1,15 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/community/community_post_page_cubit.dart';
 import 'package:anthealth_mobile/blocs/community/community_post_page_state.dart';
-import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/community/post_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_small_avatar_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/attach_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/community/community_add_post_page.dart';
 import 'package:anthealth_mobile/views/community/community_description_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +19,12 @@ import 'package:intl/intl.dart';
 class CommunityPostPage extends StatefulWidget {
   const CommunityPostPage(
       {Key? key,
-      required this.dashboardContext,
+      required this.user,
       required this.community,
       required this.outCommunity})
       : super(key: key);
 
-  final BuildContext dashboardContext;
+  final User user;
   final CommunityData community;
   final VoidCallback outCommunity;
 
@@ -31,24 +33,7 @@ class CommunityPostPage extends StatefulWidget {
 }
 
 class _CommunityPostPageState extends State<CommunityPostPage> {
-  List<Post> posts = [];
-  ScrollController controller = ScrollController();
-
-  @override
-  void initState() {
-    posts.addAll(BlocProvider.of<DashboardCubit>(widget.dashboardContext)
-        .loadMorePost());
-    controller.addListener(() {
-      if (controller.position.pixels == controller.position.maxScrollExtent) {
-        setState(() {
-          posts.addAll(BlocProvider.of<DashboardCubit>(widget.dashboardContext)
-              .loadMorePost());
-        });
-        print("Done");
-      }
-    });
-    super.initState();
-  }
+  Post? post;
 
   @override
   Widget build(BuildContext context) => BlocProvider<CommunitiesPostPageCubit>(
@@ -61,34 +46,117 @@ class _CommunityPostPageState extends State<CommunityPostPage> {
               avatarPath: widget.community.avatarPath,
               avatarTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => CommunityDescriptionPage(
-                      superContext: widget.dashboardContext,
                       community: widget.community,
                       outCommunity: widget.outCommunity))),
-              add: () {},
+              add: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => CommunityAddPostPage(
+                      superContext: context,
+                      user: widget.user,
+                      community: widget.community,
+                      result: (result) {
+                        Navigator.pop(context);
+                        setState(() {
+                          post = result;
+                        });
+                      }))),
               padding: EdgeInsets.symmetric(horizontal: 16),
-              content: buildContent(state));
+              content: Column(children: [
+                if (post != null)
+                  PostView(
+                      communityID: widget.community.id,
+                      superContext: context,
+                      pagePadding: MediaQuery.of(context).padding.top +
+                          MediaQuery.of(context).padding.bottom,
+                      post: post),
+                if (post == null)
+                  PostView(
+                      communityID: widget.community.id,
+                      superContext: context,
+                      pagePadding: MediaQuery.of(context).padding.top +
+                          MediaQuery.of(context).padding.bottom)
+              ]));
         else
           return LoadingPage();
       }));
+}
+
+class PostView extends StatefulWidget {
+  const PostView(
+      {Key? key,
+      required this.communityID,
+      required this.superContext,
+      required this.pagePadding,
+      this.post})
+      : super(key: key);
+
+  final String communityID;
+  final BuildContext superContext;
+  final double pagePadding;
+  final Post? post;
+
+  @override
+  State<PostView> createState() => _PostViewState();
+}
+
+class _PostViewState extends State<PostView> {
+  List<Post> posts = [];
+  ScrollController controller = ScrollController();
+  bool loadedAll = false;
+
+  @override
+  void initState() {
+    posts.addAll(BlocProvider.of<CommunitiesPostPageCubit>(widget.superContext)
+        .loadMorePost(widget.communityID));
+    controller.addListener(() {
+      if (controller.position.pixels == controller.position.maxScrollExtent &&
+          !loadedAll) {
+        setState(() {
+          List<Post> newPosts =
+              BlocProvider.of<CommunitiesPostPageCubit>(widget.superContext)
+                  .loadMorePost(widget.communityID,
+                      (posts.length > 0) ? posts.last.id : null);
+          if (newPosts.length > 0)
+            posts.addAll(newPosts);
+          else
+            loadedAll = true;
+        });
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.post != null)
+      return buildPost(widget.post!, context);
+    else
+      return buildContent();
+  }
 
   // Content
-  Widget buildContent(CommunitiesPostPageState state) {
+  Widget buildContent() {
     return Container(
-      height: MediaQuery.of(context).size.height -
-          MediaQuery.of(context).padding.top -
-          MediaQuery.of(context).padding.top -
-          47,
+      height: MediaQuery.of(context).size.height - widget.pagePadding - 57,
       child: ListView.builder(
           controller: controller,
           itemBuilder: (context, i) {
-            if (i == posts.length)
-              return Container(
-                  height: 80,
+            if (i == posts.length) {
+              if (!loadedAll)
+                return Container(
+                    height: 80,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator());
+              else
+                return Container(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   alignment: Alignment.center,
-                  child: CircularProgressIndicator());
+                  child: Text(S.of(context).read_all_posts,
+                      style: Theme.of(context).textTheme.bodyText1),
+                );
+            }
             return Column(children: [
               SizedBox(height: 16),
-              buildPost(i, context),
+              buildPost(posts[i], context),
               SizedBox(height: 16),
               CustomDivider.common()
             ]);
@@ -97,36 +165,41 @@ class _CommunityPostPageState extends State<CommunityPostPage> {
     );
   }
 
-  Widget buildPost(int i, BuildContext context) {
+  Widget buildPost(Post post, BuildContext context) {
     return Column(children: [
-      buildLabel(posts[i].owner, context),
+      buildLabel(post.owner, context),
       SizedBox(height: 16),
       Container(
           decoration: BoxDecoration(
-              border: (posts[i].source == null)
+              border: (post.source == null)
                   ? null
                   : Border.all(width: 1, color: AnthealthColors.black3)),
-          padding: (posts[i].source == null) ? null : EdgeInsets.all(16),
+          padding: (post.source == null) ? null : EdgeInsets.all(16),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            if (posts[i].source != null)
+            if (post.source != null)
               Padding(
                   padding: EdgeInsets.only(bottom: 16),
-                  child: buildLabel(posts[i].source!, context)),
-            Text("dsadn and as da snd a d a",
-                style: Theme.of(context).textTheme.bodyText1)
+                  child: buildLabel(post.source!, context)),
+            Text(post.content, style: Theme.of(context).textTheme.bodyText1),
+            buildAttach(post),
           ])),
-      SizedBox(height: 8),
-      buildActionArea(i, context)
+      SizedBox(height: 16),
+      buildActionArea(post, context)
     ]);
   }
 
-  Row buildLabel(PostAuthor author, BuildContext context) {
+  Widget buildLabel(PostAuthor author, BuildContext context) {
     return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
       ClipRRect(
           borderRadius: BorderRadius.circular(32),
-          child: Image.network(author.avatarPath,
-              width: 40, height: 40, fit: BoxFit.cover)),
+          child: Image.network(
+              (author.avatarPath != "")
+                  ? author.avatarPath
+                  : "https://vpic.nonocdn.com/download/file/sg/nonolive/nnphotos/35467010/20343b89d27a682c17e1187fae10a1f1.png",
+              width: 40,
+              height: 40,
+              fit: BoxFit.cover)),
       SizedBox(width: 8),
       Expanded(
           child: Column(
@@ -150,27 +223,41 @@ class _CommunityPostPageState extends State<CommunityPostPage> {
     ]);
   }
 
-  SizedBox buildActionArea(int i, BuildContext context) {
+  Widget buildAttach(Post post) {
+    return Column(children: [
+      ...post.attach.map((attach) => Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: AttachComponent(attach: attach)))
+    ]);
+  }
+
+  Widget buildActionArea(Post post, BuildContext context) {
     return SizedBox(
         height: 38,
         child: Row(children: [
-          Image.asset("assets/app_icon/small_icons/unlike_bla1.png",
-              height: 22, fit: BoxFit.fitHeight),
+          GestureDetector(
+            onTap: () =>
+                BlocProvider.of<CommunitiesPostPageCubit>(widget.superContext)
+                    .likePost(widget.communityID, post.id)
+                    .then((result) {
+              if (result) setState(() => post.isLike = !post.isLike);
+            }),
+            child: Image.asset(
+                post.isLike
+                    ? "assets/app_icon/small_icons/like_war1.png"
+                    : "assets/app_icon/small_icons/unlike_bla1.png",
+                height: 22,
+                fit: BoxFit.fitHeight),
+          ),
           SizedBox(width: 12),
           Image.asset("assets/app_icon/small_icons/comment_bla1.png",
               height: 22, fit: BoxFit.fitHeight),
           SizedBox(width: 12),
-          Text(
-              posts[i].like.length.toString() +
-                  " " +
-                  S.of(context).like +
-                  " • ",
+          Text(post.like.length.toString() + " " + S.of(context).like + " • ",
               style: Theme.of(context).textTheme.bodyText2),
           Expanded(
               child: Text(
-                  posts[i].comment.length.toString() +
-                      " " +
-                      S.of(context).comment,
+                  post.comment.length.toString() + " " + S.of(context).comment,
                   style: Theme.of(context).textTheme.bodyText2)),
           SizedBox(width: 12),
           Image.asset("assets/app_icon/common/share_sec1.png",

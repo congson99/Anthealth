@@ -520,6 +520,16 @@ class S {
     );
   }
 
+  /// `Profile`
+  String get Profile {
+    return Intl.message(
+      'Profile',
+      name: 'Profile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -945,6 +955,56 @@ class S {
     return Intl.message(
       'comment',
       name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have read all the posts`
+  String get read_all_posts {
+    return Intl.message(
+      'You have read all the posts',
+      name: 'read_all_posts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New post`
+  String get New_post {
+    return Intl.message(
+      'New post',
+      name: 'New_post',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post to`
+  String get Post_to {
+    return Intl.message(
+      'Post to',
+      name: 'Post_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post`
+  String get Post {
+    return Intl.message(
+      'Post',
+      name: 'Post',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attach`
+  String get Attach {
+    return Intl.message(
+      'Attach',
+      name: 'Attach',
       desc: '',
       args: [],
     );

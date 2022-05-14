@@ -3,10 +3,10 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/family/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
@@ -17,11 +17,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FamilyPage extends StatelessWidget {
-  const FamilyPage({Key? key, required this.name, required this.id})
-      : super(key: key);
+  const FamilyPage({Key? key, required this.user}) : super(key: key);
 
-  final String name;
-  final String id;
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class FamilyPage extends StatelessWidget {
       if (state is FamilyState)
         return TemplateDashboardPage(
             title: S.of(context).Family_of,
-            name: name,
+            name: user.name,
             setting: () => setting(context),
             content: buildContent(context, state));
       else
@@ -57,12 +55,13 @@ class FamilyPage extends StatelessWidget {
   }
 
   // Content Component
-  Column buildMembers(BuildContext context, FamilyState state) {
+  Widget buildMembers(BuildContext context, FamilyState state) {
     final double width = MediaQuery.of(context).size.width - 32;
     final int count = width ~/ 90;
     final double size = (width - (count - 1) * 16) / count;
     bool isAdmin = false;
-    for (FamilyMemberData x in state.members) if (x.id == id) isAdmin = x.admin;
+    for (FamilyMemberData x in state.members)
+      if (x.id == user.id) isAdmin = x.admin;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Row(children: [
         Expanded(child: CommonText.section(S.of(context).Member, context)),
@@ -89,14 +88,14 @@ class FamilyPage extends StatelessWidget {
       bool isAdmin, double size) {
     return GestureDetector(
         onTap: () {
-          if (member.id != id)
+          if (member.id != user.id)
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => FamilyMemberPage(
                     member: member,
                     isAdmin: isAdmin,
                     gantAdmin: () {
                       BlocProvider.of<DashboardCubit>(context)
-                          .grantFamilyAdmin(id)
+                          .grantFamilyAdmin(user.id)
                           .then((result) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(S.of(context).Grant_admin_rights +
@@ -108,7 +107,7 @@ class FamilyPage extends StatelessWidget {
                     },
                     remove: () {
                       BlocProvider.of<DashboardCubit>(context)
-                          .removeFamilyMember(id)
+                          .removeFamilyMember(user.id)
                           .then((result) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(S.of(context).Remove_family_member +
@@ -129,7 +128,7 @@ class FamilyPage extends StatelessWidget {
                     width: size * 0.7, height: size * 0.7, fit: BoxFit.cover),
               ),
               SizedBox(height: 8),
-              Text((member.id == id) ? S.of(context).You : member.name,
+              Text((member.id == user.id) ? S.of(context).You : member.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,

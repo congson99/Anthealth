@@ -2,7 +2,7 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'dart:core';
 
-final MAX_RECV_SIZE = 2 * 1024 * 1024;
+final maxReceiveSize = 2 * 1024 * 1024;
 
 abstract class BaseMessage{
   int? msgID;
@@ -10,9 +10,9 @@ abstract class BaseMessage{
 
   BaseMessage.newRMessage(Uint8List buf){
     var bLen = ByteData.view(buf.buffer).getInt32(0)>>2;
-    if(bLen > MAX_RECV_SIZE) return;
+    if(bLen > maxReceiveSize) return;
 
-    var timeSv =  ByteData.view(buf.buffer).getInt32(4);
+    //var timeSv =  ByteData.view(buf.buffer).getInt32(4);
     msgID = ByteData.view(buf.buffer).getInt32(8);
     // msgData = utf8.decode(buf.buffer.asInt8List(12));
     msgData = String.fromCharCodes(buf.buffer.asUint8List(12));

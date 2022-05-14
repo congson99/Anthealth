@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tất cả cộng đồng"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
         "April": MessageLookupByLibrary.simpleMessage("Tháng 4"),
+        "Attach": MessageLookupByLibrary.simpleMessage("Đính kèm"),
         "August": MessageLookupByLibrary.simpleMessage("Tháng 8"),
         "Authenticate": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "Authentication_code":
@@ -251,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Member": MessageLookupByLibrary.simpleMessage("Thành viên"),
         "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "Name": MessageLookupByLibrary.simpleMessage("Tên"),
+        "New_post": MessageLookupByLibrary.simpleMessage("Bài đăng mới"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -269,9 +271,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "Photo_view": MessageLookupByLibrary.simpleMessage("Xem ảnh"),
         "Pick_camera": MessageLookupByLibrary.simpleMessage("Máy ảnh"),
         "Pick_gallery": MessageLookupByLibrary.simpleMessage("Thư viện ảnh"),
+        "Post": MessageLookupByLibrary.simpleMessage("Đăng"),
+        "Post_to": MessageLookupByLibrary.simpleMessage("Đăng vào"),
         "Prescription": MessageLookupByLibrary.simpleMessage("Đơn thuốc"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Lần khám trước"),
+        "Profile": MessageLookupByLibrary.simpleMessage("Hồ sơ cá nhân"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "Re_examination":
             MessageLookupByLibrary.simpleMessage("Lịch hẹn tái khám"),
@@ -476,6 +481,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pill": MessageLookupByLibrary.simpleMessage("viên"),
         "quantity_check":
             MessageLookupByLibrary.simpleMessage("Số lượng phải lớn hơn 0"),
+        "read_all_posts":
+            MessageLookupByLibrary.simpleMessage("Bạn đã xem hết bài viết rồi"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa điền đủ các nội dung bắt buộc"),
         "sat": MessageLookupByLibrary.simpleMessage("T7"),

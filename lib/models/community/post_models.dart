@@ -9,7 +9,7 @@ class Post {
   final List<String> like;
   final List<PostComment> comment;
   bool isLike;
-  final String content;
+  String content;
   final List<Attach> attach;
   final String image;
 }
@@ -31,9 +31,26 @@ class PostComment {
 }
 
 class Attach {
-  Attach(this.ownerID, this.type, this.dataID);
+  Attach(this.ownerID, this.ownerName, this.ownerAvatar, this.type, this.dataID,
+      this.dataDescription);
 
   final String ownerID;
+  final String ownerName;
+  final String ownerAvatar;
   final int type;
-  final int dataID;
+  final String dataID;
+  final String dataDescription;
 }
+
+/// -1: open Medical Records
+///  1: height
+///  2: weight
+///  3: heart rate
+///  4: temperature
+///  5: blood pressure
+///  6: spo2
+///  7: calo
+///  8: water
+///  9: steps
+///  10: Medical record
+///  11: family member
