@@ -3419,6 +3419,66 @@ class S {
       args: [],
     );
   }
+
+  /// ` hour ago`
+  String get hour_ago {
+    return Intl.message(
+      ' hour ago',
+      name: 'hour_ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` minute ago`
+  String get minute_ago {
+    return Intl.message(
+      ' minute ago',
+      name: 'minute_ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` months ago`
+  String get months_ago {
+    return Intl.message(
+      ' months ago',
+      name: 'months_ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` days ago`
+  String get days_ago {
+    return Intl.message(
+      ' days ago',
+      name: 'days_ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` hours ago`
+  String get hours_ago {
+    return Intl.message(
+      ' hours ago',
+      name: 'hours_ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` minutes ago`
+  String get minutes_ago {
+    return Intl.message(
+      ' minutes ago',
+      name: 'minutes_ago',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

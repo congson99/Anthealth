@@ -16,8 +16,9 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
     emit(CommunitiesPostPageState(state.allPost));
   }
 
-  void loadData(String id) {
-    loadedData(CommunitiesPostPageState([]));
+  void loadData(String id, [Post? post]) {
+    List<Post> posts = (post != null) ? [post] : [];
+    loadedData(CommunitiesPostPageState(posts));
   }
 
   /// Server Functions
@@ -152,6 +153,13 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
           [],
           "")
     ];
+  }
+
+  Future<bool> post(String communityID, Post post) async {
+    emit(InitialState());
+    await Future.delayed(Duration(milliseconds: 100));
+    loadData(communityID, post);
+    return true;
   }
 
   Future<bool> likePost(String communityID, String postID) async {

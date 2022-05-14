@@ -335,5 +335,11 @@
   "Repeat_after": "Repeat after",
   "Choose_one_or_more_days": "Choose one or more days",
   "Yesterday": "Yesterday",
-  "Today": "Today"
+  "Today": "Today",
+  "hour_ago": " hour ago",
+  "minute_ago": " minute ago",
+  "months_ago": " months ago",
+  "days_ago": " days ago",
+  "hours_ago": " hours ago",
+  "minutes_ago": " minutes ago"
 }

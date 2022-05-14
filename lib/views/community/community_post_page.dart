@@ -2,6 +2,7 @@ import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/community/community_post_page_cubit.dart';
 import 'package:anthealth_mobile/blocs/community/community_post_page_state.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/dateTime_logic.dart';
 import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
@@ -15,9 +16,8 @@ import 'package:anthealth_mobile/views/community/community_description_page.dart
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
-class CommunityPostPage extends StatefulWidget {
+class CommunityPostPage extends StatelessWidget {
   const CommunityPostPage(
       {Key? key,
       required this.user,
@@ -30,52 +30,44 @@ class CommunityPostPage extends StatefulWidget {
   final VoidCallback outCommunity;
 
   @override
-  State<CommunityPostPage> createState() => _CommunityPostPageState();
-}
-
-class _CommunityPostPageState extends State<CommunityPostPage> {
-  Post? post;
-
-  @override
   Widget build(BuildContext context) => BlocProvider<CommunitiesPostPageCubit>(
-      create: (context) => CommunitiesPostPageCubit(widget.community.id),
+      create: (context) => CommunitiesPostPageCubit(community.id),
       child: BlocBuilder<CommunitiesPostPageCubit, CubitState>(
           builder: (context, state) {
         if (state is CommunitiesPostPageState)
           return TemplateSmallAvatarFormPage(
-              name: widget.community.name,
-              avatarPath: widget.community.avatarPath,
+              name: community.name,
+              avatarPath: community.avatarPath,
               avatarTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => CommunityDescriptionPage(
-                      community: widget.community,
-                      outCommunity: widget.outCommunity))),
+                      community: community, outCommunity: outCommunity))),
               add: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => CommunityAddPostPage(
                       superContext: context,
-                      user: widget.user,
-                      community: widget.community,
+                      user: user,
+                      community: community,
                       result: (result) {
                         Navigator.pop(context);
-                        setState(() {
-                          post = result;
+                        BlocProvider.of<CommunitiesPostPageCubit>(context)
+                            .post(community.id, result)
+                            .then((value) {
+                          if (value)
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(S.of(context).Post_to +
+                                    " " +
+                                    community.name +
+                                    " " +
+                                    S.of(context).successfully +
+                                    '!')));
                         });
                       }))),
               padding: EdgeInsets.symmetric(horizontal: 16),
-              content: Column(children: [
-                if (post != null)
-                  PostView(
-                      communityID: widget.community.id,
-                      superContext: context,
-                      pagePadding: MediaQuery.of(context).padding.top +
-                          MediaQuery.of(context).padding.bottom,
-                      post: post),
-                if (post == null)
-                  PostView(
-                      communityID: widget.community.id,
-                      superContext: context,
-                      pagePadding: MediaQuery.of(context).padding.top +
-                          MediaQuery.of(context).padding.bottom)
-              ]));
+              content: PostView(
+                  communityID: community.id,
+                  superContext: context,
+                  pagePadding: MediaQuery.of(context).padding.top +
+                      MediaQuery.of(context).padding.bottom,
+                  state: state));
         else
           return LoadingPage();
       }));
@@ -87,13 +79,13 @@ class PostView extends StatefulWidget {
       required this.communityID,
       required this.superContext,
       required this.pagePadding,
-      this.post})
+      required this.state})
       : super(key: key);
 
   final String communityID;
   final BuildContext superContext;
   final double pagePadding;
-  final Post? post;
+  final CommunitiesPostPageState state;
 
   @override
   State<PostView> createState() => _PostViewState();
@@ -106,6 +98,7 @@ class _PostViewState extends State<PostView> {
 
   @override
   void initState() {
+    posts.addAll(widget.state.allPost);
     posts.addAll(BlocProvider.of<CommunitiesPostPageCubit>(widget.superContext)
         .loadMorePost(widget.communityID));
     controller.addListener(() {
@@ -128,42 +121,37 @@ class _PostViewState extends State<PostView> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.post != null)
-      return buildPost(widget.post!, context);
-    else
-      return buildContent();
+    return buildContent();
   }
 
   // Content
   Widget buildContent() {
     return Container(
-      height: MediaQuery.of(context).size.height - widget.pagePadding - 57,
-      child: ListView.builder(
-          controller: controller,
-          itemBuilder: (context, i) {
-            if (i == posts.length) {
-              if (!loadedAll)
-                return Container(
-                    height: 80,
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator());
-              else
-                return Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  alignment: Alignment.center,
-                  child: Text(S.of(context).read_all_posts,
-                      style: Theme.of(context).textTheme.bodyText1),
-                );
-            }
-            return Column(children: [
-              SizedBox(height: 16),
-              buildPost(posts[i], context),
-              SizedBox(height: 16),
-              CustomDivider.common()
-            ]);
-          },
-          itemCount: posts.length + 1),
-    );
+        height: MediaQuery.of(context).size.height - widget.pagePadding - 57,
+        child: ListView.builder(
+            controller: controller,
+            itemBuilder: (context, i) {
+              if (i == posts.length) {
+                if (!loadedAll)
+                  return Container(
+                      height: 80,
+                      alignment: Alignment.center,
+                      child: CircularProgressIndicator());
+                else
+                  return Container(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      alignment: Alignment.center,
+                      child: Text(S.of(context).read_all_posts,
+                          style: Theme.of(context).textTheme.bodyText1));
+              }
+              return Column(children: [
+                SizedBox(height: 16),
+                buildPost(posts[i], context),
+                SizedBox(height: 16),
+                CustomDivider.common()
+              ]);
+            },
+            itemCount: posts.length + 1));
   }
 
   Widget buildPost(Post post, BuildContext context) {
@@ -175,17 +163,23 @@ class _PostViewState extends State<PostView> {
               border: (post.source == null)
                   ? null
                   : Border.all(width: 1, color: AnthealthColors.black3)),
-          padding: (post.source == null) ? null : EdgeInsets.all(16),
+          padding: (post.source == null)
+              ? null
+              : EdgeInsets.only(left: 16, right: 16, top: 16),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             if (post.source != null)
               Padding(
                   padding: EdgeInsets.only(bottom: 16),
                   child: buildLabel(post.source!, context)),
-            Text(post.content, style: Theme.of(context).textTheme.bodyText1),
-            buildAttach(post),
+            if (post.content != "")
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Text(post.content,
+                      style: Theme.of(context).textTheme.bodyText1)),
+            buildAttach(post)
           ])),
-      SizedBox(height: 16),
+      if (post.source != null) SizedBox(height: 12),
       buildActionArea(post, context)
     ]);
   }
@@ -206,7 +200,7 @@ class _PostViewState extends State<PostView> {
                     .textTheme
                     .subtitle1!
                     .copyWith(color: AnthealthColors.black0)),
-            Text(DateFormat("dd.MM").format(author.postTime),
+            Text(DateTimeLogic.formatPastDateTime(context, author.postTime),
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
@@ -219,7 +213,7 @@ class _PostViewState extends State<PostView> {
   Widget buildAttach(Post post) {
     return Column(children: [
       ...post.attach.map((attach) => Padding(
-          padding: const EdgeInsets.only(top: 12),
+          padding: const EdgeInsets.only(bottom: 12),
           child: AttachComponent(attach: attach)))
     ]);
   }
@@ -229,19 +223,18 @@ class _PostViewState extends State<PostView> {
         height: 38,
         child: Row(children: [
           GestureDetector(
-            onTap: () =>
-                BlocProvider.of<CommunitiesPostPageCubit>(widget.superContext)
-                    .likePost(widget.communityID, post.id)
-                    .then((result) {
-              if (result) setState(() => post.isLike = !post.isLike);
-            }),
-            child: Image.asset(
-                post.isLike
-                    ? "assets/app_icon/small_icons/like_war1.png"
-                    : "assets/app_icon/small_icons/unlike_bla1.png",
-                height: 22,
-                fit: BoxFit.fitHeight),
-          ),
+              onTap: () =>
+                  BlocProvider.of<CommunitiesPostPageCubit>(widget.superContext)
+                      .likePost(widget.communityID, post.id)
+                      .then((result) {
+                    if (result) setState(() => post.isLike = !post.isLike);
+                  }),
+              child: Image.asset(
+                  post.isLike
+                      ? "assets/app_icon/small_icons/like_war1.png"
+                      : "assets/app_icon/small_icons/unlike_bla1.png",
+                  height: 22,
+                  fit: BoxFit.fitHeight)),
           SizedBox(width: 12),
           Image.asset("assets/app_icon/small_icons/comment_bla1.png",
               height: 22, fit: BoxFit.fitHeight),
@@ -254,7 +247,7 @@ class _PostViewState extends State<PostView> {
                   style: Theme.of(context).textTheme.bodyText2)),
           SizedBox(width: 12),
           Image.asset("assets/app_icon/common/share_sec1.png",
-              height: 22, fit: BoxFit.fitHeight),
+              height: 22, fit: BoxFit.fitHeight)
         ]));
   }
 }

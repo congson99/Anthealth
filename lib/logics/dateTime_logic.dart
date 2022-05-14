@@ -157,4 +157,35 @@ class DateTimeLogic {
   static DateTime decreaseYear(DateTime time) {
     return DateTime(time.year - 1);
   }
+
+  static String formatPastDateTime(BuildContext context, DateTime time) {
+    DateTime now = DateTime.now();
+    if (now.difference(time).inMinutes < 0) return "";
+    if (DateTimeLogic.daysBetween(time, now) > 0 &&
+        DateTimeLogic.daysBetween(time, now) < 8) {
+      int day = now.day - time.day;
+      if (day == 1)
+        return S.of(context).Yesterday;
+      else
+        return day.toString() + S.of(context).days_ago;
+    }
+    if (time.year < now.year) return DateFormat("dd.MM.yyyy").format(time);
+    if (time.day < now.day) return DateFormat("dd.MM").format(time);
+    if (time.hour < now.hour) {
+      int hour = now.hour - time.hour;
+      if (hour == 1)
+        return "1" + S.of(context).hour_ago;
+      else
+        return hour.toString() + S.of(context).hours_ago;
+    }
+    int minute = now.minute - time.minute;
+    if (minute <= 1) return "1" + S.of(context).minute_ago;
+    return minute.toString() + S.of(context).minutes_ago;
+  }
+
+  static int daysBetween(DateTime from, DateTime to) {
+    from = DateTime(from.year, from.month, from.day);
+    to = DateTime(to.year, to.month, to.day);
+    return to.difference(from).inDays;
+  }
 }
