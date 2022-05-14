@@ -120,6 +120,10 @@ class DashboardCubit extends Cubit<CubitState> {
         [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]);
   }
 
+  Future<String> getFamilyID(String id) async {
+    return "family";
+  }
+
   Future<bool> removeFamilyMember(String id) async {
     return true;
   }

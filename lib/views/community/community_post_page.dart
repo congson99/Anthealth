@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/community/post_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
+import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_small_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/attach_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
@@ -22,53 +23,86 @@ class CommunityPostPage extends StatelessWidget {
       {Key? key,
       required this.user,
       required this.community,
-      required this.outCommunity})
+      this.outCommunity})
       : super(key: key);
 
   final User user;
   final CommunityData community;
-  final VoidCallback outCommunity;
+  final VoidCallback? outCommunity;
 
   @override
   Widget build(BuildContext context) => BlocProvider<CommunitiesPostPageCubit>(
       create: (context) => CommunitiesPostPageCubit(community.id),
       child: BlocBuilder<CommunitiesPostPageCubit, CubitState>(
           builder: (context, state) {
-        if (state is CommunitiesPostPageState)
-          return TemplateSmallAvatarFormPage(
-              name: community.name,
-              avatarPath: community.avatarPath,
-              avatarTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => CommunityDescriptionPage(
-                      community: community, outCommunity: outCommunity))),
-              add: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => CommunityAddPostPage(
-                      superContext: context,
-                      user: user,
-                      community: community,
-                      result: (result) {
-                        Navigator.pop(context);
-                        BlocProvider.of<CommunitiesPostPageCubit>(context)
-                            .post(community.id, result)
-                            .then((value) {
-                          if (value)
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(S.of(context).Post_to +
-                                    " " +
-                                    community.name +
-                                    " " +
-                                    S.of(context).successfully +
-                                    '!')));
-                        });
-                      }))),
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              content: PostView(
-                  communityID: community.id,
-                  superContext: context,
-                  pagePadding: MediaQuery.of(context).padding.top +
-                      MediaQuery.of(context).padding.bottom,
-                  state: state));
-        else
+        if (state is CommunitiesPostPageState) {
+          if (outCommunity != null)
+            return TemplateSmallAvatarFormPage(
+                name: community.name,
+                avatarPath: community.avatarPath,
+                avatarTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => CommunityDescriptionPage(
+                        community: community, outCommunity: outCommunity!))),
+                add: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => CommunityAddPostPage(
+                        superContext: context,
+                        user: user,
+                        community: community,
+                        result: (result) {
+                          Navigator.pop(context);
+                          BlocProvider.of<CommunitiesPostPageCubit>(context)
+                              .post(community.id, result)
+                              .then((value) {
+                            if (value)
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(S.of(context).Post_to +
+                                          " " +
+                                          community.name +
+                                          " " +
+                                          S.of(context).successfully +
+                                          '!')));
+                          });
+                        }))),
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                content: PostView(
+                    communityID: community.id,
+                    superContext: context,
+                    pagePadding: MediaQuery.of(context).padding.top +
+                        MediaQuery.of(context).padding.bottom,
+                    state: state));
+          else
+            return TemplateFormPage(
+                title: S.of(context).Family_sharing_space,
+                back: () => Navigator.pop(context),
+                add: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => CommunityAddPostPage(
+                        superContext: context,
+                        user: user,
+                        result: (result) {
+                          Navigator.pop(context);
+                          BlocProvider.of<CommunitiesPostPageCubit>(context)
+                              .post(community.id, result)
+                              .then((value) {
+                            if (value)
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(S.of(context).Post_to +
+                                          " " +
+                                          S.of(context).Family_sharing_space +
+                                          " " +
+                                          S.of(context).successfully +
+                                          '!')));
+                          });
+                        }))),
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                content: PostView(
+                    communityID: community.id,
+                    superContext: context,
+                    pagePadding: MediaQuery.of(context).padding.top +
+                        MediaQuery.of(context).padding.bottom,
+                    state: state));
+        } else
           return LoadingPage();
       }));
 }

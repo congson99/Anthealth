@@ -59,32 +59,36 @@ class _CommunityAddPostPageState extends State<CommunityAddPostPage> {
 
   Widget buildLabel(BuildContext context) {
     return Row(children: [
-      Avatar(imagePath: widget.user.avatarPath, size: 40),
-      SizedBox(width: 8),
       Expanded(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-            Text(widget.user.name,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(color: AnthealthColors.black0)),
-            Text(
-                S.of(context).Post_to +
-                    " " +
-                    ((widget.community != null)
-                        ? widget.community!.name
-                        : S.of(context).Family_sharing_space),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2!
-                    .copyWith(color: AnthealthColors.black2))
-          ])),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Avatar(imagePath: widget.user.avatarPath, size: 40),
+        SizedBox(width: 8),
+        Expanded(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+              Text(widget.user.name,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: AnthealthColors.black0)),
+              Text(
+                  S.of(context).Post_to +
+                      " " +
+                      ((widget.community != null)
+                          ? widget.community!.name
+                          : S.of(context).Family_sharing_space),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(color: AnthealthColors.black2))
+            ]))
+      ])),
+      SizedBox(width: 8),
       CommonButton.small(
           context,
           () => widget.result(Post(

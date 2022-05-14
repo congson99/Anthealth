@@ -2,6 +2,7 @@ import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
@@ -9,6 +10,7 @@ import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/community/community_post_page.dart';
 import 'package:anthealth_mobile/views/family/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
@@ -48,7 +50,18 @@ class FamilyPage extends StatelessWidget {
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         CommonText.section(S.of(context).Family_sharing, context),
         SizedBox(height: 16),
-        SectionComponent(title: S.of(context).Family_sharing_space, colorID: 0),
+        SectionComponent(
+            onTap: () => BlocProvider.of<DashboardCubit>(context)
+                    .getFamilyID(user.id)
+                    .then((result) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => CommunityPostPage(
+                          user: user,
+                          community: CommunityData(
+                              result, "", "", "", 0, false, []))));
+                }),
+            title: S.of(context).Family_sharing_space,
+            colorID: 0),
         SizedBox(height: 16),
         SectionComponent(title: S.of(context).Family_group_chat, colorID: 1)
       ])
