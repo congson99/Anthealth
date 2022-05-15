@@ -36,12 +36,12 @@ class FamilyState extends CubitState {
 }
 
 class CommunityState extends CubitState {
-  CommunityState(this.yourCommunity);
+  CommunityState(this.communities);
 
-  final List<CommunityData> yourCommunity;
+  final List<CommunityGroup> communities;
 
   @override
-  List<Object> get props => [yourCommunity];
+  List<Object> get props => [communities];
 }
 
 class HomeLoadingState extends CubitState {

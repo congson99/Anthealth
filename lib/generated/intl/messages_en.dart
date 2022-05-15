@@ -229,6 +229,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medical_record_detail":
             MessageLookupByLibrary.simpleMessage("Medical record detail"),
         "Medical_test": MessageLookupByLibrary.simpleMessage("Test"),
+        "Medication": MessageLookupByLibrary.simpleMessage("Medication"),
+        "Medication_lookup":
+            MessageLookupByLibrary.simpleMessage("Medication lookup"),
+        "Medication_reminder":
+            MessageLookupByLibrary.simpleMessage("Medication reminder"),
         "Medicine": MessageLookupByLibrary.simpleMessage("Medicine"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),

@@ -84,7 +84,7 @@ class AppCubit extends Cubit<CubitState> {
   Future<bool> isConnect() async {
     bool result = false;
     await CommonService.instance.send(MessageIDPath.checkConnect(), "");
-    await CommonService.instance.client!.getData().then((value) {
+    await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
       if (value != "null") result = true;
     });
     return result;

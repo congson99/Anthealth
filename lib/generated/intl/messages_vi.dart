@@ -242,6 +242,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "Medical_record_detail":
             MessageLookupByLibrary.simpleMessage("Chi tiết hồ sơ"),
         "Medical_test": MessageLookupByLibrary.simpleMessage("Xét nghiệm"),
+        "Medication": MessageLookupByLibrary.simpleMessage("Thuốc"),
+        "Medication_lookup":
+            MessageLookupByLibrary.simpleMessage("Tra cứu thuốc"),
+        "Medication_reminder":
+            MessageLookupByLibrary.simpleMessage("Nhắc uống thuốc"),
         "Medicine": MessageLookupByLibrary.simpleMessage("Thuốc"),
         "Medicine_box_management":
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),

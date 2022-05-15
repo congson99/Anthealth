@@ -64,8 +64,11 @@ class SectionComponent extends StatelessWidget {
   Widget buildContent(BuildContext context, Color color0, Color color1) {
     return Row(children: [
       if (iconPath != null)
-        Image.asset(iconPath!, height: 20.0, fit: BoxFit.cover),
-      if (iconPath != null && title != "") SizedBox(width: 8),
+        SizedBox(
+            width: 20,
+            height: 20.0,
+            child: Image.asset(iconPath!, fit: BoxFit.contain)),
+      if (iconPath != null && title != "") SizedBox(width: 10),
       buildTitles(context, color0, color1),
       if (directionContent != null)
         Text(directionContent!,

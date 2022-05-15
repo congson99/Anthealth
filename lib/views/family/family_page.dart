@@ -61,9 +61,13 @@ class FamilyPage extends StatelessWidget {
                               result, "", "", "", 0, false, []))));
                 }),
             title: S.of(context).Family_sharing_space,
-            colorID: 0),
+            colorID: 1,
+            iconPath: "assets/app_icon/common/family_space_sec0.png"),
         SizedBox(height: 16),
-        SectionComponent(title: S.of(context).Family_group_chat, colorID: 1)
+        SectionComponent(
+            title: S.of(context).Family_group_chat,
+            colorID: 0,
+            iconPath: "assets/app_icon/common/null_message_pri0.png")
       ])
     ]);
   }

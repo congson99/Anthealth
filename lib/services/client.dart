@@ -23,13 +23,13 @@ class Client {
     });
   }
 
-  // Server
+  /// Server
   void send(int msgID, dynamic msgData) {
     var m = SMessage(msgID, msgData.toString());
     socket?.add(m.toByteBuf());
   }
 
-  // Socket listener
+  /// Socket listener
   void dataHandler(data) {
     Uint8List bdata = data as Uint8List;
     RMessage rMessage = RMessage(bdata);
@@ -46,21 +46,21 @@ class Client {
     print("Disconnected to server $host:$port");
   }
 
-  // Handle data
-  Future<String> getData() async {
+  /// Handle data
+  Future<String> getData({int? waitSeconds}) async {
     var tempData = "null";
-    await waitData(0);
+    await waitData(0, waitSeconds);
     if (_data == null) print("NULL DATA!");
     tempData = _data.toString();
     removeData();
     return tempData;
   }
 
-  Future<void> waitData(int count) async {
-    // wait 0.1s
-    // Max: 0.1x50 = 5s
-    await Future.delayed(const Duration(milliseconds: 100), () => {});
-    if (_data == null && count < 50) await waitData(count + 1);
+  Future<void> waitData(int count, [int? waitSeconds]) async {
+    /// Wait 0.1x50 = 5s (default)
+    int times = (waitSeconds ?? 5) * 10;
+    await Future.delayed(const Duration(milliseconds: 100));
+    if (_data == null && count < times) await waitData(count + 1, waitSeconds);
   }
 
   void removeData() {

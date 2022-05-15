@@ -2240,6 +2240,36 @@ class S {
     );
   }
 
+  /// `Medication`
+  String get Medication {
+    return Intl.message(
+      'Medication',
+      name: 'Medication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medication lookup`
+  String get Medication_lookup {
+    return Intl.message(
+      'Medication lookup',
+      name: 'Medication_lookup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medication reminder`
+  String get Medication_reminder {
+    return Intl.message(
+      'Medication reminder',
+      name: 'Medication_reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medicine-----------------------------`
   String get _Medicine {
     return Intl.message(

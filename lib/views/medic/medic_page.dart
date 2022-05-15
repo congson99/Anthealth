@@ -43,7 +43,7 @@ class MedicPage extends StatelessWidget {
         SizedBox(height: 32),
         CustomDivider.common(),
         SizedBox(height: 16),
-        buildMedicineBoxManagement(context, pageData),
+        buildMedication(context, pageData),
         SizedBox(height: 32),
         CustomDivider.common(),
         SizedBox(height: 16),
@@ -68,39 +68,32 @@ class MedicPage extends StatelessWidget {
               colorID: 1)
       ]);
 
-  Widget buildMedicineBoxManagement(
-          BuildContext context, MedicPageData pageData) =>
-      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        CommonText.section(S.of(context).Medicine_box_management, context),
-        SizedBox(height: 16),
-        ...pageData
-            .getListMedicineBox()
-            .map((data) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      SectionComponent(
-                          title: data,
-                          colorID: 0,
-                          onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (_) => MedicineBoxPage(id: "id")))),
-                      SizedBox(height: 16)
-                    ]))
-            .toList(),
-        SectionComponent(
-            title: S.of(context).Add_medicine_box,
-            colorID: 1,
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => MedicineBoxAddPage())),
-            isDirection: false,
-            iconPath: "assets/app_icon/small_icons/add_medicine_box_sec2.png")
-      ]);
+  Widget buildMedication(BuildContext context, MedicPageData pageData) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CommonText.section(S.of(context).Medication, context),
+      SizedBox(height: 16),
+      SectionComponent(
+          title: S.of(context).Medication_reminder,
+          colorID: 1,
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => MedicineBoxAddPage())),
+          iconPath: "assets/app_icon/common/reminder_sec0.png"),
+      SizedBox(height: 16),
+      SectionComponent(
+          title: S.of(context).Medication_lookup,
+          colorID: 0,
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => MedicineBoxAddPage())),
+          iconPath: "assets/app_icon/common/search_pri0.png")
+    ]);
+  }
 
   Widget buildDirectory(BuildContext context) =>
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         CommonText.section(S.of(context).Hospital, context),
         SizedBox(height: 16),
         SectionComponent(
+            iconPath: "assets/app_icon/attach/medical_record.png",
             title: S.of(context).Medical_directory,
             colorID: 0,
             onTap: () => Navigator.of(context).push(
