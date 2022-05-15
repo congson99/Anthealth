@@ -83,7 +83,7 @@ class SectionComponent extends StatelessWidget {
                 ? "assets/app_icon/direction/right_pri1.png"
                 : colorID == 1
                     ? "assets/app_icon/direction/right_sec1.png"
-                    : colorID == 1
+                    : colorID == 2
                         ? "assets/app_icon/direction/right_war1.png"
                         : "assets/app_icon/direction/right_bla2.png",
             height: 16.0,

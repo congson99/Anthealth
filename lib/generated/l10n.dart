@@ -1010,6 +1010,66 @@ class S {
     );
   }
 
+  /// `-----------------------------Home-----------------------------`
+  String get _Home {
+    return Intl.message(
+      '-----------------------------Home-----------------------------',
+      name: '_Home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi!`
+  String get Hi {
+    return Intl.message(
+      'Hi!',
+      name: 'Hi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How are you today?`
+  String get How_are_you_today {
+    return Intl.message(
+      'How are you today?',
+      name: 'How_are_you_today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upcoming events`
+  String get Upcoming_events {
+    return Intl.message(
+      'Upcoming events',
+      name: 'Upcoming_events',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Smart diagnosis`
+  String get Smart_diagnosis {
+    return Intl.message(
+      'Smart diagnosis',
+      name: 'Smart_diagnosis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect with doctors`
+  String get Connect_doctor {
+    return Intl.message(
+      'Connect with doctors',
+      name: 'Connect_doctor',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Health-----------------------------`
   String get _Health {
     return Intl.message(

@@ -29,7 +29,7 @@ class DashboardPage extends StatelessWidget {
       }));
 
   Widget buildContent(CubitState state, BuildContext context) {
-    if (state is HomeState) return HomePage();
+    if (state is HomeState) return HomePage(user: user);
     if (state is HealthState) return HealthPage(user: user);
     if (state is MedicState) return MedicPage(user: user);
     if (state is FamilyState) return FamilyPage(user: user);

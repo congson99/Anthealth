@@ -93,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Community name"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "Connect_doctor":
+            MessageLookupByLibrary.simpleMessage("Connect with doctors"),
         "Consumed": MessageLookupByLibrary.simpleMessage("Consumed"),
         "Content": MessageLookupByLibrary.simpleMessage("Content"),
         "Customized_by_week":
@@ -180,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Health records"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
+        "Hi": MessageLookupByLibrary.simpleMessage("Hi!"),
         "High_diastolic_blood_pressure": MessageLookupByLibrary.simpleMessage(
             "High diastolic blood pressure"),
         "High_systolic_blood_pressure": MessageLookupByLibrary.simpleMessage(
@@ -195,6 +198,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hospital_info":
             MessageLookupByLibrary.simpleMessage("Hospital Information"),
         "Hour": MessageLookupByLibrary.simpleMessage("Hour"),
+        "How_are_you_today":
+            MessageLookupByLibrary.simpleMessage("How are you today?"),
         "In": MessageLookupByLibrary.simpleMessage("In"),
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
@@ -297,6 +302,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Set a new password"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "Show_on_map": MessageLookupByLibrary.simpleMessage("Show on map"),
+        "Smart_diagnosis":
+            MessageLookupByLibrary.simpleMessage("Smart diagnosis"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Stats_today": MessageLookupByLibrary.simpleMessage("Stats for today"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
@@ -314,6 +321,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total calories"),
         "Total_steps": MessageLookupByLibrary.simpleMessage("Total steps"),
         "Unit": MessageLookupByLibrary.simpleMessage("Unit"),
+        "Upcoming_events":
+            MessageLookupByLibrary.simpleMessage("Upcoming events"),
         "Update": MessageLookupByLibrary.simpleMessage("Update"),
         "Update_medical_record":
             MessageLookupByLibrary.simpleMessage("Update medical record"),
@@ -369,6 +378,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Family-----------------------------"),
         "_Health": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Health-----------------------------"),
+        "_Home": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Home-----------------------------"),
         "_Main": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Main-----------------------------"),
         "_Medic": MessageLookupByLibrary.simpleMessage(

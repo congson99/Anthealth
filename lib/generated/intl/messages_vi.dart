@@ -97,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Community_name": MessageLookupByLibrary.simpleMessage("Tên cộng đồng"),
         "Confirm_password":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
+        "Connect_doctor":
+            MessageLookupByLibrary.simpleMessage("Kết nối với bác sĩ"),
         "Consumed": MessageLookupByLibrary.simpleMessage("Đã tiêu thụ"),
         "Content": MessageLookupByLibrary.simpleMessage("Nội dung"),
         "Customized_by_week":
@@ -189,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Health_record": MessageLookupByLibrary.simpleMessage("Hồ sơ sức khoẻ"),
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
+        "Hi": MessageLookupByLibrary.simpleMessage("Xin chào!"),
         "High_diastolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Ngưỡng cao tâm trương"),
         "High_systolic_blood_pressure":
@@ -206,6 +209,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hospital_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cơ sở y tế"),
         "Hour": MessageLookupByLibrary.simpleMessage("Giờ"),
+        "How_are_you_today":
+            MessageLookupByLibrary.simpleMessage("Hôm nay bạn thế nào?"),
         "In": MessageLookupByLibrary.simpleMessage("Nạp"),
         "Invalid_email":
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
@@ -313,6 +318,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "Show_on_map":
             MessageLookupByLibrary.simpleMessage("Hiển thị trên bản đồ"),
+        "Smart_diagnosis":
+            MessageLookupByLibrary.simpleMessage("Chẩn đoán thông minh"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
         "Stats_today": MessageLookupByLibrary.simpleMessage("Thống kê hôm nay"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
@@ -331,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tổng lượng calo"),
         "Total_steps": MessageLookupByLibrary.simpleMessage("Tổng số bước"),
         "Unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
+        "Upcoming_events":
+            MessageLookupByLibrary.simpleMessage("Sự kiện sắp tới"),
         "Update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "Update_medical_record":
             MessageLookupByLibrary.simpleMessage("Cập nhật hồ sơ"),
@@ -388,6 +397,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Family-----------------------------"),
         "_Health": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Health-----------------------------"),
+        "_Home": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Home-----------------------------"),
         "_Main": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Main-----------------------------"),
         "_Medic": MessageLookupByLibrary.simpleMessage(
