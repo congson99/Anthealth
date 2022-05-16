@@ -95,8 +95,9 @@ class MedicPage extends StatelessWidget {
             iconPath: "assets/app_icon/attach/medical_record.png",
             title: S.of(context).Medical_directory,
             colorID: 0,
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => MedicalDirectoryPage()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) =>
+                    MedicalDirectoryPage(dashboardContext: context)))),
         SizedBox(height: 16),
         SectionComponent(
             iconPath: "assets/app_icon/common/location_sec0.png",

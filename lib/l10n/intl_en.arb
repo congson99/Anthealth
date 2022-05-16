@@ -47,6 +47,8 @@
   "Add": "Add",
   "Find": "Find",
   "Profile": "Profile",
+  "No_data": "There is no data",
+  "Quick_lookup": "Quick lookup here",
   "_Authentication": "-----------------------------Authentication-----------------------------",
   "Your_name": "Your name",
   "Email": "Email",

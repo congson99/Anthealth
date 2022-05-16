@@ -1,15 +1,18 @@
 import 'package:anthealth_mobile/models/common/gps_models.dart';
 
 class MedicalDirectoryData {
-  MedicalDirectoryData(this._name, this._location, this._phoneNumber,
+  MedicalDirectoryData(this._id, this._name, this._location, this._phoneNumber,
       this._workTime, this._note, this._gps);
 
+  final String _id;
   final String _name;
   final String _location;
   final String _phoneNumber;
   final String _workTime;
   final String _note;
   final GPS _gps;
+
+  String getId() => _id;
 
   String getName() => _name;
 

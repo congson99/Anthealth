@@ -16,14 +16,14 @@ class MedicalMapPage extends StatefulWidget {
 
 class _MedicalMapPageState extends State<MedicalMapPage> {
   List<MedicalDirectoryData> list = [
-    MedicalDirectoryData(
+    MedicalDirectoryData("id",
         "Bệnh viện Chợ Rẫy",
         "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
         "02838554137",
         "06:00–16:00",
         "",
         GPS(10.757899397875105, 106.65948982430974)),
-    MedicalDirectoryData(
+    MedicalDirectoryData("id",
         "Bệnh viện Đại học Y dược TP.HCM",
         "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
         "02838554269",

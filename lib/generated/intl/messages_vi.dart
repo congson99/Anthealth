@@ -267,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "Name": MessageLookupByLibrary.simpleMessage("Tên"),
         "New_post": MessageLookupByLibrary.simpleMessage("Bài đăng mới"),
+        "No_data": MessageLookupByLibrary.simpleMessage("Không có dữ liệu nào"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -292,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lần khám trước"),
         "Profile": MessageLookupByLibrary.simpleMessage("Hồ sơ cá nhân"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
+        "Quick_lookup": MessageLookupByLibrary.simpleMessage("Tra cứu nhanh"),
         "Re_examination":
             MessageLookupByLibrary.simpleMessage("Lịch hẹn tái khám"),
         "Recommend_community":

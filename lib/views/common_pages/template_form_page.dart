@@ -12,6 +12,7 @@ class TemplateFormPage extends StatelessWidget {
       this.delete,
       this.settings,
       this.padding,
+      this.marginTop,
       required this.content})
       : super(key: key);
 
@@ -23,6 +24,7 @@ class TemplateFormPage extends StatelessWidget {
   final VoidCallback? delete;
   final VoidCallback? settings;
   final EdgeInsets? padding;
+  final double? marginTop;
   final Widget content;
 
   @override
@@ -31,7 +33,7 @@ class TemplateFormPage extends StatelessWidget {
         body: SafeArea(
             child: Stack(children: [
       Container(
-          margin: const EdgeInsets.only(top: 57),
+          margin: EdgeInsets.only(top: marginTop ?? 57),
           child: SingleChildScrollView(
               child: Container(
                   padding: (padding == null)

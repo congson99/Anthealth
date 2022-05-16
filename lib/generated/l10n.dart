@@ -530,6 +530,26 @@ class S {
     );
   }
 
+  /// `There is no data`
+  String get No_data {
+    return Intl.message(
+      'There is no data',
+      name: 'No_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick lookup here`
+  String get Quick_lookup {
+    return Intl.message(
+      'Quick lookup here',
+      name: 'Quick_lookup',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(

@@ -47,6 +47,8 @@
   "Add": "Thêm",
   "Find": "Tìm",
   "Profile": "Hồ sơ cá nhân",
+  "No_data": "Không có dữ liệu nào",
+  "Quick_lookup": "Tra cứu nhanh",
   "_Authentication": "-----------------------------Authentication-----------------------------",
   "Your_name": "Tên của bạn",
   "Email": "Email",

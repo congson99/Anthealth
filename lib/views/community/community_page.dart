@@ -39,7 +39,6 @@ class CommunityPage extends StatelessWidget {
   Widget buildContent(BuildContext context, CommunityState state) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),
-      SizedBox(height: 16),
       buildCommunities(context, state),
       SizedBox(height: 16),
       SectionComponent(

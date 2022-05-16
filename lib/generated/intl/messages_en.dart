@@ -252,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Month": MessageLookupByLibrary.simpleMessage("Month"),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "New_post": MessageLookupByLibrary.simpleMessage("New post"),
+        "No_data": MessageLookupByLibrary.simpleMessage("There is no data"),
         "Not_match_password":
             MessageLookupByLibrary.simpleMessage("The passwords didn’t match!"),
         "Not_registered_email": MessageLookupByLibrary.simpleMessage(
@@ -276,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Previous"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
+        "Quick_lookup":
+            MessageLookupByLibrary.simpleMessage("Quick lookup here"),
         "Re_examination":
             MessageLookupByLibrary.simpleMessage("Re-examination"),
         "Recommend_community":

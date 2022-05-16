@@ -103,48 +103,56 @@ class CommonTextField {
       bool? readOnly,
       String? initialValue,
       bool? isNumber,
+      bool? autofocus,
+      int? maxLines,
+      Color? textColor,
       TextEditingController? textEditingController}) {
     return TextFormField(
-      onTap: onTap,
-      readOnly: readOnly ?? false,
-      onChanged: onChanged,
-      focusNode: focusNode,
-      initialValue: initialValue,
-      controller: textEditingController,
-      textAlign: (isNumber == true) ? TextAlign.right : TextAlign.start,
-      keyboardType: (isNumber == true)
-          ? TextInputType.numberWithOptions(decimal: true)
-          : null,
-      maxLines: null,
-      decoration: InputDecoration(
-        labelStyle: CommonText.fillLabelTextStyle(),
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        hintText: hintText,
-        hintStyle: Theme.of(context)
+        onTap: onTap,
+        readOnly: readOnly ?? false,
+        onChanged: onChanged,
+        focusNode: focusNode,
+        initialValue: initialValue,
+        controller: textEditingController,
+        textAlign: (isNumber == true) ? TextAlign.right : TextAlign.start,
+        keyboardType: (isNumber == true)
+            ? TextInputType.numberWithOptions(decimal: true)
+            : null,
+        maxLines: maxLines ?? null,
+        autofocus: autofocus ?? true,
+        style: Theme.of(context)
             .textTheme
-            .bodyText1!
-            .copyWith(color: AnthealthColors.black2),
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: (isNumber == true)
-            ? EdgeInsets.symmetric(horizontal: 16)
-            : EdgeInsets.all(16),
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AnthealthColors.black3, width: 0.5),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AnthealthColors.primary2, width: 0.5),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
-        errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AnthealthColors.warning1, width: 0.5),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
-        focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AnthealthColors.warning1, width: 0.5),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
-      ),
-      autofocus: true,
-      style: Theme.of(context).textTheme.subtitle1,
-    );
+            .subtitle1!
+            .copyWith(color: textColor ?? null),
+        decoration: InputDecoration(
+          labelStyle: CommonText.fillLabelTextStyle(),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintText: hintText,
+          hintStyle: Theme.of(context)
+              .textTheme
+              .bodyText1!
+              .copyWith(color: AnthealthColors.black2),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: (isNumber == true)
+              ? EdgeInsets.symmetric(horizontal: 16)
+              : EdgeInsets.all(16),
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AnthealthColors.black3, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          focusedBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AnthealthColors.primary2, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          errorBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AnthealthColors.warning1, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          focusedErrorBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AnthealthColors.warning1, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+        ));
   }
 
   static Widget select(
