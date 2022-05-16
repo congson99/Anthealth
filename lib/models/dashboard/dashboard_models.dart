@@ -1,11 +1,9 @@
 import 'package:intl/intl.dart';
 
 class HealthPageData {
-  HealthPageData(this._indicatorsLatestData);
+  HealthPageData(this.indicatorsLatestData);
 
-  List<double> _indicatorsLatestData;
-
-  List<double> getIndicatorsLatestData() => _indicatorsLatestData;
+  List<double> indicatorsLatestData;
 
   static List<double> formatIndicatorsList(List<dynamic> data) {
     List<double> result = [0, 0, 0, 0, 0, 0];

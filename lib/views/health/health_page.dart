@@ -48,8 +48,8 @@ class HealthPage extends StatelessWidget {
       SizedBox(height: 16),
       buildHealthIndicator(
           context,
-          DashboardLogic.handleIndicatorToShow(data.getIndicatorsLatestData()),
-          data.getIndicatorsLatestData()[0]),
+          DashboardLogic.handleIndicatorToShow(data.indicatorsLatestData),
+          data.indicatorsLatestData[0]),
       SizedBox(height: 32),
       CustomDivider.common(),
       SizedBox(height: 16),

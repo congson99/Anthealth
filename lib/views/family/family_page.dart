@@ -90,14 +90,13 @@ class FamilyPage extends StatelessWidget {
                 .copyWith(color: AnthealthColors.primary1))
       ]),
       SizedBox(height: 24),
-      Wrap(
-          runSpacing: 16,
-          spacing: 16,
-          children: state.members
-                  .map((member) =>
-                      buildMemberComponent(context, member, isAdmin, size))
-                  .toList() +
-              [buildAddMemberComponent(size, context)])
+      Wrap(runSpacing: 16, spacing: 16, children: [
+        ...state.members
+            .map((member) =>
+                buildMemberComponent(context, member, isAdmin, size))
+            .toList(),
+        if (isAdmin) buildAddMemberComponent(size, context)
+      ])
     ]);
   }
 
@@ -105,38 +104,7 @@ class FamilyPage extends StatelessWidget {
   Widget buildMemberComponent(BuildContext context, FamilyMemberData member,
       bool isAdmin, double size) {
     return GestureDetector(
-        onTap: () {
-          if (member.id != user.id)
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => FamilyMemberPage(
-                    member: member,
-                    isAdmin: isAdmin,
-                    gantAdmin: () {
-                      BlocProvider.of<DashboardCubit>(context)
-                          .grantFamilyAdmin(user.id)
-                          .then((result) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(S.of(context).Grant_admin_rights +
-                                ' ' +
-                                S.of(context).successfully +
-                                '!')));
-                        BlocProvider.of<DashboardCubit>(context).family();
-                      });
-                    },
-                    remove: () {
-                      BlocProvider.of<DashboardCubit>(context)
-                          .removeFamilyMember(user.id)
-                          .then((result) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(S.of(context).Remove_family_member +
-                                ' ' +
-                                S.of(context).successfully +
-                                '!')));
-                        BlocProvider.of<DashboardCubit>(context).family();
-                      });
-                      Navigator.of(context).pop();
-                    })));
-        },
+        onTap: () => onFamilyMemberTap(context, member, isAdmin),
         child: Container(
             width: size,
             child: Column(children: [
@@ -192,6 +160,47 @@ class FamilyPage extends StatelessWidget {
   void setting(BuildContext context) {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => SettingsPage(appContext: context)));
+  }
+
+  void onFamilyMemberTap(
+      BuildContext context, FamilyMemberData member, bool isAdmin) {
+    if (member.id != user.id)
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => FamilyMemberPage(
+              dashboardContext: context,
+              member: member,
+              isAdmin: isAdmin,
+              grantAdmin: () {
+                BlocProvider.of<DashboardCubit>(context)
+                    .grantFamilyAdmin(user.id)
+                    .then((result) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(S.of(context).Grant_admin_rights +
+                          ' ' +
+                          S.of(context).successfully +
+                          '!')));
+                  BlocProvider.of<DashboardCubit>(context).family();
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                  FamilyMemberData newData = member;
+                  newData.admin = true;
+                  onFamilyMemberTap(context, newData, false);
+                });
+              },
+              remove: () {
+                BlocProvider.of<DashboardCubit>(context)
+                    .removeFamilyMember(user.id)
+                    .then((result) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(S.of(context).Remove_family_member +
+                          ' ' +
+                          S.of(context).successfully +
+                          '!')));
+                  BlocProvider.of<DashboardCubit>(context).family();
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                });
+              })));
   }
 
   void newMemberTap(BuildContext context) {

@@ -790,6 +790,16 @@ class S {
     );
   }
 
+  /// `Family admin`
+  String get Family_admin {
+    return Intl.message(
+      'Family admin',
+      name: 'Family_admin',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Community-----------------------------`
   String get _Community {
     return Intl.message(
@@ -2795,6 +2805,26 @@ class S {
     return Intl.message(
       'Are you sure you want to delete this medicine?',
       name: 'Warning_delete_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to remove this member from your family?`
+  String get Warning_remove_member {
+    return Intl.message(
+      'Are you sure you want to remove this member from your family?',
+      name: 'Warning_remove_member',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `After granting admin rights to this member, you will no longer be an family admin`
+  String get Grant_admin {
+    return Intl.message(
+      'After granting admin rights to this member, you will no longer be an family admin',
+      name: 'Grant_admin',
       desc: '',
       args: [],
     );

@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 
 class InfoPopup extends StatelessWidget {
   const InfoPopup(
-      {Key? key,
-        required this.title,
-        required this.ok})
+      {Key? key, required this.title, required this.ok, this.cancel})
       : super(key: key);
 
   final String title;
   final VoidCallback ok;
+  final VoidCallback? cancel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +22,14 @@ class InfoPopup extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         backgroundColor: Colors.white,
         actions: [
+          if (cancel != null)
+            TextButton(
+                child: Text(S.of(context).button_cancel,
+                    style: Theme.of(context)
+                        .textTheme
+                        .button!
+                        .copyWith(color: AnthealthColors.warning1)),
+                onPressed: cancel!),
           TextButton(
               child: Text(S.of(context).button_ok,
                   style: Theme.of(context)

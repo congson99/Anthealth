@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.da
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/family/family_member_health.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -13,22 +14,26 @@ import 'package:url_launcher/url_launcher.dart';
 class FamilyMemberPage extends StatelessWidget {
   const FamilyMemberPage(
       {Key? key,
+      required this.dashboardContext,
       required this.member,
       required this.isAdmin,
-      required this.gantAdmin,
+      required this.grantAdmin,
       required this.remove})
       : super(key: key);
 
+  final BuildContext dashboardContext;
   final FamilyMemberData member;
   final bool isAdmin;
-  final VoidCallback gantAdmin;
+  final VoidCallback grantAdmin;
   final VoidCallback remove;
 
   @override
   Widget build(BuildContext context) {
     return TemplateAvatarFormPage(
         name: member.name,
-        secondTitle: S.of(context).Family_member,
+        secondTitle: member.admin
+            ? S.of(context).Family_admin
+            : S.of(context).Family_member,
         avatarPath: member.avatarPath,
         content: buildContent(context));
   }
@@ -65,7 +70,7 @@ class FamilyMemberPage extends StatelessWidget {
                     .subtitle1!
                     .copyWith(color: AnthealthColors.primary1)))
       ]),
-      SizedBox(height: 12),
+      SizedBox(height: 8),
       Row(children: [
         Text(S.of(context).Email + ": ",
             style: Theme.of(context)
@@ -133,7 +138,8 @@ class FamilyMemberPage extends StatelessWidget {
           onTap: () {
             if (isHealthPermission)
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => FamilyMemberHealth(data: member)));
+                  builder: (_) => FamilyMemberHealth(
+                      dashboardContext: dashboardContext, data: member)));
             else
               showPopup(context);
           }),
@@ -153,10 +159,8 @@ class FamilyMemberPage extends StatelessWidget {
           title: S.of(context).Diagnose,
           colorID: 1,
           onTap: () {
-            if (isDiagnosePermission)
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => FamilyMemberHealth(data: member)));
-            else
+            if (isDiagnosePermission) {
+            } else
               showPopup(context);
           })
     ]);
@@ -168,14 +172,14 @@ class FamilyMemberPage extends StatelessWidget {
       CustomDivider.common(),
       SizedBox(height: 16),
       SectionComponent(
-          onTap: gantAdmin,
+          onTap: () => grantPopup(context),
           title: S.of(context).Grant_admin_rights,
           colorID: 0,
           isDirection: false,
           iconPath: "assets/app_icon/common/admin_pri0.png"),
       SizedBox(height: 16),
       SectionComponent(
-          onTap: remove,
+          onTap: () => removePopup(context),
           title: S.of(context).Remove_family_member,
           colorID: 2,
           isDirection: false,
@@ -199,5 +203,23 @@ class FamilyMemberPage extends StatelessWidget {
               title: S.of(context).not_permission_view_data,
               ok: () => Navigator.pop(context),
             ));
+  }
+
+  void grantPopup(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => InfoPopup(
+            title: S.of(context).Grant_admin,
+            ok: grantAdmin,
+            cancel: () => Navigator.pop(context)));
+  }
+
+  void removePopup(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => WarningPopup(
+            title: S.of(context).Warning_remove_member,
+            cancel: () => Navigator.pop(context),
+            delete: remove));
   }
 }

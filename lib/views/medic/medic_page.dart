@@ -12,7 +12,6 @@ import 'package:anthealth_mobile/views/medic/medical_directory/medical_directory
 import 'package:anthealth_mobile/views/medic/medical_map/medical_map_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_add_page.dart';
-import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';

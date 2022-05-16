@@ -65,7 +65,7 @@ class DashboardCubit extends Cubit<CubitState> {
           "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
           "012013011",
           "ahaha@hca.com",
-          true,
+          false,
           [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
       FamilyMemberData(
           "id",
@@ -175,6 +175,19 @@ class DashboardCubit extends Cubit<CubitState> {
 
   Future<bool> grantFamilyAdmin(String id) async {
     return true;
+  }
+
+  Future<HealthPageData> getHealthPageData(String id) async {
+    HealthPageData data = HealthPageData([]);
+    await CommonService.instance
+        .send(MessageIDPath.getHealthData(), {}.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getHealthData(), value))
+        data.indicatorsLatestData = HealthPageData.formatIndicatorsList(
+            ServerLogic.formatList(
+                ServerLogic.getData(value)["indicatorInfo"]));
+    });
+    return data;
   }
 
   Future<bool> outCommunity(String id) async {

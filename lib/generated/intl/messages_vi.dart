@@ -159,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vài ngày một lần"),
         "Exercise": MessageLookupByLibrary.simpleMessage("Tập luyện"),
         "Family": MessageLookupByLibrary.simpleMessage("Gia đình"),
+        "Family_admin":
+            MessageLookupByLibrary.simpleMessage("Quản trị viên gia đình"),
         "Family_group_chat":
             MessageLookupByLibrary.simpleMessage("Nhóm trò chuyện"),
         "Family_member":
@@ -183,6 +185,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "Goal": MessageLookupByLibrary.simpleMessage("Mục tiêu"),
         "Goal_days": MessageLookupByLibrary.simpleMessage("Ngày đạt mục tiêu"),
+        "Grant_admin": MessageLookupByLibrary.simpleMessage(
+            "Cấp quyền quản trị cho thành viên này đồng nghĩa với việc bạn sẽ không còn là quản trị viên của gia đình"),
         "Grant_admin_rights":
             MessageLookupByLibrary.simpleMessage("Cấp quyền quản trị viên"),
         "Health": MessageLookupByLibrary.simpleMessage("Sức khoẻ"),
@@ -358,6 +362,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn xoá ảnh này không?"),
         "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xoá hồ sơ này không?"),
+        "Warning_remove_member": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn loại thành viên này khỏi gia đình?"),
         "Water": MessageLookupByLibrary.simpleMessage("Nước"),
         "Water_count": MessageLookupByLibrary.simpleMessage("Lượng nước"),
         "Water_detail": MessageLookupByLibrary.simpleMessage(

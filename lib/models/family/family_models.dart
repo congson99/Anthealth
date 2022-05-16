@@ -7,6 +7,6 @@ class FamilyMemberData {
   final String avatarPath;
   final String phoneNumber;
   final String email;
-  final bool admin;
+  bool admin;
   final List<int> permission;
 }

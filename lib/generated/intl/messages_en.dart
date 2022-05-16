@@ -152,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Every few days"),
         "Exercise": MessageLookupByLibrary.simpleMessage("Exercise"),
         "Family": MessageLookupByLibrary.simpleMessage("Family"),
+        "Family_admin": MessageLookupByLibrary.simpleMessage("Family admin"),
         "Family_group_chat": MessageLookupByLibrary.simpleMessage("Group chat"),
         "Family_member": MessageLookupByLibrary.simpleMessage("Family member"),
         "Family_of": MessageLookupByLibrary.simpleMessage("Family of"),
@@ -174,6 +175,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("General information"),
         "Goal": MessageLookupByLibrary.simpleMessage("Goal"),
         "Goal_days": MessageLookupByLibrary.simpleMessage("Goal days"),
+        "Grant_admin": MessageLookupByLibrary.simpleMessage(
+            "After granting admin rights to this member, you will no longer be an family admin"),
         "Grant_admin_rights":
             MessageLookupByLibrary.simpleMessage("Grant admin rights"),
         "Health": MessageLookupByLibrary.simpleMessage("Health"),
@@ -341,6 +344,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete this photo?"),
         "Warning_delete_record": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this record?"),
+        "Warning_remove_member": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to remove this member from your family?"),
         "Water": MessageLookupByLibrary.simpleMessage("Water"),
         "Water_count": MessageLookupByLibrary.simpleMessage("Water"),
         "Water_detail": MessageLookupByLibrary.simpleMessage("Water Detail"),
