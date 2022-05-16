@@ -11,6 +11,7 @@ import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medical_directory/medical_directory_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_map/medical_map_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
+import 'package:anthealth_mobile/views/medic/medication_lookup/medication_lookup_page.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_add_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -81,8 +82,8 @@ class MedicPage extends StatelessWidget {
       SectionComponent(
           title: S.of(context).Medication_lookup,
           colorID: 0,
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => MedicineBoxAddPage())),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => MedicationLookupPage(dashboardContext: context))),
           iconPath: "assets/app_icon/common/search_pri0.png")
     ]);
   }

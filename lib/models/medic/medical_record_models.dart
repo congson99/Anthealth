@@ -124,65 +124,6 @@ class MedicalRecordDetailData {
         MedicalAppointment.formatData(data["appointment"],
             DateTime.fromMillisecondsSinceEpoch(data["time"] * 1000)));
   }
-
-// static MedicalRecordDetailData updateData(
-//     MedicalRecordDetailData data, String changeName, dynamic changeValue) {
-//   if (changeName == "name")
-//     return MedicalRecordDetailData(
-//         data.label,
-//         data.getDetailPhoto(),
-//         data.getTestPhoto(),
-//         data.getDiagnosePhoto(),
-//         data.getPrescriptionPhoto(),
-//         data.getPrescription(),
-//         data.getAppointment());
-//   if (changeName == "location")
-//     return MedicalRecordDetailData(
-//       data.getLabel(),
-//       data.getDetailPhoto(),
-//       data.getTestPhoto(),
-//       data.getDiagnosePhoto(),
-//       data.getPrescriptionPhoto(),
-//       data.getPrescription(),
-//     );
-//   if (changeName == "time")
-//     return MedicalRecordDetailData(
-//         data.getLabel(),
-//         data.getDetailPhoto(),
-//         data.getTestPhoto(),
-//         data.getDiagnosePhoto(),
-//         data.getPrescriptionPhoto(),
-//         data.getPrescription(),
-//         data.getAppointment());
-//   if (changeName == "appointment_content")
-//     return MedicalRecordDetailData(
-//       data.getLabel(),
-//       data.getDetailPhoto(),
-//       data.getTestPhoto(),
-//       data.getDiagnosePhoto(),
-//       data.getPrescriptionPhoto(),
-//       data.getPrescription(),
-//     );
-//   if (changeName == "appointment_location")
-//     return MedicalRecordDetailData(
-//       data.getLabel(),
-//       data.getDetailPhoto(),
-//       data.getTestPhoto(),
-//       data.getDiagnosePhoto(),
-//       data.getPrescriptionPhoto(),
-//       data.getPrescription(),
-//     );
-//   if (changeName == "appointment_time")
-//     return MedicalRecordDetailData(
-//       data.getLabel(),
-//       data.getDetailPhoto(),
-//       data.getTestPhoto(),
-//       data.getDiagnosePhoto(),
-//       data.getPrescriptionPhoto(),
-//       data.getPrescription(),
-//     );
-//   return data;
-// }
 }
 
 class MedicineData {

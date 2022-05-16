@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
@@ -6,6 +9,7 @@ import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_directory_models.dart';
+import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -216,98 +220,112 @@ class DashboardCubit extends Cubit<CubitState> {
 
   Future<List<MedicalDirectoryData>> getMedicalContacts() async {
     return [
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Chợ Rẫy",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
           "06:00–16:00",
           "",
           GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Thống Nhất",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Nhân dân Gia Định",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Trưng Vương",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
           "06:00–16:00",
           "",
           GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Nhân dân 115",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Đa khoa Thủ Đức",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
           "06:00–16:00",
           "",
           GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Bệnh viện Đại học Y dược TP.HCM",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Trung tâm Da liễu TP.HCM",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
           "06:00–16:00",
           "",
           GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Trung tâm Răng - Hàm - Mặt TP.HCM",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Trung tâm Sức khỏe Tâm Thần",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
           "06:00–16:00",
           "",
           GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Trung tâm Truyền máu huyết học",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Y học dân tộc TP.HCM",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
           "06:00–16:00",
           "",
           GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Viện Y dược học dân tộc",
           "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554269",
           "03:00–16:30",
           "",
           GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData("id",
+      MedicalDirectoryData(
+          "id",
           "Viện Răng - Hàm - Mặt TP.HCM",
           "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
           "02838554137",
@@ -315,5 +333,25 @@ class DashboardCubit extends Cubit<CubitState> {
           "",
           GPS(10.757899397875105, 106.65948982430974)),
     ];
+  }
+
+  Future<List<MedicineData>> getMedications() async {
+    List<MedicineData> result = [];
+    for (int i = 0; i < 200; i++) {
+      result.add(MedicineData(
+          "_id",
+          utf8.decode(["A".codeUnits[0] + i ~/ 10]) +
+              String.fromCharCodes(Iterable.generate(
+                  20,
+                  (_) => 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz        '
+                      .codeUnitAt(Random().nextInt(60)))),
+          0,
+          Random().nextInt(3),
+          Random().nextInt(4),
+          "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+          "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+          ""));
+    }
+    return result;
   }
 }
