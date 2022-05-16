@@ -86,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Calo_out": MessageLookupByLibrary.simpleMessage("Calo tiêu thụ"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "Không thể kết nối đến máy chủ! Kiểm tra đường truyền mạng của bạn và thử lại"),
+        "Choose_another_medication":
+            MessageLookupByLibrary.simpleMessage("Chọn lại thuốc khác"),
         "Choose_medicine": MessageLookupByLibrary.simpleMessage("Chọn thuốc"),
         "Choose_one_or_more_days":
             MessageLookupByLibrary.simpleMessage("Chọn một hoặc nhiều ngày"),

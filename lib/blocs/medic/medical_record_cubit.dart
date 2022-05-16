@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
@@ -120,31 +123,24 @@ class MedicalRecordCubit extends Cubit<CubitState> {
     ];
   }
 
-  List<String> getMedicineList() {
-    return [
-      "Panadol Extra with Optizorb",
-      "Cipogip 500 Tablet",
-      "Augmentin 625mg"
-    ];
-  }
-
-  DigitalMedicine getMedicine(int index) {
-    var medicineList = [
-      "Panadol Extra with Optizorb",
-      "Cipogip 500 Tablet",
-      "Augmentin 625mg"
-    ];
-    return DigitalMedicine(
-        "id",
-        medicineList[index],
-        0,
-        0,
-        0,
-        [0, 0, 0, 0],
-        [],
-        0,
-        "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-        "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-        "");
+  Future<List<MedicineData>> getMedications() async {
+    List<MedicineData> result = [];
+    for (int i = 0; i < 200; i++) {
+      result.add(MedicineData(
+          "_id",
+          utf8.decode(["A".codeUnits[0] + i ~/ 10]) +
+              String.fromCharCodes(Iterable.generate(
+                  20,
+                  (_) =>
+                      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz        '
+                          .codeUnitAt(Random().nextInt(60)))),
+          0,
+          Random().nextInt(3),
+          Random().nextInt(4),
+          "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+          "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+          ""));
+    }
+    return result;
   }
 }

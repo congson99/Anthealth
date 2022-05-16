@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Calo_out": MessageLookupByLibrary.simpleMessage("Calo out"),
         "Cannot_connect": MessageLookupByLibrary.simpleMessage(
             "Cannot connect to server! Please check your network connection and try again"),
+        "Choose_another_medication":
+            MessageLookupByLibrary.simpleMessage("Choose another medication"),
         "Choose_medicine":
             MessageLookupByLibrary.simpleMessage("Choose medicine"),
         "Choose_one_or_more_days":

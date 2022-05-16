@@ -1,14 +1,17 @@
 import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/medicine_logic.dart';
+import 'package:anthealth_mobile/logics/midical_directory_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddPrescriptionMedicinePage extends StatefulWidget {
@@ -30,6 +33,182 @@ class AddPrescriptionMedicinePage extends StatefulWidget {
 
 class _AddPrescriptionMedicinePageState
     extends State<AddPrescriptionMedicinePage> {
+  List<MedicineData> source = [];
+  List<MedicalDirectoryAlphabetMarkData> data = [];
+  ScrollController controller = ScrollController();
+  FocusNode focusNode = FocusNode();
+  bool showSearchBar = true;
+  DigitalMedicine medicine =
+      DigitalMedicine("", "", 0, 0, 0, [], [], 0, "", "", "");
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.medicine != null) medicine = widget.medicine!;
+    BlocProvider.of<MedicalRecordCubit>(widget.superContext)
+        .getMedications()
+        .then((value) => setState(() {
+              source = value;
+              data = MedicalDirectoryLogic.formatMedicationToMaskList(source);
+            }));
+    controller.addListener(() {
+      if (controller.position.userScrollDirection == ScrollDirection.forward) {
+        setState(() => showSearchBar = true);
+      }
+      if (controller.position.userScrollDirection == ScrollDirection.reverse) {
+        FocusScope.of(context).unfocus();
+        setState(() => showSearchBar = false);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) => TemplateFormPage(
+      title: (widget.medicine == null)
+          ? S.of(context).Add_medicine
+          : S.of(context).Update_medicine,
+      back: () => Navigator.of(context).pop(),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      marginTop: 15,
+      content: (medicine.name == "")
+          ? buildContent(context)
+          : new AddPrescriptionMedicine(
+              superContext: widget.superContext,
+              medicine: medicine,
+              change: (widget.medicine == null)
+                  ? () {
+                      setState(() {
+                        showSearchBar = true;
+                        data = MedicalDirectoryLogic.formatMedicationToMaskList(
+                            source);
+                        medicine = DigitalMedicine(
+                            "", "", 0, 0, 0, [], [], 0, "", "", "");
+                      });
+                    }
+                  : null,
+              result: (result) => widget.result(result)));
+
+  // Content
+  Widget buildContent(BuildContext context) => Container(
+      height: MediaQuery.of(context).size.height - 109,
+      child: Stack(children: [
+        ListView.builder(
+            controller: controller,
+            itemBuilder: (context, i) {
+              if (i == 0) {
+                return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(height: 104),
+                      if (data.length == 0) SizedBox(height: 32),
+                      if (data.length == 0) Text(S.of(context).No_data)
+                    ]);
+              }
+              return buildContact(context, data[i - 1]);
+            },
+            itemCount: data.length + 1),
+        AnimatedContainer(
+            duration: Duration(milliseconds: 400),
+            height: showSearchBar ? 112 : 0,
+            color: Colors.white,
+            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              Expanded(
+                  child: CommonTextField.box(
+                      hintText: S.of(context).Quick_lookup,
+                      textColor: AnthealthColors.primary1,
+                      context: context,
+                      maxLines: 1,
+                      autofocus: false,
+                      onChanged: (value) {
+                        setState(() {
+                          if (value != "")
+                            data = MedicalDirectoryLogic.medicationFilter(
+                                source, value);
+                          else
+                            data = MedicalDirectoryLogic
+                                .formatMedicationToMaskList(source);
+                        });
+                      }))
+            ]))
+      ]));
+
+  Widget buildContact(
+          BuildContext context, MedicalDirectoryAlphabetMarkData mask) =>
+      GestureDetector(
+          onTap: () => setState(() {
+                medicine = DigitalMedicine(
+                    source[mask.index].getId(),
+                    source[mask.index].getName(),
+                    0,
+                    source[mask.index].getUnit(),
+                    source[mask.index].getUsage(),
+                    [0, 0, 0, 0],
+                    [],
+                    0,
+                    source[mask.index].getImagePath(),
+                    source[mask.index].getURL(),
+                    source[mask.index].getNote());
+              }),
+          child: Container(
+              color: Colors.transparent,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (mask.mark)
+                      Padding(
+                          padding: const EdgeInsets.only(top: 24, bottom: 10),
+                          child: Text(
+                              (mask.name.length != 0)
+                                  ? mask.name.substring(0, 1).toUpperCase()
+                                  : mask.highlight
+                                      .substring(0, 1)
+                                      .toUpperCase(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(color: AnthealthColors.black2))),
+                    if (mask.mark) CustomDivider.common(),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: RichText(
+                            overflow: TextOverflow.ellipsis,
+                            text: TextSpan(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1!
+                                    .copyWith(letterSpacing: 0.35),
+                                children: <TextSpan>[
+                                  TextSpan(text: mask.name),
+                                  TextSpan(
+                                      text: mask.highlight,
+                                      style: TextStyle(
+                                          color: AnthealthColors.primary1)),
+                                  TextSpan(text: mask.subName)
+                                ]))),
+                    CustomDivider.common()
+                  ])));
+}
+
+class AddPrescriptionMedicine extends StatefulWidget {
+  const AddPrescriptionMedicine(
+      {Key? key,
+      required this.superContext,
+      required this.medicine,
+      this.change,
+      required this.result})
+      : super(key: key);
+
+  final BuildContext superContext;
+  final DigitalMedicine medicine;
+  final VoidCallback? change;
+  final Function(DigitalMedicine) result;
+
+  @override
+  State<AddPrescriptionMedicine> createState() =>
+      _AddPrescriptionMedicineState();
+}
+
+class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
   DigitalMedicine data =
       DigitalMedicine("", "", 0, 0, 0, [0, 0, 0, 0], [], 0, "", "", "");
   int customDosageCount = 0;
@@ -37,48 +216,31 @@ class _AddPrescriptionMedicinePageState
   @override
   void initState() {
     super.initState();
-    if (widget.medicine != null) data = widget.medicine!;
+    data = widget.medicine;
     for (int i = 0; i < 20; i++)
       data.customDosage.add(DigitalCustomMedicineDosage("", 0, false));
   }
 
   @override
   Widget build(BuildContext context) {
-    return TemplateFormPage(
-        title: (widget.medicine == null)
-            ? S.of(context).Add_medicine
-            : S.of(context).Update_medicine,
-        back: () => Navigator.pop(context),
-        content: buildContent(context));
+    return Padding(
+      padding: const EdgeInsets.only(top: 56, bottom: 32),
+      child: buildContent(context),
+    );
   }
 
   Widget buildContent(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      SizedBox(height: 16),
-      Row(children: [
-        Text(S.of(context).Choose_medicine + ":  ",
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1!
-                .copyWith(color: AnthealthColors.primary0)),
-        Expanded(
-            child: CommonTextField.select(
-                value: (data.name == "") ? null : data.name,
-                data: BlocProvider.of<MedicalRecordCubit>(widget.superContext)
-                    .getMedicineList(),
-                onChanged: (value) => setState(() {
-                      data = BlocProvider.of<MedicalRecordCubit>(
-                              widget.superContext)
-                          .getMedicine(BlocProvider.of<MedicalRecordCubit>(
-                                  widget.superContext)
-                              .getMedicineList()
-                              .indexOf(value!));
-                    })))
-      ]),
+      if (widget.change != null)
+        CommonButton.round(
+            context,
+            widget.change!,
+            S.of(context).Choose_another_medication,
+            AnthealthColors.primary0.withOpacity(0.64)),
       SizedBox(height: 16),
       if (data.name != "") buildMedicineEditing(context),
       SizedBox(height: 16),
-      if (data.name != "") buildButton(context),
+      if (data.name != "") buildButton(context)
     ]);
   }
 
@@ -113,10 +275,10 @@ class _AddPrescriptionMedicinePageState
 
   Column buildButton(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      if (widget.medicine == null)
+      if (widget.change != null)
         CommonButton.round(context, () => addMedicine(context),
             S.of(context).button_add_medicine, AnthealthColors.primary1),
-      if (widget.medicine != null)
+      if (widget.change == null)
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Expanded(
               child: CommonButton.round(
@@ -133,7 +295,7 @@ class _AddPrescriptionMedicinePageState
   }
 
   Widget buildLabel(BuildContext context) {
-    return Row(children: [
+    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
           height: 70.0,
           width: 70.0,
@@ -146,24 +308,27 @@ class _AddPrescriptionMedicinePageState
               child: Image.network(data.imagePath,
                   height: 70.0, width: 70.0, fit: BoxFit.cover))),
       SizedBox(width: 16),
-      Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(data.name, style: Theme.of(context).textTheme.headline6),
-            SizedBox(height: 6),
-            Text(
-                S.of(context).Unit +
-                    ": " +
-                    MedicineLogic.getUnit(context, data.unit),
-                style: Theme.of(context).textTheme.bodyText2),
-            SizedBox(height: 4),
-            Text(
-                S.of(context).Usage +
-                    ": " +
-                    MedicineLogic.getUsage(context, data.usage),
-                style: Theme.of(context).textTheme.bodyText2)
-          ])
+      SizedBox(
+        width: MediaQuery.of(context).size.width - 150,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(data.name, style: Theme.of(context).textTheme.headline6),
+              SizedBox(height: 6),
+              Text(
+                  S.of(context).Unit +
+                      ": " +
+                      MedicineLogic.getUnit(context, data.unit),
+                  style: Theme.of(context).textTheme.bodyText2),
+              SizedBox(height: 4),
+              Text(
+                  S.of(context).Usage +
+                      ": " +
+                      MedicineLogic.getUsage(context, data.usage),
+                  style: Theme.of(context).textTheme.bodyText2)
+            ]),
+      )
     ]);
   }
 
@@ -197,7 +362,7 @@ class _AddPrescriptionMedicinePageState
       SizedBox(height: 16),
       buildDosageComponent(context, 2, S.of(context).afternoon),
       SizedBox(height: 16),
-      buildDosageComponent(context, 3, S.of(context).night),
+      buildDosageComponent(context, 3, S.of(context).night)
     ]);
   }
 

@@ -2360,6 +2360,16 @@ class S {
     );
   }
 
+  /// `Choose another medication`
+  String get Choose_another_medication {
+    return Intl.message(
+      'Choose another medication',
+      name: 'Choose_another_medication',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Medicine-----------------------------`
   String get _Medicine {
     return Intl.message(
