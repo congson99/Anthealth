@@ -550,6 +550,36 @@ class S {
     );
   }
 
+  /// `General`
+  String get General {
+    return Intl.message(
+      'General',
+      name: 'General',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get Language {
+    return Intl.message(
+      'Language',
+      name: 'Language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto`
+  String get Auto {
+    return Intl.message(
+      'Auto',
+      name: 'Auto',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(

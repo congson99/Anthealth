@@ -20,9 +20,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FamilyPage extends StatelessWidget {
-  const FamilyPage({Key? key, required this.user}) : super(key: key);
+  const FamilyPage({Key? key, required this.user, required this.languageID})
+      : super(key: key);
 
   final User user;
+  final String languageID;
 
   @override
   Widget build(BuildContext context) {
@@ -158,8 +160,9 @@ class FamilyPage extends StatelessWidget {
 
   // Actions
   void setting(BuildContext context) {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => SettingsPage(appContext: context)));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) =>
+            SettingsPage(appContext: context, languageID: languageID)));
   }
 
   void onFamilyMemberTap(

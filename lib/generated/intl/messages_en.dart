@@ -62,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authenticate": MessageLookupByLibrary.simpleMessage("Authenticate"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Authentication code"),
+        "Auto": MessageLookupByLibrary.simpleMessage("Auto"),
         "Average_calo_in_per_day":
             MessageLookupByLibrary.simpleMessage("Average calo in per day"),
         "Average_calo_out_per_day":
@@ -173,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Food": MessageLookupByLibrary.simpleMessage("Food"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "General": MessageLookupByLibrary.simpleMessage("General"),
         "General_information":
             MessageLookupByLibrary.simpleMessage("General information"),
         "Goal": MessageLookupByLibrary.simpleMessage("Goal"),
@@ -215,6 +217,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Joined": MessageLookupByLibrary.simpleMessage("Joined"),
         "July": MessageLookupByLibrary.simpleMessage("July"),
         "June": MessageLookupByLibrary.simpleMessage("June"),
+        "Language": MessageLookupByLibrary.simpleMessage("Language"),
         "Latest": MessageLookupByLibrary.simpleMessage("Latest"),
         "Latest_record": MessageLookupByLibrary.simpleMessage("Latest record"),
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),

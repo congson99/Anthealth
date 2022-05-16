@@ -68,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Authenticate": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "Authentication_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
+        "Auto": MessageLookupByLibrary.simpleMessage("Tự động"),
         "Average_calo_in_per_day": MessageLookupByLibrary.simpleMessage(
             "Trung bình lượng calo đã nạp mỗi ngày"),
         "Average_calo_out_per_day": MessageLookupByLibrary.simpleMessage(
@@ -183,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Food": MessageLookupByLibrary.simpleMessage("Thức ăn"),
         "Forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "General": MessageLookupByLibrary.simpleMessage("Chung"),
         "General_information":
             MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "Goal": MessageLookupByLibrary.simpleMessage("Mục tiêu"),
@@ -228,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Joined": MessageLookupByLibrary.simpleMessage("Đã tham gia"),
         "July": MessageLookupByLibrary.simpleMessage("Tháng 7"),
         "June": MessageLookupByLibrary.simpleMessage("Tháng 6"),
+        "Language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "Latest": MessageLookupByLibrary.simpleMessage("Lần gần nhất"),
         "Latest_record":
             MessageLookupByLibrary.simpleMessage("Lần đo gần nhất"),

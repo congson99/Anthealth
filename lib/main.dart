@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/authentication/authentication_page.dart';
 import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/update_language_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -39,29 +40,30 @@ class MyApp extends StatelessWidget {
               ],
               supportedLocales: S.delegate.supportedLocales,
               locale: getUserLocale(state),
-              home: buildSystemUiOverlay());
+              home: buildSystemUiOverlay(context, state));
         }));
   }
 
-  Widget buildSystemUiOverlay() {
+  Widget buildSystemUiOverlay(BuildContext context, CubitState state) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark, child: buildAppContent());
+        value: SystemUiOverlayStyle.dark,
+        child: buildAppContent(context, state));
   }
 
-  Widget buildAppContent() {
-    return BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
-      if (state is UnauthenticatedState) return AuthenticationPage();
-      if (state is AuthenticatedState) return DashboardPage(user: state.user);
-      if (state is ConnectErrorState)
-        return ErrorPage(error: S.of(context).Cannot_connect);
-      return AppLoadingPage();
-    });
+  Widget buildAppContent(BuildContext context, CubitState state) {
+    if (state is UnauthenticatedState) return AuthenticationPage();
+    if (state is AuthenticatedState)
+      return DashboardPage(user: state.user, languageID: state.languageID);
+    if (state is ConnectErrorState)
+      return ErrorPage(error: S.of(context).Cannot_connect);
+    if (state is UpdateLanguageState)
+      return UpdateLanguagePage(languageID: state.languageID);
+    return AppLoadingPage();
   }
 
   dynamic getUserLocale(CubitState state) {
-    if (state is AuthenticatedState)
-      return Locale("vi");
-    else
-      return null;
+    if (state is AuthenticatedState) if (state.languageID != "")
+      return Locale(state.languageID);
+    return null;
   }
 }

@@ -71,12 +71,15 @@ class SectionComponent extends StatelessWidget {
       if (iconPath != null && title != "") SizedBox(width: 10),
       buildTitles(context, color0, color1),
       if (directionContent != null)
-        Text(directionContent!,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1!
-                .copyWith(fontSize: 18, color: color0)),
+        Padding(
+          padding: const EdgeInsets.only(left: 4, bottom: 1),
+          child: Text(directionContent!,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .copyWith(fontSize: 18, color: color0)),
+        ),
       if (isDirection != false)
         Image.asset(
             colorID == 0

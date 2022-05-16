@@ -40,7 +40,7 @@ class AppCubit extends Cubit<CubitState> {
     emit(UnauthenticatedState());
   }
 
-  void authenticated(String token) async {
+  void authenticated(String token, [String? languageID]) async {
     await CommonService.instance
         .send(MessageIDPath.getUserBaseData(), {}.toString());
     await CommonService.instance.client!.getData().then((value) {
@@ -53,7 +53,8 @@ class AppCubit extends Cubit<CubitState> {
                 ServerLogic.getData(value)["name"],
                 ServerLogic.getData(value)["avatar"],
                 "283912391",
-                "email@hca.com")));
+                "email@hca.com"),
+            languageID ?? ""));
       }
     });
   }
@@ -102,6 +103,12 @@ class AppCubit extends Cubit<CubitState> {
       }
     });
     return valid;
+  }
+
+  void updateLanguage(String languageID) async {
+    emit(UpdateLanguageState(languageID));
+    await Future.delayed(Duration(seconds: 1));
+    authenticated("token", languageID);
   }
 
   /// Local Storage

@@ -24,9 +24,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HealthPage extends StatelessWidget {
-  const HealthPage({Key? key, required this.user}) : super(key: key);
+  const HealthPage({Key? key, required this.user, required this.languageID})
+      : super(key: key);
 
   final User user;
+  final String languageID;
 
   @override
   Widget build(BuildContext context) =>
@@ -168,7 +170,8 @@ class HealthPage extends StatelessWidget {
 
   // Actions
   void setting(BuildContext context) {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => SettingsPage(appContext: context)));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) =>
+            SettingsPage(appContext: context, languageID: languageID)));
   }
 }
