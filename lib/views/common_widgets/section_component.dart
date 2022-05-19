@@ -12,7 +12,8 @@ class SectionComponent extends StatelessWidget {
       this.iconPath,
       required this.colorID,
       this.isWarning,
-      this.onTap})
+      this.onTap,
+      this.padding})
       : super(key: key);
 
   final String title;
@@ -24,6 +25,7 @@ class SectionComponent extends StatelessWidget {
   final int colorID;
   final bool? isWarning;
   final VoidCallback? onTap;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class SectionComponent extends StatelessWidget {
                 boxShadow: isWarning == true
                     ? [BoxShadow(color: color1, spreadRadius: 2)]
                     : []),
-            padding: const EdgeInsets.all(16),
+            padding: padding ?? EdgeInsets.all(16),
             child: buildContent(context, color0, color1)));
   }
 

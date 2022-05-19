@@ -134,9 +134,7 @@ class CommonTextField {
               .copyWith(color: AnthealthColors.black2),
           filled: true,
           fillColor: Colors.white,
-          contentPadding: (isNumber == true)
-              ? EdgeInsets.symmetric(horizontal: 16)
-              : EdgeInsets.all(16),
+          contentPadding: EdgeInsets.all(16),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AnthealthColors.black3, width: 0.5),
               borderRadius: BorderRadius.all(Radius.circular(12))),

@@ -1,4 +1,4 @@
-import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/logics/midical_directory_logic.dart';
@@ -45,7 +45,7 @@ class _AddPrescriptionMedicinePageState
   void initState() {
     super.initState();
     if (widget.medicine != null) medicine = widget.medicine!;
-    BlocProvider.of<MedicalRecordCubit>(widget.superContext)
+    BlocProvider.of<DashboardCubit>(widget.superContext)
         .getMedications()
         .then((value) => setState(() {
               source = value;
@@ -73,7 +73,6 @@ class _AddPrescriptionMedicinePageState
       content: (medicine.name == "")
           ? buildContent(context)
           : new AddPrescriptionMedicine(
-              superContext: widget.superContext,
               medicine: medicine,
               change: (widget.medicine == null)
                   ? () {
@@ -191,14 +190,9 @@ class _AddPrescriptionMedicinePageState
 
 class AddPrescriptionMedicine extends StatefulWidget {
   const AddPrescriptionMedicine(
-      {Key? key,
-      required this.superContext,
-      required this.medicine,
-      this.change,
-      required this.result})
+      {Key? key, required this.medicine, this.change, required this.result})
       : super(key: key);
 
-  final BuildContext superContext;
   final DigitalMedicine medicine;
   final VoidCallback? change;
   final Function(DigitalMedicine) result;

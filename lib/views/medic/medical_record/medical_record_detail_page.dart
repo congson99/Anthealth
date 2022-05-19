@@ -22,11 +22,13 @@ import 'package:intl/intl.dart';
 class MedicalRecordDetailPage extends StatelessWidget {
   const MedicalRecordDetailPage(
       {Key? key,
-       this.superContext,
+      this.dashboardContext,
+      this.superContext,
       required this.medicalRecordID,
       this.data})
       : super(key: key);
 
+  final BuildContext? dashboardContext;
   final BuildContext? superContext;
   final String medicalRecordID;
   final FamilyMemberData? data;
@@ -230,9 +232,9 @@ class MedicalRecordDetailPage extends StatelessWidget {
         children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text(S.of(context).Medicine,
-                    style: Theme.of(context).textTheme.subtitle1),
+                    style: Theme.of(context).textTheme.subtitle2),
                 Text(S.of(context).Quantity,
-                    style: Theme.of(context).textTheme.subtitle1)
+                    style: Theme.of(context).textTheme.subtitle2)
               ]),
               SizedBox(height: 8),
               Divider(height: 1, thickness: 1, color: AnthealthColors.black1)
@@ -270,7 +272,9 @@ class MedicalRecordDetailPage extends StatelessWidget {
   void edit(BuildContext context, MedicalRecordDetailData data) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => MedicalRecordAddPage(
-            superContext: superContext!, medicalRecordDetailData: data)));
+            dashboardContext: dashboardContext!,
+            superContext: superContext!,
+            medicalRecordDetailData: data)));
   }
 
   void delete(BuildContext context) {

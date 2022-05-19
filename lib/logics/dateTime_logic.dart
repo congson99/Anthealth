@@ -131,6 +131,9 @@ class DateTimeLogic {
     if (time.year == DateTime.now().year &&
         time.month == DateTime.now().month &&
         time.day == DateTime.now().day - 1) return S.of(context).Yesterday;
+    if (time.year == DateTime.now().year &&
+        time.month == DateTime.now().month &&
+        time.day == DateTime.now().day + 1) return S.of(context).Tomorrow;
     return DateFormat(format).format(time);
   }
 

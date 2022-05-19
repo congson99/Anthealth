@@ -30,4 +30,42 @@ class CustomDivider {
         Image.asset("assets/support_component/half_circle_left_bla3.png",
             height: 24, width: 8)
       ]));
+
+  static Widget timeLine(double height, bool pass, bool upcoming,
+      DateTime before, DateTime after) {
+    if (pass)
+      return Container(
+          height: height,
+          width: 24,
+          alignment: Alignment.center,
+          child: Container(
+              height: height, width: 4, color: AnthealthColors.secondary1));
+    if (upcoming)
+      return Container(
+          height: height,
+          width: 24,
+          alignment: Alignment.center,
+          child: Container(
+              height: height, width: 4, color: AnthealthColors.black4));
+    int longTime =
+        after.hour * 60 + after.minute - before.hour * 60 - before.minute;
+    int passTime = DateTime.now().hour * 60 +
+        DateTime.now().minute -
+        before.hour * 60 -
+        before.minute;
+    return Container(
+        height: height,
+        width: 24,
+        alignment: Alignment.centerRight,
+        child: Column(children: [
+          Expanded(
+              flex: (passTime > 120) ? passTime * 2 : passTime,
+              child: Container(width: 4, color: AnthealthColors.secondary1)),
+          Image.asset("assets/app_icon/common/reminder_sec0.png",
+              width: 24, fit: BoxFit.fitWidth),
+          Expanded(
+              flex: longTime - passTime,
+              child: Container(width: 4, color: AnthealthColors.black4))
+        ]));
+  }
 }

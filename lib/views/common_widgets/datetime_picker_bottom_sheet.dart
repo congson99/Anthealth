@@ -87,7 +87,6 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
                 height: 150,
                 child: CupertinoDatePicker(
                     initialDateTime: _time,
-                    minimumDate: DateTime(1900),
                     maximumDate: DateTime(DateTime.now().year,
                         DateTime.now().month, DateTime.now().day + 1),
                     onDateTimeChanged: (DateTime value) =>
@@ -109,7 +108,6 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
                 height: 150,
                 child: CupertinoDatePicker(
                     initialDateTime: _date,
-                    minimumDate: DateTime(1900),
                     maximumDate: (widget.isFuture == true)
                         ? DateTime(3000)
                         : DateTime.now(),

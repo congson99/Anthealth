@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Active_reminders":
+            MessageLookupByLibrary.simpleMessage("Active reminders"),
         "Activity": MessageLookupByLibrary.simpleMessage("Activity"),
         "Activity_calo": MessageLookupByLibrary.simpleMessage("Calo"),
         "Activity_steps": MessageLookupByLibrary.simpleMessage("Steps"),
@@ -55,6 +57,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Admin": MessageLookupByLibrary.simpleMessage("Admin"),
         "All_communities":
             MessageLookupByLibrary.simpleMessage("All communities"),
+        "All_prescription":
+            MessageLookupByLibrary.simpleMessage("All prescriptions"),
+        "All_reminder": MessageLookupByLibrary.simpleMessage("All reminders"),
         "All_time": MessageLookupByLibrary.simpleMessage("All time"),
         "April": MessageLookupByLibrary.simpleMessage("April"),
         "Attach": MessageLookupByLibrary.simpleMessage("Attach"),
@@ -100,6 +105,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Connect with doctors"),
         "Consumed": MessageLookupByLibrary.simpleMessage("Consumed"),
         "Content": MessageLookupByLibrary.simpleMessage("Content"),
+        "Create_new_reminders": MessageLookupByLibrary.simpleMessage(
+            "Create new reminders from prescriptions"),
+        "Create_prescription":
+            MessageLookupByLibrary.simpleMessage("Create prescription"),
+        "Create_reminder":
+            MessageLookupByLibrary.simpleMessage("Create reminder"),
         "Customized_by_week":
             MessageLookupByLibrary.simpleMessage("Customized by week"),
         "Day": MessageLookupByLibrary.simpleMessage("Day"),
@@ -130,6 +141,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Doctor directory"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Doctor page"),
         "Done_medicine_box": MessageLookupByLibrary.simpleMessage("DONE"),
+        "Done_reminders":
+            MessageLookupByLibrary.simpleMessage("Finished reminders"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Dosage"),
         "Drank": MessageLookupByLibrary.simpleMessage("Drank"),
         "Drink_water": MessageLookupByLibrary.simpleMessage("Water"),
@@ -143,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edit temperature data"),
         "Edit_weight": MessageLookupByLibrary.simpleMessage("Edit weight data"),
         "Email": MessageLookupByLibrary.simpleMessage("Email"),
+        "End": MessageLookupByLibrary.simpleMessage("End"),
         "Enter_confirm_password":
             MessageLookupByLibrary.simpleMessage("Please enter your password"),
         "Enter_email":
@@ -278,6 +292,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Post": MessageLookupByLibrary.simpleMessage("Post"),
         "Post_to": MessageLookupByLibrary.simpleMessage("Post to"),
         "Prescription": MessageLookupByLibrary.simpleMessage("Prescription"),
+        "Prescription_from_medical_records":
+            MessageLookupByLibrary.simpleMessage(
+                "Prescriptions from medical records"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Previous"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
@@ -300,6 +317,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("The email was registered!"),
         "Remaining": MessageLookupByLibrary.simpleMessage("Remaining"),
+        "Reminder_times":
+            MessageLookupByLibrary.simpleMessage("Reminder times"),
         "Remove_family_member": MessageLookupByLibrary.simpleMessage(
             "Remove member from the family"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
@@ -307,6 +326,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Required content"),
         "Select": MessageLookupByLibrary.simpleMessage("Select"),
+        "Self_create_prescription":
+            MessageLookupByLibrary.simpleMessage("Self-created prescriptions"),
         "September": MessageLookupByLibrary.simpleMessage("September"),
         "Serving": MessageLookupByLibrary.simpleMessage("Serving"),
         "Set_new_password":
@@ -316,6 +337,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Smart_diagnosis":
             MessageLookupByLibrary.simpleMessage("Smart diagnosis"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "Start": MessageLookupByLibrary.simpleMessage("Start"),
         "Stats_today": MessageLookupByLibrary.simpleMessage("Stats for today"),
         "Steps": MessageLookupByLibrary.simpleMessage("Steps"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Steps"),
@@ -328,6 +350,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Today": MessageLookupByLibrary.simpleMessage("Today"),
         "Today_achievement":
             MessageLookupByLibrary.simpleMessage("Today\'s achievement"),
+        "Tomorrow": MessageLookupByLibrary.simpleMessage("Tomorrow"),
         "Total_calories":
             MessageLookupByLibrary.simpleMessage("Total calories"),
         "Total_steps": MessageLookupByLibrary.simpleMessage("Total steps"),
@@ -421,6 +444,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_login": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "button_no": MessageLookupByLibrary.simpleMessage("NO"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "button_reuse_reminder":
+            MessageLookupByLibrary.simpleMessage("REUSE THIS REMINDER"),
+        "button_stop_reminder":
+            MessageLookupByLibrary.simpleMessage("STOP THIS REMINDER"),
         "button_update": MessageLookupByLibrary.simpleMessage("UPDATE"),
         "button_update_medical_record":
             MessageLookupByLibrary.simpleMessage("UPDATE MEDICAL RECORD"),
@@ -471,12 +498,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "months_ago": MessageLookupByLibrary.simpleMessage(" months ago"),
         "morning": MessageLookupByLibrary.simpleMessage("morning"),
         "night": MessageLookupByLibrary.simpleMessage("night"),
+        "no_active_reminders": MessageLookupByLibrary.simpleMessage(
+            "There are no active reminders"),
+        "no_done_reminders":
+            MessageLookupByLibrary.simpleMessage("There are no done reminders"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "You have no records during this period"),
         "no_medical_record":
             MessageLookupByLibrary.simpleMessage("You have no medical records"),
         "no_medicine_in_box": MessageLookupByLibrary.simpleMessage(
             "This medicine box is empty. Let\'s add medicine!"),
+        "no_prescription":
+            MessageLookupByLibrary.simpleMessage("There are no prescriptions"),
+        "no_reminder": MessageLookupByLibrary.simpleMessage(
+            "You have no reminders for this day"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
             "You have not added any data for this section"),
         "noon": MessageLookupByLibrary.simpleMessage("noon"),

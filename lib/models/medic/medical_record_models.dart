@@ -171,6 +171,11 @@ class MedicineData {
         data.getURL(),
         value);
   }
+
+  static MedicineData formatFromDigitalMedicine(DigitalMedicine data) {
+    return MedicineData(data.id, data.name, data.quantity, data.unit,
+        data.usage, data.imagePath, data.url, data.note);
+  }
 }
 
 class DigitalMedicine {

@@ -9,7 +9,7 @@ import 'package:anthealth_mobile/views/family/family_member_health.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class FamilyMemberPage extends StatelessWidget {
   const FamilyMemberPage(
@@ -63,7 +63,7 @@ class FamilyMemberPage extends StatelessWidget {
                 .bodyText1!
                 .copyWith(color: AnthealthColors.black2)),
         InkWell(
-            onTap: () => launch("tel://" + member.phoneNumber),
+            onTap: () => launchUrlString("tel://" + member.phoneNumber),
             child: Text(member.phoneNumber,
                 style: Theme.of(context)
                     .textTheme
@@ -78,7 +78,7 @@ class FamilyMemberPage extends StatelessWidget {
                 .bodyText1!
                 .copyWith(color: AnthealthColors.black2)),
         InkWell(
-            onTap: () => launch("mailto://" + member.email),
+            onTap: () => launchUrlString("mailto://" + member.email),
             child: Text(member.email,
                 style: Theme.of(context)
                     .textTheme
@@ -92,7 +92,7 @@ class FamilyMemberPage extends StatelessWidget {
     return Row(children: [
       Expanded(
           child: GestureDetector(
-              onTap: () => launch("tel://" + member.phoneNumber),
+              onTap: () => launchUrlString("tel://" + member.phoneNumber),
               child: Container(
                   decoration: BoxDecoration(
                       color: AnthealthColors.warning5,
@@ -189,7 +189,7 @@ class FamilyMemberPage extends StatelessWidget {
 
   // Actions
   void call(String phoneNumber) {
-    launch("tel://" + phoneNumber);
+    launchUrlString("tel://" + phoneNumber);
   }
 
   void messenger() {}

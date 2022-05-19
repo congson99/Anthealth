@@ -12,7 +12,7 @@ import 'package:anthealth_mobile/views/medic/medical_directory/medical_directory
 import 'package:anthealth_mobile/views/medic/medical_map/medical_map_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_lookup/medication_lookup_page.dart';
-import 'package:anthealth_mobile/views/medic/medicine_box/medicine_box_add_page.dart';
+import 'package:anthealth_mobile/views/medic/medication_reminder/medication_reminder_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -77,8 +77,9 @@ class MedicPage extends StatelessWidget {
       SectionComponent(
           title: S.of(context).Medication_reminder,
           colorID: 1,
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => MedicineBoxAddPage())),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) =>
+                  MedicationReminderPage(dashboardContext: context))),
           iconPath: "assets/app_icon/common/reminder_sec0.png"),
       SizedBox(height: 16),
       SectionComponent(

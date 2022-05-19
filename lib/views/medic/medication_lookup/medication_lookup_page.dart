@@ -9,7 +9,7 @@ import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MedicationLookupPage extends StatefulWidget {
   const MedicationLookupPage({Key? key, required this.dashboardContext})
@@ -104,7 +104,7 @@ class _MedicationLookupPageState extends State<MedicationLookupPage> {
   Widget buildContact(
           BuildContext context, MedicalDirectoryAlphabetMarkData mask) =>
       GestureDetector(
-          onTap: () => launch(source[mask.index].getURL()),
+          onTap: () => launchUrlString(source[mask.index].getURL()),
           child: Container(
               color: Colors.transparent,
               child: Column(

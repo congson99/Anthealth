@@ -122,6 +122,7 @@ class MedicalRecordPage extends StatelessWidget {
                       onTap: () {
                         //Todo
                       },
+                      isDirection: false,
                       colorID: 1)))
               .toList());
 
@@ -161,6 +162,7 @@ class MedicalRecordPage extends StatelessWidget {
             isDirection: false,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => MedicalRecordDetailPage(
+                    dashboardContext: dashboardContext,
                     superContext: context,
                     medicalRecordID: mData.id,
                     data: data))))
@@ -175,6 +177,7 @@ class MedicalRecordPage extends StatelessWidget {
 
   void add(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => MedicalRecordAddPage(superContext: context)));
+        builder: (_) => MedicalRecordAddPage(
+            dashboardContext: dashboardContext!, superContext: context)));
   }
 }

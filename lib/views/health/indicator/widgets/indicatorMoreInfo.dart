@@ -3,7 +3,7 @@ import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class IndicatorMoreInfo extends StatelessWidget {
   const IndicatorMoreInfo({Key? key, required this.information})
@@ -36,7 +36,7 @@ class IndicatorMoreInfo extends StatelessWidget {
                           fontFamily: 'RobotoMedium'),
                       recognizer: new TapGestureRecognizer()
                         ..onTap = () {
-                          launch(information.getUrl());
+                          launchUrlString(information.getUrl());
                         })
               ])))
         ]));

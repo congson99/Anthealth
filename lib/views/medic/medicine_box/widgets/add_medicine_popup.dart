@@ -7,7 +7,7 @@ import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AddMedicinePopup extends StatefulWidget {
   const AddMedicinePopup(
@@ -166,7 +166,7 @@ class _AddMedicinePopupState extends State<AddMedicinePopup> {
                     style: Theme.of(context).textTheme.bodyText2),
                 SizedBox(height: 4),
                 InkWell(
-                    onTap: () => launch(medicine.getURL()),
+                    onTap: () => launchUrlString(medicine.getURL()),
                     child: Text(S.of(context).Learn_more,
                         style: Theme.of(context)
                             .textTheme
@@ -235,13 +235,13 @@ class _AddMedicinePopupState extends State<AddMedicinePopup> {
     if (widget.index != null) {
       BlocProvider.of<MedicineBoxCubit>(widget.superContext)
           .updateData(widget.state, 3, [widget.index, medicine]);
-      if (medicine.getQuantity() == 0) ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(S.of(context).Delete_medicine +
-              ' ' +
-              S.of(context).successfully +
-              '!')));
+      if (medicine.getQuantity() == 0)
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(S.of(context).Delete_medicine +
+                ' ' +
+                S.of(context).successfully +
+                '!')));
       Navigator.of(context).pop();
-
     }
   }
 

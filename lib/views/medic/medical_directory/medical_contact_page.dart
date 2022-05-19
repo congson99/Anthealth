@@ -6,7 +6,7 @@ import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medical_directory/medical_contact_map_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MedicalContactPage extends StatelessWidget {
   const MedicalContactPage({Key? key, required this.contact}) : super(key: key);
@@ -72,7 +72,7 @@ class MedicalContactPage extends StatelessWidget {
               .copyWith(color: AnthealthColors.black2)),
       SizedBox(height: 8),
       InkWell(
-          onTap: () => launch("tel://" + content),
+          onTap: () => launchUrlString("tel://" + content),
           child: Text(content,
               style: Theme.of(context)
                   .textTheme

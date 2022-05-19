@@ -2120,6 +2120,16 @@ class S {
     );
   }
 
+  /// `You have no reminders for this day`
+  String get no_reminder {
+    return Intl.message(
+      'You have no reminders for this day',
+      name: 'no_reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Number of record`
   String get Number_of_record {
     return Intl.message(
@@ -2395,6 +2405,136 @@ class S {
     return Intl.message(
       'Choose another medication',
       name: 'Choose_another_medication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All reminders`
+  String get All_reminder {
+    return Intl.message(
+      'All reminders',
+      name: 'All_reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All prescriptions`
+  String get All_prescription {
+    return Intl.message(
+      'All prescriptions',
+      name: 'All_prescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active reminders`
+  String get Active_reminders {
+    return Intl.message(
+      'Active reminders',
+      name: 'Active_reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished reminders`
+  String get Done_reminders {
+    return Intl.message(
+      'Finished reminders',
+      name: 'Done_reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no active reminders`
+  String get no_active_reminders {
+    return Intl.message(
+      'There are no active reminders',
+      name: 'no_active_reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no done reminders`
+  String get no_done_reminders {
+    return Intl.message(
+      'There are no done reminders',
+      name: 'no_done_reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminder times`
+  String get Reminder_times {
+    return Intl.message(
+      'Reminder times',
+      name: 'Reminder_times',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create new reminders from prescriptions`
+  String get Create_new_reminders {
+    return Intl.message(
+      'Create new reminders from prescriptions',
+      name: 'Create_new_reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create reminder`
+  String get Create_reminder {
+    return Intl.message(
+      'Create reminder',
+      name: 'Create_reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Self-created prescriptions`
+  String get Self_create_prescription {
+    return Intl.message(
+      'Self-created prescriptions',
+      name: 'Self_create_prescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prescriptions from medical records`
+  String get Prescription_from_medical_records {
+    return Intl.message(
+      'Prescriptions from medical records',
+      name: 'Prescription_from_medical_records',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no prescriptions`
+  String get no_prescription {
+    return Intl.message(
+      'There are no prescriptions',
+      name: 'no_prescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create prescription`
+  String get Create_prescription {
+    return Intl.message(
+      'Create prescription',
+      name: 'Create_prescription',
       desc: '',
       args: [],
     );
@@ -2815,6 +2955,26 @@ class S {
     return Intl.message(
       'DONE',
       name: 'Done_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `STOP THIS REMINDER`
+  String get button_stop_reminder {
+    return Intl.message(
+      'STOP THIS REMINDER',
+      name: 'button_stop_reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REUSE THIS REMINDER`
+  String get button_reuse_reminder {
+    return Intl.message(
+      'REUSE THIS REMINDER',
+      name: 'button_reuse_reminder',
       desc: '',
       args: [],
     );
@@ -3600,6 +3760,16 @@ class S {
     );
   }
 
+  /// `Tomorrow`
+  String get Tomorrow {
+    return Intl.message(
+      'Tomorrow',
+      name: 'Tomorrow',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// ` hour ago`
   String get hour_ago {
     return Intl.message(
@@ -3655,6 +3825,26 @@ class S {
     return Intl.message(
       ' minutes ago',
       name: 'minutes_ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get Start {
+    return Intl.message(
+      'Start',
+      name: 'Start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End`
+  String get End {
+    return Intl.message(
+      'End',
+      name: 'End',
       desc: '',
       args: [],
     );

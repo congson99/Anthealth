@@ -21,9 +21,13 @@ import 'package:intl/intl.dart';
 
 class MedicalRecordAddPage extends StatefulWidget {
   const MedicalRecordAddPage(
-      {Key? key, required this.superContext, this.medicalRecordDetailData})
+      {Key? key,
+      required this.dashboardContext,
+      required this.superContext,
+      this.medicalRecordDetailData})
       : super(key: key);
 
+  final BuildContext dashboardContext;
   final BuildContext superContext;
   final MedicalRecordDetailData? medicalRecordDetailData;
 
@@ -266,7 +270,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
             child: GestureDetector(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => AddPrescriptionMedicinePage(
-                        superContext: widget.superContext,
+                        superContext: widget.dashboardContext,
                         result: (medicine) =>
                             setState(() => data.prescription.add(medicine))))),
                 child: Container(

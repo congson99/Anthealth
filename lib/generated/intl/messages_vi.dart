@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Active_reminders":
+            MessageLookupByLibrary.simpleMessage("Nhắc nhở đang hoạt động"),
         "Activity": MessageLookupByLibrary.simpleMessage("Chỉ số hoạt động"),
         "Activity_calo": MessageLookupByLibrary.simpleMessage("Chỉ số calo"),
         "Activity_steps":
@@ -61,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Admin": MessageLookupByLibrary.simpleMessage("Quản trị viên"),
         "All_communities":
             MessageLookupByLibrary.simpleMessage("Tất cả cộng đồng"),
+        "All_prescription":
+            MessageLookupByLibrary.simpleMessage("Tất cả đơn thuốc"),
+        "All_reminder": MessageLookupByLibrary.simpleMessage("Tất cả nhắc nhở"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
         "April": MessageLookupByLibrary.simpleMessage("Tháng 4"),
         "Attach": MessageLookupByLibrary.simpleMessage("Đính kèm"),
@@ -104,6 +109,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kết nối với bác sĩ"),
         "Consumed": MessageLookupByLibrary.simpleMessage("Đã tiêu thụ"),
         "Content": MessageLookupByLibrary.simpleMessage("Nội dung"),
+        "Create_new_reminders": MessageLookupByLibrary.simpleMessage(
+            "Tạo nhắc nhở mới từ các đơn thuốc"),
+        "Create_prescription":
+            MessageLookupByLibrary.simpleMessage("Tạo đơn thuốc"),
+        "Create_reminder": MessageLookupByLibrary.simpleMessage("Tạo nhắc nhở"),
         "Customized_by_week":
             MessageLookupByLibrary.simpleMessage("Tuỳ chỉnh theo tuần"),
         "Day": MessageLookupByLibrary.simpleMessage("Ngày"),
@@ -134,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
         "Done_medicine_box":
             MessageLookupByLibrary.simpleMessage("THÊM HỘP THUỐC"),
+        "Done_reminders":
+            MessageLookupByLibrary.simpleMessage("Nhắc nhở đã hoàn thành"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Liều dùng"),
         "Drank": MessageLookupByLibrary.simpleMessage("Đã uống"),
         "Drink_water": MessageLookupByLibrary.simpleMessage("Uống nước"),
@@ -150,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Edit_weight":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu cân nặng"),
         "Email": MessageLookupByLibrary.simpleMessage("Email"),
+        "End": MessageLookupByLibrary.simpleMessage("Kết thúc"),
         "Enter_confirm_password": MessageLookupByLibrary.simpleMessage(
             "Vui lòng xác nhận lại mật khẩu"),
         "Enter_email":
@@ -294,6 +307,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Post": MessageLookupByLibrary.simpleMessage("Đăng"),
         "Post_to": MessageLookupByLibrary.simpleMessage("Đăng vào"),
         "Prescription": MessageLookupByLibrary.simpleMessage("Đơn thuốc"),
+        "Prescription_from_medical_records":
+            MessageLookupByLibrary.simpleMessage(
+                "Đơn thuốc từ hồ sơ khám bệnh"),
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Lần khám trước"),
         "Profile": MessageLookupByLibrary.simpleMessage("Hồ sơ cá nhân"),
@@ -315,6 +331,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
         "Remaining": MessageLookupByLibrary.simpleMessage("Còn lại"),
+        "Reminder_times": MessageLookupByLibrary.simpleMessage("Lần nhắc nhở"),
         "Remove_family_member": MessageLookupByLibrary.simpleMessage(
             "Loại thành viên ra khỏi gia đình"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Lặp lại"),
@@ -322,6 +339,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Nội dung bắt buộc"),
         "Select": MessageLookupByLibrary.simpleMessage("Chọn"),
+        "Self_create_prescription":
+            MessageLookupByLibrary.simpleMessage("Đơn thuốc tự tạo"),
         "September": MessageLookupByLibrary.simpleMessage("Tháng 9"),
         "Serving": MessageLookupByLibrary.simpleMessage("Khẩu phần"),
         "Set_new_password":
@@ -332,6 +351,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Smart_diagnosis":
             MessageLookupByLibrary.simpleMessage("Chẩn đoán thông minh"),
         "Spo2": MessageLookupByLibrary.simpleMessage("SPO2"),
+        "Start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
         "Stats_today": MessageLookupByLibrary.simpleMessage("Thống kê hôm nay"),
         "Steps": MessageLookupByLibrary.simpleMessage("Bước chân"),
         "Steps_count": MessageLookupByLibrary.simpleMessage("Số bước"),
@@ -345,6 +365,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "Today_achievement":
             MessageLookupByLibrary.simpleMessage("Thành tích hôm nay"),
+        "Tomorrow": MessageLookupByLibrary.simpleMessage("Ngày mai"),
         "Total_calories":
             MessageLookupByLibrary.simpleMessage("Tổng lượng calo"),
         "Total_steps": MessageLookupByLibrary.simpleMessage("Tổng số bước"),
@@ -440,6 +461,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_login": MessageLookupByLibrary.simpleMessage("ĐĂNG NHẬP"),
         "button_no": MessageLookupByLibrary.simpleMessage("KHÔNG"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "button_reuse_reminder":
+            MessageLookupByLibrary.simpleMessage("TÁI SỬ DỤNG"),
+        "button_stop_reminder":
+            MessageLookupByLibrary.simpleMessage("NGƯNG SỬ DỤNG"),
         "button_update": MessageLookupByLibrary.simpleMessage("CẬP NHẬT"),
         "button_update_medical_record":
             MessageLookupByLibrary.simpleMessage("CẬP NHẬT HỒ SƠ"),
@@ -487,12 +512,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "mon": MessageLookupByLibrary.simpleMessage("T2"),
         "morning": MessageLookupByLibrary.simpleMessage("sáng"),
         "night": MessageLookupByLibrary.simpleMessage("tối"),
+        "no_active_reminders": MessageLookupByLibrary.simpleMessage(
+            "Không có nhắc nhở nào đang hoạt động"),
+        "no_done_reminders": MessageLookupByLibrary.simpleMessage(
+            "Không có nhắc nhở nào đã hoàn thành"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
         "no_medical_record": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có hồ sơ khám bệnh nào"),
         "no_medicine_in_box": MessageLookupByLibrary.simpleMessage(
             "Hộp thuốc đang rỗng. Hãy thêm thuốc!"),
+        "no_prescription":
+            MessageLookupByLibrary.simpleMessage("Không có đơn thuốc nào"),
+        "no_reminder": MessageLookupByLibrary.simpleMessage(
+            "Bạn không có lời nhắc nào vào ngày này"),
         "no_section_data": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa thêm dữ liệu nào cho mục này"),
         "noon": MessageLookupByLibrary.simpleMessage("trưa"),
