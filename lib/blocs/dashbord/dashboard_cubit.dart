@@ -25,18 +25,15 @@ class DashboardCubit extends Cubit<CubitState> {
     emit(HomeLoadingState());
     List<MedicalAppointment> medicalAppointment = [];
     List<ReminderMask> reminderMask = [];
-    await CommonService.instance
-        .send(MessageIDPath.getMedicalRecordPageData(), "");
-    await CommonService.instance.client!.getData().then((value) {
-      if (ServerLogic.checkMatchMessageID(
-          MessageIDPath.getMedicalRecordPageData(), value)) {
-        medicalAppointment.addAll(MedicalRecordPageData.formatData(
-                ServerLogic.getData(value)["listRecord"],
-                ServerLogic.getData(value)["listAppointment"])
-            .listAppointment);
-      }
-    });
     DateTime now = DateTime.now();
+    medicalAppointment.addAll([
+      MedicalAppointment(DateTime(now.year, now.month, now.day, 0, 0),
+          "Bệnh viện Chợ Rẫy", now, "Tái khám kiểm tra mắt"),
+      MedicalAppointment(DateTime(now.year, now.month, now.day + 1, 0, 0),
+          "Nha khoa ABC", now, "Hẹn khám răng"),
+      MedicalAppointment(DateTime(now.year, now.month, now.day + 50, 0, 0),
+          "Bệnh viện đại học y dược", now, "Kiểm tra sức khoẻ định kỳ")
+    ]);
     reminderMask.addAll([
       ReminderMask(
           "Name",
@@ -72,27 +69,13 @@ class DashboardCubit extends Cubit<CubitState> {
               "",
               "Peas da mol",
               24,
-              1,
-              2,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DateTime(now.year, now.month, now.day, 17, 0),
-          200,
-          ""),
-      ReminderMask(
-          "XX",
-          MedicineData(
-              "",
-              "Peas dmol",
-              24,
               0,
               2,
               "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
               "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
               "Morning"),
-          DateTime(now.year, now.month, now.day, 22, 30),
-          1,
+          DateTime(now.year, now.month, now.day + 1, 6, 0),
+          200,
           "")
     ]);
     List<dynamic> result = [];

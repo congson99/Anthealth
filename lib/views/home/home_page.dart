@@ -82,19 +82,29 @@ class HomePage extends StatelessWidget {
 
   Widget buildEventComponent(BuildContext context,
       {MedicalAppointment? medicalAppointment, ReminderMask? reminderMask}) {
-    if (medicalAppointment != null)
+    DateTime nowDay =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    if (medicalAppointment != null) {
+      int long = DateTime(
+              medicalAppointment.dateTime.year,
+              medicalAppointment.dateTime.month,
+              medicalAppointment.dateTime.day)
+          .difference(nowDay)
+          .inDays;
       return Padding(
           padding: const EdgeInsets.only(bottom: 16),
           child: SectionComponent(
-              title:
+              title: S.of(context).Medical_appointment +
+                  ((long == 0)
+                      ? " (" + S.of(context).Today + ")"
+                      : ((long == 1)
+                          ? " (" + S.of(context).Tomorrow + ")"
+                          : "")),
+              subTitle: S.of(context).Content + ": " + medicalAppointment.name,
+              subSubTitle:
                   DateFormat("dd.MM.yyyy").format(medicalAppointment.dateTime) +
                       ' - ' +
                       medicalAppointment.location,
-              subTitle: S.of(context).Previous_medical_record +
-                  ": " +
-                  DateFormat("dd.MM.yyyy").format(medicalAppointment.lastTime),
-              subSubTitle:
-                  S.of(context).Content + ": " + medicalAppointment.name,
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) =>
@@ -102,11 +112,24 @@ class HomePage extends StatelessWidget {
               },
               isDirection: false,
               colorID: 1));
-    else
+    } else {
+      int long = DateTime(reminderMask!.time.year, reminderMask.time.month,
+              reminderMask.time.day)
+          .difference(nowDay)
+          .inDays;
       return Padding(
           padding: const EdgeInsets.only(bottom: 16),
           child: SectionComponent(
-              title: DateFormat("HH:mm").format(reminderMask!.time) +
+              title: S.of(context).Medication_reminder +
+                  " (" +
+                  ((long == 0)
+                      ? S.of(context).Today
+                      : ((long == 1)
+                          ? S.of(context).Tomorrow
+                          : DateFormat("dd.MM.yyyy")
+                              .format(reminderMask.time))) +
+                  ")",
+              subTitle: DateFormat("HH:mm").format(reminderMask.time) +
                   " - " +
                   MedicineLogic.getUsage(
                       context, reminderMask.medicine.getUsage()) +
@@ -114,8 +137,9 @@ class HomePage extends StatelessWidget {
                   MedicineLogic.handleQuantity(reminderMask.quantity) +
                   " " +
                   MedicineLogic.getUnit(
-                      context, reminderMask.medicine.getUnit()),
-              subTitle: reminderMask.medicine.getName(),
+                      context, reminderMask.medicine.getUnit()) +
+                  " " +
+                  reminderMask.medicine.getName(),
               isDirection: false,
               colorID: 0,
               onTap: () {
@@ -124,6 +148,7 @@ class HomePage extends StatelessWidget {
                     builder: (_) =>
                         MedicationReminderPage(dashboardContext: context)));
               }));
+    }
   }
 
   /// Actions
