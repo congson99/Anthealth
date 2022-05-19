@@ -10,6 +10,8 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
+import 'package:anthealth_mobile/views/medic/medication_reminder/medication_reminder_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,7 @@ class HomePage extends StatelessWidget {
       SizedBox(height: 32),
       CustomDivider.common(),
       SizedBox(height: 16),
-      buildUpcoming(context, state),
+      buildUpcoming(context, state)
     ]);
   }
 
@@ -67,7 +69,7 @@ class HomePage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Upcoming_events, context),
       SizedBox(height: 16),
-      ...state.events.map((event) => buildEvent(context, event)),
+      ...state.events.map((event) => buildEvent(context, event))
     ]);
   }
 
@@ -94,27 +96,34 @@ class HomePage extends StatelessWidget {
               subSubTitle:
                   S.of(context).Content + ": " + medicalAppointment.name,
               onTap: () {
-                //Todo
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        MedicalRecordPage(dashboardContext: context)));
               },
               isDirection: false,
               colorID: 1));
     else
       return Padding(
-        padding: const EdgeInsets.only(bottom: 16),
-        child: SectionComponent(
-            title: DateFormat("HH:mm").format(reminderMask!.time) +
-                " - " +
-                MedicineLogic.getUsage(
-                    context, reminderMask.medicine.getUsage()) +
-                " " +
-                MedicineLogic.handleQuantity(reminderMask.quantity) +
-                " " +
-                MedicineLogic.getUnit(context, reminderMask.medicine.getUnit()),
-            subTitle: reminderMask.medicine.getName(),
-            isDirection: false,
-            colorID: 0,
-            onTap: () {}),
-      );
+          padding: const EdgeInsets.only(bottom: 16),
+          child: SectionComponent(
+              title: DateFormat("HH:mm").format(reminderMask!.time) +
+                  " - " +
+                  MedicineLogic.getUsage(
+                      context, reminderMask.medicine.getUsage()) +
+                  " " +
+                  MedicineLogic.handleQuantity(reminderMask.quantity) +
+                  " " +
+                  MedicineLogic.getUnit(
+                      context, reminderMask.medicine.getUnit()),
+              subTitle: reminderMask.medicine.getName(),
+              isDirection: false,
+              colorID: 0,
+              onTap: () {
+                BlocProvider.of<DashboardCubit>(context).medic();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        MedicationReminderPage(dashboardContext: context)));
+              }));
   }
 
   /// Actions

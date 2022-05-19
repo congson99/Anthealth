@@ -131,7 +131,7 @@ class DashboardCubit extends Cubit<CubitState> {
     });
   }
 
-  medic() async {
+  void medic() async {
     emit(MedicLoadingState());
     await CommonService.instance
         .send(MessageIDPath.getMedicData(), {}.toString());

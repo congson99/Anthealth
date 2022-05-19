@@ -170,7 +170,7 @@ class MedicalRecordPage extends StatelessWidget {
 
   /// Actions
   void back(BuildContext context) {
-    if (data == null)
+    if (data == null && dashboardContext != null)
       BlocProvider.of<DashboardCubit>(dashboardContext!).medic();
     Navigator.pop(context);
   }
