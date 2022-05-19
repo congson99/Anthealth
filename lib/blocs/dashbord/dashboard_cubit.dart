@@ -10,6 +10,7 @@ import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_directory_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
+import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +21,99 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   // Initial State
-  home() {
-    emit(HomeState());
+  home() async {
+    emit(HomeLoadingState());
+    List<MedicalAppointment> medicalAppointment = [];
+    List<ReminderMask> reminderMask = [];
+    await CommonService.instance
+        .send(MessageIDPath.getMedicalRecordPageData(), "");
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getMedicalRecordPageData(), value)) {
+        medicalAppointment.addAll(MedicalRecordPageData.formatData(
+                ServerLogic.getData(value)["listRecord"],
+                ServerLogic.getData(value)["listAppointment"])
+            .listAppointment);
+      }
+    });
+    DateTime now = DateTime.now();
+    reminderMask.addAll([
+      ReminderMask(
+          "Name",
+          MedicineData(
+              "",
+              "Paradol Paradol ",
+              30,
+              0,
+              0,
+              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+              ""),
+          DateTime(now.year, now.month, now.day, 7, 0),
+          1,
+          ""),
+      ReminderMask(
+          "XX",
+          MedicineData(
+              "",
+              "Pemol",
+              24,
+              0,
+              2,
+              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+              "Morning"),
+          DateTime(now.year, now.month, now.day, 17, 0),
+          1,
+          ""),
+      ReminderMask(
+          "XX",
+          MedicineData(
+              "",
+              "Peas da mol",
+              24,
+              1,
+              2,
+              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+              "Morning"),
+          DateTime(now.year, now.month, now.day, 17, 0),
+          200,
+          ""),
+      ReminderMask(
+          "XX",
+          MedicineData(
+              "",
+              "Peas dmol",
+              24,
+              0,
+              2,
+              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
+              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
+              "Morning"),
+          DateTime(now.year, now.month, now.day, 22, 30),
+          1,
+          "")
+    ]);
+    List<dynamic> result = [];
+    while (medicalAppointment.length + reminderMask.length > 0) {
+      if (medicalAppointment.length == 0) {
+        result.addAll(reminderMask);
+        break;
+      }
+      if (reminderMask.length == 0) {
+        result.addAll(medicalAppointment);
+        break;
+      }
+      if (medicalAppointment.first.dateTime.isBefore(reminderMask.first.time)) {
+        result.add(medicalAppointment.first);
+        medicalAppointment.removeAt(0);
+      } else {
+        result.add(reminderMask.first);
+        reminderMask.removeAt(0);
+      }
+    }
+    emit(HomeState(result));
   }
 
   health() async {
@@ -343,8 +435,9 @@ class DashboardCubit extends Cubit<CubitState> {
           utf8.decode(["A".codeUnits[0] + i ~/ 10]) +
               String.fromCharCodes(Iterable.generate(
                   20,
-                  (_) => 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz        '
-                      .codeUnitAt(Random().nextInt(60)))),
+                  (_) =>
+                      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz        '
+                          .codeUnitAt(Random().nextInt(60)))),
           0,
           Random().nextInt(3),
           Random().nextInt(4),
