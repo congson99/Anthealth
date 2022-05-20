@@ -186,7 +186,6 @@ class _AddMedicinePopupState extends State<AddMedicinePopup> {
       SizedBox(
           width: 70,
           child: CommonTextField.box(
-              isNumber: true,
               context: context,
               initialValue:
                   MedicineLogic.handleQuantity(medicine.getQuantity()),

@@ -2850,6 +2850,16 @@ class S {
     );
   }
 
+  /// `ADD`
+  String get button_add {
+    return Intl.message(
+      'ADD',
+      name: 'button_add',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `YES`
   String get button_yes {
     return Intl.message(

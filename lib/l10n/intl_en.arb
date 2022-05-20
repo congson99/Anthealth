@@ -279,6 +279,7 @@
   "button_delete": "DELETE",
   "button_close": "CLOSE",
   "button_edit": "EDIT",
+  "button_add": "ADD",
   "button_yes": "YES",
   "button_no": "NO",
   "button_done": "DONE",

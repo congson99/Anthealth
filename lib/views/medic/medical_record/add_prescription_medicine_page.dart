@@ -115,8 +115,9 @@ class _AddPrescriptionMedicinePageState
                   child: CommonTextField.box(
                       hintText: S.of(context).Quick_lookup,
                       textColor: AnthealthColors.primary1,
+                      textInputAction: TextInputAction.search,
+                      onEditingComplete: () => FocusScope.of(context).unfocus(),
                       context: context,
-                      maxLines: 1,
                       autofocus: false,
                       onChanged: (value) {
                         setState(() {
@@ -335,7 +336,8 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
       SizedBox(
           width: 70,
           child: CommonTextField.box(
-              isNumber: true,
+              textInputType: TextInputType.numberWithOptions(decimal: true),
+              textAlign: TextAlign.end,
               context: context,
               initialValue: (data.quantity == 0)
                   ? null
@@ -415,6 +417,7 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
       Expanded(
           child: CommonTextField.box(
               context: context,
+              maxLines: null,
               initialValue: data.note,
               onChanged: (String value) => setState(() {
                     data.note = value;
@@ -434,8 +437,9 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
       SizedBox(
           width: 70,
           child: CommonTextField.box(
-              isNumber: true,
+              textInputType: TextInputType.numberWithOptions(decimal: true),
               context: context,
+              textAlign: TextAlign.end,
               initialValue: (data.dosage[index] == 0)
                   ? null
                   : MedicineLogic.handleQuantity(data.dosage[index]),
@@ -471,7 +475,7 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
           SizedBox(
               width: 70,
               child: CommonTextField.box(
-                  isNumber: true,
+                  textInputType: TextInputType.numberWithOptions(decimal: true),
                   initialValue: (dosage.quantity == 0)
                       ? null
                       : MedicineLogic.handleQuantity(dosage.quantity),
@@ -491,7 +495,8 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
           style: Theme.of(context).textTheme.bodyText1),
       Expanded(
           child: CommonTextField.box(
-              isNumber: true,
+              textInputType: TextInputType.numberWithOptions(decimal: true),
+              textAlign: TextAlign.end,
               context: context,
               initialValue: "2",
               onChanged: (String value) => editFewDayRepeat(context, value))),

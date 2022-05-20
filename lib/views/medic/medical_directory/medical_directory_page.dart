@@ -86,6 +86,8 @@ class _MedicalDirectoryPageState extends State<MedicalDirectoryPage> {
                   child: CommonTextField.box(
                       hintText: S.of(context).Quick_lookup,
                       textColor: AnthealthColors.primary1,
+                      textInputAction: TextInputAction.search,
+                      onEditingComplete: () => FocusScope.of(context).unfocus(),
                       context: context,
                       maxLines: 1,
                       autofocus: false,

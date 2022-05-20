@@ -96,6 +96,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
                           data.getPassword(), data.confirmPassword()));
                   _disappearError();
                 }),
+            textInputAction: TextInputAction.next,
             context: context,
             focusNode: _nameFocus,
             errorText: (_errorName == '') ? null : _errorName,
@@ -109,6 +110,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
                   _disappearError();
                 }),
             context: context,
+            textInputAction: TextInputAction.next,
             focusNode: _usernameFocus,
             errorText: (_errorUsername == '') ? null : _errorUsername,
             labelText: S.of(context).Email),
@@ -121,6 +123,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
                   _disappearError();
                 }),
             context: context,
+            textInputAction: TextInputAction.next,
             focusNode: _passwordFocus,
             textEditingController: _passwordController,
             errorText: (_errorPassword == '') ? null : _errorPassword,
@@ -165,6 +168,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
   // Hepper functions
   void _onStepContinue(RegisterData data) {
     if (_currentStep == 0) {
+      FocusScope.of(context).unfocus();
       if (_checkName(data) && _checkUsername(data) && _checkPassword(data)) {
         BlocProvider.of<AuthenticationCubit>(context)
             .registerAccount(data)

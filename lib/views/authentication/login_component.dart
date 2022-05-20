@@ -93,6 +93,7 @@ class _LoginComponentState extends State<LoginComponent> {
                     _disappearError();
                   }),
               context: context,
+              textInputAction: TextInputAction.next,
               focusNode: _usernameFocus,
               textEditingController: _usernameController,
               errorText: (_errorUsername == 'null') ? null : _errorUsername,
@@ -155,6 +156,7 @@ class _LoginComponentState extends State<LoginComponent> {
   }
 
   void _loginAuthentication(BuildContext context, LoginData loginData) {
+    FocusScope.of(context).unfocus();
     if (_checkUsername(loginData.username) && _checkPassword(loginData)) {
       BlocProvider.of<AuthenticationCubit>(context)
           .getToken(loginData)

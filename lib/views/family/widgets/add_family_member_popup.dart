@@ -58,22 +58,19 @@ class _AddFamilyMemberPopupState extends State<AddFamilyMemberPopup> {
     return Padding(
         padding: const EdgeInsets.all(16),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Expanded(
-              child: CommonTextField.box(
-                  context: context,
-                  hintText: "Email",
-                  onChanged: (String value) => setState(() => email = value)),
-            ),
-            SizedBox(width: 12),
-            CommonButton.small(
-                context,
-                () => setState(() => member =
+          CommonTextField.box(
+              context: context,
+              textInputAction: TextInputAction.search,
+              onEditingComplete: () {
+                FocusScope.of(context).unfocus();
+                setState(() => member =
                     BlocProvider.of<DashboardCubit>(widget.dashboardContext)
-                        .findUser(email)),
-                S.of(context).Find,
-                AnthealthColors.primary1)
-          ]),
+                        .findUser(email));
+              },
+              autofocus: true,
+              maxLines: 1,
+              hintText: "Email",
+              onChanged: (String value) => setState(() => email = value)),
           SizedBox(height: 24),
           if (member != null && member!.id != "")
             Row(children: [

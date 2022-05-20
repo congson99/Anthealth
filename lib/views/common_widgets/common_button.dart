@@ -29,6 +29,11 @@ class CommonButton {
         context, S.of(context).button_ok, AnthealthColors.primary1, onTap);
   }
 
+  static Widget add(BuildContext context, VoidCallback onTap) {
+    return buildTemplate(
+        context, S.of(context).button_add, AnthealthColors.primary1, onTap);
+  }
+
   static Widget round(BuildContext context, VoidCallback onTap, String content,
       Color backgroundColor) {
     return GestureDetector(
@@ -62,7 +67,8 @@ class CommonButton {
                 if (imagePath != null)
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
-                    child: Image.asset(imagePath, height: 16, fit: BoxFit.fitHeight),
+                    child: Image.asset(imagePath,
+                        height: 16, fit: BoxFit.fitHeight),
                   ),
                 Text(content,
                     style: Theme.of(context)

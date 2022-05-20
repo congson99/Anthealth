@@ -72,9 +72,12 @@ class _AddCaloOutBottomSheetState extends State<AddCaloOutBottomSheet> {
                       width: 100,
                       child: CommonTextField.box(
                           context: context,
-                          isNumber: true,
+                          textInputType: TextInputType.number,
                           onChanged: (String value) => setState(() {
-                                data.min = int.parse(value);
+                                if (value == "")
+                                  data.min = 0;
+                                else
+                                  data.min = int.parse(value);
                               }))),
                   SizedBox(width: 8),
                   Text(S.of(context).min,
@@ -95,7 +98,7 @@ class _AddCaloOutBottomSheetState extends State<AddCaloOutBottomSheet> {
   Widget buildButton() {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       CommonButton.cancel(context, () => Navigator.of(context).pop()),
-      CommonButton.ok(context, () {
+      CommonButton.add(context, () {
         if (data.min > 0)
           widget.ok(data);
         else

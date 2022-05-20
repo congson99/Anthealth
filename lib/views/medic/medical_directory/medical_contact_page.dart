@@ -40,6 +40,7 @@ class MedicalContactPage extends StatelessWidget {
       SizedBox(height: 8),
       if (contact.getGPS().lat != 0 && contact.getGPS().long != 0)
         SectionComponent(
+            iconPath: "assets/app_icon/common/location_pri0.png",
             title: S.of(context).Show_on_map,
             colorID: 0,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(

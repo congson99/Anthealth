@@ -52,23 +52,26 @@ class MedicPage extends StatelessWidget {
         buildDirectory(context)
       ]);
 
-  Widget buildMedicalRecord(BuildContext context, MedicPageData pageData) =>
-      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        CommonText.section(S.of(context).Medical_record, context),
-        SizedBox(height: 16),
+  Widget buildMedicalRecord(BuildContext context, MedicPageData pageData) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CommonText.section(S.of(context).Medical_record, context),
+      SizedBox(height: 16),
+      SectionComponent(
+          title: S.of(context).Medical_history,
+          subTitle: (pageData.getLatestRecord() == "")
+              ? null
+              : S.of(context).Latest + ': ' + pageData.getLatestRecord(),
+          colorID: 0,
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => MedicalRecordPage(dashboardContext: context)))),
+      if (pageData.getLatestAppointment() != '') SizedBox(height: 16),
+      if (pageData.getLatestAppointment() != '')
         SectionComponent(
-            title: S.of(context).Medical_history,
-            subTitle: S.of(context).Latest + ': ' + pageData.getLatestRecord(),
-            colorID: 0,
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => MedicalRecordPage(dashboardContext: context)))),
-        if (pageData.getLatestAppointment() != '') SizedBox(height: 16),
-        if (pageData.getLatestAppointment() != '')
-          SectionComponent(
-              title: S.of(context).Medical_appointment,
-              subTitle: pageData.getLatestAppointment(),
-              colorID: 1)
-      ]);
+            title: S.of(context).Medical_appointment,
+            subTitle: pageData.getLatestAppointment(),
+            colorID: 1)
+    ]);
+  }
 
   Widget buildMedication(BuildContext context, MedicPageData pageData) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [

@@ -79,9 +79,14 @@ class _AddCaloInBottomSheetState extends State<AddCaloInBottomSheet> {
                       width: 100,
                       child: CommonTextField.box(
                           context: context,
-                          isNumber: true,
+                          textInputType:
+                              TextInputType.numberWithOptions(decimal: true),
+                          textAlign: TextAlign.end,
                           onChanged: (String value) => setState(() {
-                                data.serving = double.parse(value);
+                                if (value == "")
+                                  data.serving = 0;
+                                else
+                                  data.serving = double.parse(value);
                               }))),
                   SizedBox(width: 8),
                   Text(S.of(context).serving,
@@ -102,7 +107,7 @@ class _AddCaloInBottomSheetState extends State<AddCaloInBottomSheet> {
   Widget buildButton() {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       CommonButton.cancel(context, () => Navigator.of(context).pop()),
-      CommonButton.ok(context, () {
+      CommonButton.add(context, () {
         if (data.serving > 0)
           widget.ok(data);
         else

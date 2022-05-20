@@ -117,8 +117,10 @@ class _CreateReminderPageState extends State<CreateReminderPage> {
                 width: 70,
                 child: CommonTextField.box(
                     maxLines: 1,
+                    textAlign: TextAlign.end,
                     initialValue: MedicineLogic.handleQuantity(quantity),
-                    isNumber: true,
+                    textInputType:
+                        TextInputType.numberWithOptions(decimal: true),
                     context: context,
                     onChanged: (value) => updateQuantity(value))),
             Text(
@@ -168,7 +170,8 @@ class _CreateReminderPageState extends State<CreateReminderPage> {
                 SizedBox(
                   width: 100,
                   child: CommonTextField.box(
-                      isNumber: true,
+                      textInputType:
+                          TextInputType.numberWithOptions(decimal: true),
                       initialValue: MedicineLogic.handleQuantity(
                           reminder!.dayReminder[index].quantity),
                       hintText: S.of(context).Quantity,

@@ -445,6 +445,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "apply": MessageLookupByLibrary.simpleMessage("Bôi"),
         "apr": MessageLookupByLibrary.simpleMessage("T4"),
         "aug": MessageLookupByLibrary.simpleMessage("T8"),
+        "button_add": MessageLookupByLibrary.simpleMessage("THÊM"),
         "button_add_medical_record":
             MessageLookupByLibrary.simpleMessage("THÊM HỒ SƠ"),
         "button_add_medicine":

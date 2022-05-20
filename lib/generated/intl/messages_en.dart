@@ -428,6 +428,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
         "aug": MessageLookupByLibrary.simpleMessage("AUG"),
+        "button_add": MessageLookupByLibrary.simpleMessage("ADD"),
         "button_add_medical_record":
             MessageLookupByLibrary.simpleMessage("ADD MEDICAL RECORD"),
         "button_add_medicine":

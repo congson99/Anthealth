@@ -94,7 +94,7 @@ class _IndicatorEditBottomSheetState extends State<IndicatorEditBottomSheet> {
   Widget buildButton() {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       CommonButton.cancel(context, widget.cancel),
-      CommonButton.ok(
+      CommonButton.add(
           context,
           () => widget.ok(
               _indexPickerData,

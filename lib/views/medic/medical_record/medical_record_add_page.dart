@@ -47,7 +47,6 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
   var _timeController = TextEditingController();
   var _appointmentTimeController = TextEditingController();
   var _nameFocus = FocusNode();
-  var _locationFocus = FocusNode();
   List<List<File>> images = [[], [], [], []];
 
   @override
@@ -144,7 +143,6 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
           SizedBox(height: 28),
           CommonTextField.select(
               labelText: S.of(context).Medical_location + " (*)",
-              focusNode: _locationFocus,
               data: BlocProvider.of<MedicalRecordCubit>(widget.superContext)
                   .getLocationList(),
               value: (data.label.location == "") ? null : data.label.location,
@@ -155,6 +153,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
           SizedBox(height: 20),
           CommonTextField.fill(
               textEditingController: _timeController,
+              readOnly: true,
               onTap: () => onTimeTap(),
               context: context,
               onChanged: (String value) {},
@@ -220,6 +219,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
           SizedBox(height: 20),
           CommonTextField.fill(
               textEditingController: _appointmentTimeController,
+              readOnly: true,
               onTap: () => onAppointmentTimeTap(),
               context: context,
               onChanged: (String value) => {},
@@ -434,10 +434,8 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
       FocusScope.of(context).requestFocus(_nameFocus);
       return false;
     }
-    if (label.location == "") {
-      FocusScope.of(context).requestFocus(_locationFocus);
-      return false;
-    }
+    if (label.location == "") return false;
+
     return true;
   }
 

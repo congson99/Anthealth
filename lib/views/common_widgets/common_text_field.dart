@@ -10,13 +10,16 @@ class CommonTextField {
       String? labelText,
       String? errorText,
       FocusNode? focusNode,
-      bool? autoFocus,
+      TextInputAction? textInputAction,
       TextEditingController? textEditingController,
       bool? isVisibility}) {
     return TextField(
         onChanged: onChanged,
         focusNode: focusNode,
         controller: textEditingController,
+        obscureText: isVisibility ?? false,
+        style: Theme.of(context).textTheme.subtitle1,
+        textInputAction: textInputAction ?? TextInputAction.done,
         decoration: InputDecoration(
           errorText: errorText,
           labelText: labelText,
@@ -41,11 +44,7 @@ class CommonTextField {
               borderRadius: BorderRadius.all(Radius.circular(16)),
               borderSide:
                   BorderSide(color: AnthealthColors.warning1, width: 1)),
-        ),
-        obscureText: isVisibility ?? false,
-        autofocus: autoFocus ?? false,
-        style: Theme.of(context).textTheme.subtitle1,
-        textInputAction: TextInputAction.done);
+        ));
   }
 
   static Widget fill(
@@ -55,14 +54,16 @@ class CommonTextField {
       String? hintText,
       String? labelText,
       FocusNode? focusNode,
+      TextInputAction? textInputAction,
       bool? readOnly,
       String? initialValue,
       TextEditingController? textEditingController}) {
     return TextFormField(
       onTap: onTap,
-      readOnly: (readOnly == null) ? false : readOnly,
+      readOnly: readOnly ?? false,
       onChanged: onChanged,
       focusNode: focusNode,
+      textInputAction: textInputAction,
       initialValue: initialValue,
       controller: textEditingController,
       decoration: InputDecoration(
@@ -102,10 +103,13 @@ class CommonTextField {
       FocusNode? focusNode,
       bool? readOnly,
       String? initialValue,
-      bool? isNumber,
       bool? autofocus,
+      TextAlign? textAlign,
+      TextInputAction? textInputAction,
+      TextInputType? textInputType,
       int? maxLines,
       Color? textColor,
+      Function()? onEditingComplete,
       TextEditingController? textEditingController}) {
     return TextFormField(
         onTap: onTap,
@@ -114,16 +118,14 @@ class CommonTextField {
         focusNode: focusNode,
         initialValue: initialValue,
         controller: textEditingController,
-        textAlign: (isNumber == true) ? TextAlign.right : TextAlign.start,
-        keyboardType: (isNumber == true)
-            ? TextInputType.numberWithOptions(decimal: true)
-            : null,
-        maxLines: maxLines ?? null,
-        autofocus: autofocus ?? true,
-        style: Theme.of(context)
-            .textTheme
-            .subtitle1!
-            .copyWith(color: textColor ?? null),
+        textInputAction: textInputAction ?? TextInputAction.done,
+        textAlign: textAlign ?? TextAlign.start,
+        onEditingComplete: onEditingComplete,
+        keyboardType: textInputType,
+        maxLines: maxLines,
+        autofocus: autofocus ?? false,
+        style:
+            Theme.of(context).textTheme.subtitle1!.copyWith(color: textColor),
         decoration: InputDecoration(
           labelStyle: CommonText.fillLabelTextStyle(),
           floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -157,7 +159,6 @@ class CommonTextField {
       {required List<String> data,
       String? labelText,
       String? value,
-      FocusNode? focusNode,
       required ValueChanged<String?> onChanged}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       if (labelText != null)
@@ -167,7 +168,6 @@ class CommonTextField {
       DropdownButton<String>(
           menuMaxHeight: 500,
           isExpanded: true,
-          focusNode: focusNode,
           underline: Container(height: 0.5, color: AnthealthColors.black2),
           value: value,
           items: data.map<DropdownMenuItem<String>>((String mValue) {
@@ -189,28 +189,26 @@ class CommonTextField {
       FocusNode? focusNode,
       required ValueChanged<String?> onChanged}) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: AnthealthColors.black3, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-            menuMaxHeight: 500,
-            isExpanded: true,
-            focusNode: focusNode,
-            value: value,
-            items: data.map<DropdownMenuItem<String>>((String mValue) {
-              return DropdownMenuItem<String>(
-                  value: mValue,
-                  child: mValue == value
-                      ? Text(mValue, overflow: TextOverflow.ellipsis)
-                      : Text(mValue,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(color: AnthealthColors.black2)));
-            }).toList(),
-            onChanged: (value) => onChanged(value)),
-      ),
-    );
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: AnthealthColors.black3, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+                menuMaxHeight: 500,
+                isExpanded: true,
+                focusNode: focusNode,
+                value: value,
+                items: data.map<DropdownMenuItem<String>>((String mValue) {
+                  return DropdownMenuItem<String>(
+                      value: mValue,
+                      child: mValue == value
+                          ? Text(mValue, overflow: TextOverflow.ellipsis)
+                          : Text(mValue,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: AnthealthColors.black2)));
+                }).toList(),
+                onChanged: (value) => onChanged(value))));
   }
 }

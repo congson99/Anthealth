@@ -86,6 +86,8 @@ class _MedicationLookupPageState extends State<MedicationLookupPage> {
                       hintText: S.of(context).Quick_lookup,
                       textColor: AnthealthColors.primary1,
                       context: context,
+                      textInputAction: TextInputAction.search,
+                      onEditingComplete: () => FocusScope.of(context).unfocus(),
                       maxLines: 1,
                       autofocus: false,
                       onChanged: (value) {
