@@ -10,8 +10,8 @@ import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/fill_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
-import 'package:anthealth_mobile/views/community/community_description_page.dart';
-import 'package:anthealth_mobile/views/community/community_post_page.dart';
+import 'package:anthealth_mobile/views/community/community_pages/community_description_page.dart';
+import 'package:anthealth_mobile/views/community/community_pages/community_post_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +37,6 @@ class CommunityPage extends StatelessWidget {
     });
   }
 
-  // Content
   Widget buildContent(BuildContext context, CommunityState state) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),

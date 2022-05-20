@@ -10,9 +10,7 @@ class CustomAppbarWithAvatar extends StatefulWidget {
       required this.avatarPath,
       this.firstTitle,
       this.secondTitle,
-      this.share,
-      this.messenger,
-      this.call,
+      this.favorite,
       this.add})
       : super(key: key);
 
@@ -21,9 +19,7 @@ class CustomAppbarWithAvatar extends StatefulWidget {
   final String avatarPath;
   final String? firstTitle;
   final String? secondTitle;
-  final VoidCallback? share;
-  final VoidCallback? messenger;
-  final VoidCallback? call;
+  final bool? favorite;
   final VoidCallback? add;
 
   @override
@@ -32,6 +28,13 @@ class CustomAppbarWithAvatar extends StatefulWidget {
 
 class _CustomAppbarWithAvatarState extends State<CustomAppbarWithAvatar> {
   bool isShowMenu = false;
+  bool favorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.favorite != null) favorite = widget.favorite!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,77 +108,21 @@ class _CustomAppbarWithAvatarState extends State<CustomAppbarWithAvatar> {
                           left: 4, right: 16, top: 16, bottom: 16),
                       child: Image.asset("assets/app_icon/common/add_pri1.png",
                           height: 22, width: 22, fit: BoxFit.cover))),
-            if (widget.share != null ||
-                widget.messenger != null ||
-                widget.call != null)
+            if (widget.favorite != null)
               GestureDetector(
-                  onTap: () => setState(() {
-                        isShowMenu = !isShowMenu;
-                      }),
-                  child: AnimatedContainer(
-                      duration: Duration(milliseconds: 600),
+                  onTap: () => setState(() => favorite = !favorite),
+                  child: Container(
                       color: Colors.transparent,
-                      height: isShowMenu ? 60 : 54,
-                      width: isShowMenu ? 52 : 46,
                       padding: const EdgeInsets.only(
-                          left: 8, right: 16, top: 16, bottom: 16),
-                      child: Image.asset("assets/app_icon/common/menu_bla2.png",
+                          left: 4, right: 16, top: 16, bottom: 16),
+                      child: Image.asset(
+                          favorite
+                              ? "assets/app_icon/small_icons/favorite.png"
+                              : "assets/app_icon/small_icons/unfavorite.png",
+                          height: 28,
+                          width: 28,
                           fit: BoxFit.cover)))
-          ])),
-      Container(
-          height: 500,
-          alignment: Alignment.topRight,
-          child: AnimatedContainer(
-              duration: Duration(milliseconds: 100),
-              height: 16 +
-                  ((widget.call != null) ? 52 : 0) +
-                  ((widget.messenger != null) ? 52 : 0) +
-                  ((widget.share != null) ? 52 : 0),
-              width: isShowMenu ? 60 : 0,
-              margin: const EdgeInsets.only(top: 56, right: 16),
-              padding: const EdgeInsets.only(top: 8, bottom: 8),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.1), blurRadius: 8)
-                  ]),
-              child: Column(children: [
-                if (widget.call != null)
-                  GestureDetector(
-                      onTap: widget.call,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Image.asset(
-                              "assets/app_icon/common/call_war1.png",
-                              height: 28,
-                              width: 28,
-                              fit: BoxFit.cover))),
-                if (widget.messenger != null)
-                  GestureDetector(
-                      onTap: widget.share,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Image.asset(
-                              "assets/app_icon/common/message_pri1.png",
-                              height: 28,
-                              width: 28,
-                              fit: BoxFit.cover))),
-                if (widget.share != null)
-                  GestureDetector(
-                      onTap: widget.share,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Image.asset(
-                              "assets/app_icon/common/share_sec1.png",
-                              height: 28,
-                              width: 28,
-                              fit: BoxFit.cover)))
-              ])))
+          ]))
     ]);
   }
 }

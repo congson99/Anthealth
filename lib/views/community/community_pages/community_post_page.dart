@@ -12,8 +12,8 @@ import 'package:anthealth_mobile/views/common_pages/template_small_avatar_form_p
 import 'package:anthealth_mobile/views/common_widgets/attach_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/community/community_add_post_page.dart';
-import 'package:anthealth_mobile/views/community/community_description_page.dart';
+import 'package:anthealth_mobile/views/community/community_pages/community_add_post_page.dart';
+import 'package:anthealth_mobile/views/community/community_pages/community_description_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

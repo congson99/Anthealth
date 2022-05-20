@@ -33,7 +33,8 @@ class DashboardCubit extends Cubit<CubitState> {
             "022123123",
             "doctor.hca.com",
             "Bác sĩ khám mắt",
-            "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291"),
+            "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+            true),
         [
           DoctorAppointment(
               "",
@@ -283,6 +284,175 @@ class DashboardCubit extends Cubit<CubitState> {
         "ahaha@hca.com",
         false,
         [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]);
+  }
+
+  Future<List<DoctorGroup>> getAllDoctor() async {
+    return [
+      DoctorGroup(
+          "",
+          [
+            Doctor(
+                "id",
+                "Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Nguyet Nga",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Manh Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "An Tam",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true)
+          ],
+          true),
+      DoctorGroup(
+          "Khoa Nhi",
+          [
+            Doctor(
+                "id",
+                "Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Nguyet Nga",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Manh Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "An Tam",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true)
+          ],
+          false),
+      DoctorGroup(
+          "Khoa Rang Ham Mat",
+          [
+            Doctor(
+                "id",
+                "Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Nguyet Nga",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Manh Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "An Tam",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true)
+          ],
+          false),
+      DoctorGroup(
+          "Khoa Ngoai",
+          [
+            Doctor(
+                "id",
+                "Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Nguyet Nga",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "Manh Hung",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true),
+            Doctor(
+                "id",
+                "An Tam",
+                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
+                "2939121",
+                "doctor.hca.com",
+                "Bác sĩ khám mắt",
+                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
+                true)
+          ],
+          false)
+    ];
   }
 
   Future<String> getFamilyID(String id) async {

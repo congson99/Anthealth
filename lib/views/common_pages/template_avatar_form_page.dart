@@ -8,9 +8,7 @@ class TemplateAvatarFormPage extends StatelessWidget {
       required this.avatarPath,
       this.firstTitle,
       this.secondTitle,
-      this.call,
-      this.messenger,
-      this.share,
+      this.favorite,
       this.add,
       required this.content,
       this.paddingHorizontal})
@@ -20,9 +18,8 @@ class TemplateAvatarFormPage extends StatelessWidget {
   final String avatarPath;
   final String? firstTitle;
   final String? secondTitle;
-  final VoidCallback? call;
-  final VoidCallback? messenger;
-  final VoidCallback? share;
+
+  final bool? favorite;
   final VoidCallback? add;
   final Widget content;
   final bool? paddingHorizontal;
@@ -46,10 +43,7 @@ class TemplateAvatarFormPage extends StatelessWidget {
           name: name,
           firstTitle: firstTitle,
           secondTitle: secondTitle,
-          share: share,
-          add: add,
-          messenger: messenger,
-          call: call,
+          favorite: favorite,
           avatarPath: avatarPath)
     ])));
   }

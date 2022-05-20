@@ -4,7 +4,6 @@ import 'package:anthealth_mobile/models/user/doctor_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/settings/doctor_setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';

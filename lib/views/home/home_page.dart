@@ -10,6 +10,7 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/home/doctor_connection/doctor_connection_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/medication_reminder_page.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
@@ -59,6 +60,11 @@ class HomePage extends StatelessWidget {
           colorID: 0),
       SizedBox(height: 16),
       SectionComponent(
+          onTap: () => BlocProvider.of<DashboardCubit>(context)
+              .getAllDoctor()
+              .then((value) => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => DoctorConnectionPage(
+                      dashboardContext: context, doctorGroup: value)))),
           iconPath: "assets/app_icon/common/doctor_sec0.png",
           title: S.of(context).Connect_doctor,
           colorID: 1)

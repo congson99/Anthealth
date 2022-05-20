@@ -10,8 +10,8 @@ import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
-import 'package:anthealth_mobile/views/community/community_post_page.dart';
-import 'package:anthealth_mobile/views/family/family_member_page.dart';
+import 'package:anthealth_mobile/views/community/community_pages/community_post_page.dart';
+import 'package:anthealth_mobile/views/family/family_member/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
 import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';

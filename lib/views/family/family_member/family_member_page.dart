@@ -5,7 +5,7 @@ import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
-import 'package:anthealth_mobile/views/family/family_member_health.dart';
+import 'package:anthealth_mobile/views/family/family_member/family_member_health.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';

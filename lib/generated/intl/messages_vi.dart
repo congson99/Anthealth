@@ -195,6 +195,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chia sẻ gia đình"),
         "Family_sharing_space":
             MessageLookupByLibrary.simpleMessage("Không gian gia đình"),
+        "Favorite_doctor":
+            MessageLookupByLibrary.simpleMessage("Bác sĩ yêu thích"),
         "February": MessageLookupByLibrary.simpleMessage("Tháng 2"),
         "Feedback_community":
             MessageLookupByLibrary.simpleMessage("Phản hồi về cộng đồng"),
@@ -246,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải chứa ít nhất 8 ký tự"),
+        "Issues": MessageLookupByLibrary.simpleMessage("Vấn đề"),
         "January": MessageLookupByLibrary.simpleMessage("Tháng 1"),
         "Join_community":
             MessageLookupByLibrary.simpleMessage("Tham gia cộng đồng"),
@@ -347,6 +350,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Loại thành viên ra khỏi gia đình"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Lặp lại"),
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Lặp lại sau"),
+        "Report": MessageLookupByLibrary.simpleMessage("Báo cáo"),
+        "Report_successful": MessageLookupByLibrary.simpleMessage(
+            "Báo cáo được gửi thành công! Chúng tôi sẽ xem xét vấn đề và phản hồi kết quả sớm nhất có thể"),
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Nội dung bắt buộc"),
         "Select": MessageLookupByLibrary.simpleMessage("Chọn"),

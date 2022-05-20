@@ -186,6 +186,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Family sharing"),
         "Family_sharing_space":
             MessageLookupByLibrary.simpleMessage("Family space"),
+        "Favorite_doctor":
+            MessageLookupByLibrary.simpleMessage("Favorite doctor"),
         "February": MessageLookupByLibrary.simpleMessage("February"),
         "Feedback_community":
             MessageLookupByLibrary.simpleMessage("Feedback on this community"),
@@ -234,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters"),
+        "Issues": MessageLookupByLibrary.simpleMessage("Issues"),
         "January": MessageLookupByLibrary.simpleMessage("January"),
         "Join_community":
             MessageLookupByLibrary.simpleMessage("Join community"),
@@ -334,6 +337,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Remove member from the family"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "Repeat_after": MessageLookupByLibrary.simpleMessage("Repeat after"),
+        "Report": MessageLookupByLibrary.simpleMessage("Report"),
+        "Report_successful": MessageLookupByLibrary.simpleMessage(
+            "Report has been sent successful! We will solve the and respond as soon as possible"),
         "Required_content":
             MessageLookupByLibrary.simpleMessage("Required content"),
         "Select": MessageLookupByLibrary.simpleMessage("Select"),

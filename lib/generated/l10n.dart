@@ -1010,6 +1010,16 @@ class S {
     );
   }
 
+  /// `Report has been sent successful! We will solve the and respond as soon as possible`
+  String get Report_successful {
+    return Intl.message(
+      'Report has been sent successful! We will solve the and respond as soon as possible',
+      name: 'Report_successful',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thanks for your feedback!`
   String get Feedback_community_successful {
     return Intl.message(
@@ -1085,6 +1095,26 @@ class S {
     return Intl.message(
       'Attach',
       name: 'Attach',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report`
+  String get Report {
+    return Intl.message(
+      'Report',
+      name: 'Report',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Issues`
+  String get Issues {
+    return Intl.message(
+      'Issues',
+      name: 'Issues',
       desc: '',
       args: [],
     );
@@ -2885,6 +2915,16 @@ class S {
     return Intl.message(
       'Description',
       name: 'Doctor_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite doctor`
+  String get Favorite_doctor {
+    return Intl.message(
+      'Favorite doctor',
+      name: 'Favorite_doctor',
       desc: '',
       args: [],
     );
