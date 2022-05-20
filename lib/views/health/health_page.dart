@@ -65,7 +65,7 @@ class HealthPage extends StatelessWidget {
       List<String> indicatorLatestData, double latestHeight) {
     double width = (MediaQuery.of(context).size.width - 64) / 3;
     return Column(children: [
-      Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => HeightPage(dashboardContext: context))),
@@ -98,7 +98,7 @@ class HealthPage extends StatelessWidget {
             width: width)
       ]),
       SizedBox(height: 16),
-      Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => TemperaturePage(dashboardContext: context))),

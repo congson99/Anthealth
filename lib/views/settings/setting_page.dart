@@ -47,6 +47,7 @@ class SettingsPage extends StatelessWidget {
       if (user.isDoctor)
         SectionComponent(
             title: S.of(context).Switch_to_doctor_mode,
+            iconPath: "assets/app_icon/common/doctor_war0.png",
             colorID: 2,
             onTap: () {
               Navigator.pop(context);
@@ -55,6 +56,7 @@ class SettingsPage extends StatelessWidget {
       if (!user.isDoctor)
         SectionComponent(
             title: S.of(context).Register_doctor,
+            iconPath: "assets/app_icon/common/doctor_war0.png",
             colorID: 2,
             onTap: () => launchUrlString("https://hca.com/doctor/register")),
       SizedBox(height: 32),
@@ -90,6 +92,7 @@ class SettingsPage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       SectionComponent(
           title: S.of(context).Logout,
+          iconPath: "assets/app_icon/common/out_war0.png",
           isDirection: false,
           colorID: 2,
           onTap: () {
@@ -98,7 +101,7 @@ class SettingsPage extends StatelessWidget {
           }),
       SizedBox(height: 16),
       SectionComponent(
-          title: "DEV TOOL",
+          title: "</> DEV TOOL",
           colorID: 3,
           onTap: () {
             Navigator.of(context)

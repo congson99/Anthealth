@@ -39,10 +39,6 @@ class IndicatorComponent extends StatelessWidget {
         : colorID == 1
             ? AnthealthColors.secondary5
             : AnthealthColors.warning5;
-    double valueWidth = (value == null) ? 13 : value!.length * 13;
-    double unitWidth = (unit == null) ? 0 : unit!.length * 9;
-    if (valueWidth > width - 8) valueWidth = width - 8;
-    if (valueWidth + unitWidth > width - 8) unitWidth = 0;
     return SizedBox(
         width: width,
         child: Stack(children: [
@@ -50,53 +46,46 @@ class IndicatorComponent extends StatelessWidget {
               onTap: onTap,
               child: Container(
                   width: width,
+                  height: 136,
                   decoration: BoxDecoration(
                       color: color5,
                       borderRadius: BorderRadius.circular(8),
-                      boxShadow: (isWarning == true)
+                      boxShadow: (isWarning == true && isVisible != true)
                           ? [
                               BoxShadow(
                                   color: AnthealthColors.warning1,
                                   spreadRadius: 5)
                             ]
                           : null),
-                  margin: (isWarning == true) ? EdgeInsets.only(top: 15) : null,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 4),
+                  margin: (isWarning == true && isVisible != true)
+                      ? EdgeInsets.symmetric(vertical: 15)
+                      : null,
                   child: Column(children: [
+                    SizedBox(height: 16),
                     ClipRRect(
                         borderRadius: BorderRadius.circular(22),
                         child: Image.asset(iconPath,
                             height: 44.0, width: 44.0, fit: BoxFit.cover)),
                     SizedBox(height: 12),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                              alignment: Alignment.center,
-                              width: valueWidth,
-                              child: Text((value == null) ? "_" : value!,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4!
-                                      .copyWith(
-                                          color: AnthealthColors.black1))),
-                          Container(
-                              padding: EdgeInsets.only(bottom: 2),
-                              alignment: Alignment.centerLeft,
-                              width: unitWidth,
-                              child: Text((unit == null) ? "" : unit!,
-                                  overflow: TextOverflow.ellipsis,
+                    RichText(
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4!
+                                .copyWith(color: AnthealthColors.black1),
+                            children: <TextSpan>[
+                              TextSpan(text: (value == null) ? "_" : value!),
+                              TextSpan(
+                                  text: (unit == null) ? "" : unit!,
                                   style: Theme.of(context)
                                       .textTheme
                                       .subtitle1!
-                                      .copyWith(fontSize: 10)))
-                        ]),
+                                      .copyWith(fontSize: 10))
+                            ])),
                     SizedBox(height: 4),
                     Text(title,
-                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
                             .caption!
@@ -112,14 +101,13 @@ class IndicatorComponent extends StatelessWidget {
               : Container(),
           if (isVisible == true)
             GestureDetector(
-              onTap: () => showPopup(context),
-              child: Container(
-                  width: width,
-                  height: 132,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(8))),
-            )
+                onTap: () => showPopup(context),
+                child: Container(
+                    width: width,
+                    height: 136,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(8))))
         ]));
   }
 

@@ -75,76 +75,80 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Health_indicator, context),
       SizedBox(height: 16),
-      Wrap(spacing: 16, runSpacing: 16, children: [
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) =>
-                    HeightPage(dashboardContext: context, data: widget.data))),
-            colorID: 0,
-            iconPath: "assets/indicators/height.png",
-            value: indicatorLatestData[0],
-            unit: "m",
-            title: S.of(context).Height,
-            isVisible: (widget.data.permission[0] < 0),
-            width: width),
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => WeightPage(
-                    dashboardContext: context,
-                    latestHeight: latestHeight,
-                    data: widget.data))),
-            colorID: 1,
-            iconPath: "assets/indicators/weight.png",
-            value: indicatorLatestData[1],
-            unit: "kg",
-            title: S.of(context).Weight,
-            isVisible: (widget.data.permission[1] < 0),
-            width: width),
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => HeartRatePage(
-                    dashboardContext: context, data: widget.data))),
-            colorID: 2,
-            iconPath: "assets/indicators/heart_rate.png",
-            value: indicatorLatestData[2],
-            unit: "BPM",
-            title: S.of(context).Heart_rate,
-            isVisible: (widget.data.permission[2] < 0),
-            width: width),
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => TemperaturePage(
-                    dashboardContext: context, data: widget.data))),
-            colorID: 1,
-            iconPath: "assets/indicators/temperature.png",
-            value: indicatorLatestData[3],
-            unit: "°C",
-            title: S.of(context).Temperature,
-            isVisible: (widget.data.permission[3] < 0),
-            width: width),
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => BloodPressurePage(
-                    dashboardContext: context, data: widget.data))),
-            colorID: 2,
-            iconPath: "assets/indicators/blood_pressure.png",
-            value: indicatorLatestData[4],
-            unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
-            title: S.of(context).Blood_pressure,
-            isVisible: (widget.data.permission[4] < 0),
-            width: width),
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) =>
-                    SPO2Page(dashboardContext: context, data: widget.data))),
-            colorID: 0,
-            iconPath: "assets/indicators/spo2.png",
-            value: indicatorLatestData[5],
-            unit: "%",
-            title: S.of(context).Spo2,
-            isVisible: (widget.data.permission[5] < 0),
-            width: width)
-      ]),
+      Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => HeightPage(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 0,
+                iconPath: "assets/indicators/height.png",
+                value: indicatorLatestData[0],
+                unit: "m",
+                title: S.of(context).Height,
+                isVisible: (widget.data.permission[0] < 0),
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => WeightPage(
+                        dashboardContext: context,
+                        latestHeight: latestHeight,
+                        data: widget.data))),
+                colorID: 1,
+                iconPath: "assets/indicators/weight.png",
+                value: indicatorLatestData[1],
+                unit: "kg",
+                title: S.of(context).Weight,
+                isVisible: (widget.data.permission[1] < 0),
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => HeartRatePage(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 2,
+                iconPath: "assets/indicators/heart_rate.png",
+                value: indicatorLatestData[2],
+                unit: "BPM",
+                title: S.of(context).Heart_rate,
+                isVisible: (widget.data.permission[2] < 0),
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => TemperaturePage(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 1,
+                iconPath: "assets/indicators/temperature.png",
+                value: indicatorLatestData[3],
+                unit: "°C",
+                title: S.of(context).Temperature,
+                isVisible: (widget.data.permission[3] < 0),
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => BloodPressurePage(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 2,
+                iconPath: "assets/indicators/blood_pressure.png",
+                value: indicatorLatestData[4],
+                unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
+                title: S.of(context).Blood_pressure,
+                isVisible: (widget.data.permission[4] < 0),
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => SPO2Page(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 0,
+                iconPath: "assets/indicators/spo2.png",
+                value: indicatorLatestData[5],
+                unit: "%",
+                title: S.of(context).Spo2,
+                isVisible: (widget.data.permission[5] < 0),
+                width: width)
+          ]),
       SizedBox(height: 32),
       CustomDivider.common(),
       SizedBox(height: 16)

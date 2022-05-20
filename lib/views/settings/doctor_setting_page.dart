@@ -43,6 +43,7 @@ class DoctorSettingsPage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       SectionComponent(
           title: S.of(context).Exit_doctor_mode,
+          iconPath: "assets/app_icon/common/out_war0.png",
           isDirection: false,
           colorID: 2,
           onTap: () {
