@@ -2,6 +2,17 @@ import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/user/doctor_models.dart';
+
+class DoctorState extends CubitState {
+  DoctorState(this.doctorUser, this.appointments);
+
+  final Doctor doctorUser;
+  final List<DoctorAppointment> appointments;
+
+  @override
+  List<Object> get props => [doctorUser, appointments];
+}
 
 class HomeState extends CubitState {
   HomeState(this.events);
@@ -46,6 +57,13 @@ class CommunityState extends CubitState {
 
   @override
   List<Object> get props => [communities];
+}
+
+class DoctorLoadingState extends CubitState {
+  DoctorLoadingState();
+
+  @override
+  List<Object> get props => [];
 }
 
 class HomeLoadingState extends CubitState {

@@ -580,6 +580,26 @@ class S {
     );
   }
 
+  /// `Description`
+  String get Description {
+    return Intl.message(
+      'Description',
+      name: 'Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appointment`
+  String get Appointment {
+    return Intl.message(
+      'Appointment',
+      name: 'Appointment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `-----------------------------Authentication-----------------------------`
   String get _Authentication {
     return Intl.message(
@@ -2775,6 +2795,96 @@ class S {
     return Intl.message(
       'Update medicine box',
       name: 'Update_medicine_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-----------------------------Doctor-----------------------------`
+  String get _Doctor {
+    return Intl.message(
+      '-----------------------------Doctor-----------------------------',
+      name: '_Doctor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doctor`
+  String get Doctor {
+    return Intl.message(
+      'Doctor',
+      name: 'Doctor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dr.`
+  String get Dr {
+    return Intl.message(
+      'Dr.',
+      name: 'Dr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doctor mode`
+  String get Doctor_mode {
+    return Intl.message(
+      'Doctor mode',
+      name: 'Doctor_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Switch to doctor mode`
+  String get Switch_to_doctor_mode {
+    return Intl.message(
+      'Switch to doctor mode',
+      name: 'Switch_to_doctor_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register to become a doctor`
+  String get Register_doctor {
+    return Intl.message(
+      'Register to become a doctor',
+      name: 'Register_doctor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit doctor mode`
+  String get Exit_doctor_mode {
+    return Intl.message(
+      'Exit doctor mode',
+      name: 'Exit_doctor_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your doctor profile`
+  String get Your_doctor_profile {
+    return Intl.message(
+      'Your doctor profile',
+      name: 'Your_doctor_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get Doctor_description {
+    return Intl.message(
+      'Description',
+      name: 'Doctor_description',
       desc: '',
       args: [],
     );

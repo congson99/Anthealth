@@ -53,7 +53,8 @@ class AppCubit extends Cubit<CubitState> {
                 ServerLogic.getData(value)["name"],
                 ServerLogic.getData(value)["avatar"],
                 "283912391",
-                "email@hca.com"),
+                "email@hca.com",
+                true),
             languageID ?? ""));
       }
     });

@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tất cả đơn thuốc"),
         "All_reminder": MessageLookupByLibrary.simpleMessage("Tất cả nhắc nhở"),
         "All_time": MessageLookupByLibrary.simpleMessage("Tất cả thời gian"),
+        "Appointment": MessageLookupByLibrary.simpleMessage("Lịch hẹn"),
         "April": MessageLookupByLibrary.simpleMessage("Tháng 4"),
         "Attach": MessageLookupByLibrary.simpleMessage("Đính kèm"),
         "August": MessageLookupByLibrary.simpleMessage("Tháng 8"),
@@ -133,20 +134,26 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xoá dữ liệu nhiệt độ"),
         "Delete_weight":
             MessageLookupByLibrary.simpleMessage("Xoá weight dữ liệu cân nặng"),
+        "Description": MessageLookupByLibrary.simpleMessage("Mô tả"),
         "Detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
         "Diagnose": MessageLookupByLibrary.simpleMessage("Chẩn đoán"),
         "Diastolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Huyết áp tâm trương"),
         "Directory": MessageLookupByLibrary.simpleMessage("Danh bạ"),
         "Distance": MessageLookupByLibrary.simpleMessage("Quãng đường"),
+        "Doctor": MessageLookupByLibrary.simpleMessage("Bác sĩ"),
+        "Doctor_description":
+            MessageLookupByLibrary.simpleMessage("thông tin chi tiết"),
         "Doctor_directory":
             MessageLookupByLibrary.simpleMessage("Danh bạ bác sĩ"),
+        "Doctor_mode": MessageLookupByLibrary.simpleMessage("Chế độ bác sĩ"),
         "Doctor_page": MessageLookupByLibrary.simpleMessage("Trang bác sĩ"),
         "Done_medicine_box":
             MessageLookupByLibrary.simpleMessage("THÊM HỘP THUỐC"),
         "Done_reminders":
             MessageLookupByLibrary.simpleMessage("Nhắc nhở đã hoàn thành"),
         "Dosage": MessageLookupByLibrary.simpleMessage("Liều dùng"),
+        "Dr": MessageLookupByLibrary.simpleMessage("Bs."),
         "Drank": MessageLookupByLibrary.simpleMessage("Đã uống"),
         "Drink_water": MessageLookupByLibrary.simpleMessage("Uống nước"),
         "Edit_blood_pressure":
@@ -174,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Every_few_days":
             MessageLookupByLibrary.simpleMessage("Vài ngày một lần"),
         "Exercise": MessageLookupByLibrary.simpleMessage("Tập luyện"),
+        "Exit_doctor_mode":
+            MessageLookupByLibrary.simpleMessage("Thoát khỏi chế độ bác sĩ"),
         "Family": MessageLookupByLibrary.simpleMessage("Gia đình"),
         "Family_admin":
             MessageLookupByLibrary.simpleMessage("Quản trị viên gia đình"),
@@ -327,6 +336,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Record_name": MessageLookupByLibrary.simpleMessage("Tên hồ sơ"),
         "Record_time": MessageLookupByLibrary.simpleMessage("Thời gian đo"),
         "Register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "Register_doctor":
+            MessageLookupByLibrary.simpleMessage("Đăng ký trở thành bác sĩ"),
         "Register_now": MessageLookupByLibrary.simpleMessage("Đăng ký ngay"),
         "Registered_email":
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
@@ -358,6 +369,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Steps_detail":
             MessageLookupByLibrary.simpleMessage("Chi tiết chỉ số bước chân"),
         "Steps_taken": MessageLookupByLibrary.simpleMessage("Đã đi"),
+        "Switch_to_doctor_mode":
+            MessageLookupByLibrary.simpleMessage("Chuyển sang chế độ bác sĩ"),
         "Systolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Huyết áp tâm thu"),
         "Temperature": MessageLookupByLibrary.simpleMessage("Nhiệt độ"),
@@ -416,6 +429,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chỉ số BMI của bạn là "),
         "Your_communities":
             MessageLookupByLibrary.simpleMessage("Cộng đồng của bạn"),
+        "Your_doctor_profile":
+            MessageLookupByLibrary.simpleMessage("Hồ sơ bác sĩ của bạn"),
         "Your_name": MessageLookupByLibrary.simpleMessage("Tên của bạn"),
         "_Authentication": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Authentication-----------------------------"),
@@ -425,6 +440,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "-----------------------------Common-----------------------------"),
         "_Community": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Community-----------------------------"),
+        "_Doctor": MessageLookupByLibrary.simpleMessage(
+            "-----------------------------Doctor-----------------------------"),
         "_Error": MessageLookupByLibrary.simpleMessage(
             "-----------------------------Error-----------------------------"),
         "_Family": MessageLookupByLibrary.simpleMessage(

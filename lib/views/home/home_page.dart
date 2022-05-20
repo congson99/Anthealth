@@ -154,7 +154,7 @@ class HomePage extends StatelessWidget {
   /// Actions
   void setting(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) =>
-            SettingsPage(appContext: context, languageID: languageID)));
+        builder: (_) => SettingsPage(
+            appContext: context, languageID: languageID, user: user)));
   }
 }

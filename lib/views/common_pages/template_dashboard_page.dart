@@ -8,7 +8,8 @@ class TemplateDashboardPage extends StatelessWidget {
       required this.name,
       required this.setting,
       required this.content,
-      this.isHeader})
+      this.isHeader,
+      this.endPadding})
       : super(key: key);
 
   final String title;
@@ -16,6 +17,7 @@ class TemplateDashboardPage extends StatelessWidget {
   final VoidCallback setting;
   final Widget content;
   final bool? isHeader;
+  final double? endPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class TemplateDashboardPage extends StatelessWidget {
                         isMessage: false,
                         onSettingsTap: setting),
                   content,
-                  SizedBox(height: 124)
+                  SizedBox(height: endPadding ?? 124)
                 ])));
   }
 }

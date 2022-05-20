@@ -11,6 +11,7 @@ import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_directory_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
+import 'package:anthealth_mobile/models/user/doctor_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,45 @@ class DashboardCubit extends Cubit<CubitState> {
     home();
   }
 
-  // Initial State
+  /// Initial State
+  doctor() async {
+    emit(DoctorLoadingState());
+    await Future.delayed(Duration(seconds: 1));
+    emit(DoctorState(
+        Doctor(
+            "id",
+            "Strange",
+            "https://vcdn1-giaitri.vnecdn.net/2022/05/05/DoctorStrange2mmm-1651738078-4301-1651738447.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=hvLU0ITOvD2EhxFK8TD8Og",
+            "022123123",
+            "doctor.hca.com",
+            "Bác sĩ khám mắt",
+            "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291"),
+        [
+          DoctorAppointment(
+              "",
+              "doctorId",
+              "patientId",
+              "doctorName",
+              "The Rock",
+              "",
+              "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg",
+              "Hẹn khám định kỳ",
+              DateTime.now(),
+              "Phòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng"),
+          DoctorAppointment(
+              "",
+              "doctorId",
+              "patientId",
+              "doctorName",
+              "Tom Holland",
+              "",
+              "https://image.thanhnien.vn/w1024/Uploaded/2022/juzagt/2021_12_16/1-5144.jpg",
+              "Mổ mắt",
+              DateTime.now(),
+              "")
+        ]));
+  }
+
   home() async {
     emit(HomeLoadingState());
     List<MedicalAppointment> medicalAppointment = [];

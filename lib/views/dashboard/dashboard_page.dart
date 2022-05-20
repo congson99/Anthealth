@@ -5,6 +5,7 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
 import 'package:anthealth_mobile/views/community/community_page.dart';
+import 'package:anthealth_mobile/views/doctor/doctor_page.dart';
 import 'package:anthealth_mobile/views/family/family_page.dart';
 import 'package:anthealth_mobile/views/health/health_page.dart';
 import 'package:anthealth_mobile/views/home/home_page.dart';
@@ -22,6 +23,9 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider<DashboardCubit>(
       create: (context) => DashboardCubit(),
       child: BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
+        if (state is DoctorLoadingState) return LoadingPage();
+        if (state is DoctorState)
+          return DoctorPage(dashboardContext: context, doctorState: state);
         return Scaffold(
             body: SafeArea(
                 child: Stack(children: [
