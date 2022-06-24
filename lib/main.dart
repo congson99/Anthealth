@@ -26,22 +26,21 @@ void setOrientations() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AppCubit>(
-        create: (context) => AppCubit(),
-        child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: anthealthTheme(),
-              localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              locale: getUserLocale(state),
-              home: buildSystemUiOverlay(context, state));
-        }));
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: anthealthTheme(),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        locale: Locale('en'),
+        home: BlocProvider<AppCubit>(
+            create: (context) => AppCubit(),
+            child: BlocBuilder<AppCubit, CubitState>(builder: (context, state) {
+              return buildSystemUiOverlay(context, state);
+            })));
   }
 
   Widget buildSystemUiOverlay(BuildContext context, CubitState state) {
