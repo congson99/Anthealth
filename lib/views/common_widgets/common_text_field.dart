@@ -109,6 +109,7 @@ class CommonTextField {
       TextInputType? textInputType,
       int? maxLines,
       Color? textColor,
+      EdgeInsets? padding,
       Function()? onEditingComplete,
       TextEditingController? textEditingController}) {
     return TextFormField(
@@ -136,7 +137,7 @@ class CommonTextField {
               .copyWith(color: AnthealthColors.black2),
           filled: true,
           fillColor: Colors.white,
-          contentPadding: EdgeInsets.all(16),
+          contentPadding: padding ?? EdgeInsets.all(16),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AnthealthColors.black3, width: 0.5),
               borderRadius: BorderRadius.all(Radius.circular(12))),

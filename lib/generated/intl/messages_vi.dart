@@ -224,6 +224,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Nhịp tim"),
         "Height": MessageLookupByLibrary.simpleMessage("Chiều cao"),
         "Hi": MessageLookupByLibrary.simpleMessage("Xin chào!"),
+        "High_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("High_blood_pressure"),
         "High_diastolic_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Ngưỡng cao tâm trương"),
         "High_systolic_blood_pressure":
@@ -360,8 +362,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đơn thuốc tự tạo"),
         "September": MessageLookupByLibrary.simpleMessage("Tháng 9"),
         "Serving": MessageLookupByLibrary.simpleMessage("Khẩu phần"),
+        "Set_daily_goal":
+            MessageLookupByLibrary.simpleMessage("Set_daily_goal"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Đặt mật khẩu mới"),
+        "Setting_low_spo2":
+            MessageLookupByLibrary.simpleMessage("Setting_low_spo2"),
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "Show_on_map":
             MessageLookupByLibrary.simpleMessage("Hiển thị trên bản đồ"),
@@ -411,6 +417,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn xoá hồ sơ này không?"),
         "Warning_remove_member": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn loại thành viên này khỏi gia đình?"),
+        "Warning_threshold":
+            MessageLookupByLibrary.simpleMessage("Warning_threshold"),
         "Water": MessageLookupByLibrary.simpleMessage("Nước"),
         "Water_count": MessageLookupByLibrary.simpleMessage("Lượng nước"),
         "Water_detail": MessageLookupByLibrary.simpleMessage(
@@ -438,32 +446,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "Your_doctor_profile":
             MessageLookupByLibrary.simpleMessage("Hồ sơ bác sĩ của bạn"),
         "Your_name": MessageLookupByLibrary.simpleMessage("Tên của bạn"),
-        "_Authentication": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Authentication-----------------------------"),
-        "_Button": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Button-----------------------------"),
-        "_Common": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Common-----------------------------"),
-        "_Community": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Community-----------------------------"),
-        "_Doctor": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Doctor-----------------------------"),
-        "_Error": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Error-----------------------------"),
-        "_Family": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Family-----------------------------"),
-        "_Health": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Health-----------------------------"),
-        "_Home": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Home-----------------------------"),
-        "_Main": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Main-----------------------------"),
-        "_Medic": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Medic-----------------------------"),
-        "_Medicine": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Medicine-----------------------------"),
-        "_Time": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Time-----------------------------"),
         "afternoon": MessageLookupByLibrary.simpleMessage("chiều"),
         "apply": MessageLookupByLibrary.simpleMessage("Bôi"),
         "apr": MessageLookupByLibrary.simpleMessage("T4"),

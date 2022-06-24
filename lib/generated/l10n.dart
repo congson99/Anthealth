@@ -50,16 +50,6 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `-----------------------------Main-----------------------------`
-  String get _Main {
-    return Intl.message(
-      '-----------------------------Main-----------------------------',
-      name: '_Main',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Family`
   String get Family {
     return Intl.message(
@@ -125,16 +115,6 @@ class S {
     return Intl.message(
       'Doctor page',
       name: 'Doctor_page',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `-----------------------------Common-----------------------------`
-  String get _Common {
-    return Intl.message(
-      '-----------------------------Common-----------------------------',
-      name: '_Common',
       desc: '',
       args: [],
     );
@@ -600,16 +580,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Authentication-----------------------------`
-  String get _Authentication {
-    return Intl.message(
-      '-----------------------------Authentication-----------------------------',
-      name: '_Authentication',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Your name`
   String get Your_name {
     return Intl.message(
@@ -740,16 +710,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Family-----------------------------`
-  String get _Family {
-    return Intl.message(
-      '-----------------------------Family-----------------------------',
-      name: '_Family',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Family of`
   String get Family_of {
     return Intl.message(
@@ -865,16 +825,6 @@ class S {
     return Intl.message(
       'Family admin',
       name: 'Family_admin',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `-----------------------------Community-----------------------------`
-  String get _Community {
-    return Intl.message(
-      '-----------------------------Community-----------------------------',
-      name: '_Community',
       desc: '',
       args: [],
     );
@@ -1120,16 +1070,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Home-----------------------------`
-  String get _Home {
-    return Intl.message(
-      '-----------------------------Home-----------------------------',
-      name: '_Home',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Hi!`
   String get Hi {
     return Intl.message(
@@ -1175,16 +1115,6 @@ class S {
     return Intl.message(
       'Connect with doctors',
       name: 'Connect_doctor',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `-----------------------------Health-----------------------------`
-  String get _Health {
-    return Intl.message(
-      '-----------------------------Health-----------------------------',
-      name: '_Health',
       desc: '',
       args: [],
     );
@@ -1990,16 +1920,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Medic-----------------------------`
-  String get _Medic {
-    return Intl.message(
-      '-----------------------------Medic-----------------------------',
-      name: '_Medic',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Records`
   String get Record {
     return Intl.message(
@@ -2590,16 +2510,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Medicine-----------------------------`
-  String get _Medicine {
-    return Intl.message(
-      '-----------------------------Medicine-----------------------------',
-      name: '_Medicine',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `pill`
   String get pill {
     return Intl.message(
@@ -2830,16 +2740,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Doctor-----------------------------`
-  String get _Doctor {
-    return Intl.message(
-      '-----------------------------Doctor-----------------------------',
-      name: '_Doctor',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Doctor`
   String get Doctor {
     return Intl.message(
@@ -2925,16 +2825,6 @@ class S {
     return Intl.message(
       'Favorite doctor',
       name: 'Favorite_doctor',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `-----------------------------Button-----------------------------`
-  String get _Button {
-    return Intl.message(
-      '-----------------------------Button-----------------------------',
-      name: '_Button',
       desc: '',
       args: [],
     );
@@ -3270,16 +3160,6 @@ class S {
     );
   }
 
-  /// `-----------------------------Error-----------------------------`
-  String get _Error {
-    return Intl.message(
-      '-----------------------------Error-----------------------------',
-      name: '_Error',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Wrong email!`
   String get Wrong_email {
     return Intl.message(
@@ -3425,16 +3305,6 @@ class S {
     return Intl.message(
       'Sorry, something wrong!',
       name: 'something_wrong',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `-----------------------------Time-----------------------------`
-  String get _Time {
-    return Intl.message(
-      '-----------------------------Time-----------------------------',
-      name: '_Time',
       desc: '',
       args: [],
     );
@@ -4005,6 +3875,46 @@ class S {
     return Intl.message(
       'End',
       name: 'End',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set_daily_goal`
+  String get Set_daily_goal {
+    return Intl.message(
+      'Set_daily_goal',
+      name: 'Set_daily_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warning_threshold`
+  String get Warning_threshold {
+    return Intl.message(
+      'Warning_threshold',
+      name: 'Warning_threshold',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High_blood_pressure`
+  String get High_blood_pressure {
+    return Intl.message(
+      'High_blood_pressure',
+      name: 'High_blood_pressure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Setting_low_spo2`
+  String get Setting_low_spo2 {
+    return Intl.message(
+      'Setting_low_spo2',
+      name: 'Setting_low_spo2',
       desc: '',
       args: [],
     );

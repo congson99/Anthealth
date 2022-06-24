@@ -215,6 +215,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Heart_rate": MessageLookupByLibrary.simpleMessage("Heart rate"),
         "Height": MessageLookupByLibrary.simpleMessage("Hight"),
         "Hi": MessageLookupByLibrary.simpleMessage("Hi!"),
+        "High_blood_pressure":
+            MessageLookupByLibrary.simpleMessage("High_blood_pressure"),
         "High_diastolic_blood_pressure": MessageLookupByLibrary.simpleMessage(
             "High diastolic blood pressure"),
         "High_systolic_blood_pressure": MessageLookupByLibrary.simpleMessage(
@@ -347,8 +349,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Self-created prescriptions"),
         "September": MessageLookupByLibrary.simpleMessage("September"),
         "Serving": MessageLookupByLibrary.simpleMessage("Serving"),
+        "Set_daily_goal":
+            MessageLookupByLibrary.simpleMessage("Set_daily_goal"),
         "Set_new_password":
             MessageLookupByLibrary.simpleMessage("Set a new password"),
+        "Setting_low_spo2":
+            MessageLookupByLibrary.simpleMessage("Setting_low_spo2"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "Show_on_map": MessageLookupByLibrary.simpleMessage("Show on map"),
         "Smart_diagnosis":
@@ -396,6 +402,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete this record?"),
         "Warning_remove_member": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to remove this member from your family?"),
+        "Warning_threshold":
+            MessageLookupByLibrary.simpleMessage("Warning_threshold"),
         "Water": MessageLookupByLibrary.simpleMessage("Water"),
         "Water_count": MessageLookupByLibrary.simpleMessage("Water"),
         "Water_detail": MessageLookupByLibrary.simpleMessage("Water Detail"),
@@ -421,32 +429,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "Your_doctor_profile":
             MessageLookupByLibrary.simpleMessage("Your doctor profile"),
         "Your_name": MessageLookupByLibrary.simpleMessage("Your name"),
-        "_Authentication": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Authentication-----------------------------"),
-        "_Button": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Button-----------------------------"),
-        "_Common": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Common-----------------------------"),
-        "_Community": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Community-----------------------------"),
-        "_Doctor": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Doctor-----------------------------"),
-        "_Error": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Error-----------------------------"),
-        "_Family": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Family-----------------------------"),
-        "_Health": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Health-----------------------------"),
-        "_Home": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Home-----------------------------"),
-        "_Main": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Main-----------------------------"),
-        "_Medic": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Medic-----------------------------"),
-        "_Medicine": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Medicine-----------------------------"),
-        "_Time": MessageLookupByLibrary.simpleMessage(
-            "-----------------------------Time-----------------------------"),
         "afternoon": MessageLookupByLibrary.simpleMessage("afternoon"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
