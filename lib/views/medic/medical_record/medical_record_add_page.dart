@@ -532,6 +532,8 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
       if (mImage == null) return;
       setState(() {
         images[index].add(File(mImage.path));
+        //Uint8List bytes = images[index].last.readAsBytesSync();
+        print(images[index].last.lengthSync());
       });
     } on PlatformException catch (e) {
       print("Failed to pick Image: $e");

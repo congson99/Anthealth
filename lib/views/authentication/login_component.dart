@@ -51,8 +51,8 @@ class _LoginComponentState extends State<LoginComponent> {
 
   Widget buildContent(BuildContext context, LoginData data) {
     double keyboardHeight = EdgeInsets.fromWindowPadding(
-            WidgetsBinding.instance!.window.viewInsets,
-            WidgetsBinding.instance!.window.devicePixelRatio)
+            WidgetsBinding.instance.window.viewInsets,
+            WidgetsBinding.instance.window.devicePixelRatio)
         .bottom;
     return SingleChildScrollView(
         child: Column(children: [

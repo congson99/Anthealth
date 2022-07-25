@@ -88,8 +88,8 @@ class _AddCaloOutBottomSheetState extends State<AddCaloOutBottomSheet> {
             buildButton(),
             SizedBox(
                 height: EdgeInsets.fromWindowPadding(
-                        WidgetsBinding.instance!.window.viewInsets,
-                        WidgetsBinding.instance!.window.devicePixelRatio)
+                        WidgetsBinding.instance.window.viewInsets,
+                        WidgetsBinding.instance.window.devicePixelRatio)
                     .bottom)
           ]))
     ])));

@@ -17,11 +17,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CommunityPage extends StatelessWidget {
-  const CommunityPage({Key? key, required this.user, required this.languageID})
+  const CommunityPage({Key? key, required this.user})
       : super(key: key);
 
   final User user;
-  final String languageID;
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +157,7 @@ class CommunityPage extends StatelessWidget {
   void setting(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => SettingsPage(
-            appContext: context, languageID: languageID, user: user)));
+            appContext: context, user: user)));
   }
 
   void newCommunityTap(BuildContext context) {

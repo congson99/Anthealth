@@ -20,11 +20,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.user, required this.languageID})
-      : super(key: key);
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
   final User user;
-  final String languageID;
 
   @override
   Widget build(BuildContext context) =>
@@ -160,7 +158,6 @@ class HomePage extends StatelessWidget {
   /// Actions
   void setting(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => SettingsPage(
-            appContext: context, languageID: languageID, user: user)));
+        builder: (_) => SettingsPage(appContext: context, user: user)));
   }
 }

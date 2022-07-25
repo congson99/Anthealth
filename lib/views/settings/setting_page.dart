@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
+import 'package:anthealth_mobile/blocs/language/language_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -10,18 +11,14 @@ import 'package:anthealth_mobile/views/settings/general/setting_language_page.da
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage(
-      {Key? key,
-      required this.appContext,
-      required this.languageID,
-      required this.user})
+  const SettingsPage({Key? key, required this.appContext, required this.user})
       : super(key: key);
 
   final BuildContext appContext;
-  final String languageID;
   final User user;
 
   @override
@@ -71,17 +68,19 @@ class SettingsPage extends StatelessWidget {
       SizedBox(height: 16),
       SectionComponent(
           title: S.of(context).Language,
-          directionContent: getLanguage(context, languageID),
+          //directionContent: getLanguage(context, languageID),
           colorID: 3,
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => SettingLanguagePage(
-                  languageID: languageID,
-                  update: (result) {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    BlocProvider.of<AppCubit>(appContext)
-                        .updateLanguage(result);
-                  })))),
+          onTap: () {
+            getLanguage().then((value) {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => SettingLanguagePage(
+                      languageID: value,
+                      update: (result) {
+                        BlocProvider.of<LanguageCubit>(appContext)
+                            .updateLanguage(result, context);
+                      })));
+            });
+          }),
       SizedBox(height: 32),
       CustomDivider.common(),
       SizedBox(height: 16)
@@ -111,14 +110,9 @@ class SettingsPage extends StatelessWidget {
     ]);
   }
 
-  String getLanguage(BuildContext context, String languageID) {
-    switch (languageID) {
-      case "vi":
-        return "Tiếng Việt";
-      case "en":
-        return "English";
-      default:
-        return S.of(context).Auto;
-    }
+  Future<String> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? language = prefs.getString("language");
+    return language ?? "vi";
   }
 }

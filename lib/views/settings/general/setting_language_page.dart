@@ -22,8 +22,8 @@ class SettingLanguagePage extends StatelessWidget {
   }
 
   Widget buildContent(BuildContext context) {
-    List<String> languageIDs = ["", "en", "vi"];
-    List<String> languages = [S.of(context).Auto, "English", "Tiếng việt"];
+    List<String> languageIDs = ["en", "vi"];
+    List<String> languages = ["English", "Tiếng việt"];
     return Column(
         children: languages
             .map((e) => Column(children: [

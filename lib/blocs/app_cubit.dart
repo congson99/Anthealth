@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -54,8 +55,7 @@ class AppCubit extends Cubit<CubitState> {
                 ServerLogic.getData(value)["avatar"],
                 "283912391",
                 "email@hca.com",
-                true),
-            languageID ?? ""));
+                true)));
       }
     });
   }
@@ -104,12 +104,6 @@ class AppCubit extends Cubit<CubitState> {
       }
     });
     return valid;
-  }
-
-  void updateLanguage(String languageID) async {
-    emit(UpdateLanguageState(languageID));
-    await Future.delayed(Duration(seconds: 1));
-    authenticated("token", languageID);
   }
 
   /// Local Storage
