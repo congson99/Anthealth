@@ -6,13 +6,13 @@ class PhotoListLabel extends StatelessWidget {
       {Key? key,
       required this.photoPath,
       required this.width,
-      required this.onTap,
+      this.onTap,
       this.isShowNoData})
       : super(key: key);
 
   final List<String> photoPath;
   final double width;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool? isShowNoData;
 
   @override
@@ -29,13 +29,14 @@ class PhotoListLabel extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: photoShow
+                .where((element) => photoShow.indexOf(element) < maxSize)
                 .map((url) => Container(
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                           GestureDetector(
-                              onTap: onTap,
+                              onTap: onTap ?? () => onPhotoTap(context, url),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(16),
                                   child: Image.network(url,
@@ -80,5 +81,20 @@ class PhotoListLabel extends StatelessWidget {
                     : Container()
               ]))
             ]);
+  }
+
+  Future<dynamic> onPhotoTap(BuildContext context, String url) {
+    return showModalBottomSheet(
+        enableDrag: false,
+        isScrollControlled: true,
+        context: context,
+        builder: (_) => SafeArea(
+            child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.85,
+                child: InteractiveViewer(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Image.network(url, fit: BoxFit.contain),
+                    )))));
   }
 }

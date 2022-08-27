@@ -1,5 +1,6 @@
 class MedicalRecordPageData {
   MedicalRecordPageData(this.listYearLabel, this.listAppointment);
+
   final List<MedicalRecordYearLabel> listYearLabel;
   final List<MedicalAppointment> listAppointment;
 
@@ -70,7 +71,7 @@ class MedicalAppointment {
   String name;
 
   static formatData(dynamic data, DateTime lastTime) {
-    if (data == null)
+    if (data == null || data == false || data["time"] == null)
       return MedicalAppointment(DateTime.now(), "", DateTime.now(), "");
     return MedicalAppointment(
         DateTime.fromMillisecondsSinceEpoch(data["time"] * 1000),
@@ -103,12 +104,13 @@ class MedicalRecordDetailData {
     final List<String> testPhoto = [];
     final List<String> diagnosePhoto = [];
     final List<String> prescriptionPhoto = [];
+    print(data.toString());
     if (data["detailsImage"].length != 0)
-      detailPhoto.addAll(data["detailsImage"]);
+      for (dynamic x in data["detailsImage"]) detailPhoto.add(x.toString());
     if (data["diagnoseImage"].length != 0)
-      diagnosePhoto.addAll(data["diagnoseImage"]);
+      for (dynamic x in data["diagnoseImage"]) detailPhoto.add(x.toString());
     if (data["medicineImage"].length != 0)
-      prescriptionPhoto.addAll(data["medicineImage"]);
+      for (dynamic x in data["medicineImage"]) detailPhoto.add(x.toString());
     return MedicalRecordDetailData(
         MedicalRecordLabel(
             data["rid"],

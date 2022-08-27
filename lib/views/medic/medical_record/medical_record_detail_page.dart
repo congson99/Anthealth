@@ -123,8 +123,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
             SizedBox(height: 16),
             PhotoListLabel(
                 photoPath: photoData,
-                width: MediaQuery.of(context).size.width - 32 - 16,
-                onTap: () {})
+                width: MediaQuery.of(context).size.width - 32 - 16)
           ]));
 
   Widget buildPrescription(BuildContext context, List<String> photoData,
@@ -141,7 +140,6 @@ class MedicalRecordDetailPage extends StatelessWidget {
             PhotoListLabel(
                 photoPath: photoData,
                 width: MediaQuery.of(context).size.width - 32 - 16,
-                onTap: () {},
                 isShowNoData: (prescription.length == 0) ? true : false)
           ]));
 

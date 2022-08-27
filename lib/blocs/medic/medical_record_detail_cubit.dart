@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
-import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_detail_state.dart';
+import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';

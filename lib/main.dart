@@ -5,14 +5,12 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/views/authentication/authentication_page.dart';
 import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
-import 'package:anthealth_mobile/views/common_pages/update_language_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   setOrientations();
