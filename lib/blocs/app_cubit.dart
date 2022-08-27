@@ -78,6 +78,12 @@ class AppCubit extends Cubit<CubitState> {
     emit(UnauthenticatedState());
   }
 
+  void removeAccount() async {
+    await CommonService.instance.send(MessageIDPath.removeAccount(), {}.toString());
+    removeToken();
+    emit(UnauthenticatedState());
+  }
+
   void connectError() {
     emit(ConnectErrorState());
   }

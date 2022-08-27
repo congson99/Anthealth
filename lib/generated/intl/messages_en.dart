@@ -335,6 +335,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Remaining": MessageLookupByLibrary.simpleMessage("Remaining"),
         "Reminder_times":
             MessageLookupByLibrary.simpleMessage("Reminder times"),
+        "Remove_account":
+            MessageLookupByLibrary.simpleMessage("Remove your account"),
         "Remove_family_member": MessageLookupByLibrary.simpleMessage(
             "Remove member from the family"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Repeat"),

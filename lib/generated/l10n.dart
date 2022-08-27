@@ -3919,6 +3919,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Remove your account`
+  String get Remove_account {
+    return Intl.message(
+      'Remove your account',
+      name: 'Remove_account',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

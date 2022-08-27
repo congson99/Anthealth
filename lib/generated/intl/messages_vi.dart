@@ -348,6 +348,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email này đã được đăng ký!"),
         "Remaining": MessageLookupByLibrary.simpleMessage("Còn lại"),
         "Reminder_times": MessageLookupByLibrary.simpleMessage("Lần nhắc nhở"),
+        "Remove_account":
+            MessageLookupByLibrary.simpleMessage("Xoá tài khoản của bạn"),
         "Remove_family_member": MessageLookupByLibrary.simpleMessage(
             "Loại thành viên ra khỏi gia đình"),
         "Repeat": MessageLookupByLibrary.simpleMessage("Lặp lại"),

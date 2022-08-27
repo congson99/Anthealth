@@ -28,4 +28,6 @@ class MessageIDPath {
   static int deleteMedicalRecord() => 2314;
 
   static int getMedicalRecordDetail() => 2315;
+
+  static int removeAccount() => 2124;
 }

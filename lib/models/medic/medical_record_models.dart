@@ -1,6 +1,5 @@
 class MedicalRecordPageData {
   MedicalRecordPageData(this.listYearLabel, this.listAppointment);
-
   final List<MedicalRecordYearLabel> listYearLabel;
   final List<MedicalAppointment> listAppointment;
 

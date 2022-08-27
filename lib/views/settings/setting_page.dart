@@ -106,7 +106,22 @@ class SettingsPage extends StatelessWidget {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (_) => DevToolPage()));
           }),
-      SizedBox(height: 16)
+      SizedBox(height: 16),
+      Center(
+        child: GestureDetector(
+          onTap: () {
+            BlocProvider.of<AppCubit>(appContext).removeAccount();
+            Navigator.pop(context);
+          },
+          child: Text(
+            S.of(context).Remove_account,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Colors.grey),
+          ),
+        ),
+      )
     ]);
   }
 

@@ -385,5 +385,6 @@
   "Set_daily_goal": "Set_daily_goal",
   "Warning_threshold": "Warning_threshold",
   "High_blood_pressure": "High_blood_pressure",
-  "Setting_low_spo2": "Setting_low_spo2"
+  "Setting_low_spo2": "Setting_low_spo2",
+  "Remove_account": "Xoá tài khoản của bạn"
 }
