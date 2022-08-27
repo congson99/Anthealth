@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/settings/dev_tool/dev_tool_page.dart';
 import 'package:anthealth_mobile/views/settings/general/setting_language_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -99,29 +100,19 @@ class SettingsPage extends StatelessWidget {
             Navigator.pop(context);
           }),
       SizedBox(height: 16),
+      // SectionComponent(
+      //     title: "</> DEV TOOL",
+      //     colorID: 3,
+      //     onTap: () {
+      //       Navigator.of(context)
+      //           .push(MaterialPageRoute(builder: (_) => DevToolPage()));
+      //     }),
+      // SizedBox(height: 16),
       SectionComponent(
-          title: "</> DEV TOOL",
+          title: S.of(context).Remove_account,
+          isDirection: false,
           colorID: 3,
-          onTap: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => DevToolPage()));
-          }),
-      SizedBox(height: 16),
-      Center(
-        child: GestureDetector(
-          onTap: () {
-            BlocProvider.of<AppCubit>(appContext).removeAccount();
-            Navigator.pop(context);
-          },
-          child: Text(
-            S.of(context).Remove_account,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1!
-                .copyWith(color: Colors.grey),
-          ),
-        ),
-      )
+          onTap: () => removeAccount(context)),
     ]);
   }
 
@@ -129,5 +120,17 @@ class SettingsPage extends StatelessWidget {
     final prefs = await SharedPreferences.getInstance();
     final String? language = prefs.getString("language");
     return language ?? "vi";
+  }
+
+  void removeAccount(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => WarningPopup(
+            title: S.of(context).Remove_account,
+            cancel: () => Navigator.pop(context),
+            delete: () {
+              BlocProvider.of<AppCubit>(appContext).removeAccount();
+              Navigator.pop(context);
+            }));
   }
 }
