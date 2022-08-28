@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,6 +13,8 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void startApp() async {
+    await Firebase.initializeApp();
+
     String token = "";
     await isConnect().then((isConnect) {
       if (!isConnect) {
