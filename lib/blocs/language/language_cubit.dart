@@ -36,7 +36,7 @@ class LanguageCubit extends Cubit<CubitState> {
     print(user.name);
     var data = {
       "name": user.name,
-      "phone": user.phoneNumber,
+      "phone": "a" + user.phoneNumber,
       "birthday": user.yOB
     };
     bool valid = false;
@@ -48,11 +48,11 @@ class LanguageCubit extends Cubit<CubitState> {
           MessageIDPath.updateProfile(), value)) {
         valid = ServerLogic.getData(value)["status"];
         print(value);
-        if (valid) {
-          emit(InitialState());
-          Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
-          start();
-        }
+        // if (valid) {
+        //   emit(InitialState());
+        //   Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+        //   start();
+        // }
       }
     });
     return valid;
