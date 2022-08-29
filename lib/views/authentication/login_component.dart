@@ -94,6 +94,7 @@ class _LoginComponentState extends State<LoginComponent> {
                   }),
               context: context,
               textInputAction: TextInputAction.next,
+              textInputType: TextInputType.emailAddress,
               focusNode: _usernameFocus,
               textEditingController: _usernameController,
               errorText: (_errorUsername == 'null') ? null : _errorUsername,

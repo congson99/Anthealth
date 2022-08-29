@@ -153,11 +153,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "Dr": MessageLookupByLibrary.simpleMessage("Dr."),
         "Drank": MessageLookupByLibrary.simpleMessage("Drank"),
         "Drink_water": MessageLookupByLibrary.simpleMessage("Water"),
+        "Edit_Profile":
+            MessageLookupByLibrary.simpleMessage("EDIT YOUR PROFILE"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Edit blood Pressure data"),
         "Edit_heart_rate":
             MessageLookupByLibrary.simpleMessage("Edit heart rate data"),
         "Edit_height": MessageLookupByLibrary.simpleMessage("Edit height data"),
+        "Edit_profile": MessageLookupByLibrary.simpleMessage("Edit profile"),
         "Edit_spo2": MessageLookupByLibrary.simpleMessage("Edit SPO2 data"),
         "Edit_temperature":
             MessageLookupByLibrary.simpleMessage("Edit temperature data"),
@@ -193,6 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Feedback on this community"),
         "Feedback_community_successful":
             MessageLookupByLibrary.simpleMessage("Thanks for your feedback!"),
+        "Female": MessageLookupByLibrary.simpleMessage("Female"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Fill in information"),
         "Find": MessageLookupByLibrary.simpleMessage("Find"),
@@ -238,6 +242,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters"),
+        "Invalid_phone":
+            MessageLookupByLibrary.simpleMessage("Invalid phone number!"),
+        "Invalid_yob":
+            MessageLookupByLibrary.simpleMessage("Invalid year of birth!"),
         "Issues": MessageLookupByLibrary.simpleMessage("Issues"),
         "January": MessageLookupByLibrary.simpleMessage("January"),
         "Join_community":
@@ -251,6 +259,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Learn_more": MessageLookupByLibrary.simpleMessage("Learn more"),
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "Low_spo2": MessageLookupByLibrary.simpleMessage("Low SPO2"),
+        "Male": MessageLookupByLibrary.simpleMessage("Male"),
         "Map": MessageLookupByLibrary.simpleMessage("Map"),
         "March": MessageLookupByLibrary.simpleMessage("March"),
         "May": MessageLookupByLibrary.simpleMessage("May"),
@@ -312,6 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Previous"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "Profile_info": MessageLookupByLibrary.simpleMessage("Profile"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "Quick_lookup":
             MessageLookupByLibrary.simpleMessage("Quick lookup here"),
@@ -358,6 +368,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Setting_low_spo2":
             MessageLookupByLibrary.simpleMessage("Setting_low_spo2"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "Sex": MessageLookupByLibrary.simpleMessage("Sex"),
         "Show_on_map": MessageLookupByLibrary.simpleMessage("Show on map"),
         "Smart_diagnosis":
             MessageLookupByLibrary.simpleMessage("Smart diagnosis"),
@@ -420,6 +431,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Wrong_password":
             MessageLookupByLibrary.simpleMessage("Wrong password!"),
         "Year": MessageLookupByLibrary.simpleMessage("Year"),
+        "Year_of_birth": MessageLookupByLibrary.simpleMessage("Year of birth"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
         "You": MessageLookupByLibrary.simpleMessage("You"),
         "You_are": MessageLookupByLibrary.simpleMessage("You are "),

@@ -386,5 +386,14 @@
   "Warning_threshold": "Warning_threshold",
   "High_blood_pressure": "High_blood_pressure",
   "Setting_low_spo2": "Setting_low_spo2",
-  "Remove_account": "Xoá tài khoản của bạn"
+  "Remove_account": "Xoá tài khoản của bạn",
+  "Profile_info": "Thông tin cá nhân",
+  "Year_of_birth": "Năm sinh",
+  "Sex": "Giới tính",
+  "Male": "Nam",
+  "Female": "Nữ",
+  "Edit_Profile": "CHỈNH SỬA THÔNG TIN",
+  "Edit_profile": "Chỉnh sửa thông tin",
+  "Invalid_phone": "Số điện thoại không hợp lệ!",
+  "Invalid_yob": "Năm sinh không hợp lệ!"
 }

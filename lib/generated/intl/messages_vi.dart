@@ -156,12 +156,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "Dr": MessageLookupByLibrary.simpleMessage("Bs."),
         "Drank": MessageLookupByLibrary.simpleMessage("Đã uống"),
         "Drink_water": MessageLookupByLibrary.simpleMessage("Uống nước"),
+        "Edit_Profile":
+            MessageLookupByLibrary.simpleMessage("CHỈNH SỬA THÔNG TIN"),
         "Edit_blood_pressure":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu huyết áp"),
         "Edit_heart_rate":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu nhịp tim"),
         "Edit_height":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu chiều cao"),
+        "Edit_profile":
+            MessageLookupByLibrary.simpleMessage("Chỉnh sửa thông tin"),
         "Edit_spo2":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa dữ liệu SPO2"),
         "Edit_temperature":
@@ -202,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Phản hồi về cộng đồng"),
         "Feedback_community_successful":
             MessageLookupByLibrary.simpleMessage("Cảm ơn phản hồi của bạn!"),
+        "Female": MessageLookupByLibrary.simpleMessage("Nữ"),
         "Fill_in_information":
             MessageLookupByLibrary.simpleMessage("Điền thông tin"),
         "Find": MessageLookupByLibrary.simpleMessage("Tìm"),
@@ -250,6 +255,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ!"),
         "Invalid_password": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải chứa ít nhất 8 ký tự"),
+        "Invalid_phone":
+            MessageLookupByLibrary.simpleMessage("Số điện thoại không hợp lệ!"),
+        "Invalid_yob":
+            MessageLookupByLibrary.simpleMessage("Năm sinh không hợp lệ!"),
         "Issues": MessageLookupByLibrary.simpleMessage("Vấn đề"),
         "January": MessageLookupByLibrary.simpleMessage("Tháng 1"),
         "Join_community":
@@ -264,6 +273,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Learn_more": MessageLookupByLibrary.simpleMessage("Tìm hiểu thêm"),
         "Logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "Low_spo2": MessageLookupByLibrary.simpleMessage("Ngưỡng SPO2 thấp"),
+        "Male": MessageLookupByLibrary.simpleMessage("Nam"),
         "Map": MessageLookupByLibrary.simpleMessage("Bản đồ"),
         "March": MessageLookupByLibrary.simpleMessage("Tháng 3"),
         "May": MessageLookupByLibrary.simpleMessage("Tháng 5"),
@@ -327,6 +337,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Previous_medical_record":
             MessageLookupByLibrary.simpleMessage("Lần khám trước"),
         "Profile": MessageLookupByLibrary.simpleMessage("Hồ sơ cá nhân"),
+        "Profile_info":
+            MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "Quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "Quick_lookup": MessageLookupByLibrary.simpleMessage("Tra cứu nhanh"),
         "Re_examination":
@@ -371,6 +383,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Setting_low_spo2":
             MessageLookupByLibrary.simpleMessage("Setting_low_spo2"),
         "Settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "Sex": MessageLookupByLibrary.simpleMessage("Giới tính"),
         "Show_on_map":
             MessageLookupByLibrary.simpleMessage("Hiển thị trên bản đồ"),
         "Smart_diagnosis":
@@ -436,6 +449,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sai email hoặc mật khẩu!"),
         "Wrong_password": MessageLookupByLibrary.simpleMessage("Sai mật khẩu!"),
         "Year": MessageLookupByLibrary.simpleMessage("Năm"),
+        "Year_of_birth": MessageLookupByLibrary.simpleMessage("Năm sinh"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
         "You": MessageLookupByLibrary.simpleMessage("Bạn"),
         "You_are": MessageLookupByLibrary.simpleMessage("Bạn đang "),

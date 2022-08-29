@@ -9,14 +9,18 @@ class CommonTextField {
       String? hintText,
       String? labelText,
       String? errorText,
+      TextInputType? textInputType,
       FocusNode? focusNode,
+      bool? readOnly,
       TextInputAction? textInputAction,
       TextEditingController? textEditingController,
       bool? isVisibility}) {
     return TextField(
         onChanged: onChanged,
         focusNode: focusNode,
+        readOnly: readOnly ?? false,
         controller: textEditingController,
+        keyboardType: textInputType,
         obscureText: isVisibility ?? false,
         style: Theme.of(context).textTheme.subtitle1,
         textInputAction: textInputAction ?? TextInputAction.done,

@@ -47,7 +47,7 @@ class AttachComponent extends StatelessWidget {
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (_) => UserProfilePage(
                   user: User(attach.ownerID, attach.ownerName,
-                      attach.ownerAvatar, "phoneNumber", "email", false)))));
+                      attach.ownerAvatar, "phoneNumber", "email", false, 0, -1)))));
   }
 
   String getSectionComponentImagePath() {

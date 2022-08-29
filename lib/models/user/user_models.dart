@@ -1,6 +1,6 @@
 class User {
   User(this.id, this.name, this.avatarPath, this.phoneNumber, this.email,
-      this.isDoctor);
+      this.isDoctor, this.yOB, this.sex);
 
   final String id;
   final String name;
@@ -8,4 +8,6 @@ class User {
   final String phoneNumber;
   final String email;
   final bool isDoctor;
+  final int yOB;
+  final int sex;
 }

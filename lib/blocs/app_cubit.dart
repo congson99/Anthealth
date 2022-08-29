@@ -52,9 +52,11 @@ class AppCubit extends Cubit<CubitState> {
                 "123",
                 ServerLogic.getData(value)["name"],
                 ServerLogic.getData(value)["avatar"],
-                "283912391",
-                "email@hca.com",
-                true)));
+                ServerLogic.getData(value)["phone"],
+                ServerLogic.getData(value)["email"],
+                true,
+                ServerLogic.getData(value)["birthday"],
+                ServerLogic.getData(value)["sex"])));
       }
     });
   }
@@ -78,7 +80,8 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void removeAccount() async {
-    await CommonService.instance.send(MessageIDPath.removeAccount(), {}.toString());
+    await CommonService.instance
+        .send(MessageIDPath.removeAccount(), {}.toString());
     removeToken();
     emit(UnauthenticatedState());
   }
@@ -106,6 +109,25 @@ class AppCubit extends Cubit<CubitState> {
       if (value == 'null') valid = false;
       if (ServerLogic.checkMatchMessageID(MessageIDPath.checkToken(), value)) {
         valid = ServerLogic.getData(value)["valid"];
+      }
+    });
+    return valid;
+  }
+
+  Future<bool> updateProfile(User user) async {
+    var data = {
+      "name": user.name,
+      "phone": user.phoneNumber,
+      "birthday": user.yOB
+    };
+    bool valid = false;
+    await CommonService.instance
+        .send(MessageIDPath.updateProfile(), data.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (value == 'null') valid = false;
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.updateProfile(), value)) {
+        valid = ServerLogic.getData(value)["status"];
       }
     });
     return valid;
