@@ -12,6 +12,7 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void startApp() async {
+    emit(InitialState());
     String token = "";
     await isConnect().then((isConnect) {
       if (!isConnect) {
@@ -109,25 +110,6 @@ class AppCubit extends Cubit<CubitState> {
       if (value == 'null') valid = false;
       if (ServerLogic.checkMatchMessageID(MessageIDPath.checkToken(), value)) {
         valid = ServerLogic.getData(value)["valid"];
-      }
-    });
-    return valid;
-  }
-
-  Future<bool> updateProfile(User user) async {
-    var data = {
-      "name": user.name,
-      "phone": user.phoneNumber,
-      "birthday": user.yOB
-    };
-    bool valid = false;
-    await CommonService.instance
-        .send(MessageIDPath.updateProfile(), data.toString());
-    await CommonService.instance.client!.getData().then((value) {
-      if (value == 'null') valid = false;
-      if (ServerLogic.checkMatchMessageID(
-          MessageIDPath.updateProfile(), value)) {
-        valid = ServerLogic.getData(value)["status"];
       }
     });
     return valid;

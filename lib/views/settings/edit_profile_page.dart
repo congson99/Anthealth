@@ -1,5 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
-import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/blocs/language/language_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -113,10 +113,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
     if (!checkName()) return;
     if (!checkPhone()) return;
     if (!checkYOB()) return;
-    BlocProvider.of<AppCubit>(widget.appContext)
-        .updateProfile(User("", _nameController.text, "", _phoneController.text,
-            "", false, int.parse(_yearController.text), widget.user.sex))
-        .then((value) => print(value));
+    BlocProvider.of<LanguageCubit>(widget.appContext)
+        .updateProfile(
+            User("", _nameController.text, "", _phoneController.text, "", false,
+                int.parse(_yearController.text), widget.user.sex),
+            context)
+        .then((value) {
+      if (value) BlocProvider.of<AppCubit>(widget.appContext).startApp();
+    });
   }
 
   bool checkName() {
