@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/blocs/medic/medical_record_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
+import 'package:anthealth_mobile/services/firebase/firebase_service.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
@@ -531,13 +532,13 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
     try {
       final mImage = await ImagePicker().pickImage(source: imageSource);
       if (mImage == null) return;
+      File imageFile = File(mImage.path);
+      var downloadUrl = await FirebaseService.instance.uploadImage(imageFile);
+      print("[pickImage] url = $downloadUrl");
       setState(() {
-        File imageFile = File(mImage.path);
         images[index].add(imageFile);
         //Uint8List bytes = images[index].last.readAsBytesSync();
         // print(images[index].last.lengthSync());
-        var downloadUrl = CommonService.instance.uploadImage(imageFile);
-        print("[pickImage] url = $downloadUrl");
       });
     } on PlatformException catch (e) {
       print("Failed to pick Image: $e");
