@@ -49,7 +49,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
   var _timeController = TextEditingController();
   var _appointmentTimeController = TextEditingController();
   var _nameFocus = FocusNode();
-  List<List<File>> images = [[], [], [], []];
+  List<List<String>> images = [[], [], [], []];
 
   @override
   void initState() {
@@ -242,7 +242,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
               width: size,
               child: GestureDetector(
                   onTap: () => onPhotoTap(index, images[index].indexOf(photo)),
-                  child: Image.file(photo, fit: BoxFit.cover))))
+                  child: Image.network(photo, fit: BoxFit.cover))))
           .toList(),
       Container(
           height: (images[index].length == 0) ? 32 : size,
@@ -393,6 +393,10 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
 
   void addMedicalRecord() {
     if (checkRequiredFill(data.label)) {
+      data.detailPhoto = images[0];
+      data.testPhoto = images[1];
+      data.diagnosePhoto = images[2];
+      data.prescriptionPhoto = images[3];
       BlocProvider.of<MedicalRecordCubit>(widget.superContext)
           .addData(data)
           .then((value) {
@@ -413,6 +417,10 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
 
   void updateMedicalRecord() {
     if (checkRequiredFill(data.label)) {
+      data.detailPhoto = images[0];
+      data.testPhoto = images[1];
+      data.diagnosePhoto = images[2];
+      data.prescriptionPhoto = images[3];
       BlocProvider.of<MedicalRecordCubit>(widget.superContext)
           .addData(data)
           .then((value) {
@@ -454,7 +462,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
                     children: [
                       Expanded(
                         child: InteractiveViewer(
-                            child: Image.file(images[index][photoIndex],
+                            child: Image.network(images[index][photoIndex],
                                 fit: BoxFit.contain)),
                       ),
                       Padding(
@@ -534,11 +542,8 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
       if (mImage == null) return;
       File imageFile = File(mImage.path);
       var downloadUrl = await FirebaseService.instance.uploadImage(imageFile);
-      print("[pickImage] url = $downloadUrl");
       setState(() {
-        images[index].add(imageFile);
-        //Uint8List bytes = images[index].last.readAsBytesSync();
-        // print(images[index].last.lengthSync());
+        images[index].add(downloadUrl);
       });
     } on PlatformException catch (e) {
       print("Failed to pick Image: $e");

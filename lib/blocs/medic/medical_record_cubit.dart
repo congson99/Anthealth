@@ -53,7 +53,7 @@ class MedicalRecordCubit extends Cubit<CubitState> {
       "place": data.label.location,
       "time": data.label.dateTime.millisecondsSinceEpoch ~/ 1000,
       "medicine": [],
-      "detailsImage": data.diagnosePhoto,
+      "detailsImage": data.detailPhoto,
       "testImage": data.testPhoto,
       "diagnoseImage": data.diagnosePhoto,
       "medicineImage": data.prescriptionPhoto
@@ -68,7 +68,6 @@ class MedicalRecordCubit extends Cubit<CubitState> {
       };
       temp.addAll(tempAppointment);
     }
-    print(temp.toString());
     await CommonService.instance
         .send(MessageIDPath.addNewMedicalRecord(), temp.toString());
     await CommonService.instance.client!.getData().then((value) {
