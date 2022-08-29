@@ -13,8 +13,8 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void startApp() async {
+    emit(InitialState());
     await Firebase.initializeApp();
-
     String token = "";
     await isConnect().then((isConnect) {
       if (!isConnect) {
@@ -55,9 +55,11 @@ class AppCubit extends Cubit<CubitState> {
                 "123",
                 ServerLogic.getData(value)["name"],
                 ServerLogic.getData(value)["avatar"],
-                "283912391",
-                "email@hca.com",
-                true)));
+                ServerLogic.getData(value)["phone"],
+                ServerLogic.getData(value)["email"],
+                true,
+                ServerLogic.getData(value)["birthday"],
+                ServerLogic.getData(value)["sex"])));
       }
     });
   }
@@ -81,7 +83,8 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void removeAccount() async {
-    await CommonService.instance.send(MessageIDPath.removeAccount(), {}.toString());
+    await CommonService.instance
+        .send(MessageIDPath.removeAccount(), {}.toString());
     removeToken();
     emit(UnauthenticatedState());
   }

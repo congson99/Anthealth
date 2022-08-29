@@ -3929,6 +3929,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Profile`
+  String get Profile_info {
+    return Intl.message(
+      'Profile',
+      name: 'Profile_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year of birth`
+  String get Year_of_birth {
+    return Intl.message(
+      'Year of birth',
+      name: 'Year_of_birth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sex`
+  String get Sex {
+    return Intl.message(
+      'Sex',
+      name: 'Sex',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get Male {
+    return Intl.message(
+      'Male',
+      name: 'Male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get Female {
+    return Intl.message(
+      'Female',
+      name: 'Female',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EDIT YOUR PROFILE`
+  String get Edit_Profile {
+    return Intl.message(
+      'EDIT YOUR PROFILE',
+      name: 'Edit_Profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit profile`
+  String get Edit_profile {
+    return Intl.message(
+      'Edit profile',
+      name: 'Edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid phone number!`
+  String get Invalid_phone {
+    return Intl.message(
+      'Invalid phone number!',
+      name: 'Invalid_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid year of birth!`
+  String get Invalid_yob {
+    return Intl.message(
+      'Invalid year of birth!',
+      name: 'Invalid_yob',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

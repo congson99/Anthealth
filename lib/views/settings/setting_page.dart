@@ -7,8 +7,9 @@ import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
-import 'package:anthealth_mobile/views/settings/dev_tool/dev_tool_page.dart';
 import 'package:anthealth_mobile/views/settings/general/setting_language_page.dart';
+import 'package:anthealth_mobile/views/settings/settings_profile_page.dart';
+import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class SettingsPage extends StatelessWidget {
 
   Widget buildContent(BuildContext context, BuildContext appContext) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      buildDoctorMode(context, appContext),
+      //buildDoctorMode(context, appContext),
       buildGeneral(context, appContext),
       buildLogout(context, appContext)
     ]);
@@ -65,7 +66,41 @@ class SettingsPage extends StatelessWidget {
 
   Widget buildGeneral(BuildContext context, BuildContext appContext) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      CommonText.section(S.of(context).General, context),
+      GestureDetector(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => SettingsProfilePage(
+                    user: user,
+                    appContext: appContext,
+                  ))),
+          child: Container(
+              decoration: BoxDecoration(
+                color: AnthealthColors.black5,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(34),
+                    child: Image.network(
+                        (user.avatarPath == "")
+                            ? "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                            : user.avatarPath,
+                        height: 56.0,
+                        width: 56.0,
+                        fit: BoxFit.cover),
+                  ),
+                  SizedBox(width: 16),
+                  Text(user.name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(color: AnthealthColors.black1)),
+                  Spacer(),
+                  Image.asset("assets/app_icon/direction/right_bla2.png",
+                      height: 16.0, width: 16.0, fit: BoxFit.cover)
+                ],
+              ))),
       SizedBox(height: 16),
       SectionComponent(
           title: S.of(context).Language,
@@ -82,7 +117,7 @@ class SettingsPage extends StatelessWidget {
                       })));
             });
           }),
-      SizedBox(height: 32),
+      SizedBox(height: 16),
       CustomDivider.common(),
       SizedBox(height: 16)
     ]);
