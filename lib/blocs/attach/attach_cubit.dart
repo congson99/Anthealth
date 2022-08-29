@@ -46,7 +46,7 @@ class AttachCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           true,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1], 1999),
       FamilyMemberData(
           "sd",
           "Van Anh",
@@ -54,7 +54,7 @@ class AttachCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           true,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1], 1999),
       FamilyMemberData(
           "id",
           "Nguyen Van Anh",
@@ -62,7 +62,7 @@ class AttachCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1], 1999),
       FamilyMemberData(
           "id",
           "Nguyen Van Anh",
@@ -70,7 +70,7 @@ class AttachCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1], 1999),
     ];
     return result;
   }

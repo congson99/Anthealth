@@ -67,7 +67,7 @@ class HealthPage extends StatelessWidget {
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => HeightPage(dashboardContext: context))),
+                builder: (_) => HeightPage(dashboardContext: context, user: user))),
             colorID: 0,
             iconPath: "assets/indicators/height.png",
             value: indicatorLatestData[0],

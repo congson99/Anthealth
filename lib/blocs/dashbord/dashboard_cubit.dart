@@ -179,7 +179,7 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           true,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
       FamilyMemberData(
           "sd",
           "Van Anh",
@@ -187,7 +187,7 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
       FamilyMemberData(
           "id",
           "Nguyen Van Anh",
@@ -195,7 +195,7 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
       FamilyMemberData(
           "id",
           "Nguyen Van Anh",
@@ -203,7 +203,7 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
     ]));
   }
 
@@ -275,7 +275,7 @@ class DashboardCubit extends Cubit<CubitState> {
   FamilyMemberData findUser(String email) {
     if (email == "")
       return FamilyMemberData(
-          "", "", "", "", "", false, [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]);
+          "", "", "", "", "", false, [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0);
     return FamilyMemberData(
         "id",
         "Nguyen Van Anh",
@@ -283,7 +283,7 @@ class DashboardCubit extends Cubit<CubitState> {
         "012013011",
         "ahaha@hca.com",
         false,
-        [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1]);
+        [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0);
   }
 
   Future<List<DoctorGroup>> getAllDoctor() async {
