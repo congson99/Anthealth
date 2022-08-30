@@ -108,8 +108,8 @@ class MedicPage extends StatelessWidget {
             iconPath: "assets/app_icon/common/location_sec0.png",
             title: S.of(context).Medical_map,
             colorID: 1,
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => MedicalMapPage())))
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => MedicalMapPage(dashboardContext: context))))
       ]);
 
   // Actions
