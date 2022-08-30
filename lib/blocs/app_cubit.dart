@@ -45,8 +45,7 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void authenticated(String token, [String? languageID]) async {
-    await CommonService.instance
-        .send(MessageIDPath.getUserBaseData(), {}.toString());
+    await CommonService.instance.send(MessageIDPath.getUserBaseData(), {});
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getUserBaseData(), value)) {
@@ -78,14 +77,13 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void logout() async {
-    await CommonService.instance.send(MessageIDPath.logout(), {}.toString());
+    await CommonService.instance.send(MessageIDPath.logout(), {});
     removeToken();
     emit(UnauthenticatedState());
   }
 
   void removeAccount() async {
-    await CommonService.instance
-        .send(MessageIDPath.removeAccount(), {}.toString());
+    await CommonService.instance.send(MessageIDPath.removeAccount(), {});
     removeToken();
     emit(UnauthenticatedState());
   }
@@ -97,12 +95,11 @@ class AppCubit extends Cubit<CubitState> {
   Future<bool> updateProfile(User user, BuildContext context) async {
     var data = {
       "name": user.name,
-      "phone": "a" + user.phoneNumber,
+      "phone": user.phoneNumber,
       "birthday": user.yOB
     };
     bool valid = false;
-    await CommonService.instance
-        .send(MessageIDPath.updateProfile(), data.toString());
+    await CommonService.instance.send(MessageIDPath.updateProfile(), data);
     await CommonService.instance.client!.getData().then((value) {
       if (value == 'null') valid = false;
       if (ServerLogic.checkMatchMessageID(
@@ -116,7 +113,7 @@ class AppCubit extends Cubit<CubitState> {
   /// Service Functions
   Future<bool> isConnect() async {
     bool result = false;
-    await CommonService.instance.send(MessageIDPath.checkConnect(), "");
+    await CommonService.instance.send(MessageIDPath.checkConnect(), {});
     await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
       if (value != "null") result = true;
     });
@@ -126,8 +123,7 @@ class AppCubit extends Cubit<CubitState> {
   Future<bool> checkToken(String token) async {
     bool valid = false;
     var sendData = {"token": token};
-    await CommonService.instance
-        .send(MessageIDPath.checkToken(), sendData.toString());
+    await CommonService.instance.send(MessageIDPath.checkToken(), sendData);
     await CommonService.instance.client!.getData().then((value) {
       if (value == 'null') valid = false;
       if (ServerLogic.checkMatchMessageID(MessageIDPath.checkToken(), value)) {

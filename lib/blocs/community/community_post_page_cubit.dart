@@ -169,7 +169,7 @@ class CommunitiesPostPageCubit extends Cubit<CubitState> {
   Future<List<MedicalRecordYearLabel>> getMedicalRecord() async {
     List<MedicalRecordYearLabel> result = [];
     await CommonService.instance
-        .send(MessageIDPath.getMedicalRecordPageData(), "");
+        .send(MessageIDPath.getMedicalRecordPageData(), {});
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicalRecordPageData(), value)) {

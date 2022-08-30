@@ -30,7 +30,8 @@ class IndicatorPageData {
 
   List<IndicatorData> getData() => _data;
 
-  static String formatToSendLoadData(int type, IndicatorFilter filter) {
+  static Map<String, dynamic> formatToSendLoadData(
+      int type, IndicatorFilter filter) {
     DateTime start = DateTime.now();
     DateTime end = DateTime.now();
     // 10 Year
@@ -74,7 +75,7 @@ class IndicatorPageData {
       "start_time": (start.millisecondsSinceEpoch) ~/ 1000,
       "end_time": (end.millisecondsSinceEpoch) ~/ 1000
     };
-    return result.toString();
+    return result;
   }
 
   static IndicatorPageData getPageData(

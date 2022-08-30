@@ -35,7 +35,7 @@ class MedicalRecordCubit extends Cubit<CubitState> {
   void loadData() async {
     emit(InitialState());
     await CommonService.instance
-        .send(MessageIDPath.getMedicalRecordPageData(), "");
+        .send(MessageIDPath.getMedicalRecordPageData(), {});
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicalRecordPageData(), value)) {
@@ -69,7 +69,7 @@ class MedicalRecordCubit extends Cubit<CubitState> {
       temp.addAll(tempAppointment);
     }
     await CommonService.instance
-        .send(MessageIDPath.addNewMedicalRecord(), temp.toString());
+        .send(MessageIDPath.addNewMedicalRecord(), temp);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.addNewMedicalRecord(), value)) {
@@ -83,7 +83,7 @@ class MedicalRecordCubit extends Cubit<CubitState> {
     bool result = false;
     var temp = {"rid": id};
     await CommonService.instance
-        .send(MessageIDPath.deleteMedicalRecord(), temp.toString());
+        .send(MessageIDPath.deleteMedicalRecord(), temp);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.deleteMedicalRecord(), value)) {

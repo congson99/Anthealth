@@ -86,10 +86,10 @@ class MedicalRecordDetailPage extends StatelessWidget {
                       state.data.detailPhoto),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
                   buildPhotoComponent(context, S.of(context).Medical_test,
-                      state.data.detailPhoto),
+                      state.data.testPhoto),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
-                  buildPhotoComponent(
-                      context, S.of(context).Diagnose, state.data.detailPhoto),
+                  buildPhotoComponent(context, S.of(context).Diagnose,
+                      state.data.diagnosePhoto),
                   CustomDivider.cutLine(MediaQuery.of(context).size.width),
                   buildPrescription(context, state.data.prescriptionPhoto,
                       state.data.prescription),

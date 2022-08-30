@@ -39,13 +39,13 @@ class IndicatorCubit extends Cubit<CubitState> {
 
   Future<bool> addIndicator(int type, IndicatorData data) async {
     var result = false;
-    String sendData = {
+    var sendData = {
       "type": type,
       "data": {
         "value": data.getValue().toString(),
         "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000
       }
-    }.toString();
+    };
     await CommonService.instance.send(MessageIDPath.addIndicator(), sendData);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.addIndicator(), value))
@@ -56,13 +56,13 @@ class IndicatorCubit extends Cubit<CubitState> {
 
   Future<bool> deleteIndicator(int type, IndicatorData data, int owner) async {
     var result = false;
-    String sendData = {
+    var sendData = {
       "type": type,
       "data": {
         "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000,
         "owner": owner,
       }
-    }.toString();
+    };
     await CommonService.instance
         .send(MessageIDPath.deleteIndicator(), sendData);
     await CommonService.instance.client!.getData().then((value) {

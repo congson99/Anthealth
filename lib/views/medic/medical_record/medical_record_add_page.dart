@@ -5,7 +5,6 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/firebase/firebase_service.dart';
-import 'package:anthealth_mobile/services/service.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';

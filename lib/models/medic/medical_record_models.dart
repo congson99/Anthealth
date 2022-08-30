@@ -107,10 +107,13 @@ class MedicalRecordDetailData {
     print(data.toString());
     if (data["detailsImage"].length != 0)
       for (dynamic x in data["detailsImage"]) detailPhoto.add(x.toString());
+    if (data["testImage"].length != 0)
+      for (dynamic x in data["testImage"]) testPhoto.add(x.toString());
     if (data["diagnoseImage"].length != 0)
-      for (dynamic x in data["diagnoseImage"]) detailPhoto.add(x.toString());
+      for (dynamic x in data["diagnoseImage"]) diagnosePhoto.add(x.toString());
     if (data["medicineImage"].length != 0)
-      for (dynamic x in data["medicineImage"]) detailPhoto.add(x.toString());
+      for (dynamic x in data["medicineImage"])
+        prescriptionPhoto.add(x.toString());
     return MedicalRecordDetailData(
         MedicalRecordLabel(
             data["rid"],

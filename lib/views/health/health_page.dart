@@ -9,7 +9,6 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
-import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
@@ -24,8 +23,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HealthPage extends StatelessWidget {
-  const HealthPage({Key? key, required this.user})
-      : super(key: key);
+  const HealthPage({Key? key, required this.user}) : super(key: key);
 
   final User user;
 
@@ -62,12 +60,13 @@ class HealthPage extends StatelessWidget {
 
   Widget buildHealthIndicator(BuildContext context,
       List<String> indicatorLatestData, double latestHeight) {
-    double width = (MediaQuery.of(context).size.width - 64) / 3;
+    double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Column(children: [
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => HeightPage(dashboardContext: context, user: user))),
+                builder: (_) =>
+                    HeightPage(dashboardContext: context, user: user))),
             colorID: 0,
             iconPath: "assets/indicators/height.png",
             value: indicatorLatestData[0],
@@ -84,8 +83,10 @@ class HealthPage extends StatelessWidget {
             value: indicatorLatestData[1],
             unit: "kg",
             title: S.of(context).Weight,
-            width: width),
-        SizedBox(width: 16),
+            width: width)
+      ]),
+      SizedBox(height: 16),
+      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => HeartRatePage(dashboardContext: context))),
@@ -94,10 +95,8 @@ class HealthPage extends StatelessWidget {
             value: indicatorLatestData[2],
             unit: "BPM",
             title: S.of(context).Heart_rate,
-            width: width)
-      ]),
-      SizedBox(height: 16),
-      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            width: width),
+        SizedBox(width: 16),
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => TemperaturePage(dashboardContext: context))),
@@ -107,7 +106,9 @@ class HealthPage extends StatelessWidget {
             unit: "°C",
             title: S.of(context).Temperature,
             width: width),
-        SizedBox(width: 16),
+      ]),
+      SizedBox(height: 16),
+      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => BloodPressurePage(dashboardContext: context))),
@@ -132,9 +133,9 @@ class HealthPage extends StatelessWidget {
   }
 
   Widget buildActivity(BuildContext context) {
-    double width = (MediaQuery.of(context).size.width - 64) / 3;
+    double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           IndicatorComponent(
@@ -155,22 +156,21 @@ class HealthPage extends StatelessWidget {
                   .push(MaterialPageRoute(builder: (_) => WaterPage())),
               title: S.of(context).Drink_water,
               width: width),
-          SizedBox(width: 16),
-          IndicatorComponent(
-              colorID: 1,
-              iconPath: "assets/indicators/steps.png",
-              value: "4.600",
-              onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => StepsPage())),
-              title: S.of(context).Steps,
-              width: width)
+          // SizedBox(width: 16),
+          // IndicatorComponent(
+          //     colorID: 1,
+          //     iconPath: "assets/indicators/steps.png",
+          //     value: "4.600",
+          //     onTap: () => Navigator.of(context)
+          //         .push(MaterialPageRoute(builder: (_) => StepsPage())),
+          //     title: S.of(context).Steps,
+          //     width: width)
         ]);
   }
 
   // Actions
   void setting(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => SettingsPage(
-            appContext: context, user: user)));
+        builder: (_) => SettingsPage(appContext: context, user: user)));
   }
 }

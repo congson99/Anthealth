@@ -142,7 +142,7 @@ class DashboardCubit extends Cubit<CubitState> {
   health() async {
     emit(HealthLoadingState());
     await CommonService.instance
-        .send(MessageIDPath.getHealthData(), {}.toString());
+        .send(MessageIDPath.getHealthData(), {});
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getHealthData(), value)) {
@@ -157,7 +157,7 @@ class DashboardCubit extends Cubit<CubitState> {
   void medic() async {
     emit(MedicLoadingState());
     await CommonService.instance
-        .send(MessageIDPath.getMedicData(), {}.toString());
+        .send(MessageIDPath.getMedicData(), {});
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicData(), value)) {
@@ -470,7 +470,7 @@ class DashboardCubit extends Cubit<CubitState> {
   Future<HealthPageData> getHealthPageData(String id) async {
     HealthPageData data = HealthPageData([]);
     await CommonService.instance
-        .send(MessageIDPath.getHealthData(), {}.toString());
+        .send(MessageIDPath.getHealthData(), {});
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getHealthData(), value))
         data.indicatorsLatestData = HealthPageData.formatIndicatorsList(

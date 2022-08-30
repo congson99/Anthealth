@@ -1,20 +1,18 @@
-import 'dart:io';
-import 'dart:typed_data';
+import 'dart:convert';
 
 import 'package:anthealth_mobile/services/client.dart';
 import 'package:anthealth_mobile/services/http/http_service.dart';
-
 
 class CommonService {
   Client? client;
 
   ///send message to server
-  Future<void> send(int msgID, String msgData) async {
+  Future<void> send(int msgID, Map<String, dynamic> msgData) async {
     if (client == null) {
       _tryConnectServer();
       await Future.delayed(const Duration(seconds: 1), () {});
     }
-    client?.send(msgID, msgData);
+    client?.send(msgID, jsonEncode(msgData));
   }
 
   void _tryConnectServer() {

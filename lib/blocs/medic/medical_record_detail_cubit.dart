@@ -109,7 +109,7 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
   Future<void> loadData(String id) async {
     var temp = {"id": id};
     await CommonService.instance
-        .send(MessageIDPath.getMedicalRecordDetail(), temp.toString());
+        .send(MessageIDPath.getMedicalRecordDetail(), temp);
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicalRecordDetail(), value)) {

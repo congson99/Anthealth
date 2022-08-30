@@ -42,7 +42,7 @@ class AuthenticationCubit extends Cubit<CubitState> {
   Future<dynamic> getToken(LoginData data) async {
     var token = "";
     await CommonService.instance
-        .send(MessageIDPath.getToken(), LoginData.getStringObject(data));
+        .send(MessageIDPath.getToken(), LoginData.getObject(data));
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getToken(), value)) {
         token = ServerLogic.getData(value)["token"];
@@ -55,7 +55,7 @@ class AuthenticationCubit extends Cubit<CubitState> {
   Future<int> registerAccount(RegisterData data) async {
     var result = 2;
     await CommonService.instance
-        .send(MessageIDPath.register(), RegisterData.getStringObject(data));
+        .send(MessageIDPath.register(), RegisterData.getObject(data));
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.register(), value))
         result = ServerLogic.getData(value)["result"];

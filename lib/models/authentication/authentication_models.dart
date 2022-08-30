@@ -4,7 +4,7 @@ class LoginData {
   String username;
   String password;
 
-  static Object getObject(LoginData data) {
+  static Map<String, dynamic> getObject(LoginData data) {
     return {"account": data.username, "password": data.password};
   }
 
@@ -28,14 +28,11 @@ class RegisterData {
 
   String confirmPassword() => _confirmPassword;
 
-  static Object getObject(RegisterData data) {
+  static Map<String, dynamic> getObject(RegisterData data) {
     return {
       "name": data.getName(),
       "account": data.getUsername(),
       "password": data.getPassword()
     };
   }
-
-  static String getStringObject(RegisterData data) =>
-      getObject(data).toString();
 }
