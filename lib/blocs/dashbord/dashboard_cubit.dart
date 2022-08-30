@@ -510,36 +510,57 @@ class DashboardCubit extends Cubit<CubitState> {
     List data = json.decode(jsonText);
     List<MedicalDirectoryData> result = [];
     for (dynamic x in data) {
-      result.add(MedicalDirectoryData(
-          "",
-          x["name"],
-          x["address"],
-          x["phone"],
-          x["time"],
-          "",
-          GPS(double.parse(x["lat"]), double.parse(x["long"]))));
+      result.add(MedicalDirectoryData("", x["name"], x["address"], x["phone"],
+          x["time"], "", GPS(double.parse(x["lat"]), double.parse(x["long"]))));
     }
     return result;
   }
 
   Future<List<MedicineData>> getMedications() async {
+    var jsonText = await rootBundle.loadString('assets/hardData/medicine.json');
+    List data = json.decode(jsonText);
     List<MedicineData> result = [];
-    for (int i = 0; i < 200; i++) {
+    for (dynamic x in data) {
       result.add(MedicineData(
-          "_id",
-          utf8.decode(["A".codeUnits[0] + i ~/ 10]) +
-              String.fromCharCodes(Iterable.generate(
-                  20,
-                  (_) =>
-                      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz        '
-                          .codeUnitAt(Random().nextInt(60)))),
+          "",
+          x["name"],
           0,
-          Random().nextInt(3),
-          Random().nextInt(4),
-          "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-          "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-          ""));
+          0,
+          0,
+          x["image"],
+          x["Link"],
+          "Thành phần:\n" +
+              x["ingredients"] +
+              "\n\n1. Chỉ định:\n" +
+              x["allocate"] +
+              "\n\n2. Chống chỉ định:\n" +
+              x["contraindications"] +
+              "\n\n3. Liều dùng/Cách dùng:\n" +
+              x["dosage"] +
+              "\n\n4. Tác dụng phụ:\n" +
+              x["sideEffects"] +
+              "\n\n5. Thận trọng:\n" +
+              x["Careful"] +
+              "\n\n6. Tương tác thuốc:\n" +
+              x["Interactions"] +
+              "\n\n7. Bảo quản:\n" +
+              x["Preserve"] +
+              "\n\n8. Đóng gói:\n" +
+              x["Pack"]));
     }
+    print(result.length);
+    return result;
+  }
+
+  Future<List<MedicineData>> getMedicationsWithoutNote() async {
+    var jsonText = await rootBundle.loadString('assets/hardData/medicine.json');
+    List data = json.decode(jsonText);
+    List<MedicineData> result = [];
+    for (dynamic x in data) {
+      result
+          .add(MedicineData("", x["name"], 0, 0, 0, x["image"], x["Link"], ""));
+    }
+    print(result.length);
     return result;
   }
 }

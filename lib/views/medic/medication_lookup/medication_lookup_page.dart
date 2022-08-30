@@ -5,11 +5,11 @@ import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/medic/medication_lookup/medication_detail_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class MedicationLookupPage extends StatefulWidget {
   const MedicationLookupPage({Key? key, required this.dashboardContext})
@@ -25,7 +25,6 @@ class _MedicationLookupPageState extends State<MedicationLookupPage> {
   List<MedicineData> source = [];
   List<MedicalDirectoryAlphabetMarkData> data = [];
   ScrollController controller = ScrollController();
-  FocusNode focusNode = FocusNode();
   bool showSearchBar = true;
 
   @override
@@ -106,7 +105,11 @@ class _MedicationLookupPageState extends State<MedicationLookupPage> {
   Widget buildContact(
           BuildContext context, MedicalDirectoryAlphabetMarkData mask) =>
       GestureDetector(
-          onTap: () => launchUrlString(source[mask.index].getURL()),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) =>
+                      MedicationDetailPage(medicineData: source[mask.index]))),
           child: Container(
               color: Colors.transparent,
               child: Column(
