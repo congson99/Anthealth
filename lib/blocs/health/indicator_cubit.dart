@@ -27,15 +27,12 @@ class IndicatorCubit extends Cubit<CubitState> {
 
   /// Service Functions
   Future<void> loadData(int type, IndicatorFilter filter) async {
-    print(type);
     await CommonService.instance.send(MessageIDPath.getIndicatorData(),
         IndicatorPageData.formatToSendLoadData(type, filter));
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getIndicatorData(), value)) {
         loadedData(IndicatorPageData.getPageData(type, filter, value));
-        print(ServerLogic.checkMatchMessageID(
-            MessageIDPath.getIndicatorData(), value));
       }
     });
   }

@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -91,6 +92,25 @@ class AppCubit extends Cubit<CubitState> {
 
   void connectError() {
     emit(ConnectErrorState());
+  }
+
+  Future<bool> updateProfile(User user, BuildContext context) async {
+    var data = {
+      "name": user.name,
+      "phone": "a" + user.phoneNumber,
+      "birthday": user.yOB
+    };
+    bool valid = false;
+    await CommonService.instance
+        .send(MessageIDPath.updateProfile(), data.toString());
+    await CommonService.instance.client!.getData().then((value) {
+      if (value == 'null') valid = false;
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.updateProfile(), value)) {
+        valid = ServerLogic.getData(value)["status"];
+      }
+    });
+    return valid;
   }
 
   /// Service Functions

@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/dashboard_logic.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
@@ -83,7 +84,11 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => HeightPage(
-                        dashboardContext: context, data: widget.data))),
+                          dashboardContext: context,
+                          data: widget.data,
+                          user: User("id", "name", "avatarPath", "phoneNumber",
+                              "email", false, widget.data.yob, 0),
+                        ))),
                 colorID: 0,
                 iconPath: "assets/indicators/height.png",
                 value: indicatorLatestData[0],

@@ -46,8 +46,15 @@ class AttachComponent extends StatelessWidget {
           avatarPath: attach.ownerAvatar,
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (_) => UserProfilePage(
-                  user: User(attach.ownerID, attach.ownerName,
-                      attach.ownerAvatar, "phoneNumber", "email", false, 0, -1)))));
+                  user: User(
+                      attach.ownerID,
+                      attach.ownerName,
+                      attach.ownerAvatar,
+                      "phoneNumber",
+                      "email",
+                      false,
+                      0,
+                      -1)))));
   }
 
   String getSectionComponentImagePath() {
@@ -131,11 +138,15 @@ class AttachComponent extends StatelessWidget {
         "",
         "",
         false,
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
     switch (attach.type) {
       case 1:
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => HeightPage(data: memberData)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => HeightPage(
+                  data: memberData,
+                  user: User("id", "name", "avatarPath", "phoneNumber", "email",
+                      false, 0, 0),
+                )));
         return;
       case 2:
         Navigator.of(context).push(

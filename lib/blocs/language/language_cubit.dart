@@ -31,32 +31,6 @@ class LanguageCubit extends Cubit<CubitState> {
     await prefs.setString("language", languageID);
     start();
   }
-
-  Future<bool> updateProfile(User user, BuildContext context) async {
-    print(user.name);
-    var data = {
-      "name": user.name,
-      "phone": user.phoneNumber,
-      "birthday": user.yOB
-    };
-    bool valid = false;
-    await CommonService.instance
-        .send(MessageIDPath.updateProfile(), data.toString());
-    await CommonService.instance.client!.getData().then((value) {
-      if (value == 'null') valid = false;
-      if (ServerLogic.checkMatchMessageID(
-          MessageIDPath.updateProfile(), value)) {
-        valid = ServerLogic.getData(value)["status"];
-        print(value);
-        if (valid) {
-          emit(InitialState());
-          Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
-          start();
-        }
-      }
-    });
-    return valid;
-  }
 }
 
 class LanguageState extends CubitState {

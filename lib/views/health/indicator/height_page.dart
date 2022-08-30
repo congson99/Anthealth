@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/indicator_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/health/indicator_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -24,12 +25,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class HeightPage extends StatelessWidget {
-  const HeightPage({Key? key, this.dashboardContext, this.data})
+  const HeightPage(
+      {Key? key, this.dashboardContext, this.data, required this.user})
       : super(key: key);
 
   final BuildContext? dashboardContext;
   final String unit = 'm';
   final FamilyMemberData? data;
+  final User user;
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
