@@ -5,6 +5,7 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -113,13 +114,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
     if (!checkName()) return;
     if (!checkPhone()) return;
     if (!checkYOB()) return;
-    BlocProvider.of<LanguageCubit>(widget.appContext)
+    BlocProvider.of<AppCubit>(widget.appContext)
         .updateProfile(
             User("", _nameController.text, "", _phoneController.text, "", false,
                 int.parse(_yearController.text), widget.user.sex),
             context)
         .then((value) {
-      if (value) BlocProvider.of<AppCubit>(widget.appContext).startApp();
+      if (value) {
+        Navigator.pop(context);
+        Navigator.pop(context);
+        Navigator.pop(context);
+        BlocProvider.of<AppCubit>(widget.appContext).startApp();
+        ShowSnackBar.showSuccessSnackBar(context, "Edit profile successful");
+      }
     });
   }
 
