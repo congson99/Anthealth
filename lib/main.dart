@@ -7,13 +7,16 @@ import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart' ;
 
-void main() {
+void main() async {
   setOrientations();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
