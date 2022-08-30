@@ -14,6 +14,7 @@ import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
 import 'package:anthealth_mobile/models/user/doctor_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardCubit extends Cubit<CubitState> {
@@ -141,8 +142,7 @@ class DashboardCubit extends Cubit<CubitState> {
 
   health() async {
     emit(HealthLoadingState());
-    await CommonService.instance
-        .send(MessageIDPath.getHealthData(), {});
+    await CommonService.instance.send(MessageIDPath.getHealthData(), {});
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getHealthData(), value)) {
@@ -156,8 +156,7 @@ class DashboardCubit extends Cubit<CubitState> {
 
   void medic() async {
     emit(MedicLoadingState());
-    await CommonService.instance
-        .send(MessageIDPath.getMedicData(), {});
+    await CommonService.instance.send(MessageIDPath.getMedicData(), {});
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicData(), value)) {
@@ -179,7 +178,8 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           true,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
       FamilyMemberData(
           "sd",
           "Van Anh",
@@ -187,7 +187,8 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
       FamilyMemberData(
           "id",
           "Nguyen Van Anh",
@@ -195,7 +196,8 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
       FamilyMemberData(
           "id",
           "Nguyen Van Anh",
@@ -203,7 +205,8 @@ class DashboardCubit extends Cubit<CubitState> {
           "012013011",
           "ahaha@hca.com",
           false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0),
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
     ]));
   }
 
@@ -275,7 +278,7 @@ class DashboardCubit extends Cubit<CubitState> {
   FamilyMemberData findUser(String email) {
     if (email == "")
       return FamilyMemberData(
-          "", "", "", "", "", false, [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0);
+          "", "", "", "", "", false, [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1], 0);
     return FamilyMemberData(
         "id",
         "Nguyen Van Anh",
@@ -283,7 +286,8 @@ class DashboardCubit extends Cubit<CubitState> {
         "012013011",
         "ahaha@hca.com",
         false,
-        [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],0);
+        [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+        0);
   }
 
   Future<List<DoctorGroup>> getAllDoctor() async {
@@ -469,8 +473,7 @@ class DashboardCubit extends Cubit<CubitState> {
 
   Future<HealthPageData> getHealthPageData(String id) async {
     HealthPageData data = HealthPageData([]);
-    await CommonService.instance
-        .send(MessageIDPath.getHealthData(), {});
+    await CommonService.instance.send(MessageIDPath.getHealthData(), {});
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getHealthData(), value))
         data.indicatorsLatestData = HealthPageData.formatIndicatorsList(
@@ -503,120 +506,20 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   Future<List<MedicalDirectoryData>> getMedicalContacts() async {
-    return [
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Chợ Rẫy",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
+    var jsonText = await rootBundle.loadString('assets/hardData/hospital.json');
+    List data = json.decode(jsonText);
+    List<MedicalDirectoryData> result = [];
+    for (dynamic x in data) {
+      result.add(MedicalDirectoryData(
           "",
-          GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Thống Nhất",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
+          x["name"],
+          x["address"],
+          x["phone"],
+          x["time"],
           "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Nhân dân Gia Định",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
-          "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Trưng Vương",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
-          "",
-          GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Nhân dân 115",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
-          "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Đa khoa Thủ Đức",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
-          "",
-          GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData(
-          "id",
-          "Bệnh viện Đại học Y dược TP.HCM",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
-          "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Trung tâm Da liễu TP.HCM",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
-          "",
-          GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData(
-          "id",
-          "Trung tâm Răng - Hàm - Mặt TP.HCM",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
-          "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Trung tâm Sức khỏe Tâm Thần",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
-          "",
-          GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData(
-          "id",
-          "Trung tâm Truyền máu huyết học",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
-          "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Y học dân tộc TP.HCM",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
-          "",
-          GPS(10.757899397875105, 106.65948982430974)),
-      MedicalDirectoryData(
-          "id",
-          "Viện Y dược học dân tộc",
-          "215 Hồng Bàng, Phường 11, Quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554269",
-          "03:00–16:30",
-          "",
-          GPS(10.755429618832546, 106.66453507044434)),
-      MedicalDirectoryData(
-          "id",
-          "Viện Răng - Hàm - Mặt TP.HCM",
-          "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
-          "02838554137",
-          "06:00–16:00",
-          "",
-          GPS(10.757899397875105, 106.65948982430974)),
-    ];
+          GPS(double.parse(x["lat"]), double.parse(x["long"]))));
+    }
+    return result;
   }
 
   Future<List<MedicineData>> getMedications() async {

@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Bệnh viện Chợ Rẫy",
+    "address": "201B Nguyễn Chí Thanh, phường 12, quận 5, Thành phố Hồ Chí Minh, Việt Nam",
+    "phone": "028 3855 4137",
+    "time": "Thứ 2 - thứ 6 (6h00 - 16h00)\nMonday - Friday (6.00 am - 4.00 pm)",
+    "gps": "10.75794155896342, 106.65950055336695",
+    "lat": "10.75794155896342",
+    "long": " 106.65950055336695"
+  },
+  {
+    "name": "Bệnh viện Thống Nhất",
+    "address": "1 Lý Thường Kiệt, phường 7, quận Tân Bình, Hồ Chí Minh, Việt Nam",
+    "phone": "028 3869 0277",
+    "time": "Thứ 2 - Thứ 7 (7h00 - 16h30) \nMonday - Saturday (7.00 am - 4.30 pm)",
+    "gps": "10.791546635191601, 106.65346438404548",
+    "lat": "10.791546635191601",
+    "long": " 106.65346438404548"
+  },
+  {
+    "name": "Bệnh viện Răng - Hàm - Mặt TP.HCM",
+    "address": "265 Đ. Trần Hưng Đạo, Phường Cô Giang, Quận 1, Thành phố Hồ Chí Minh",
+    "phone": "1900 636227",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.7637711735407, 106.69182829754104",
+    "lat": "10.7637711735407",
+    "long": " 106.69182829754104"
+  },
+  {
+    "name": "Bệnh viện Nhân dân Gia Định",
+    "address": "1 Nơ Trang Long, Phường 7, Bình Thạnh, Thành phố Hồ Chí Minh",
+    "phone": "028 3841 2692",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.804042174844154, 106.694138797541",
+    "lat": "10.804042174844154",
+    "long": " 106.694138797541"
+  },
+  {
+    "name": "Bệnh viện Trưng Vương",
+    "address": "266 Lý Thường Kiệt, Phường 14, Quận 10, Thành phố Hồ Chí Minh",
+    "phone": "028 3865 6744",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.770726828725238, 106.65938402453214",
+    "lat": "10.770726828725238",
+    "long": " 106.65938402453214"
+  },
+  {
+    "name": "Bệnh viện Nhân dân 115",
+    "address": "527 Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh",
+    "phone": "028 3865 4249",
+    "time": "Thứ 2 - Thứ 7 (7h00 - 16h30) \nMonday - Saturday (7.00 am - 4.30 pm)\nChủ nhật (7h00 - 11h30) \nSunday (7.00 am - 11.30 am)",
+    "gps": "10.774989465272453, 106.6670680668625",
+    "lat": "10.774989465272453",
+    "long": " 106.6670680668625"
+  },
+  {
+    "name": "Bệnh viện Đa khoa Thủ Đức",
+    "address": "64 Lê Văn Chí, Phường Linh Trung, Thủ Đức, Thành phố Hồ Chí Minh",
+    "phone": "028 3722 3556",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.861568988349507, 106.7798679975414",
+    "lat": "10.861568988349507",
+    "long": " 106.7798679975414"
+  },
+  {
+    "name": "Bệnh viện Hùng Vương",
+    "address": "128 Hồng Bàng, Phường 12, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3855 8532",
+    "time": "Thứ 2 - Chủ nhật (7h00 - 22h00)\nMonday - Sunday (7.00 am - 10.00 pm)",
+    "gps": "10.75578775899762, 106.66178682637583",
+    "lat": "10.75578775899762",
+    "long": " 106.66178682637583"
+  },
+  {
+    "name": "Bệnh viện miễn phí An Bình",
+    "address": "146 An Bình, Phường 7, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3923 4260",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.754454600284122, 106.67157079754091",
+    "lat": "10.754454600284122",
+    "long": " 106.67157079754091"
+  },
+  {
+    "name": "Bệnh viện Nguyễn Trãi",
+    "address": "314 Đ. Nguyễn Trãi, Phường 8, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3923 5020",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.756282899005202, 106.67486776870614",
+    "lat": "10.756282899005202",
+    "long": " 106.67486776870614"
+  },
+  {
+    "name": "Bệnh viện Nguyễn Trí Phương",
+    "address": "468 Đ. Nguyễn Trãi, Phường 8, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3923 4332",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.755846418607005, 106.67019482637575",
+    "lat": "10.755846418607005",
+    "long": " 106.67019482637575"
+  },
+  {
+    "name": "Bệnh viện bình dân",
+    "address": "371 Điện Biên Phủ, Phường 4, Quận 3, Thành phố Hồ Chí Minh",
+    "phone": "1900 7123",
+    "time": "Thứ 2 - thứ 6 (6h00 - 16h00)\nMonday - Friday (6.00 am - 4.00 pm)",
+    "gps": "10.774245926136338, 106.68129655521074",
+    "lat": "10.774245926136338",
+    "long": " 106.68129655521074"
+  },
+  {
+    "name": "Bệnh viện Nhi đồng 1",
+    "address": "341 Sư Vạn Hạnh, Phường 10, Quận 10, Thành phố Hồ Chí Minh",
+    "phone": "028 3927 1119",
+    "time": "Thứ 2 - Chủ nhật (7h00 - 22h00)\nMonday - Sunday (7.00 am - 10.00 pm)",
+    "gps": "10.768771090263256, 106.67011598220176",
+    "lat": "10.768771090263256",
+    "long": " 106.67011598220176"
+  },
+  {
+    "name": "Bệnh viện Nhi đông 2",
+    "address": "14 Lý Tự Trọng, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh",
+    "phone": "028 3829 5723",
+    "time": "Thứ 2 - Thứ 6 (7h00 - 16h00) \nMonday - Friday (7.00 am - 4.00 pm)",
+    "gps": "10.781032102729132, 106.70229753987145",
+    "lat": "10.781032102729132",
+    "long": " 106.70229753987145"
+  },
+  {
+    "name": "Bệnh viện Phụ sản Từ Dũ",
+    "address": "284 Cống Quỳnh, Phường Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh",
+    "phone": "028 5404 2829",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.768986450762753, 106.68586389754097",
+    "lat": "10.768986450762753",
+    "long": " 106.68586389754097"
+  },
+  {
+    "name": "Bệnh viện Da liễu TP.HCM",
+    "address": "2 Nguyễn Thông, Phường 6, Quận 3, Thành phố Hồ Chí Minh",
+    "phone": "028 3930 8131",
+    "time": "Thứ 2 - Thứ 6 (7h00 - 16h00) \nMonday - Friday (7.00 am - 4.00 pm)\nThứ 7 (7h00 - 18h00) \nSaturday (7.00 am - 6.00 pm)\nChủ nhật (7h00 - 15h00) \nSunday (7.00 am - 3.00 pm)",
+    "gps": "10.776575926289185, 106.68655203987133",
+    "lat": "10.776575926289185",
+    "long": " 106.68655203987133"
+  },
+  {
+    "name": "Bệnh viện Truyền máu - Huyết học Tp. Hồ Chí Minh",
+    "address": "118 Hồng Bàng, Phường 12, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3957 1342",
+    "time": "Thứ 2 - Chủ nhật (7h00 - 16h15)\nMonday - Sunday (7.00 am - 4.15 pm)",
+    "gps": "10.756659960039299, 106.66587086870605",
+    "lat": "10.756659960039299",
+    "long": " 106.66587086870605"
+  },
+  {
+    "name": "Bệnh viện Ung Bướu",
+    "address": "3 Nơ Trang Long, Phường 7, Bình Thạnh, Thành phố Hồ Chí Minh",
+    "phone": "028 3843 3021",
+    "time": "Thứ 2 - Thứ 6 (7h30 - 16h30) \nMonday - Friday (7.30 am - 4.30 pm)\nThứ 7 - Chủ nhật (7h30 - 11h00) \nSaturday - Sunday (7.30 am - 11.00 am)",
+    "gps": "10.805138319254233, 106.69461639754104",
+    "lat": "10.805138319254233",
+    "long": " 106.69461639754104"
+  },
+  {
+    "name": "Trung tâm Chấn thương Chỉnh hình",
+    "address": "929 Đ. Trần Hưng Đạo, Phường 1, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3923 7007",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.75443020231417, 106.67833329754095",
+    "lat": "10.75443020231417",
+    "long": " 106.67833329754095"
+  },
+  {
+    "name": "Bệnh viện Phạm Ngọc Thạch",
+    "address": "120 Hồng Bàng, Phường 12, Quận 5, Thành phố Hồ Chí Minh",
+    "phone": "028 3855 0207",
+    "time": "Thứ 2 - Chủ nhật (Mở cả ngày)\nMonday - Sunday (All days)",
+    "gps": "10.756541598824205, 106.66549316870602",
+    "lat": "10.756541598824205",
+    "long": " 106.66549316870602"
+  },
+  {
+    "name": "Bệnh viện Mắt TP.HCM",
+    "address": "280 Điện Biên Phủ, Phường 7, Quận 3, Thành phố Hồ Chí Minh",
+    "phone": "028 3932 5364",
+    "time": "Thứ 2 - Chủ nhật (6h00 - 19h00) \nMonday - Sunday (6.00 am - 7.00 pm)",
+    "gps": "10.778938904050152, 106.68499239754095",
+    "lat": "10.778938904050152",
+    "long": " 106.68499239754095"
+  },
+  {
+    "name": "Bệnh viện Tai Mũi Họng Thành phố Hồ Chí Minh",
+    "address": "155-157 Trần Quốc Thảo, Phường 9, Quận 3, Thành phố Hồ Chí Minh",
+    "phone": "028 3931 7381",
+    "time": "Thứ 2 - Thứ 6 (7h00 - 16h00) \nMonday - Friday (7.00 am - 4.00 pm)\nThứ 7 - Chủ nhật (7h00 - 16h30) \nSaturday - Sunday (7.00 am - 4.30 am)",
+    "gps": "10.784562979194178, 106.68398388220179",
+    "lat": "10.784562979194178",
+    "long": " 106.68398388220179"
+  },
+  {
+    "name": "Bệnh viện Y Học Cổ Truyền TP.HCM",
+    "address": "179-187 Đ. Nam Kỳ Khởi Nghĩa, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh",
+    "phone": "028 393 26579",
+    "time": "Thứ 2 - Thứ 7 (6h00 - 19h00) \nMonday - Saturday (6.00 am - 7.00 pm)\nChủ nhật (6h00 - 11h30) \nSunday (6.00 am - 11.30 am)",
+    "gps": "10.785711239081776, 106.68835909754105",
+    "lat": "10.785711239081776",
+    "long": " 106.68835909754105"
+  },
+  {
+    "name": "Trung tâm Nhiệt đới TP.HCM",
+    "address": "3 Đường 3\/2, Phường 11, Quận 10, Thành phố Hồ Chí Minh",
+    "phone": "028 3839 6020",
+    "time": "Thứ 2 - Thứ 7 (6h00 - 19h00) \nMonday - Saturday (6.00 am - 7.00 pm)\nChủ nhật (6h00 - 11h30) \nSunday (6.00 am - 11.30 am)",
+    "gps": "10.776767586563004, 106.68083488220168",
+    "lat": "10.776767586563004",
+    "long": " 106.68083488220168"
+  },
+  {
+    "name": "Viện Y dược học dân tộc",
+    "address": "273 Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh",
+    "phone": "028 3844 3047",
+    "time": "Thứ 2 - Thứ 6 (6h00 - 19h00) \nMonday - Friday (6.00 am - 7.00 pm)\nThứ 7 - Chủ nhật (7h30 - 16h30) \nSaturday - Sunday (7.30 am - 4.30 pm)",
+    "gps": "10.797872736574963, 106.6716446263759",
+    "lat": "10.797872736574963",
+    "long": " 106.6716446263759"
+  },
+  {
+    "name": "Bệnh viện Gò Vấp",
+    "address": "641 Quang Trung, Phường 11, Gò Vấp, Thành phố Hồ Chí Minh",
+    "phone": "028 3589 1799",
+    "time": "Thứ 2 - thứ 6 (6h00 - 16h00)\nMonday - Friday (6.00 am - 4.00 pm)",
+    "gps": "10.834775043232733, 106.66151771103681",
+    "lat": "10.834775043232733",
+    "long": " 106.66151771103681"
+  },
+  {
+    "name": "Trung tâm Y tế Bình Chánh",
+    "address": "100 Đường Tân Túc, TT. Tân Túc, Bình Chánh, Thành phố Hồ Chí Minh",
+    "phone": "028 3760 5798",
+    "time": "Thứ 2 - Thứ 6 (7h30 - 16h30) \nMonday - Friday (7.30 am - 4.30 pm)\nThứ 7 - Chủ nhật (7h30 - 11h30) \nSaturday - Sunday (7.30 am - 11.30 am)",
+    "gps": "10.692413686121096, 106.58454869754068",
+    "lat": "10.692413686121096",
+    "long": " 106.58454869754068"
+  },
+  {
+    "name": "Trung tâm Y tế Hóc Môn",
+    "address": "65b Bà Triệu, Khu phố 1, Hóc Môn, Thành phố Hồ Chí Minh",
+    "phone": "028 3710 7204",
+    "time": "Thứ 2 - Thứ 6 (8h00 - 17h00) \nMonday - Friday (8.00 am - 5h00 pm)\nThứ 7 (8h00 - 11h00) \nSaturday (8.00 am - 11.00 am)",
+    "gps": "10.881671838917022, 106.59313331288054",
+    "lat": "10.881671838917022",
+    "long": " 106.59313331288054"
+  },
+  {
+    "name": "Trung tâm Y tế quận 6 có giường bệnh",
+    "address": "A14\/1 Bà Hom, Phường 13, Quận 6, Thành phố Hồ Chí Minh",
+    "phone": "028 3877 6546",
+    "time": "Thứ 2 - Thứ 6 (7h30 - 16h30) \nMonday - Friday (7.30 am - 4.30 pm)\nThứ 7 - Chủ nhật (7h30 - 16h00) \nSaturday - Sunday (7.30 am - 4.00 am)",
+    "gps": "10.754675761704735, 106.62943602637573",
+    "lat": "10.754675761704735",
+    "long": " 106.62943602637573"
+  },
+  {
+    "name": "Bệnh viện Giao thông vận tải 8",
+    "address": "136 Đ. Cách Mạng Tháng 8, Phường 10, Quận 3, Thành phố Hồ Chí Minh",
+    "phone": "091 950 09 66",
+    "time": "Thứ 2 - Thứ 6 (7h30 - 16h30) \nMonday - Friday (7.30 am - 4.30 pm)",
+    "gps": "10.778999019005711, 106.67997266543665",
+    "lat": "10.778999019005711",
+    "long": " 106.67997266543665"
+  }
+]
