@@ -42,7 +42,7 @@ class DashboardPage extends StatelessWidget {
     if (state is FamilyState)
       return FamilyPage(user: user);
     if (state is CommunityState)
-      return CommunityPage(user: user);
+      return NewSettingsPage(user: user);
     return LoadingPage();
   }
 
@@ -59,24 +59,24 @@ class DashboardPage extends StatelessWidget {
   void onBottomNavigationItemTap(
       BuildContext context, int index, CubitState state) {
     if (currentIndexState(state) == index) return;
-    if (index == 0) BlocProvider.of<DashboardCubit>(context).family();
-    if (index == 1) BlocProvider.of<DashboardCubit>(context).community();
+    if (index == 0) BlocProvider.of<DashboardCubit>(context).health();
+    if (index == 1) BlocProvider.of<DashboardCubit>(context).medic();
     if (index == 2) BlocProvider.of<DashboardCubit>(context).home();
-    if (index == 3) BlocProvider.of<DashboardCubit>(context).health();
-    if (index == 4) BlocProvider.of<DashboardCubit>(context).medic();
+    if (index == 3) BlocProvider.of<DashboardCubit>(context).family();
+    if (index == 4) BlocProvider.of<DashboardCubit>(context).community();
   }
 
   int currentIndexState(CubitState state) {
-    if (state is FamilyState) return 0;
-    if (state is CommunityState) return 1;
+    if (state is FamilyState) return 3;
+    if (state is CommunityState) return 4;
     if (state is HomeState) return 2;
-    if (state is HealthState) return 3;
-    if (state is MedicState) return 4;
-    if (state is FamilyLoadingState) return 0;
-    if (state is CommunityLoadingState) return 1;
+    if (state is HealthState) return 0;
+    if (state is MedicState) return 1;
+    if (state is FamilyLoadingState) return 3;
+    if (state is CommunityLoadingState) return 4;
     if (state is HomeLoadingState) return 2;
-    if (state is HealthLoadingState) return 3;
-    if (state is MedicLoadingState) return 4;
+    if (state is HealthLoadingState) return 0;
+    if (state is MedicLoadingState) return 1;
     return 2;
   }
 }

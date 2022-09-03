@@ -51,20 +51,20 @@ class BottomNavigation extends StatelessWidget {
                             currentIndex: index,
                             itemIndex: 0,
                             selectIconPath:
-                                "assets/app_icon/bottom_navigation/family_pri1.png",
+                                "assets/app_icon/bottom_navigation/health_pri1.png",
                             unSelectIconPath:
-                                "assets/app_icon/bottom_navigation/family_bla3.png",
-                            title: S.of(context).Family),
+                                "assets/app_icon/bottom_navigation/health_bla3.png",
+                            title: S.of(context).Health),
                         BottomNavigationItem(
                             size: size,
                             onIndexChange: onIndexChange,
                             currentIndex: index,
                             itemIndex: 1,
                             selectIconPath:
-                                "assets/app_icon/bottom_navigation/community_pri1.png",
+                                "assets/app_icon/bottom_navigation/medic_pri1.png",
                             unSelectIconPath:
-                                "assets/app_icon/bottom_navigation/community_bla3.png",
-                            title: S.of(context).Community),
+                                "assets/app_icon/bottom_navigation/medic_bla3.png",
+                            title: S.of(context).Medic),
                         BottomNavigationItem(
                             size: size,
                             onIndexChange: onIndexChange,
@@ -79,20 +79,20 @@ class BottomNavigation extends StatelessWidget {
                             currentIndex: index,
                             itemIndex: 3,
                             selectIconPath:
-                                "assets/app_icon/bottom_navigation/health_pri1.png",
+                                "assets/app_icon/bottom_navigation/family_pri1.png",
                             unSelectIconPath:
-                                "assets/app_icon/bottom_navigation/health_bla3.png",
-                            title: S.of(context).Health),
+                                "assets/app_icon/bottom_navigation/family_bla3.png",
+                            title: S.of(context).Family),
                         BottomNavigationItem(
                             size: size,
                             onIndexChange: onIndexChange,
                             currentIndex: index,
                             itemIndex: 4,
                             selectIconPath:
-                                "assets/app_icon/bottom_navigation/medic_pri1.png",
+                                "assets/app_icon/bottom_navigation/settings_pri1.png",
                             unSelectIconPath:
-                                "assets/app_icon/bottom_navigation/medic_bla3.png",
-                            title: S.of(context).Medic)
+                                "assets/app_icon/bottom_navigation/settings_bla3.png",
+                            title: S.of(context).Settings),
                       ])),
               Container(
                   alignment: Alignment.topCenter,

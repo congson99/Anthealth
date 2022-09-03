@@ -6,7 +6,6 @@ class TemplateDashboardPage extends StatelessWidget {
       {Key? key,
       required this.title,
       required this.name,
-      required this.setting,
       required this.content,
       this.isHeader,
       this.endPadding})
@@ -14,7 +13,6 @@ class TemplateDashboardPage extends StatelessWidget {
 
   final String title;
   final String name;
-  final VoidCallback setting;
   final Widget content;
   final bool? isHeader;
   final double? endPadding;
@@ -27,13 +25,7 @@ class TemplateDashboardPage extends StatelessWidget {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  if (isHeader != false)
-                    Header(
-                        title: title,
-                        content: name,
-                        isNotification: false,
-                        isMessage: false,
-                        onSettingsTap: setting),
+                  if (isHeader != false) Header(title: title, content: name),
                   content,
                   SizedBox(height: endPadding ?? 124)
                 ])));

@@ -34,7 +34,6 @@ class HealthPage extends StatelessWidget {
           return TemplateDashboardPage(
               title: S.of(context).Health_record,
               name: user.name,
-              setting: () => setting(context),
               content: buildContent(context, state.healthPageData));
         return ErrorPage();
       });

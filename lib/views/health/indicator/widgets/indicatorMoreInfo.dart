@@ -4,7 +4,6 @@ import 'package:anthealth_mobile/views/post/single_post.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class IndicatorMoreInfo extends StatelessWidget {
   const IndicatorMoreInfo({Key? key, required this.information})

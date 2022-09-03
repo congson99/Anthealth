@@ -30,7 +30,6 @@ class MedicPage extends StatelessWidget {
           return TemplateDashboardPage(
               title: S.of(context).Medic_record,
               name: user.name,
-              setting: () => setting(context),
               content: buildContent(context, state.medicPageData));
         return ErrorPage();
       });

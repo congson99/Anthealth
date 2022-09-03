@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
@@ -48,17 +47,6 @@ class DashboardCubit extends Cubit<CubitState> {
               "Hẹn khám định kỳ",
               DateTime.now(),
               "Phòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng"),
-          DoctorAppointment(
-              "",
-              "doctorId",
-              "patientId",
-              "doctorName",
-              "Tom Holland",
-              "",
-              "https://image.thanhnien.vn/w1024/Uploaded/2022/juzagt/2021_12_16/1-5144.jpg",
-              "Mổ mắt",
-              DateTime.now(),
-              "")
         ]));
   }
 
@@ -68,10 +56,6 @@ class DashboardCubit extends Cubit<CubitState> {
     List<ReminderMask> reminderMask = [];
     DateTime now = DateTime.now();
     medicalAppointment.addAll([
-      MedicalAppointment(DateTime(now.year, now.month, now.day, 0, 0),
-          "Bệnh viện Chợ Rẫy", now, "Tái khám kiểm tra mắt"),
-      MedicalAppointment(DateTime(now.year, now.month, now.day + 1, 0, 0),
-          "Nha khoa ABC", now, "Hẹn khám răng"),
       MedicalAppointment(DateTime(now.year, now.month, now.day + 50, 0, 0),
           "Bệnh viện đại học y dược", now, "Kiểm tra sức khoẻ định kỳ")
     ]);
@@ -89,34 +73,6 @@ class DashboardCubit extends Cubit<CubitState> {
               ""),
           DateTime(now.year, now.month, now.day, 7, 0),
           1,
-          ""),
-      ReminderMask(
-          "XX",
-          MedicineData(
-              "",
-              "Pemol",
-              24,
-              0,
-              2,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DateTime(now.year, now.month, now.day, 17, 0),
-          1,
-          ""),
-      ReminderMask(
-          "XX",
-          MedicineData(
-              "",
-              "Peas da mol",
-              24,
-              0,
-              2,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DateTime(now.year, now.month, now.day + 1, 6, 0),
-          200,
           "")
     ]);
     List<dynamic> result = [];

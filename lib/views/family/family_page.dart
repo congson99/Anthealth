@@ -31,7 +31,6 @@ class FamilyPage extends StatelessWidget {
         return TemplateDashboardPage(
             title: S.of(context).Family_of,
             name: user.name,
-            setting: () => setting(context),
             content: buildContent(context, state));
       else
         return ErrorPage();
