@@ -41,33 +41,8 @@ class FamilyPage extends StatelessWidget {
   Widget buildContent(BuildContext context, FamilyState state) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),
-      SizedBox(height: 16),
-      buildMembers(context, state),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        CommonText.section(S.of(context).Family_sharing, context),
-        SizedBox(height: 16),
-        SectionComponent(
-            onTap: () => BlocProvider.of<DashboardCubit>(context)
-                    .getFamilyID(user.id)
-                    .then((result) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => CommunityPostPage(
-                          user: user,
-                          community: CommunityData(
-                              result, "", "", "", 0, false, []))));
-                }),
-            title: S.of(context).Family_sharing_space,
-            colorID: 1,
-            iconPath: "assets/app_icon/common/family_space_sec0.png"),
-        SizedBox(height: 16),
-        SectionComponent(
-            title: S.of(context).Family_group_chat,
-            colorID: 0,
-            iconPath: "assets/app_icon/common/null_message_pri0.png")
-      ])
+      SizedBox(height: 24),
+      buildMembers(context, state)
     ]);
   }
 
@@ -79,23 +54,11 @@ class FamilyPage extends StatelessWidget {
     bool isAdmin = false;
     for (FamilyMemberData x in state.members)
       if (x.id == user.id) isAdmin = x.admin;
-    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      Row(children: [
-        Expanded(child: CommonText.section(S.of(context).Member, context)),
-        Text(state.members.length.toString() + " " + S.of(context).members,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1!
-                .copyWith(color: AnthealthColors.primary1))
-      ]),
-      SizedBox(height: 24),
-      Wrap(runSpacing: 16, spacing: 16, children: [
-        ...state.members
-            .map((member) =>
-                buildMemberComponent(context, member, isAdmin, size))
-            .toList(),
-        if (isAdmin) buildAddMemberComponent(size, context)
-      ])
+    return Wrap(runSpacing: 16, spacing: 16, children: [
+      ...state.members
+          .map((member) => buildMemberComponent(context, member, isAdmin, size))
+          .toList(),
+      if (isAdmin) buildAddMemberComponent(size, context)
     ]);
   }
 

@@ -18,9 +18,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NewSettingsPage extends StatelessWidget {
-  const NewSettingsPage({Key? key, required this.user}) : super(key: key);
+  const NewSettingsPage({Key? key, required this.user, required this.lang})
+      : super(key: key);
 
   final User user;
+  final String lang;
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +75,8 @@ class NewSettingsPage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       SectionComponent(
           title: S.of(context).Profile_info,
-          //directionContent: getLanguage(context, languageID),
           colorID: 3,
+          iconPath: "assets/app_icon/common/user_bla0.png",
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (_) => SettingsProfilePage(
                     user: user,
@@ -83,7 +85,7 @@ class NewSettingsPage extends StatelessWidget {
       SizedBox(height: 16),
       SectionComponent(
           title: S.of(context).Language,
-          //directionContent: getLanguage(context, languageID),
+          iconPath: "assets/app_icon/common/language_sec0.png",
           colorID: 1,
           onTap: () {
             getLanguage().then((value) {

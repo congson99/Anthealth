@@ -122,7 +122,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       if (value) {
         Navigator.pop(context);
         Navigator.pop(context);
-        Navigator.pop(context);
         BlocProvider.of<AppCubit>(widget.appContext).startApp();
         ShowSnackBar.showSuccessSnackBar(context, "Edit profile successful");
       }
