@@ -37,7 +37,6 @@ class MedicalRecordPage extends StatelessWidget {
                   title: S.of(context).Medical_record,
                   back: () => back(context),
                   add: () => add(context),
-                  settings: () {},
                   content: buildContent(context, state));
             else
               return TemplateAvatarFormPage(

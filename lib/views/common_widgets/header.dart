@@ -49,13 +49,13 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Image.asset(
-              isNotification
-                  ? "assets/app_icon/common/notification_noti_pri1.png"
-                  : "assets/app_icon/common/notification_pri1.png",
-              height: 20.0,
-              fit: BoxFit.fitHeight),
-          SizedBox(width: 16),
+          // Image.asset(
+          //     isNotification
+          //         ? "assets/app_icon/common/notification_noti_pri1.png"
+          //         : "assets/app_icon/common/notification_pri1.png",
+          //     height: 20.0,
+          //     fit: BoxFit.fitHeight),
+          // SizedBox(width: 16),
           Image.asset(
               isMessage
                   ? "assets/app_icon/common/message_noti_pri1.png"
