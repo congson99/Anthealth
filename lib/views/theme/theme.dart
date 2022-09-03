@@ -22,6 +22,7 @@ ThemeData anthealthTheme() {
       headline4: TextStyle(
           fontSize: 20,
           letterSpacing: 0.7,
+          height: 1.2,
           color: AnthealthColors.black0,
           fontFamily: 'RobotoMedium'),
       headline5: TextStyle(

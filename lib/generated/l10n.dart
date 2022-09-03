@@ -4029,6 +4029,16 @@ class S {
       args: [],
     );
   }
+
+  /// `About_us`
+  String get About_us {
+    return Intl.message(
+      'About_us',
+      name: 'About_us',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

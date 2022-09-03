@@ -23,7 +23,7 @@ class PostPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(height: 8),
-        Text(post.title, style: Theme.of(context).textTheme.headline2),
+        Text(post.title, style: Theme.of(context).textTheme.headline4),
         SizedBox(height: 16),
         ...post.content.map((e) => buildElement(context, e)).toList()
       ],

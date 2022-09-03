@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "About_us": MessageLookupByLibrary.simpleMessage("Về chúng tôi"),
         "Active_reminders":
             MessageLookupByLibrary.simpleMessage("Nhắc nhở đang hoạt động"),
         "Activity": MessageLookupByLibrary.simpleMessage("Chỉ số hoạt động"),
