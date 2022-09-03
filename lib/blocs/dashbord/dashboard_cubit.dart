@@ -4,13 +4,12 @@ import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/common/gps_models.dart';
-import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_directory_models.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
-import 'package:anthealth_mobile/models/user/doctor_models.dart';
+import 'package:anthealth_mobile/models/post/post_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter/services.dart';
@@ -22,34 +21,6 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   /// Initial State
-  doctor() async {
-    emit(DoctorLoadingState());
-    await Future.delayed(Duration(seconds: 1));
-    emit(DoctorState(
-        Doctor(
-            "id",
-            "Strange",
-            "https://vcdn1-giaitri.vnecdn.net/2022/05/05/DoctorStrange2mmm-1651738078-4301-1651738447.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=hvLU0ITOvD2EhxFK8TD8Og",
-            "022123123",
-            "doctor.hca.com",
-            "Bác sĩ khám mắt",
-            "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-            true),
-        [
-          DoctorAppointment(
-              "",
-              "doctorId",
-              "patientId",
-              "doctorName",
-              "The Rock",
-              "",
-              "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg",
-              "Hẹn khám định kỳ",
-              DateTime.now(),
-              "Phòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng"),
-        ]));
-  }
-
   home() async {
     emit(HomeLoadingState());
     List<MedicalAppointment> medicalAppointment = [];
@@ -93,7 +64,26 @@ class DashboardCubit extends Cubit<CubitState> {
         reminderMask.removeAt(0);
       }
     }
-    emit(HomeState(result));
+    List<Post> posts = [
+      Post.generate(
+          postKey: "Flutter",
+          coverImage: "https://200lab-blog.imgix.net/2021/07/0_OA8mG-mK8hncsgQ4.jpg?auto=format,compress&w=1500",
+          title: "Flutter là gì? Các đặc tính vượt trội của Flutter",
+          content: [
+            "Flutter là gì?",
+            "Bạn có thể hiểu Flutter là bộ công cụ giao diện người dùng của Google để tạo các ứng dụng đẹp, được biên dịch native cho thiết bị di động, web và máy tính để bàn từ một mã nguồn duy nhất.",
+            "Flutter là một framework giao diện người dùng mã nguồn mở miễn phí được tạo bởi Google và được phát hành vào tháng 5 năm 2017.",
+            "Nói một cách dễ hiểu, điều này cho phép bạn tạo một ứng dụng di động chỉ với một lần code. Có nghĩa là bạn có thể sử dụng một ngôn ngữ lập trình và một mã nguồn để tạo hai ứng dụng khác nhau (IOS và Android).",
+            "Không giống như các giải pháp phổ biến khác, Flutter không phải là một framework hoặc thư viện mà đó là một SDK hoàn chỉnh – bộ công cụ phát triển phần mềm đa nền tảng.",
+            "https://200lab-blog.imgix.net/2021/07/0_OA8mG-mK8hncsgQ4.jpg?auto=format,compress&w=1500",
+            "Để phát triển với Flutter, bạn sẽ sử dụng một ngôn ngữ lập trình có tên là Dart. Đây cũng là ngôn ngữ của Google được tạo vào tháng 10 năm 2011 và đã được cải thiện rất nhiều trong những năm qua. Dart tập trung vào phát triển front-end, bạn có thể sử dụng nó để tạo các ứng dụng di động và web.",
+            "Quá trình phát triển Flutter",
+            "https://d50cmv7hkyx4e.cloudfront.net/wp-content/uploads/2021/06/23141932/facebook_cover-1024x538-1.png",
+            "Vào năm 2015, Google đã công bố Flutter, một SDK mới dựa trên ngôn ngữ Dart, làm nền tảng tiếp theo để phát triển Android và vào năm 2017, phiên bản alpha của nó (0.0.6) đã được phát hành cho công chúng lần đầu tiên.",
+            "Vào ngày 4 tháng 12 năm 2018, Flutter 1.0 đã được phát hành tại sự kiện Flutter Live và có sẵn để các nhà phát triển có thể bắt đầu sử dụng SDK để tạo ứng dụng dễ dàng hơn. Đây được đánh dấu là phiên bản “stable” đầu tiên."
+          ])
+    ];
+    emit(HomeState(result, posts));
   }
 
   health() async {
@@ -166,68 +156,9 @@ class DashboardCubit extends Cubit<CubitState> {
     ]));
   }
 
-  community([CommunityState? state]) {
-    emit(CommunityLoadingState());
-    emit(state ??
-        CommunityState([
-          CommunityGroup(
-              "",
-              [
-                CommunityData(
-                    '0',
-                    "Yoga",
-                    "Yoga a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
-                    "https://www.victoriavn.com/images/healthlibrary/hatha-yoga.jpg",
-                    239,
-                    true, []),
-                CommunityData(
-                    '0',
-                    "Make up",
-                    "Gys a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
-                    "http://file.hstatic.net/1000379579/article/thuat-ngu-makeup-danh-cho-nguoi-moi-bat-dau_e9dc32edb93647c4aefea1807091100a.jpg",
-                    2883,
-                    true, [])
-              ],
-              true),
-          CommunityGroup(
-              "Sport",
-              [
-                CommunityData(
-                    '0',
-                    "Yoga",
-                    "Yoga a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
-                    "https://www.victoriavn.com/images/healthlibrary/hatha-yoga.jpg",
-                    239,
-                    true, []),
-                CommunityData(
-                    '0',
-                    "Gym",
-                    "Gys a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
-                    "http://www.elleman.vn/wp-content/uploads/2017/04/13/Nuoc-hoa-nam-cho-phong-gym-1.jpg",
-                    2883,
-                    false, [])
-              ],
-              false),
-          CommunityGroup(
-              "Women",
-              [
-                CommunityData(
-                    '0',
-                    "Skin care",
-                    "Yoga a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
-                    "http://imc.net.vn/wp-content/uploads/2021/03/imc-skincare.jpg",
-                    239,
-                    false, []),
-                CommunityData(
-                    '0',
-                    "Make up",
-                    "Gys a ha ha ehe he asida sndna dasd sadasd a das d asd as das d asd as d asnd asdnsandasndnad as d asd an dna nd",
-                    "http://file.hstatic.net/1000379579/article/thuat-ngu-makeup-danh-cho-nguoi-moi-bat-dau_e9dc32edb93647c4aefea1807091100a.jpg",
-                    2883,
-                    true, [])
-              ],
-              false)
-        ]));
+  settings([SettingsState? state]) {
+    emit(SettingsLoadingState());
+    emit(state ?? SettingsState());
   }
 
   /// Server Functions
@@ -244,175 +175,6 @@ class DashboardCubit extends Cubit<CubitState> {
         false,
         [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
         0);
-  }
-
-  Future<List<DoctorGroup>> getAllDoctor() async {
-    return [
-      DoctorGroup(
-          "",
-          [
-            Doctor(
-                "id",
-                "Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Nguyet Nga",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Manh Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "An Tam",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true)
-          ],
-          true),
-      DoctorGroup(
-          "Khoa Nhi",
-          [
-            Doctor(
-                "id",
-                "Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Nguyet Nga",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Manh Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "An Tam",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true)
-          ],
-          false),
-      DoctorGroup(
-          "Khoa Rang Ham Mat",
-          [
-            Doctor(
-                "id",
-                "Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Nguyet Nga",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Manh Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "An Tam",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true)
-          ],
-          false),
-      DoctorGroup(
-          "Khoa Ngoai",
-          [
-            Doctor(
-                "id",
-                "Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Nguyet Nga",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "Manh Hung",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true),
-            Doctor(
-                "id",
-                "An Tam",
-                "https://www.hanhphuchospital.com/wp-content/uploads/2019/12/Bs-Trinh-Cong-Quyen-277x327.jpg",
-                "2939121",
-                "doctor.hca.com",
-                "Bác sĩ khám mắt",
-                "Bác sĩ ABC làm tại bệnh viện XYZ chuyên khám mắt, cận thị, loạn thị, đo kính. \nPhòng khám Bác Sĩ Mắt - 123 đường Phạm Văn Đồng \nSđt phòng khám: 213872132 - 2882138291",
-                true)
-          ],
-          false)
-    ];
   }
 
   Future<String> getFamilyID(String id) async {
@@ -437,28 +199,6 @@ class DashboardCubit extends Cubit<CubitState> {
                 ServerLogic.getData(value)["indicatorInfo"]));
     });
     return data;
-  }
-
-  Future<bool> outCommunity(String id) async {
-    community();
-    return true;
-  }
-
-  Future<bool> joinCommunity(String id) async {
-    community();
-    return true;
-  }
-
-  void updateCommunityGroupOpening(CommunityState state, int index) {
-    emit(InitialState());
-    for (CommunityGroup x in state.communities) {
-      if (x == state.communities[index]) {
-        x.isOpening = !x.isOpening;
-        continue;
-      }
-      x.isOpening = false;
-    }
-    community(state);
   }
 
   Future<List<MedicalDirectoryData>> getMedicalContacts() async {

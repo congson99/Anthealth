@@ -17,7 +17,6 @@ import 'package:anthealth_mobile/views/health/indicator/spo2_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/temperature_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/weight_page.dart';
 import 'package:anthealth_mobile/views/health/widgets/indicator_component_widget.dart';
-import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -165,11 +164,5 @@ class HealthPage extends StatelessWidget {
           //     title: S.of(context).Steps,
           //     width: width)
         ]);
-  }
-
-  // Actions
-  void setting(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => SettingsPage(appContext: context, user: user)));
   }
 }

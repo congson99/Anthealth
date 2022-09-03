@@ -9,10 +9,10 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/post_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/medication_reminder_page.dart';
-import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +38,19 @@ class HomePage extends StatelessWidget {
     return Column(children: [
       CustomDivider.common(),
       SizedBox(height: 16),
-      buildUpcoming(context, state)
+      buildUpcoming(context, state),
+      SizedBox(height: 16),
+      CustomDivider.common(),
+      SizedBox(height: 16),
+      buildPost(context, state)
+    ]);
+  }
+
+  Widget buildPost(BuildContext context, HomeState state) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CommonText.section(S.of(context).Highlights, context),
+      SizedBox(height: 16),
+      ...state.posts.map((post) => PostComponent(post: post))
     ]);
   }
 
@@ -126,11 +138,5 @@ class HomePage extends StatelessWidget {
                         MedicationReminderPage(dashboardContext: context)));
               }));
     }
-  }
-
-  /// Actions
-  void setting(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => SettingsPage(appContext: context, user: user)));
   }
 }

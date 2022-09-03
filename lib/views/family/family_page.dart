@@ -2,20 +2,15 @@ import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
-import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
-import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
-import 'package:anthealth_mobile/views/community/community_pages/community_post_page.dart';
 import 'package:anthealth_mobile/views/family/family_member/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
-import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -116,12 +111,6 @@ class FamilyPage extends StatelessWidget {
                       .bodyText2!
                       .copyWith(color: AnthealthColors.primary1))
             ])));
-  }
-
-  // Actions
-  void setting(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => SettingsPage(appContext: context, user: user)));
   }
 
   void onFamilyMemberTap(

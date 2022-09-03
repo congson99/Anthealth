@@ -27,7 +27,7 @@ class NewSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
-      if (state is CommunityState)
+      if (state is SettingsState)
         return TemplateDashboardPage(
             title: S.of(context).Welcome,
             name: user.name,

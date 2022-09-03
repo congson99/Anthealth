@@ -237,6 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ngưỡng cao tâm thu"),
         "High_temperature":
             MessageLookupByLibrary.simpleMessage("Ngưỡng nhiệt độ cao"),
+        "Highlights": MessageLookupByLibrary.simpleMessage("Thông tin nổi bật"),
         "Hint_medicine_box":
             MessageLookupByLibrary.simpleMessage("Hộp thuốc ở nhà"),
         "Hint_re_examination":

@@ -1,26 +1,16 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
-import 'package:anthealth_mobile/models/community/community_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
-import 'package:anthealth_mobile/models/user/doctor_models.dart';
-
-class DoctorState extends CubitState {
-  DoctorState(this.doctorUser, this.appointments);
-
-  final Doctor doctorUser;
-  final List<DoctorAppointment> appointments;
-
-  @override
-  List<Object> get props => [doctorUser, appointments];
-}
+import 'package:anthealth_mobile/models/post/post_models.dart';
 
 class HomeState extends CubitState {
-  HomeState(this.events);
+  HomeState(this.events, this.posts);
 
   final List<dynamic> events;
+  final List<Post> posts;
 
   @override
-  List<Object> get props => [events];
+  List<Object> get props => [events, posts];
 }
 
 class HealthState extends CubitState {
@@ -50,13 +40,9 @@ class FamilyState extends CubitState {
   List<Object> get props => [members];
 }
 
-class CommunityState extends CubitState {
-  CommunityState(this.communities);
-
-  final List<CommunityGroup> communities;
-
+class SettingsState extends CubitState {
   @override
-  List<Object> get props => [communities];
+  List<Object> get props => [];
 }
 
 class DoctorLoadingState extends CubitState {
@@ -86,7 +72,7 @@ class FamilyLoadingState extends CubitState {
   List<Object> get props => [];
 }
 
-class CommunityLoadingState extends CubitState {
+class SettingsLoadingState extends CubitState {
   @override
   List<Object> get props => [];
 }

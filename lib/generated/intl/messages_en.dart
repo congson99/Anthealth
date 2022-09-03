@@ -227,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "High systolic blood pressure"),
         "High_temperature":
             MessageLookupByLibrary.simpleMessage("High temperature"),
+        "Highlights": MessageLookupByLibrary.simpleMessage("Highlights"),
         "Hint_medicine_box": MessageLookupByLibrary.simpleMessage("Home"),
         "Hint_re_examination":
             MessageLookupByLibrary.simpleMessage("Re-check the disease"),

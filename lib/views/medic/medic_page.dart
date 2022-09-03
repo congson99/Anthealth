@@ -13,7 +13,6 @@ import 'package:anthealth_mobile/views/medic/medical_map/medical_map_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_lookup/medication_lookup_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/medication_reminder_page.dart';
-import 'package:anthealth_mobile/views/settings/setting_page.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -110,10 +109,4 @@ class MedicPage extends StatelessWidget {
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => MedicalMapPage(dashboardContext: context))))
       ]);
-
-  // Actions
-  void setting(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => SettingsPage(appContext: context, user: user)));
-  }
 }

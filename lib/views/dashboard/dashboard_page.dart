@@ -4,12 +4,11 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
-import 'package:anthealth_mobile/views/community/community_page.dart';
-import 'package:anthealth_mobile/views/doctor/doctor_page.dart';
 import 'package:anthealth_mobile/views/family/family_page.dart';
 import 'package:anthealth_mobile/views/health/health_page.dart';
 import 'package:anthealth_mobile/views/home/home_page.dart';
 import 'package:anthealth_mobile/views/medic/medic_page.dart';
+import 'package:anthealth_mobile/views/settings/sttings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,8 +21,7 @@ class DashboardPage extends StatelessWidget {
       create: (context) => DashboardCubit(),
       child: BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
         if (state is DoctorLoadingState) return LoadingPage();
-        if (state is DoctorState)
-          return DoctorPage(dashboardContext: context, doctorState: state);
+
         return Scaffold(
             body: SafeArea(
                 child: Stack(children: [
@@ -37,7 +35,7 @@ class DashboardPage extends StatelessWidget {
     if (state is HealthState) return HealthPage(user: user);
     if (state is MedicState) return MedicPage(user: user);
     if (state is FamilyState) return FamilyPage(user: user);
-    if (state is CommunityState)
+    if (state is SettingsState)
       return NewSettingsPage(
         user: user,
         lang: '',
@@ -62,17 +60,17 @@ class DashboardPage extends StatelessWidget {
     if (index == 1) BlocProvider.of<DashboardCubit>(context).medic();
     if (index == 2) BlocProvider.of<DashboardCubit>(context).home();
     if (index == 3) BlocProvider.of<DashboardCubit>(context).family();
-    if (index == 4) BlocProvider.of<DashboardCubit>(context).community();
+    if (index == 4) BlocProvider.of<DashboardCubit>(context).settings();
   }
 
   int currentIndexState(CubitState state) {
     if (state is FamilyState) return 3;
-    if (state is CommunityState) return 4;
+    if (state is SettingsState) return 4;
     if (state is HomeState) return 2;
     if (state is HealthState) return 0;
     if (state is MedicState) return 1;
     if (state is FamilyLoadingState) return 3;
-    if (state is CommunityLoadingState) return 4;
+    if (state is SettingsLoadingState) return 4;
     if (state is HomeLoadingState) return 2;
     if (state is HealthLoadingState) return 0;
     if (state is MedicLoadingState) return 1;
