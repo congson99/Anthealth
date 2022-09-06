@@ -123,7 +123,6 @@ class NewSettingsPage extends StatelessWidget {
           colorID: 2,
           onTap: () {
             BlocProvider.of<AppCubit>(context).logout();
-            Navigator.pop(context);
           }),
       SizedBox(height: 16),
       GestureDetector(
