@@ -42,7 +42,7 @@ class IndicatorCubit extends Cubit<CubitState> {
     var sendData = {
       "type": type,
       "data": {
-        "value": data.getValue().toString(),
+        "value": data.getValue(),
         "time": data.getDateTime().millisecondsSinceEpoch ~/ 1000
       }
     };

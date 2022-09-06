@@ -64,25 +64,13 @@ class DashboardCubit extends Cubit<CubitState> {
         reminderMask.removeAt(0);
       }
     }
-    List<Post> posts = [
-      Post.generate(
-          postKey: "Flutter",
-          coverImage: "https://200lab-blog.imgix.net/2021/07/0_OA8mG-mK8hncsgQ4.jpg?auto=format,compress&w=1500",
-          title: "Flutter là gì? Các đặc tính vượt trội của Flutter",
-          content: [
-            "Flutter là gì?",
-            "Bạn có thể hiểu Flutter là bộ công cụ giao diện người dùng của Google để tạo các ứng dụng đẹp, được biên dịch native cho thiết bị di động, web và máy tính để bàn từ một mã nguồn duy nhất.",
-            "Flutter là một framework giao diện người dùng mã nguồn mở miễn phí được tạo bởi Google và được phát hành vào tháng 5 năm 2017.",
-            "Nói một cách dễ hiểu, điều này cho phép bạn tạo một ứng dụng di động chỉ với một lần code. Có nghĩa là bạn có thể sử dụng một ngôn ngữ lập trình và một mã nguồn để tạo hai ứng dụng khác nhau (IOS và Android).",
-            "Không giống như các giải pháp phổ biến khác, Flutter không phải là một framework hoặc thư viện mà đó là một SDK hoàn chỉnh – bộ công cụ phát triển phần mềm đa nền tảng.",
-            "https://200lab-blog.imgix.net/2021/07/0_OA8mG-mK8hncsgQ4.jpg?auto=format,compress&w=1500",
-            "Để phát triển với Flutter, bạn sẽ sử dụng một ngôn ngữ lập trình có tên là Dart. Đây cũng là ngôn ngữ của Google được tạo vào tháng 10 năm 2011 và đã được cải thiện rất nhiều trong những năm qua. Dart tập trung vào phát triển front-end, bạn có thể sử dụng nó để tạo các ứng dụng di động và web.",
-            "Quá trình phát triển Flutter",
-            "https://d50cmv7hkyx4e.cloudfront.net/wp-content/uploads/2021/06/23141932/facebook_cover-1024x538-1.png",
-            "Vào năm 2015, Google đã công bố Flutter, một SDK mới dựa trên ngôn ngữ Dart, làm nền tảng tiếp theo để phát triển Android và vào năm 2017, phiên bản alpha của nó (0.0.6) đã được phát hành cho công chúng lần đầu tiên.",
-            "Vào ngày 4 tháng 12 năm 2018, Flutter 1.0 đã được phát hành tại sự kiện Flutter Live và có sẵn để các nhà phát triển có thể bắt đầu sử dụng SDK để tạo ứng dụng dễ dàng hơn. Đây được đánh dấu là phiên bản “stable” đầu tiên."
-          ])
-    ];
+    List<Post> posts = [];
+    await Post.fromJson("assets/hardData/height.json")
+        .then((value) => posts.add(value));
+    await Post.fromJson("assets/hardData/weight.json")
+        .then((value) => posts.add(value));
+    await Post.fromJson("assets/hardData/blood_pressure.json")
+        .then((value) => posts.add(value));
     emit(HomeState(result, posts));
   }
 
@@ -119,37 +107,91 @@ class DashboardCubit extends Cubit<CubitState> {
     emit(FamilyState([
       FamilyMemberData(
           "123",
-          "Nguyen Van Anh",
-          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
-          "012013011",
-          "ahaha@hca.com",
+          "Trần Bố",
+          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock--480x320.jpg",
+          "0372828282",
+          "father@anthealth.com",
           true,
           [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
           0),
       FamilyMemberData(
-          "sd",
-          "Van Anh",
-          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+          "Nguyễn Thị Mẹ",
+          "Nguyễn Thị Mẹ",
+          "https://engineering.unl.edu/images/staff/Kayla-Person.jpg",
           "012013011",
-          "ahaha@hca.com",
+          "mother@hca.com",
           false,
           [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
           0),
       FamilyMemberData(
           "id",
-          "Nguyen Van Anh",
-          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
+          "Trần Con Trai",
+          "https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png",
           "012013011",
-          "ahaha@hca.com",
+          "son@hca.com",
           false,
           [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
           0),
       FamilyMemberData(
           "id",
-          "Nguyen Van Anh",
+          "Trần Con Gái",
           "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
           "012013011",
-          "ahaha@hca.com",
+          "dauger@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
+      FamilyMemberData(
+          "id",
+          "Trần Ông Nội",
+          "https://static01.nyt.com/images/2021/10/13/science/13shatner-launch-oldest-person-sub/13shatner-launch-oldest-person-sub-mediumSquareAt3X.jpg",
+          "012013011",
+          "dauger@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
+      FamilyMemberData(
+          "id",
+          "Lê Bà Nội",
+          "https://bacsiielts.vn/wp-content/uploads/2022/05/talk-about-a-famous-person-3.jpg",
+          "012013011",
+          "dauger@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
+      FamilyMemberData(
+          "id",
+          "La Ông Ngoại",
+          "https://qph.cf2.quoracdn.net/main-qimg-8eeb0bdbcfe06a441197179e72367009.webp",
+          "012013011",
+          "dauger@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
+      FamilyMemberData(
+          "id",
+          "Lê Bà Ngoại",
+          "https://img.huffingtonpost.com/asset/5d02417b2500004e12e454a5.jpeg?ops=scalefit_720_noupscale",
+          "012013011",
+          "dauger@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
+      FamilyMemberData(
+          "id",
+          "Nguyễn Thị Cháu Đầu",
+          "https://cdn.hswstatic.com/gif/play/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+          "012013011",
+          "dauger@hca.com",
+          false,
+          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+          0),
+      FamilyMemberData(
+          "id",
+          "Nguyễn Thị Cháu Sau",
+          "https://i0.wp.com/www.yesmagazine.org/wp-content/uploads/2022/03/Ghaderi_1400x840.jpg?fit=1400%2C840&quality=90&ssl=1",
+          "012013011",
+          "dauger@hca.com",
           false,
           [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
           0),

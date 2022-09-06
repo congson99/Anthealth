@@ -50,7 +50,10 @@ class HomePage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Highlights, context),
       SizedBox(height: 16),
-      ...state.posts.map((post) => PostComponent(post: post))
+      ...state.posts.map((post) => Padding(
+        padding: const EdgeInsets.only(bottom: 24.0),
+        child: PostComponent(post: post),
+      ))
     ]);
   }
 
