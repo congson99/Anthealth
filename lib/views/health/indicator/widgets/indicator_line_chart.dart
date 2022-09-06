@@ -33,7 +33,7 @@ class IndicatorLineChart extends StatelessWidget {
             topTitles: SideTitles(showTitles: false),
             bottomTitles: SideTitles(
                 showTitles: true,
-                interval: (data.last.x - data.first.x + 5) ~/ 5 + 0,
+                interval: (data.last.x - data.first.x + 5) ~/ 5 + 1,
                 reservedSize: 32,
                 margin: 8,
                 getTextStyles: (context, value) => Theme.of(context)
