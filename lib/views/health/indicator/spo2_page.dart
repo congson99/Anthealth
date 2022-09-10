@@ -54,7 +54,6 @@ class SPO2Page extends StatelessWidget {
                 add: (state is IndicatorState)
                     ? (() => add(context, state))
                     : null,
-                settings: () => setting(),
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));
           else
@@ -349,8 +348,6 @@ class SPO2Page extends StatelessWidget {
   void add(BuildContext context, IndicatorState state) {
     buildAddIndicatorBottomSheet(context, state);
   }
-
-  void setting() {}
 
   Future<dynamic> buildAddIndicatorBottomSheet(
       BuildContext context, IndicatorState state) {

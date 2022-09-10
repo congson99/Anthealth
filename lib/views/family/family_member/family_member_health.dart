@@ -7,7 +7,6 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
-import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
@@ -72,7 +71,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
 
   Widget buildHealthIndicator(BuildContext context,
       List<String> indicatorLatestData, double latestHeight) {
-    double width = (MediaQuery.of(context).size.width - 64) / 3;
+    double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Health_indicator, context),
       SizedBox(height: 16),
@@ -161,7 +160,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
   }
 
   Widget buildActivity(BuildContext context) {
-    double width = (MediaQuery.of(context).size.width - 64) / 3;
+    double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Activity, context),
       SizedBox(height: 16),
@@ -189,16 +188,6 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 title: S.of(context).Drink_water,
                 isVisible: (widget.data.permission[7] < 0),
                 width: width),
-            SizedBox(width: 16),
-            IndicatorComponent(
-                colorID: 1,
-                iconPath: "assets/indicators/steps.png",
-                value: "4.600",
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => StepsPage(data: widget.data))),
-                title: S.of(context).Steps,
-                isVisible: (widget.data.permission[8] < 0),
-                width: width)
           ]),
       SizedBox(height: 32),
       CustomDivider.common(),

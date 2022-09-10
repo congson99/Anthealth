@@ -49,9 +49,17 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
   var _appointmentTimeController = TextEditingController();
   var _nameFocus = FocusNode();
   List<List<String>> images = [[], [], [], []];
+  List<String> hospital = [];
 
   @override
   void initState() {
+    BlocProvider.of<MedicalRecordCubit>(widget.superContext)
+        .getLocationList()
+        .then((value) {
+      setState(() {
+        hospital = value;
+      });
+    });
     if (widget.medicalRecordDetailData != null)
       data = widget.medicalRecordDetailData!;
     _timeController.text = DateFormat("dd.MM.yyyy").format(data.label.dateTime);
@@ -144,8 +152,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
           SizedBox(height: 28),
           CommonTextField.select(
               labelText: S.of(context).Medical_location + " (*)",
-              data: BlocProvider.of<MedicalRecordCubit>(widget.superContext)
-                  .getLocationList(),
+              data: hospital,
               value: (data.label.location == "") ? null : data.label.location,
               onChanged: (value) => setState(() {
                     data.label.location = value!;
@@ -210,8 +217,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
           SizedBox(height: 28),
           CommonTextField.select(
               labelText: S.of(context).Medical_location,
-              data: BlocProvider.of<MedicalRecordCubit>(widget.superContext)
-                  .getLocationList(),
+              data: hospital,
               value: (data.appointment.location == "")
                   ? ((data.label.location == "") ? null : data.label.location)
                   : data.appointment.location,

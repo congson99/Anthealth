@@ -56,7 +56,6 @@ class WeightPage extends StatelessWidget {
                 add: (state is IndicatorState)
                     ? (() => add(context, state))
                     : null,
-                settings: () => setting(),
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));
           else

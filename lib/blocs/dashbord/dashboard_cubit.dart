@@ -115,8 +115,8 @@ class DashboardCubit extends Cubit<CubitState> {
           [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
           0),
       FamilyMemberData(
-          "Nguyễn Thị Mẹ",
-          "Nguyễn Thị Mẹ",
+          "Nguyễn Thị Lan",
+          "Nguyễn Thị Lan",
           "https://engineering.unl.edu/images/staff/Kayla-Person.jpg",
           "012013011",
           "mother@hca.com",
@@ -134,7 +134,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "Trần Con Gái",
+          "Trần Huệ",
           "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
           "012013011",
           "dauger@hca.com",
@@ -143,7 +143,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "Trần Ông Nội",
+          "Trần Hùng",
           "https://static01.nyt.com/images/2021/10/13/science/13shatner-launch-oldest-person-sub/13shatner-launch-oldest-person-sub-mediumSquareAt3X.jpg",
           "012013011",
           "dauger@hca.com",
@@ -152,7 +152,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "Lê Bà Nội",
+          "Lê Thị Hoa",
           "https://bacsiielts.vn/wp-content/uploads/2022/05/talk-about-a-famous-person-3.jpg",
           "012013011",
           "dauger@hca.com",
@@ -161,7 +161,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "La Ông Ngoại",
+          "La Hữu Phúc",
           "https://qph.cf2.quoracdn.net/main-qimg-8eeb0bdbcfe06a441197179e72367009.webp",
           "012013011",
           "dauger@hca.com",
@@ -170,7 +170,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "Lê Bà Ngoại",
+          "Lê Ngọc Lan",
           "https://img.huffingtonpost.com/asset/5d02417b2500004e12e454a5.jpeg?ops=scalefit_720_noupscale",
           "012013011",
           "dauger@hca.com",
@@ -179,7 +179,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "Nguyễn Thị Cháu Đầu",
+          "Nguyễn Văn Hùng",
           "https://cdn.hswstatic.com/gif/play/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
           "012013011",
           "dauger@hca.com",
@@ -188,7 +188,7 @@ class DashboardCubit extends Cubit<CubitState> {
           0),
       FamilyMemberData(
           "id",
-          "Nguyễn Thị Cháu Sau",
+          "Nguyễn Ngọc Thu Uyên",
           "https://i0.wp.com/www.yesmagazine.org/wp-content/uploads/2022/03/Ghaderi_1400x840.jpg?fit=1400%2C840&quality=90&ssl=1",
           "012013011",
           "dauger@hca.com",

@@ -43,8 +43,6 @@ class FamilyMemberPage extends StatelessWidget {
     return Column(children: [
       SizedBox(height: 8),
       buildInfo(context),
-      SizedBox(height: 16),
-      buildActionArea(),
       SizedBox(height: 24),
       CustomDivider.common(),
       SizedBox(height: 16),
@@ -88,47 +86,9 @@ class FamilyMemberPage extends StatelessWidget {
     ]);
   }
 
-  Widget buildActionArea() {
-    return Row(children: [
-      Expanded(
-          child: GestureDetector(
-              onTap: () => launchUrlString("tel://" + member.phoneNumber),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: AnthealthColors.warning5,
-                      borderRadius: BorderRadius.circular(16)),
-                  padding: const EdgeInsets.all(16),
-                  child: Image.asset("assets/app_icon/common/call_war1.png",
-                      height: 24, fit: BoxFit.fitHeight)))),
-      SizedBox(width: 16),
-      Expanded(
-          child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: AnthealthColors.primary5,
-                      borderRadius: BorderRadius.circular(16)),
-                  padding: const EdgeInsets.all(16),
-                  child: Image.asset("assets/app_icon/common/message_pri1.png",
-                      height: 24, fit: BoxFit.fitHeight)))),
-      SizedBox(width: 16),
-      Expanded(
-          child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: AnthealthColors.secondary5,
-                      borderRadius: BorderRadius.circular(16)),
-                  padding: const EdgeInsets.all(16),
-                  child: Image.asset("assets/app_icon/common/share_sec1.png",
-                      height: 24, fit: BoxFit.fitHeight))))
-    ]);
-  }
-
   Widget buildData(BuildContext context) {
     bool isHealthPermission = false;
     bool isMedicPermission = member.permission[9] > -1;
-    bool isDiagnosePermission = member.permission[10] > -1;
     for (int i = 0; i < 9; i++)
       if (member.permission[i] > -1) isHealthPermission = true;
     return Column(children: [
@@ -154,15 +114,6 @@ class FamilyMemberPage extends StatelessWidget {
             else
               showPopup(context);
           }),
-      SizedBox(height: 16),
-      SectionComponent(
-          title: S.of(context).Diagnose,
-          colorID: 1,
-          onTap: () {
-            if (isDiagnosePermission) {
-            } else
-              showPopup(context);
-          })
     ]);
   }
 
