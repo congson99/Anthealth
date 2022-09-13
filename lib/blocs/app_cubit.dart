@@ -52,7 +52,7 @@ class AppCubit extends Cubit<CubitState> {
         emit(AuthenticatedState(
             token,
             User(
-                "123",
+                ServerLogic.getData(value)["uid"].toString(),
                 ServerLogic.getData(value)["name"],
                 ServerLogic.getData(value)["avatar"],
                 ServerLogic.getData(value)["phone"],

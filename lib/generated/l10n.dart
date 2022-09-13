@@ -4030,11 +4030,61 @@ class S {
     );
   }
 
-  /// `About_us`
+  /// `About us`
   String get About_us {
     return Intl.message(
-      'About_us',
+      'About us',
       name: 'About_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no family. Let's create one now!`
+  String get no_family_yet {
+    return Intl.message(
+      'You have no family. Let\'s create one now!',
+      name: 'no_family_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a family`
+  String get create_a_family {
+    return Intl.message(
+      'Create a family',
+      name: 'create_a_family',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family settings`
+  String get family_settings {
+    return Intl.message(
+      'Family settings',
+      name: 'family_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave the family`
+  String get Out_family {
+    return Intl.message(
+      'Leave the family',
+      name: 'Out_family',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission setting`
+  String get Permission_setting {
+    return Intl.message(
+      'Permission setting',
+      name: 'Permission_setting',
       desc: '',
       args: [],
     );

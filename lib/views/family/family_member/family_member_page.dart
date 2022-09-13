@@ -88,9 +88,9 @@ class FamilyMemberPage extends StatelessWidget {
 
   Widget buildData(BuildContext context) {
     bool isHealthPermission = false;
-    bool isMedicPermission = member.permission[9] > -1;
+    bool isMedicPermission = member.permission[9];
     for (int i = 0; i < 9; i++)
-      if (member.permission[i] > -1) isHealthPermission = true;
+      if (member.permission[i]) isHealthPermission = true;
     return Column(children: [
       SectionComponent(
           title: S.of(context).Health_record,

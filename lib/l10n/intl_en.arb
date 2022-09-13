@@ -397,5 +397,10 @@
   "Invalid_phone": "Invalid phone number!",
   "Invalid_yob": "Invalid year of birth!",
   "Highlights": "Highlights",
-  "About_us": "About_us"
+  "About_us": "About us",
+  "no_family_yet": "You have no family. Let's create one now!",
+  "create_a_family": "Create a family",
+  "family_settings": "Family settings",
+  "Out_family": "Leave the family",
+  "Permission_setting": "Permission setting"
 }

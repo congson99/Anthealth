@@ -55,9 +55,9 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
     bool isShowIndicator = false;
     bool isShowActivity = false;
     for (int i = 0; i < 6; i++)
-      if (widget.data.permission[i] > -1) isShowIndicator = true;
+      if (widget.data.permission[i]) isShowIndicator = true;
     for (int i = 6; i < 9; i++)
-      if (widget.data.permission[i] > -1) isShowActivity = true;
+      if (widget.data.permission[i]) isShowActivity = true;
     return Column(children: [
       if (isShowIndicator)
         buildHealthIndicator(
@@ -93,7 +93,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[0],
                 unit: "m",
                 title: S.of(context).Height,
-                isVisible: (widget.data.permission[0] < 0),
+                isVisible: !widget.data.permission[0],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -106,7 +106,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[1],
                 unit: "kg",
                 title: S.of(context).Weight,
-                isVisible: (widget.data.permission[1] < 0),
+                isVisible: !widget.data.permission[1],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -117,7 +117,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[2],
                 unit: "BPM",
                 title: S.of(context).Heart_rate,
-                isVisible: (widget.data.permission[2] < 0),
+                isVisible: !widget.data.permission[2],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -128,7 +128,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[3],
                 unit: "°C",
                 title: S.of(context).Temperature,
-                isVisible: (widget.data.permission[3] < 0),
+                isVisible: !widget.data.permission[3],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -139,7 +139,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[4],
                 unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
                 title: S.of(context).Blood_pressure,
-                isVisible: (widget.data.permission[4] < 0),
+                isVisible: !widget.data.permission[4],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -150,7 +150,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[5],
                 unit: "%",
                 title: S.of(context).Spo2,
-                isVisible: (widget.data.permission[5] < 0),
+                isVisible: !widget.data.permission[5],
                 width: width)
           ]),
       SizedBox(height: 32),
@@ -175,7 +175,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => CaloPage(data: widget.data))),
                 title: S.of(context).Calo,
-                isVisible: (widget.data.permission[6] < 0),
+                isVisible: !widget.data.permission[6],
                 width: width),
             SizedBox(width: 16),
             IndicatorComponent(
@@ -186,7 +186,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => WaterPage(data: widget.data))),
                 title: S.of(context).Drink_water,
-                isVisible: (widget.data.permission[7] < 0),
+                isVisible: !widget.data.permission[7],
                 width: width),
           ]),
       SizedBox(height: 32),

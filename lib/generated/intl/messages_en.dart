@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "About_us": MessageLookupByLibrary.simpleMessage("About_us"),
+        "About_us": MessageLookupByLibrary.simpleMessage("About us"),
         "Active_reminders":
             MessageLookupByLibrary.simpleMessage("Active reminders"),
         "Activity": MessageLookupByLibrary.simpleMessage("Activity"),
@@ -308,8 +308,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "October": MessageLookupByLibrary.simpleMessage("October"),
         "Out": MessageLookupByLibrary.simpleMessage("Out"),
         "Out_community": MessageLookupByLibrary.simpleMessage("Out community"),
+        "Out_family": MessageLookupByLibrary.simpleMessage("Leave the family"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Period": MessageLookupByLibrary.simpleMessage("Period"),
+        "Permission_setting":
+            MessageLookupByLibrary.simpleMessage("Permission setting"),
         "Phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
         "Photo_view": MessageLookupByLibrary.simpleMessage("Photo view"),
         "Pick_camera": MessageLookupByLibrary.simpleMessage("Pick Camera"),
@@ -485,6 +488,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "comment": MessageLookupByLibrary.simpleMessage("comment"),
         "communities": MessageLookupByLibrary.simpleMessage("communities"),
         "community": MessageLookupByLibrary.simpleMessage("community"),
+        "create_a_family":
+            MessageLookupByLibrary.simpleMessage("Create a family"),
         "custom_day_repeat_right":
             MessageLookupByLibrary.simpleMessage(" days"),
         "custom_repeat_left":
@@ -498,6 +503,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dec": MessageLookupByLibrary.simpleMessage("DEC"),
         "drink": MessageLookupByLibrary.simpleMessage("Drink"),
         "drops": MessageLookupByLibrary.simpleMessage("Drops"),
+        "family_settings":
+            MessageLookupByLibrary.simpleMessage("Family settings"),
         "feb": MessageLookupByLibrary.simpleMessage("FEB"),
         "fri": MessageLookupByLibrary.simpleMessage("fri"),
         "hour_ago": MessageLookupByLibrary.simpleMessage(" hour ago"),
@@ -524,6 +531,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "There are no active reminders"),
         "no_done_reminders":
             MessageLookupByLibrary.simpleMessage("There are no done reminders"),
+        "no_family_yet": MessageLookupByLibrary.simpleMessage(
+            "You have no family. Let\'s create one now!"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "You have no records during this period"),
         "no_medical_record":

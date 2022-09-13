@@ -61,9 +61,6 @@ class BloodPressurePage extends StatelessWidget {
             return TemplateAvatarFormPage(
                 firstTitle: S.of(context).Blood_pressure,
                 name: data!.name,
-                add: (state is IndicatorState && data!.permission[4] == 1)
-                    ? (() => add(context, state))
-                    : null,
                 avatarPath: data!.avatarPath,
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));

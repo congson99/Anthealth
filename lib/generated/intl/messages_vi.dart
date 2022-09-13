@@ -324,8 +324,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "Out": MessageLookupByLibrary.simpleMessage("Tiêu thụ"),
         "Out_community":
             MessageLookupByLibrary.simpleMessage("Rời khỏi cộng đồng"),
+        "Out_family": MessageLookupByLibrary.simpleMessage("Rời khỏi gia đình"),
         "Password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "Period": MessageLookupByLibrary.simpleMessage("Chu kỳ kinh nguyệt"),
+        "Permission_setting":
+            MessageLookupByLibrary.simpleMessage("Cài đặt quyền"),
         "Phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "Photo_view": MessageLookupByLibrary.simpleMessage("Xem ảnh"),
         "Pick_camera": MessageLookupByLibrary.simpleMessage("Máy ảnh"),
@@ -503,6 +506,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "comment": MessageLookupByLibrary.simpleMessage("bình luận"),
         "communities": MessageLookupByLibrary.simpleMessage("cộng đồng"),
         "community": MessageLookupByLibrary.simpleMessage("cộng đồng"),
+        "create_a_family": MessageLookupByLibrary.simpleMessage("Tạo gia đình"),
         "custom_day_repeat_right":
             MessageLookupByLibrary.simpleMessage(" ngày 1 lần"),
         "custom_repeat_left": MessageLookupByLibrary.simpleMessage(""),
@@ -515,6 +519,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dec": MessageLookupByLibrary.simpleMessage("T12"),
         "drink": MessageLookupByLibrary.simpleMessage("Uống"),
         "drops": MessageLookupByLibrary.simpleMessage("Nhỏ"),
+        "family_settings":
+            MessageLookupByLibrary.simpleMessage("Cài đặt gia đình"),
         "feb": MessageLookupByLibrary.simpleMessage("T2"),
         "fri": MessageLookupByLibrary.simpleMessage("T6"),
         "hour_ago": MessageLookupByLibrary.simpleMessage(" giờ trước"),
@@ -540,6 +546,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Không có nhắc nhở nào đang hoạt động"),
         "no_done_reminders": MessageLookupByLibrary.simpleMessage(
             "Không có nhắc nhở nào đã hoàn thành"),
+        "no_family_yet": MessageLookupByLibrary.simpleMessage(
+            "Bạn chưa có gia đình. Hãy tạo gia đình ngay!"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(
             "Bạn không thực hiện lần đo nào trong khoảng thời gian này"),
         "no_medical_record": MessageLookupByLibrary.simpleMessage(

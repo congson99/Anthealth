@@ -32,4 +32,8 @@ class MessageIDPath {
   static int removeAccount() => 2124;
 
   static int updateProfile() => 2101;
+
+  static int getFamilyData() => 2506;
+
+  static int createFamily() => 2507;
 }

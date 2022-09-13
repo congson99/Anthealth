@@ -60,9 +60,6 @@ class HeartRatePage extends StatelessWidget {
             return TemplateAvatarFormPage(
                 firstTitle: S.of(context).Heart_rate,
                 name: data!.name,
-                add: (state is IndicatorState && data!.permission[2] == 1)
-                    ? (() => add(context, state))
-                    : null,
                 avatarPath: data!.avatarPath,
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));

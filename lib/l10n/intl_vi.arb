@@ -397,5 +397,10 @@
   "Invalid_phone": "Số điện thoại không hợp lệ!",
   "Invalid_yob": "Năm sinh không hợp lệ!",
   "Highlights": "Thông tin nổi bật",
-  "About_us": "Về chúng tôi"
+  "About_us": "Về chúng tôi",
+  "no_family_yet": "Bạn chưa có gia đình. Hãy tạo gia đình ngay!",
+  "create_a_family": "Tạo gia đình",
+  "family_settings": "Cài đặt gia đình",
+  "Out_family": "Rời khỏi gia đình",
+  "Permission_setting": "Cài đặt quyền"
 }

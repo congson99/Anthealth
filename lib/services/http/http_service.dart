@@ -6,7 +6,7 @@ class HttpService {
   final String _masterHost = "127.0.0.1";
   final int _masterPort = 8090;
 
-  // final String _serverHost = "192.168.1.8";
+  // final String _serverHost = "172.16.0.254";
   final String _serverHost = "45.124.95.120";
   // final String _serverHost = "192.168.87.14";
   final int _serverPort = 8888;

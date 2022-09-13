@@ -8,6 +8,8 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/family/family_member/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -37,7 +39,21 @@ class FamilyPage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),
       SizedBox(height: 24),
-      buildMembers(context, state)
+      if (state.members.isNotEmpty) buildMembers(context, state),
+      if (state.members.isEmpty)
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(S.of(context).no_family_yet,
+                style: Theme.of(context).textTheme.bodyText2),
+            SizedBox(height: 16),
+            SectionComponent(
+                onTap: () => createFamily(context),
+                title: S.of(context).create_a_family,
+                colorID: 0,
+                isDirection: false)
+          ],
+        )
     ]);
   }
 
@@ -47,14 +63,21 @@ class FamilyPage extends StatelessWidget {
     final int count = width ~/ 90;
     final double size = (width - (count - 1) * 16) / count;
     bool isAdmin = false;
+    print(user.id);
     for (FamilyMemberData x in state.members)
       if (x.id == user.id) isAdmin = x.admin;
-    return Wrap(runSpacing: 16, spacing: 16, children: [
-      ...state.members
-          .map((member) => buildMemberComponent(context, member, isAdmin, size))
-          .toList(),
-      if (isAdmin) buildAddMemberComponent(size, context)
-    ]);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Wrap(runSpacing: 16, spacing: 16, children: [
+          ...state.members
+              .map((member) =>
+                  buildMemberComponent(context, member, isAdmin, size))
+              .toList(),
+          if (isAdmin) buildAddMemberComponent(size, context)
+        ]),
+      ],
+    );
   }
 
   // Child Component
@@ -167,6 +190,18 @@ class FamilyPage extends StatelessWidget {
                       ' ' +
                       S.of(context).successfully +
                       '!')));
+            }));
+  }
+
+  void createFamily(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => WarningPopup(
+            title: S.of(context).create_a_family,
+            cancel: () => Navigator.pop(context),
+            delete: () {
+              BlocProvider.of<DashboardCubit>(context).createFamily();
+              Navigator.pop(context);
             }));
   }
 }

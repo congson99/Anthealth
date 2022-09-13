@@ -103,99 +103,51 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   family() async {
-    emit(MedicLoadingState());
-    emit(FamilyState([
-      FamilyMemberData(
-          "123",
-          "Trần Bố",
-          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock--480x320.jpg",
-          "0372828282",
-          "father@anthealth.com",
-          true,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "Nguyễn Thị Lan",
-          "Nguyễn Thị Lan",
-          "https://engineering.unl.edu/images/staff/Kayla-Person.jpg",
-          "012013011",
-          "mother@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Trần Con Trai",
-          "https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png",
-          "012013011",
-          "son@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Trần Huệ",
-          "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Trần Hùng",
-          "https://static01.nyt.com/images/2021/10/13/science/13shatner-launch-oldest-person-sub/13shatner-launch-oldest-person-sub-mediumSquareAt3X.jpg",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Lê Thị Hoa",
-          "https://bacsiielts.vn/wp-content/uploads/2022/05/talk-about-a-famous-person-3.jpg",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "La Hữu Phúc",
-          "https://qph.cf2.quoracdn.net/main-qimg-8eeb0bdbcfe06a441197179e72367009.webp",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Lê Ngọc Lan",
-          "https://img.huffingtonpost.com/asset/5d02417b2500004e12e454a5.jpeg?ops=scalefit_720_noupscale",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Nguyễn Văn Hùng",
-          "https://cdn.hswstatic.com/gif/play/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-      FamilyMemberData(
-          "id",
-          "Nguyễn Ngọc Thu Uyên",
-          "https://i0.wp.com/www.yesmagazine.org/wp-content/uploads/2022/03/Ghaderi_1400x840.jpg?fit=1400%2C840&quality=90&ssl=1",
-          "012013011",
-          "dauger@hca.com",
-          false,
-          [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
-          0),
-    ]));
+    emit(FamilyLoadingState());
+    await CommonService.instance.send(MessageIDPath.getFamilyData(), {});
+    CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getFamilyData(), value)) {
+        List<Invitation> invitations = [];
+        // ServerLogic.getData(value)["invite_list"] ?? [];
+        List<FamilyMemberData> members = [];
+        if (ServerLogic.getData(value)["member_list"] != null)
+          for (dynamic x in ServerLogic.getData(value)["member_list"])
+            members.add(FamilyMemberData(
+                x["uid"].toString(),
+                x["name"],
+                x["base_info"]["avatar"],
+                x["base_info"]["phone"],
+                x["base_info"]["email"],
+                x["rule"] == 2,
+                [true, true, true, true, true, true, true, true, true],
+                x["birthDay"]));
+        emit(FamilyState(members, invitations));
+      }
+    });
+  }
+
+  Future<List<FamilyMemberData>> getMemberData() async {
+    List<FamilyMemberData> members = [];
+    await CommonService.instance.send(MessageIDPath.getFamilyData(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getFamilyData(), value)) {
+        if (ServerLogic.getData(value)["member_list"] != null)
+          for (dynamic x in ServerLogic.getData(value)["member_list"])
+            members.add(FamilyMemberData(
+                x["uid"].toString(),
+                x["name"],
+                x["base_info"]["avatar"],
+                x["base_info"]["phone"],
+                x["base_info"]["email"],
+                x["rule"] == 2,
+                [true, true, true, true, true, true, true, true, true],
+                x["birthDay"]));
+        print(value);
+      }
+    });
+    return members;
   }
 
   settings([SettingsState? state]) {
@@ -206,8 +158,8 @@ class DashboardCubit extends Cubit<CubitState> {
   /// Server Functions
   FamilyMemberData findUser(String email) {
     if (email == "")
-      return FamilyMemberData(
-          "", "", "", "", "", false, [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1], 0);
+      return FamilyMemberData("", "", "", "", "", false,
+          [true, true, true, true, true, true, true, true, true], 0);
     return FamilyMemberData(
         "id",
         "Nguyen Van Anh",
@@ -215,8 +167,18 @@ class DashboardCubit extends Cubit<CubitState> {
         "012013011",
         "ahaha@hca.com",
         false,
-        [1, 1, -1, 1, -1, 0, 1, 1, 0, 1, -1],
+        [true, true, true, true, true, true, true, true],
         0);
+  }
+
+  Future<void> createFamily() async {
+    await CommonService.instance.send(MessageIDPath.createFamily(), {});
+    CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.createFamily(), value)) {
+        if (ServerLogic.getData(value)["status"]) family();
+      }
+    });
   }
 
   Future<String> getFamilyID(String id) async {

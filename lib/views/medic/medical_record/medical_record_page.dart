@@ -43,7 +43,6 @@ class MedicalRecordPage extends StatelessWidget {
                   name: data!.name,
                   firstTitle: S.of(context).Medical_record,
                   avatarPath: data!.avatarPath,
-                  add: (data!.permission[9] != 1) ? null : () => add(context),
                   content: buildContent(context, state));
           } else
             return LoadingPage();
