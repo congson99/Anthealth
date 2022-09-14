@@ -551,7 +551,7 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
         images[index].add(downloadUrl);
       });
     } on PlatformException catch (e) {
-      print("Failed to pick Image: $e");
+      debugPrint("Failed to pick Image: $e");
     }
   }
 }

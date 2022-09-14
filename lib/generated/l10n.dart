@@ -4089,6 +4089,46 @@ class S {
       args: [],
     );
   }
+
+  /// `This member has joined your family!`
+  String get member_joined {
+    return Intl.message(
+      'This member has joined your family!',
+      name: 'member_joined',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` invite you to join the family`
+  String get invitation {
+    return Intl.message(
+      ' invite you to join the family',
+      name: 'invitation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACCEPT`
+  String get btn_accept {
+    return Intl.message(
+      'ACCEPT',
+      name: 'btn_accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REJECT`
+  String get btn_reject {
+    return Intl.message(
+      'REJECT',
+      name: 'btn_reject',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

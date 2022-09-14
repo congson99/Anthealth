@@ -97,6 +97,18 @@ class HealthPage extends StatelessWidget {
         SizedBox(width: 16),
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => SPO2Page(dashboardContext: context))),
+            colorID: 0,
+            iconPath: "assets/indicators/spo2.png",
+            value: indicatorLatestData[5],
+            unit: "%",
+            title: S.of(context).Spo2,
+            width: width),
+      ]),
+      SizedBox(height: 16),
+      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        IndicatorComponent(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => TemperaturePage(dashboardContext: context))),
             colorID: 1,
             iconPath: "assets/indicators/temperature.png",
@@ -104,9 +116,7 @@ class HealthPage extends StatelessWidget {
             unit: "°C",
             title: S.of(context).Temperature,
             width: width),
-      ]),
-      SizedBox(height: 16),
-      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        SizedBox(width: 16),
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => BloodPressurePage(dashboardContext: context))),
@@ -116,16 +126,6 @@ class HealthPage extends StatelessWidget {
             unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
             title: S.of(context).Blood_pressure,
             width: width),
-        SizedBox(width: 16),
-        IndicatorComponent(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => SPO2Page(dashboardContext: context))),
-            colorID: 0,
-            iconPath: "assets/indicators/spo2.png",
-            value: indicatorLatestData[5],
-            unit: "%",
-            title: S.of(context).Spo2,
-            width: width)
       ])
     ]);
   }

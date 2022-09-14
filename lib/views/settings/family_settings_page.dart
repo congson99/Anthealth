@@ -1,6 +1,7 @@
 import 'package:anthealth_mobile/blocs/app_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
@@ -10,9 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FamilySettingsPage extends StatelessWidget {
-  const FamilySettingsPage({Key? key, required this.memberData})
+  const FamilySettingsPage(
+      {Key? key, required this.memberData, required this.user})
       : super(key: key);
 
+  final User user;
   final List<FamilyMemberData> memberData;
 
   @override
@@ -27,8 +30,9 @@ class FamilySettingsPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        CommonText.section(S.of(context).Permission_setting, context),
-        ...memberData.map((member) =>
+        if (memberData.length > 1)
+          CommonText.section(S.of(context).Permission_setting, context),
+        ...memberData.where((element) => element.id != user.id).map((member) =>
             buildMemberPermission(context, member, memberData.indexOf(member))),
         SizedBox(height: 24),
         GestureDetector(

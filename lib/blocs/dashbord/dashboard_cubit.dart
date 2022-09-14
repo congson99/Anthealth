@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
+import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/common/gps_models.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
@@ -12,6 +13,8 @@ import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
 import 'package:anthealth_mobile/models/post/post_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -109,7 +112,9 @@ class DashboardCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getFamilyData(), value)) {
         List<Invitation> invitations = [];
-        // ServerLogic.getData(value)["invite_list"] ?? [];
+        if (ServerLogic.getData(value)["invite_list"] != null)
+          for (dynamic x in ServerLogic.getData(value)["invite_list"])
+            invitations.add(Invitation(x["id"], x["adminInfo"]["name"]));
         List<FamilyMemberData> members = [];
         if (ServerLogic.getData(value)["member_list"] != null)
           for (dynamic x in ServerLogic.getData(value)["member_list"])
@@ -144,10 +149,22 @@ class DashboardCubit extends Cubit<CubitState> {
                 x["rule"] == 2,
                 [true, true, true, true, true, true, true, true, true],
                 x["birthDay"]));
-        print(value);
       }
     });
     return members;
+  }
+
+  Future<bool> addMember(String email) async {
+    bool result = false;
+    Map<String, dynamic> data = {"email": email};
+    await CommonService.instance.send(MessageIDPath.addMember(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.addMember(), value)) {
+        if (ServerLogic.getData(value)["status"] != null)
+          result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
   }
 
   settings([SettingsState? state]) {
@@ -156,19 +173,27 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   /// Server Functions
-  FamilyMemberData findUser(String email) {
-    if (email == "")
-      return FamilyMemberData("", "", "", "", "", false,
-          [true, true, true, true, true, true, true, true, true], 0);
-    return FamilyMemberData(
-        "id",
-        "Nguyen Van Anh",
-        "https://reso.movie/wp-content/uploads/2022/01/AP21190389554952-e1643225561835.jpg",
-        "012013011",
-        "ahaha@hca.com",
-        false,
-        [true, true, true, true, true, true, true, true],
-        0);
+  Future<List<FamilyMemberData>> findUser(String email) async {
+    if (email.length < 2) return [];
+    List<FamilyMemberData> familyMemberData = [];
+    Map<String, dynamic> data = {"email": email};
+    await CommonService.instance.send(MessageIDPath.findUser(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.findUser(), value)) {
+        var data = ServerLogic.getData(value)["data"];
+        for (dynamic x in data)
+          familyMemberData.add(FamilyMemberData(
+              x["uid"].toString(),
+              x["name"],
+              x["avatar"],
+              "",
+              x["email"],
+              false,
+              [true, true, true, true, true, true, true, true],
+              0));
+      }
+    });
+    return familyMemberData;
   }
 
   Future<void> createFamily() async {
@@ -177,6 +202,21 @@ class DashboardCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.createFamily(), value)) {
         if (ServerLogic.getData(value)["status"]) family();
+      }
+    });
+  }
+
+  Future<void> handleInvitation(
+      BuildContext context, String familyID, bool isAccept) async {
+    Map<String, dynamic> data = {"familyId": familyID, "accept": isAccept};
+    await CommonService.instance.send(MessageIDPath.handleInvitation(), data);
+    CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.handleInvitation(), value)) {
+        if (ServerLogic.getData(value)["status"]) {
+          ShowSnackBar.showSuccessSnackBar(context, S.of(context).successfully);
+        }
+        family();
       }
     });
   }
@@ -248,7 +288,6 @@ class DashboardCubit extends Cubit<CubitState> {
               "\n\n8. Đóng gói:\n" +
               x["Pack"]));
     }
-    print(result.length);
     return result;
   }
 
@@ -260,7 +299,6 @@ class DashboardCubit extends Cubit<CubitState> {
       result
           .add(MedicineData("", x["name"], 0, 0, 0, x["image"], x["Link"], ""));
     }
-    print(result.length);
     return result;
   }
 }

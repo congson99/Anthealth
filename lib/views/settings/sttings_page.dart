@@ -97,7 +97,8 @@ class NewSettingsPage extends StatelessWidget {
                 .then((value) {
               if (value.isNotEmpty)
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => FamilySettingsPage(memberData: value)));
+                    builder: (_) =>
+                        FamilySettingsPage(memberData: value, user: user)));
               else
                 noFamilyPopup(context);
             });

@@ -143,20 +143,20 @@ class AppCubit extends Cubit<CubitState> {
   Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
-    print('Save token successful!');
+    debugPrint('Save token successful!');
   }
 
   Future<void> saveUsername(String username) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('username', username);
-    print('Save username successful!');
+    debugPrint('Save username successful!');
   }
 
   Future<void> removeToken() async {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getString('token') != null) {
       await prefs.remove('token');
-      print('Remove token successful!');
+      debugPrint('Remove token successful!');
     }
   }
 }

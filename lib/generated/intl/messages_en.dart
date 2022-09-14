@@ -452,6 +452,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
         "aug": MessageLookupByLibrary.simpleMessage("AUG"),
+        "btn_accept": MessageLookupByLibrary.simpleMessage("ACCEPT"),
+        "btn_reject": MessageLookupByLibrary.simpleMessage("REJECT"),
         "button_add": MessageLookupByLibrary.simpleMessage("ADD"),
         "button_add_medical_record":
             MessageLookupByLibrary.simpleMessage("ADD MEDICAL RECORD"),
@@ -510,12 +512,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage(" hour ago"),
         "hours_ago": MessageLookupByLibrary.simpleMessage(" hours ago"),
         "inject": MessageLookupByLibrary.simpleMessage("Inject"),
+        "invitation": MessageLookupByLibrary.simpleMessage(
+            " invite you to join the family"),
         "jan": MessageLookupByLibrary.simpleMessage("JAN"),
         "jul": MessageLookupByLibrary.simpleMessage("JUL"),
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),
         "like": MessageLookupByLibrary.simpleMessage("like"),
         "mar": MessageLookupByLibrary.simpleMessage("MAR"),
         "may": MessageLookupByLibrary.simpleMessage("MAY"),
+        "member_joined": MessageLookupByLibrary.simpleMessage(
+            "This member has joined your family!"),
         "members": MessageLookupByLibrary.simpleMessage("members"),
         "min": MessageLookupByLibrary.simpleMessage("min"),
         "minute_ago": MessageLookupByLibrary.simpleMessage(" minute ago"),

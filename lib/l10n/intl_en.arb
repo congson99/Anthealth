@@ -402,5 +402,9 @@
   "create_a_family": "Create a family",
   "family_settings": "Family settings",
   "Out_family": "Leave the family",
-  "Permission_setting": "Permission setting"
+  "Permission_setting": "Permission setting",
+  "member_joined": "This member has joined your family!",
+  "invitation": " invite you to join the family",
+  "btn_accept": "ACCEPT",
+  "btn_reject": "REJECT"
 }

@@ -402,5 +402,9 @@
   "create_a_family": "Tạo gia đình",
   "family_settings": "Cài đặt gia đình",
   "Out_family": "Rời khỏi gia đình",
-  "Permission_setting": "Cài đặt quyền"
+  "Permission_setting": "Cài đặt quyền",
+  "member_joined": "Thành viên này đã có trong gia đình của bạn!",
+  "invitation": " đã mời bạn tham gia gia đình",
+  "btn_accept": "ĐỒNG Ý",
+  "btn_reject": "TỪ CHỐI"
 }

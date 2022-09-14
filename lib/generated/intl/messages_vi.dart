@@ -471,6 +471,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "apply": MessageLookupByLibrary.simpleMessage("Bôi"),
         "apr": MessageLookupByLibrary.simpleMessage("T4"),
         "aug": MessageLookupByLibrary.simpleMessage("T8"),
+        "btn_accept": MessageLookupByLibrary.simpleMessage("ĐỒNG Ý"),
+        "btn_reject": MessageLookupByLibrary.simpleMessage("TỪ CHỐI"),
         "button_add": MessageLookupByLibrary.simpleMessage("THÊM"),
         "button_add_medical_record":
             MessageLookupByLibrary.simpleMessage("THÊM HỒ SƠ"),
@@ -526,12 +528,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage(" giờ trước"),
         "hours_ago": MessageLookupByLibrary.simpleMessage(" giờ trước"),
         "inject": MessageLookupByLibrary.simpleMessage("Tiêm"),
+        "invitation": MessageLookupByLibrary.simpleMessage(
+            " đã mời bạn tham gia gia đình"),
         "jan": MessageLookupByLibrary.simpleMessage("T1"),
         "jul": MessageLookupByLibrary.simpleMessage("T7"),
         "jun": MessageLookupByLibrary.simpleMessage("T6"),
         "like": MessageLookupByLibrary.simpleMessage("lượt thích"),
         "mar": MessageLookupByLibrary.simpleMessage("T3"),
         "may": MessageLookupByLibrary.simpleMessage("T5"),
+        "member_joined": MessageLookupByLibrary.simpleMessage(
+            "Thành viên này đã có trong gia đình của bạn!"),
         "members": MessageLookupByLibrary.simpleMessage("thành viên"),
         "min": MessageLookupByLibrary.simpleMessage("phút"),
         "minute_ago": MessageLookupByLibrary.simpleMessage(" phút trước"),
