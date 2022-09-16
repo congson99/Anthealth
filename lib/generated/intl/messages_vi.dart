@@ -472,6 +472,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "apr": MessageLookupByLibrary.simpleMessage("T4"),
         "aug": MessageLookupByLibrary.simpleMessage("T8"),
         "btn_accept": MessageLookupByLibrary.simpleMessage("ĐỒNG Ý"),
+        "btn_invite": MessageLookupByLibrary.simpleMessage("MỜI"),
         "btn_reject": MessageLookupByLibrary.simpleMessage("TỪ CHỐI"),
         "button_add": MessageLookupByLibrary.simpleMessage("THÊM"),
         "button_add_medical_record":
@@ -530,6 +531,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inject": MessageLookupByLibrary.simpleMessage("Tiêm"),
         "invitation": MessageLookupByLibrary.simpleMessage(
             " đã mời bạn tham gia gia đình"),
+        "invite": MessageLookupByLibrary.simpleMessage("Mời người dùng "),
         "jan": MessageLookupByLibrary.simpleMessage("T1"),
         "jul": MessageLookupByLibrary.simpleMessage("T7"),
         "jun": MessageLookupByLibrary.simpleMessage("T6"),

@@ -453,6 +453,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "apr": MessageLookupByLibrary.simpleMessage("APR"),
         "aug": MessageLookupByLibrary.simpleMessage("AUG"),
         "btn_accept": MessageLookupByLibrary.simpleMessage("ACCEPT"),
+        "btn_invite": MessageLookupByLibrary.simpleMessage("INVITE"),
         "btn_reject": MessageLookupByLibrary.simpleMessage("REJECT"),
         "button_add": MessageLookupByLibrary.simpleMessage("ADD"),
         "button_add_medical_record":
@@ -514,6 +515,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inject": MessageLookupByLibrary.simpleMessage("Inject"),
         "invitation": MessageLookupByLibrary.simpleMessage(
             " invite you to join the family"),
+        "invite": MessageLookupByLibrary.simpleMessage("Invite "),
         "jan": MessageLookupByLibrary.simpleMessage("JAN"),
         "jul": MessageLookupByLibrary.simpleMessage("JUL"),
         "jun": MessageLookupByLibrary.simpleMessage("JUN"),

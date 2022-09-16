@@ -116,6 +116,7 @@ class DashboardCubit extends Cubit<CubitState> {
           for (dynamic x in ServerLogic.getData(value)["invite_list"])
             invitations.add(Invitation(x["id"], x["adminInfo"]["name"]));
         List<FamilyMemberData> members = [];
+
         if (ServerLogic.getData(value)["member_list"] != null)
           for (dynamic x in ServerLogic.getData(value)["member_list"])
             members.add(FamilyMemberData(

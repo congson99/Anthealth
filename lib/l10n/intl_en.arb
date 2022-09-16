@@ -406,5 +406,7 @@
   "member_joined": "This member has joined your family!",
   "invitation": " invite you to join the family",
   "btn_accept": "ACCEPT",
-  "btn_reject": "REJECT"
+  "btn_reject": "REJECT",
+  "btn_invite": "INVITE",
+  "invite": "Invite "
 }

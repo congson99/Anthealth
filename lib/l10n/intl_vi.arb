@@ -406,5 +406,7 @@
   "member_joined": "Thành viên này đã có trong gia đình của bạn!",
   "invitation": " đã mời bạn tham gia gia đình",
   "btn_accept": "ĐỒNG Ý",
-  "btn_reject": "TỪ CHỐI"
+  "btn_reject": "TỪ CHỐI",
+  "btn_invite": "MỜI",
+  "invite": "Mời người dùng "
 }

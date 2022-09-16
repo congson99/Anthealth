@@ -16,16 +16,12 @@ class FamilyMemberPage extends StatelessWidget {
       {Key? key,
       required this.dashboardContext,
       required this.member,
-      required this.isAdmin,
-      required this.grantAdmin,
-      required this.remove})
+      required this.isAdmin})
       : super(key: key);
 
   final BuildContext dashboardContext;
   final FamilyMemberData member;
   final bool isAdmin;
-  final VoidCallback grantAdmin;
-  final VoidCallback remove;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +84,7 @@ class FamilyMemberPage extends StatelessWidget {
 
   Widget buildData(BuildContext context) {
     bool isHealthPermission = false;
-    bool isMedicPermission = member.permission[9];
+    bool isMedicPermission = member.permission[8];
     for (int i = 0; i < 9; i++)
       if (member.permission[i]) isHealthPermission = true;
     return Column(children: [
@@ -161,7 +157,7 @@ class FamilyMemberPage extends StatelessWidget {
         context: context,
         builder: (_) => InfoPopup(
             title: S.of(context).Grant_admin,
-            ok: grantAdmin,
+            ok: () {},
             cancel: () => Navigator.pop(context)));
   }
 
@@ -171,6 +167,6 @@ class FamilyMemberPage extends StatelessWidget {
         builder: (_) => WarningPopup(
             title: S.of(context).Warning_remove_member,
             cancel: () => Navigator.pop(context),
-            delete: remove));
+            delete: () {}));
   }
 }

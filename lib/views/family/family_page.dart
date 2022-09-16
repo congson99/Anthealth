@@ -153,40 +153,7 @@ class FamilyPage extends StatelessWidget {
     if (member.id != user.id)
       Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => FamilyMemberPage(
-              dashboardContext: context,
-              member: member,
-              isAdmin: isAdmin,
-              grantAdmin: () {
-                BlocProvider.of<DashboardCubit>(context)
-                    .grantFamilyAdmin(user.id)
-                    .then((result) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(S.of(context).Grant_admin_rights +
-                          ' ' +
-                          S.of(context).successfully +
-                          '!')));
-                  BlocProvider.of<DashboardCubit>(context).family();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                  FamilyMemberData newData = member;
-                  newData.admin = true;
-                  onFamilyMemberTap(context, newData, false);
-                });
-              },
-              remove: () {
-                BlocProvider.of<DashboardCubit>(context)
-                    .removeFamilyMember(user.id)
-                    .then((result) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(S.of(context).Remove_family_member +
-                          ' ' +
-                          S.of(context).successfully +
-                          '!')));
-                  BlocProvider.of<DashboardCubit>(context).family();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                });
-              })));
+              dashboardContext: context, member: member, isAdmin: isAdmin)));
   }
 
   void newMemberTap(BuildContext context, List<FamilyMemberData> members) {
@@ -206,12 +173,8 @@ class FamilyPage extends StatelessWidget {
                   .addMember(result)
                   .then((value) {
                 if (value)
-                  ShowSnackBar.showSuccessSnackBar(
-                      context,
-                      S.of(context).Add_member +
-                          ' ' +
-                          S.of(context).successfully +
-                          '!');
+                  ShowSnackBar.showSuccessSnackBar(context,
+                      "${S.of(context).invite} ${S.of(context).successfully}!");
               });
             }));
   }

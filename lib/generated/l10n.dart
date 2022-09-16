@@ -4129,6 +4129,26 @@ class S {
       args: [],
     );
   }
+
+  /// `INVITE`
+  String get btn_invite {
+    return Intl.message(
+      'INVITE',
+      name: 'btn_invite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invite `
+  String get invite {
+    return Intl.message(
+      'Invite ',
+      name: 'invite',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

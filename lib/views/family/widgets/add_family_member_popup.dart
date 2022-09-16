@@ -93,7 +93,7 @@ class _AddFamilyMemberPopupState extends State<AddFamilyMemberPopup> {
                           CommonButton.small(
                               context,
                               () => widget.done(member.email),
-                              S.of(context).Add,
+                              S.of(context).btn_invite,
                               AnthealthColors.secondary1)
                         ]),
                       ))
