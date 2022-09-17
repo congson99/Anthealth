@@ -116,7 +116,6 @@ class DashboardCubit extends Cubit<CubitState> {
           for (dynamic x in ServerLogic.getData(value)["invite_list"])
             invitations.add(Invitation(x["id"], x["adminInfo"]["name"]));
         List<FamilyMemberData> members = [];
-
         if (ServerLogic.getData(value)["member_list"] != null)
           for (dynamic x in ServerLogic.getData(value)["member_list"])
             members.add(FamilyMemberData(
@@ -126,8 +125,18 @@ class DashboardCubit extends Cubit<CubitState> {
                 x["base_info"]["phone"],
                 x["base_info"]["email"],
                 x["rule"] == 2,
-                [true, true, true, true, true, true, true, true, true],
+                [],
                 x["birthDay"]));
+        for (dynamic x in ServerLogic.getData(value)["member_list"][0]
+            ["permission"]) {
+          for (FamilyMemberData y in members) {
+            if (y.id == x["uid"].toString()) {
+              List<bool> temp = [];
+              for (bool per in x["permissions"]) temp.add(per);
+              y.permission = temp;
+            }
+          }
+        }
         emit(FamilyState(members, invitations));
       }
     });
@@ -151,13 +160,10 @@ class DashboardCubit extends Cubit<CubitState> {
                 [],
                 x["birthDay"]));
           }
-        print(ServerLogic.getData(value)["member_list"][0]["permission"]);
-        for (FamilyMemberData x in members) print(x.id);
         for (dynamic x in ServerLogic.getData(value)["member_list"][0]
             ["permission"]) {
           for (FamilyMemberData y in members) {
             if (y.id == x["uid"].toString()) {
-              print(y.id);
               List<bool> temp = [];
               for (bool per in x["permissions"]) temp.add(per);
               y.permission = temp;
