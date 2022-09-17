@@ -10,6 +10,7 @@ import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar_with_avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/photo_list_label.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_add_page.dart';
@@ -287,11 +288,12 @@ class MedicalRecordDetailPage extends StatelessWidget {
                   .then((value) {
                 if (value) {
                   BlocProvider.of<MedicalRecordCubit>(superContext!).loadData();
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(S.of(context).Delete_record +
+                  ShowSnackBar.showSuccessSnackBar(
+                      context,
+                      S.of(context).Delete_record +
                           ' ' +
                           S.of(context).successfully +
-                          '!')));
+                          '!');
                   Navigator.pop(context);
                   Navigator.pop(context);
                 }

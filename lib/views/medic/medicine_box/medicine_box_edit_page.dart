@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/medic/medicine_box/widgets/chose_member_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -121,11 +122,12 @@ class _MedicineBoxEditPageState extends State<MedicineBoxEditPage> {
     for (MedicineBoxPerson x in member) state.add(x.isChose);
     BlocProvider.of<MedicineBoxCubit>(widget.superContext).updateData(
         MedicineBoxState(name, widget.state.medicine, member), -1, 0);
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(S.of(context).Update_medicine_box +
+    ShowSnackBar.showSuccessSnackBar(
+        context,
+        S.of(context).Update_medicine_box +
             ' ' +
             S.of(context).successfully +
-            '!')));
+            '!');
     Navigator.of(context).pop();
   }
 

@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/create_reminder_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -248,11 +249,12 @@ class _CreatePrescriptionReminderPageState
         Navigator.pop(context);
         BlocProvider.of<MedicationReminderCubit>(widget.superContext)
             .loadMedicationReminder();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(S.of(context).Create_reminder +
+        ShowSnackBar.showSuccessSnackBar(
+            context,
+            S.of(context).Create_reminder +
                 ' ' +
                 S.of(context).successfully +
-                '!')));
+                '!');
       }
     });
   }

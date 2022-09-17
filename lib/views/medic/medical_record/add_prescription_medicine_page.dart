@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
@@ -582,11 +583,12 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
             delete: () {
               widget.result(DigitalMedicine(
                   "", "", 0, 0, 0, [0, 0, 0, 0], [], 0, "", "", ""));
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(S.of(context).Delete_medicine +
+              ShowSnackBar.showSuccessSnackBar(
+                  context,
+                  S.of(context).Delete_medicine +
                       ' ' +
                       S.of(context).successfully +
-                      '!')));
+                      '!');
               Navigator.pop(context);
               Navigator.pop(context);
             }));
@@ -604,8 +606,8 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
       widget.result(resultMedicine);
       Navigator.of(context).pop();
     } else
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(S.of(context).required_fill + '!')));
+      ShowSnackBar.showErrorSnackBar(
+          context, S.of(context).required_fill + '!');
   }
 
   void addMedicine(BuildContext context) {
@@ -620,8 +622,8 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
       widget.result(resultMedicine);
       Navigator.of(context).pop();
     } else
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(S.of(context).required_fill + '!')));
+      ShowSnackBar.showErrorSnackBar(
+          context, S.of(context).required_fill + '!');
   }
 
   bool checkFill(DigitalMedicine medicine) {

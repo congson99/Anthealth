@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_detail_page.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_circle_bar.dart';
@@ -175,11 +176,12 @@ class CaloPage extends StatelessWidget {
         builder: (_) => AddCaloInBottomSheet(
             superContext: context,
             ok: (value) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(S.of(context).Add_calo_in +
+              ShowSnackBar.showSuccessSnackBar(
+                  context,
+                  S.of(context).Add_calo_in +
                       ' ' +
                       S.of(context).successfully +
-                      '!')));
+                      '!');
             }));
   }
 
@@ -195,11 +197,12 @@ class CaloPage extends StatelessWidget {
         builder: (_) => AddCaloOutBottomSheet(
             superContext: context,
             ok: (value) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(S.of(context).Add_calo_out +
+              ShowSnackBar.showSuccessSnackBar(
+                  context,
+                  S.of(context).Add_calo_out +
                       ' ' +
                       S.of(context).successfully +
-                      '!')));
+                      '!');
             }));
   }
 

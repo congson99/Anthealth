@@ -2,6 +2,7 @@ import 'package:anthealth_mobile/blocs/health/calo_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/health/calo_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:flutter/material.dart';
@@ -111,8 +112,8 @@ class _AddCaloInBottomSheetState extends State<AddCaloInBottomSheet> {
         if (data.serving > 0)
           widget.ok(data);
         else
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(S.of(context).required_fill + '!')));
+          ShowSnackBar.showSuccessSnackBar(
+              context, S.of(context).required_fill + '!');
         Navigator.of(context).pop();
       })
     ]);

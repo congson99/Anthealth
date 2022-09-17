@@ -9,6 +9,7 @@ import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_appbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/datetime_picker_bottom_sheet.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/add_prescription_medicine_page.dart';
@@ -408,16 +409,17 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
         if (value) {
           BlocProvider.of<MedicalRecordCubit>(widget.superContext).loadData();
           Navigator.of(context).pop();
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(S.of(context).Add_record +
+          ShowSnackBar.showSuccessSnackBar(
+              context,
+              S.of(context).Add_record +
                   ' ' +
                   S.of(context).successfully +
-                  '!')));
+                  '!');
         }
       });
     } else
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(S.of(context).required_fill + '!')));
+      ShowSnackBar.showErrorSnackBar(
+          context, S.of(context).required_fill + '!');
   }
 
   void updateMedicalRecord() {
@@ -432,16 +434,17 @@ class _MedicalRecordAddPageState extends State<MedicalRecordAddPage> {
         if (value) {
           BlocProvider.of<MedicalRecordCubit>(widget.superContext).loadData();
           Navigator.of(context).pop();
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(S.of(context).Add_record +
+          ShowSnackBar.showSuccessSnackBar(
+              context,
+              S.of(context).Add_record +
                   ' ' +
                   S.of(context).successfully +
-                  '!')));
+                  '!');
         }
       });
     } else
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(S.of(context).required_fill + '!')));
+      ShowSnackBar.showErrorSnackBar(
+          context, S.of(context).required_fill + '!');
   }
 
   bool checkRequiredFill(MedicalRecordLabel label) {

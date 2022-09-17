@@ -10,6 +10,7 @@ import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/water_detail_page.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_add_data_bottom_sheet.dart';
@@ -112,11 +113,12 @@ class WaterPage extends StatelessWidget {
             middleSymbol: '.',
             cancel: () => Navigator.pop(context),
             ok: (indexPicker, subIndexPicker, time) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(S.of(context).Add_water +
+              ShowSnackBar.showSuccessSnackBar(
+                  context,
+                  S.of(context).Add_water +
                       ' ' +
                       S.of(context).successfully +
-                      '!')));
+                      '!');
               Navigator.pop(context);
             }));
   }

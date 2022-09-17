@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -224,30 +225,28 @@ class _AddMedicinePopupState extends State<AddMedicinePopup> {
     if (widget.index == null && checkNullData()) {
       BlocProvider.of<MedicineBoxCubit>(widget.superContext)
           .updateData(widget.state, 2, medicine);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(S.of(context).Add_medicine +
-              ' ' +
-              S.of(context).successfully +
-              '!')));
+      ShowSnackBar.showSuccessSnackBar(context,
+          S.of(context).Add_medicine + ' ' + S.of(context).successfully + '!');
       Navigator.of(context).pop();
     }
     if (widget.index != null) {
       BlocProvider.of<MedicineBoxCubit>(widget.superContext)
           .updateData(widget.state, 3, [widget.index, medicine]);
       if (medicine.getQuantity() == 0)
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(S.of(context).Delete_medicine +
+        ShowSnackBar.showSuccessSnackBar(
+            context,
+            S.of(context).Delete_medicine +
                 ' ' +
                 S.of(context).successfully +
-                '!')));
+                '!');
       Navigator.of(context).pop();
     }
   }
 
   bool checkNullData() {
     if (medicine.getQuantity() == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(S.of(context).quantity_check + '!')));
+      ShowSnackBar.showErrorSnackBar(
+          context, S.of(context).quantity_check + '!');
       return false;
     }
     return true;

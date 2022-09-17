@@ -8,6 +8,7 @@ import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/add_prescription_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/create_prescription_reminder_page.dart';
@@ -202,11 +203,11 @@ class _AllPrescriptionPageState extends State<AllPrescriptionPage> {
                                     widget.superContext)
                                 .getAllPrescriptions()[1];
                       });
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(S.of(context).Create_prescription +
+                      ShowSnackBar.showSuccessSnackBar(
+                          context,S.of(context).Create_prescription +
                               ' ' +
                               S.of(context).successfully +
-                              '!')));
+                              '!');
                     }
                   });
                 })));

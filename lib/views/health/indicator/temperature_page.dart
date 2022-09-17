@@ -10,6 +10,7 @@ import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/next_previous_bar.dart';
 import 'package:anthealth_mobile/views/common_widgets/switch_bar.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
@@ -285,11 +286,12 @@ class TemperaturePage extends StatelessWidget {
                 if (value)
                   BlocProvider.of<IndicatorCubit>(context)
                       .updateData(data, data.getFilter());
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(S.of(context).Delete_temperature +
+                ShowSnackBar.showSuccessSnackBar(
+                    context,
+                    S.of(context).Delete_temperature +
                         ' ' +
                         S.of(context).successfully +
-                        '!')));
+                        '!');
               });
               Navigator.pop(context);
             }));
@@ -328,11 +330,12 @@ class TemperaturePage extends StatelessWidget {
                   .then((value) {
                 BlocProvider.of<IndicatorCubit>(context)
                     .updateData(data, data.getFilter());
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(S.of(context).Edit_temperature +
+                ShowSnackBar.showSuccessSnackBar(
+                    context,
+                    S.of(context).Edit_temperature +
                         ' ' +
                         S.of(context).successfully +
-                        '!')));
+                        '!');
               });
               Navigator.pop(context);
             }));
@@ -390,11 +393,12 @@ class TemperaturePage extends StatelessWidget {
         .addIndicator(3, IndicatorData(indexPicker, time, ""))
         .then((value) {
       if (value)
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(S.of(context).Add_temperature +
+        ShowSnackBar.showSuccessSnackBar(
+            context,
+            S.of(context).Add_temperature +
                 ' ' +
                 S.of(context).successfully +
-                '!')));
+                '!');
 
       BlocProvider.of<IndicatorCubit>(context)
           .updateData(state.data, state.data.getFilter());
