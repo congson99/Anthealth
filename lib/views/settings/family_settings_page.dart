@@ -6,7 +6,6 @@ import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
-import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/yes_no_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';

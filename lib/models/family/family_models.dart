@@ -8,7 +8,7 @@ class FamilyMemberData {
   final String phoneNumber;
   final String email;
   bool admin;
-  final List<bool> permission;
+  List<bool> permission;
   final int yob;
 }
 
