@@ -7,7 +7,6 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
-import 'package:anthealth_mobile/views/health/activity/steps_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
@@ -56,9 +55,9 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
     bool isShowIndicator = false;
     bool isShowActivity = false;
     for (int i = 0; i < 6; i++)
-      if (widget.data.permission[i] > -1) isShowIndicator = true;
+      if (widget.data.permission[i]) isShowIndicator = true;
     for (int i = 6; i < 9; i++)
-      if (widget.data.permission[i] > -1) isShowActivity = true;
+      if (widget.data.permission[i]) isShowActivity = true;
     return Column(children: [
       if (isShowIndicator)
         buildHealthIndicator(
@@ -72,7 +71,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
 
   Widget buildHealthIndicator(BuildContext context,
       List<String> indicatorLatestData, double latestHeight) {
-    double width = (MediaQuery.of(context).size.width - 64) / 3;
+    double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Health_indicator, context),
       SizedBox(height: 16),
@@ -94,7 +93,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[0],
                 unit: "m",
                 title: S.of(context).Height,
-                isVisible: (widget.data.permission[0] < 0),
+                isVisible: !widget.data.permission[0],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -107,7 +106,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[1],
                 unit: "kg",
                 title: S.of(context).Weight,
-                isVisible: (widget.data.permission[1] < 0),
+                isVisible: !widget.data.permission[1],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -118,29 +117,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[2],
                 unit: "BPM",
                 title: S.of(context).Heart_rate,
-                isVisible: (widget.data.permission[2] < 0),
-                width: width),
-            IndicatorComponent(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => TemperaturePage(
-                        dashboardContext: context, data: widget.data))),
-                colorID: 1,
-                iconPath: "assets/indicators/temperature.png",
-                value: indicatorLatestData[3],
-                unit: "°C",
-                title: S.of(context).Temperature,
-                isVisible: (widget.data.permission[3] < 0),
-                width: width),
-            IndicatorComponent(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => BloodPressurePage(
-                        dashboardContext: context, data: widget.data))),
-                colorID: 2,
-                iconPath: "assets/indicators/blood_pressure.png",
-                value: indicatorLatestData[4],
-                unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
-                title: S.of(context).Blood_pressure,
-                isVisible: (widget.data.permission[4] < 0),
+                isVisible: !widget.data.permission[2],
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -151,8 +128,30 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 value: indicatorLatestData[5],
                 unit: "%",
                 title: S.of(context).Spo2,
-                isVisible: (widget.data.permission[5] < 0),
-                width: width)
+                isVisible: !widget.data.permission[5],
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => TemperaturePage(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 1,
+                iconPath: "assets/indicators/temperature.png",
+                value: indicatorLatestData[3],
+                unit: "°C",
+                title: S.of(context).Temperature,
+                isVisible: !widget.data.permission[3],
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => BloodPressurePage(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 2,
+                iconPath: "assets/indicators/blood_pressure.png",
+                value: indicatorLatestData[4],
+                unit: (indicatorLatestData[4].length > 6) ? "" : "mmHg",
+                title: S.of(context).Blood_pressure,
+                isVisible: !widget.data.permission[4],
+                width: width),
           ]),
       SizedBox(height: 32),
       CustomDivider.common(),
@@ -161,7 +160,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
   }
 
   Widget buildActivity(BuildContext context) {
-    double width = (MediaQuery.of(context).size.width - 64) / 3;
+    double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Activity, context),
       SizedBox(height: 16),
@@ -176,7 +175,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => CaloPage(data: widget.data))),
                 title: S.of(context).Calo,
-                isVisible: (widget.data.permission[6] < 0),
+                isVisible: !widget.data.permission[6],
                 width: width),
             SizedBox(width: 16),
             IndicatorComponent(
@@ -187,22 +186,10 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => WaterPage(data: widget.data))),
                 title: S.of(context).Drink_water,
-                isVisible: (widget.data.permission[7] < 0),
+                isVisible: !widget.data.permission[7],
                 width: width),
-            SizedBox(width: 16),
-            IndicatorComponent(
-                colorID: 1,
-                iconPath: "assets/indicators/steps.png",
-                value: "4.600",
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => StepsPage(data: widget.data))),
-                title: S.of(context).Steps,
-                isVisible: (widget.data.permission[8] < 0),
-                width: width)
           ]),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16)
+      SizedBox(height: 32)
     ]);
   }
 }

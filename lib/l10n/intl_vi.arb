@@ -397,5 +397,18 @@
   "Invalid_phone": "Số điện thoại không hợp lệ!",
   "Invalid_yob": "Năm sinh không hợp lệ!",
   "Highlights": "Thông tin nổi bật",
-  "About_us": "Về chúng tôi"
+  "About_us": "Về chúng tôi",
+  "no_family_yet": "Bạn chưa có gia đình. Hãy tạo gia đình ngay!",
+  "create_a_family": "Tạo gia đình",
+  "family_settings": "Cài đặt gia đình",
+  "Out_family": "Rời khỏi gia đình",
+  "Permission_setting": "Cài đặt quyền",
+  "member_joined": "Thành viên này đã có trong gia đình của bạn!",
+  "invitation": " đã mời bạn tham gia gia đình",
+  "btn_accept": "ĐỒNG Ý",
+  "btn_reject": "TỪ CHỐI",
+  "btn_invite": "MỜI",
+  "invite": "Mời người dùng ",
+  "can_not_out": "Bạn là chủ sở hữu nên không thể rời gia đình. Nếu muốn rời gia đình bạn phải uỷ quyền sở hữu cho một thành viên khác.",
+  "no_family": "Bạn chưa có gia đình!"
 }

@@ -28,7 +28,8 @@ class MedicalRecordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MedicalRecordCubit>(
-        create: (context) => MedicalRecordCubit(),
+        create: (context) =>
+            MedicalRecordCubit(uid: (data == null) ? null : data?.id),
         child: BlocBuilder<MedicalRecordCubit, CubitState>(
             builder: (context, state) {
           if (state is MedicalRecordState) {
@@ -43,7 +44,6 @@ class MedicalRecordPage extends StatelessWidget {
                   name: data!.name,
                   firstTitle: S.of(context).Medical_record,
                   avatarPath: data!.avatarPath,
-                  add: (data!.permission[9] != 1) ? null : () => add(context),
                   content: buildContent(context, state));
           } else
             return LoadingPage();

@@ -37,7 +37,8 @@ class WeightPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
-      create: (context) => IndicatorCubit(1, 0),
+      create: (context) =>
+          IndicatorCubit(1, 0, id: (data == null) ? null : data?.id),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState || state is IndicatorLoadingState) {
           IndicatorPageData pageData = IndicatorPageData(
@@ -56,16 +57,12 @@ class WeightPage extends StatelessWidget {
                 add: (state is IndicatorState)
                     ? (() => add(context, state))
                     : null,
-                settings: () => setting(),
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));
           else
             return TemplateAvatarFormPage(
                 firstTitle: S.of(context).Weight,
                 name: data!.name,
-                add: (state is IndicatorState && data!.permission[1] == 1)
-                    ? (() => add(context, state))
-                    : null,
                 avatarPath: data!.avatarPath,
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));

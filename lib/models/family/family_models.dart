@@ -8,6 +8,13 @@ class FamilyMemberData {
   final String phoneNumber;
   final String email;
   bool admin;
-  final List<int> permission;
+  List<bool> permission;
   final int yob;
+}
+
+class Invitation {
+  Invitation(this.familyID, this.inviter);
+
+  final String familyID;
+  final String inviter;
 }

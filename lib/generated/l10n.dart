@@ -4030,11 +4030,141 @@ class S {
     );
   }
 
-  /// `About_us`
+  /// `About us`
   String get About_us {
     return Intl.message(
-      'About_us',
+      'About us',
       name: 'About_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no family. Let's create one now!`
+  String get no_family_yet {
+    return Intl.message(
+      'You have no family. Let\'s create one now!',
+      name: 'no_family_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a family`
+  String get create_a_family {
+    return Intl.message(
+      'Create a family',
+      name: 'create_a_family',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family settings`
+  String get family_settings {
+    return Intl.message(
+      'Family settings',
+      name: 'family_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave the family`
+  String get Out_family {
+    return Intl.message(
+      'Leave the family',
+      name: 'Out_family',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission setting`
+  String get Permission_setting {
+    return Intl.message(
+      'Permission setting',
+      name: 'Permission_setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This member has joined your family!`
+  String get member_joined {
+    return Intl.message(
+      'This member has joined your family!',
+      name: 'member_joined',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` invite you to join the family`
+  String get invitation {
+    return Intl.message(
+      ' invite you to join the family',
+      name: 'invitation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACCEPT`
+  String get btn_accept {
+    return Intl.message(
+      'ACCEPT',
+      name: 'btn_accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REJECT`
+  String get btn_reject {
+    return Intl.message(
+      'REJECT',
+      name: 'btn_reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INVITE`
+  String get btn_invite {
+    return Intl.message(
+      'INVITE',
+      name: 'btn_invite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invite `
+  String get invite {
+    return Intl.message(
+      'Invite ',
+      name: 'invite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.`
+  String get can_not_out {
+    return Intl.message(
+      'You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.',
+      name: 'can_not_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no family!`
+  String get no_family {
+    return Intl.message(
+      'You have no family!',
+      name: 'no_family',
       desc: '',
       args: [],
     );

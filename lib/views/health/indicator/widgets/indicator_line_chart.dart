@@ -33,7 +33,7 @@ class IndicatorLineChart extends StatelessWidget {
             topTitles: SideTitles(showTitles: false),
             bottomTitles: SideTitles(
                 showTitles: true,
-                interval: (data.last.x - data.first.x + 5) ~/ 5 + 1,
+                interval: 0.0 + ((data.last.x - data.first.x).abs() + 5) ~/ 5,
                 reservedSize: 32,
                 margin: 8,
                 getTextStyles: (context, value) => Theme.of(context)
@@ -84,8 +84,10 @@ class IndicatorLineChart extends StatelessWidget {
             show: true,
             border: Border(
                 bottom: BorderSide(width: 1, color: AnthealthColors.black1))),
-        minX: data.first.x - 1,
-        maxX: data.last.x + 1,
+        minX: data.first.x -
+            1 -
+            ((indicatorIndex != 5) ? 0 : ((filterIndex == 0) ? 14 : 0)),
+        maxX: data.last.x + 1 + ((indicatorIndex != 5) ? 0 : ((filterIndex == 0) ? 14 : 0)),
         minY: minY(),
         maxY: maxY(),
         lineBarsData: [

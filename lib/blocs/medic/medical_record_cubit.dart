@@ -7,11 +7,12 @@ import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicalRecordCubit extends Cubit<CubitState> {
-  MedicalRecordCubit() : super(InitialState()) {
-    loadData();
+  MedicalRecordCubit({String? uid}) : super(InitialState()) {
+    loadData(uid: uid);
   }
 
   /// Handle States
@@ -32,10 +33,12 @@ class MedicalRecordCubit extends Cubit<CubitState> {
   }
 
   /// Service Functions
-  void loadData() async {
+  void loadData({String? uid}) async {
     emit(InitialState());
+    Map<String, dynamic> data = {};
+    if (uid != null) data.addAll({"uid": uid});
     await CommonService.instance
-        .send(MessageIDPath.getMedicalRecordPageData(), {});
+        .send(MessageIDPath.getMedicalRecordPageData(), data);
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicalRecordPageData(), value)) {
@@ -93,33 +96,14 @@ class MedicalRecordCubit extends Cubit<CubitState> {
     return result;
   }
 
-  List<String> getLocationList() {
-    return [
-      "Bệnh viện Huyện Bình Chánh",
-      "Bệnh viện Huyện Cần Giờ",
-      "Bệnh viện Huyện Củ Chi",
-      "Bệnh viện Huyện Hóc Môn",
-      "Bệnh viện Huyện Nhà Bè",
-      "Bệnh viện Quận 1",
-      "Bệnh viện Quận 10",
-      "Bệnh viện Quận 11",
-      "Bệnh viện Quận 12",
-      "Bệnh viện Quận 2",
-      "Bệnh viện Quận 3",
-      "Bệnh viện Quận 4",
-      "TRUNG TÂM Y TẾ QUẬN 5 (CS2)",
-      "Bệnh viện Quận 6",
-      "Bệnh viện Quận 7",
-      "Bệnh viện Quận 8",
-      "Bệnh viện Đa Khoa Lê Văn Việt",
-      "Bệnh viện Quận Bình Tân",
-      "Bệnh viện Quận Bình Thạnh",
-      "Bệnh viện Quận Gò Vấp",
-      "Bệnh Viện Quận Phú Nhuận",
-      "Bệnh viện Quận Tân Bình",
-      "Bệnh viện Quận Tân Phú",
-      "Bệnh viện Quận Thủ Đức"
-    ];
+  Future<List<String>> getLocationList() async {
+    var jsonText = await rootBundle.loadString('assets/hardData/hospital.json');
+    List data = json.decode(jsonText);
+    List<String> result = [];
+    for (dynamic x in data) {
+      result.add(x["name"]);
+    }
+    return result;
   }
 
   Future<List<MedicineData>> getMedications() async {

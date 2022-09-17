@@ -40,7 +40,6 @@ class WaterPage extends StatelessWidget {
               return TemplateAvatarFormPage(
                   firstTitle: S.of(context).Activity_water,
                   name: data!.name,
-                  add: (data!.permission[7] == 1) ? (() => add(context)) : null,
                   avatarPath: data!.avatarPath,
                   content: buildContent(context, state));
           }

@@ -104,7 +104,6 @@ class MedicalRecordDetailData {
     final List<String> testPhoto = [];
     final List<String> diagnosePhoto = [];
     final List<String> prescriptionPhoto = [];
-    print(data.toString());
     if (data["detailsImage"].length != 0)
       for (dynamic x in data["detailsImage"]) detailPhoto.add(x.toString());
     if (data["testImage"].length != 0)

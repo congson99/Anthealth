@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:anthealth_mobile/services/message/message_define.dart';
+import 'package:flutter/cupertino.dart';
 
 class Client {
   Socket? socket;
@@ -18,7 +19,7 @@ class Client {
       socket?.listen(dataHandler,
           onError: _errorHandler, onDone: _doneHandler, cancelOnError: false);
     }).catchError((e) {
-      print("can not connect to server: " + e.toString());
+      debugPrint("can not connect to server: " + e.toString());
       exit(0);
     });
   }
@@ -37,20 +38,20 @@ class Client {
   }
 
   void _errorHandler(error, StackTrace trace) {
-    print(error);
+    debugPrint(error);
     socket?.close();
     exit(0);
   }
 
   void _doneHandler() {
-    print("Disconnected to server $host:$port");
+    debugPrint("Disconnected to server $host:$port");
   }
 
   /// Handle data
   Future<String> getData({int? waitSeconds}) async {
     var tempData = "null";
     await waitData(0, waitSeconds);
-    if (_data == null) print("NULL DATA!");
+    if (_data == null) debugPrint("NULL DATA!");
     tempData = _data.toString();
     removeData();
     return tempData;

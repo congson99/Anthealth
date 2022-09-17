@@ -6,8 +6,13 @@ import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
+import 'package:anthealth_mobile/views/common_widgets/accept_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/avatar.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
+import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
+import 'package:anthealth_mobile/views/common_widgets/yes_no_popup.dart';
 import 'package:anthealth_mobile/views/family/family_member/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -37,7 +42,31 @@ class FamilyPage extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),
       SizedBox(height: 24),
-      buildMembers(context, state)
+      if (state.members.isNotEmpty) buildMembers(context, state),
+      if (state.members.isEmpty)
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ...state.invitations.map((invitation) => Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: SectionComponent(
+                      onTap: () => invitationTap(
+                          context,
+                          invitation.inviter + S.of(context).invitation,
+                          invitation.familyID),
+                      title: invitation.inviter + S.of(context).invitation,
+                      colorID: 1),
+                )),
+            Text(S.of(context).no_family_yet,
+                style: Theme.of(context).textTheme.bodyText2),
+            SizedBox(height: 16),
+            SectionComponent(
+                onTap: () => createFamily(context),
+                title: S.of(context).create_a_family,
+                colorID: 0,
+                isDirection: false)
+          ],
+        )
     ]);
   }
 
@@ -49,12 +78,18 @@ class FamilyPage extends StatelessWidget {
     bool isAdmin = false;
     for (FamilyMemberData x in state.members)
       if (x.id == user.id) isAdmin = x.admin;
-    return Wrap(runSpacing: 16, spacing: 16, children: [
-      ...state.members
-          .map((member) => buildMemberComponent(context, member, isAdmin, size))
-          .toList(),
-      if (isAdmin) buildAddMemberComponent(size, context)
-    ]);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Wrap(runSpacing: 16, spacing: 16, children: [
+          ...state.members
+              .map((member) =>
+                  buildMemberComponent(context, member, isAdmin, size))
+              .toList(),
+          if (isAdmin) buildAddMemberComponent(size, context, state.members)
+        ]),
+      ],
+    );
   }
 
   // Child Component
@@ -84,9 +119,10 @@ class FamilyPage extends StatelessWidget {
             ])));
   }
 
-  Widget buildAddMemberComponent(double size, BuildContext context) {
+  Widget buildAddMemberComponent(
+      double size, BuildContext context, List<FamilyMemberData> members) {
     return GestureDetector(
-        onTap: () => newMemberTap(context),
+        onTap: () => newMemberTap(context, members),
         child: Container(
             width: size,
             child: Column(children: [
@@ -118,55 +154,58 @@ class FamilyPage extends StatelessWidget {
     if (member.id != user.id)
       Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => FamilyMemberPage(
-              dashboardContext: context,
-              member: member,
-              isAdmin: isAdmin,
-              grantAdmin: () {
-                BlocProvider.of<DashboardCubit>(context)
-                    .grantFamilyAdmin(user.id)
-                    .then((result) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(S.of(context).Grant_admin_rights +
-                          ' ' +
-                          S.of(context).successfully +
-                          '!')));
-                  BlocProvider.of<DashboardCubit>(context).family();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                  FamilyMemberData newData = member;
-                  newData.admin = true;
-                  onFamilyMemberTap(context, newData, false);
-                });
-              },
-              remove: () {
-                BlocProvider.of<DashboardCubit>(context)
-                    .removeFamilyMember(user.id)
-                    .then((result) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(S.of(context).Remove_family_member +
-                          ' ' +
-                          S.of(context).successfully +
-                          '!')));
-                  BlocProvider.of<DashboardCubit>(context).family();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                });
-              })));
+              dashboardContext: context, member: member, isAdmin: isAdmin)));
   }
 
-  void newMemberTap(BuildContext context) {
+  void newMemberTap(BuildContext context, List<FamilyMemberData> members) {
     showDialog(
         context: context,
         builder: (_) => AddFamilyMemberPopup(
             dashboardContext: context,
             done: (result) {
               Navigator.of(context).pop();
-              BlocProvider.of<DashboardCubit>(context).family();
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(S.of(context).Add_member +
-                      ' ' +
-                      S.of(context).successfully +
-                      '!')));
+              for (FamilyMemberData mem in members)
+                if (mem.email == result) {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).member_joined);
+                  return;
+                }
+              BlocProvider.of<DashboardCubit>(context)
+                  .addMember(result)
+                  .then((value) {
+                if (value)
+                  ShowSnackBar.showSuccessSnackBar(context,
+                      "${S.of(context).invite} ${S.of(context).successfully}!");
+              });
+            }));
+  }
+
+  void createFamily(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => YesNoPopup(
+            title: S.of(context).create_a_family,
+            no: () => Navigator.pop(context),
+            yes: () {
+              BlocProvider.of<DashboardCubit>(context).createFamily();
+              Navigator.pop(context);
+            }));
+  }
+
+  void invitationTap(BuildContext context, String title, String id) {
+    showDialog(
+        context: context,
+        builder: (_) => AcceptPopup(
+            title: title,
+            reject: () {
+              Navigator.pop(context);
+              BlocProvider.of<DashboardCubit>(context)
+                  .handleInvitation(context, id, false);
+            },
+            accept: () {
+              Navigator.pop(context);
+              BlocProvider.of<DashboardCubit>(context)
+                  .handleInvitation(context, id, true);
             }));
   }
 }

@@ -22,7 +22,7 @@ class AddFamilyMemberPopup extends StatefulWidget {
 
 class _AddFamilyMemberPopupState extends State<AddFamilyMemberPopup> {
   String email = "";
-  FamilyMemberData? member;
+  List<FamilyMemberData> members = [];
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _AddFamilyMemberPopupState extends State<AddFamilyMemberPopup> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         insetPadding: EdgeInsets.symmetric(horizontal: 16),
         child: Container(
-            height: 250,
+            height: MediaQuery.of(context).size.height * 0.5,
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(16)),
             child: Column(
@@ -60,35 +60,47 @@ class _AddFamilyMemberPopupState extends State<AddFamilyMemberPopup> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           CommonTextField.box(
               context: context,
-              textInputAction: TextInputAction.search,
-              onEditingComplete: () {
-                FocusScope.of(context).unfocus();
-                setState(() => member =
-                    BlocProvider.of<DashboardCubit>(widget.dashboardContext)
-                        .findUser(email));
-              },
               autofocus: true,
               maxLines: 1,
               hintText: "Email",
-              onChanged: (String value) => setState(() => email = value)),
+              onChanged: (String email) async =>
+                  await BlocProvider.of<DashboardCubit>(widget.dashboardContext)
+                      .findUser(email)
+                      .then((value) {
+                    setState(() {
+                      members = value;
+                    });
+                  })),
           SizedBox(height: 24),
-          if (member != null && member!.id != "")
-            Row(children: [
-              Avatar(imagePath: member!.avatarPath, size: 48),
-              SizedBox(width: 12),
-              SizedBox(
-                width: MediaQuery.of(context).size.width - 200,
-                child: Text(member!.name,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: Theme.of(context).textTheme.subtitle1),
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 670,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ...members.map((member) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Row(children: [
+                          Avatar(imagePath: member.avatarPath, size: 48),
+                          SizedBox(width: 12),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 200,
+                            child: Text(member.email,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: Theme.of(context).textTheme.subtitle1),
+                          ),
+                          Expanded(child: Container()),
+                          CommonButton.small(
+                              context,
+                              () => widget.done(member.email),
+                              S.of(context).btn_invite,
+                              AnthealthColors.secondary1)
+                        ]),
+                      ))
+                ],
               ),
-              Expanded(child: Container()),
-              CommonButton.small(context, () => widget.done(member!.id),
-                  S.of(context).Add, AnthealthColors.secondary1)
-            ]),
-          if (member != null && member!.id == "")
-            Text(S.of(context).Not_registered_email)
+            ),
+          )
         ]));
   }
 

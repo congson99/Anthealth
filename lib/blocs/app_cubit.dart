@@ -52,7 +52,7 @@ class AppCubit extends Cubit<CubitState> {
         emit(AuthenticatedState(
             token,
             User(
-                "123",
+                ServerLogic.getData(value)["uid"].toString(),
                 ServerLogic.getData(value)["name"],
                 ServerLogic.getData(value)["avatar"],
                 ServerLogic.getData(value)["phone"],
@@ -86,6 +86,31 @@ class AppCubit extends Cubit<CubitState> {
     await CommonService.instance.send(MessageIDPath.removeAccount(), {});
     removeToken();
     emit(UnauthenticatedState());
+  }
+
+  Future<bool> outFamily() async {
+    bool result = false;
+    await CommonService.instance.send(MessageIDPath.outFamily(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      if (value != "null") if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.outFamily(), value)) {
+        result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
+  }
+
+  Future<bool> updatePermission(String uid, List<bool> permissions) async {
+    bool result = false;
+    Map<String, dynamic> data = {"uid": uid, "permissions": permissions};
+    await CommonService.instance.send(MessageIDPath.updatePermission(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (value != "null") if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.updatePermission(), value)) {
+        result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
   }
 
   void connectError() {
@@ -143,20 +168,20 @@ class AppCubit extends Cubit<CubitState> {
   Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
-    print('Save token successful!');
+    debugPrint('Save token successful!');
   }
 
   Future<void> saveUsername(String username) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('username', username);
-    print('Save username successful!');
+    debugPrint('Save username successful!');
   }
 
   Future<void> removeToken() async {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getString('token') != null) {
       await prefs.remove('token');
-      print('Remove token successful!');
+      debugPrint('Remove token successful!');
     }
   }
 }

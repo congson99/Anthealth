@@ -397,5 +397,18 @@
   "Invalid_phone": "Invalid phone number!",
   "Invalid_yob": "Invalid year of birth!",
   "Highlights": "Highlights",
-  "About_us": "About_us"
+  "About_us": "About us",
+  "no_family_yet": "You have no family. Let's create one now!",
+  "create_a_family": "Create a family",
+  "family_settings": "Family settings",
+  "Out_family": "Leave the family",
+  "Permission_setting": "Permission setting",
+  "member_joined": "This member has joined your family!",
+  "invitation": " invite you to join the family",
+  "btn_accept": "ACCEPT",
+  "btn_reject": "REJECT",
+  "btn_invite": "INVITE",
+  "invite": "Invite ",
+  "can_not_out": "You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.",
+  "no_family": "You have no family!"
 }

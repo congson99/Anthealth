@@ -9,9 +9,11 @@ import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
 import 'package:anthealth_mobile/views/post/post_page.dart';
+import 'package:anthealth_mobile/views/settings/family_settings_page.dart';
 import 'package:anthealth_mobile/views/settings/general/setting_language_page.dart';
 import 'package:anthealth_mobile/views/settings/settings_profile_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -86,6 +88,25 @@ class NewSettingsPage extends StatelessWidget {
                   )))),
       SizedBox(height: 16),
       SectionComponent(
+          title: S.of(context).Family,
+          iconPath: "assets/app_icon/small_icons/family.png",
+          colorID: 2,
+          onTap: () {
+            BlocProvider.of<DashboardCubit>(context)
+                .getMemberData()
+                .then((value) {
+              if (value.isNotEmpty)
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        FamilySettingsPage(memberData: value, user: user)));
+              else
+                noFamilyPopup(context);
+            });
+          }),
+      SizedBox(height: 16),
+      CustomDivider.common(),
+      SizedBox(height: 16),
+      SectionComponent(
           title: S.of(context).Language,
           iconPath: "assets/app_icon/common/language_sec0.png",
           colorID: 1,
@@ -152,5 +173,12 @@ class NewSettingsPage extends StatelessWidget {
               BlocProvider.of<AppCubit>(context).removeAccount();
               Navigator.pop(context);
             }));
+  }
+
+  void noFamilyPopup(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => InfoPopup(
+            title: S.of(context).no_family, ok: () => Navigator.pop(context)));
   }
 }
