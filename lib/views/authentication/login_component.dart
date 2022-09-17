@@ -54,12 +54,14 @@ class _LoginComponentState extends State<LoginComponent> {
             WidgetsBinding.instance.window.viewInsets,
             WidgetsBinding.instance.window.devicePixelRatio)
         .bottom;
-    return SingleChildScrollView(
-        child: Column(children: [
-      buildLogoArea(keyboardHeight),
-      buildLoginArea(keyboardHeight, data),
-      buildRegisterArea()
-    ]));
+    return Center(
+      child: SingleChildScrollView(
+          child: Column(children: [
+        buildLogoArea(keyboardHeight),
+        buildLoginArea(keyboardHeight, data),
+        buildRegisterArea()
+      ])),
+    );
   }
 
   Widget buildLogoArea(double keyboardHeight) {
