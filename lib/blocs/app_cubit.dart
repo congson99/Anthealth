@@ -88,6 +88,23 @@ class AppCubit extends Cubit<CubitState> {
     emit(UnauthenticatedState());
   }
 
+  Future<void> outFamily() async {
+    await CommonService.instance.send(MessageIDPath.outFamily(), {});
+  }
+
+  Future<bool> updatePermission(String uid, List<bool> permissions) async {
+    bool result = false;
+    Map<String, dynamic> data = {"uid": uid, "permissions": permissions};
+    await CommonService.instance.send(MessageIDPath.updatePermission(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (value != "null") if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.updatePermission(), value)) {
+        result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
+  }
+
   void connectError() {
     emit(ConnectErrorState());
   }

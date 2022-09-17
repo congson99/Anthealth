@@ -4149,6 +4149,16 @@ class S {
       args: [],
     );
   }
+
+  /// `You are family owner, you can not out your family! If you still wanna out, you have to gant owner permission for other member.`
+  String get can_not_out {
+    return Intl.message(
+      'You are family owner, you can not out your family! If you still wanna out, you have to gant owner permission for other member.',
+      name: 'can_not_out',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -235,8 +235,9 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   Future<HealthPageData> getHealthPageData(String id) async {
+    Map<String, dynamic> j = {"uid": id};
     HealthPageData data = HealthPageData([]);
-    await CommonService.instance.send(MessageIDPath.getHealthData(), {});
+    await CommonService.instance.send(MessageIDPath.getHealthData(), j);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getHealthData(), value))
         data.indicatorsLatestData = HealthPageData.formatIndicatorsList(

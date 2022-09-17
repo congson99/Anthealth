@@ -121,6 +121,17 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 width: width),
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => SPO2Page(
+                        dashboardContext: context, data: widget.data))),
+                colorID: 0,
+                iconPath: "assets/indicators/spo2.png",
+                value: indicatorLatestData[5],
+                unit: "%",
+                title: S.of(context).Spo2,
+                isVisible: !widget.data.permission[5],
+                width: width),
+            IndicatorComponent(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => TemperaturePage(
                         dashboardContext: context, data: widget.data))),
                 colorID: 1,
@@ -141,17 +152,6 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 title: S.of(context).Blood_pressure,
                 isVisible: !widget.data.permission[4],
                 width: width),
-            IndicatorComponent(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => SPO2Page(
-                        dashboardContext: context, data: widget.data))),
-                colorID: 0,
-                iconPath: "assets/indicators/spo2.png",
-                value: indicatorLatestData[5],
-                unit: "%",
-                title: S.of(context).Spo2,
-                isVisible: !widget.data.permission[5],
-                width: width)
           ]),
       SizedBox(height: 32),
       CustomDivider.common(),
@@ -189,9 +189,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 isVisible: !widget.data.permission[7],
                 width: width),
           ]),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16)
+      SizedBox(height: 32)
     ]);
   }
 }

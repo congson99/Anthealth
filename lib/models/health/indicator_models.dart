@@ -31,7 +31,8 @@ class IndicatorPageData {
   List<IndicatorData> getData() => _data;
 
   static Map<String, dynamic> formatToSendLoadData(
-      int type, IndicatorFilter filter) {
+      int type, IndicatorFilter filter,
+      {String? id}) {
     DateTime start = DateTime.now();
     DateTime end = DateTime.now();
     // 10 Year
@@ -69,12 +70,13 @@ class IndicatorPageData {
       end = DateTime(filter.getTime().year, filter.getTime().month,
           filter.getTime().day, filter.getTime().hour + 1);
     }
-    var result = {
+    Map<String, dynamic> result = {
       "type": type,
       "filterID": filter.getFilterIndex(),
       "start_time": (start.millisecondsSinceEpoch) ~/ 1000,
       "end_time": (end.millisecondsSinceEpoch) ~/ 1000
     };
+    if (id != null) result.addAll({"uid": id});
     return result;
   }
 

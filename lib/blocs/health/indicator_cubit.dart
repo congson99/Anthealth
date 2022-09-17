@@ -7,8 +7,8 @@ import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class IndicatorCubit extends Cubit<CubitState> {
-  IndicatorCubit(int type, int filterID) : super(InitialState()) {
-    loadData(type, IndicatorFilter(filterID, DateTime.now()));
+  IndicatorCubit(int type, int filterID, {String? id}) : super(InitialState()) {
+    loadData(type, IndicatorFilter(filterID, DateTime.now()), id: id);
   }
 
   /// Handle States
@@ -26,9 +26,9 @@ class IndicatorCubit extends Cubit<CubitState> {
   }
 
   /// Service Functions
-  Future<void> loadData(int type, IndicatorFilter filter) async {
+  Future<void> loadData(int type, IndicatorFilter filter, {String? id}) async {
     await CommonService.instance.send(MessageIDPath.getIndicatorData(),
-        IndicatorPageData.formatToSendLoadData(type, filter));
+        IndicatorPageData.formatToSendLoadData(type, filter, id: id));
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getIndicatorData(), value)) {

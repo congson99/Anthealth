@@ -42,4 +42,8 @@ class MessageIDPath {
   static int addMember() => 2505;
 
   static int handleInvitation() => 2504;
+
+  static int outFamily() => 2502;
+
+  static int updatePermission() => 2508;
 }

@@ -505,6 +505,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "calo_in": MessageLookupByLibrary.simpleMessage("calo đã nạp"),
         "calo_out": MessageLookupByLibrary.simpleMessage("calo tiêu thụ"),
         "calo_remaining": MessageLookupByLibrary.simpleMessage("calo còn lại"),
+        "can_not_out": MessageLookupByLibrary.simpleMessage(
+            "Bạn là chủ sở hữu nên không thể rời gia đình. Nếu muốn rời gia đình bạn phải uỷ quyền sở hữu cho một thành viên khác."),
         "chew": MessageLookupByLibrary.simpleMessage("Ngậm"),
         "comment": MessageLookupByLibrary.simpleMessage("bình luận"),
         "communities": MessageLookupByLibrary.simpleMessage("cộng đồng"),

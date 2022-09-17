@@ -139,10 +139,6 @@ class FamilyMemberPage extends StatelessWidget {
     launchUrlString("tel://" + phoneNumber);
   }
 
-  void messenger() {}
-
-  void share() {}
-
   void showPopup(BuildContext context) {
     showDialog(
         context: context,

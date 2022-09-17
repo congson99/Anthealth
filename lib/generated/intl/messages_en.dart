@@ -487,6 +487,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "calo_out": MessageLookupByLibrary.simpleMessage("calo out"),
         "calo_remaining":
             MessageLookupByLibrary.simpleMessage("calo remaining"),
+        "can_not_out": MessageLookupByLibrary.simpleMessage(
+            "You are family owner, you can not out your family! If you still wanna out, you have to gant owner permission for other member."),
         "chew": MessageLookupByLibrary.simpleMessage("Chew"),
         "comment": MessageLookupByLibrary.simpleMessage("comment"),
         "communities": MessageLookupByLibrary.simpleMessage("communities"),

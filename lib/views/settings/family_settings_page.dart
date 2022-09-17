@@ -4,7 +4,10 @@ import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
+import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
+import 'package:anthealth_mobile/views/common_widgets/yes_no_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
@@ -108,15 +111,28 @@ class FamilySettingsPage extends StatelessWidget {
   }
 
   void outFamily(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (_) => WarningPopup(
-            title: S.of(context).Out_family,
-            cancel: () => Navigator.pop(context),
-            delete: () {
-              BlocProvider.of<AppCubit>(context).removeAccount();
-              Navigator.pop(context);
-            }));
+    bool isAdmin = false;
+    for (FamilyMemberData x in memberData)
+      if (user.id == x.id) isAdmin = x.admin;
+    if (isAdmin)
+      showDialog(
+          context: context,
+          builder: (_) => InfoPopup(
+              title: S.of(context).can_not_out,
+              ok: () => Navigator.pop(context)));
+    else
+      showDialog(
+          context: context,
+          builder: (_) => YesNoPopup(
+              title: S.of(context).Out_family,
+              no: () => Navigator.pop(context),
+              yes: () async {
+                await BlocProvider.of<AppCubit>(context).outFamily();
+                ShowSnackBar.showSuccessSnackBar(context,
+                    "${S.of(context).Out_family} ${S.of(context).successfully}");
+                Navigator.pop(context);
+                Navigator.pop(context);
+              }));
   }
 
   Future<dynamic> buildAddIndicatorBottomSheet(
@@ -128,15 +144,31 @@ class FamilySettingsPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
         context: context,
-        builder: (_) => PermissionUpdateBottomSheet(member: member));
+        builder: (_) => PermissionUpdateBottomSheet(
+              member: member,
+              result: (result) {
+                BlocProvider.of<AppCubit>(context)
+                    .updatePermission(member.id, result)
+                    .then((value) {
+                  if (value) {
+                    ShowSnackBar.showSuccessSnackBar(
+                        context, S.of(context).successfully);
+                  } else
+                    ShowSnackBar.showErrorSnackBar(
+                        context, S.of(context).something_wrong);
+                });
+              },
+            ));
   }
 }
 
 class PermissionUpdateBottomSheet extends StatefulWidget {
-  const PermissionUpdateBottomSheet({Key? key, required this.member})
+  const PermissionUpdateBottomSheet(
+      {Key? key, required this.member, required this.result})
       : super(key: key);
 
   final FamilyMemberData member;
+  final Function(List<bool>) result;
 
   @override
   State<PermissionUpdateBottomSheet> createState() =>
@@ -158,6 +190,25 @@ class _PermissionUpdateBottomSheetState
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: 16),
+            Column(children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Image.network(
+                    (widget.member.avatarPath == "")
+                        ? "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                        : widget.member.avatarPath,
+                    height: 60.0,
+                    width: 60.0,
+                    fit: BoxFit.cover),
+              ),
+              SizedBox(height: 10),
+              Text(widget.member.name,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: AnthealthColors.black0)),
+            ]),
             buildPermissionComponent(context, 0,
                 "assets/app_icon/attach/height.png", S.of(context).Height, 0),
             buildPermissionComponent(context, 1,
@@ -197,8 +248,10 @@ class _PermissionUpdateBottomSheetState
                 S.of(context).Medical_record,
                 8),
             SizedBox(height: 24),
-            CommonButton.round(
-                context, () {}, S.of(context).Update, AnthealthColors.primary1),
+            CommonButton.round(context, () {
+              Navigator.pop(context);
+              widget.result(permission);
+            }, S.of(context).Update, AnthealthColors.primary1),
             SizedBox(height: 16),
           ],
         ),
