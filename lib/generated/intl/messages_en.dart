@@ -488,7 +488,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "calo_remaining":
             MessageLookupByLibrary.simpleMessage("calo remaining"),
         "can_not_out": MessageLookupByLibrary.simpleMessage(
-            "You are family owner, you can not out your family! If you still wanna out, you have to gant owner permission for other member."),
+            "You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member."),
         "chew": MessageLookupByLibrary.simpleMessage("Chew"),
         "comment": MessageLookupByLibrary.simpleMessage("comment"),
         "communities": MessageLookupByLibrary.simpleMessage("communities"),
@@ -541,6 +541,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "There are no active reminders"),
         "no_done_reminders":
             MessageLookupByLibrary.simpleMessage("There are no done reminders"),
+        "no_family":
+            MessageLookupByLibrary.simpleMessage("You have no family!"),
         "no_family_yet": MessageLookupByLibrary.simpleMessage(
             "You have no family. Let\'s create one now!"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(

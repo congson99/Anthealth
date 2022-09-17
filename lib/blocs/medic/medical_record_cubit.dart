@@ -11,8 +11,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicalRecordCubit extends Cubit<CubitState> {
-  MedicalRecordCubit() : super(InitialState()) {
-    loadData();
+  MedicalRecordCubit({String? uid}) : super(InitialState()) {
+    loadData(uid: uid);
   }
 
   /// Handle States
@@ -33,10 +33,12 @@ class MedicalRecordCubit extends Cubit<CubitState> {
   }
 
   /// Service Functions
-  void loadData() async {
+  void loadData({String? uid}) async {
     emit(InitialState());
+    Map<String, dynamic> data = {};
+    if (uid != null) data.addAll({"uid": uid});
     await CommonService.instance
-        .send(MessageIDPath.getMedicalRecordPageData(), {});
+        .send(MessageIDPath.getMedicalRecordPageData(), data);
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicalRecordPageData(), value)) {

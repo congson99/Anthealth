@@ -556,6 +556,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Không có nhắc nhở nào đang hoạt động"),
         "no_done_reminders": MessageLookupByLibrary.simpleMessage(
             "Không có nhắc nhở nào đã hoàn thành"),
+        "no_family":
+            MessageLookupByLibrary.simpleMessage("Bạn chưa có gia đình!"),
         "no_family_yet": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa có gia đình. Hãy tạo gia đình ngay!"),
         "no_indicator_record": MessageLookupByLibrary.simpleMessage(

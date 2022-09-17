@@ -28,7 +28,8 @@ class MedicalRecordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MedicalRecordCubit>(
-        create: (context) => MedicalRecordCubit(),
+        create: (context) =>
+            MedicalRecordCubit(uid: (data == null) ? null : data?.id),
         child: BlocBuilder<MedicalRecordCubit, CubitState>(
             builder: (context, state) {
           if (state is MedicalRecordState) {

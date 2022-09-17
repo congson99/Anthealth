@@ -178,7 +178,7 @@ class NewSettingsPage extends StatelessWidget {
   void noFamilyPopup(BuildContext context) {
     showDialog(
         context: context,
-        builder: (_) =>
-            InfoPopup(title: "title", ok: () => Navigator.pop(context)));
+        builder: (_) => InfoPopup(
+            title: S.of(context).no_family, ok: () => Navigator.pop(context)));
   }
 }

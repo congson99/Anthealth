@@ -116,7 +116,7 @@ class DashboardCubit extends Cubit<CubitState> {
           for (dynamic x in ServerLogic.getData(value)["invite_list"])
             invitations.add(Invitation(x["id"], x["adminInfo"]["name"]));
         List<FamilyMemberData> members = [];
-        if (ServerLogic.getData(value)["member_list"] != null)
+        if (ServerLogic.getData(value)["member_list"] != null) {
           for (dynamic x in ServerLogic.getData(value)["member_list"])
             members.add(FamilyMemberData(
                 x["uid"].toString(),
@@ -127,13 +127,14 @@ class DashboardCubit extends Cubit<CubitState> {
                 x["rule"] == 2,
                 [],
                 x["birthDay"]));
-        for (dynamic x in ServerLogic.getData(value)["member_list"][0]
-            ["permission"]) {
-          for (FamilyMemberData y in members) {
-            if (y.id == x["uid"].toString()) {
-              List<bool> temp = [];
-              for (bool per in x["permissions"]) temp.add(per);
-              y.permission = temp;
+          for (dynamic x in ServerLogic.getData(value)["member_list"][0]
+              ["permission"]) {
+            for (FamilyMemberData y in members) {
+              if (y.id == x["uid"].toString()) {
+                List<bool> temp = [];
+                for (bool per in x["permissions"]) temp.add(per);
+                y.permission = temp;
+              }
             }
           }
         }
@@ -148,7 +149,7 @@ class DashboardCubit extends Cubit<CubitState> {
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getFamilyData(), value)) {
-        if (ServerLogic.getData(value)["member_list"] != null)
+        if (ServerLogic.getData(value)["member_list"] != null) {
           for (dynamic x in ServerLogic.getData(value)["member_list"]) {
             members.add(FamilyMemberData(
                 x["uid"].toString(),
@@ -160,13 +161,14 @@ class DashboardCubit extends Cubit<CubitState> {
                 [],
                 x["birthDay"]));
           }
-        for (dynamic x in ServerLogic.getData(value)["member_list"][0]
-            ["permission"]) {
-          for (FamilyMemberData y in members) {
-            if (y.id == x["uid"].toString()) {
-              List<bool> temp = [];
-              for (bool per in x["permissions"]) temp.add(per);
-              y.permission = temp;
+          for (dynamic x in ServerLogic.getData(value)["member_list"][0]
+              ["permission"]) {
+            for (FamilyMemberData y in members) {
+              if (y.id == x["uid"].toString()) {
+                List<bool> temp = [];
+                for (bool per in x["permissions"]) temp.add(per);
+                y.permission = temp;
+              }
             }
           }
         }
@@ -310,6 +312,32 @@ class DashboardCubit extends Cubit<CubitState> {
               "\n\n8. Đóng gói:\n" +
               x["Pack"]));
     }
+    return result;
+  }
+
+  Future<bool> removeFromFamily(String uid) async {
+    bool result = false;
+    Map<String, dynamic> data = {"uid": uid};
+    await CommonService.instance.send(MessageIDPath.outFamily(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (value != "null") if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.outFamily(), value)) {
+        result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
+  }
+
+  Future<bool> grantFamilyMember(String uid) async {
+    bool result = false;
+    Map<String, dynamic> data = {"uid": uid};
+    await CommonService.instance.send(MessageIDPath.grantFamilyMember(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (value != "null") if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.grantFamilyMember(), value)) {
+        result = ServerLogic.getData(value)["status"];
+      }
+    });
     return result;
   }
 

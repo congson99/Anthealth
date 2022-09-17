@@ -113,7 +113,7 @@ class FamilySettingsPage extends StatelessWidget {
     bool isAdmin = false;
     for (FamilyMemberData x in memberData)
       if (user.id == x.id) isAdmin = x.admin;
-    if (isAdmin)
+    if (isAdmin && memberData.length > 1)
       showDialog(
           context: context,
           builder: (_) => InfoPopup(

@@ -1,7 +1,9 @@
+import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/common_widgets/info_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/warning_popup.dart';
@@ -9,6 +11,7 @@ import 'package:anthealth_mobile/views/family/family_member/family_member_health
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class FamilyMemberPage extends StatelessWidget {
@@ -153,7 +156,22 @@ class FamilyMemberPage extends StatelessWidget {
         context: context,
         builder: (_) => InfoPopup(
             title: S.of(context).Grant_admin,
-            ok: () {},
+            ok: () {
+              BlocProvider.of<DashboardCubit>(dashboardContext)
+                  .grantFamilyAdmin(member.id)
+                  .then((value) {
+                Navigator.pop(context);
+                if (value) {
+                  Navigator.pop(context);
+                  ShowSnackBar.showSuccessSnackBar(context,
+                      "${S.of(context).Grant_admin_rights} ${S.of(context).successfully}");
+                  BlocProvider.of<DashboardCubit>(dashboardContext).family();
+                } else {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).something_wrong);
+                }
+              });
+            },
             cancel: () => Navigator.pop(context)));
   }
 
@@ -163,6 +181,21 @@ class FamilyMemberPage extends StatelessWidget {
         builder: (_) => WarningPopup(
             title: S.of(context).Warning_remove_member,
             cancel: () => Navigator.pop(context),
-            delete: () {}));
+            delete: () {
+              BlocProvider.of<DashboardCubit>(dashboardContext)
+                  .removeFromFamily(member.id)
+                  .then((value) {
+                Navigator.pop(context);
+                if (value) {
+                  Navigator.pop(context);
+                  ShowSnackBar.showSuccessSnackBar(context,
+                      "${S.of(context).Remove_family_member} ${S.of(context).successfully}");
+                  BlocProvider.of<DashboardCubit>(dashboardContext).family();
+                } else {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).something_wrong);
+                }
+              });
+            }));
   }
 }

@@ -4150,11 +4150,21 @@ class S {
     );
   }
 
-  /// `You are family owner, you can not out your family! If you still wanna out, you have to gant owner permission for other member.`
+  /// `You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.`
   String get can_not_out {
     return Intl.message(
-      'You are family owner, you can not out your family! If you still wanna out, you have to gant owner permission for other member.',
+      'You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.',
       name: 'can_not_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no family!`
+  String get no_family {
+    return Intl.message(
+      'You have no family!',
+      name: 'no_family',
       desc: '',
       args: [],
     );
