@@ -158,7 +158,7 @@ class FamilyMemberPage extends StatelessWidget {
             title: S.of(context).Grant_admin,
             ok: () {
               BlocProvider.of<DashboardCubit>(dashboardContext)
-                  .grantFamilyAdmin(member.id)
+                  .grantFamilyMember(member.id)
                   .then((value) {
                 Navigator.pop(context);
                 if (value) {

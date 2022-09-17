@@ -244,17 +244,6 @@ class DashboardCubit extends Cubit<CubitState> {
     });
   }
 
-  Future<String> getFamilyID(String id) async {
-    return "family";
-  }
-
-  Future<bool> removeFamilyMember(String id) async {
-    return true;
-  }
-
-  Future<bool> grantFamilyAdmin(String id) async {
-    return true;
-  }
 
   Future<HealthPageData> getHealthPageData(String id) async {
     Map<String, dynamic> j = {"uid": id};
