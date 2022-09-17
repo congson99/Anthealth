@@ -127,11 +127,19 @@ class FamilySettingsPage extends StatelessWidget {
               title: S.of(context).Out_family,
               no: () => Navigator.pop(context),
               yes: () async {
-                await BlocProvider.of<AppCubit>(context).outFamily();
-                ShowSnackBar.showSuccessSnackBar(context,
-                    "${S.of(context).Out_family} ${S.of(context).successfully}");
                 Navigator.pop(context);
-                Navigator.pop(context);
+                await BlocProvider.of<AppCubit>(context)
+                    .outFamily()
+                    .then((value) {
+                  if (value) {
+                    ShowSnackBar.showSuccessSnackBar(context,
+                        "${S.of(context).Out_family} ${S.of(context).successfully}");
+                    Navigator.pop(context);
+                  } else {
+                    ShowSnackBar.showErrorSnackBar(
+                        context, S.of(context).something_wrong);
+                  }
+                });
               }));
   }
 
