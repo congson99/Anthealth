@@ -48,4 +48,6 @@ class MessageIDPath {
   static int updatePermission() => 2508;
 
   static int grantFamilyMember() => 2509;
+
+  static int getMedicines() => 2318;
 }

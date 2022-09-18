@@ -145,7 +145,7 @@ class MedicalRecordDetailData {
             x["id"],
             x["data"]["name"],
             0.0 + x["quantity"],
-            x["data"]["unit"],
+            int.parse(x["data"]["unit"]),
             0,
             temp,
             [],

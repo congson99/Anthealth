@@ -316,12 +316,6 @@ class _AddPrescriptionMedicineState extends State<AddPrescriptionMedicine> {
                   S.of(context).Unit +
                       ": " +
                       MedicineLogic.getUnit(context, data.unit),
-                  style: Theme.of(context).textTheme.bodyText2),
-              SizedBox(height: 4),
-              Text(
-                  S.of(context).Usage +
-                      ": " +
-                      MedicineLogic.getUsage(context, data.usage),
                   style: Theme.of(context).textTheme.bodyText2)
             ]),
       )
