@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
@@ -6,6 +7,7 @@ import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicalRecordDetailCubit extends Cubit<CubitState> {
@@ -33,38 +35,20 @@ class MedicalRecordDetailCubit extends Cubit<CubitState> {
   }
 
   /// Handle States
-  void loadedData(MedicalRecordDetailData data, List<List<File>> list,
-      List<DigitalMedicine> medicine) {
-    emit(MedicalRecordDetailState(
-        data,
-        [
-          "Bệnh viện Huyện Bình Chánh",
-          "Bệnh viện Huyện Cần Giờ",
-          "Bệnh viện Huyện Củ Chi",
-          "Bệnh viện Huyện Hóc Môn",
-          "Bệnh viện Huyện Nhà Bè",
-          "Bệnh viện Quận 1",
-          "Bệnh viện Quận 10",
-          "Bệnh viện Quận 11",
-          "Bệnh viện Quận 12",
-          "Bệnh viện Quận 2",
-          "Bệnh viện Quận 3",
-          "Bệnh viện Quận 4",
-          "TRUNG TÂM Y TẾ QUẬN 5 (CS2)",
-          "Bệnh viện Quận 6",
-          "Bệnh viện Quận 7",
-          "Bệnh viện Quận 8",
-          "Bệnh viện Đa Khoa Lê Văn Việt",
-          "Bệnh viện Quận Bình Tân",
-          "Bệnh viện Quận Bình Thạnh",
-          "Bệnh viện Quận Gò Vấp",
-          "Bệnh Viện Quận Phú Nhuận",
-          "Bệnh viện Quận Tân Bình",
-          "Bệnh viện Quận Tân Phú",
-          "Bệnh viện Quận Thủ Đức"
-        ],
-        list,
-        medicine));
+  Future<void> loadedData(MedicalRecordDetailData data, List<List<File>> list,
+      List<DigitalMedicine> medicine) async {
+    List<String> hospitals = await getLocationList();
+    emit(MedicalRecordDetailState(data, hospitals, list, medicine));
+  }
+
+  Future<List<String>> getLocationList() async {
+    var jsonText = await rootBundle.loadString('assets/hardData/hospital.json');
+    List data = json.decode(jsonText);
+    List<String> result = [];
+    for (dynamic x in data) {
+      result.add(x["name"]);
+    }
+    return result;
   }
 
   // Update data

@@ -117,11 +117,14 @@ class AppCubit extends Cubit<CubitState> {
     emit(ConnectErrorState());
   }
 
-  Future<bool> updateProfile(User user, BuildContext context) async {
+  Future<bool> updateProfile(
+      User user, BuildContext context, String avatar) async {
     var data = {
+      "avatar": avatar,
       "name": user.name,
       "phone": user.phoneNumber,
-      "birthday": user.yOB
+      "birthday": user.yOB,
+      "sex": user.sex
     };
     bool valid = false;
     await CommonService.instance.send(MessageIDPath.updateProfile(), data);

@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/medic/medical_record_states.dart';
+import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
@@ -50,12 +51,47 @@ class MedicalRecordCubit extends Cubit<CubitState> {
   }
 
   Future<bool> addData(MedicalRecordDetailData data) async {
+    List<Map<String, dynamic>> medicines = [];
+    for (DigitalMedicine m in data.prescription) {
+      List<Map<String, dynamic>> dosages = [];
+      for (int i = 0; i < 4; i++) {
+        switch (i) {
+          case (0):
+            if (m.dosage[0] != 0.0) {
+              dosages.add({"time": "07:00", "amount": m.dosage[0]});
+            }
+            break;
+          case (1):
+            if (m.dosage[1] != 0.0) {
+              dosages.add({"time": "11:00", "amount": m.dosage[1]});
+            }
+            break;
+          case (2):
+            if (m.dosage[2] != 0.0) {
+              dosages.add({"time": "17:00", "amount": m.dosage[2]});
+            }
+            break;
+          case (3):
+            if (m.dosage[3] != 0.0) {
+              dosages.add({"time": "19:00", "amount": m.dosage[3]});
+            }
+            break;
+        }
+      }
+      medicines.add({
+        "id": m.id,
+        "repeat": MedicineLogic.convertRepeat(m.repeat),
+        "note": m.note,
+        "quantity": m.quantity,
+        "dosages": dosages
+      });
+    }
     bool result = false;
     var temp = {
       "name": data.label.name,
       "place": data.label.location,
       "time": data.label.dateTime.millisecondsSinceEpoch ~/ 1000,
-      "medicine": [],
+      "medicine": medicines,
       "detailsImage": data.detailPhoto,
       "testImage": data.testPhoto,
       "diagnoseImage": data.diagnosePhoto,

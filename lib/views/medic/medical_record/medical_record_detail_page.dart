@@ -39,7 +39,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
       create: (context) => MedicalRecordDetailCubit(medicalRecordID),
       child: BlocBuilder<MedicalRecordDetailCubit, CubitState>(
           builder: (context, state) {
-        if (state is MedicalRecordDetailState)
+        if (state is MedicalRecordDetailState) {
           return Scaffold(
               body: SafeArea(
                   child: Stack(children: [
@@ -65,7 +65,7 @@ class MedicalRecordDetailPage extends StatelessWidget {
                   firstTitle: S.of(context).Medical_record_detail,
                   avatarPath: data!.avatarPath)
           ])));
-        else
+        } else
           return LoadingPage();
       }));
 

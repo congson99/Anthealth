@@ -105,7 +105,7 @@ class SettingsProfilePage extends StatelessWidget {
                 .textTheme
                 .bodyText1!
                 .copyWith(color: AnthealthColors.black2)),
-        Text(user.yOB.toString(),
+        Text((user.yOB == -1) ? "" : user.yOB.toString(),
             style: Theme.of(context)
                 .textTheme
                 .subtitle1!
@@ -121,7 +121,7 @@ class SettingsProfilePage extends StatelessWidget {
         Text(
             (user.sex == -1)
                 ? ""
-                : ((user.sex == 1) ? S.of(context).Male : S.of(context).Female),
+                : ((user.sex == 0) ? S.of(context).Male : S.of(context).Female),
             style: Theme.of(context)
                 .textTheme
                 .subtitle1!

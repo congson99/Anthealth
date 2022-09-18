@@ -61,6 +61,15 @@ class MedicineLogic {
     }
   }
 
+  static String convertRepeat(int data) {
+    String result = data.toString();
+    int remain = 8 - result.length;
+    for (int i = 0; i < remain; i++) {
+      result = "0" + result;
+    }
+    return result;
+  }
+
   static String getRepeat(BuildContext context, int index) {
     if (index == 0) return "";
     if (index == 1 || index == 11111111) return S.of(context).daily;

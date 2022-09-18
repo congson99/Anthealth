@@ -216,4 +216,33 @@ class CommonTextField {
                 }).toList(),
                 onChanged: (value) => onChanged(value))));
   }
+
+  static Widget newSelectBox(
+      {required List<String> data,
+      String? value,
+      FocusNode? focusNode,
+      required ValueChanged<String?> onChanged}) {
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: AnthealthColors.primary1, width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(16))),
+        child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+                menuMaxHeight: 500,
+                isExpanded: true,
+                focusNode: focusNode,
+                value: value,
+                items: data.map<DropdownMenuItem<String>>((String mValue) {
+                  return DropdownMenuItem<String>(
+                      value: mValue,
+                      child: mValue == value
+                          ? Text(mValue, overflow: TextOverflow.ellipsis)
+                          : Text(mValue,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: AnthealthColors.black2)));
+                }).toList(),
+                onChanged: (value) => onChanged(value))));
+  }
 }

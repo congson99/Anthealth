@@ -104,6 +104,7 @@ class MedicalRecordDetailData {
     final List<String> testPhoto = [];
     final List<String> diagnosePhoto = [];
     final List<String> prescriptionPhoto = [];
+    List<DigitalMedicine> prescription = [];
     if (data["detailsImage"].length != 0)
       for (dynamic x in data["detailsImage"]) detailPhoto.add(x.toString());
     if (data["testImage"].length != 0)
@@ -113,6 +114,46 @@ class MedicalRecordDetailData {
     if (data["medicineImage"].length != 0)
       for (dynamic x in data["medicineImage"])
         prescriptionPhoto.add(x.toString());
+    if (data["medicine"].length != 0)
+      for (dynamic x in data["medicine"]) {
+        List<double> temp = [0, 0, 0, 0];
+        for (dynamic y in x["dosages"]) {
+          switch (y["time"]) {
+            case ("07:00"):
+              {
+                temp[0] = 0.0 + y["amount"];
+                break;
+              }
+            case ("11:00"):
+              {
+                temp[1] = 0.0 + y["amount"];
+                break;
+              }
+            case ("17:00"):
+              {
+                temp[2] = 0.0 + y["amount"];
+                break;
+              }
+            case ("19:00"):
+              {
+                temp[3] = 0.0 + y["amount"];
+                break;
+              }
+          }
+        }
+        prescription.add(DigitalMedicine(
+            x["id"],
+            x["data"]["name"],
+            0.0 + x["quantity"],
+            x["data"]["unit"],
+            0,
+            temp,
+            [],
+            int.parse(x["repeat"]),
+            "imagePath",
+            "url",
+            x["note"]));
+      }
     return MedicalRecordDetailData(
         MedicalRecordLabel(
             data["rid"],
@@ -123,7 +164,7 @@ class MedicalRecordDetailData {
         testPhoto,
         diagnosePhoto,
         prescriptionPhoto,
-        [],
+        prescription,
         MedicalAppointment.formatData(data["appointment"],
             DateTime.fromMillisecondsSinceEpoch(data["time"] * 1000)));
   }
