@@ -33,9 +33,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>To capture profile photo please grant camera access</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Application needs to access your current location</string>
+	<string>We need to access your current location to show medical clinics and hospitals around you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Application needs to access your current location</string>
+	<string>We need to access your current location to show medical clinics and hospitals around you</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App needs access to photo lib for profile images</string>
 	<key>UILaunchStoryboardName</key>
