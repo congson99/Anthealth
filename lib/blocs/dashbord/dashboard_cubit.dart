@@ -52,7 +52,7 @@ class DashboardCubit extends Cubit<CubitState> {
         }
       }
     });
-    reminder = reminder.sublist(0, 3);
+    if (reminder.length > 2) reminder = reminder.sublist(0, 3);
     await CommonService.instance.send(MessageIDPath.getMedicData(), {});
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
@@ -69,7 +69,6 @@ class DashboardCubit extends Cubit<CubitState> {
                   now,
                   ServerLogic.getData(value)["upcomingAppointment"]["content"])
             ]);
-          print(value);
         }
       }
     });

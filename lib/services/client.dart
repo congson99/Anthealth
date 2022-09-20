@@ -50,6 +50,7 @@ class Client {
   /// Handle data
   Future<String> getData({int? waitSeconds}) async {
     var tempData = "null";
+    await Future.delayed(Duration(milliseconds: 200));
     await waitData(0, waitSeconds);
     if (_data == null) debugPrint("NULL DATA!");
     tempData = _data.toString();

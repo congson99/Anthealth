@@ -25,6 +25,7 @@ class AppCubit extends Cubit<CubitState> {
     });
     await getLocalToken().then((localToken) {
       if (localToken == null) {
+        debugPrint("Null local token");
         unAuthenticated();
         return;
       }
@@ -32,6 +33,7 @@ class AppCubit extends Cubit<CubitState> {
     });
     checkToken(token).then((checkTokenResult) {
       if (!checkTokenResult) {
+        debugPrint("Invalid token");
         unAuthenticated();
         return;
       }
@@ -153,6 +155,7 @@ class AppCubit extends Cubit<CubitState> {
     var sendData = {"token": token};
     await CommonService.instance.send(MessageIDPath.checkToken(), sendData);
     await CommonService.instance.client!.getData().then((value) {
+      print(value);
       if (value == 'null') valid = false;
       if (ServerLogic.checkMatchMessageID(MessageIDPath.checkToken(), value)) {
         valid = ServerLogic.getData(value)["valid"];
