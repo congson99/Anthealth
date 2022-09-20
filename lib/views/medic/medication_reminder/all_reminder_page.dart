@@ -64,12 +64,6 @@ class _AllReminderPageState extends State<AllReminderPage> {
             ...activeReminders.map(
                 (reminder) => buildReminderComponent(reminder, context, false)),
           SizedBox(height: 16),
-          InkWell(
-              onTap: () {},
-              child: Text(S.of(context).Create_new_reminders,
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: AnthealthColors.primary1,
-                      decoration: TextDecoration.underline))),
         ]));
   }
 

@@ -158,6 +158,16 @@ class _CreatePrescriptionReminderPageState
                         ]),
                     SizedBox(height: 4),
                     Text(
+                        S.of(context).Repeat +
+                            ": " +
+                            MedicineLogic.getRepeat(
+                                context, int.parse(reminder.repeat)),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: AnthealthColors.primary1)),
+                    SizedBox(height: 4),
+                    Text(
                         S.of(context).Start +
                             ": " +
                             DateFormat("HH:mm dd.MM.yyyy")

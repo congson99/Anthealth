@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/generated/l10n.dart';
+import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -13,13 +14,14 @@ class Prescription {
 
 class MedicationReminder {
   MedicationReminder(this.id, this.prescription, this.medicine,
-      this.dayReminder, this.allReminder);
+      this.dayReminder, this.allReminder, this.repeat);
 
   String id;
   Prescription prescription;
   MedicineData medicine;
   List<Reminder> dayReminder;
   List<Reminder> allReminder;
+  String repeat;
 
   static double getQuantity(MedicationReminder reminder) {
     double result = 0;
@@ -73,7 +75,8 @@ class MedicationReminder {
         Prescription(prescription.id, name, description, []),
         MedicineData.formatFromDigitalMedicine(prescription),
         dayReminder,
-        allReminder);
+        allReminder,
+        MedicineLogic.convertRepeat(prescription.repeat));
   }
 
   static MedicationReminder createDone(
@@ -97,7 +100,7 @@ class MedicationReminder {
     }
     allReminder.last.quantity -= countQuantity;
     return MedicationReminder("", reminder.prescription, reminder.medicine,
-        reminder.dayReminder, allReminder);
+        reminder.dayReminder, allReminder, reminder.repeat);
   }
 }
 

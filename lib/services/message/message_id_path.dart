@@ -56,4 +56,8 @@ class MessageIDPath {
   static int addSelfPrescription() => 2402;
 
   static int getPosts() => 2319;
+
+  static int addReminder() => 2404;
+
+  static int getDurationReminder() => 2403;
 }

@@ -222,9 +222,6 @@ class MedicationReminderPage extends StatelessWidget {
                       Text(
                           DateFormat("HH:mm").format(reminder.time) +
                               " - " +
-                              MedicineLogic.getUsage(
-                                  context, reminder.medicine.getUsage()) +
-                              " " +
                               MedicineLogic.handleQuantity(reminder.quantity) +
                               " " +
                               MedicineLogic.getUnit(

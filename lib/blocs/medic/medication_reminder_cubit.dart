@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class MedicationReminderCubit extends Cubit<CubitState> {
   MedicationReminderCubit() : super(InitialState()) {
@@ -22,170 +23,34 @@ class MedicationReminderCubit extends Cubit<CubitState> {
   void loadMedicationReminder([DateTime? time]) async {
     emit(InitialState());
     DateTime now = DateTime.now();
-    List<ReminderMask> reminder = [
-      ReminderMask(
-          "Name",
-          MedicineData(
-              "",
-              "Paradol Paradol ",
-              30,
-              0,
-              0,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              ""),
-          DateTime(now.year, now.month, now.day, 7, 0),
-          1,
-          ""),
-      ReminderMask(
-          "Name",
-          MedicineData(
-              "",
-              "Paradad as dol",
-              30,
-              0,
-              0,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              ""),
-          DateTime(now.year, now.month, now.day, 7, 0),
-          1,
-          ""),
-      ReminderMask(
-          "Name",
-          MedicineData(
-              "",
-              "Paras adol",
-              30,
-              2,
-              0,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              ""),
-          DateTime(now.year, now.month, now.day, 11, 30),
-          1,
-          ""),
-      ReminderMask(
-          "XX",
-          MedicineData(
-              "",
-              "Pemol",
-              24,
-              0,
-              2,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DateTime(now.year, now.month, now.day, 17, 0),
-          1,
-          ""),
-      ReminderMask(
-          "XX",
-          MedicineData(
-              "",
-              "Peas da mol",
-              24,
-              1,
-              2,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DateTime(now.year, now.month, now.day, 17, 0),
-          200,
-          ""),
-      ReminderMask(
-          "XX",
-          MedicineData(
-              "",
-              "Peas dmol",
-              24,
-              0,
-              2,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DateTime(now.year, now.month, now.day, 22, 30),
-          1,
-          "")
-    ];
+    List<ReminderMask> reminder = [];
+    Map<String, dynamic> data = {
+      "startTime": DateFormat("yyyy-MM-dd").format(now) + " 00:00:00",
+      "endTime": DateFormat("yyyy-MM-dd").format(now) + " 23:59:59"
+    };
+    await CommonService.instance
+        .send(MessageIDPath.getDurationReminder(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getDurationReminder(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          for (dynamic x in ServerLogic.getData(value)["data"])
+            reminder.add(ReminderMask(
+                x["name"],
+                MedicineData("", x["name"], 0.0, int.parse(x["unit"]), 0,
+                    x["img"], "", ""),
+                DateTime.fromMicrosecondsSinceEpoch(x["time"] * 1000000),
+                0.0 + x["need_amount"],
+                ""));
+        }
+      }
+    });
     loadedData(MedicationReminderState(time ?? DateTime.now(), reminder));
   }
 
   List<List<MedicationReminder>> getAllReminders() {
     DateTime now = DateTime.now();
-    return [
-      [
-        MedicationReminder(
-            "id",
-            Prescription("", "pre X", "BV Y", []),
-            MedicineData(
-                "",
-                "Peas dmol",
-                24,
-                0,
-                2,
-                "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-                "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-                "Morning"),
-            [
-              Reminder(DateTime(now.year, now.month, now.day, 7, 0), 2, ""),
-              Reminder(DateTime(now.year, now.month, now.day, 12, 0), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day, 17, 30), 1, "")
-            ],
-            [
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 2, 12, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 2, 17, 30), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day - 1, 7, 0), 2, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 1, 12, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 1, 17, 30), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day, 7, 0), 2, ""),
-              Reminder(DateTime(now.year, now.month, now.day, 12, 0), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day, 17, 30), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day + 1, 7, 0), 2, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day + 1, 12, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day + 1, 17, 30), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day + 2, 7, 0), 2, "")
-            ])
-      ],
-      [
-        MedicationReminder(
-            "id",
-            Prescription("", "pre X", "BV Y", []),
-            MedicineData(
-                "",
-                "Peas dmol",
-                24,
-                0,
-                2,
-                "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-                "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-                "Morning"),
-            [
-              Reminder(DateTime(now.year, now.month, now.day, 11, 0), 1, ""),
-              Reminder(DateTime(now.year, now.month, now.day, 19, 0), 1, ""),
-            ],
-            [
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 20, 11, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 20, 19, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 19, 11, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 19, 19, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 18, 11, 0), 1, ""),
-              Reminder(
-                  DateTime(now.year, now.month, now.day - 18, 19, 0), 1, ""),
-            ])
-      ]
-    ];
+    return [[], []];
   }
 
   Future<List<List<Prescription>>> getSelfPrescriptions() async {
@@ -250,7 +115,34 @@ class MedicationReminderCubit extends Cubit<CubitState> {
   }
 
   Future<bool> addReminder(List<MedicationReminder> reminder) async {
-    return true;
+    bool result = false;
+    List<Map<String, Object>> medicines = [];
+    for (MedicationReminder x in reminder) {
+      List<Map<String, dynamic>> dosages = [];
+      for (Reminder y in x.dayReminder) {
+        dosages.add(
+            {"amount": y.quantity, "time": DateFormat("HH:mm").format(y.time)});
+      }
+      medicines.add({
+        "quantity": MedicationReminder.getQuantity(x),
+        "id": x.medicine.getId(),
+        "startTime":
+            DateFormat("yyyy-MM-dd HH:mm:ss").format(x.allReminder[0].time),
+        "dosages": dosages
+      });
+    }
+    Map<String, dynamic> data = {
+      "prescriptId": reminder[0].prescription.id,
+      "medicine": medicines
+    };
+    await CommonService.instance.send(MessageIDPath.addReminder(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.addReminder(), value)) {
+        if (ServerLogic.getData(value) != null)
+          result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
   }
 
   Future<bool> addPrescription(Prescription prescription) async {
