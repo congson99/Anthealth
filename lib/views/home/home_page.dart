@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget {
       CommonText.section(S.of(context).Highlights, context),
       SizedBox(height: 16),
       ...state.posts.map((post) => Padding(
-        padding: const EdgeInsets.only(bottom: 24.0),
-        child: PostComponent(post: post),
-      ))
+            padding: const EdgeInsets.only(bottom: 24.0),
+            child: PostComponent(post: post),
+          ))
     ]);
   }
 
@@ -113,14 +113,14 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 16),
           child: SectionComponent(
               title: S.of(context).Medication_reminder +
-                  " (" +
                   ((long == 0)
-                      ? S.of(context).Today
-                      : ((long == 1)
-                          ? S.of(context).Tomorrow
-                          : DateFormat("dd.MM.yyyy")
-                              .format(reminderMask.time))) +
-                  ")",
+                      ? ""
+                      : " (" +
+                          ((long == 1)
+                              ? S.of(context).Tomorrow
+                              : DateFormat("dd.MM.yyyy")
+                                  .format(reminderMask.time)) +
+                          ")"),
               subTitle: DateFormat("HH:mm").format(reminderMask.time) +
                   " - " +
                   MedicineLogic.getUsage(

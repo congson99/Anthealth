@@ -22,7 +22,7 @@ class MedicationReminderCubit extends Cubit<CubitState> {
   /// Service Functions
   void loadMedicationReminder([DateTime? time]) async {
     emit(InitialState());
-    DateTime now = DateTime.now();
+    DateTime now = time ?? DateTime.now();
     List<ReminderMask> reminder = [];
     Map<String, dynamic> data = {
       "startTime": DateFormat("yyyy-MM-dd").format(now) + " 00:00:00",

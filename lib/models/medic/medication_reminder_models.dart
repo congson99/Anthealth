@@ -80,17 +80,16 @@ class MedicationReminder {
   }
 
   static MedicationReminder createDone(
-      double quantity, MedicationReminder reminder) {
+      double quantity, MedicationReminder reminder, DateTime dateTime) {
     double countQuantity = quantity;
     List<Reminder> allReminder = [];
-    DateTime now = DateTime.now();
     int counter = 0;
     while (countQuantity > 0) {
       allReminder.add(Reminder(
           DateTime(
-              now.year,
-              now.month,
-              now.day + 1,
+              dateTime.year,
+              dateTime.month,
+              dateTime.day,
               reminder.dayReminder[counter].time.hour,
               reminder.dayReminder[counter].time.minute),
           reminder.dayReminder[counter].quantity,

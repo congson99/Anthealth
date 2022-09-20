@@ -222,6 +222,7 @@ class _CreateReminderPageState extends State<CreateReminderPage> {
                 startController.text =
                     DateFormat("HH:mm dd.MM.yyyy").format(startTime);
               });
+              Navigator.pop(context);
             }));
   }
 
@@ -262,8 +263,11 @@ class _CreateReminderPageState extends State<CreateReminderPage> {
       List<Reminder> list = [];
       for (Reminder x in reminder!.dayReminder)
         if (x.time.year != -1) list.add(x);
-      setState(() => reminder!.dayReminder = list);
-      widget.done(MedicationReminder.createDone(quantity, reminder!));
+      MedicationReminder result = reminder!;
+      result.dayReminder = list;
+      DateTime dateTime =
+          DateFormat("hh:mm dd.MM.yyyy").parse(startController.text);
+      widget.done(MedicationReminder.createDone(quantity, result, dateTime));
     } else
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(S.of(context).required_fill)));

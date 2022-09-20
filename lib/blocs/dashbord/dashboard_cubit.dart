@@ -17,6 +17,7 @@ import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class DashboardCubit extends Cubit<CubitState> {
   DashboardCubit() : super(InitialState()) {
@@ -27,44 +28,67 @@ class DashboardCubit extends Cubit<CubitState> {
   home() async {
     emit(HomeLoadingState());
     List<MedicalAppointment> medicalAppointment = [];
-    List<ReminderMask> reminderMask = [];
     DateTime now = DateTime.now();
-    medicalAppointment.addAll([
-      MedicalAppointment(DateTime(now.year, now.month, now.day + 50, 0, 0),
-          "Bệnh viện đại học y dược", now, "Kiểm tra sức khoẻ định kỳ")
-    ]);
-    reminderMask.addAll([
-      ReminderMask(
-          "Name",
-          MedicineData(
-              "",
-              "Paradol Paradol ",
-              30,
-              0,
-              0,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              ""),
-          DateTime(now.year, now.month, now.day, 7, 0),
-          1,
-          "")
-    ]);
+    List<ReminderMask> reminder = [];
+    Map<String, dynamic> data = {
+      "startTime": DateFormat("yyyy-MM-dd HH:mm:ss").format(now),
+      "endTime": DateFormat("yyyy-MM-dd").format(now.add(Duration(days: 1))) +
+          " 23:59:59"
+    };
+    await CommonService.instance
+        .send(MessageIDPath.getDurationReminder(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getDurationReminder(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          for (dynamic x in ServerLogic.getData(value)["data"])
+            reminder.add(ReminderMask(
+                x["name"],
+                MedicineData("", x["name"], 0.0, int.parse(x["unit"]), 0,
+                    x["img"], "", ""),
+                DateTime.fromMicrosecondsSinceEpoch(x["time"] * 1000000),
+                0.0 + x["need_amount"],
+                ""));
+        }
+      }
+    });
+    reminder = reminder.sublist(0, 3);
+    await CommonService.instance.send(MessageIDPath.getMedicData(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getMedicData(), value)) {
+        if (value != "null") {
+          if (ServerLogic.getData(value)["upcomingAppointment"] != "")
+            medicalAppointment.addAll([
+              MedicalAppointment(
+                  DateTime.fromMillisecondsSinceEpoch(
+                      ServerLogic.getData(value)["upcomingAppointment"]
+                              ["time"] *
+                          1000),
+                  ServerLogic.getData(value)["upcomingAppointment"]["place"],
+                  now,
+                  ServerLogic.getData(value)["upcomingAppointment"]["content"])
+            ]);
+          print(value);
+        }
+      }
+    });
     List<dynamic> result = [];
-    while (medicalAppointment.length + reminderMask.length > 0) {
+    while (medicalAppointment.length + reminder.length > 0) {
       if (medicalAppointment.length == 0) {
-        result.addAll(reminderMask);
+        result.addAll(reminder);
         break;
       }
-      if (reminderMask.length == 0) {
+      if (reminder.length == 0) {
         result.addAll(medicalAppointment);
         break;
       }
-      if (medicalAppointment.first.dateTime.isBefore(reminderMask.first.time)) {
+      if (medicalAppointment.first.dateTime.isBefore(reminder.first.time)) {
         result.add(medicalAppointment.first);
         medicalAppointment.removeAt(0);
       } else {
-        result.add(reminderMask.first);
-        reminderMask.removeAt(0);
+        result.add(reminder.first);
+        reminder.removeAt(0);
       }
     }
     List<Post> posts = [];
@@ -98,16 +122,18 @@ class DashboardCubit extends Cubit<CubitState> {
 
   void medic() async {
     emit(MedicLoadingState());
+    MedicPageData data = MedicPageData("", "", []);
     await CommonService.instance.send(MessageIDPath.getMedicData(), {});
-    CommonService.instance.client!.getData().then((value) {
+    await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getMedicData(), value)) {
-        emit(MedicState(MedicPageData.formatData(
+        data = MedicPageData.formatData(
             ServerLogic.getData(value)["latestMedicalRecord"],
             ServerLogic.getData(value)["upcomingAppointment"],
-            ServerLogic.getData(value)["medicineBoxes"])));
+            ServerLogic.getData(value)["medicineBoxes"]);
       }
     });
+    emit(MedicState(data));
   }
 
   family() async {
