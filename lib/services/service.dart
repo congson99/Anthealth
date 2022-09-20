@@ -12,6 +12,8 @@ class CommonService {
       _tryConnectServer();
       await Future.delayed(const Duration(seconds: 1), () {});
     }
+    client?.send(100, jsonEncode({}));
+    await Future.delayed(Duration(milliseconds: 100));
     client?.send(msgID, jsonEncode(msgData));
   }
 
