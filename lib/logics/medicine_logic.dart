@@ -19,6 +19,64 @@ class MedicineLogic {
     return result;
   }
 
+  static List<Map<String, dynamic>> dosages(List<double> dosage) {
+    List<Map<String, dynamic>> dosages = [];
+    for (int i = 0; i < 4; i++) {
+      switch (i) {
+        case (0):
+          if (dosage[0] != 0.0) {
+            dosages.add({"time": "07:00", "amount": dosage[0]});
+          }
+          break;
+        case (1):
+          if (dosage[1] != 0.0) {
+            dosages.add({"time": "11:00", "amount": dosage[1]});
+          }
+          break;
+        case (2):
+          if (dosage[2] != 0.0) {
+            dosages.add({"time": "17:00", "amount": dosage[2]});
+          }
+          break;
+        case (3):
+          if (dosage[3] != 0.0) {
+            dosages.add({"time": "19:00", "amount": dosage[3]});
+          }
+          break;
+      }
+    }
+    return dosages;
+  }
+
+  static List<double> formatDosage(List<dynamic> data) {
+    List<double> result = [0, 0, 0, 0];
+    for (dynamic y in data) {
+      switch (y["time"]) {
+        case ("07:00"):
+          {
+            result[0] = 0.0 + y["amount"];
+            break;
+          }
+        case ("11:00"):
+          {
+            result[1] = 0.0 + y["amount"];
+            break;
+          }
+        case ("17:00"):
+          {
+            result[2] = 0.0 + y["amount"];
+            break;
+          }
+        case ("19:00"):
+          {
+            result[3] = 0.0 + y["amount"];
+            break;
+          }
+      }
+    }
+    return result;
+  }
+
   static String handleMedicineWithoutDosageString(
       BuildContext context, MedicineData medicine) {
     String result = "";

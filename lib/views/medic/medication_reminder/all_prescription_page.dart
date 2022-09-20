@@ -19,11 +19,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AllPrescriptionPage extends StatefulWidget {
   const AllPrescriptionPage(
-      {Key? key, required this.dashboardContext, required this.superContext})
+      {Key? key,
+      required this.dashboardContext,
+      required this.superContext,
+      required this.selfPrescription,
+      required this.autoPrescription})
       : super(key: key);
 
   final BuildContext dashboardContext;
   final BuildContext superContext;
+  final List<Prescription> selfPrescription;
+  final List<Prescription> autoPrescription;
 
   @override
   State<AllPrescriptionPage> createState() => _AllPrescriptionPageState();
@@ -35,13 +41,9 @@ class _AllPrescriptionPageState extends State<AllPrescriptionPage> {
 
   @override
   void initState() {
+    selfPrescription = widget.selfPrescription;
+    autoPrescription = widget.autoPrescription;
     super.initState();
-    selfPrescription =
-        BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-            .getAllPrescriptions()[0];
-    autoPrescription =
-        BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-            .getAllPrescriptions()[1];
   }
 
   @override
@@ -193,22 +195,23 @@ class _AllPrescriptionPageState extends State<AllPrescriptionPage> {
                       .addPrescription(result)
                       .then((value) {
                     if (value) {
-                      setState(() {
-                        selfPrescription =
-                            BlocProvider.of<MedicationReminderCubit>(
-                                    widget.superContext)
-                                .getAllPrescriptions()[0];
-                        autoPrescription =
-                            BlocProvider.of<MedicationReminderCubit>(
-                                    widget.superContext)
-                                .getAllPrescriptions()[1];
+                      BlocProvider.of<MedicationReminderCubit>(
+                              widget.superContext)
+                          .getSelfPrescriptions()
+                          .then((value) {
+                        setState(() {
+                          selfPrescription = value[1];
+                        });
                       });
                       ShowSnackBar.showSuccessSnackBar(
-                          context,S.of(context).Create_prescription +
+                          context,
+                          S.of(context).Create_prescription +
                               ' ' +
                               S.of(context).successfully +
                               '!');
-                    }
+                    } else
+                      ShowSnackBar.showErrorSnackBar(
+                          context, S.of(context).something_wrong);
                   });
                 })));
   }

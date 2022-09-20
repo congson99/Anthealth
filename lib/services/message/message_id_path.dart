@@ -50,4 +50,10 @@ class MessageIDPath {
   static int grantFamilyMember() => 2509;
 
   static int getMedicines() => 2318;
+
+  static int getSelfPrescription() => 2401;
+
+  static int addSelfPrescription() => 2402;
+
+  static int getPosts() => 2319;
 }

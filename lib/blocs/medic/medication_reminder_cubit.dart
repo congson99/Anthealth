@@ -1,7 +1,11 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/medic/medication_reminder_state.dart';
+import 'package:anthealth_mobile/logics/medicine_logic.dart';
+import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/medic/medical_record_models.dart';
 import 'package:anthealth_mobile/models/medic/medication_reminder_models.dart';
+import 'package:anthealth_mobile/services/message/message_id_path.dart';
+import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicationReminderCubit extends Cubit<CubitState> {
@@ -184,65 +188,61 @@ class MedicationReminderCubit extends Cubit<CubitState> {
     ];
   }
 
-  List<List<Prescription>> getAllPrescriptions() {
-    return [
-      [
-        Prescription("", "Thuoc Bo Hang Ngay", "", [
-          DigitalMedicine(
-              "",
-              "Peas dmol",
-              24,
-              0,
-              2,
-              [1, 1, 0, 0],
-              [],
-              00000001,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DigitalMedicine(
-              "",
-              "Peas dmosa da sl",
-              24,
-              0,
-              2,
-              [0, 1, 1, 0],
-              [],
-              00000001,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning")
-        ])
-      ],
-      [
-        Prescription("", "Kham Mat", "(20.10.2022) BV Cho Ray", [
-          DigitalMedicine(
-              "",
-              "Peas dmol",
-              24,
-              0,
-              2,
-              [1, 0, 1, 1],
-              [],
-              00000001,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning"),
-          DigitalMedicine(
-              "",
-              "Peas dmosa da sl",
-              24,
-              0,
-              2,
-              [1, 1, 1, 1],
-              [],
-              00000001,
-              "https://drugbank.vn/api/public/gridfs/box-panadol-extra-optizobaddvi-thuoc100190do-chinh-dien-15236089259031797856781.jpg",
-              "https://drugbank.vn/thuoc/Panadol-Extra-with-Optizorb&VN-19964-16",
-              "Morning")
-        ])
-      ]
-    ];
+  Future<List<List<Prescription>>> getSelfPrescriptions() async {
+    List<List<Prescription>> result = [[], []];
+    await CommonService.instance.send(MessageIDPath.getSelfPrescription(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getSelfPrescription(), value)) {
+        if (value != "null")
+          for (dynamic x in ServerLogic.getData(value)["create_prescript"]) {
+            List<DigitalMedicine> medication = [];
+            for (dynamic y in x["medicine"])
+              medication.add(DigitalMedicine(
+                  y["id"],
+                  y["data"]["name"],
+                  0.0 + y["quantity"],
+                  int.parse(y["data"]["unit"]),
+                  0,
+                  MedicineLogic.formatDosage(y["dosages"]),
+                  [],
+                  int.parse(y["repeat"]),
+                  y["data"]["img"],
+                  y["data"]["ref"],
+                  y["note"]));
+            result[1].add(Prescription(x["id"], x["name"], "", medication));
+          }
+        for (dynamic x in ServerLogic.getData(value)["record_prescript"]) {
+          if (x["medicine"].length == 0) continue;
+          List<DigitalMedicine> medication = [];
+          for (dynamic y in x["medicine"])
+            medication.add(DigitalMedicine(
+                y["id"],
+                y["data"]["name"],
+                0.0 + y["quantity"],
+                int.parse(y["data"]["unit"]),
+                0,
+                MedicineLogic.formatDosage(y["dosages"]),
+                [],
+                int.parse(y["repeat"]),
+                y["data"]["img"],
+                y["data"]["ref"],
+                y["note"]));
+          result[0].add(Prescription(
+              x["id"],
+              x["name"],
+              x["desc"]["place"] + " - " + x["desc"]["create_time"],
+              medication));
+        }
+      }
+    });
+    return result;
+  }
+
+  Future<List<Prescription>> getRecordPrescriptions() async {
+    List<Prescription> result = [];
+
+    return result;
   }
 
   Future<bool> stopReminder(MedicationReminder reminder) async {
@@ -254,6 +254,29 @@ class MedicationReminderCubit extends Cubit<CubitState> {
   }
 
   Future<bool> addPrescription(Prescription prescription) async {
-    return true;
+    bool result = false;
+    List<Map<String, dynamic>> medication = [];
+    for (DigitalMedicine x in prescription.medication)
+      medication.add({
+        "id": x.id,
+        "repeat": MedicineLogic.convertRepeat(x.repeat),
+        "note": x.note,
+        "dosages": MedicineLogic.dosages(x.dosage),
+        "quantity": x.quantity
+      });
+    Map<String, dynamic> data = {
+      "name": prescription.name,
+      "medicine": medication
+    };
+    await CommonService.instance
+        .send(MessageIDPath.addSelfPrescription(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.addSelfPrescription(), value)) {
+        if (ServerLogic.getData(value) != null)
+          result = ServerLogic.getData(value)["status"];
+      }
+    });
+    return result;
   }
 }

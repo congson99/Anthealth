@@ -53,31 +53,7 @@ class MedicalRecordCubit extends Cubit<CubitState> {
   Future<bool> addData(MedicalRecordDetailData data) async {
     List<Map<String, dynamic>> medicines = [];
     for (DigitalMedicine m in data.prescription) {
-      List<Map<String, dynamic>> dosages = [];
-      for (int i = 0; i < 4; i++) {
-        switch (i) {
-          case (0):
-            if (m.dosage[0] != 0.0) {
-              dosages.add({"time": "07:00", "amount": m.dosage[0]});
-            }
-            break;
-          case (1):
-            if (m.dosage[1] != 0.0) {
-              dosages.add({"time": "11:00", "amount": m.dosage[1]});
-            }
-            break;
-          case (2):
-            if (m.dosage[2] != 0.0) {
-              dosages.add({"time": "17:00", "amount": m.dosage[2]});
-            }
-            break;
-          case (3):
-            if (m.dosage[3] != 0.0) {
-              dosages.add({"time": "19:00", "amount": m.dosage[3]});
-            }
-            break;
-        }
-      }
+      List<Map<String, dynamic>> dosages = MedicineLogic.dosages(m.dosage);
       medicines.add({
         "id": m.id,
         "repeat": MedicineLogic.convertRepeat(m.repeat),

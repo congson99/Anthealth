@@ -68,9 +68,22 @@ class MedicationReminderPage extends StatelessWidget {
           colorID: 2),
       SizedBox(height: 16),
       SectionComponent(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => AllPrescriptionPage(
-                  dashboardContext: dashboardContext, superContext: context))),
+          onTap: () async {
+            List<Prescription> selfPrescription = [];
+            List<Prescription> autoPrescription = [];
+            await BlocProvider.of<MedicationReminderCubit>(context)
+                .getSelfPrescriptions()
+                .then((value) {
+              autoPrescription = value[0];
+              selfPrescription = value[1];
+            });
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => AllPrescriptionPage(
+                    dashboardContext: dashboardContext,
+                    superContext: context,
+                    selfPrescription: selfPrescription,
+                    autoPrescription: autoPrescription)));
+          },
           title: S.of(context).All_prescription,
           colorID: isToday ? 0 : 1),
     ]);
