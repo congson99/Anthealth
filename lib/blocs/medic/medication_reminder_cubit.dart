@@ -126,6 +126,7 @@ class MedicationReminderCubit extends Cubit<CubitState> {
       medicines.add({
         "quantity": MedicationReminder.getQuantity(x),
         "id": x.medicine.getId(),
+        "repeat": x.repeat,
         "startTime":
             DateFormat("yyyy-MM-dd HH:mm:ss").format(x.allReminder[0].time),
         "dosages": dosages

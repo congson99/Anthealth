@@ -47,6 +47,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildPost(BuildContext context, HomeState state) {
+    if (state.posts.length == 0) return Container();
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CommonText.section(S.of(context).Highlights, context),
       SizedBox(height: 16),

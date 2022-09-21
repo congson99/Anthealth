@@ -8,8 +8,13 @@ class ServerLogic {
       debugPrint("Load data failed");
       return false;
     }
-    dynamic jData = jsonDecode(data);
-    return (jData["msgID"] == id);
+    try {
+      dynamic jData = jsonDecode(data);
+      return (jData["msgID"] == id);
+    } catch (e) {
+      debugPrint("Load data failed: $e");
+      return false;
+    }
   }
 
   static dynamic getData(String data) => jsonDecode(data)["msgData"];
