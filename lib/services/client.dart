@@ -10,8 +10,10 @@ class Client {
   String host;
   int port;
   String? _data;
+  List<int> tmpBufList;
+  int totalRecv = 0;
 
-  Client(this.host, this.port);
+  Client(this.host, this.port,this.tmpBufList);
 
   void connect() {
     Socket.connect(host, port).then((Socket sock) {
@@ -33,8 +35,30 @@ class Client {
   /// Socket listener
   void dataHandler(data) {
     Uint8List bdata = data as Uint8List;
-    RMessage rMessage = RMessage(bdata);
-    _data = rMessage.toString();
+    print("[TTVU] recv_size = " + bdata.lengthInBytes.toString());
+
+    if (totalRecv == 0)
+      {
+        var bLen = ByteData.view(bdata.buffer).getInt32(0)>>2;
+        print("[TTVU] bLen = " + bLen.toString());
+
+        totalRecv = bLen;
+      }
+    if (tmpBufList.isEmpty)
+      tmpBufList.addAll(bdata.toList());
+    Uint8List tmpBuf = Uint8List.fromList(tmpBufList);
+    if (tmpBuf.lengthInBytes >= totalRecv)
+      {
+
+        RMessage rMessage = RMessage(tmpBuf);
+        _data = rMessage.toString();
+        tmpBufList.clear();
+      }
+    else
+      {
+        tmpBufList.addAll(bdata);
+      }
+
   }
 
   void _errorHandler(error, StackTrace trace) {

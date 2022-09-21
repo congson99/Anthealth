@@ -7,8 +7,8 @@ class HttpService {
   final int _masterPort = 8090;
 
   // final String _serverHost = "172.16.0.254";
-  final String _serverHost = "45.124.95.120";
-  // final String _serverHost = "192.168.87.14";
+  // final String _serverHost = "45.124.95.120";
+  final String _serverHost = "192.168.15.105";
   final int _serverPort = 8888;
   final _headers = {'Content-Type': 'application/json'};
   final _encoding = Encoding.getByName('utf-8');
