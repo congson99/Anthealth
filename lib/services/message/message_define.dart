@@ -14,10 +14,8 @@ abstract class BaseMessage{
 
     //var timeSv =  ByteData.view(buf.buffer).getInt32(4);
     msgID = ByteData.view(buf.buffer).getInt32(8);
-    print("[TTVU] msgId = " + msgID.toString());
     // msgData = utf8.decode(buf.buffer.asInt8List(12));
     msgData = String.fromCharCodes(buf.buffer.asUint8List(12));
-    print("[TTVU] data = " + msgData.toString());
     var tmp = msgData;
     msgData = utf8.decode(tmp!.codeUnits);
   }
