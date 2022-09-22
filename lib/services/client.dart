@@ -36,29 +36,21 @@ class Client {
   void dataHandler(data) {
     Uint8List bdata = data as Uint8List;
     print("[TTVU] recv_size = " + bdata.lengthInBytes.toString());
-
     if (totalRecv == 0)
-      {
-        var bLen = ByteData.view(bdata.buffer).getInt32(0)>>2;
-        print("[TTVU] bLen = " + bLen.toString());
-
-        totalRecv = bLen;
-      }
-    if (tmpBufList.isEmpty)
-      tmpBufList.addAll(bdata.toList());
+    {
+      totalRecv = ByteData.view(bdata.buffer).getInt32(0)>>2; // lấy kích thước dữ liệu
+      print("[TTVU] package_size = " + totalRecv.toString());
+    }
+    tmpBufList.addAll(bdata.toList());
     Uint8List tmpBuf = Uint8List.fromList(tmpBufList);
     if (tmpBuf.lengthInBytes >= totalRecv)
-      {
+    {
 
-        RMessage rMessage = RMessage(tmpBuf);
-        _data = rMessage.toString();
-        tmpBufList.clear();
-      }
-    else
-      {
-        tmpBufList.addAll(bdata);
-      }
-
+      RMessage rMessage = RMessage(tmpBuf);
+      _data = rMessage.toString();
+      tmpBufList.clear();
+      totalRecv = 0;
+    }
   }
 
   void _errorHandler(error, StackTrace trace) {
