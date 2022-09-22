@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:ffi';
+import 'dart:typed_data';
 
 import 'package:anthealth_mobile/services/client.dart';
 import 'package:anthealth_mobile/services/http/http_service.dart';
@@ -19,7 +21,7 @@ class CommonService {
 
   void _tryConnectServer() {
     var serverInfo = HttpService.instance.getServerInfo();
-    client = Client(serverInfo['host'], serverInfo['port']);
+    client = Client(serverInfo['host'], serverInfo['port'], <int>[]);
     client?.connect();
   }
 
