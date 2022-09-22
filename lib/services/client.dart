@@ -35,11 +35,9 @@ class Client {
   /// Socket listener
   void dataHandler(data) {
     Uint8List bdata = data as Uint8List;
-    print("[TTVU] recv_size = " + bdata.lengthInBytes.toString());
     if (totalRecv == 0)
     {
       totalRecv = ByteData.view(bdata.buffer).getInt32(0)>>2; // lấy kích thước dữ liệu
-      print("[TTVU] package_size = " + totalRecv.toString());
     }
     tmpBufList.addAll(bdata.toList());
     Uint8List tmpBuf = Uint8List.fromList(tmpBufList);
