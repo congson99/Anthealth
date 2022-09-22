@@ -18,7 +18,6 @@ class MedicalContactPage extends StatelessWidget {
     return TemplateFormPage(
         title: S.of(context).Hospital_info,
         back: () => back(context),
-        edit: () {},
         content: buildContent(context));
   }
 

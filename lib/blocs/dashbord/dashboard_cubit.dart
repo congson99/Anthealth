@@ -299,37 +299,40 @@ class DashboardCubit extends Cubit<CubitState> {
   }
 
   Future<List<MedicineData>> getMedications() async {
-    var jsonText = await rootBundle.loadString('assets/hardData/medicine.json');
-    List data = json.decode(jsonText);
     List<MedicineData> result = [];
-    for (dynamic x in data) {
-      result.add(MedicineData(
-          "",
-          x["name"],
-          0,
-          0,
-          0,
-          x["image"],
-          x["Link"],
-          "Thành phần:\n" +
-              x["ingredients"] +
-              "\n\n1. Chỉ định:\n" +
-              x["allocate"] +
-              "\n\n2. Chống chỉ định:\n" +
-              x["contraindications"] +
-              "\n\n3. Liều dùng/Cách dùng:\n" +
-              x["dosage"] +
-              "\n\n4. Tác dụng phụ:\n" +
-              x["sideEffects"] +
-              "\n\n5. Thận trọng:\n" +
-              x["Careful"] +
-              "\n\n6. Tương tác thuốc:\n" +
-              x["Interactions"] +
-              "\n\n7. Bảo quản:\n" +
-              x["Preserve"] +
-              "\n\n8. Đóng gói:\n" +
-              x["Pack"]));
-    }
+    await CommonService.instance.send(MessageIDPath.getMedicines(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      print(value);
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getMedicines(), value))
+        for (dynamic x in ServerLogic.getData(value)["data"]) {
+          result.add(MedicineData(
+              x["id"],
+              x["name"],
+              0,
+              int.parse(x["unit"]),
+              0,
+              x["img"],
+              x["reference"],
+              "Thành phần:\n" +
+                  x["component"] +
+                  "\n\n1. Chỉ định:\n" +
+                  x["point"] +
+                  "\n\n2. Chống chỉ định:\n" +
+                  x["no_point"] +
+                  "\n\n3. Liều dùng/Cách dùng:\n" +
+                  x["use"] +
+                  "\n\n4. Tác dụng phụ:\n" +
+                  x["side_effects"] +
+                  "\n\n5. Thận trọng:\n" +
+                  x["careful"] +
+                  "\n\n6. Tương tác thuốc:\n" +
+                  x["interact"] +
+                  "\n\n7. Bảo quản:\n" +
+                  x["preserve"] +
+                  "\n\n8. Đóng gói:\n" +
+                  x["pack"]));
+        }
+    });
     return result;
   }
 

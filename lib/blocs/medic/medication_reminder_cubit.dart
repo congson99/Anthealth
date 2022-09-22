@@ -48,8 +48,11 @@ class MedicationReminderCubit extends Cubit<CubitState> {
     loadedData(MedicationReminderState(time ?? DateTime.now(), reminder));
   }
 
-  List<List<MedicationReminder>> getAllReminders() {
-    DateTime now = DateTime.now();
+  Future<List<List<MedicationReminder>>> getAllReminders() async {
+    await CommonService.instance.send(MessageIDPath.getAllReminder(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      print(value);
+    });
     return [[], []];
   }
 

@@ -60,4 +60,6 @@ class MessageIDPath {
   static int addReminder() => 2404;
 
   static int getDurationReminder() => 2403;
+
+  static int getAllReminder() => 2405;
 }

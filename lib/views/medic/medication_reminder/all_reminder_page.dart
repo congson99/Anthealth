@@ -30,12 +30,12 @@ class _AllReminderPageState extends State<AllReminderPage> {
   @override
   void initState() {
     super.initState();
-    activeReminders =
-        BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-            .getAllReminders()[0];
-    doneReminders =
-        BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-            .getAllReminders()[1];
+    BlocProvider.of<MedicationReminderCubit>(widget.superContext)
+        .getAllReminders()
+        .then((value) {
+      activeReminders = value[0];
+      doneReminders = value[1];
+    });
   }
 
   @override
@@ -223,13 +223,11 @@ class _AllReminderPageState extends State<AllReminderPage> {
         .stopReminder(reminder)
         .then((value) {
       if (value) {
-        setState(() {
-          activeReminders =
-              BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-                  .getAllReminders()[0];
-          doneReminders =
-              BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-                  .getAllReminders()[1];
+        BlocProvider.of<MedicationReminderCubit>(widget.superContext)
+            .getAllReminders()
+            .then((value) {
+          activeReminders = value[0];
+          doneReminders = value[1];
         });
       }
     });
