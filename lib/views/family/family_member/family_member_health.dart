@@ -84,7 +84,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => HeightPage(
                           dashboardContext: context,
-                          data: widget.data,
+                          mem: widget.data,
                           user: User("id", "name", "avatarPath", "phoneNumber",
                               "email", false, widget.data.yob, 0),
                         ))),
@@ -100,7 +100,7 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
                     builder: (_) => WeightPage(
                         dashboardContext: context,
                         latestHeight: latestHeight,
-                        data: widget.data))),
+                        mem: widget.data))),
                 colorID: 1,
                 iconPath: "assets/indicators/weight.png",
                 value: indicatorLatestData[1],
@@ -111,7 +111,17 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => HeartRatePage(
-                        dashboardContext: context, data: widget.data))),
+                        dashboardContext: context,
+                        mem: widget.data,
+                        user: User(
+                            widget.data.id,
+                            widget.data.name,
+                            widget.data.avatarPath,
+                            widget.data.phoneNumber,
+                            "",
+                            false,
+                            widget.data.yob,
+                            widget.data.sex)))),
                 colorID: 2,
                 iconPath: "assets/indicators/heart_rate.png",
                 value: indicatorLatestData[2],
@@ -122,7 +132,17 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => SPO2Page(
-                        dashboardContext: context, data: widget.data))),
+                        dashboardContext: context,
+                        mem: widget.data,
+                        user: User(
+                            widget.data.id,
+                            widget.data.name,
+                            widget.data.avatarPath,
+                            widget.data.phoneNumber,
+                            "",
+                            false,
+                            widget.data.yob,
+                            widget.data.sex)))),
                 colorID: 0,
                 iconPath: "assets/indicators/spo2.png",
                 value: indicatorLatestData[5],
@@ -133,7 +153,17 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => TemperaturePage(
-                        dashboardContext: context, data: widget.data))),
+                        dashboardContext: context,
+                        mem: widget.data,
+                        user: User(
+                            widget.data.id,
+                            widget.data.name,
+                            widget.data.avatarPath,
+                            widget.data.phoneNumber,
+                            "",
+                            false,
+                            widget.data.yob,
+                            widget.data.sex)))),
                 colorID: 1,
                 iconPath: "assets/indicators/temperature.png",
                 value: indicatorLatestData[3],
@@ -144,7 +174,17 @@ class _FamilyMemberHealthState extends State<FamilyMemberHealth> {
             IndicatorComponent(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => BloodPressurePage(
-                        dashboardContext: context, data: widget.data))),
+                        dashboardContext: context,
+                        mem: widget.data,
+                        user: User(
+                            widget.data.id,
+                            widget.data.name,
+                            widget.data.avatarPath,
+                            widget.data.phoneNumber,
+                            "",
+                            false,
+                            widget.data.yob,
+                            widget.data.sex)))),
                 colorID: 2,
                 iconPath: "assets/indicators/blood_pressure.png",
                 value: indicatorLatestData[4],

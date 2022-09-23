@@ -27,18 +27,18 @@ import 'package:intl/intl.dart';
 
 class HeightPage extends StatelessWidget {
   const HeightPage(
-      {Key? key, this.dashboardContext, this.data, required this.user})
+      {Key? key, this.dashboardContext, this.mem, required this.user})
       : super(key: key);
 
   final BuildContext? dashboardContext;
   final String unit = 'm';
-  final FamilyMemberData? data;
+  final FamilyMemberData? mem;
   final User user;
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
       create: (context) =>
-          IndicatorCubit(0, 0, id: (data == null) ? null : data?.id),
+          IndicatorCubit(0, 0, id: (mem == null) ? null : mem?.id),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState || state is IndicatorLoadingState) {
           IndicatorPageData pageData = IndicatorPageData(
@@ -50,7 +50,7 @@ class HeightPage extends StatelessWidget {
               IndicatorFilter(0, DateTime.now()), []);
           if (state is IndicatorState) pageData = state.data;
           if (state is IndicatorLoadingState) pageData = state.data;
-          if (data == null)
+          if (mem == null)
             return TemplateFormPage(
                 title: S.of(context).Height,
                 back: () => back(context),
@@ -62,8 +62,8 @@ class HeightPage extends StatelessWidget {
           else
             return TemplateAvatarFormPage(
                 firstTitle: S.of(context).Height,
-                name: data!.name,
-                avatarPath: data!.avatarPath,
+                name: mem!.name,
+                avatarPath: mem!.avatarPath,
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));
         } else
@@ -84,7 +84,7 @@ class HeightPage extends StatelessWidget {
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
           if (pageData.getMoreInfo().getContent() != "")
-            IndicatorMoreInfo(information: pageData.getMoreInfo()),
+            IndicatorMoreInfo(information: customMoreInfo()),
           buildDetailContainer(context, pageData, loading)
         ]);
   }
@@ -102,7 +102,8 @@ class HeightPage extends StatelessWidget {
             content: [S.of(context).Year, S.of(context).All_time],
             index: data.getFilter().getFilterIndex(),
             onIndexChange: (index) => BlocProvider.of<IndicatorCubit>(context)
-                .updateData(data, IndicatorFilter(index, DateTime.now())),
+                .updateData(data, IndicatorFilter(index, DateTime.now()),
+                    id: mem?.id),
             colorID: 0,
           ),
           if (data.getFilter().getFilterIndex() == 0)
@@ -124,16 +125,16 @@ class HeightPage extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(0,
-                        IndicatorLogic.addYear(data.getFilter().getTime(), 1)));
+                        IndicatorLogic.addYear(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addYear(
-                            data.getFilter().getTime(), -1)));
+                    IndicatorFilter(0,
+                        IndicatorLogic.addYear(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -169,7 +170,8 @@ class HeightPage extends StatelessWidget {
       return;
     }
     BlocProvider.of<IndicatorCubit>(context).updateData(
-        data, IndicatorFilter(0, data.getData()[index].getDateTime()));
+        data, IndicatorFilter(0, data.getData()[index].getDateTime()),
+        id: mem?.id);
   }
 
   void showPopup(BuildContext context, int index, IndicatorPageData pageData) {
@@ -182,10 +184,10 @@ class HeightPage extends StatelessWidget {
             time: DateFormat('hh:mm dd.MM.yyyy')
                 .format(pageData.getData()[index].getDateTime()),
             recordID: pageData.getData()[index].getRecordID(),
-            delete: (data != null)
+            delete: (mem != null)
                 ? null
                 : () => popupDelete(context, index, pageData),
-            edit: (data != null)
+            edit: (mem != null)
                 ? null
                 : () => popupEdit(context, index, pageData),
             close: () => Navigator.pop(context)));
@@ -205,7 +207,7 @@ class HeightPage extends StatelessWidget {
                   .then((value) {
                 if (value)
                   BlocProvider.of<IndicatorCubit>(context)
-                      .updateData(data, data.getFilter());
+                      .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(context,
                     "${S.of(context).Delete_height} ${S.of(context).successfully}");
               });
@@ -245,7 +247,7 @@ class HeightPage extends StatelessWidget {
                         data.getOwnerID())
                     .then((value) {
                   BlocProvider.of<IndicatorCubit>(context)
-                      .updateData(data, data.getFilter());
+                      .updateData(data, data.getFilter(), id: mem?.id);
                   ShowSnackBar.showSuccessSnackBar(
                       context,
                       S.of(context).Edit_height +
@@ -311,8 +313,48 @@ class HeightPage extends StatelessWidget {
         ShowSnackBar.showSuccessSnackBar(context,
             S.of(context).Add_height + ' ' + S.of(context).successfully + '!');
       BlocProvider.of<IndicatorCubit>(context)
-          .updateData(state.data, state.data.getFilter());
+          .updateData(state.data, state.data.getFilter(), id: mem?.id);
     });
     Navigator.pop(context);
+  }
+
+  MoreInfo customMoreInfo() {
+    MoreInfo moreInfo = MoreInfo("", "");
+    if (user.yOB == -1) {
+      moreInfo.content = "todo";
+      return moreInfo;
+    }
+    int age = DateTime.now().year - user.yOB;
+    // Male
+    if (user.sex == 1) {
+      switch (age) {
+        case (1):
+          {
+            moreInfo.content = "todo";
+            break;
+          }
+        default:
+          {
+            moreInfo.content = "todo";
+            break;
+          }
+      }
+    }
+    // Female
+    if (user.sex == 1) {
+      switch (age) {
+        case (1):
+          {
+            moreInfo.content = "todo";
+            break;
+          }
+        default:
+          {
+            moreInfo.content = "todo";
+            break;
+          }
+      }
+    }
+    return moreInfo;
   }
 }

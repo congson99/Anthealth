@@ -49,11 +49,46 @@ class MedicationReminderCubit extends Cubit<CubitState> {
   }
 
   Future<List<List<MedicationReminder>>> getAllReminders() async {
+    List<MedicationReminder> activeReminders = [];
+    List<MedicationReminder> doneReminders = [];
     await CommonService.instance.send(MessageIDPath.getAllReminder(), {});
     await CommonService.instance.client!.getData().then((value) {
-      print(value);
+      if (value != "null") {
+        for (dynamic x in ServerLogic.getData(value)["data"]) {
+          if (x["status"] == 1) {
+            List<Reminder> temp = [];
+            for (dynamic y in x["dosages"]) {
+              temp.add(Reminder(
+                  DateFormat("hh:mm").parse(y["time"]), 0.0 + y["amount"], ""));
+            }
+            activeReminders.add(MedicationReminder(
+                x["reminderId"],
+                Prescription(x["prescriptId"], "", "", []),
+                MedicineData(x["medicineId"], x["name"], 0.0 + x["quantity"],
+                    int.parse(x["unit"]), 0, x["img"], "", ""),
+                temp,
+                temp,
+                x["repeat"]));
+          }
+          if (x["status"] == -1) {
+            List<Reminder> temp = [];
+            for (dynamic y in x["dosages"]) {
+              temp.add(Reminder(
+                  DateFormat("hh:mm").parse(y["time"]), 0.0 + y["amount"], ""));
+            }
+            doneReminders.add(MedicationReminder(
+                x["reminderId"],
+                Prescription(x["prescriptId"], "", "", []),
+                MedicineData(x["medicineId"], x["name"], 0.0 + x["quantity"],
+                    int.parse(x["unit"]), 0, x["img"], "", ""),
+                temp,
+                temp,
+                x["repeat"]));
+          }
+        }
+      }
     });
-    return [[], []];
+    return [activeReminders, doneReminders];
   }
 
   Future<List<List<Prescription>>> getSelfPrescriptions() async {

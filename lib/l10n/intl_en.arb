@@ -410,5 +410,6 @@
   "btn_invite": "INVITE",
   "invite": "Invite ",
   "can_not_out": "You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.",
-  "no_family": "You have no family!"
+  "no_family": "You have no family!",
+  "Medicine_info": "Medicine infomation"
 }

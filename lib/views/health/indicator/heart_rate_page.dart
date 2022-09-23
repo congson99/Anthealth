@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/logics/dateTime_logic.dart';
 import 'package:anthealth_mobile/logics/indicator_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/health/indicator_models.dart';
+import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -26,18 +27,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class HeartRatePage extends StatelessWidget {
-  const HeartRatePage({Key? key, this.dashboardContext, this.data})
+  const HeartRatePage(
+      {Key? key, this.dashboardContext, this.mem, required this.user})
       : super(key: key);
 
   final BuildContext? dashboardContext;
   final String unit = 'BPM';
-
-  final FamilyMemberData? data;
+  final User user;
+  final FamilyMemberData? mem;
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
       create: (context) =>
-          IndicatorCubit(2, 0, id: (data == null) ? null : data?.id),
+          IndicatorCubit(2, 0, id: (mem == null) ? null : mem?.id),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState || state is IndicatorLoadingState) {
           IndicatorPageData pageData = IndicatorPageData(
@@ -49,7 +51,7 @@ class HeartRatePage extends StatelessWidget {
               IndicatorFilter(0, DateTime.now()), []);
           if (state is IndicatorState) pageData = state.data;
           if (state is IndicatorLoadingState) pageData = state.data;
-          if (data == null)
+          if (mem == null)
             return TemplateFormPage(
                 title: S.of(context).Heart_rate,
                 back: () => back(context),
@@ -61,8 +63,8 @@ class HeartRatePage extends StatelessWidget {
           else
             return TemplateAvatarFormPage(
                 firstTitle: S.of(context).Heart_rate,
-                name: data!.name,
-                avatarPath: data!.avatarPath,
+                name: mem!.name,
+                avatarPath: mem!.avatarPath,
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));
         } else
@@ -83,7 +85,7 @@ class HeartRatePage extends StatelessWidget {
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
           if (pageData.getMoreInfo().getContent() != "")
-            IndicatorMoreInfo(information: pageData.getMoreInfo()),
+            IndicatorMoreInfo(information: customMoreInfo()),
           buildDetailContainer(context, pageData, loading)
         ]);
   }
@@ -105,7 +107,8 @@ class HeartRatePage extends StatelessWidget {
             ],
             index: data.getFilter().getFilterIndex(),
             onIndexChange: (index) => BlocProvider.of<IndicatorCubit>(context)
-                .updateData(data, IndicatorFilter(index, DateTime.now())),
+                .updateData(data, IndicatorFilter(index, DateTime.now()),
+                    id: mem?.id),
             colorID: 0,
           ),
           if (data.getFilter().getFilterIndex() == 0)
@@ -131,16 +134,16 @@ class HeartRatePage extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(0,
-                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)));
+                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addHour(
-                            data.getFilter().getTime(), -1)));
+                    IndicatorFilter(0,
+                        IndicatorLogic.addHour(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -155,14 +158,16 @@ class HeartRatePage extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
-                        IndicatorLogic.addDay(data.getFilter().getTime(), 1)));
+                        IndicatorLogic.addDay(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
-                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)));
+                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -204,10 +209,12 @@ class HeartRatePage extends StatelessWidget {
     }
     if (data.getFilter().getFilterIndex() == 1) {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(0, data.getData()[index].getDateTime()));
+          data, IndicatorFilter(0, data.getData()[index].getDateTime()),
+          id: mem?.id);
     } else {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(1, data.getData()[index].getDateTime()));
+          data, IndicatorFilter(1, data.getData()[index].getDateTime()),
+          id: mem?.id);
     }
   }
 
@@ -221,10 +228,10 @@ class HeartRatePage extends StatelessWidget {
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(pageData.getData()[index].getDateTime()),
             recordID: pageData.getData()[index].getRecordID(),
-            delete: (data != null)
+            delete: (mem != null)
                 ? null
                 : () => popupDelete(context, index, pageData),
-            edit: (data != null)
+            edit: (mem != null)
                 ? null
                 : () => popupEdit(context, index, pageData),
             close: () => Navigator.pop(context)));
@@ -244,7 +251,7 @@ class HeartRatePage extends StatelessWidget {
                   .then((value) {
                 if (value)
                   BlocProvider.of<IndicatorCubit>(context)
-                      .updateData(data, data.getFilter());
+                      .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Delete_heart_rate +
@@ -286,7 +293,7 @@ class HeartRatePage extends StatelessWidget {
                       data.getOwnerID())
                   .then((value) {
                 BlocProvider.of<IndicatorCubit>(context)
-                    .updateData(data, data.getFilter());
+                    .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Edit_heart_rate +
@@ -354,8 +361,32 @@ class HeartRatePage extends StatelessWidget {
                 '!');
 
       BlocProvider.of<IndicatorCubit>(context)
-          .updateData(state.data, state.data.getFilter());
+          .updateData(state.data, state.data.getFilter(), id: mem?.id);
     });
     Navigator.pop(context);
+  }
+
+  MoreInfo customMoreInfo() {
+    MoreInfo moreInfo = MoreInfo("", "");
+    if (user.yOB == -1) {
+      moreInfo.content = "todo";
+      return moreInfo;
+    }
+    int age = DateTime.now().year - user.yOB;
+    if (user.sex == 1) {
+      switch (age) {
+        case (1):
+          {
+            moreInfo.content = "todo";
+            break;
+          }
+        default:
+          {
+            moreInfo.content = "todo";
+            break;
+          }
+      }
+    }
+    return moreInfo;
   }
 }

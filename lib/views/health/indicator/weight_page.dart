@@ -27,19 +27,19 @@ import 'package:intl/intl.dart';
 
 class WeightPage extends StatelessWidget {
   const WeightPage(
-      {Key? key, this.dashboardContext, this.latestHeight, this.data})
+      {Key? key, this.dashboardContext, this.latestHeight, this.mem})
       : super(key: key);
 
   final BuildContext? dashboardContext;
   final String unit = 'kg';
   final double? latestHeight;
 
-  final FamilyMemberData? data;
+  final FamilyMemberData? mem;
 
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
       create: (context) =>
-          IndicatorCubit(1, 0, id: (data == null) ? null : data?.id),
+          IndicatorCubit(1, 0, id: (mem == null) ? null : mem?.id),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState || state is IndicatorLoadingState) {
           IndicatorPageData pageData = IndicatorPageData(
@@ -51,7 +51,7 @@ class WeightPage extends StatelessWidget {
               IndicatorFilter(0, DateTime.now()), []);
           if (state is IndicatorState) pageData = state.data;
           if (state is IndicatorLoadingState) pageData = state.data;
-          if (data == null)
+          if (mem == null)
             return TemplateFormPage(
                 title: S.of(context).Weight,
                 back: () => back(context),
@@ -63,8 +63,8 @@ class WeightPage extends StatelessWidget {
           else
             return TemplateAvatarFormPage(
                 firstTitle: S.of(context).Weight,
-                name: data!.name,
-                avatarPath: data!.avatarPath,
+                name: mem!.name,
+                avatarPath: mem!.avatarPath,
                 content: buildContent(
                     context, pageData, state is IndicatorLoadingState));
         } else
@@ -114,7 +114,8 @@ class WeightPage extends StatelessWidget {
             ],
             index: data.getFilter().getFilterIndex(),
             onIndexChange: (index) => BlocProvider.of<IndicatorCubit>(context)
-                .updateData(data, IndicatorFilter(index, DateTime.now())),
+                .updateData(data, IndicatorFilter(index, DateTime.now()),
+                    id: mem?.id),
             colorID: 0,
           ),
           if (data.getFilter().getFilterIndex() == 0)
@@ -140,10 +141,9 @@ class WeightPage extends StatelessWidget {
                       data.getFilter().getTime().month < DateTime.now().month))
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addMonth(
-                            data.getFilter().getTime(), 1)));
+                    IndicatorFilter(0,
+                        IndicatorLogic.addMonth(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 2000)
@@ -152,7 +152,8 @@ class WeightPage extends StatelessWidget {
                     IndicatorFilter(
                         0,
                         IndicatorLogic.addMonth(
-                            data.getFilter().getTime(), -1)));
+                            data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -166,15 +167,17 @@ class WeightPage extends StatelessWidget {
             if (data.getFilter().getTime().year < DateTime.now().year)
               BlocProvider.of<IndicatorCubit>(context).updateData(
                   data,
-                  IndicatorFilter(1,
-                      IndicatorLogic.addYear(data.getFilter().getTime(), 1)));
+                  IndicatorFilter(
+                      1, IndicatorLogic.addYear(data.getFilter().getTime(), 1)),
+                  id: mem?.id);
           },
           decrease: () {
             if (data.getFilter().getTime().year > 1900)
               BlocProvider.of<IndicatorCubit>(context).updateData(
                   data,
                   IndicatorFilter(1,
-                      IndicatorLogic.addYear(data.getFilter().getTime(), -1)));
+                      IndicatorLogic.addYear(data.getFilter().getTime(), -1)),
+                  id: mem?.id);
           })
     ]);
   }
@@ -217,10 +220,12 @@ class WeightPage extends StatelessWidget {
     }
     if (data.getFilter().getFilterIndex() == 1) {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(0, data.getData()[index].getDateTime()));
+          data, IndicatorFilter(0, data.getData()[index].getDateTime()),
+          id: mem?.id);
     } else {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(1, data.getData()[index].getDateTime()));
+          data, IndicatorFilter(1, data.getData()[index].getDateTime()),
+          id: mem?.id);
     }
   }
 
@@ -234,10 +239,10 @@ class WeightPage extends StatelessWidget {
             time: DateFormat('hh:mm dd.MM.yyyy')
                 .format(pageData.getData()[index].getDateTime()),
             recordID: pageData.getData()[index].getRecordID(),
-            delete: (data != null)
+            delete: (mem != null)
                 ? null
                 : () => popupDelete(context, index, pageData),
-            edit: (data != null)
+            edit: (mem != null)
                 ? null
                 : () => popupEdit(context, index, pageData),
             close: () => Navigator.pop(context)));
@@ -257,7 +262,7 @@ class WeightPage extends StatelessWidget {
                   .then((value) {
                 if (value)
                   BlocProvider.of<IndicatorCubit>(context)
-                      .updateData(data, data.getFilter());
+                      .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Delete_weight +
@@ -300,7 +305,7 @@ class WeightPage extends StatelessWidget {
                       data.getOwnerID())
                   .then((value) {
                 BlocProvider.of<IndicatorCubit>(context)
-                    .updateData(data, data.getFilter());
+                    .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Edit_weight +
@@ -366,7 +371,7 @@ class WeightPage extends StatelessWidget {
             S.of(context).Add_weight + ' ' + S.of(context).successfully + '!');
 
       BlocProvider.of<IndicatorCubit>(context)
-          .updateData(state.data, state.data.getFilter());
+          .updateData(state.data, state.data.getFilter(), id: mem?.id);
     });
     Navigator.pop(context);
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/services/message/message_define.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -13,7 +14,7 @@ class Client {
   List<int> tmpBufList;
   int totalRecv = 0;
 
-  Client(this.host, this.port,this.tmpBufList);
+  Client(this.host, this.port, this.tmpBufList);
 
   void connect() {
     Socket.connect(host, port).then((Socket sock) {
@@ -30,20 +31,19 @@ class Client {
   void send(int msgID, dynamic msgData) {
     var m = SMessage(msgID, msgData.toString());
     socket?.add(m.toByteBuf());
+    debugPrint("Send \"$msgID\" successful");
   }
 
   /// Socket listener
   void dataHandler(data) {
     Uint8List bdata = data as Uint8List;
-    if (totalRecv == 0)
-    {
-      totalRecv = ByteData.view(bdata.buffer).getInt32(0)>>2; // lấy kích thước dữ liệu
+    if (totalRecv == 0) {
+      totalRecv = ByteData.view(bdata.buffer).getInt32(0) >>
+          2; // lấy kích thước dữ liệu
     }
     tmpBufList.addAll(bdata.toList());
     Uint8List tmpBuf = Uint8List.fromList(tmpBufList);
-    if (tmpBuf.lengthInBytes >= totalRecv)
-    {
-
+    if (tmpBuf.lengthInBytes >= totalRecv) {
       RMessage rMessage = RMessage(tmpBuf);
       _data = rMessage.toString();
       tmpBufList.clear();
@@ -64,11 +64,14 @@ class Client {
   /// Handle data
   Future<String> getData({int? waitSeconds}) async {
     var tempData = "null";
-    await Future.delayed(Duration(milliseconds: 200));
     await waitData(0, waitSeconds);
-    if (_data == null) debugPrint("NULL DATA!");
+    if (_data == null) {
+      debugPrint("NULL DATA!");
+      return tempData;
+    }
     tempData = _data.toString();
     removeData();
+    debugPrint("Get ${ServerLogic.getMsg(tempData)} successful");
     return tempData;
   }
 

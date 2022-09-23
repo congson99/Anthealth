@@ -178,14 +178,14 @@ class IndicatorFilter {
 }
 
 class MoreInfo {
-  MoreInfo(this._content, this._url);
+  MoreInfo(this.content, this.file);
 
-  final String _content;
-  final String? _url;
+  String content;
+  String? file;
 
-  String getContent() => _content;
+  String getContent() => content;
 
-  String getUrl() => _url!;
+  String getUrl() => file!;
 
   static MoreInfo buildWeightMoreInfo(
       BuildContext context, double height, double weight, String url) {

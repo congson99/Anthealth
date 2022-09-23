@@ -87,7 +87,8 @@ class HealthPage extends StatelessWidget {
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => HeartRatePage(dashboardContext: context))),
+                builder: (_) =>
+                    HeartRatePage(dashboardContext: context, user: user))),
             colorID: 2,
             iconPath: "assets/indicators/heart_rate.png",
             value: indicatorLatestData[2],
@@ -97,7 +98,8 @@ class HealthPage extends StatelessWidget {
         SizedBox(width: 16),
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => SPO2Page(dashboardContext: context))),
+                builder: (_) =>
+                    SPO2Page(dashboardContext: context, user: user))),
             colorID: 0,
             iconPath: "assets/indicators/spo2.png",
             value: indicatorLatestData[5],
@@ -109,7 +111,8 @@ class HealthPage extends StatelessWidget {
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => TemperaturePage(dashboardContext: context))),
+                builder: (_) =>
+                    TemperaturePage(dashboardContext: context, user: user))),
             colorID: 1,
             iconPath: "assets/indicators/temperature.png",
             value: indicatorLatestData[3],
@@ -119,7 +122,8 @@ class HealthPage extends StatelessWidget {
         SizedBox(width: 16),
         IndicatorComponent(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => BloodPressurePage(dashboardContext: context))),
+                builder: (_) =>
+                    BloodPressurePage(dashboardContext: context, user: user))),
             colorID: 2,
             iconPath: "assets/indicators/blood_pressure.png",
             value: indicatorLatestData[4],

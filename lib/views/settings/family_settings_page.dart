@@ -219,7 +219,7 @@ class _PermissionUpdateBottomSheetState
             buildPermissionComponent(context, 0,
                 "assets/app_icon/attach/height.png", S.of(context).Height, 0),
             buildPermissionComponent(context, 1,
-                "assets/app_icon/attach/weight.png", S.of(context).Height, 1),
+                "assets/app_icon/attach/weight.png", S.of(context).Weight, 1),
             buildPermissionComponent(
                 context,
                 2,

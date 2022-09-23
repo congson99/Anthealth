@@ -33,8 +33,10 @@ class _AllReminderPageState extends State<AllReminderPage> {
     BlocProvider.of<MedicationReminderCubit>(widget.superContext)
         .getAllReminders()
         .then((value) {
-      activeReminders = value[0];
-      doneReminders = value[1];
+      setState(() {
+        activeReminders = value[0];
+        doneReminders = value[1];
+      });
     });
   }
 

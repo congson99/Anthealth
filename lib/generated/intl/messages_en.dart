@@ -291,6 +291,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Medicine Box Management"),
         "Medicine_box_name":
             MessageLookupByLibrary.simpleMessage("Medicine box name"),
+        "Medicine_info":
+            MessageLookupByLibrary.simpleMessage("Medicine infomation"),
         "Medicine_list": MessageLookupByLibrary.simpleMessage("Medicine list"),
         "Member": MessageLookupByLibrary.simpleMessage("Member"),
         "Month": MessageLookupByLibrary.simpleMessage("Month"),

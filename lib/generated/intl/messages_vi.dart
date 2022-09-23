@@ -305,6 +305,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quản lý hộp thuốc"),
         "Medicine_box_name":
             MessageLookupByLibrary.simpleMessage("Tên hộp thuốc"),
+        "Medicine_info":
+            MessageLookupByLibrary.simpleMessage("Thông tin thuốc"),
         "Medicine_list":
             MessageLookupByLibrary.simpleMessage("Danh sách thuốc"),
         "Member": MessageLookupByLibrary.simpleMessage("Thành viên"),

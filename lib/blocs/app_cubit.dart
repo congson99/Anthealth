@@ -31,14 +31,15 @@ class AppCubit extends Cubit<CubitState> {
       }
       token = localToken;
     });
-    checkToken(token).then((checkTokenResult) {
-      if (!checkTokenResult) {
-        debugPrint("Invalid token");
-        unAuthenticated();
-        return;
-      }
-      authenticated(token);
-    });
+    if (token != "")
+      checkToken(token).then((checkTokenResult) {
+        if (!checkTokenResult) {
+          debugPrint("Invalid token");
+          unAuthenticated();
+          return;
+        }
+        authenticated(token);
+      });
   }
 
   /// Handle states

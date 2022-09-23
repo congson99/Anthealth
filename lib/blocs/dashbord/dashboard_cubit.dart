@@ -156,7 +156,8 @@ class DashboardCubit extends Cubit<CubitState> {
                 x["base_info"]["email"],
                 x["rule"] == 2,
                 [],
-                x["birthDay"]));
+                x["birthDay"],
+                x["base_info"]["sex"]));
           for (dynamic x in ServerLogic.getData(value)["member_list"][0]
               ["permission"]) {
             for (FamilyMemberData y in members) {
@@ -189,7 +190,8 @@ class DashboardCubit extends Cubit<CubitState> {
                 x["base_info"]["email"],
                 x["rule"] == 2,
                 [],
-                x["birthDay"]));
+                x["birthDay"],
+                x["base_info"]["sex"]));
           }
           for (dynamic x in ServerLogic.getData(value)["member_list"][0]
               ["permission"]) {
@@ -243,6 +245,7 @@ class DashboardCubit extends Cubit<CubitState> {
               x["email"],
               false,
               [true, true, true, true, true, true, true, true],
+              0,
               0));
       }
     });
@@ -302,7 +305,6 @@ class DashboardCubit extends Cubit<CubitState> {
     List<MedicineData> result = [];
     await CommonService.instance.send(MessageIDPath.getMedicines(), {});
     await CommonService.instance.client!.getData().then((value) {
-      print(value);
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getMedicines(), value))
         for (dynamic x in ServerLogic.getData(value)["data"]) {
           result.add(MedicineData(

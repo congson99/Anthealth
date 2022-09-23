@@ -410,5 +410,6 @@
   "btn_invite": "MỜI",
   "invite": "Mời người dùng ",
   "can_not_out": "Bạn là chủ sở hữu nên không thể rời gia đình. Nếu muốn rời gia đình bạn phải uỷ quyền sở hữu cho một thành viên khác.",
-  "no_family": "Bạn chưa có gia đình!"
+  "no_family": "Bạn chưa có gia đình!",
+  "Medicine_info": "Thông tin thuốc"
 }

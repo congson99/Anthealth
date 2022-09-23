@@ -20,9 +20,10 @@ class IndicatorCubit extends Cubit<CubitState> {
     emit(IndicatorLoadingState(data, filter));
   }
 
-  void updateData(IndicatorPageData data, IndicatorFilter filter) {
+  void updateData(IndicatorPageData data, IndicatorFilter filter,
+      {String? id}) {
     loadingData(data, filter);
-    loadData(data.getType(), filter);
+    loadData(data.getType(), filter, id: id);
   }
 
   /// Service Functions

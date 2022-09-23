@@ -1,6 +1,6 @@
 class FamilyMemberData {
   FamilyMemberData(this.id, this.name, this.avatarPath, this.phoneNumber,
-      this.email, this.admin, this.permission, this.yob);
+      this.email, this.admin, this.permission, this.yob, this.sex);
 
   final String id;
   final String name;
@@ -10,6 +10,7 @@ class FamilyMemberData {
   bool admin;
   List<bool> permission;
   final int yob;
+  final int sex;
 }
 
 class Invitation {

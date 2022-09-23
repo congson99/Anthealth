@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:ffi';
-import 'dart:typed_data';
 
 import 'package:anthealth_mobile/services/client.dart';
 import 'package:anthealth_mobile/services/http/http_service.dart';
+import 'package:flutter/material.dart';
 
 class CommonService {
   Client? client;
@@ -11,11 +10,10 @@ class CommonService {
   ///send message to server
   Future<void> send(int msgID, Map<String, dynamic> msgData) async {
     if (client == null) {
+      debugPrint("null client");
       _tryConnectServer();
       await Future.delayed(const Duration(seconds: 1), () {});
     }
-    if (msgID != 100) client?.send(100, jsonEncode({}));
-    await Future.delayed(Duration(milliseconds: 100));
     client?.send(msgID, jsonEncode(msgData));
   }
 

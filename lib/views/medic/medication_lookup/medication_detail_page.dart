@@ -13,7 +13,7 @@ class MedicationDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplateFormPage(
-        title: S.of(context).Hospital_info,
+        title: S.of(context).Medicine_info,
         back: () => back(context),
         content: buildContent(context));
   }
