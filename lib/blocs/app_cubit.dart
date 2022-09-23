@@ -48,6 +48,15 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void authenticated(String token, [String? languageID]) async {
+    bool review = false;
+    await CommonService.instance.send(999, {});
+    await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
+      if (ServerLogic.checkMatchMessageID(999, value)) {
+        if (value != "null") {
+          review = ServerLogic.getData(value)["test"];
+        }
+      }
+    });
     await CommonService.instance.send(MessageIDPath.getUserBaseData(), {});
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
@@ -62,7 +71,8 @@ class AppCubit extends Cubit<CubitState> {
                 ServerLogic.getData(value)["email"],
                 true,
                 ServerLogic.getData(value)["birthday"],
-                ServerLogic.getData(value)["sex"])));
+                ServerLogic.getData(value)["sex"]),
+            review));
       }
     });
   }

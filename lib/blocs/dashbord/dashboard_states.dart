@@ -14,12 +14,13 @@ class HomeState extends CubitState {
 }
 
 class HealthState extends CubitState {
-  HealthState(this.healthPageData);
+  HealthState(this.healthPageData, this.posts);
 
   final HealthPageData healthPageData;
+  final List<Post> posts;
 
   @override
-  List<Object> get props => [healthPageData];
+  List<Object> get props => [healthPageData, posts];
 }
 
 class MedicState extends CubitState {

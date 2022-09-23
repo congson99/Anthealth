@@ -18,9 +18,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicPage extends StatelessWidget {
-  const MedicPage({Key? key, required this.user}) : super(key: key);
+  const MedicPage({Key? key, required this.user, required this.review})
+      : super(key: key);
 
   final User user;
+  final bool review;
 
   @override
   Widget build(BuildContext context) =>
@@ -35,10 +37,15 @@ class MedicPage extends StatelessWidget {
 
   Widget buildContent(BuildContext context, MedicPageData pageData) =>
       Column(children: [
-        CustomDivider.common(),
-        SizedBox(height: 16),
-        buildMedicalRecord(context, pageData),
-        SizedBox(height: 32),
+        if (review)
+          Column(
+            children: [
+              CustomDivider.common(),
+              SizedBox(height: 16),
+              buildMedicalRecord(context, pageData),
+              SizedBox(height: 32),
+            ],
+          ),
         CustomDivider.common(),
         SizedBox(height: 16),
         buildMedication(context, pageData),

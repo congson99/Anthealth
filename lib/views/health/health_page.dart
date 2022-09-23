@@ -4,10 +4,12 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/dashboard_logic.dart';
 import 'package:anthealth_mobile/models/dashboard/dashboard_models.dart';
+import 'package:anthealth_mobile/models/post/post_models.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
+import 'package:anthealth_mobile/views/common_widgets/post_component.dart';
 import 'package:anthealth_mobile/views/health/activity/calo_page.dart';
 import 'package:anthealth_mobile/views/health/activity/water_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
@@ -22,9 +24,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HealthPage extends StatelessWidget {
-  const HealthPage({Key? key, required this.user}) : super(key: key);
+  const HealthPage({Key? key, required this.user, required this.review})
+      : super(key: key);
 
   final User user;
+  final bool review;
 
   @override
   Widget build(BuildContext context) =>
@@ -33,27 +37,33 @@ class HealthPage extends StatelessWidget {
           return TemplateDashboardPage(
               title: S.of(context).Health_record,
               name: user.name,
-              content: buildContent(context, state.healthPageData));
+              content:
+                  buildContent(context, state.healthPageData, state.posts));
         return ErrorPage();
       });
 
-  Column buildContent(BuildContext context, HealthPageData data) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      CommonText.section(S.of(context).Health_indicator, context),
-      SizedBox(height: 16),
-      buildHealthIndicator(
-          context,
-          DashboardLogic.handleIndicatorToShow(data.indicatorsLatestData),
-          data.indicatorsLatestData[0]),
-      SizedBox(height: 32),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      CommonText.section(S.of(context).Activity, context),
-      SizedBox(height: 16),
-      buildActivity(context)
-    ]);
+  Widget buildContent(
+      BuildContext context, HealthPageData data, List<Post> posts) {
+    if (review)
+      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        CustomDivider.common(),
+        SizedBox(height: 16),
+        CommonText.section(S.of(context).Health_indicator, context),
+        SizedBox(height: 16),
+        buildHealthIndicator(
+            context,
+            DashboardLogic.handleIndicatorToShow(data.indicatorsLatestData),
+            data.indicatorsLatestData[0]),
+        SizedBox(height: 32),
+        CustomDivider.common(),
+        SizedBox(height: 16),
+        CommonText.section(S.of(context).Activity, context),
+        SizedBox(height: 16),
+        buildActivity(context)
+      ]);
+
+    /// TODO: review
+    return buildPost(context, posts);
   }
 
   Widget buildHealthIndicator(BuildContext context,
@@ -168,5 +178,19 @@ class HealthPage extends StatelessWidget {
           //     title: S.of(context).Steps,
           //     width: width)
         ]);
+  }
+
+  Widget buildPost(BuildContext context, List<Post> posts) {
+    if (posts.length == 0) return Container();
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CustomDivider.common(),
+      SizedBox(height: 16),
+      CommonText.section(S.of(context).Highlights, context),
+      SizedBox(height: 16),
+      ...posts.map((post) => Padding(
+            padding: const EdgeInsets.only(bottom: 24.0),
+            child: PostComponent(post: post),
+          ))
+    ]);
   }
 }

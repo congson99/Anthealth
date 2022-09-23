@@ -107,6 +107,18 @@ class DashboardCubit extends Cubit<CubitState> {
 
   health() async {
     emit(HealthLoadingState());
+    List<Post> posts = [];
+    await CommonService.instance.send(MessageIDPath.getPosts(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getPosts(), value)) {
+        if (value != "null")
+          for (dynamic x in ServerLogic.getData(value)["data"]) {
+            List<String> content = [];
+            for (dynamic y in x["content"]) content.add(y as String);
+            posts.add(Post(x["postKey"], x["coverImage"], x["title"], content));
+          }
+      }
+    });
     await CommonService.instance.send(MessageIDPath.getHealthData(), {});
     CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
@@ -114,7 +126,7 @@ class DashboardCubit extends Cubit<CubitState> {
         List<double> indicatorLatestData = HealthPageData.formatIndicatorsList(
             ServerLogic.formatList(
                 ServerLogic.getData(value)["indicatorInfo"]));
-        emit(HealthState(HealthPageData(indicatorLatestData)));
+        emit(HealthState(HealthPageData(indicatorLatestData), posts));
       }
     });
   }

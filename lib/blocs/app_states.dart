@@ -14,13 +14,14 @@ class ConnectErrorState extends CubitState {
 }
 
 class AuthenticatedState extends CubitState {
-  AuthenticatedState(this.token, this.user);
+  AuthenticatedState(this.token, this.user, this.review);
 
   final String token;
   final User user;
+  final bool review;
 
   @override
-  List<Object> get props => [token, user];
+  List<Object> get props => [token, user, review];
 }
 
 class UnauthenticatedState extends CubitState {

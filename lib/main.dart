@@ -7,7 +7,7 @@ import 'package:anthealth_mobile/views/common_pages/app_loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/dashboard/dashboard_page.dart';
 import 'package:anthealth_mobile/views/theme/theme.dart';
-import 'package:firebase_core/firebase_core.dart' ;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +67,8 @@ class MyApp extends StatelessWidget {
 
   Widget buildAppContent(BuildContext context, CubitState state) {
     if (state is UnauthenticatedState) return AuthenticationPage();
-    if (state is AuthenticatedState) return DashboardPage(user: state.user);
+    if (state is AuthenticatedState)
+      return DashboardPage(user: state.user, review: state.review);
     if (state is ConnectErrorState)
       return ErrorPage(error: S.of(context).Cannot_connect);
     return AppLoadingPage();

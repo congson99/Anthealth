@@ -31,7 +31,7 @@ class Client {
   void send(int msgID, dynamic msgData) {
     var m = SMessage(msgID, msgData.toString());
     socket?.add(m.toByteBuf());
-    debugPrint("Send \"$msgID\" successful");
+    debugPrint("---------- Send \"$msgID\" successful ----------");
   }
 
   /// Socket listener
@@ -71,7 +71,7 @@ class Client {
     }
     tempData = _data.toString();
     removeData();
-    debugPrint("Get ${ServerLogic.getMsg(tempData)} successful");
+    debugPrint("---------- Get \"${ServerLogic.getMsg(tempData)}\" successful ----------");
     return tempData;
   }
 
