@@ -598,6 +598,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bạn đã xem hết bài viết rồi"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "Bạn chưa điền đủ các nội dung bắt buộc"),
+        "rv_health": MessageLookupByLibrary.simpleMessage("Thông tin sức khoẻ"),
         "sat": MessageLookupByLibrary.simpleMessage("T7"),
         "sep": MessageLookupByLibrary.simpleMessage("T9"),
         "serving": MessageLookupByLibrary.simpleMessage("khẩu phần"),

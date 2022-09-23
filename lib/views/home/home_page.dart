@@ -19,9 +19,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.user}) : super(key: key);
+  const HomePage({Key? key, required this.user, required this.review})
+      : super(key: key);
 
   final User user;
+  final bool review;
 
   @override
   Widget build(BuildContext context) =>
@@ -39,10 +41,15 @@ class HomePage extends StatelessWidget {
       CustomDivider.common(),
       SizedBox(height: 16),
       buildUpcoming(context, state),
-      SizedBox(height: 16),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      buildPost(context, state)
+      if (review)
+        Column(
+          children: [
+            SizedBox(height: 16),
+            CustomDivider.common(),
+            SizedBox(height: 16),
+            buildPost(context, state),
+          ],
+        )
     ]);
   }
 

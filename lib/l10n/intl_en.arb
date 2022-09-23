@@ -411,5 +411,6 @@
   "invite": "Invite ",
   "can_not_out": "You are family owner, you can not out your family! If you still wanna out, you have to grant owner permission for other member.",
   "no_family": "You have no family!",
-  "Medicine_info": "Medicine infomation"
+  "Medicine_info": "Medicine infomation",
+  "rv_health": "Health news"
 }

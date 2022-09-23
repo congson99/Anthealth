@@ -319,6 +319,9 @@ class HeightPage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
+    return MoreInfo(
+        "Theo kết quả Tổng điều tra dinh dưỡng năm 2019-2020, chiều cao trung bình nam thanh niên là 168,1cm và nữ là 156,2 cm.",
+        "");
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
       moreInfo.content = "todo";

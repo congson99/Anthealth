@@ -88,11 +88,8 @@ class WeightPage extends StatelessWidget {
               latestHeight != 0 &&
               pageData.getLatestRecord().getValue() != 0)
             IndicatorMoreInfo(
-                information: MoreInfo.buildWeightMoreInfo(
-                    context,
-                    latestHeight!,
-                    pageData.getLatestRecord().getValue(),
-                    pageData.getMoreInfo().getUrl())),
+                information: MoreInfo.buildWeightMoreInfo(context,
+                    latestHeight!, pageData.getLatestRecord().getValue(), "")),
           buildDetailContainer(context, pageData, loading)
         ]);
   }

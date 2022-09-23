@@ -22,11 +22,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NewSettingsPage extends StatelessWidget {
-  const NewSettingsPage({Key? key, required this.user, required this.lang})
+  const NewSettingsPage(
+      {Key? key, required this.user, required this.lang, required this.review})
       : super(key: key);
 
   final User user;
   final String lang;
+  final bool review;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,15 @@ class NewSettingsPage extends StatelessWidget {
       buildUserInfo(context),
       buildGeneral(context),
       buildLogout(context),
+      SizedBox(height: 8),
+      Container(
+        alignment: Alignment.center,
+        child: Text("version 2.0.0",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: AnthealthColors.black1)),
+      ),
     ]);
   }
 
@@ -86,23 +97,24 @@ class NewSettingsPage extends StatelessWidget {
                     user: user,
                     appContext: context,
                   )))),
-      SizedBox(height: 16),
-      SectionComponent(
-          title: S.of(context).Family,
-          iconPath: "assets/app_icon/small_icons/family.png",
-          colorID: 2,
-          onTap: () {
-            BlocProvider.of<DashboardCubit>(context)
-                .getMemberData()
-                .then((value) {
-              if (value.isNotEmpty)
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) =>
-                        FamilySettingsPage(memberData: value, user: user)));
-              else
-                noFamilyPopup(context);
-            });
-          }),
+      if (review) SizedBox(height: 16),
+      if (review)
+        SectionComponent(
+            title: S.of(context).Family,
+            iconPath: "assets/app_icon/small_icons/family.png",
+            colorID: 2,
+            onTap: () {
+              BlocProvider.of<DashboardCubit>(context)
+                  .getMemberData()
+                  .then((value) {
+                if (value.isNotEmpty)
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) =>
+                          FamilySettingsPage(memberData: value, user: user)));
+                else
+                  noFamilyPopup(context);
+              });
+            }),
       SizedBox(height: 16),
       CustomDivider.common(),
       SizedBox(height: 16),
@@ -146,14 +158,15 @@ class NewSettingsPage extends StatelessWidget {
             BlocProvider.of<AppCubit>(context).logout();
           }),
       SizedBox(height: 16),
-      GestureDetector(
-          onTap: () => removeAccount(context),
-          child: Text(S.of(context).Remove_account,
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2!
-                  .copyWith(color: Colors.black54)))
+      if (!review)
+        GestureDetector(
+            onTap: () => removeAccount(context),
+            child: Text(S.of(context).Remove_account,
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(color: Colors.black54)))
     ]);
   }
 

@@ -367,6 +367,9 @@ class HeartRatePage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
+    return MoreInfo(
+        "Đối với người từ 18 tuổi trở lên, nhịp tim bình thường trong lúc nghỉ ngơi dao động trong khoảng từ 60 đến 100 nhịp mỗi phút.",
+        "");
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
       moreInfo.content = "todo";

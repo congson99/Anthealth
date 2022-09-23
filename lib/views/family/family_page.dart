@@ -19,10 +19,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FamilyPage extends StatelessWidget {
-  const FamilyPage({Key? key, required this.user}) : super(key: key);
+  const FamilyPage({Key? key, required this.user, required this.review}) : super(key: key);
 
   final User user;
-
+  final bool review;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
@@ -153,7 +153,7 @@ class FamilyPage extends StatelessWidget {
     if (member.id != user.id)
       Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => FamilyMemberPage(
-              dashboardContext: context, member: member, isAdmin: isAdmin)));
+              dashboardContext: context, member: member, isAdmin: isAdmin, review: review)));
   }
 
   void newMemberTap(BuildContext context, List<FamilyMemberData> members) {

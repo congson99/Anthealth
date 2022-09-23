@@ -582,6 +582,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("You have read all the posts"),
         "required_fill": MessageLookupByLibrary.simpleMessage(
             "You have not filled in the required content"),
+        "rv_health": MessageLookupByLibrary.simpleMessage("Health news"),
         "sat": MessageLookupByLibrary.simpleMessage("sat"),
         "sep": MessageLookupByLibrary.simpleMessage("SEP"),
         "serving": MessageLookupByLibrary.simpleMessage("serving"),

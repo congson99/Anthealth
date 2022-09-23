@@ -35,7 +35,9 @@ class HealthPage extends StatelessWidget {
       BlocBuilder<DashboardCubit, CubitState>(builder: (context, state) {
         if (state is HealthState)
           return TemplateDashboardPage(
-              title: S.of(context).Health_record,
+              title: (review)
+                  ? S.of(context).Health_record
+                  : S.of(context).rv_health,
               name: user.name,
               content:
                   buildContent(context, state.healthPageData, state.posts));
@@ -54,12 +56,12 @@ class HealthPage extends StatelessWidget {
             context,
             DashboardLogic.handleIndicatorToShow(data.indicatorsLatestData),
             data.indicatorsLatestData[0]),
-        SizedBox(height: 32),
-        CustomDivider.common(),
-        SizedBox(height: 16),
-        CommonText.section(S.of(context).Activity, context),
-        SizedBox(height: 16),
-        buildActivity(context)
+        // SizedBox(height: 32),
+        // CustomDivider.common(),
+        // SizedBox(height: 16),
+        // CommonText.section(S.of(context).Activity, context),
+        // SizedBox(height: 16),
+        // buildActivity(context)
       ]);
 
     /// TODO: review
@@ -184,8 +186,6 @@ class HealthPage extends StatelessWidget {
     if (posts.length == 0) return Container();
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),
-      SizedBox(height: 16),
-      CommonText.section(S.of(context).Highlights, context),
       SizedBox(height: 16),
       ...posts.map((post) => Padding(
             padding: const EdgeInsets.only(bottom: 24.0),

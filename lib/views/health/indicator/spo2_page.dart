@@ -402,6 +402,9 @@ class SPO2Page extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
+    return MoreInfo(
+        "Nếu giá trị SpO2 xuống dưới 95%, đây là dấu hiệu cảnh báo oxy hóa máu kém, còn được gọi là tình trạng máu thiếu oxy.",
+        "");
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
       moreInfo.content = "todo";

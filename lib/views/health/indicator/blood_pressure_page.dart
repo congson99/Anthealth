@@ -449,6 +449,9 @@ class BloodPressurePage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
+    return MoreInfo(
+        "Huyết áp bình thường được xác định khi: Huyết áp tâm thu từ 90 mmHg đến 129 mmHg và huyết áp tâm trương từ 60 mmHg đến 84 mmHg.",
+        "");
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
       moreInfo.content = "todo";

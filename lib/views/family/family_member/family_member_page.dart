@@ -19,12 +19,14 @@ class FamilyMemberPage extends StatelessWidget {
       {Key? key,
       required this.dashboardContext,
       required this.member,
-      required this.isAdmin})
+      required this.isAdmin,
+      required this.review})
       : super(key: key);
 
   final BuildContext dashboardContext;
   final FamilyMemberData member;
   final bool isAdmin;
+  final bool review;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +44,15 @@ class FamilyMemberPage extends StatelessWidget {
     return Column(children: [
       SizedBox(height: 8),
       buildInfo(context),
-      SizedBox(height: 24),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      buildData(context),
+      if (review)
+        Column(
+          children: [
+            SizedBox(height: 24),
+            CustomDivider.common(),
+            SizedBox(height: 16),
+            buildData(context),
+          ],
+        ),
       if (isAdmin) buildAdmin(context)
     ]);
   }

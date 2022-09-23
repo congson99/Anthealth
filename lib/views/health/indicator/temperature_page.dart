@@ -414,6 +414,9 @@ class TemperaturePage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
+    return MoreInfo(
+        "Phạm vi bình thường cho nhiệt độ cơ thể là từ 36°C - 37,5°C trong thực hành lâm sàng.",
+        "");
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
       moreInfo.content = "todo";

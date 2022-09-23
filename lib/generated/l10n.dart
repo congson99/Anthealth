@@ -4179,6 +4179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Health news`
+  String get rv_health {
+    return Intl.message(
+      'Health news',
+      name: 'rv_health',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
