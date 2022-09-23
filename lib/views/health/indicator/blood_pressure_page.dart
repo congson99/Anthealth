@@ -28,7 +28,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class BloodPressurePage extends StatelessWidget {
-  const BloodPressurePage({Key? key, this.dashboardContext, this.mem, required this.user})
+  const BloodPressurePage(
+      {Key? key, this.dashboardContext, this.mem, required this.user})
       : super(key: key);
 
   final BuildContext? dashboardContext;
@@ -104,7 +105,8 @@ class BloodPressurePage extends StatelessWidget {
             ],
             index: data.getFilter().getFilterIndex(),
             onIndexChange: (index) => BlocProvider.of<IndicatorCubit>(context)
-                .updateData(data, IndicatorFilter(index, DateTime.now()), id: mem?.id),
+                .updateData(data, IndicatorFilter(index, DateTime.now()),
+                    id: mem?.id),
             colorID: 0,
           ),
           if (data.getFilter().getFilterIndex() == 0)
@@ -130,16 +132,16 @@ class BloodPressurePage extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(0,
-                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)), id: mem?.id);
+                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addHour(
-                            data.getFilter().getTime(), -1)), id: mem?.id);
+                    IndicatorFilter(0,
+                        IndicatorLogic.addHour(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -154,14 +156,16 @@ class BloodPressurePage extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
-                        IndicatorLogic.addDay(data.getFilter().getTime(), 1)), id: mem?.id);
+                        IndicatorLogic.addDay(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
-                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)), id: mem?.id);
+                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -274,10 +278,12 @@ class BloodPressurePage extends StatelessWidget {
     }
     if (data.getFilter().getFilterIndex() == 1) {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(0, data.getData()[index].getDateTime()), id: mem?.id);
+          data, IndicatorFilter(0, data.getData()[index].getDateTime()),
+          id: mem?.id);
     } else {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(1, data.getData()[index].getDateTime()), id: mem?.id);
+          data, IndicatorFilter(1, data.getData()[index].getDateTime()),
+          id: mem?.id);
     }
   }
 
@@ -320,7 +326,7 @@ class BloodPressurePage extends StatelessWidget {
                   .then((value) {
                 if (value)
                   BlocProvider.of<IndicatorCubit>(context)
-                       .updateData(data, data.getFilter(), id: mem?.id);
+                      .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Delete_blood_pressure +
@@ -365,7 +371,7 @@ class BloodPressurePage extends StatelessWidget {
                       data.getOwnerID())
                   .then((value) {
                 BlocProvider.of<IndicatorCubit>(context)
-                     .updateData(data, data.getFilter(), id: mem?.id);
+                    .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Edit_blood_pressure +
@@ -449,19 +455,17 @@ class BloodPressurePage extends StatelessWidget {
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
-    if (user.sex == 1) {
-      switch (age) {
-        case (1):
-          {
-            moreInfo.content = "todo";
-            break;
-          }
-        default:
-          {
-            moreInfo.content = "todo";
-            break;
-          }
-      }
+    switch (age) {
+      case (1):
+        {
+          moreInfo.content = "todo";
+          break;
+        }
+      default:
+        {
+          moreInfo.content = "todo";
+          break;
+        }
     }
     return moreInfo;
   }

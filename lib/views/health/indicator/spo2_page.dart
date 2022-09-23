@@ -27,7 +27,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class SPO2Page extends StatelessWidget {
-  const SPO2Page({Key? key, this.dashboardContext, this.mem, required this.user})
+  const SPO2Page(
+      {Key? key, this.dashboardContext, this.mem, required this.user})
       : super(key: key);
 
   final BuildContext? dashboardContext;
@@ -106,7 +107,8 @@ class SPO2Page extends StatelessWidget {
             ],
             index: data.getFilter().getFilterIndex(),
             onIndexChange: (index) => BlocProvider.of<IndicatorCubit>(context)
-                .updateData(data, IndicatorFilter(index, DateTime.now()), id: mem?.id),
+                .updateData(data, IndicatorFilter(index, DateTime.now()),
+                    id: mem?.id),
             colorID: 0,
           ),
           if (data.getFilter().getFilterIndex() == 0)
@@ -132,16 +134,16 @@ class SPO2Page extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(0,
-                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)), id: mem?.id);
+                        IndicatorLogic.addHour(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
-                    IndicatorFilter(
-                        0,
-                        IndicatorLogic.addHour(
-                            data.getFilter().getTime(), -1)), id: mem?.id);
+                    IndicatorFilter(0,
+                        IndicatorLogic.addHour(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -156,14 +158,16 @@ class SPO2Page extends StatelessWidget {
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
-                        IndicatorLogic.addDay(data.getFilter().getTime(), 1)), id: mem?.id);
+                        IndicatorLogic.addDay(data.getFilter().getTime(), 1)),
+                    id: mem?.id);
             },
             decrease: () {
               if (data.getFilter().getTime().year > 1900)
                 BlocProvider.of<IndicatorCubit>(context).updateData(
                     data,
                     IndicatorFilter(1,
-                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)), id: mem?.id);
+                        IndicatorLogic.addDay(data.getFilter().getTime(), -1)),
+                    id: mem?.id);
             }));
   }
 
@@ -246,10 +250,12 @@ class SPO2Page extends StatelessWidget {
     }
     if (data.getFilter().getFilterIndex() == 1) {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(0, data.getData()[index].getDateTime()), id: mem?.id);
+          data, IndicatorFilter(0, data.getData()[index].getDateTime()),
+          id: mem?.id);
     } else {
       BlocProvider.of<IndicatorCubit>(context).updateData(
-          data, IndicatorFilter(1, data.getData()[index].getDateTime()), id: mem?.id);
+          data, IndicatorFilter(1, data.getData()[index].getDateTime()),
+          id: mem?.id);
     }
   }
 
@@ -286,7 +292,7 @@ class SPO2Page extends StatelessWidget {
                   .then((value) {
                 if (value)
                   BlocProvider.of<IndicatorCubit>(context)
-                       .updateData(data, data.getFilter(), id: mem?.id);
+                      .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Delete_spo2 +
@@ -328,7 +334,7 @@ class SPO2Page extends StatelessWidget {
                       data.getOwnerID())
                   .then((value) {
                 BlocProvider.of<IndicatorCubit>(context)
-                     .updateData(data, data.getFilter(), id: mem?.id);
+                    .updateData(data, data.getFilter(), id: mem?.id);
                 ShowSnackBar.showSuccessSnackBar(
                     context,
                     S.of(context).Edit_spo2 +
@@ -402,19 +408,17 @@ class SPO2Page extends StatelessWidget {
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
-    if (user.sex == 1) {
-      switch (age) {
-        case (1):
-          {
-            moreInfo.content = "todo";
-            break;
-          }
-        default:
-          {
-            moreInfo.content = "todo";
-            break;
-          }
-      }
+    switch (age) {
+      case (1):
+        {
+          moreInfo.content = "todo";
+          break;
+        }
+      default:
+        {
+          moreInfo.content = "todo";
+          break;
+        }
     }
     return moreInfo;
   }

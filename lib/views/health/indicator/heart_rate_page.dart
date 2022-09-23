@@ -373,19 +373,17 @@ class HeartRatePage extends StatelessWidget {
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
-    if (user.sex == 1) {
-      switch (age) {
-        case (1):
-          {
-            moreInfo.content = "todo";
-            break;
-          }
-        default:
-          {
-            moreInfo.content = "todo";
-            break;
-          }
-      }
+    switch (age) {
+      case (1):
+        {
+          moreInfo.content = "todo";
+          break;
+        }
+      default:
+        {
+          moreInfo.content = "todo";
+          break;
+        }
     }
     return moreInfo;
   }
