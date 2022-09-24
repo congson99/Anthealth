@@ -40,7 +40,6 @@ class CaloPage extends StatelessWidget {
               return TemplateAvatarFormPage(
                   firstTitle: S.of(context).Activity_calo,
                   name: data!.name,
-                  add: (data!.permission[6]) ? (() => add(context)) : null,
                   avatarPath: data!.avatarPath,
                   content: buildContent(context, state));
           }

@@ -83,7 +83,6 @@ class IndicatorPageData {
   static IndicatorPageData getPageData(
       int type, IndicatorFilter filter, dynamic value) {
     IndicatorData latest = IndicatorData(0, DateTime.now(), '');
-    print(value);
     var latestData = ServerLogic.getData(value)["latest"];
     if (latestData != '')
       latest = IndicatorData(

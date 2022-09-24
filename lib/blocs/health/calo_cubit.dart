@@ -20,9 +20,9 @@ class CaloCubit extends Cubit<CubitState> {
 
   /// Service Functions
   Future<void> loadData() async {
-    loadedData(CaloState(CaloDayData(2000, [
-      CaloIn("", DateTime.now(), "Cá ngừ", "100g", 200, 2),
-      CaloIn("", DateTime.now(), "Trứng gà", "quả", 800, 0.5),
+    loadedData(CaloState(CaloDayData(1200, [
+      // CaloIn("", DateTime.now(), "Cá ngừ", "100g", 200, 2),
+      // CaloIn("", DateTime.now(), "Trứng gà", "quả", 800, 0.5),
       CaloIn("", DateTime.now(), "Cơm", "chén", 500, 1)
     ], [
       CaloOut("", DateTime.now(), "Chạy bộ", 50, 5)
