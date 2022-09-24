@@ -62,4 +62,6 @@ class MessageIDPath {
   static int getDurationReminder() => 2403;
 
   static int getAllReminder() => 2405;
+
+  static int getFamilyWarning() => 2103;
 }

@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
+import 'package:anthealth_mobile/models/notification/notification.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
@@ -54,6 +55,17 @@ class AppCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(999, value)) {
         if (value != "null") {
           review = ServerLogic.getData(value)["test"];
+        }
+      }
+    });
+    await CommonService.instance.send(MessageIDPath.getFamilyWarning(), {});
+    await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getFamilyWarning(), value)) {
+        if (value != "null") {
+          Map<String, dynamic> data = ServerLogic.getData(value);
+          CustomNotification.showNotification(
+              title: data["name"], body: data["notice"]);
         }
       }
     });
