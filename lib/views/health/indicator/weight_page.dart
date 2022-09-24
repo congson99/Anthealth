@@ -92,7 +92,7 @@ class WeightPage extends StatelessWidget {
                     context,
                     latestHeight!,
                     pageData.getLatestRecord().getValue(),
-                    pageData.getMoreInfo().getUrl())),
+                    "assets/hardData/weight.json")),
           buildDetailContainer(context, pageData, loading)
         ]);
   }

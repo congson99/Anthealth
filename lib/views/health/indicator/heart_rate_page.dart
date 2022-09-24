@@ -84,8 +84,7 @@ class HeartRatePage extends StatelessWidget {
                 value: pageData.getLatestRecord().getValue().toStringAsFixed(0),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
-          if (pageData.getMoreInfo().getContent() != "")
-            IndicatorMoreInfo(information: customMoreInfo()),
+          IndicatorMoreInfo(information: customMoreInfo()),
           buildDetailContainer(context, pageData, loading)
         ]);
   }
@@ -367,7 +366,7 @@ class HeartRatePage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
-    MoreInfo moreInfo = MoreInfo("", "");
+    MoreInfo moreInfo = MoreInfo("", "assets/hardData/heart_rate.json");
     if (user.yOB == -1) {
       moreInfo.content =
           "Đối với người từ 18 tuổi trở lên, nhịp tim bình thường trong lúc nghỉ ngơi dao động trong khoảng từ 60 đến 100 nhịp mỗi phút.";
@@ -387,7 +386,6 @@ class HeartRatePage extends StatelessWidget {
       moreInfo.content =
           "Đối với người từ 18 tuổi trở lên, nhịp tim bình thường trong lúc nghỉ ngơi dao động trong khoảng từ 60 đến 100 nhịp mỗi phút.";
     }
-
     return moreInfo;
   }
 }

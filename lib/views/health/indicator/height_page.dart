@@ -83,8 +83,7 @@ class HeightPage extends StatelessWidget {
                 value: pageData.getLatestRecord().getValue().toStringAsFixed(2),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
-          if (pageData.getMoreInfo().getContent() != "")
-            IndicatorMoreInfo(information: customMoreInfo()),
+          IndicatorMoreInfo(information: customMoreInfo()),
           buildDetailContainer(context, pageData, loading)
         ]);
   }
@@ -319,15 +318,16 @@ class HeightPage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
-    MoreInfo moreInfo = MoreInfo("", "");
+    MoreInfo moreInfo = MoreInfo("", "assets/hardData/height.json");
     if (user.yOB == -1) {
       moreInfo.content =
           "Theo kết quả Tổng điều tra dinh dưỡng năm 2019-2020, chiều cao trung bình của nam thanh niên là 168,1cm và nữ là 156,2 cm.";
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
+    if (age <= 20) moreInfo.file = "assets/hardData/height_kid.json";
     // Male
-    if (user.sex == 1) {
+    if (user.sex == 0) {
       switch (age) {
         case (1):
           {
@@ -438,7 +438,7 @@ class HeightPage extends StatelessWidget {
       }
     }
     // Female
-    if (user.sex == 2) {
+    if (user.sex == 1) {
       switch (age) {
         case (1):
           {

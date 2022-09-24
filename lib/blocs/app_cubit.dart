@@ -72,7 +72,7 @@ class AppCubit extends Cubit<CubitState> {
                 true,
                 ServerLogic.getData(value)["birthday"],
                 ServerLogic.getData(value)["sex"]),
-            review));
+            true));
       }
     });
   }

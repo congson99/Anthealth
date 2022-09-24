@@ -84,8 +84,7 @@ class SPO2Page extends StatelessWidget {
                 value: pageData.getLatestRecord().getValue().toStringAsFixed(0),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
-          if (pageData.getMoreInfo().getContent() != "")
-            IndicatorMoreInfo(information: customMoreInfo()),
+          IndicatorMoreInfo(information: customMoreInfo()),
           buildDetailContainer(context, pageData, loading)
         ]);
   }
@@ -402,26 +401,8 @@ class SPO2Page extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
-    MoreInfo moreInfo = MoreInfo("", "");
-    if (user.yOB == -1) {
-      moreInfo.content =
-          "Nếu giá trị SpO2 xuống dưới 95%, đây là dấu hiệu cảnh báo oxy hóa máu kém, còn được gọi là tình trạng máu thiếu oxy.";
-      return moreInfo;
-    }
-    int age = DateTime.now().year - user.yOB;
-    switch (age) {
-      // case (1):
-      //   {
-      //     moreInfo.content = "todo";
-      //     break;
-      //   }
-      default:
-        {
-          moreInfo.content =
-              "Nếu giá trị SpO2 xuống dưới 95%, đây là dấu hiệu cảnh báo oxy hóa máu kém, còn được gọi là tình trạng máu thiếu oxy.";
-          break;
-        }
-    }
-    return moreInfo;
+    return MoreInfo(
+        "Nếu giá trị SpO2 xuống dưới 95%, đây là dấu hiệu cảnh báo oxy hóa máu kém, còn được gọi là tình trạng máu thiếu oxy.",
+        "assets/hardData/spo2.json");
   }
 }

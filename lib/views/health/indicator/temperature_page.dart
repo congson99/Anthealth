@@ -84,8 +84,7 @@ class TemperaturePage extends StatelessWidget {
                 value: pageData.getLatestRecord().getValue().toStringAsFixed(1),
                 time: DateFormat('dd.MM.yyyy')
                     .format(pageData.getLatestRecord().getDateTime())),
-          if (pageData.getMoreInfo().getContent() != "")
-            IndicatorMoreInfo(information: customMoreInfo()),
+          IndicatorMoreInfo(information: customMoreInfo()),
           buildDetailContainer(context, pageData, loading)
         ]);
   }
@@ -414,7 +413,7 @@ class TemperaturePage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
-    MoreInfo moreInfo = MoreInfo("", "");
+    MoreInfo moreInfo = MoreInfo("", "assets/hardData/temparature.json");
     if (user.yOB == -1) {
       moreInfo.content =
           "Phạm vi bình thường cho nhiệt độ cơ thể là từ 36°C - 37,5°C trong thực hành lâm sàng.";

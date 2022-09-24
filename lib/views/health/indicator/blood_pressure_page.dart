@@ -82,8 +82,7 @@ class BloodPressurePage extends StatelessWidget {
             value: formatToShow(pageData.getLatestRecord().getValue()),
             time: DateFormat('HH:mm dd.MM.yyyy')
                 .format(pageData.getLatestRecord().getDateTime())),
-      if (pageData.getMoreInfo().getContent() != "")
-        IndicatorMoreInfo(information: customMoreInfo()),
+      IndicatorMoreInfo(information: customMoreInfo()),
       buildDetailContainer(context, pageData, loading)
     ]);
   }
@@ -449,7 +448,7 @@ class BloodPressurePage extends StatelessWidget {
   }
 
   MoreInfo customMoreInfo() {
-    MoreInfo moreInfo = MoreInfo("", "");
+    MoreInfo moreInfo = MoreInfo("", "assets/hardData/blood_pressure.json");
     if (user.yOB == -1) {
       moreInfo.content =
           "Huyết áp bình thường được xác định khi: Huyết áp tâm thu từ 90 mmHg đến 129 mmHg và huyết áp tâm trương từ 60 mmHg đến 84 mmHg.";
@@ -496,19 +495,6 @@ class BloodPressurePage extends StatelessWidget {
       moreInfo.content =
           "Huyết áp bình thường được xác định khi: Huyết áp tâm thu từ 90 mmHg đến 129 mmHg và huyết áp tâm trương từ 60 mmHg đến 84 mmHg.";
     }
-
-    // switch (age) {
-    //   case (1):
-    //     {
-    //       moreInfo.content = "todo";
-    //       break;
-    //     }
-    //   default:
-    //     {
-    //       moreInfo.content = "todo";
-    //       break;
-    //     }
-    // }
     return moreInfo;
   }
 }

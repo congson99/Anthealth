@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/health/indicator_models.dart';
 import 'package:anthealth_mobile/models/post/post_models.dart';
@@ -5,6 +7,7 @@ import 'package:anthealth_mobile/views/post/post_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class IndicatorMoreInfo extends StatelessWidget {
   const IndicatorMoreInfo({Key? key, required this.information})
@@ -29,23 +32,25 @@ class IndicatorMoreInfo extends StatelessWidget {
                           fontFamily: 'RobotoRegular',
                           letterSpacing: 0.2),
                       children: [
-                if (information.getUrl() != "")
+                if (information.file != "")
                   TextSpan(
                       text: ' ' + S.of(context).Learn_more,
                       style: TextStyle(
                           color: AnthealthColors.primary1,
                           fontFamily: 'RobotoMedium'),
                       recognizer: new TapGestureRecognizer()
-                        ..onTap = () {
-                          //launchUrlString(information.getUrl());
+                        ..onTap = () async {
+                          var jsonText = await rootBundle.loadString(
+                              information.file ??
+                                  "assets/hardData/template.json");
+                          Map<String, dynamic> data = json.decode(jsonText);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (_) => PostPage(
                                         post: Post.generate(
-                                            postKey: "Flutter",
-                                            title:
-                                                "Flutter là gì? Các đặc tính vượt trội của Flutter",
+                                            postKey: data["postKey"],
+                                            title: data["title"],
                                             content: [
                                               "Flutter là gì?",
                                               "Bạn có thể hiểu Flutter là bộ công cụ giao diện người dùng của Google để tạo các ứng dụng đẹp, được biên dịch native cho thiết bị di động, web và máy tính để bàn từ một mã nguồn duy nhất.",
