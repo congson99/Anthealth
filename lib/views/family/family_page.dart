@@ -21,7 +21,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FamilyPage extends StatelessWidget {
-  const FamilyPage({Key? key, required this.user, required this.warning}) : super(key: key);
+  const FamilyPage({Key? key, required this.user, required this.warning})
+      : super(key: key);
 
   final User user;
   final List<Warning> warning;
@@ -80,41 +81,42 @@ class FamilyPage extends StatelessWidget {
       CommonText.section(S.of(context).Warning, context),
       SizedBox(height: 16),
       ...warning.map((w) => Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-            color: AnthealthColors.warning4,
-            borderRadius: BorderRadius.circular(16)),
-        child: Row(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: AnthealthColors.warning0),
-                  borderRadius: BorderRadius.circular(24)),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(60),
-                child: Image.network(
-                    (w.avatar == "")
-                        ? "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-                        : w.avatar,
-                    height: 48.0,
-                    width: 48.0,
-                    fit: BoxFit.cover),
-              ),
-            ),
-            SizedBox(width: 16),
-            Expanded(
-                child: Text(
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 16),
+            decoration: BoxDecoration(
+                color: AnthealthColors.warning4,
+                borderRadius: BorderRadius.circular(16)),
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: AnthealthColors.warning0),
+                      borderRadius: BorderRadius.circular(24)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: Image.network(
+                        (w.avatar == "")
+                            ? "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                            : w.avatar,
+                        height: 48.0,
+                        width: 48.0,
+                        fit: BoxFit.cover),
+                  ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                    child: Text(
                   w.notice,
                   style: Theme.of(context)
                       .textTheme
                       .subtitle1!
                       .copyWith(color: AnthealthColors.warning0),
                 ))
-          ],
-        ),
-      )),
-      SizedBox(height: 32),
+              ],
+            ),
+          )),
+      SizedBox(height: 16),
     ]);
   }
 
