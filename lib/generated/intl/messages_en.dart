@@ -594,6 +594,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thinness": MessageLookupByLibrary.simpleMessage("thinness"),
         "thu": MessageLookupByLibrary.simpleMessage("thu"),
         "tue": MessageLookupByLibrary.simpleMessage("tue"),
+        "version": MessageLookupByLibrary.simpleMessage("Version"),
         "wed": MessageLookupByLibrary.simpleMessage("wed"),
         "weekly": MessageLookupByLibrary.simpleMessage("Weekly")
       };

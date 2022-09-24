@@ -146,14 +146,20 @@ class NewSettingsPage extends StatelessWidget {
             BlocProvider.of<AppCubit>(context).logout();
           }),
       SizedBox(height: 16),
-      GestureDetector(
-          onTap: () => removeAccount(context),
-          child: Text(S.of(context).Remove_account,
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2!
-                  .copyWith(color: Colors.black54)))
+      // GestureDetector(
+      //     onTap: () => removeAccount(context),
+      //     child: Text(S.of(context).Remove_account,
+      //         textAlign: TextAlign.center,
+      //         style: Theme.of(context)
+      //             .textTheme
+      //             .subtitle2!
+      //             .copyWith(color: Colors.black54))),
+      Text("${S.of(context).version} 2.1.5",
+          textAlign: TextAlign.center,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(color: AnthealthColors.black2))
     ]);
   }
 

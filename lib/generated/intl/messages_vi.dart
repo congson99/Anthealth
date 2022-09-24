@@ -610,6 +610,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thinness": MessageLookupByLibrary.simpleMessage("gầy"),
         "thu": MessageLookupByLibrary.simpleMessage("T5"),
         "tue": MessageLookupByLibrary.simpleMessage("T3"),
+        "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
         "wed": MessageLookupByLibrary.simpleMessage("T4"),
         "weekly": MessageLookupByLibrary.simpleMessage("Hằng tuần")
       };

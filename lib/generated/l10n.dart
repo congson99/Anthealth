@@ -4189,6 +4189,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Version`
+  String get version {
+    return Intl.message(
+      'Version',
+      name: 'version',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
