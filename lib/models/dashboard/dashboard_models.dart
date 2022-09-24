@@ -5,6 +5,7 @@ class HealthPageData {
 
   List<double> indicatorsLatestData;
 
+
   static List<double> formatIndicatorsList(List<dynamic> data) {
     List<double> result = [0, 0, 0, 0, 0, 0];
     for (dynamic i in data)

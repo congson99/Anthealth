@@ -37,13 +37,13 @@ class HealthPage extends StatelessWidget {
           return TemplateDashboardPage(
               title: S.of(context).Health_record,
               name: user.name,
-              content:
-                  buildContent(context, state.healthPageData, state.posts));
+              content: buildContent(
+                  context, state.healthPageData, state.posts, state.warning));
         return ErrorPage();
       });
 
-  Widget buildContent(
-      BuildContext context, HealthPageData data, List<Post> posts) {
+  Widget buildContent(BuildContext context, HealthPageData data,
+      List<Post> posts, List<bool> warning) {
     if (review)
       return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         CustomDivider.common(),
@@ -53,7 +53,8 @@ class HealthPage extends StatelessWidget {
         buildHealthIndicator(
             context,
             DashboardLogic.handleIndicatorToShow(data.indicatorsLatestData),
-            data.indicatorsLatestData[0]),
+            data.indicatorsLatestData[0],
+            warning),
         SizedBox(height: 32),
         CustomDivider.common(),
         SizedBox(height: 16),
@@ -66,8 +67,11 @@ class HealthPage extends StatelessWidget {
     return buildPost(context, posts);
   }
 
-  Widget buildHealthIndicator(BuildContext context,
-      List<String> indicatorLatestData, double latestHeight) {
+  Widget buildHealthIndicator(
+      BuildContext context,
+      List<String> indicatorLatestData,
+      double latestHeight,
+      List<bool> warning) {
     double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Column(children: [
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -96,6 +100,7 @@ class HealthPage extends StatelessWidget {
       SizedBox(height: 16),
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
+            isWarning: warning[0],
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) =>
                     HeartRatePage(dashboardContext: context, user: user))),
@@ -107,6 +112,7 @@ class HealthPage extends StatelessWidget {
             width: width),
         SizedBox(width: 16),
         IndicatorComponent(
+            isWarning: warning[3],
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) =>
                     SPO2Page(dashboardContext: context, user: user))),
@@ -120,6 +126,7 @@ class HealthPage extends StatelessWidget {
       SizedBox(height: 16),
       Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         IndicatorComponent(
+            isWarning: warning[1],
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) =>
                     TemperaturePage(dashboardContext: context, user: user))),
@@ -131,6 +138,7 @@ class HealthPage extends StatelessWidget {
             width: width),
         SizedBox(width: 16),
         IndicatorComponent(
+            isWarning: warning[2],
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) =>
                     BloodPressurePage(dashboardContext: context, user: user))),

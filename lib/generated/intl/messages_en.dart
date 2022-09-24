@@ -410,6 +410,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Update_medicine_box":
             MessageLookupByLibrary.simpleMessage("Update medicine box"),
         "Usage": MessageLookupByLibrary.simpleMessage("Usage"),
+        "Warning": MessageLookupByLibrary.simpleMessage("Warning"),
         "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to cancel this record?"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(

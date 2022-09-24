@@ -1,6 +1,7 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
+import 'package:anthealth_mobile/models/notification/warning.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/bottom_navigation.dart';
@@ -13,10 +14,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DashboardPage extends StatelessWidget {
-  const DashboardPage({Key? key, required this.user, required this.review})
+  const DashboardPage(
+      {Key? key,
+      required this.user,
+      required this.review,
+      required this.warning})
       : super(key: key);
   final User user;
   final bool review;
+  final List<Warning> warning;
 
   @override
   Widget build(BuildContext context) => BlocProvider<DashboardCubit>(
@@ -33,10 +39,10 @@ class DashboardPage extends StatelessWidget {
       }));
 
   Widget buildContent(CubitState state, BuildContext context) {
-    if (state is HomeState) return HomePage(user: user);
+    if (state is HomeState) return HomePage(user: user, warning: warning);
     if (state is HealthState) return HealthPage(user: user, review: review);
     if (state is MedicState) return MedicPage(user: user, review: review);
-    if (state is FamilyState) return FamilyPage(user: user);
+    if (state is FamilyState) return FamilyPage(user: user, warning: warning);
     if (state is SettingsState)
       return NewSettingsPage(
         user: user,

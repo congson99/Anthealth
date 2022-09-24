@@ -3,6 +3,7 @@ import 'package:anthealth_mobile/blocs/dashbord/dashboard_cubit.dart';
 import 'package:anthealth_mobile/blocs/dashbord/dashboard_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/notification/warning.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart';
@@ -15,13 +16,15 @@ import 'package:anthealth_mobile/views/common_widgets/yes_no_popup.dart';
 import 'package:anthealth_mobile/views/family/family_member/family_member_page.dart';
 import 'package:anthealth_mobile/views/family/widgets/add_family_member_popup.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
+import 'package:anthealth_mobile/views/theme/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FamilyPage extends StatelessWidget {
-  const FamilyPage({Key? key, required this.user}) : super(key: key);
+  const FamilyPage({Key? key, required this.user, required this.warning}) : super(key: key);
 
   final User user;
+  final List<Warning> warning;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class FamilyPage extends StatelessWidget {
   // Content
   Widget buildContent(BuildContext context, FamilyState state) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      if (warning.isNotEmpty) buildWarning(context),
       CustomDivider.common(),
       SizedBox(height: 24),
       if (state.members.isNotEmpty) buildMembers(context, state),
@@ -66,6 +70,51 @@ class FamilyPage extends StatelessWidget {
                 isDirection: false)
           ],
         )
+    ]);
+  }
+
+  Widget buildWarning(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CustomDivider.common(),
+      SizedBox(height: 16),
+      CommonText.section(S.of(context).Warning, context),
+      SizedBox(height: 16),
+      ...warning.map((w) => Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+            color: AnthealthColors.warning4,
+            borderRadius: BorderRadius.circular(16)),
+        child: Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: AnthealthColors.warning0),
+                  borderRadius: BorderRadius.circular(24)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: Image.network(
+                    (w.avatar == "")
+                        ? "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                        : w.avatar,
+                    height: 48.0,
+                    width: 48.0,
+                    fit: BoxFit.cover),
+              ),
+            ),
+            SizedBox(width: 16),
+            Expanded(
+                child: Text(
+                  w.notice,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: AnthealthColors.warning0),
+                ))
+          ],
+        ),
+      )),
+      SizedBox(height: 32),
     ]);
   }
 

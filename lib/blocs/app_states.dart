@@ -1,3 +1,4 @@
+import 'package:anthealth_mobile/models/notification/warning.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:equatable/equatable.dart';
 
@@ -14,14 +15,15 @@ class ConnectErrorState extends CubitState {
 }
 
 class AuthenticatedState extends CubitState {
-  AuthenticatedState(this.token, this.user, this.review);
+  AuthenticatedState(this.token, this.user, this.review, this.warning);
 
   final String token;
   final User user;
   final bool review;
+  final List<Warning> warning;
 
   @override
-  List<Object> get props => [token, user, review];
+  List<Object> get props => [token, user, review, warning];
 }
 
 class UnauthenticatedState extends CubitState {

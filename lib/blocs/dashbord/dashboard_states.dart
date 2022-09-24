@@ -14,13 +14,14 @@ class HomeState extends CubitState {
 }
 
 class HealthState extends CubitState {
-  HealthState(this.healthPageData, this.posts);
+  HealthState(this.healthPageData, this.posts, this.warning);
 
   final HealthPageData healthPageData;
   final List<Post> posts;
+  final List<bool> warning;
 
   @override
-  List<Object> get props => [healthPageData, posts];
+  List<Object> get props => [healthPageData, posts, warning];
 }
 
 class MedicState extends CubitState {

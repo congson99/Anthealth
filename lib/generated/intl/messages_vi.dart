@@ -427,6 +427,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Update_medicine_box":
             MessageLookupByLibrary.simpleMessage("Cập nhật hộp thuốc"),
         "Usage": MessageLookupByLibrary.simpleMessage("Cách dùng"),
+        "Warning": MessageLookupByLibrary.simpleMessage("Cảnh báo"),
         "Warning_cancel_record": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn huỷ hồ sơ này không?"),
         "Warning_delete_data": MessageLookupByLibrary.simpleMessage(

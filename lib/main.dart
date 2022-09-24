@@ -68,7 +68,8 @@ class MyApp extends StatelessWidget {
   Widget buildAppContent(BuildContext context, CubitState state) {
     if (state is UnauthenticatedState) return AuthenticationPage();
     if (state is AuthenticatedState)
-      return DashboardPage(user: state.user, review: state.review);
+      return DashboardPage(
+          user: state.user, review: state.review, warning: state.warning);
     if (state is ConnectErrorState)
       return ErrorPage(error: S.of(context).Cannot_connect);
     return AppLoadingPage();

@@ -1,13 +1,12 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
-import 'package:anthealth_mobile/models/notification/notification.dart';
+import 'package:anthealth_mobile/models/notification/warning.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
 import 'package:anthealth_mobile/services/service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppCubit extends Cubit<CubitState> {
@@ -53,7 +52,6 @@ class AppCubit extends Cubit<CubitState> {
     bool review = false;
 
     await CommonService.instance.send(999, {});
-
     await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
       if (ServerLogic.checkMatchMessageID(999, value)) {
         if (value != "null") {
@@ -62,25 +60,28 @@ class AppCubit extends Cubit<CubitState> {
       }
     });
 
+    List<Warning> warning = [];
     await CommonService.instance.send(MessageIDPath.getFamilyWarning(), {});
-
     await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getFamilyWarning(), value)) {
         if (value != "null") {
-          print(value);
           List<dynamic> data = ServerLogic.getData(value)["data"];
           for (Map<String, dynamic> x in data) {
             if (x["name"] != null)
-              CustomNotification.showNotification(
-                  title: x["name"], body: x["notice"]);
+              warning.add(Warning(
+                  x["uid"].toString(),
+                  x["name"],
+                  DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000),
+                  x["avatar"],
+                  x["type"],
+                  0.0 + x["value"],
+                  x["notice"]));
           }
         }
       }
     });
-
     await CommonService.instance.send(MessageIDPath.getUserBaseData(), {});
-
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getUserBaseData(), value)) {
@@ -95,7 +96,8 @@ class AppCubit extends Cubit<CubitState> {
                 true,
                 ServerLogic.getData(value)["birthday"],
                 ServerLogic.getData(value)["sex"]),
-            true));
+            true,
+            warning));
       }
     });
   }
