@@ -1,13 +1,28 @@
 {
-  "postKey": "Chiều cao trẻ",
-  "title": "Chiều cao của trẻ theo độ tuổi",
+  "postKey": "heart_rate",
+  "update_time": "2022/09/21 15:13",
+  "coverImage": "https://vinmec-prod.s3.amazonaws.com/images/20190404_170234_876273_2.max-1800x1800.jpg",
+  "id": "ux7Qa6hrXimK1w9GL6IQYm8ORSG7qAYa",
+  "title": "Nhịp tim chuẩn là bao nhiêu?",
   "content": [
-    "Bảng chiều cao cân nặng chuẩn từ 1-20 tuổi",
-    "Từ 12 tháng tuổi đến 23 tháng tuổi:",
-    "https://crm.nubest.vn/public/upload/NBT-chieu-cao-nam-nu-phat-trien-den-bao-nhieu-tuoi-1.jpg",
-    "Từ 2 tuổi đến 12 tuổi:",
-    "https://crm.nubest.vn/public/upload/NBT-chieu-cao-nam-nu-phat-trien-den-bao-nhieu-tuoi-2.jpg",
-    "Từ 13 tuổi đến 20 tuổi:",
-    "https://crm.nubest.vn/public/upload/NBT-chieu-cao-nam-nu-phat-trien-den-bao-nhieu-tuoi-3.jpg"
+    "1. Nhịp tim chuẩn đối với người bình thường",
+    "Nhịp tim chuẩn có thể khác nhau ở mỗi người, tùy thuộc vào độ tuổi, thể trạng, giới tính,... Đối với người từ 18 tuổi trở lên, nhịp tim bình thường trong lúc nghỉ ngơi dao động trong khoảng từ 60 đến 100 nhịp mỗi phút. Thông thường, người có thể trạng càng khỏe mạnh, thì nhịp tim càng thấp. Đối với những vận động viên chuyên nghiệp, khi ở chế độ nghỉ ngơi, nhịp tim trung bình của họ chỉ khoảng 40 nhịp một phút. Ví dụ như vận động viên đua xe đạp Lance Armstrong - huyền thoại của làng thể thao thế giới, tim của anh chỉ đập khoảng 32 nhịp mỗi phút.",
+    "Theo nghiên cứu của Cơ quan y tế quốc gia tại Vương quốc Anh, dưới đây là bảng tiêu chuẩn nhịp tim lý tưởng theo từng độ tuổi:",
+    "https://vinmec-prod.s3.amazonaws.com/images/20190404_170204_154521_Untitled.max-1800x1800.png",
+    "Nhịp tim của chúng ta vào từng thời điểm thường bị ảnh hưởng bởi nhiều yếu tố khác nhau, chẳng hạn như: Hoạt động thể chất của cơ thể trước lúc đó, tình hình sức khỏe và bệnh lý, nhiệt độ môi trường, tư thế đứng, ngồi, hay nằm). Ngoài ra, trạng thái tinh thần và cảm xúc cũng ảnh hưởng ít nhiều (ví dụ như cảm xúc giận dữ, vui mừng, sợ hãi, lo lắng,...). Bên cạnh đó, một số loại thuốc cũng có khả năng ảnh hưởng đến nhịp tim. Tuy nhiên, khi đề cập đến nhịp tim chuẩn, hay nhịp tim bình thường, nghĩa là nhịp tim được đo lúc cơ thể đang nghỉ ngơi hoàn toàn.",
+    "2. Thận trọng với rối loạn nhịp tim",
+    "Nếu do một nguyên nhân hoặc tác động nào đó khiến cho nhịp đập trái tim trở nên bất thường, như nhịp tim nhanh (hơn 100 nhịp mỗi phút), nhịp tim chậm (dưới 60 nhịp mỗi phút) hoặc tim đập lúc nhanh, lúc chậm, thậm chí có nhịp tim tim đập nhưng không thấy mạch, thì được gọi là rối loạn nhịp tim. Trong cuộc sống hàng ngày, không thể tránh khỏi những lúc trái tim bị lạc nhịp. Tình trạng này thường xuất phát từ những nguyên nhân rất “đời thường”, chẳng hạn như: Căng thẳng, hoạt động gắng sức, rối loạn tâm lý, hay những thói quen xấu như thức khuya, hút thuốc lá, sử dụng một số chất kích thích như rượu bia, cà phê, trà đặc,...",
+    "Bên cạnh đó, các bệnh lý liên quan trực tiếp đến tim mạch như: Suy tim, Thiếu máu cơ tim, các bệnh lý về van tim (hở van tim và hẹp van tim), viêm cơ tim, bệnh tim bẩm sinh,... đều là những căn nguyên ảnh hưởng đến quá trình dẫn truyền xung động điện trong tim và gây ra rối loạn nhịp tim.",
+    "Rối loạn nhịp tim còn liên quan tới một số bệnh lý hoặc nguyên nhân khác như:",
+    "Tăng huyết áp.",
+    "Rối loạn mỡ máu.",
+    "Tiểu đường.",
+    "Thừa cân béo phì.",
+    "Cường giáp.",
+    "Viêm phế quản cấp tính hay mạn tính.",
+    "Thiếu máu, thiếu hụt dinh dưỡng.",
+    "Rối loạn cân bằng kiềm - toan và điện giải.",
+    "Đôi khi, chính các thuốc chống loạn nhịp tim lại là thủ phạm gây ra rối loạn nhịp tim.",
+    "Ngoài ra, nhiều trường hợp rối loạn nhịp tim không thể xác định được nguyên nhân. Như vậy, không phải lúc nào tim chúng ta cũng duy trì được nhịp tim chuẩn. Tuy nhiên, một số trường hợp rối loạn nhịp tim không đáng kể, thậm chí vô hại, nhưng cũng có những trường hợp cần phải đến khám bác sĩ càng sớm càng tốt."
   ]
 }
