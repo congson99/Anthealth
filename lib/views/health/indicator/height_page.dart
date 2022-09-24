@@ -331,102 +331,121 @@ class HeightPage extends StatelessWidget {
       switch (age) {
         case (1):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam 1 tuổi là 75,7 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 1 tuổi là 75,7 cm.";
             break;
           }
         case (2):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam 2 tuổi là 86,8 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 2 tuổi là 86,8 cm.";
             break;
           }
         case (3):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 95,2 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 3tuổi là 95,2 cm.";
             break;
           }
         case (4):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 102,3 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 4 tuổi là 102,3 cm.";
             break;
           }
         case (5):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 109,2 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 5 tuổi là 109,2 cm.";
             break;
           }
         case (6):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 115,5 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 6 tuổi là 115,5 cm.";
             break;
           }
         case (7):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 121,9 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 7 tuổi là 121,9 cm.";
             break;
           }
         case (8):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 128 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 8 tuổi là 128 cm.";
             break;
           }
         case (9):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 133,3 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 9 tuổi là 133,3 cm.";
             break;
           }
         case (10):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 138,4 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 10 tuổi là 138,4 cm.";
             break;
           }
         case (11):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 143,5 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 11 tuổi là 143,5 cm.";
             break;
           }
         case (12):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 149,1 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé trai 12 tuổi là 149,1 cm.";
             break;
           }
         case (13):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 156,2 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 13 tuổi là 156,2 cm.";
             break;
           }
         case (14):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 163,8 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 14 tuổi là 163,8 cm.";
             break;
           }
         case (15):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 170,1 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 15 tuổi là 170,1 cm.";
             break;
           }
         case (16):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 173,4 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 16 tuổi là 173,4 cm.";
             break;
           }
         case (17):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 175,2 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 17 tuổi là 175,2 cm.";
             break;
           }
         case (18):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 175,7 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 18 tuổi là 175,7 cm.";
             break;
           }
         case (19):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 176,5 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở nam 19 tuổi là 176,5 cm.";
             break;
           }
         case (20):
           {
-            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 177 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nam 20 tuổi là 177 cm.";
             break;
           }
         default:
@@ -442,102 +461,113 @@ class HeightPage extends StatelessWidget {
       switch (age) {
         case (1):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ 1 tuổi là 74,1 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 1 tuổi là 74,1 cm.";
             break;
           }
         case (2):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ 2 tuổi là 85,5 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 2 tuổi là 85,5 cm.";
             break;
           }
         case (3):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 94 cm.";
+            moreInfo.content = "Chiều cao trung bình ở bé gái 3 tuổi là 94 cm.";
             break;
           }
         case (4):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 100,3 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 4 tuổi là 100,3 cm.";
             break;
           }
         case (5):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 109,2 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 5 tuổi là 109,2 cm.";
             break;
           }
         case (6):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 107,9 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 6 tuổi là 107,9 cm.";
             break;
           }
         case (7):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 115,5 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 7 tuổi là 115,5 cm.";
             break;
           }
         case (8):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 128,2 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 8 tuổi là 128,2 cm.";
             break;
           }
         case (9):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 133,3 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 9 tuổi là 133,3 cm.";
             break;
           }
         case (10):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 138,4 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 10 tuổi là 138,4 cm.";
             break;
           }
         case (11):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 144 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 11 tuổi là 144 cm.";
             break;
           }
         case (12):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 149,8 cm.";
+            moreInfo.content =
+                "Chiều cao trung bình ở bé gái 12 tuổi là 149,8 cm.";
             break;
           }
         case (13):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 156,7 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 13 tuổi là 156,7 cm.";
             break;
           }
         case (14):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 158,7cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 14 tuổi là 158,7cm.";
             break;
           }
         case (15):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 159,7 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 15 tuổi là 159,7 cm.";
             break;
           }
         case (16):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 162,5 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 16 tuổi là 162,5 cm.";
             break;
           }
         case (17):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 162,5 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 17 tuổi là 162,5 cm.";
             break;
           }
         case (18):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 163 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 18 tuổi là 163 cm.";
             break;
           }
         case (19):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 163 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 19 tuổi là 163 cm.";
             break;
           }
         case (20):
           {
-            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 163,3 cm.";
+            moreInfo.content = "Chiều cao trung bình ở nữ 20 tuổi là 163,3 cm.";
             break;
           }
         default:
