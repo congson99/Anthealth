@@ -102,6 +102,21 @@ class MedicineLogic {
     }
   }
 
+  static String getUnitNoContext(int index) {
+    switch (index) {
+      case 0:
+        return "viên";
+      case 1:
+        return "ml";
+      case 2:
+        return "ống";
+      case 3:
+        return "gói";
+      default:
+        return "";
+    }
+  }
+
   static String getUsage(BuildContext context, int index) {
     switch (index) {
       case 0:

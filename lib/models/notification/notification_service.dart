@@ -1,5 +1,11 @@
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:rxdart/subjects.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
   NotificationService();
@@ -7,9 +13,20 @@ class NotificationService {
   final _localNotifications = FlutterLocalNotificationsPlugin();
   final BehaviorSubject<String> behaviorSubject = BehaviorSubject();
 
+  void clear(){
+    _localNotifications.cancelAll();
+  }
+
   Future<void> initializePlatformNotifications() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('ic_stat_justwater');
+
+    tz.initializeTimeZones();
+    tz.setLocalLocation(
+      tz.getLocation(
+        await FlutterNativeTimezone.getLocalTimezone(),
+      ),
+    );
 
     final IOSInitializationSettings initializationSettingsIOS =
         IOSInitializationSettings(
@@ -37,6 +54,45 @@ class NotificationService {
     if (payload != null && payload.isNotEmpty) {
       behaviorSubject.add(payload);
     }
+  }
+
+  Future<void> showPeriodicLocalNotification({
+    required int id,
+    required String title,
+    required String body,
+    required String payload,
+  }) async {
+    final platformChannelSpecifics = await _notificationDetails();
+    await _localNotifications.periodicallyShow(
+      id,
+      title,
+      body,
+      RepeatInterval.everyMinute,
+      platformChannelSpecifics,
+      payload: payload,
+      androidAllowWhileIdle: true,
+    );
+  }
+
+  Future<void> showScheduledLocalNotification({
+    required int id,
+    required String title,
+    required String body,
+    required String payload,
+    required int seconds,
+  }) async {
+    final platformChannelSpecifics = await _notificationDetails();
+    await _localNotifications.zonedSchedule(
+      id,
+      title,
+      body,
+      tz.TZDateTime.now(tz.local).add(Duration(seconds: seconds)),
+      platformChannelSpecifics,
+      payload: payload,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidAllowWhileIdle: true,
+    );
   }
 
   Future<void> showLocalNotification({

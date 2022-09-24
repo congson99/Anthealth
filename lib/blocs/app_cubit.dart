@@ -1,4 +1,5 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
+import 'package:anthealth_mobile/logics/medicine_logic.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/notification/notification_service.dart';
 import 'package:anthealth_mobile/models/notification/warning.dart';
@@ -8,6 +9,7 @@ import 'package:anthealth_mobile/services/service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppCubit extends Cubit<CubitState> {
@@ -52,6 +54,7 @@ class AppCubit extends Cubit<CubitState> {
   void authenticated(String token, [String? languageID]) async {
     NotificationService notificationService = NotificationService();
     notificationService.initializePlatformNotifications();
+    notificationService.clear();
 
     bool review = false;
 
@@ -60,6 +63,40 @@ class AppCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(999, value)) {
         if (value != "null") {
           review = ServerLogic.getData(value)["test"];
+        }
+      }
+    });
+    DateTime now = DateTime.now();
+    Map<String, dynamic> data = {
+      "startTime": DateFormat("yyyy-MM-dd HH:mm:ss").format(now),
+      "endTime": DateFormat("yyyy-MM-dd").format(now.add(Duration(days: 1))) +
+          " 23:59:59"
+    };
+    await CommonService.instance
+        .send(MessageIDPath.getDurationReminder(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.getDurationReminder(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          for (dynamic x in ServerLogic.getData(value)["data"]) {
+            if (DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000)
+                    .difference(now)
+                    .inSeconds >=
+                0) {
+              notificationService.showScheduledLocalNotification(
+                  id: 1,
+                  title: x["name"] +
+                      " " +
+                      x["need_amount"].toString() +
+                      " " +
+                      MedicineLogic.getUnitNoContext(int.parse(x["unit"])),
+                  body: "",
+                  payload: "",
+                  seconds: DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000)
+                      .difference(now)
+                      .inSeconds);
+            }
+          }
         }
       }
     });
