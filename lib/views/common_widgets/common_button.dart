@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class CommonButton {
   static Widget buildTemplate(BuildContext context, String content,
-      Color backgroundColor, VoidCallback onTap) {
+      Color backgroundColor, VoidCallback onTap,
+      {bool? load}) {
     return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -12,11 +13,13 @@ class CommonButton {
             decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Text(content,
-                style: Theme.of(context)
-                    .textTheme
-                    .button!
-                    .copyWith(color: Colors.white, fontSize: 18))));
+            child: (load == true)
+                ? CircularProgressIndicator()
+                : Text(content,
+                    style: Theme.of(context)
+                        .textTheme
+                        .button!
+                        .copyWith(color: Colors.white, fontSize: 18))));
   }
 
   static Widget cancel(BuildContext context, VoidCallback onTap) {
@@ -35,7 +38,8 @@ class CommonButton {
   }
 
   static Widget round(BuildContext context, VoidCallback onTap, String content,
-      Color backgroundColor) {
+      Color backgroundColor,
+      {bool? load}) {
     return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -44,11 +48,17 @@ class CommonButton {
             decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.all(Radius.circular(24))),
-            child: Text(content,
-                style: Theme.of(context)
-                    .textTheme
-                    .button!
-                    .copyWith(color: Colors.white, fontSize: 18))));
+            child: (load == true)
+                ? Container(
+                    height: 24,
+                    width: 24,
+                    child: CircularProgressIndicator(
+                        color: Colors.white, strokeWidth: 3))
+                : Text(content,
+                    style: Theme.of(context)
+                        .textTheme
+                        .button!
+                        .copyWith(color: Colors.white, fontSize: 18))));
   }
 
   static Widget small(BuildContext context, VoidCallback onTap, String content,

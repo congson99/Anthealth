@@ -33,6 +33,7 @@ class _LoginComponentState extends State<LoginComponent> {
   var _passwordController = TextEditingController();
   var _usernameFocus = FocusNode();
   var _passwordFocus = FocusNode();
+  bool load = false;
 
   @override
   void initState() {
@@ -127,7 +128,8 @@ class _LoginComponentState extends State<LoginComponent> {
                           .copyWith(color: AnthealthColors.primary1)))),
           SizedBox(height: 16),
           CommonButton.round(context, () => _loginAuthentication(context, data),
-              S.of(context).button_login, AnthealthColors.primary1)
+              S.of(context).button_login, AnthealthColors.primary1,
+              load: load)
         ]));
   }
 
@@ -160,6 +162,9 @@ class _LoginComponentState extends State<LoginComponent> {
 
   void _loginAuthentication(BuildContext context, LoginData loginData) {
     FocusScope.of(context).unfocus();
+    setState(() {
+      load = true;
+    });
     if (_checkUsername(loginData.username) && _checkPassword(loginData)) {
       BlocProvider.of<AuthenticationCubit>(context)
           .getToken(loginData)
@@ -170,10 +175,18 @@ class _LoginComponentState extends State<LoginComponent> {
             _clearPassword(loginData.username);
           });
           FocusScope.of(context).requestFocus(_usernameFocus);
-        } else
+        } else {
           BlocProvider.of<AppCubit>(context).login(token, loginData.username);
+        }
+        setState(() {
+          load = false;
+        });
       });
+      return;
     }
+    setState(() {
+      load = false;
+    });
   }
 
   bool _checkUsername(String username) {
