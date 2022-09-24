@@ -1,5 +1,6 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/logics/server_logic.dart';
+import 'package:anthealth_mobile/models/notification/notification_service.dart';
 import 'package:anthealth_mobile/models/notification/warning.dart';
 import 'package:anthealth_mobile/models/user/user_models.dart';
 import 'package:anthealth_mobile/services/message/message_id_path.dart';
@@ -49,6 +50,9 @@ class AppCubit extends Cubit<CubitState> {
   }
 
   void authenticated(String token, [String? languageID]) async {
+    NotificationService notificationService = NotificationService();
+    notificationService.initializePlatformNotifications();
+
     bool review = false;
 
     await CommonService.instance.send(999, {});
@@ -68,7 +72,18 @@ class AppCubit extends Cubit<CubitState> {
         if (value != "null") {
           List<dynamic> data = ServerLogic.getData(value)["data"];
           for (Map<String, dynamic> x in data) {
-            if (x["name"] != null)
+            if (x["name"] != null) {
+              int type = x["type"];
+              String typeContent = (type == 2)
+                  ? "Nhịp tim"
+                  : ((type == 3)
+                      ? "Nhiệt độ"
+                      : ((type == 4) ? "Huyết áp" : ("Spo2")));
+              notificationService.showLocalNotification(
+                  id: 0,
+                  title: " Cảnh báo " + typeContent + " của " + x["name"],
+                  body: x["notice"],
+                  payload: x["notice"]);
               warning.add(Warning(
                   x["uid"].toString(),
                   x["name"],
@@ -77,6 +92,7 @@ class AppCubit extends Cubit<CubitState> {
                   x["type"],
                   0.0 + x["value"],
                   x["notice"]));
+            }
           }
         }
       }
