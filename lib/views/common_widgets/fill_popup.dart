@@ -76,6 +76,7 @@ class _FillPopupState extends State<FillPopup> {
                           SizedBox(height: 8),
                           CommonTextField.box(
                               context: context,
+                              textInputType: TextInputType.number,
                               initialValue: box[1],
                               onChanged: (String value) => setState(() {
                                     data[int.parse(box[0])][1] = value;

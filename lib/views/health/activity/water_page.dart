@@ -11,6 +11,7 @@ import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
+import 'package:anthealth_mobile/views/common_widgets/fill_popup.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
 import 'package:anthealth_mobile/views/health/activity/water_detail_page.dart';
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_add_data_bottom_sheet.dart';
@@ -35,7 +36,7 @@ class WaterPage extends StatelessWidget {
                   title: S.of(context).Activity_water,
                   back: () => back(context),
                   add: () => add(context),
-                  settings: () => setting(),
+                  settings: () => setting(context),
                   content: buildContent(context, state));
             else
               return TemplateAvatarFormPage(
@@ -123,5 +124,21 @@ class WaterPage extends StatelessWidget {
             }));
   }
 
-  void setting() {}
+  void setting(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => FillPopup(
+            title: S.of(context).Report,
+            fillBoxes: [S.of(context).Goal],
+            done: (result) {
+              if (result[0] != "")
+                try {
+                  int goal = int.parse(result[0]);
+                  print(goal);
+                } catch (e) {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).something_wrong);
+                }
+            }));
+  }
 }
