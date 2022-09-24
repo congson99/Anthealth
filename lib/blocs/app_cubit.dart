@@ -63,9 +63,13 @@ class AppCubit extends Cubit<CubitState> {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getFamilyWarning(), value)) {
         if (value != "null") {
-          Map<String, dynamic> data = ServerLogic.getData(value);
-          CustomNotification.showNotification(
-              title: data["name"], body: data["notice"]);
+          print(value);
+          List<dynamic> data = ServerLogic.getData(value)["data"];
+          for (Map<String, dynamic> x in data) {
+            if (x["name"] != null)
+              CustomNotification.showNotification(
+                  title: x["name"], body: x["notice"]);
+          }
         }
       }
     });
