@@ -451,22 +451,64 @@ class BloodPressurePage extends StatelessWidget {
   MoreInfo customMoreInfo() {
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
-      moreInfo.content = "todo";
+      moreInfo.content =
+          "Huyết áp bình thường được xác định khi: Huyết áp tâm thu từ 90 mmHg đến 129 mmHg và huyết áp tâm trương từ 60 mmHg đến 84 mmHg.";
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
-    switch (age) {
-      case (1):
-        {
-          moreInfo.content = "todo";
-          break;
-        }
-      default:
-        {
-          moreInfo.content = "todo";
-          break;
-        }
+    if (age >= 1 && age <= 5) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 80/55, huyết áp trung bình là 95/65, huyết áp cao là 110/79.";
+    } else if (age >= 6 && age <= 13) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 90/60, huyết áp trung bình là 105/70, huyết áp cao là 115/80.";
+    } else if (age >= 14 && age <= 19) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 105/73, huyết áp trung bình là 117/77, huyết áp cao là 120/81.";
+    } else if (age >= 20 && age <= 24) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 108/75, huyết áp trung bình là 120/79, huyết áp cao là 132/83.";
+    } else if (age >= 25 && age <= 29) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 109/76, huyết áp trung bình là 121/80, huyết áp cao là 133/84.";
+    } else if (age >= 30 && age <= 34) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 110/77, huyết áp trung bình là 122/81, huyết áp cao là 134/85.";
+    } else if (age >= 35 && age <= 39) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 111/78, huyết áp trung bình là 123/82, huyết áp cao là 135/86.";
+    } else if (age >= 40 && age <= 44) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 112/79, huyết áp trung bình là 125/83, huyết áp cao là 137/87.";
+    } else if (age >= 45 && age <= 49) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 115/80, huyết áp trung bình là 127/84, huyết áp cao là 139/88.";
+    } else if (age >= 50 && age <= 54) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 116/81, huyết áp trung bình là 129/85, huyết áp cao là 142/89.";
+    } else if (age >= 55 && age <= 59) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 118/82, huyết áp trung bình là 131/86, huyết áp cao là 144/90.";
+    } else if (age >= 60 && age <= 64) {
+      moreInfo.content =
+          "Chỉ số huyết áp thấp là 121/83, huyết áp trung bình là 134/87, huyết áp cao là 147/91.";
+    } else {
+      moreInfo.content =
+          "Huyết áp bình thường được xác định khi: Huyết áp tâm thu từ 90 mmHg đến 129 mmHg và huyết áp tâm trương từ 60 mmHg đến 84 mmHg.";
     }
+
+    // switch (age) {
+    //   case (1):
+    //     {
+    //       moreInfo.content = "todo";
+    //       break;
+    //     }
+    //   default:
+    //     {
+    //       moreInfo.content = "todo";
+    //       break;
+    //     }
+    // }
     return moreInfo;
   }
 }

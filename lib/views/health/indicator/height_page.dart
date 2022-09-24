@@ -321,7 +321,8 @@ class HeightPage extends StatelessWidget {
   MoreInfo customMoreInfo() {
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
-      moreInfo.content = "todo";
+      moreInfo.content =
+          "Theo kết quả Tổng điều tra dinh dưỡng năm 2019-2020, chiều cao trung bình của nam thanh niên là 168,1cm và nữ là 156,2 cm.";
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
@@ -330,27 +331,219 @@ class HeightPage extends StatelessWidget {
       switch (age) {
         case (1):
           {
-            moreInfo.content = "todo";
+            moreInfo.content = "Chiều cao trung bình ở nam 1 tuổi là 75,7 cm.";
+            break;
+          }
+        case (2):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam 2 tuổi là 86,8 cm.";
+            break;
+          }
+        case (3):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 95,2 cm.";
+            break;
+          }
+        case (4):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 102,3 cm.";
+            break;
+          }
+        case (5):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 109,2 cm.";
+            break;
+          }
+        case (6):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 115,5 cm.";
+            break;
+          }
+        case (7):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 121,9 cm.";
+            break;
+          }
+        case (8):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 128 cm.";
+            break;
+          }
+        case (9):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 133,3 cm.";
+            break;
+          }
+        case (10):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 138,4 cm.";
+            break;
+          }
+        case (11):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 143,5 cm.";
+            break;
+          }
+        case (12):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 149,1 cm.";
+            break;
+          }
+        case (13):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 156,2 cm.";
+            break;
+          }
+        case (14):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 163,8 cm.";
+            break;
+          }
+        case (15):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 170,1 cm.";
+            break;
+          }
+        case (16):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 173,4 cm.";
+            break;
+          }
+        case (17):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 175,2 cm.";
+            break;
+          }
+        case (18):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 175,7 cm.";
+            break;
+          }
+        case (19):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 176,5 cm.";
+            break;
+          }
+        case (20):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nam tuổi là 177 cm.";
             break;
           }
         default:
           {
-            moreInfo.content = "todo";
+            moreInfo.content =
+                "Theo kết quả Tổng điều tra dinh dưỡng năm 2019-2020, chiều cao trung bình của nam thanh niên là 168,1cm.";
             break;
           }
       }
     }
     // Female
-    if (user.sex == 1) {
+    if (user.sex == 2) {
       switch (age) {
         case (1):
           {
-            moreInfo.content = "todo";
+            moreInfo.content = "Chiều cao trung bình ở nữ 1 tuổi là 74,1 cm.";
+            break;
+          }
+        case (2):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ 2 tuổi là 85,5 cm.";
+            break;
+          }
+        case (3):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 94 cm.";
+            break;
+          }
+        case (4):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 100,3 cm.";
+            break;
+          }
+        case (5):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 109,2 cm.";
+            break;
+          }
+        case (6):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 107,9 cm.";
+            break;
+          }
+        case (7):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 115,5 cm.";
+            break;
+          }
+        case (8):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 128,2 cm.";
+            break;
+          }
+        case (9):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 133,3 cm.";
+            break;
+          }
+        case (10):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 138,4 cm.";
+            break;
+          }
+        case (11):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 144 cm.";
+            break;
+          }
+        case (12):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 149,8 cm.";
+            break;
+          }
+        case (13):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 156,7 cm.";
+            break;
+          }
+        case (14):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 158,7cm.";
+            break;
+          }
+        case (15):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 159,7 cm.";
+            break;
+          }
+        case (16):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 162,5 cm.";
+            break;
+          }
+        case (17):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 162,5 cm.";
+            break;
+          }
+        case (18):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 163 cm.";
+            break;
+          }
+        case (19):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 163 cm.";
+            break;
+          }
+        case (20):
+          {
+            moreInfo.content = "Chiều cao trung bình ở nữ tuổi là 163,3 cm.";
             break;
           }
         default:
           {
-            moreInfo.content = "todo";
+            moreInfo.content =
+                "Theo kết quả Tổng điều tra dinh dưỡng năm 2019-2020, chiều cao trung bình của là 156,2 cm.";
             break;
           }
       }

@@ -369,22 +369,25 @@ class HeartRatePage extends StatelessWidget {
   MoreInfo customMoreInfo() {
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
-      moreInfo.content = "todo";
+      moreInfo.content =
+          "Đối với người từ 18 tuổi trở lên, nhịp tim bình thường trong lúc nghỉ ngơi dao động trong khoảng từ 60 đến 100 nhịp mỗi phút.";
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
-    switch (age) {
-      case (1):
-        {
-          moreInfo.content = "todo";
-          break;
-        }
-      default:
-        {
-          moreInfo.content = "todo";
-          break;
-        }
+    if (age >= 1 && age <= 2) {
+      moreInfo.content =
+          "Đối với người từ 1 đến 2 tuổi, tiêu chuẩn nhịp tim dao động trong khoảng từ 80 đến 130 nhịp mỗi phút.";
+    } else if (age >= 3 && age <= 6) {
+      moreInfo.content =
+          "Đối với người từ 3 đến 6 tuổi, tiêu chuẩn nhịp tim dao động trong khoảng từ 75 đến 120 nhịp mỗi phút.";
+    } else if (age >= 7 && age <= 17) {
+      moreInfo.content =
+          "Đối với người từ 7 đến 17 tuổi, tiêu chuẩn nhịp tim dao động trong khoảng từ 75 đến 110 nhịp mỗi phút.";
+    } else {
+      moreInfo.content =
+          "Đối với người từ 18 tuổi trở lên, nhịp tim bình thường trong lúc nghỉ ngơi dao động trong khoảng từ 60 đến 100 nhịp mỗi phút.";
     }
+
     return moreInfo;
   }
 }

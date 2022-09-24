@@ -416,22 +416,25 @@ class TemperaturePage extends StatelessWidget {
   MoreInfo customMoreInfo() {
     MoreInfo moreInfo = MoreInfo("", "");
     if (user.yOB == -1) {
-      moreInfo.content = "todo";
+      moreInfo.content =
+          "Phạm vi bình thường cho nhiệt độ cơ thể là từ 36°C - 37,5°C trong thực hành lâm sàng.";
       return moreInfo;
     }
     int age = DateTime.now().year - user.yOB;
-    switch (age) {
-      case (1):
-        {
-          moreInfo.content = "todo";
-          break;
-        }
-      default:
-        {
-          moreInfo.content = "todo";
-          break;
-        }
+    if (age >= 0 && age <= 2) {
+      moreInfo.content =
+          "Đối với người từ 0 đến 2 tuổi, nhiệt độ thông thường trong khoảng từ 36,6 đến 37,2 độ C.";
+    } else if (age >= 3 && age <= 10) {
+      moreInfo.content =
+          "Đối với người từ 3 đến 10 tuổi, nhiệt độ thông thường trong khoảng từ 36,4 đến 37,7 độ C.";
+    } else if (age >= 11 && age <= 65) {
+      moreInfo.content =
+          "Đối với người từ 11 đến 65 tuổi, nhiệt độ trung bình trong khoảng 36,1 đến 37,2 độ C.";
+    } else {
+      moreInfo.content =
+          "Đối với người từ 65 tuổi trở lên, nhiệt độ trung bình thường thấp hơn 37 độ.";
     }
+
     return moreInfo;
   }
 }
