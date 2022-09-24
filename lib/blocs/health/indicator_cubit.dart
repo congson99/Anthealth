@@ -31,9 +31,11 @@ class IndicatorCubit extends Cubit<CubitState> {
     await CommonService.instance.send(MessageIDPath.getIndicatorData(),
         IndicatorPageData.formatToSendLoadData(type, filter, id: id));
     CommonService.instance.client!.getData().then((value) {
-      if (ServerLogic.checkMatchMessageID(
-          MessageIDPath.getIndicatorData(), value)) {
-        loadedData(IndicatorPageData.getPageData(type, filter, value));
+      if (value != "null") {
+        if (ServerLogic.checkMatchMessageID(
+            MessageIDPath.getIndicatorData(), value)) {
+          loadedData(IndicatorPageData.getPageData(type, filter, value));
+        }
       }
     });
   }

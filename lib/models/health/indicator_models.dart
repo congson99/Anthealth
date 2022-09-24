@@ -76,13 +76,14 @@ class IndicatorPageData {
       "start_time": (start.millisecondsSinceEpoch) ~/ 1000,
       "end_time": (end.millisecondsSinceEpoch) ~/ 1000
     };
-    if (id != null) result.addAll({"uid": id});
+    if (id != null) result.addAll({"uid": int.parse(id)});
     return result;
   }
 
   static IndicatorPageData getPageData(
       int type, IndicatorFilter filter, dynamic value) {
     IndicatorData latest = IndicatorData(0, DateTime.now(), '');
+    print(value);
     var latestData = ServerLogic.getData(value)["latest"];
     if (latestData != '')
       latest = IndicatorData(
