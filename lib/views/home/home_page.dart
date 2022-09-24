@@ -13,7 +13,10 @@ import 'package:anthealth_mobile/views/common_pages/template_dashboard_page.dart
 import 'package:anthealth_mobile/views/common_widgets/custom_divider.dart';
 import 'package:anthealth_mobile/views/common_widgets/post_component.dart';
 import 'package:anthealth_mobile/views/common_widgets/section_component.dart';
+import 'package:anthealth_mobile/views/health/indicator/blood_pressure_page.dart';
 import 'package:anthealth_mobile/views/health/indicator/heart_rate_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/spo2_page.dart';
+import 'package:anthealth_mobile/views/health/indicator/temperature_page.dart';
 import 'package:anthealth_mobile/views/medic/medical_record/medical_record_page.dart';
 import 'package:anthealth_mobile/views/medic/medication_reminder/medication_reminder_page.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
@@ -64,11 +67,88 @@ class HomePage extends StatelessWidget {
     ]);
   }
 
-  GestureDetector buildGestureDetector(BuildContext context, Warning w) {
+  Widget buildGestureDetector(BuildContext context, Warning w) {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-        // if (w.type == 2)
+        if (w.type == 2)
         return HeartRatePage(
+          dashboardContext: context,
+          mem: FamilyMemberData(
+              w.uid,
+              w.name,
+              w.avatar,
+              "",
+              "",
+              false,
+              [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+              ],
+              -1,
+              -1),
+          user: User(
+              "id", "name", "avatarPath", "phoneNumber", "email", false, -1, 0),
+        );
+        if (w.type == 3)
+          return TemperaturePage(
+            dashboardContext: context,
+            mem: FamilyMemberData(
+                w.uid,
+                w.name,
+                w.avatar,
+                "",
+                "",
+                false,
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                ],
+                -1,
+                -1),
+            user: User(
+                "id", "name", "avatarPath", "phoneNumber", "email", false, -1, 0),
+          );
+        if (w.type == 4)
+          return BloodPressurePage(
+            dashboardContext: context,
+            mem: FamilyMemberData(
+                w.uid,
+                w.name,
+                w.avatar,
+                "",
+                "",
+                false,
+                [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                ],
+                -1,
+                -1),
+            user: User(
+                "id", "name", "avatarPath", "phoneNumber", "email", false, -1, 0),
+          );
+        return SPO2Page(
           dashboardContext: context,
           mem: FamilyMemberData(
               w.uid,
@@ -126,7 +206,10 @@ class HomePage extends StatelessWidget {
                   .textTheme
                   .subtitle1!
                   .copyWith(color: AnthealthColors.warning0),
-            ))
+            )),
+            SizedBox(width: 8),
+            Image.asset("assets/app_icon/direction/right_war1.png",
+                height: 16.0, width: 16.0, fit: BoxFit.cover)
           ],
         ),
       ),
