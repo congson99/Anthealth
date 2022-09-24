@@ -123,7 +123,7 @@ class IndicatorLineChart extends StatelessWidget {
 
   List<FlSpot> warningData(List<FlSpot> data, int indicatorIndex) {
     if (indicatorIndex == 3) return warningForm(data, 38);
-    if (indicatorIndex == 5) return warningForm(data, 94);
+    if (indicatorIndex == 5) return warningForm(data, 95);
     return [];
   }
 

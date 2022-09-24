@@ -6,11 +6,17 @@ import 'package:flutter/material.dart';
 
 class BloodPressureLineChart extends StatelessWidget {
   const BloodPressureLineChart(
-      {Key? key, required this.filterIndex, required this.data})
+      {Key? key,
+      required this.filterIndex,
+      required this.data,
+      required this.max1,
+      required this.max2})
       : super(key: key);
 
   final int filterIndex;
   final List<FlSpot> data;
+  final double max1;
+  final double max2;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +73,7 @@ class BloodPressureLineChart extends StatelessWidget {
         maxY: max(140, maxLeft(data, secondData(data)) + 20),
         lineBarsData: [
           LineChartBarData(
-              spots: lineWarning(data, 140),
+              spots: lineWarning(data, max1),
               isCurved: false,
               colors: [AnthealthColors.warning2],
               barWidth: 1.5,
@@ -76,7 +82,7 @@ class BloodPressureLineChart extends StatelessWidget {
                 show: false,
               )),
           LineChartBarData(
-              spots: lineWarning(data, 90),
+              spots: lineWarning(data, max2),
               isCurved: false,
               colors: [AnthealthColors.warning2],
               barWidth: 1.5,

@@ -175,12 +175,15 @@ class BloodPressurePage extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyText2),
       if (data.getData().length > 1)
         BloodPressureLineChart(
-            filterIndex: data.getFilter().getFilterIndex(),
-            data: (data.getFilter().getFilterIndex() == 0)
-                ? IndicatorLogic.convertToRecordChart10Data(data.getData())
-                : (data.getFilter().getFilterIndex() == 1)
-                    ? IndicatorLogic.convertToHourChartData(data.getData())
-                    : IndicatorLogic.convertToDayChartData(data.getData())),
+          filterIndex: data.getFilter().getFilterIndex(),
+          data: (data.getFilter().getFilterIndex() == 0)
+              ? IndicatorLogic.convertToRecordChart10Data(data.getData())
+              : (data.getFilter().getFilterIndex() == 1)
+                  ? IndicatorLogic.convertToHourChartData(data.getData())
+                  : IndicatorLogic.convertToDayChartData(data.getData()),
+          max1: getMax1(),
+          max2: getMax2(),
+        ),
       if (data.getData().length > 1) buildNote(context),
       if (data.getData().length != 0)
         IndicatorDetailRecords(
@@ -250,7 +253,7 @@ class BloodPressurePage extends StatelessWidget {
           ]),
           SizedBox(height: 4),
           Row(children: [
-            SizedBox(width: 28, child: Text("140")),
+            SizedBox(width: 28, child: Text(getMax1().toStringAsFixed(0))),
             Container(height: 1.5, width: 28, color: AnthealthColors.warning2),
             SizedBox(width: 8),
             Text(S.of(context).High_systolic_blood_pressure,
@@ -259,7 +262,7 @@ class BloodPressurePage extends StatelessWidget {
           ]),
           SizedBox(height: 4),
           Row(children: [
-            SizedBox(width: 28, child: Text(" 90")),
+            SizedBox(width: 28, child: Text(getMax2().toStringAsFixed(0))),
             Container(height: 1.5, width: 28, color: AnthealthColors.warning2),
             SizedBox(width: 8),
             Text(S.of(context).High_diastolic_blood_pressure,
@@ -496,5 +499,67 @@ class BloodPressurePage extends StatelessWidget {
           "Huyết áp bình thường được xác định khi: Huyết áp tâm thu từ 90 mmHg đến 129 mmHg và huyết áp tâm trương từ 60 mmHg đến 84 mmHg.";
     }
     return moreInfo;
+  }
+
+  double getMax1() {
+    double value = 140;
+    int age = DateTime.now().year - user.yOB;
+    if (age >= 1 && age <= 5) {
+      value = 110;
+    } else if (age >= 6 && age <= 13) {
+      value = 115;
+    } else if (age >= 14 && age <= 19) {
+      value = 120;
+    } else if (age >= 20 && age <= 24) {
+      value = 132;
+    } else if (age >= 25 && age <= 29) {
+      value = 133;
+    } else if (age >= 30 && age <= 34) {
+      value = 134;
+    } else if (age >= 35 && age <= 39) {
+      value = 135;
+    } else if (age >= 40 && age <= 44) {
+      value = 137;
+    } else if (age >= 45 && age <= 49) {
+      value = 139;
+    } else if (age >= 50 && age <= 54) {
+      value = 142;
+    } else if (age >= 55 && age <= 59) {
+      value = 144;
+    } else if (age >= 60 && age <= 64) {
+      value = 147;
+    }
+    return value;
+  }
+
+  double getMax2() {
+    double value = 140;
+    int age = DateTime.now().year - user.yOB;
+    if (age >= 1 && age <= 5) {
+      value = 79;
+    } else if (age >= 6 && age <= 13) {
+      value = 80;
+    } else if (age >= 14 && age <= 19) {
+      value = 81;
+    } else if (age >= 20 && age <= 24) {
+      value = 83;
+    } else if (age >= 25 && age <= 29) {
+      value = 84;
+    } else if (age >= 30 && age <= 34) {
+      value = 85;
+    } else if (age >= 35 && age <= 39) {
+      value = 86;
+    } else if (age >= 40 && age <= 44) {
+      value = 87;
+    } else if (age >= 45 && age <= 49) {
+      value = 88;
+    } else if (age >= 50 && age <= 54) {
+      value = 89;
+    } else if (age >= 55 && age <= 59) {
+      value = 90;
+    } else if (age >= 60 && age <= 64) {
+      value = 91;
+    }
+    return value;
   }
 }

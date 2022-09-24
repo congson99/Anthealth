@@ -76,7 +76,7 @@ class IndicatorPageData {
       "start_time": (start.millisecondsSinceEpoch) ~/ 1000,
       "end_time": (end.millisecondsSinceEpoch) ~/ 1000
     };
-    if (id != null) result.addAll({"uid": int.parse(id)});
+    if (id != null) result.addAll({"uid": id});
     return result;
   }
 
