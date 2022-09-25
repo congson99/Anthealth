@@ -355,6 +355,19 @@ class DashboardCubit extends Cubit<CubitState> {
     return result;
   }
 
+  Future<List<MedicineData>> getMedicationsWithoutNote() async {
+    List<MedicineData> result = [];
+    await CommonService.instance.send(MessageIDPath.getMedicines(), {});
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getMedicines(), value))
+        for (dynamic x in ServerLogic.getData(value)["data"]) {
+          result.add(MedicineData(x["id"], x["name"], 0, int.parse(x["unit"]),
+              0, x["img"], x["reference"], ""));
+        }
+    });
+    return result;
+  }
+
   Future<bool> removeFromFamily(String uid) async {
     bool result = false;
     Map<String, dynamic> data = {"uid": uid};
