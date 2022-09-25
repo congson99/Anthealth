@@ -380,15 +380,4 @@ class DashboardCubit extends Cubit<CubitState> {
     });
     return result;
   }
-
-  Future<List<MedicineData>> getMedicationsWithoutNote() async {
-    var jsonText = await rootBundle.loadString('assets/hardData/medicine.json');
-    List data = json.decode(jsonText);
-    List<MedicineData> result = [];
-    for (dynamic x in data) {
-      result.add(MedicineData(x["id"], x["name"], 0, int.parse(x["unit"]), 0,
-          x["img"], x["reference"], ""));
-    }
-    return result;
-  }
 }

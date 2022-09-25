@@ -47,7 +47,7 @@ class _AddPrescriptionMedicinePageState
     super.initState();
     if (widget.medicine != null) medicine = widget.medicine!;
     BlocProvider.of<DashboardCubit>(widget.superContext)
-        .getMedicationsWithoutNote()
+        .getMedications()
         .then((value) => setState(() {
               source = value;
               data = MedicalDirectoryLogic.formatMedicationToMaskList(source);
