@@ -37,7 +37,7 @@ class FamilyPage extends StatelessWidget {
             name: user.name,
             content: buildContent(context, state));
       else
-        return ErrorPage();
+        return CustomErrorPage();
     });
   }
 

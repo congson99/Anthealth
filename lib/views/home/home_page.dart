@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
               title: S.of(context).Hi,
               name: user.name,
               content: buildContent(context, state));
-        return ErrorPage();
+        return CustomErrorPage();
       });
 
   Widget buildContent(BuildContext context, HomeState state) {

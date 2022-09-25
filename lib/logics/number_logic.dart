@@ -12,7 +12,7 @@ class NumberLogic {
 
   static String handleMinTimeToPrint(int min) {
     String h = (min ~/ 60 > 0) ? (min ~/ 60).toString() + "h " : "";
-    String m = (min % 60 > 0) ? (min ~/ 60).toString() + "'" : "";
+    String m = (min % 60 > 0) ? (min % 60).toString() + "'" : "";
     return h + m;
   }
 }

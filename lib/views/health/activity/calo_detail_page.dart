@@ -29,6 +29,19 @@ class CaloDetailPage extends StatefulWidget {
 class _CaloDetailPageState extends State<CaloDetailPage> {
   int switchIndex = 0;
   DateTime dateTimePicker = DateTime.now();
+  CaloDayData data = CaloDayData(0, [], []);
+
+  @override
+  void initState() {
+    BlocProvider.of<CaloCubit>(widget.superContext)
+        .getDayData(dateTimePicker)
+        .then((value) {
+      setState(() {
+        data = value;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +90,10 @@ class _CaloDetailPageState extends State<CaloDetailPage> {
   // Content Component
   NextPreviousBar buildNextPreviousBar() {
     String content = "";
-    if (switchIndex == 0)
+    if (switchIndex == 0) {
       content =
           DateTimeLogic.todayFormat(context, dateTimePicker, "dd.MM.yyyy");
+    }
     if (switchIndex == 1)
       content = DateTimeLogic.formatMonthYear(context, dateTimePicker);
     if (switchIndex == 2) content = dateTimePicker.year.toString();
@@ -88,8 +102,16 @@ class _CaloDetailPageState extends State<CaloDetailPage> {
         increase: () {
           setState(() {
             if (switchIndex ==
-                0) if (DateTimeLogic.compareDayWithNow(dateTimePicker))
+                0) if (DateTimeLogic.compareDayWithNow(dateTimePicker)) {
               dateTimePicker = DateTimeLogic.increaseDay(dateTimePicker);
+              BlocProvider.of<CaloCubit>(widget.superContext)
+                  .getDayData(dateTimePicker)
+                  .then((value) {
+                setState(() {
+                  data = value;
+                });
+              });
+            }
             if (switchIndex ==
                 1) if (DateTimeLogic.compareMonthWithNow(dateTimePicker))
               dateTimePicker = DateTimeLogic.increaseMonth(dateTimePicker);
@@ -99,8 +121,16 @@ class _CaloDetailPageState extends State<CaloDetailPage> {
         },
         decrease: () {
           setState(() {
-            if (switchIndex == 0)
+            if (switchIndex == 0) {
               dateTimePicker = DateTimeLogic.decreaseDay(dateTimePicker);
+              BlocProvider.of<CaloCubit>(widget.superContext)
+                  .getDayData(dateTimePicker)
+                  .then((value) {
+                setState(() {
+                  data = value;
+                });
+              });
+            }
             if (switchIndex == 1)
               dateTimePicker = DateTimeLogic.decreaseMonth(dateTimePicker);
             if (switchIndex == 2)
@@ -111,8 +141,6 @@ class _CaloDetailPageState extends State<CaloDetailPage> {
 
   Widget buildDayDetails() {
     double size = (MediaQuery.of(context).size.width - 88) / 4;
-    CaloDayData data = BlocProvider.of<CaloCubit>(widget.superContext)
-        .getDayData(dateTimePicker);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

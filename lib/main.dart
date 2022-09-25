@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
       return DashboardPage(
           user: state.user, review: state.review, warning: state.warning);
     if (state is ConnectErrorState)
-      return ErrorPage(error: S.of(context).Cannot_connect);
+      return CustomErrorPage(error: S.of(context).Cannot_connect);
     return AppLoadingPage();
   }
 }

@@ -70,4 +70,10 @@ class MessageIDPath {
   static int stopReminder() => 2406;
 
   static int addWater() => 2450;
+
+  static int getCaloDay() => 2464;
+
+  static int addCaloIn() => 2463;
+
+  static int addCaloOut() => 2462;
 }

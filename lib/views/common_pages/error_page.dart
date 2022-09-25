@@ -1,8 +1,8 @@
 import 'package:anthealth_mobile/views/common_widgets/custom_error_widget.dart';
 import 'package:flutter/material.dart';
 
-class ErrorPage extends StatelessWidget {
-  const ErrorPage({Key? key, this.error}) : super(key: key);
+class CustomErrorPage extends StatelessWidget {
+  const CustomErrorPage({Key? key, this.error}) : super(key: key);
 
   final String? error;
 

@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/health/calo_states.dart';
+import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/health/calo_models.dart';
+import 'package:anthealth_mobile/services/message/message_id_path.dart';
+import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,23 +26,38 @@ class CaloCubit extends Cubit<CubitState> {
 
   /// Service Functions
   Future<void> loadData() async {
-    loadedData(CaloState(CaloDayData(1200, [
-      // CaloIn("", DateTime.now(), "Cá ngừ", "100g", 200, 2),
-      // CaloIn("", DateTime.now(), "Trứng gà", "quả", 800, 0.5),
-      CaloIn("", DateTime.now(), "Cơm", "chén", 500, 1)
-    ], [
-      CaloOut("", DateTime.now(), "Chạy bộ", 50, 5)
-    ])));
+    CaloDayData caloDayData = await getDayData(DateTime.now());
+    loadedData(CaloState(caloDayData));
   }
 
-  CaloDayData getDayData(DateTime dateTime) {
-    return CaloDayData(2000, [
-      CaloIn("", DateTime.now(), "Cá ngừ", "100g", 200, 2),
-      CaloIn("", DateTime.now(), "Trứng gà", "quả", 800, 0.5),
-      CaloIn("", DateTime.now(), "Cơm", "chén", 500, 1)
-    ], [
-      CaloOut("", DateTime.now(), "Chạy bộ", 50, 5)
-    ]);
+  Future<CaloDayData> getDayData(DateTime dateTime) async {
+    CaloDayData caloDayData = CaloDayData(0, [], []);
+    Map<String, dynamic> data = {
+      "time": dateTime.millisecondsSinceEpoch ~/ 1000
+    };
+    await CommonService.instance.send(MessageIDPath.getCaloDay(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getCaloDay(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          print(value);
+          caloDayData.goal = ServerLogic.getData(value)["goal"];
+          for (dynamic x in ServerLogic.getData(value)["caloin"]) {
+            caloDayData.caloIn.add(CaloIn(
+                x["id"],
+                DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000),
+                x["name"],
+                x["servingName"],
+                x["servingCalo"],
+                0.0 + x["serving"]));
+          }
+          for (dynamic x in ServerLogic.getData(value)["caloout"]) {
+            caloDayData.caloOut.add(CaloOut(
+                x["id"], DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000), x["name"], x["unitCalo"], x["min"]));
+          }
+        }
+      }
+    });
+    return caloDayData;
   }
 
   List<CaloDayReportData> getMonthReport(DateTime dateTime) {
@@ -70,6 +88,47 @@ class CaloCubit extends Cubit<CubitState> {
       CaloMonthReportData(2900, 300),
       CaloMonthReportData(3500, 200),
     ];
+  }
+
+  Future<bool> addCaloIn(CaloIn calo) async {
+    bool result = false;
+    Map<String, dynamic> data = {
+      "id": calo.id,
+      "time": calo.time.millisecondsSinceEpoch ~/ 1000,
+      "name": calo.name,
+      "servingName": calo.servingName,
+      "servingCalo": calo.servingCalo,
+      "serving": calo.serving
+    };
+    await CommonService.instance.send(MessageIDPath.addCaloIn(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.addCaloIn(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          result = ServerLogic.getData(value)["status"];
+        }
+      }
+    });
+    return result;
+  }
+
+  Future<bool> addCaloOut(CaloOut calo) async {
+    bool result = false;
+    Map<String, dynamic> data = {
+      "id": calo.id,
+      "time": calo.time.millisecondsSinceEpoch ~/ 1000,
+      "name": calo.name,
+      "unitCalo": calo.unitCalo,
+      "min": calo.min
+    };
+    await CommonService.instance.send(MessageIDPath.addCaloOut(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.addCaloOut(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          result = ServerLogic.getData(value)["status"];
+        }
+      }
+    });
+    return result;
   }
 
   Future<List<CaloIn>> getCaloIn() async {

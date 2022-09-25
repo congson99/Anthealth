@@ -6,6 +6,7 @@ import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
 import 'package:anthealth_mobile/models/health/calo_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
@@ -45,7 +46,7 @@ class CaloPage extends StatelessWidget {
                   avatarPath: data!.avatarPath,
                   content: buildContent(context, state));
           }
-          return ErrorPage();
+          return LoadingPage();
         }));
   }
 
@@ -181,12 +182,22 @@ class CaloPage extends StatelessWidget {
         builder: (_) => AddCaloInBottomSheet(
             superContext: context,
             ok: (value) {
-              ShowSnackBar.showSuccessSnackBar(
-                  context,
-                  S.of(context).Add_calo_in +
-                      ' ' +
-                      S.of(context).successfully +
-                      '!');
+              print(value.servingCalo);
+              BlocProvider.of<CaloCubit>(context)
+                  .addCaloIn(value)
+                  .then((value) {
+                if (value) {
+                  ShowSnackBar.showSuccessSnackBar(
+                      context,
+                      S.of(context).Add_calo_in +
+                          ' ' +
+                          S.of(context).successfully +
+                          '!');
+                } else {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).something_wrong);
+                }
+              });
             },
             caloInList: caloInList));
   }
@@ -207,13 +218,23 @@ class CaloPage extends StatelessWidget {
         builder: (_) => AddCaloOutBottomSheet(
             superContext: context,
             ok: (value) {
-              ShowSnackBar.showSuccessSnackBar(
-                  context,
-                  S.of(context).Add_calo_out +
-                      ' ' +
-                      S.of(context).successfully +
-                      '!');
-            }, caloOutList: caloOutList));
+              BlocProvider.of<CaloCubit>(context)
+                  .addCaloOut(value)
+                  .then((value) {
+                if (value) {
+                  ShowSnackBar.showSuccessSnackBar(
+                      context,
+                      S.of(context).Add_calo_out +
+                          ' ' +
+                          S.of(context).successfully +
+                          '!');
+                } else {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).something_wrong);
+                }
+              });
+            },
+            caloOutList: caloOutList));
   }
 
   void setting(BuildContext context) {

@@ -38,7 +38,7 @@ class NewSettingsPage extends StatelessWidget {
             isHeader: false,
             content: buildContent(context));
       else
-        return ErrorPage();
+        return CustomErrorPage();
     });
   }
 

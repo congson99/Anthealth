@@ -1,25 +1,25 @@
 class CaloDayData {
-  CaloDayData(this._goal, this._caloIn, this._caloOut);
+  CaloDayData(this.goal, this.caloIn, this.caloOut);
 
-  final int _goal;
-  final List<CaloIn> _caloIn;
-  final List<CaloOut> _caloOut;
+  int goal;
+  List<CaloIn> caloIn;
+  List<CaloOut> caloOut;
 
-  int getGoal() => _goal;
+  int getGoal() => goal;
 
-  List<CaloIn> getListCaloIn() => _caloIn;
+  List<CaloIn> getListCaloIn() => caloIn;
 
-  List<CaloOut> getListCaloOut() => _caloOut;
+  List<CaloOut> getListCaloOut() => caloOut;
 
   int getCaloIn() {
     int result = 0;
-    for (CaloIn x in _caloIn) result += x.getCalo();
+    for (CaloIn x in caloIn) result += x.getCalo();
     return result;
   }
 
   int getCaloOut() {
     int result = 0;
-    for (CaloOut x in _caloOut) result += x.getCalo();
+    for (CaloOut x in caloOut) result += x.getCalo();
     return result;
   }
 }

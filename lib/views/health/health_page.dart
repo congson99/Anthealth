@@ -39,7 +39,7 @@ class HealthPage extends StatelessWidget {
               name: user.name,
               content: buildContent(
                   context, state.healthPageData, state.posts, state.warning));
-        return ErrorPage();
+        return CustomErrorPage();
       });
 
   Widget buildContent(BuildContext context, HealthPageData data,

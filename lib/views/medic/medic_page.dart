@@ -32,7 +32,7 @@ class MedicPage extends StatelessWidget {
               title: S.of(context).Medic_record,
               name: user.name,
               content: buildContent(context, state.medicPageData));
-        return ErrorPage();
+        return CustomErrorPage();
       });
 
   Widget buildContent(BuildContext context, MedicPageData pageData) =>
