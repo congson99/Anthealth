@@ -62,8 +62,21 @@ class MedicationReminderPage extends StatelessWidget {
       CustomDivider.common(),
       SizedBox(height: 16),
       SectionComponent(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => AllReminderPage(superContext: context))),
+          onTap: () async {
+            List<MedicationReminder> activeReminders = [];
+            List<MedicationReminder> doneReminders = [];
+            await BlocProvider.of<MedicationReminderCubit>(context)
+                .getAllReminders()
+                .then((value) {
+              activeReminders = value[0];
+              doneReminders = value[1];
+            });
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => AllReminderPage(
+                    superContext: context,
+                    activeReminders: activeReminders,
+                    doneReminders: doneReminders)));
+          },
           title: S.of(context).All_reminder,
           colorID: 2),
       SizedBox(height: 16),

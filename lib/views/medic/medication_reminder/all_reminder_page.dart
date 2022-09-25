@@ -13,32 +13,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-class AllReminderPage extends StatefulWidget {
-  const AllReminderPage({Key? key, required this.superContext})
+class AllReminderPage extends StatelessWidget {
+  const AllReminderPage(
+      {Key? key,
+      required this.superContext,
+      required this.activeReminders,
+      required this.doneReminders})
       : super(key: key);
 
   final BuildContext superContext;
+  final List<MedicationReminder> activeReminders;
 
-  @override
-  State<AllReminderPage> createState() => _AllReminderPageState();
-}
-
-class _AllReminderPageState extends State<AllReminderPage> {
-  List<MedicationReminder> activeReminders = [];
-  List<MedicationReminder> doneReminders = [];
-
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-        .getAllReminders()
-        .then((value) {
-      setState(() {
-        activeReminders = value[0];
-        doneReminders = value[1];
-      });
-    });
-  }
+  final List<MedicationReminder> doneReminders;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +49,7 @@ class _AllReminderPageState extends State<AllReminderPage> {
           SizedBox(height: 16),
           if (doneReminders.length == 0) Text(S.of(context).no_done_reminders),
           if (doneReminders.length != 0)
-            ...activeReminders.map(
+            ...doneReminders.map(
                 (reminder) => buildReminderComponent(reminder, context, false)),
           SizedBox(height: 16),
         ]));
@@ -201,7 +187,8 @@ class _AllReminderPageState extends State<AllReminderPage> {
                     //         .copyWith(color: color1))
                   ])),
           GestureDetector(
-              onTap: () => isActive ? stop(reminder) : reuse(reminder),
+              onTap: () =>
+                  isActive ? stop(context, reminder) : reuse(context, reminder),
               child: Container(
                   height: 42,
                   decoration: BoxDecoration(
@@ -220,17 +207,11 @@ class _AllReminderPageState extends State<AllReminderPage> {
         ]));
   }
 
-  void stop(MedicationReminder reminder) {
-    BlocProvider.of<MedicationReminderCubit>(widget.superContext)
+  void stop(BuildContext context, MedicationReminder reminder) {
+    BlocProvider.of<MedicationReminderCubit>(superContext)
         .stopReminder(reminder)
         .then((value) {
       if (value) {
-        BlocProvider.of<MedicationReminderCubit>(widget.superContext)
-            .getAllReminders()
-            .then((value) {
-          activeReminders = value[0];
-          doneReminders = value[1];
-        });
         Navigator.pop(context);
         ShowSnackBar.showSuccessSnackBar(context, S.of(context).successfully);
       } else {
@@ -239,15 +220,15 @@ class _AllReminderPageState extends State<AllReminderPage> {
     });
   }
 
-  void reuse(MedicationReminder reminder) {
+  void reuse(BuildContext context, MedicationReminder reminder) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => CreateReminderPage(
             reminder: reminder,
             done: (reminder) {
-              BlocProvider.of<MedicationReminderCubit>(widget.superContext)
+              BlocProvider.of<MedicationReminderCubit>(superContext)
                   .addReminder([reminder]).then((value) {
                 if (value) {
-                  BlocProvider.of<MedicationReminderCubit>(widget.superContext)
+                  BlocProvider.of<MedicationReminderCubit>(superContext)
                       .loadMedicationReminder();
                   Navigator.pop(context);
                   Navigator.pop(context);
