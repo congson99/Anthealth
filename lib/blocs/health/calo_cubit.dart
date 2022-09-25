@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/health/calo_states.dart';
 import 'package:anthealth_mobile/models/health/calo_models.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CaloCubit extends Cubit<CubitState> {
@@ -69,23 +72,25 @@ class CaloCubit extends Cubit<CubitState> {
     ];
   }
 
-  List<CaloIn> getCaloIn() {
-    return [
-      CaloIn("a", DateTime.now(), "Ca", "Con", 400, 0),
-      CaloIn("b", DateTime.now(), "Com", "Chen", 200, 0),
-      CaloIn("c", DateTime.now(), "Trung", "Qua", 100, 0),
-      CaloIn("d", DateTime.now(), "Bo", "100g", 500, 0),
-      CaloIn("e", DateTime.now(), "Heo", "100g", 400, 0),
-      CaloIn("f", DateTime.now(), "Rau", "Dia", 20, 0),
-    ];
+  Future<List<CaloIn>> getCaloIn() async {
+    var jsonText = await rootBundle.loadString('assets/hardData/calo_in.json');
+    List data = json.decode(jsonText);
+    List<CaloIn> result = [];
+    for (dynamic x in data) {
+      result.add(CaloIn(x["id"], DateTime.now(), x["name"], x["servingName"],
+          int.parse(x["servingCalo"]), 0));
+    }
+    return result;
   }
 
-  List<CaloOut> getCaloOut() {
-    return [
-      CaloOut("a", DateTime.now(), "Chay", 400, 0),
-      CaloOut("b", DateTime.now(), "Di bo", 200, 0),
-      CaloOut("c", DateTime.now(), "Nhay day", 300, 0),
-      CaloOut("d", DateTime.now(), "Boi", 400, 0),
-    ];
+  Future<List<CaloOut>> getCaloOut() async {
+    var jsonText = await rootBundle.loadString('assets/hardData/calo_out.json');
+    List data = json.decode(jsonText);
+    List<CaloOut> result = [];
+    for (dynamic x in data) {
+      result.add(CaloOut(
+          x["id"], DateTime.now(), x["name"], int.parse(x["unitCalo"]), 0));
+    }
+    return result;
   }
 }

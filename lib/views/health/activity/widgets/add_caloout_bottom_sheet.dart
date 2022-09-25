@@ -1,22 +1,22 @@
-import 'package:anthealth_mobile/blocs/health/calo_cubit.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/models/health/calo_models.dart';
+import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:anthealth_mobile/views/common_widgets/common_text_field.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
 import 'package:anthealth_mobile/views/theme/colors.dart';
-import 'package:anthealth_mobile/views/common_widgets/common_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddCaloOutBottomSheet extends StatefulWidget {
   const AddCaloOutBottomSheet({
     Key? key,
     required this.superContext,
     required this.ok,
+    required this.caloOutList,
   }) : super(key: key);
 
   final BuildContext superContext;
   final Function(CaloOut) ok;
+  final List<CaloOut> caloOutList;
 
   @override
   _AddCaloOutBottomSheetState createState() => _AddCaloOutBottomSheetState();
@@ -45,16 +45,10 @@ class _AddCaloOutBottomSheetState extends State<AddCaloOutBottomSheet> {
               Expanded(
                   child: CommonTextField.select(
                       value: (data.name == "") ? null : data.name,
-                      data: caloOutLabel(
-                          BlocProvider.of<CaloCubit>(widget.superContext)
-                              .getCaloOut()),
+                      data: caloOutLabel(widget.caloOutList),
                       onChanged: (value) => setState(() {
-                            data =
-                                BlocProvider.of<CaloCubit>(widget.superContext)
-                                    .getCaloOut()[caloOutLabel(
-                                        BlocProvider.of<CaloCubit>(
-                                                widget.superContext)
-                                            .getCaloOut())
+                            data = widget.caloOutList[
+                                caloOutLabel(widget.caloOutList)
                                     .indexOf(value!)];
                           })))
             ]),

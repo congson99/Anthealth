@@ -7,7 +7,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/logics/water_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
-import 'package:anthealth_mobile/views/common_pages/error_page.dart';
+import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
 import 'package:anthealth_mobile/views/common_widgets/custom_snackbar.dart';
@@ -45,7 +45,7 @@ class WaterPage extends StatelessWidget {
                   avatarPath: data!.avatarPath,
                   content: buildContent(context, state));
           }
-          return ErrorPage();
+          return LoadingPage();
         }));
   }
 

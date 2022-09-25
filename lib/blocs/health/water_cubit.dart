@@ -1,6 +1,9 @@
 import 'package:anthealth_mobile/blocs/app_states.dart';
 import 'package:anthealth_mobile/blocs/health/water_states.dart';
+import 'package:anthealth_mobile/logics/server_logic.dart';
 import 'package:anthealth_mobile/models/health/water_models.dart';
+import 'package:anthealth_mobile/services/message/message_id_path.dart';
+import 'package:anthealth_mobile/services/service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WaterCubit extends Cubit<CubitState> {
@@ -20,6 +23,17 @@ class WaterCubit extends Cubit<CubitState> {
 
   /// Service Functions
   Future<void> loadData() async {
+    Map<String, dynamic> data = {
+      "time": DateTime.now().millisecondsSinceEpoch ~/ 1000
+    };
+    await CommonService.instance.send(MessageIDPath.getWaterDay(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.getWaterDay(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          print(value);
+        }
+      }
+    });
     loadedData(WaterState(WaterDayData(
         3000, [Water(DateTime.now(), 500), Water(DateTime.now(), 800)])));
   }

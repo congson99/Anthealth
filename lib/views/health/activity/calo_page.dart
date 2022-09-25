@@ -4,6 +4,7 @@ import 'package:anthealth_mobile/blocs/health/calo_states.dart';
 import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/health/calo_models.dart';
 import 'package:anthealth_mobile/views/common_pages/error_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -164,7 +165,11 @@ class CaloPage extends StatelessWidget {
                     ]))));
   }
 
-  void addCaloIn(BuildContext context) {
+  Future<void> addCaloIn(BuildContext context) async {
+    List<CaloIn> caloInList = [];
+    await BlocProvider.of<CaloCubit>(context).getCaloIn().then((value) {
+      caloInList = value;
+    });
     Navigator.of(context).pop();
     showModalBottomSheet(
         enableDrag: false,
@@ -182,10 +187,15 @@ class CaloPage extends StatelessWidget {
                       ' ' +
                       S.of(context).successfully +
                       '!');
-            }));
+            },
+            caloInList: caloInList));
   }
 
-  void addCaloOut(BuildContext context) {
+  Future<void> addCaloOut(BuildContext context) async {
+    List<CaloOut> caloOutList = [];
+    await BlocProvider.of<CaloCubit>(context).getCaloOut().then((value) {
+      caloOutList = value;
+    });
     Navigator.of(context).pop();
     showModalBottomSheet(
         enableDrag: false,
@@ -203,7 +213,7 @@ class CaloPage extends StatelessWidget {
                       ' ' +
                       S.of(context).successfully +
                       '!');
-            }));
+            }, caloOutList: caloOutList));
   }
 
   void setting(BuildContext context) {

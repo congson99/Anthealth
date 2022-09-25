@@ -64,4 +64,6 @@ class MessageIDPath {
   static int getAllReminder() => 2405;
 
   static int getFamilyWarning() => 2103;
+
+  static int getWaterDay() => 2451;
 }
