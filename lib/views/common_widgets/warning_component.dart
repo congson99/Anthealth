@@ -176,6 +176,10 @@ class WarningComponent extends StatelessWidget {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Text(DateFormat("hh:mm dd.MM.yyyy").format(w.time),
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: AnthealthColors.warning0, fontSize: 12)),
+                SizedBox(height: 2),
                 Text(
                   w.notice,
                   style: Theme.of(context)
@@ -183,11 +187,7 @@ class WarningComponent extends StatelessWidget {
                       .bodyText1!
                       .copyWith(color: AnthealthColors.warning0),
                 ),
-                SizedBox(height: 4),
-                Text(DateFormat("hh:mm dd.MM.yyyy").format(w.time),
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        color: AnthealthColors.warning1, fontSize: 12)),
-                SizedBox(height: 4),
+                SizedBox(height: 6),
                 Text(
                   subTitle,
                   style: Theme.of(context)

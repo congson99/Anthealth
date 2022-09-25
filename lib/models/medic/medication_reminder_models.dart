@@ -48,10 +48,10 @@ class MedicationReminder {
         if (i == 1)
           dayReminder.add(
               Reminder(DateTime(1, 1, 1, 11, 0), quantity, S.of(context).noon));
-        if (i == 0)
+        if (i == 2)
           dayReminder.add(Reminder(
               DateTime(1, 1, 1, 17, 0), quantity, S.of(context).afternoon));
-        if (i == 0)
+        if (i == 3)
           dayReminder.add(Reminder(
               DateTime(1, 1, 1, 20, 0), quantity, S.of(context).night));
       }
