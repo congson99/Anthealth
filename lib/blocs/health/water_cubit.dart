@@ -23,28 +23,46 @@ class WaterCubit extends Cubit<CubitState> {
 
   /// Service Functions
   Future<void> loadData() async {
+    WaterDayData waterDayData = await getDayData(DateTime.now());
+    loadedData(WaterState(waterDayData));
+  }
+
+  Future<bool> addData(Water water) async {
+    bool result = false;
     Map<String, dynamic> data = {
-      "time": DateTime.now().millisecondsSinceEpoch ~/ 1000
+      "time": water.time.millisecondsSinceEpoch ~/ 1000,
+      "value": water.value
+    };
+    await CommonService.instance.send(MessageIDPath.addWater(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(MessageIDPath.addWater(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          result = ServerLogic.getData(value)["status"];
+        }
+      }
+    });
+    return result;
+  }
+
+  Future<WaterDayData> getDayData(DateTime dateTime) async {
+    WaterDayData waterDayData = WaterDayData(0, []);
+    Map<String, dynamic> data = {
+      "time": dateTime.millisecondsSinceEpoch ~/ 1000
     };
     await CommonService.instance.send(MessageIDPath.getWaterDay(), data);
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getWaterDay(), value)) {
         if (ServerLogic.getData(value) != null) {
           print(value);
+          waterDayData.goal = ServerLogic.getData(value)["goal"];
+          for (dynamic x in ServerLogic.getData(value)["record"]) {
+            waterDayData.record.add(Water(
+                DateTime.fromMillisecondsSinceEpoch(x["time"]), x["value"]));
+          }
         }
       }
     });
-    loadedData(WaterState(WaterDayData(
-        3000, [Water(DateTime.now(), 500), Water(DateTime.now(), 800)])));
-  }
-
-  WaterDayData getDayData(DateTime dateTime) {
-    return WaterDayData(200, [
-      Water(DateTime(0, 0, 0, 2, 3), 200),
-      Water(DateTime(0, 0, 0, 2, 20), 500),
-      Water(DateTime(0, 0, 0, 6, 20), 500),
-      Water(DateTime(0, 0, 0, 17, 20), 500)
-    ]);
+    return waterDayData;
   }
 
   WaterMonthReport getMonthData(DateTime dateTime) {

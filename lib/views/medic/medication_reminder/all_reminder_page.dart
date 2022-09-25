@@ -213,6 +213,8 @@ class AllReminderPage extends StatelessWidget {
         .then((value) {
       if (value) {
         Navigator.pop(context);
+        BlocProvider.of<MedicationReminderCubit>(superContext)
+            .loadMedicationReminder();
         ShowSnackBar.showSuccessSnackBar(context, S.of(context).successfully);
       } else {
         ShowSnackBar.showErrorSnackBar(context, S.of(context).something_wrong);

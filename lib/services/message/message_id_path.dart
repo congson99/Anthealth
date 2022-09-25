@@ -68,4 +68,6 @@ class MessageIDPath {
   static int getWaterDay() => 2451;
 
   static int stopReminder() => 2406;
+
+  static int addWater() => 2450;
 }

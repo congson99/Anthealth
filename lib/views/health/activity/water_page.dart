@@ -7,6 +7,7 @@ import 'package:anthealth_mobile/generated/l10n.dart';
 import 'package:anthealth_mobile/logics/number_logic.dart';
 import 'package:anthealth_mobile/logics/water_logic.dart';
 import 'package:anthealth_mobile/models/family/family_models.dart';
+import 'package:anthealth_mobile/models/health/water_models.dart';
 import 'package:anthealth_mobile/views/common_pages/loading_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_avatar_form_page.dart';
 import 'package:anthealth_mobile/views/common_pages/template_form_page.dart';
@@ -19,6 +20,7 @@ import 'package:anthealth_mobile/views/health/activity/widgets/activity_circle_b
 import 'package:anthealth_mobile/views/health/activity/widgets/activity_today.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class WaterPage extends StatelessWidget {
   const WaterPage({Key? key, this.data}) : super(key: key);
@@ -114,13 +116,25 @@ class WaterPage extends StatelessWidget {
             middleSymbol: '.',
             cancel: () => Navigator.pop(context),
             ok: (indexPicker, subIndexPicker, time) {
-              ShowSnackBar.showSuccessSnackBar(
-                  context,
-                  S.of(context).Add_water +
-                      ' ' +
-                      S.of(context).successfully +
-                      '!');
-              Navigator.pop(context);
+              Water water = Water(
+                  time,
+                  int.parse(WaterLogic.dataPicker()[indexPicker]) * 1000 +
+                      int.parse(WaterLogic.subDataPicker()[subIndexPicker]));
+              BlocProvider.of<WaterCubit>(context).addData(water).then((value) {
+                if (value) {
+                  BlocProvider.of<WaterCubit>(context).loadData();
+                  ShowSnackBar.showSuccessSnackBar(
+                      context,
+                      S.of(context).Add_water +
+                          ' ' +
+                          S.of(context).successfully +
+                          '!');
+                } else {
+                  ShowSnackBar.showErrorSnackBar(
+                      context, S.of(context).something_wrong);
+                }
+                Navigator.pop(context);
+              });
             }));
   }
 

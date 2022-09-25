@@ -1,16 +1,16 @@
 class WaterDayData {
-  WaterDayData(this._goal, this._record);
+  WaterDayData(this.goal, this.record);
 
-  final int _goal;
-  final List<Water> _record;
+  int goal;
+  List<Water> record;
 
-  int getGoal() => _goal;
+  int getGoal() => goal;
 
-  List<Water> getWater() => _record;
+  List<Water> getWater() => record;
 
   int getWaterValue() {
     int value = 0;
-    for (Water x in _record) value += x.value;
+    for (Water x in record) value += x.value;
     return value;
   }
 }

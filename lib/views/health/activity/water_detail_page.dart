@@ -31,6 +31,19 @@ class WaterDetailPage extends StatefulWidget {
 class _WaterDetailPageState extends State<WaterDetailPage> {
   int switchIndex = 0;
   DateTime dateTimePicker = DateTime.now();
+  WaterDayData data = WaterDayData(0, []);
+
+  @override
+  void initState() {
+    BlocProvider.of<WaterCubit>(widget.superContext)
+        .getDayData(dateTimePicker)
+        .then((value) {
+      setState(() {
+        data = value;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +97,16 @@ class _WaterDetailPageState extends State<WaterDetailPage> {
         increase: () {
           setState(() {
             if (switchIndex ==
-                0) if (DateTimeLogic.compareDayWithNow(dateTimePicker))
+                0) if (DateTimeLogic.compareDayWithNow(dateTimePicker)) {
               dateTimePicker = DateTimeLogic.increaseDay(dateTimePicker);
+              BlocProvider.of<WaterCubit>(widget.superContext)
+                  .getDayData(dateTimePicker)
+                  .then((value) {
+                setState(() {
+                  data = value;
+                });
+              });
+            }
             if (switchIndex ==
                 1) if (DateTimeLogic.compareMonthWithNow(dateTimePicker))
               dateTimePicker = DateTimeLogic.increaseMonth(dateTimePicker);
@@ -95,8 +116,16 @@ class _WaterDetailPageState extends State<WaterDetailPage> {
         },
         decrease: () {
           setState(() {
-            if (switchIndex == 0)
+            if (switchIndex == 0) {
               dateTimePicker = DateTimeLogic.decreaseDay(dateTimePicker);
+              BlocProvider.of<WaterCubit>(widget.superContext)
+                  .getDayData(dateTimePicker)
+                  .then((value) {
+                setState(() {
+                  data = value;
+                });
+              });
+            }
             if (switchIndex == 1)
               dateTimePicker = DateTimeLogic.decreaseMonth(dateTimePicker);
             if (switchIndex == 2)
@@ -106,8 +135,6 @@ class _WaterDetailPageState extends State<WaterDetailPage> {
   }
 
   Widget buildDayDetails() {
-    WaterDayData data = BlocProvider.of<WaterCubit>(widget.superContext)
-        .getDayData(dateTimePicker);
     return Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
