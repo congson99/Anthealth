@@ -74,6 +74,7 @@ class HomePage extends StatelessWidget {
   Widget buildUpcoming(BuildContext context, HomeState state) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       CustomDivider.common(),
+      SizedBox(height: 16),
       CommonText.section(S.of(context).Upcoming_events, context),
       SizedBox(height: 16),
       ...state.events.map((event) => buildEvent(context, event)),
