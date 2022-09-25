@@ -76,4 +76,8 @@ class MessageIDPath {
   static int addCaloIn() => 2463;
 
   static int addCaloOut() => 2462;
+
+  static int updateCaloGoal() => 2467;
+
+  static int updateWaterGoal() => 2454;
 }

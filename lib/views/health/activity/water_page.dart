@@ -148,7 +148,18 @@ class WaterPage extends StatelessWidget {
               if (result[0] != "")
                 try {
                   int goal = int.parse(result[0]);
-                  print(goal);
+                  BlocProvider.of<WaterCubit>(context)
+                      .updateGoal(goal)
+                      .then((value) {
+                    if (value) {
+                      ShowSnackBar.showSuccessSnackBar(
+                          context, S.of(context).successfully);
+                      BlocProvider.of<WaterCubit>(context).loadData();
+                    } else {
+                      ShowSnackBar.showErrorSnackBar(
+                          context, S.of(context).something_wrong);
+                    }
+                  });
                 } catch (e) {
                   ShowSnackBar.showErrorSnackBar(
                       context, S.of(context).something_wrong);

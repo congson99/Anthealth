@@ -182,7 +182,6 @@ class CaloPage extends StatelessWidget {
         builder: (_) => AddCaloInBottomSheet(
             superContext: context,
             ok: (value) {
-              print(value.servingCalo);
               BlocProvider.of<CaloCubit>(context)
                   .addCaloIn(value)
                   .then((value) {
@@ -193,6 +192,7 @@ class CaloPage extends StatelessWidget {
                           ' ' +
                           S.of(context).successfully +
                           '!');
+                  BlocProvider.of<CaloCubit>(context).loadData();
                 } else {
                   ShowSnackBar.showErrorSnackBar(
                       context, S.of(context).something_wrong);
@@ -228,6 +228,7 @@ class CaloPage extends StatelessWidget {
                           ' ' +
                           S.of(context).successfully +
                           '!');
+                  BlocProvider.of<CaloCubit>(context).loadData();
                 } else {
                   ShowSnackBar.showErrorSnackBar(
                       context, S.of(context).something_wrong);
@@ -247,7 +248,18 @@ class CaloPage extends StatelessWidget {
               if (result[0] != "")
                 try {
                   int goal = int.parse(result[0]);
-                  print(goal);
+                  BlocProvider.of<CaloCubit>(context)
+                      .updateGoal(goal)
+                      .then((value) {
+                    if (value) {
+                      ShowSnackBar.showSuccessSnackBar(
+                          context, S.of(context).successfully);
+                      BlocProvider.of<CaloCubit>(context).loadData();
+                    } else {
+                      ShowSnackBar.showErrorSnackBar(
+                          context, S.of(context).something_wrong);
+                    }
+                  });
                 } catch (e) {
                   ShowSnackBar.showErrorSnackBar(
                       context, S.of(context).something_wrong);

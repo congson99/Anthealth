@@ -52,7 +52,11 @@ class CaloCubit extends Cubit<CubitState> {
           }
           for (dynamic x in ServerLogic.getData(value)["caloout"]) {
             caloDayData.caloOut.add(CaloOut(
-                x["id"], DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000), x["name"], x["unitCalo"], x["min"]));
+                x["id"],
+                DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000),
+                x["name"],
+                x["unitCalo"],
+                x["min"]));
           }
         }
       }
@@ -88,6 +92,21 @@ class CaloCubit extends Cubit<CubitState> {
       CaloMonthReportData(2900, 300),
       CaloMonthReportData(3500, 200),
     ];
+  }
+
+  Future<bool> updateGoal(int goal) async {
+    bool result = false;
+    Map<String, dynamic> data = {"goal": goal};
+    await CommonService.instance.send(MessageIDPath.updateCaloGoal(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.updateCaloGoal(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          result = ServerLogic.getData(value)["status"];
+        }
+      }
+    });
+    return result;
   }
 
   Future<bool> addCaloIn(CaloIn calo) async {

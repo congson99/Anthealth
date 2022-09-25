@@ -27,6 +27,21 @@ class WaterCubit extends Cubit<CubitState> {
     loadedData(WaterState(waterDayData));
   }
 
+  Future<bool> updateGoal(int goal) async {
+    bool result = false;
+    Map<String, dynamic> data = {"goal": goal};
+    await CommonService.instance.send(MessageIDPath.updateWaterGoal(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.updateWaterGoal(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          result = ServerLogic.getData(value)["status"];
+        }
+      }
+    });
+    return result;
+  }
+
   Future<bool> addData(Water water) async {
     bool result = false;
     Map<String, dynamic> data = {
