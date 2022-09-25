@@ -103,7 +103,7 @@ class AppCubit extends Cubit<CubitState> {
 
     List<Warning> warning = [];
     await CommonService.instance.send(MessageIDPath.getFamilyWarning(), {});
-    await CommonService.instance.client!.getData(waitSeconds: 30).then((value) {
+    await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(
           MessageIDPath.getFamilyWarning(), value)) {
         if (value != "null") {

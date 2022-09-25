@@ -11,1798 +11,1752 @@
     "time": 0,
     "name": "Dầu thực vật",
     "servingName": "100g",
-    "servingCalo": "8970"
+    "servingCalo": "897"
   },
   {
     "id": "PAETPRGE",
     "time": 0,
     "name": "Mỡ lợn nước",
     "servingName": "100g",
-    "servingCalo": "8960"
-  },
-  {
-    "id": "UVDDPPBV",
-    "time": 0,
-    "name": "Cari bột",
-    "servingName": "100g",
-    "servingCalo": "2830"
+    "servingCalo": "896"
   },
   {
     "id": "XEVSSEFC",
     "time": 0,
     "name": "Gừng tươi",
     "servingName": "100g",
-    "servingCalo": "250"
+    "servingCalo": "25"
   },
-  {
-    "id": "KCAAJPNV",
-    "time": 0,
-    "name": "Mắm tôm đặc",
-    "servingName": "100g",
-    "servingCalo": "730"
-  },
-  {
-    "id": "HKXTDJNF",
-    "time": 0,
-    "name": "Muối",
-    "servingName": "100g",
-    "servingCalo": "0"
-  },
-  {
-    "id": "XVNLYPPN",
-    "time": 0,
-    "name": "Nghệ khô",
-    "servingName": "100g",
-    "servingCalo": "3600"
-  },
+ 
   {
     "id": "IQLHIOBR",
     "time": 0,
     "name": "Nghệ tươi",
     "servingName": "100g",
-    "servingCalo": "220"
+    "servingCalo": "22"
   },
-  {
-    "id": "RKFMLFCE",
-    "time": 0,
-    "name": "Nước mắm",
-    "servingName": "100g",
-    "servingCalo": "280"
-  },
+ 
   {
     "id": "FACGLYSN",
     "time": 0,
     "name": "Tôm chua",
     "servingName": "100g",
-    "servingCalo": "680"
+    "servingCalo": "68"
   },
-  {
-    "id": "AMRDNKQG",
-    "time": 0,
-    "name": "Tương ớt",
-    "servingName": "100g",
-    "servingCalo": "370"
-  },
-  {
-    "id": "GFDURJQY",
-    "time": 0,
-    "name": "Xì dầu",
-    "servingName": "100g",
-    "servingCalo": "280"
-  },
+  
   {
     "id": "THFQQHKN",
     "time": 0,
     "name": "Cùi dừa già",
     "servingName": "Hạt",
-    "servingCalo": "3680"
+    "servingCalo": "368"
   },
   {
     "id": "FQITFADR",
     "time": 0,
     "name": "Cùi dừa non",
     "servingName": "Hạt",
-    "servingCalo": "400"
+    "servingCalo": "40"
   },
   {
     "id": "DQTYHKFB",
     "time": 0,
     "name": "Đậu đen (hạt)",
     "servingName": "Hạt",
-    "servingCalo": "3250"
+    "servingCalo": "325"
   },
   {
     "id": "MQIVWUAK",
     "time": 0,
     "name": "Đậu Hà lan (hạt)",
     "servingName": "Hạt",
-    "servingCalo": "3420"
+    "servingCalo": "342"
   },
   {
     "id": "VOGIBOTI",
     "time": 0,
     "name": "Đậu phộng",
     "servingName": "Hạt",
-    "servingCalo": "5730"
+    "servingCalo": "573"
   },
   {
     "id": "CKFWWOAV",
     "time": 0,
     "name": "Đậu phụ",
     "servingName": "Hạt",
-    "servingCalo": "950"
+    "servingCalo": "95"
   },
   {
     "id": "CNTPQGKX",
     "time": 0,
     "name": "Đậu tương (đậu nành)",
     "servingName": "Hạt",
-    "servingCalo": "4000"
+    "servingCalo": "400"
   },
   {
     "id": "EUCQKYDK",
     "time": 0,
     "name": "Đậu xanh",
     "servingName": "Hạt",
-    "servingCalo": "3280"
+    "servingCalo": "328"
   },
   {
     "id": "CETDUIFU",
     "time": 0,
     "name": "Hạt điều",
     "servingName": "Hạt",
-    "servingCalo": "6050"
+    "servingCalo": "605"
   },
   {
     "id": "RCHLNAJP",
     "time": 0,
     "name": "Mè",
     "servingName": "Hạt",
-    "servingCalo": "5680"
+    "servingCalo": "568"
   },
   {
     "id": "SYDGFOJP",
     "time": 0,
     "name": "Sữa đậu nành",
     "servingName": "Hạt",
-    "servingCalo": "280"
+    "servingCalo": "28"
   },
   {
     "id": "QQGXMQBF",
     "time": 0,
     "name": "Bún ăn liền",
     "servingName": "100g",
-    "servingCalo": "3480"
+    "servingCalo": "348"
   },
   {
     "id": "LGKGBHXY",
     "time": 0,
     "name": "Cháo ăn liền",
     "servingName": "100g",
-    "servingCalo": "3460"
+    "servingCalo": "346"
   },
   {
     "id": "CJHHUUXA",
     "time": 0,
     "name": "Mì ăn liền",
     "servingName": "100g",
-    "servingCalo": "4350"
+    "servingCalo": "435"
   },
   {
     "id": "VAPAWYYT",
     "time": 0,
     "name": "Miến ăn liền",
     "servingName": "100g",
-    "servingCalo": "3670"
+    "servingCalo": "367"
   },
   {
     "id": "DCWJUKSH",
     "time": 0,
     "name": "Phở ăn liền",
     "servingName": "100g",
-    "servingCalo": "3420"
+    "servingCalo": "342"
   },
   {
     "id": "PFSBBTXA",
     "time": 0,
     "name": "Bột sắn dây",
     "servingName": "100g",
-    "servingCalo": "3400"
+    "servingCalo": "340"
   },
   {
     "id": "IUTUCXJX",
     "time": 0,
     "name": "Miến dong",
     "servingName": "100g",
-    "servingCalo": "3320"
+    "servingCalo": "332"
   },
   {
     "id": "ITHGHJOI",
     "time": 0,
     "name": "Bánh mì",
     "servingName": "100g",
-    "servingCalo": "2490"
+    "servingCalo": "249"
   },
   {
     "id": "HVVTKARM",
     "time": 0,
     "name": "Bánh phở",
     "servingName": "100g",
-    "servingCalo": "1410"
+    "servingCalo": "141"
   },
   {
     "id": "HIQHUEXN",
     "time": 0,
     "name": "Bánh tráng mỏng",
     "servingName": "100g",
-    "servingCalo": "3330"
+    "servingCalo": "333"
   },
   {
     "id": "WTRNIIWO",
     "time": 0,
     "name": "Bắp tươi",
     "servingName": "100g",
-    "servingCalo": "1960"
+    "servingCalo": "196"
   },
   {
     "id": "MJVHCLBD",
     "time": 0,
     "name": "Bún",
     "servingName": "100g",
-    "servingCalo": "1100"
+    "servingCalo": "110"
   },
   {
     "id": "DLUAPXLC",
     "time": 0,
     "name": "Gạo nếp cái",
     "servingName": "100g",
-    "servingCalo": "3460"
+    "servingCalo": "346"
   },
   {
     "id": "NEQGNLOP",
     "time": 0,
     "name": "Gạo tẻ",
     "servingName": "100g",
-    "servingCalo": "3440"
+    "servingCalo": "344"
   },
   {
     "id": "APPXFMTI",
     "time": 0,
     "name": "Ngô tươi",
     "servingName": "100g",
-    "servingCalo": "1960"
+    "servingCalo": "196"
   },
   {
     "id": "PIIFBMEW",
     "time": 0,
     "name": "Ngô vàng hạt vàng",
     "servingName": "100g",
-    "servingCalo": "3540"
+    "servingCalo": "354"
   },
   {
     "id": "DQHASDIL",
     "time": 0,
     "name": "Bưởi",
     "servingName": "Quả",
-    "servingCalo": "300"
+    "servingCalo": "30"
   },
   {
     "id": "OVRNREVP",
     "time": 0,
     "name": "Cam",
     "servingName": "Quả",
-    "servingCalo": "370"
+    "servingCalo": "37"
   },
   {
     "id": "WDWPWJLW",
     "time": 0,
     "name": "Chanh",
     "servingName": "Quả",
-    "servingCalo": "230"
+    "servingCalo": "23"
   },
   {
     "id": "WCTFYJBG",
     "time": 0,
     "name": "Chôm chôm",
     "servingName": "Quả",
-    "servingCalo": "720"
+    "servingCalo": "72"
   },
   {
     "id": "SEATIHTJ",
     "time": 0,
     "name": "Chuối tây",
     "servingName": "Quả",
-    "servingCalo": "660"
+    "servingCalo": "66"
   },
   {
     "id": "TXYKGPSM",
     "time": 0,
     "name": "Chuối tiêu",
     "servingName": "Quả",
-    "servingCalo": "970"
+    "servingCalo": "97"
   },
   {
     "id": "CODMLXWN",
     "time": 0,
     "name": "Đu đủ chín",
     "servingName": "Quả",
-    "servingCalo": "350"
+    "servingCalo": "35"
   },
   {
     "id": "JXMVYWAD",
     "time": 0,
     "name": "Dưa hấu",
     "servingName": "Quả",
-    "servingCalo": "160"
+    "servingCalo": "16"
   },
   {
     "id": "XIRDKBLL",
     "time": 0,
     "name": "Dứa ta",
     "servingName": "Quả",
-    "servingCalo": "290"
+    "servingCalo": "29"
   },
   {
     "id": "UAJKYECH",
     "time": 0,
     "name": "Hồng xiêm",
     "servingName": "Quả",
-    "servingCalo": "480"
+    "servingCalo": "48"
   },
   {
     "id": "LHBPGEVQ",
     "time": 0,
     "name": "Lê",
     "servingName": "Quả",
-    "servingCalo": "450"
+    "servingCalo": "45"
   },
   {
     "id": "LTDTFEPK",
     "time": 0,
     "name": "Mận",
     "servingName": "Quả",
-    "servingCalo": "200"
+    "servingCalo": "20"
   },
   {
     "id": "EKUHIPFW",
     "time": 0,
     "name": "Mít dai",
     "servingName": "Quả",
-    "servingCalo": "480"
+    "servingCalo": "48"
   },
   {
     "id": "EGQBFXAC",
     "time": 0,
     "name": "Mít mật",
     "servingName": "Quả",
-    "servingCalo": "620"
+    "servingCalo": "62"
   },
   {
     "id": "DFLUTEQP",
     "time": 0,
     "name": "Mơ",
     "servingName": "Quả",
-    "servingCalo": "460"
+    "servingCalo": "46"
   },
   {
     "id": "LROQMOWX",
     "time": 0,
     "name": "Na",
     "servingName": "Quả",
-    "servingCalo": "640"
+    "servingCalo": "64"
   },
   {
     "id": "OUVTFPMH",
     "time": 0,
     "name": "Nhãn",
     "servingName": "Quả",
-    "servingCalo": "480"
+    "servingCalo": "48"
   },
   {
     "id": "WPIYVSYP",
     "time": 0,
     "name": "Nho ta (nho chua)",
     "servingName": "Quả",
-    "servingCalo": "140"
+    "servingCalo": "14"
   },
   {
     "id": "UELYMWJW",
     "time": 0,
     "name": "Quýt",
     "servingName": "Quả",
-    "servingCalo": "380"
+    "servingCalo": "38"
   },
   {
     "id": "INMINOBJ",
     "time": 0,
     "name": "Táo ta",
     "servingName": "Quả",
-    "servingCalo": "370"
+    "servingCalo": "37"
   },
   {
     "id": "HVLVTEVX",
     "time": 0,
     "name": "Táo tây",
     "servingName": "Quả",
-    "servingCalo": "470"
+    "servingCalo": "47"
   },
   {
     "id": "LOPAKCTV",
     "time": 0,
     "name": "Vải",
     "servingName": "Quả",
-    "servingCalo": "430"
+    "servingCalo": "43"
   },
   {
     "id": "FWDHLLUG",
     "time": 0,
     "name": "Vú sữa",
     "servingName": "Quả",
-    "servingCalo": "420"
+    "servingCalo": "42"
   },
   {
     "id": "YLOFBEDU",
     "time": 0,
     "name": "Xoài chín",
     "servingName": "Quả",
-    "servingCalo": "690"
+    "servingCalo": "69"
   },
   {
     "id": "DMMTUFCH",
     "time": 0,
     "name": "Củ dong",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "1190"
+    "servingName": "Củ",
+    "servingCalo": "119"
   },
   {
     "id": "DCLCOWEM",
     "time": 0,
     "name": "Củ sắn",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "1520"
+    "servingName": "Củ",
+    "servingCalo": "152"
   },
   {
     "id": "BRDVFMDM",
     "time": 0,
     "name": "Củ từ",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "920"
+    "servingName": "Củ",
+    "servingCalo": "92"
   },
   {
     "id": "IEUYOLBJ",
     "time": 0,
     "name": "Khoai lang",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "1190"
+    "servingName": "Củ",
+    "servingCalo": "119"
   },
   {
     "id": "POLTTBWQ",
     "time": 0,
     "name": "Khoai lang nghệ",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "1160"
+    "servingName": "Củ",
+    "servingCalo": "116"
   },
   {
     "id": "ITHQVRKN",
     "time": 0,
     "name": "Khoai môn",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "1090"
+    "servingName": "Củ",
+    "servingCalo": "109"
   },
   {
     "id": "UWUPFAOA",
     "time": 0,
     "name": "Khoai tây",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "920"
+    "servingName": "Củ",
+    "servingCalo": "92"
   },
   {
     "id": "EGCLCCCB",
     "time": 0,
     "name": "Khoai tây chiên",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "5250"
+    "servingName": "Củ",
+    "servingCalo": "525"
   },
   {
     "id": "WBASTJTY",
     "time": 0,
     "name": "Bầu",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "140"
+    "servingName": "Quả",
+    "servingCalo": "14"
   },
   {
     "id": "JGLWLXHL",
     "time": 0,
     "name": "Bí đao (bí xanh)",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "120"
+    "servingName": "Quả",
+    "servingCalo": "12"
   },
   {
     "id": "HJJJGHLF",
     "time": 0,
     "name": "Bí ngô",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "240"
+    "servingName": "Quả",
+    "servingCalo": "24"
   },
   {
     "id": "VQAUDQCU",
     "time": 0,
     "name": "Cà chua",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "190"
+    "servingName": "Quả",
+    "servingCalo": "19"
   },
   {
     "id": "JTFQJCCF",
     "time": 0,
     "name": "Cà pháo",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "200"
+    "servingName": "Quả",
+    "servingCalo": "20"
   },
   {
     "id": "KYHCPXCH",
     "time": 0,
     "name": "Cà rốt",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "380"
+    "servingName": "Củ",
+    "servingCalo": "38"
   },
   {
     "id": "WBMCEBGP",
     "time": 0,
     "name": "Cà tím",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "220"
+    "servingName": "Củ",
+    "servingCalo": "22"
   },
   {
     "id": "MMXYEVQA",
     "time": 0,
     "name": "Cải bắp",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "290"
+    "servingName": "100g",
+    "servingCalo": "29"
   },
   {
     "id": "HEABOVNV",
     "time": 0,
     "name": "Cải cúc",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "140"
+    "servingName": "100g",
+    "servingCalo": "14"
   },
   {
     "id": "TAHXWGJK",
     "time": 0,
     "name": "Cải thìa (cải trắng)",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "160"
+    "servingName": "100g",
+    "servingCalo": "16"
   },
   {
     "id": "PFDTAYJI",
     "time": 0,
     "name": "Cải xanh",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "150"
+    "servingName": "100g",
+    "servingCalo": "15"
   },
   {
     "id": "EDLFAVWD",
     "time": 0,
     "name": "Cần ta",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "100"
+    "servingName": "100g",
+    "servingCalo": "10"
   },
   {
     "id": "ONMQPOLH",
     "time": 0,
     "name": "Củ cải trắng",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "210"
+    "servingName": "100g",
+    "servingCalo": "21"
   },
   {
     "id": "IHROWMEC",
     "time": 0,
     "name": "Đậu cô ve",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "730"
+    "servingName": "100g",
+    "servingCalo": "73"
   },
   {
     "id": "XMJXAIOE",
     "time": 0,
     "name": "Dọc mùng",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "50"
+    "servingName": "100g",
+    "servingCalo": "5"
   },
   {
     "id": "RLREWHWL",
     "time": 0,
     "name": "Dưa cải bắp",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "180"
+    "servingName": "100g",
+    "servingCalo": "18"
   },
   {
     "id": "BHRKREDC",
     "time": 0,
     "name": "Dưa cải bẹ",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "170"
+    "servingName": "100g",
+    "servingCalo": "17"
   },
   {
     "id": "FDWLHALM",
     "time": 0,
     "name": "Dưa chuột",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "150"
+    "servingName": "100g",
+    "servingCalo": "15"
   },
   {
     "id": "DNUXIEGN",
     "time": 0,
     "name": "Gấc",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "1220"
+    "servingName": "100g",
+    "servingCalo": "122"
   },
   {
     "id": "HMLAEEDI",
     "time": 0,
     "name": "Giá đậu xanh",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "430"
+    "servingName": "100g",
+    "servingCalo": "43"
   },
   {
     "id": "XRCSKXOC",
     "time": 0,
     "name": "Hành lá (hành hoa)",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "220"
+    "servingName": "100g",
+    "servingCalo": "22"
   },
   {
     "id": "TRSRXGSA",
     "time": 0,
     "name": "Măng chua",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "110"
+    "servingName": "100g",
+    "servingCalo": "11"
   },
   {
     "id": "VOCJTFLR",
     "time": 0,
     "name": "Mộc nhĩ",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "3040"
+    "servingName": "100g",
+    "servingCalo": "304"
   },
   {
     "id": "TDDSACLQ",
     "time": 0,
     "name": "Mướp",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "160"
+    "servingName": "100g",
+    "servingCalo": "16"
   },
   {
     "id": "GNKXQNYS",
     "time": 0,
     "name": "Nấm hương khô",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "2740"
+    "servingName": "100g",
+    "servingCalo": "274"
   },
   {
     "id": "WCMSHACT",
     "time": 0,
     "name": "Ớt vàng to",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "280"
+    "servingName": "100g",
+    "servingCalo": "28"
   },
   {
     "id": "XPONPLJM",
     "time": 0,
     "name": "Ran kinh giới",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "220"
+    "servingName": "100g",
+    "servingCalo": "22"
   },
   {
     "id": "YHAYQYWH",
     "time": 0,
     "name": "Rau bí",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "180"
+    "servingName": "100g",
+    "servingCalo": "18"
   },
   {
     "id": "AMGAUTIV",
     "time": 0,
     "name": "Rau đay",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "240"
+    "servingName": "100g",
+    "servingCalo": "24"
   },
   {
     "id": "JPJTECFK",
     "time": 0,
     "name": "Rau khoai lang",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "220"
+    "servingName": "100g",
+    "servingCalo": "22"
   },
   {
     "id": "GNKGDBHB",
     "time": 0,
     "name": "Rau mồng tơi",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "140"
+    "servingName": "100g",
+    "servingCalo": "14"
   },
   {
     "id": "CCWTKPDA",
     "time": 0,
     "name": "Rau mùi",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "130"
+    "servingName": "100g",
+    "servingCalo": "13"
   },
   {
     "id": "FIINYLGR",
     "time": 0,
     "name": "Rau muống",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "230"
+    "servingName": "100g",
+    "servingCalo": "23"
   },
   {
     "id": "SWHIQIXA",
     "time": 0,
     "name": "Rau ngót",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "350"
+    "servingName": "100g",
+    "servingCalo": "35"
   },
   {
     "id": "FOWFTYHY",
     "time": 0,
     "name": "Rau răm",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "300"
+    "servingName": "100g",
+    "servingCalo": "30"
   },
   {
     "id": "VMYXSUCT",
     "time": 0,
     "name": "Rau rút",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "280"
+    "servingName": "100g",
+    "servingCalo": "28"
   },
   {
     "id": "GNCYUKGY",
     "time": 0,
     "name": "Rau thơm",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "180"
+    "servingName": "100g",
+    "servingCalo": "18"
   },
   {
     "id": "BXSAFPTJ",
     "time": 0,
     "name": "Su hào",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "360"
+    "servingName": "100g",
+    "servingCalo": "36"
   },
   {
     "id": "FGUBGJRM",
     "time": 0,
     "name": "Su su",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "180"
+    "servingName": "100g",
+    "servingCalo": "18"
   },
   {
     "id": "HDVFGQMX",
     "time": 0,
     "name": "Súp lơ",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "300"
+    "servingName": "100g",
+    "servingCalo": "30"
   },
   {
     "id": "QGWCGUUL",
     "time": 0,
     "name": "Tía tô",
-    "servingName": "Rau, củ, quả",
-    "servingCalo": "250"
+    "servingName": "100g",
+    "servingCalo": "25"
   },
   {
     "id": "GSYKHJCQ",
     "time": 0,
     "name": "Sữa bò tươi",
     "servingName": "100ml",
-    "servingCalo": "740"
+    "servingCalo": "74"
   },
   {
     "id": "JEHCHEME",
     "time": 0,
     "name": "Sữa bột tách béo",
     "servingName": "100ml",
-    "servingCalo": "3570"
+    "servingCalo": "357"
   },
   {
     "id": "KHWDUBFA",
     "time": 0,
     "name": "Sữa bột toàn phần",
     "servingName": "100ml",
-    "servingCalo": "4940"
+    "servingCalo": "494"
   },
   {
     "id": "WIJTQTGL",
     "time": 0,
     "name": "Sữa chua",
     "servingName": "100ml",
-    "servingCalo": "610"
+    "servingCalo": "61"
   },
   {
     "id": "PQPSWCYV",
     "time": 0,
     "name": "Sữa đặc có đường",
     "servingName": "100ml",
-    "servingCalo": "3360"
+    "servingCalo": "336"
   },
   {
     "id": "OGVFYLXT",
     "time": 0,
     "name": "Sữa mẹ",
     "servingName": "100ml",
-    "servingCalo": "610"
+    "servingCalo": "61"
   },
   {
     "id": "LGUXVJHK",
     "time": 0,
     "name": "Ba tê",
     "servingName": "100g",
-    "servingCalo": "3260"
+    "servingCalo": "326"
   },
   {
     "id": "PTHWEHMA",
     "time": 0,
     "name": "Bao tử bò",
     "servingName": "100g",
-    "servingCalo": "970"
+    "servingCalo": "97"
   },
   {
     "id": "NTDYMJWF",
     "time": 0,
     "name": "Bao tử heo",
     "servingName": "100g",
-    "servingCalo": "850"
+    "servingCalo": "85"
   },
   {
     "id": "ULOWGTUC",
     "time": 0,
     "name": "Cật bò",
     "servingName": "100g",
-    "servingCalo": "670"
+    "servingCalo": "67"
   },
   {
     "id": "BVMNQQQU",
     "time": 0,
     "name": "Cật heo",
     "servingName": "100g",
-    "servingCalo": "810"
+    "servingCalo": "81"
   },
   {
     "id": "BHYOMDBX",
     "time": 0,
     "name": "Chả bò",
     "servingName": "100g",
-    "servingCalo": "3570"
+    "servingCalo": "357"
   },
   {
     "id": "GQBXHBGA",
     "time": 0,
     "name": "Chà bông",
     "servingName": "100g",
-    "servingCalo": "3960"
+    "servingCalo": "396"
   },
   {
     "id": "RFTNQCKO",
     "time": 0,
     "name": "Chả lợn",
     "servingName": "100g",
-    "servingCalo": "5170"
+    "servingCalo": "517"
   },
   {
     "id": "AFYERVYG",
     "time": 0,
     "name": "Chả lụa",
     "servingName": "100g",
-    "servingCalo": "1360"
+    "servingCalo": "136"
   },
   {
     "id": "PFASNKQJ",
     "time": 0,
     "name": "Chả quế",
     "servingName": "100g",
-    "servingCalo": "4160"
+    "servingCalo": "416"
   },
   {
     "id": "JDYDPKHN",
     "time": 0,
     "name": "Chân giò lợn (bỏ xương)",
     "servingName": "100g",
-    "servingCalo": "2300"
+    "servingCalo": "230"
   },
   {
     "id": "FROFJKDQ",
     "time": 0,
     "name": "Da heo",
     "servingName": "100g",
-    "servingCalo": "1180"
+    "servingCalo": "118"
   },
   {
     "id": "BAYXEDKY",
     "time": 0,
     "name": "Dăm bông heo",
     "servingName": "100g",
-    "servingCalo": "3180"
+    "servingCalo": "318"
   },
   {
     "id": "WMFSTYPH",
     "time": 0,
     "name": "Đầu heo",
     "servingName": "100g",
-    "servingCalo": "3350"
+    "servingCalo": "335"
   },
   {
     "id": "DOAHRCKM",
     "time": 0,
     "name": "Đuôi bò",
     "servingName": "100g",
-    "servingCalo": "1370"
+    "servingCalo": "137"
   },
   {
     "id": "SVCIKKHR",
     "time": 0,
     "name": "Đuôi heo",
     "servingName": "100g",
-    "servingCalo": "4670"
+    "servingCalo": "467"
   },
   {
     "id": "XMJTSAIF",
     "time": 0,
     "name": "Ếch",
     "servingName": "100g",
-    "servingCalo": "900"
+    "servingCalo": "90"
   },
   {
     "id": "PGNKJHVR",
     "time": 0,
     "name": "Gan bò",
     "servingName": "100g",
-    "servingCalo": "1100"
+    "servingCalo": "110"
   },
   {
     "id": "GJQMMWKE",
     "time": 0,
     "name": "Gân chân bò",
     "servingName": "100g",
-    "servingCalo": "1240"
+    "servingCalo": "124"
   },
   {
     "id": "JBPWDLVB",
     "time": 0,
     "name": "Gan gà",
     "servingName": "100g",
-    "servingCalo": "1110"
+    "servingCalo": "111"
   },
   {
     "id": "QFXMQDNK",
     "time": 0,
     "name": "Gan heo",
     "servingName": "100g",
-    "servingCalo": "1160"
+    "servingCalo": "116"
   },
   {
     "id": "JGPFBOVP",
     "time": 0,
     "name": "Gan vịt",
     "servingName": "100g",
-    "servingCalo": "1220"
+    "servingCalo": "122"
   },
   {
     "id": "UNOMVWGQ",
     "time": 0,
     "name": "Giò bò",
     "servingName": "100g",
-    "servingCalo": "3570"
+    "servingCalo": "357"
   },
   {
     "id": "LSCTYSYI",
     "time": 0,
     "name": "Giò lụa",
     "servingName": "100g",
-    "servingCalo": "1360"
+    "servingCalo": "136"
   },
   {
     "id": "MVNKCMBL",
     "time": 0,
     "name": "Giò thủ",
     "servingName": "100g",
-    "servingCalo": "5530"
+    "servingCalo": "553"
   },
   {
     "id": "AVNTVFFR",
     "time": 0,
     "name": "Huyết bò",
     "servingName": "100g",
-    "servingCalo": "750"
+    "servingCalo": "75"
   },
   {
     "id": "LOYHCSYK",
     "time": 0,
     "name": "Huyết heo luộc",
     "servingName": "100g",
-    "servingCalo": "440"
+    "servingCalo": "44"
   },
   {
     "id": "JLAHOUHB",
     "time": 0,
     "name": "Huyết heo sống",
     "servingName": "100g",
-    "servingCalo": "250"
+    "servingCalo": "25"
   },
   {
     "id": "EFMVQFNL",
     "time": 0,
     "name": "Lạp xưởng",
     "servingName": "100g",
-    "servingCalo": "5850"
+    "servingCalo": "585"
   },
   {
     "id": "PDJQECCR",
     "time": 0,
     "name": "Lòng heo (ruột già)",
     "servingName": "100g",
-    "servingCalo": "1670"
+    "servingCalo": "167"
   },
   {
     "id": "XUURQPXY",
     "time": 0,
     "name": "Lưỡi bò",
     "servingName": "100g",
-    "servingCalo": "1640"
+    "servingCalo": "164"
   },
   {
     "id": "MBHEUGRJ",
     "time": 0,
     "name": "Lưỡi heo",
     "servingName": "100g",
-    "servingCalo": "1780"
+    "servingCalo": "178"
   },
   {
     "id": "QMYBGCCQ",
     "time": 0,
     "name": "Mề gà",
     "servingName": "100g",
-    "servingCalo": "990"
+    "servingCalo": "99"
   },
   {
     "id": "RDSFIRCT",
     "time": 0,
     "name": "Nem chua",
     "servingName": "100g",
-    "servingCalo": "1370"
+    "servingCalo": "137"
   },
   {
     "id": "WUUSWTCW",
     "time": 0,
     "name": "Nhộng",
     "servingName": "100g",
-    "servingCalo": "1110"
+    "servingCalo": "111"
   },
   {
     "id": "NHQMNPJH",
     "time": 0,
     "name": "Óc bò",
     "servingName": "100g",
-    "servingCalo": "1240"
+    "servingCalo": "124"
   },
   {
     "id": "VWCKDUEI",
     "time": 0,
     "name": "Óc heo",
     "servingName": "100g",
-    "servingCalo": "1230"
+    "servingCalo": "123"
   },
   {
     "id": "QPVWCBNG",
     "time": 0,
     "name": "Patê",
     "servingName": "100g",
-    "servingCalo": "3260"
+    "servingCalo": "326"
   },
   {
     "id": "OWDOMYUD",
     "time": 0,
     "name": "Phèo heo",
     "servingName": "100g",
-    "servingCalo": "440"
+    "servingCalo": "44"
   },
   {
     "id": "DLCFDTXT",
     "time": 0,
     "name": "Sườn heo bỏ xương",
     "servingName": "100g",
-    "servingCalo": "1870"
+    "servingCalo": "187"
   },
   {
     "id": "UKSWEYFM",
     "time": 0,
     "name": "Tai heo",
     "servingName": "100g",
-    "servingCalo": "1210"
+    "servingCalo": "121"
   },
   {
     "id": "EXISMCMK",
     "time": 0,
     "name": "Thịt bê nạc",
     "servingName": "100g",
-    "servingCalo": "850"
+    "servingCalo": "85"
   },
   {
     "id": "IFTIRSOO",
     "time": 0,
     "name": "Thịt bò",
     "servingName": "100g",
-    "servingCalo": "1180"
+    "servingCalo": "118"
   },
   {
     "id": "NHNQQECN",
     "time": 0,
     "name": "Thịt bò khô",
     "servingName": "100g",
-    "servingCalo": "2390"
+    "servingCalo": "239"
   },
   {
     "id": "AWBRLVUF",
     "time": 0,
     "name": "Thịt dê nạc",
     "servingName": "100g",
-    "servingCalo": "1220"
+    "servingCalo": "122"
   },
   {
     "id": "OACBDHVC",
     "time": 0,
     "name": "Thịt gà ta",
     "servingName": "100g",
-    "servingCalo": "1990"
+    "servingCalo": "199"
   },
   {
     "id": "YXVSDYNO",
     "time": 0,
     "name": "Thịt gà tây",
     "servingName": "100g",
-    "servingCalo": "2180"
+    "servingCalo": "218"
   },
   {
     "id": "PODHXSCR",
     "time": 0,
     "name": "Thịt heo ba chỉ",
     "servingName": "100g",
-    "servingCalo": "2600"
+    "servingCalo": "260"
   },
   {
     "id": "YKWBCCTS",
     "time": 0,
     "name": "Thịt heo mỡ",
     "servingName": "100g",
-    "servingCalo": "3940"
+    "servingCalo": "394"
   },
   {
     "id": "MULLHLRN",
     "time": 0,
     "name": "Thịt heo nạc",
     "servingName": "100g",
-    "servingCalo": "1390"
+    "servingCalo": "139"
   },
   {
     "id": "KOMERANG",
     "time": 0,
     "name": "Thịt lơn nạc",
     "servingName": "100g",
-    "servingCalo": "1390"
+    "servingCalo": "139"
   },
   {
     "id": "HFFEHPBW",
     "time": 0,
     "name": "Thịt mông chó",
     "servingName": "100g",
-    "servingCalo": "3380"
+    "servingCalo": "338"
   },
   {
     "id": "BRTNIRAO",
     "time": 0,
     "name": "Thịt ngỗng",
     "servingName": "100g",
-    "servingCalo": "4090"
+    "servingCalo": "409"
   },
   {
     "id": "PYLYWSTP",
     "time": 0,
     "name": "Thịt thỏ",
     "servingName": "100g",
-    "servingCalo": "1580"
+    "servingCalo": "158"
   },
   {
     "id": "UTRASPAN",
     "time": 0,
     "name": "Thịt vai chó",
     "servingName": "100g",
-    "servingCalo": "2300"
+    "servingCalo": "230"
   },
   {
     "id": "WFBUAQWT",
     "time": 0,
     "name": "Thịt vịt",
     "servingName": "100g",
-    "servingCalo": "2670"
+    "servingCalo": "267"
   },
   {
     "id": "QYYMTGYS",
     "time": 0,
     "name": "Tim bò",
     "servingName": "100g",
-    "servingCalo": "890"
+    "servingCalo": "89"
   },
   {
     "id": "FPRRAERM",
     "time": 0,
     "name": "Tim gà",
     "servingName": "100g",
-    "servingCalo": "1140"
+    "servingCalo": "114"
   },
   {
     "id": "PFLCNKWS",
     "time": 0,
     "name": "Tim heo",
     "servingName": "100g",
-    "servingCalo": "890"
+    "servingCalo": "89"
   },
   {
     "id": "DPLDRQAG",
     "time": 0,
     "name": "Xúc xích",
     "servingName": "100g",
-    "servingCalo": "5350"
+    "servingCalo": "535"
   },
   {
     "id": "LBSNBPAM",
     "time": 0,
     "name": "Ba khía muối",
     "servingName": "100g",
-    "servingCalo": "830"
+    "servingCalo": "83"
   },
   {
     "id": "CNAJHCNX",
     "time": 0,
     "name": "Cá bống",
     "servingName": "100g",
-    "servingCalo": "700"
+    "servingCalo": "70"
   },
   {
     "id": "CRJOYPQJ",
     "time": 0,
     "name": "Cá chép",
     "servingName": "100g",
-    "servingCalo": "960"
+    "servingCalo": "96"
   },
   {
     "id": "WSVHBEYO",
     "time": 0,
     "name": "Cá đối",
     "servingName": "100g",
-    "servingCalo": "1080"
+    "servingCalo": "108"
   },
   {
     "id": "CSVPLPLJ",
     "time": 0,
     "name": "Cá giếc",
     "servingName": "100g",
-    "servingCalo": "870"
+    "servingCalo": "87"
   },
   {
     "id": "QMULFYTQ",
     "time": 0,
     "name": "Cá hồi",
     "servingName": "100g",
-    "servingCalo": "1360"
+    "servingCalo": "136"
   },
   {
     "id": "ERHAKWXD",
     "time": 0,
     "name": "Cá khô",
     "servingName": "100g",
-    "servingCalo": "2080"
+    "servingCalo": "208"
   },
   {
     "id": "TSPOWLLI",
     "time": 0,
     "name": "Cá lóc",
     "servingName": "100g",
-    "servingCalo": "970"
+    "servingCalo": "97"
   },
   {
     "id": "XCPDGAIA",
     "time": 0,
     "name": "Cá mè",
     "servingName": "100g",
-    "servingCalo": "1440"
+    "servingCalo": "144"
   },
   {
     "id": "LVFFQQJF",
     "time": 0,
     "name": "Cá mỡ",
     "servingName": "100g",
-    "servingCalo": "1510"
+    "servingCalo": "151"
   },
   {
     "id": "GAENYKYA",
     "time": 0,
     "name": "Cá mòi",
     "servingName": "100g",
-    "servingCalo": "1240"
+    "servingCalo": "124"
   },
   {
     "id": "KDMXNRMS",
     "time": 0,
     "name": "Cá nạc",
     "servingName": "100g",
-    "servingCalo": "800"
+    "servingCalo": "80"
   },
   {
     "id": "ENTHTTYS",
     "time": 0,
     "name": "Cá ngừ",
     "servingName": "100g",
-    "servingCalo": "870"
+    "servingCalo": "87"
   },
   {
     "id": "SLALWNCO",
     "time": 0,
     "name": "Cá nục",
     "servingName": "100g",
-    "servingCalo": "1110"
+    "servingCalo": "111"
   },
   {
     "id": "LQLJXKVC",
     "time": 0,
     "name": "Cá phèn",
     "servingName": "100g",
-    "servingCalo": "1040"
+    "servingCalo": "104"
   },
   {
     "id": "IEJOXLYG",
     "time": 0,
     "name": "Cá quả (cá lóc)",
     "servingName": "100g",
-    "servingCalo": "970"
+    "servingCalo": "97"
   },
   {
     "id": "HUBXETFE",
     "time": 0,
     "name": "Cá rô đồng",
     "servingName": "100g",
-    "servingCalo": "1260"
+    "servingCalo": "126"
   },
   {
     "id": "JUHYRGEV",
     "time": 0,
     "name": "Cá rô phi",
     "servingName": "100g",
-    "servingCalo": "1000"
+    "servingCalo": "100"
   },
   {
     "id": "CCHVKTGA",
     "time": 0,
     "name": "Cá thu",
     "servingName": "100g",
-    "servingCalo": "1660"
+    "servingCalo": "166"
   },
   {
     "id": "DRJRWHKH",
     "time": 0,
     "name": "Cá trắm cỏ",
     "servingName": "100g",
-    "servingCalo": "910"
+    "servingCalo": "91"
   },
   {
     "id": "LEJGAHRC",
     "time": 0,
     "name": "Cá trê",
     "servingName": "100g",
-    "servingCalo": "1730"
+    "servingCalo": "173"
   },
   {
     "id": "CHRQNJDF",
     "time": 0,
     "name": "Cá trôi",
     "servingName": "100g",
-    "servingCalo": "1270"
+    "servingCalo": "127"
   },
   {
     "id": "OOPDHTGE",
     "time": 0,
     "name": "Chà bông cá lóc",
     "servingName": "100g",
-    "servingCalo": "3120"
+    "servingCalo": "312"
   },
   {
     "id": "KUBSQYXN",
     "time": 0,
     "name": "Cua biển",
     "servingName": "100g",
-    "servingCalo": "1030"
+    "servingCalo": "103"
   },
   {
     "id": "NBCCOIHP",
     "time": 0,
     "name": "Cua đồng",
     "servingName": "100g",
-    "servingCalo": "870"
+    "servingCalo": "87"
   },
   {
     "id": "SAVTLSYA",
     "time": 0,
     "name": "Ghẹ",
     "servingName": "100g",
-    "servingCalo": "540"
+    "servingCalo": "54"
   },
   {
     "id": "AYPVMNUY",
     "time": 0,
     "name": "Hải sâm",
     "servingName": "100g",
-    "servingCalo": "900"
+    "servingCalo": "90"
   },
   {
     "id": "TRXOMJKY",
     "time": 0,
     "name": "Hến",
     "servingName": "100g",
-    "servingCalo": "450"
+    "servingCalo": "45"
   },
   {
     "id": "EYVIYPAK",
     "time": 0,
     "name": "Lươn",
     "servingName": "100g",
-    "servingCalo": "940"
+    "servingCalo": "94"
   },
   {
     "id": "BJXJVNHH",
     "time": 0,
     "name": "Mực khô",
     "servingName": "100g",
-    "servingCalo": "2910"
+    "servingCalo": "291"
   },
   {
     "id": "TOIIHESD",
     "time": 0,
     "name": "Mực tươi",
     "servingName": "100g",
-    "servingCalo": "730"
+    "servingCalo": "73"
   },
   {
     "id": "CKHJWEBP",
     "time": 0,
     "name": "Ốc bươu",
     "servingName": "100g",
-    "servingCalo": "840"
+    "servingCalo": "84"
   },
   {
     "id": "AHVNUJXO",
     "time": 0,
     "name": "Ốc nhồi",
     "servingName": "100g",
-    "servingCalo": "840"
+    "servingCalo": "84"
   },
   {
     "id": "NLMYOAIN",
     "time": 0,
     "name": "Ốc vặn",
     "servingName": "100g",
-    "servingCalo": "720"
+    "servingCalo": "72"
   },
   {
     "id": "TIANCOUT",
     "time": 0,
     "name": "Sò",
     "servingName": "100g",
-    "servingCalo": "510"
+    "servingCalo": "51"
   },
   {
     "id": "AJEBQLBJ",
     "time": 0,
     "name": "Tép gạo",
     "servingName": "100g",
-    "servingCalo": "580"
+    "servingCalo": "58"
   },
   {
     "id": "KUQVBUSJ",
     "time": 0,
     "name": "Tép khô",
     "servingName": "100g",
-    "servingCalo": "2690"
+    "servingCalo": "269"
   },
   {
     "id": "RHUQHJJN",
     "time": 0,
     "name": "Tôm biển",
     "servingName": "100g",
-    "servingCalo": "820"
+    "servingCalo": "82"
   },
   {
     "id": "FEPDGGIC",
     "time": 0,
     "name": "Tôm đồng",
     "servingName": "100g",
-    "servingCalo": "900"
+    "servingCalo": "90"
   },
   {
     "id": "XNOUMRSX",
     "time": 0,
     "name": "Tôm khô",
     "servingName": "100g",
-    "servingCalo": "3470"
+    "servingCalo": "347"
   },
   {
     "id": "GFUFWMYJ",
     "time": 0,
     "name": "Trai",
     "servingName": "100g",
-    "servingCalo": "380"
+    "servingCalo": "38"
   },
   {
     "id": "GJDEDSDP",
     "time": 0,
     "name": "Lòng đỏ trứng gà",
     "servingName": "quả",
-    "servingCalo": "3270"
+    "servingCalo": "327"
   },
   {
     "id": "RXAQNLPV",
     "time": 0,
     "name": "Lòng đỏ trứng vịt",
     "servingName": "quả",
-    "servingCalo": "3680"
+    "servingCalo": "368"
   },
   {
     "id": "PMCERBNJ",
     "time": 0,
     "name": "Lòng trắng trứng gà",
     "servingName": "quả",
-    "servingCalo": "460"
+    "servingCalo": "46"
   },
   {
     "id": "AVATHJAX",
     "time": 0,
     "name": "Lòng trắng trứng vịt",
     "servingName": "quả",
-    "servingCalo": "500"
+    "servingCalo": "50"
   },
   {
     "id": "YSIMPMCB",
     "time": 0,
     "name": "Trứng gà",
     "servingName": "quả",
-    "servingCalo": "1660"
+    "servingCalo": "166"
   },
   {
     "id": "EBEFFQCV",
     "time": 0,
     "name": "Trứng vịt",
     "servingName": "quả",
-    "servingCalo": "1840"
+    "servingCalo": "184"
   },
   {
     "id": "BGQSGOTJ",
     "time": 0,
     "name": "Trứng vịt lộn",
     "servingName": "quả",
-    "servingCalo": "1820"
+    "servingCalo": "182"
   },
   {
     "id": "CTMLJGBP",
     "time": 0,
     "name": "Cá thu hộp",
     "servingName": "hộp",
-    "servingCalo": "2070"
+    "servingCalo": "207"
   },
   {
     "id": "NWSNQYXT",
     "time": 0,
     "name": "Cá trích hộp",
     "servingName": "hộp",
-    "servingCalo": "2330"
+    "servingCalo": "233"
   },
   {
     "id": "RTJEYEJO",
     "time": 0,
     "name": "Nhãn hộp",
     "servingName": "hộp",
-    "servingCalo": "620"
+    "servingCalo": "62"
   },
   {
     "id": "JKJYYIDJ",
     "time": 0,
     "name": "Nước thơm",
     "servingName": "hộp",
-    "servingCalo": "390"
+    "servingCalo": "39"
   },
   {
     "id": "NEMAIWMI",
     "time": 0,
     "name": "Thịt bò hộp",
     "servingName": "hộp",
-    "servingCalo": "2510"
+    "servingCalo": "251"
   },
   {
     "id": "PIMDEHQJ",
     "time": 0,
     "name": "Thịt gà hộp",
     "servingName": "hộp",
-    "servingCalo": "2730"
+    "servingCalo": "273"
   },
   {
     "id": "XUGEUBQI",
     "time": 0,
     "name": "Thịt heo hộp",
     "servingName": "hộp",
-    "servingCalo": "3440"
+    "servingCalo": "344"
   },
   {
     "id": "EWCIBXUK",
     "time": 0,
     "name": "Thơm hộp",
     "servingName": "hộp",
-    "servingCalo": "560"
+    "servingCalo": "56"
   },
   {
     "id": "RSCDMRHJ",
     "time": 0,
     "name": "Vải hộp",
     "servingName": "hộp",
-    "servingCalo": "600"
+    "servingCalo": "60"
   },
   {
     "id": "JYSGJGMG",
     "time": 0,
     "name": "Mứt đu đủ",
     "servingName": "100g",
-    "servingCalo": "1780"
+    "servingCalo": "178"
   },
   {
     "id": "GRMMEDMK",
     "time": 0,
     "name": "Mứt thơm",
     "servingName": "100g",
-    "servingCalo": "2080"
+    "servingCalo": "208"
   },
   {
     "id": "DNSRVBRP",
     "time": 0,
     "name": "Bánh in chay",
     "servingName": "100g",
-    "servingCalo": "3760"
+    "servingCalo": "376"
   },
   {
     "id": "MRJUOCBR",
     "time": 0,
     "name": "Bánh men",
     "servingName": "100g",
-    "servingCalo": "3690"
+    "servingCalo": "369"
   },
   {
     "id": "CGHKXWJB",
     "time": 0,
     "name": "Bánh mì khô",
     "servingName": "100g",
-    "servingCalo": "3460"
+    "servingCalo": "346"
   },
   {
     "id": "XXCNKPRP",
     "time": 0,
     "name": "Bánh socola",
     "servingName": "100g",
-    "servingCalo": "4490"
+    "servingCalo": "449"
   },
   {
     "id": "PABRWSWN",
     "time": 0,
     "name": "Bánh thỏi socola",
     "servingName": "100g",
-    "servingCalo": "5430"
+    "servingCalo": "543"
   },
   {
     "id": "PPRBHEUR",
     "time": 0,
     "name": "Đường cát trắng",
     "servingName": "100g",
-    "servingCalo": "3970"
+    "servingCalo": "397"
   },
   {
     "id": "DBPOXBKK",
     "time": 0,
     "name": "Kẹo cà phê",
     "servingName": "100g",
-    "servingCalo": "3780"
+    "servingCalo": "378"
   },
   {
     "id": "NCYROPJD",
     "time": 0,
     "name": "Kẹo đậu phộng",
     "servingName": "100g",
-    "servingCalo": "4490"
+    "servingCalo": "449"
   },
   {
     "id": "WHQAXEJH",
     "time": 0,
     "name": "Kẹo dừa mềm",
     "servingName": "100g",
-    "servingCalo": "4150"
+    "servingCalo": "415"
   },
   {
     "id": "GXJVDIJY",
     "time": 0,
     "name": "Kẹo ngậm bạc hà",
     "servingName": "100g",
-    "servingCalo": "2680"
+    "servingCalo": "268"
   },
   {
     "id": "YFVXJAXT",
     "time": 0,
     "name": "Kẹo socola",
     "servingName": "100g",
-    "servingCalo": "3880"
+    "servingCalo": "388"
   },
   {
     "id": "RHJHDCMJ",
     "time": 0,
     "name": "Kẹo sữa",
     "servingName": "100g",
-    "servingCalo": "3900"
+    "servingCalo": "39"
   },
   {
     "id": "IXKBTQYJ",
     "time": 0,
     "name": "Mật ong",
     "servingName": "100g",
-    "servingCalo": "3270"
+    "servingCalo": "327"
   },
   {
     "id": "UJGFMICQ",
     "time": 0,
     "name": "Bia",
     "servingName": "100ml",
-    "servingCalo": "430"
+    "servingCalo": "43"
   },
   {
     "id": "QYJHSTNS",
     "time": 0,
     "name": "CocaCola",
     "servingName": "100ml",
-    "servingCalo": "420"
+    "servingCalo": "42"
   },
   {
     "id": "FVDWJWPJ",
     "time": 0,
     "name": "Rượu nếp",
     "servingName": "100ml",
-    "servingCalo": "1660"
+    "servingCalo": "166"
   },
   {
     "id": "VXSMSSVB",
     "time": 0,
     "name": "Đậu phộng chiên",
     "servingName": "100g",
-    "servingCalo": "6800"
+    "servingCalo": "68"
   },
   {
     "id": "CTBSVNIM",
     "time": 0,
     "name": "Bánh bao",
     "servingName": "100g",
-    "servingCalo": "2190"
+    "servingCalo": "219"
   },
   {
     "id": "NBFLSKHM",
     "time": 0,
     "name": "Bánh đúc",
     "servingName": "100g",
-    "servingCalo": "520"
+    "servingCalo": "52"
   },
   {
     "id": "YFSYTJNE",
     "time": 0,
     "name": "Bánh phồng tôm",
     "servingName": "100g",
-    "servingCalo": "6760"
+    "servingCalo": "676"
   }
 ]

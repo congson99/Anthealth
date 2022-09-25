@@ -39,7 +39,6 @@ class CaloCubit extends Cubit<CubitState> {
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getCaloDay(), value)) {
         if (ServerLogic.getData(value) != null) {
-          print(value);
           caloDayData.goal = ServerLogic.getData(value)["goal"];
           for (dynamic x in ServerLogic.getData(value)["caloin"]) {
             caloDayData.caloIn.add(CaloIn(

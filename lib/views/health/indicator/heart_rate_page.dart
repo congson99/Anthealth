@@ -39,7 +39,7 @@ class HeartRatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider<IndicatorCubit>(
       create: (context) =>
-          IndicatorCubit(2, 0, id: (mem == null) ? null : mem?.id),
+          IndicatorCubit(2, 1, id: (mem == null) ? null : mem?.id),
       child: BlocBuilder<IndicatorCubit, CubitState>(builder: (context, state) {
         if (state is IndicatorState || state is IndicatorLoadingState) {
           IndicatorPageData pageData = IndicatorPageData(

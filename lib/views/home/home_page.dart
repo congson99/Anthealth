@@ -41,10 +41,7 @@ class HomePage extends StatelessWidget {
   Widget buildContent(BuildContext context, HomeState state) {
     return Column(children: [
       if (warning.isNotEmpty) buildWarning(context),
-      CustomDivider.common(),
-      SizedBox(height: 16),
-      buildUpcoming(context, state),
-      SizedBox(height: 16),
+      if (state.events.isNotEmpty) buildUpcoming(context, state),
       CustomDivider.common(),
       SizedBox(height: 16),
       buildPost(context, state)
@@ -76,9 +73,11 @@ class HomePage extends StatelessWidget {
 
   Widget buildUpcoming(BuildContext context, HomeState state) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      CustomDivider.common(),
       CommonText.section(S.of(context).Upcoming_events, context),
       SizedBox(height: 16),
-      ...state.events.map((event) => buildEvent(context, event))
+      ...state.events.map((event) => buildEvent(context, event)),
+      SizedBox(height: 16),
     ]);
   }
 

@@ -126,12 +126,15 @@ class DashboardCubit extends Cubit<CubitState> {
         List<double> indicatorLatestData = HealthPageData.formatIndicatorsList(
             ServerLogic.formatList(
                 ServerLogic.getData(value)["indicatorInfo"]));
+        int calo = ServerLogic.getData(value)["activityInfo"]["caloin"];
+        int water = ServerLogic.getData(value)["activityInfo"]["water"];
         List<bool> warning = [false, false, false, false];
         for (dynamic x in ServerLogic.formatList(
             ServerLogic.getData(value)["indicatorInfo"])) {
           if (x["type"] > 1) warning[x["type"] - 2] = x["warn"];
         }
-        emit(HealthState(HealthPageData(indicatorLatestData), posts, warning));
+        emit(HealthState(
+            HealthPageData(indicatorLatestData), posts, warning, calo, water));
       }
     });
   }

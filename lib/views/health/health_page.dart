@@ -37,13 +37,11 @@ class HealthPage extends StatelessWidget {
           return TemplateDashboardPage(
               title: S.of(context).Health_record,
               name: user.name,
-              content: buildContent(
-                  context, state.healthPageData, state.posts, state.warning));
+              content: buildContent(context, state));
         return CustomErrorPage();
       });
 
-  Widget buildContent(BuildContext context, HealthPageData data,
-      List<Post> posts, List<bool> warning) {
+  Widget buildContent(BuildContext context, HealthState state) {
     if (review)
       return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         CustomDivider.common(),
@@ -52,19 +50,20 @@ class HealthPage extends StatelessWidget {
         SizedBox(height: 16),
         buildHealthIndicator(
             context,
-            DashboardLogic.handleIndicatorToShow(data.indicatorsLatestData),
-            data.indicatorsLatestData[0],
-            warning),
+            DashboardLogic.handleIndicatorToShow(
+                state.healthPageData.indicatorsLatestData),
+            state.healthPageData.indicatorsLatestData[0],
+            state.warning),
         SizedBox(height: 32),
         CustomDivider.common(),
         SizedBox(height: 16),
         CommonText.section(S.of(context).Activity, context),
         SizedBox(height: 16),
-        buildActivity(context)
+        buildActivity(context, state)
       ]);
 
     /// TODO: review
-    return buildPost(context, posts);
+    return buildPost(context, state.posts);
   }
 
   Widget buildHealthIndicator(
@@ -152,7 +151,7 @@ class HealthPage extends StatelessWidget {
     ]);
   }
 
-  Widget buildActivity(BuildContext context) {
+  Widget buildActivity(BuildContext context, HealthState state) {
     double width = (MediaQuery.of(context).size.width - 48) / 2;
     return Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -161,7 +160,7 @@ class HealthPage extends StatelessWidget {
           IndicatorComponent(
               colorID: 2,
               iconPath: "assets/indicators/calo.png",
-              value: "1.200",
+              value: state.calo.toStringAsFixed(0),
               onTap: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (_) => CaloPage())),
               title: S.of(context).Calo,
@@ -170,7 +169,7 @@ class HealthPage extends StatelessWidget {
           IndicatorComponent(
               colorID: 0,
               iconPath: "assets/indicators/water.png",
-              value: "1.200",
+              value: state.water.toStringAsFixed(0),
               unit: "ml",
               onTap: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (_) => WaterPage())),

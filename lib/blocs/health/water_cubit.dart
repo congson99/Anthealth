@@ -68,7 +68,6 @@ class WaterCubit extends Cubit<CubitState> {
     await CommonService.instance.client!.getData().then((value) {
       if (ServerLogic.checkMatchMessageID(MessageIDPath.getWaterDay(), value)) {
         if (ServerLogic.getData(value) != null) {
-          print(value);
           waterDayData.goal = ServerLogic.getData(value)["goal"];
           for (dynamic x in ServerLogic.getData(value)["record"]) {
             waterDayData.record.add(Water(
