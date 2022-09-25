@@ -39,7 +39,7 @@ class MedicationReminderCubit extends Cubit<CubitState> {
                 x["name"],
                 MedicineData("", x["name"], 0.0, int.parse(x["unit"]), 0,
                     x["img"], "", ""),
-                DateTime.fromMicrosecondsSinceEpoch(x["time"] * 1000000),
+                DateTime.fromMillisecondsSinceEpoch(x["time"] * 1000),
                 0.0 + x["need_amount"],
                 ""));
         }
@@ -149,7 +149,18 @@ class MedicationReminderCubit extends Cubit<CubitState> {
   }
 
   Future<bool> stopReminder(MedicationReminder reminder) async {
-    return true;
+    bool result = false;
+    Map<String, dynamic> data = {"reminderId": reminder.id};
+    await CommonService.instance.send(MessageIDPath.stopReminder(), data);
+    await CommonService.instance.client!.getData().then((value) {
+      if (ServerLogic.checkMatchMessageID(
+          MessageIDPath.stopReminder(), value)) {
+        if (ServerLogic.getData(value) != null) {
+          result = ServerLogic.getData(value)["status"];
+        }
+      }
+    });
+    return result;
   }
 
   Future<bool> addReminder(List<MedicationReminder> reminder) async {

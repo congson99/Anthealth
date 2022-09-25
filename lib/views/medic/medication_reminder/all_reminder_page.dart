@@ -166,39 +166,39 @@ class _AllReminderPageState extends State<AllReminderPage> {
                                               .copyWith(color: color1))))
                                   .toList())
                         ]),
-                    SizedBox(height: 4),
-                    Text(
-                        S.of(context).Start +
-                            ": " +
-                            DateFormat("HH:mm dd.MM.yyyy")
-                                .format(reminder.allReminder.first.time),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(color: color1)),
-                    SizedBox(height: 8),
-                    Text(
-                        S.of(context).End +
-                            ": " +
-                            DateFormat("HH:mm dd.MM.yyyy")
-                                .format(reminder.allReminder.last.time),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(color: color1)),
-                    SizedBox(height: 8),
-                    Text(
-                        S.of(context).Prescription +
-                            ": " +
-                            reminder.prescription.name +
-                            ((reminder.prescription.description != "")
-                                ? " - " + reminder.prescription.description
-                                : ""),
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(color: color1))
+                    // SizedBox(height: 4),
+                    // Text(
+                    //     S.of(context).Start +
+                    //         ": " +
+                    //         DateFormat("HH:mm dd.MM.yyyy")
+                    //             .format(reminder.allReminder.first.time),
+                    //     style: Theme.of(context)
+                    //         .textTheme
+                    //         .bodyText1!
+                    //         .copyWith(color: color1)),
+                    // SizedBox(height: 8),
+                    // Text(
+                    //     S.of(context).End +
+                    //         ": " +
+                    //         DateFormat("HH:mm dd.MM.yyyy")
+                    //             .format(reminder.allReminder.last.time),
+                    //     style: Theme.of(context)
+                    //         .textTheme
+                    //         .bodyText1!
+                    //         .copyWith(color: color1)),
+                    // SizedBox(height: 8),
+                    // Text(
+                    //     S.of(context).Prescription +
+                    //         ": " +
+                    //         reminder.prescription.name +
+                    //         ((reminder.prescription.description != "")
+                    //             ? " - " + reminder.prescription.description
+                    //             : ""),
+                    //     overflow: TextOverflow.ellipsis,
+                    //     style: Theme.of(context)
+                    //         .textTheme
+                    //         .bodyText1!
+                    //         .copyWith(color: color1))
                   ])),
           GestureDetector(
               onTap: () => isActive ? stop(reminder) : reuse(reminder),
@@ -231,6 +231,10 @@ class _AllReminderPageState extends State<AllReminderPage> {
           activeReminders = value[0];
           doneReminders = value[1];
         });
+        Navigator.pop(context);
+        ShowSnackBar.showSuccessSnackBar(context, S.of(context).successfully);
+      } else {
+        ShowSnackBar.showErrorSnackBar(context, S.of(context).something_wrong);
       }
     });
   }
